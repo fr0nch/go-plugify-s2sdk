@@ -11,7 +11,7 @@ Full API documentation can be found here on the [API Hub](https://api.plugify.ne
 ## Installation
 
 ```bash
-go get github.com/fr0nch/go-plugify-s2sdk
+go get github.com/fr0nch/go-plugify-s2sdk/v2
 ```
 
 ## Updates

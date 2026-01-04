@@ -11,7 +11,7 @@
 ## Установка
 
 ```bash
-go get github.com/fr0nch/go-plugify-s2sdk
+go get github.com/fr0nch/go-plugify-s2sdk/v2
 ```
 
 ## Обновление
