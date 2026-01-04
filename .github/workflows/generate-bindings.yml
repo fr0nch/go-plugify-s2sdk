@@ -1,0 +1,144 @@
+name: Check & Update S2SDK Bindings
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-bindings:
+    runs-on: ubuntu-latest
+    env:
+      PLUGIN_REPO: untrustedmodders/plugify-plugin-s2sdk
+      PLUGIN_NAME: plugify-plugin-s2sdk
+      PLUGIN_SHORT_NAME: s2sdk
+    steps:
+      - name: Checkout current repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.25'
+
+      - name: Get latest plugin version and notes
+        id: plugin_version
+        run: |
+          LATEST_TAG=$(gh release list --repo ${{ env.PLUGIN_REPO }} --limit 1 --exclude-drafts --exclude-pre-releases --json tagName --jq '.[0].tagName')
+          LATEST_BODY=$(gh release view $LATEST_TAG --repo ${{ env.PLUGIN_REPO }} --json body --jq '.body')
+          VERSION_CLEAN=${LATEST_TAG#v}
+          
+          echo "latest_tag=$LATEST_TAG" >> $GITHUB_OUTPUT
+          echo "version_clean=$VERSION_CLEAN" >> $GITHUB_OUTPUT
+          
+          {
+            echo 'latest_body<<EOF'
+            echo "$LATEST_BODY"
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check current version
+        id: current_version
+        run: |
+          if [ ! -f .github/version.txt ]; then
+            echo "version.txt not found, assuming first run."
+            CURRENT_CLEAN="0.0.0" 
+          else
+            CURRENT_CLEAN=$(cat .github/version.txt)
+          fi
+
+          echo "Current: $CURRENT_CLEAN, Remote: ${{ steps.plugin_version.outputs.version_clean }}"
+
+          if [ "$CURRENT_CLEAN" = "${{ steps.plugin_version.outputs.version_clean }}" ]; then
+            echo "Versions match. Nothing to do."
+            echo "update_needed=false" >> $GITHUB_OUTPUT
+          else
+            echo "New version detected!"
+            echo "update_needed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Download Manifest
+        if: steps.current_version.outputs.update_needed == 'true'
+        run: |
+          curl -L -o ${{ env.PLUGIN_NAME }}.pplugin.in https://github.com/${{ env.PLUGIN_REPO }}/raw/main/${{ env.PLUGIN_NAME }}.pplugin.in
+          # The manifest is a JSON file, let's use jq to be safe
+          jq --arg name "${{ env.PLUGIN_SHORT_NAME }}" '.name = $name' ${{ env.PLUGIN_NAME }}.pplugin.in > tmp.json && mv tmp.json ${{ env.PLUGIN_NAME }}.pplugin.in
+
+      - name: Build Plugify Generator
+        if: steps.current_version.outputs.update_needed == 'true'
+        run: |
+          git clone https://github.com/untrustedmodders/plugify-gen.git plugify-gen-repo
+          cd plugify-gen-repo
+          go build -o ../plugify-gen ./cmd/plugify-gen
+          cd ..
+
+          if [ -f ./plugify-gen ]; then
+            ls -la ./plugify-gen
+            file ./plugify-gen || true
+          else
+            echo "plugify-gen binary not found"
+          fi
+          
+          rm -rf plugify-gen-repo
+
+      - name: Generate Bindings
+        if: steps.current_version.outputs.update_needed == 'true'
+        run: |
+          ./plugify-gen -manifest ${{ env.PLUGIN_NAME }}.pplugin.in -output ./ -lang golang
+          cp -a ./${{ env.PLUGIN_SHORT_NAME }}/. ./
+          rm -rf plugify-gen ${{ env.PLUGIN_NAME }}.pplugin.in ${{ env.PLUGIN_SHORT_NAME }}
+
+      - name: Ensure Go Modules
+        run: |
+          ls -la
+          
+          if [ ! -f go.mod ]; then
+            echo "go.mod not found, initializing..."
+            go mod init github.com/${{ github.repository }}
+          fi
+          
+          go get -u ./...
+          go mod tidy
+
+      - name: Update version file
+        if: steps.current_version.outputs.update_needed == 'true'
+        run: echo "${{ steps.plugin_version.outputs.version_clean }}" > .github/version.txt
+
+
+      - name: Commit and Push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          if [ "${{ steps.current_version.outputs.update_needed }}" == "true" ]; then
+            git commit -m "feat: update ${{ env.PLUGIN_NAME }} bindings to v${{ steps.plugin_version.outputs.version_clean }}"
+          else
+            git commit -m "chore: update go.mod and go.sum"
+          fi
+          
+          git push
+
+      - name: Create Release
+        if: steps.current_version.outputs.update_needed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.plugin_version.outputs.latest_tag }}
+          NOTES: ${{ steps.plugin_version.outputs.latest_body }}
+        run: |
+          HEADER="Original release notes from [${{ env.PLUGIN_REPO }}](https://github.com/${{ env.PLUGIN_REPO }}/releases/tag/${VERSION})"
+          NOTES_WITH_LINK=$(printf "%s\n\n%s" "$HEADER" "$NOTES")
+          gh release create "$VERSION" --notes "$NOTES_WITH_LINK"
