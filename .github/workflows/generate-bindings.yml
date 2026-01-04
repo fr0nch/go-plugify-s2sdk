@@ -102,7 +102,7 @@ jobs:
           
           if [ ! -f go.mod ]; then
             echo "go.mod not found, initializing..."
-            go mod init github.com/${{ github.repository }}
+            go mod init github.com/${{ github.repository }}/v2
           fi
           
           go get -u ./...
