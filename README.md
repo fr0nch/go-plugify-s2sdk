@@ -16,7 +16,7 @@ go get github.com/fr0nch/go-plugify-s2sdk/v2
 
 ## Updates
 
-This repository uses GitHub Actions to automatically check for updates in [plugify-plugin-s2sdk](https://github.com/untrustedmodders/plugify-plugin-s2sdk) every 3 hours. When a new version is detected, the bindings are updated, and a new release is created.
+This repository uses GitHub Actions to automatically check for updates in [plugify-plugin-s2sdk](https://github.com/untrustedmodders/plugify-plugin-s2sdk) every day at 2:00 UTC. When a new version is detected, the bindings are updated, and a new release is created.
 
 ## License
 
