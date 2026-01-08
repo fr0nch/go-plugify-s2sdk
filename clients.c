@@ -315,7 +315,7 @@ PLUGIFY_EXPORT void (*__s2sdk_RespawnClient)(int32_t) = NULL;
 PLUGIFY_EXPORT void (*__s2sdk_ForcePlayerSuicide)(int32_t, bool, bool) = NULL;
 
 
-PLUGIFY_EXPORT void (*__s2sdk_KickClient)(int32_t) = NULL;
+PLUGIFY_EXPORT void (*__s2sdk_KickClient)(int32_t, int32_t, String*) = NULL;
 
 
 PLUGIFY_EXPORT void (*__s2sdk_BanClient)(int32_t, float, bool) = NULL;

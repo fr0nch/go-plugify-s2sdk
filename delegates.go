@@ -62,7 +62,7 @@ type OnClientDisconnectCallback func(playerSlot int32)
 
 
 // OnClientDisconnect_PostCallback - Called when a client is disconnected from the server.
-type OnClientDisconnect_PostCallback func(playerSlot int32, reason int32)
+type OnClientDisconnect_PostCallback func(playerSlot int32, reason NetworkDisconnectionReason)
 
 
 // OnClientActiveCallback - Called when a client is activated by the game.

@@ -1,5 +1,11 @@
 #include "shared.h"
 
+PLUGIFY_EXPORT String (*__s2sdk_GetPublicAddress)(bool) = NULL;
+
+
+PLUGIFY_EXPORT String (*__s2sdk_GetLocalAddress)(bool) = NULL;
+
+
 PLUGIFY_EXPORT uintptr_t (*__s2sdk_EntIndexToEntPointer)(int32_t) = NULL;
 
 

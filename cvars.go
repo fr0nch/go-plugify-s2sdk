@@ -1580,12 +1580,15 @@ var (
 	ConVarErrEmptyHandle = errors.New("ConVar: empty handle")
 )
 
-// ConVar - RAII wrapper for ConVar handle.
+//  @brief RAII wrapper for ConVar handle.
+//
 type ConVar struct {
 	handle    uint64
 }
 
-// NewConVarCreateConVar - Creates a new console variable.
+// NewConVarCreateConVar 
+//  @brief Creates a new console variable.
+//
 //  @param name: The name of the console variable.
 //  @param defaultValue: The default value of the console variable.
 //  @param description: A description of the console variable's purpose.
@@ -1596,7 +1599,9 @@ func NewConVarCreateConVar(name string, defaultValue any, description string, fl
 	}
 }
 
-// NewConVarCreateConVarBool - Creates a new boolean console variable.
+// NewConVarCreateConVarBool 
+//  @brief Creates a new boolean console variable.
+//
 //  @param name: The name of the console variable.
 //  @param defaultValue: The default value for the console variable.
 //  @param description: A brief description of the console variable.
@@ -1611,7 +1616,9 @@ func NewConVarCreateConVarBool(name string, defaultValue bool, description strin
 	}
 }
 
-// NewConVarCreateConVarInt16 - Creates a new 16-bit signed integer console variable.
+// NewConVarCreateConVarInt16 
+//  @brief Creates a new 16-bit signed integer console variable.
+//
 //  @param name: The name of the console variable.
 //  @param defaultValue: The default value for the console variable.
 //  @param description: A brief description of the console variable.
@@ -1626,7 +1633,9 @@ func NewConVarCreateConVarInt16(name string, defaultValue int16, description str
 	}
 }
 
-// NewConVarCreateConVarUInt16 - Creates a new 16-bit unsigned integer console variable.
+// NewConVarCreateConVarUInt16 
+//  @brief Creates a new 16-bit unsigned integer console variable.
+//
 //  @param name: The name of the console variable.
 //  @param defaultValue: The default value for the console variable.
 //  @param description: A brief description of the console variable.
@@ -1641,7 +1650,9 @@ func NewConVarCreateConVarUInt16(name string, defaultValue uint16, description s
 	}
 }
 
-// NewConVarCreateConVarInt32 - Creates a new 32-bit signed integer console variable.
+// NewConVarCreateConVarInt32 
+//  @brief Creates a new 32-bit signed integer console variable.
+//
 //  @param name: The name of the console variable.
 //  @param defaultValue: The default value for the console variable.
 //  @param description: A brief description of the console variable.
@@ -1656,7 +1667,9 @@ func NewConVarCreateConVarInt32(name string, defaultValue int32, description str
 	}
 }
 
-// NewConVarCreateConVarUInt32 - Creates a new 32-bit unsigned integer console variable.
+// NewConVarCreateConVarUInt32 
+//  @brief Creates a new 32-bit unsigned integer console variable.
+//
 //  @param name: The name of the console variable.
 //  @param defaultValue: The default value for the console variable.
 //  @param description: A brief description of the console variable.
@@ -1671,7 +1684,9 @@ func NewConVarCreateConVarUInt32(name string, defaultValue uint32, description s
 	}
 }
 
-// NewConVarCreateConVarInt64 - Creates a new 64-bit signed integer console variable.
+// NewConVarCreateConVarInt64 
+//  @brief Creates a new 64-bit signed integer console variable.
+//
 //  @param name: The name of the console variable.
 //  @param defaultValue: The default value for the console variable.
 //  @param description: A brief description of the console variable.
@@ -1686,7 +1701,9 @@ func NewConVarCreateConVarInt64(name string, defaultValue int64, description str
 	}
 }
 
-// NewConVarCreateConVarUInt64 - Creates a new 64-bit unsigned integer console variable.
+// NewConVarCreateConVarUInt64 
+//  @brief Creates a new 64-bit unsigned integer console variable.
+//
 //  @param name: The name of the console variable.
 //  @param defaultValue: The default value for the console variable.
 //  @param description: A brief description of the console variable.
@@ -1701,7 +1718,9 @@ func NewConVarCreateConVarUInt64(name string, defaultValue uint64, description s
 	}
 }
 
-// NewConVarCreateConVarFloat - Creates a new floating-point console variable.
+// NewConVarCreateConVarFloat 
+//  @brief Creates a new floating-point console variable.
+//
 //  @param name: The name of the console variable.
 //  @param defaultValue: The default value for the console variable.
 //  @param description: A brief description of the console variable.
@@ -1716,7 +1735,9 @@ func NewConVarCreateConVarFloat(name string, defaultValue float32, description s
 	}
 }
 
-// NewConVarCreateConVarDouble - Creates a new double-precision console variable.
+// NewConVarCreateConVarDouble 
+//  @brief Creates a new double-precision console variable.
+//
 //  @param name: The name of the console variable.
 //  @param defaultValue: The default value for the console variable.
 //  @param description: A brief description of the console variable.
@@ -1731,7 +1752,9 @@ func NewConVarCreateConVarDouble(name string, defaultValue float64, description 
 	}
 }
 
-// NewConVarCreateConVarVector2 - Creates a new 2D vector console variable.
+// NewConVarCreateConVarVector2 
+//  @brief Creates a new 2D vector console variable.
+//
 //  @param name: The name of the console variable.
 //  @param defaultValue: The default value for the console variable.
 //  @param description: A brief description of the console variable.
@@ -1746,7 +1769,9 @@ func NewConVarCreateConVarVector2(name string, defaultValue plugify.Vector2, des
 	}
 }
 
-// NewConVarCreateConVarVector3 - Creates a new 3D vector console variable.
+// NewConVarCreateConVarVector3 
+//  @brief Creates a new 3D vector console variable.
+//
 //  @param name: The name of the console variable.
 //  @param defaultValue: The default value for the console variable.
 //  @param description: A brief description of the console variable.
@@ -1761,7 +1786,9 @@ func NewConVarCreateConVarVector3(name string, defaultValue plugify.Vector3, des
 	}
 }
 
-// NewConVarCreateConVarVector4 - Creates a new 4D vector console variable.
+// NewConVarCreateConVarVector4 
+//  @brief Creates a new 4D vector console variable.
+//
 //  @param name: The name of the console variable.
 //  @param defaultValue: The default value for the console variable.
 //  @param description: A brief description of the console variable.
@@ -1776,7 +1803,9 @@ func NewConVarCreateConVarVector4(name string, defaultValue plugify.Vector4, des
 	}
 }
 
-// NewConVarCreateConVarString - Creates a new string console variable.
+// NewConVarCreateConVarString 
+//  @brief Creates a new string console variable.
+//
 //  @param name: The name of the console variable.
 //  @param defaultValue: The default value of the console variable.
 //  @param description: A description of the console variable's purpose.
@@ -1816,7 +1845,9 @@ func (w *ConVar) IsValid() bool {
 	return w.handle != 0
 }
 
-// Find - Searches for a console variable.
+// Find 
+//  @brief Searches for a console variable.
+//
 //  @param name: The name of the console variable to search for.
 //
 //  @return A handle to the console variable data if found; otherwise, nullptr.
@@ -1824,7 +1855,9 @@ func (w *ConVar) Find(name string) *ConVar {
 	return NewConVar(FindConVar(name))
 }
 
-// Find2 - Searches for a console variable of a specific type.
+// Find2 
+//  @brief Searches for a console variable of a specific type.
+//
 //  @param name: The name of the console variable to search for.
 //  @param type_: The type of the console variable to search for.
 //
@@ -1833,7 +1866,10 @@ func (w *ConVar) Find2(name string, type_ ConVarType) *ConVar {
 	return NewConVar(FindConVar2(name, type_))
 }
 
-// HookChange - Creates a hook for when a console variable's value is changed.
+// HookChange 
+//  @brief Creates a hook for when a console variable's value is changed.
+//
+//  @param conVarHandle: TThe handle to the console variable data.
 //  @param callback: The callback function to be executed when the variable's value changes.
 func (w *ConVar) HookChange(callback ChangeCallback) error {
 	if w.handle == 0 {
@@ -1843,7 +1879,10 @@ func (w *ConVar) HookChange(callback ChangeCallback) error {
 	return nil
 }
 
-// UnhookChange - Removes a hook for when a console variable's value is changed.
+// UnhookChange 
+//  @brief Removes a hook for when a console variable's value is changed.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //  @param callback: The callback function to be removed.
 func (w *ConVar) UnhookChange(callback ChangeCallback) error {
 	if w.handle == 0 {
@@ -1853,7 +1892,10 @@ func (w *ConVar) UnhookChange(callback ChangeCallback) error {
 	return nil
 }
 
-// IsFlagSet - Checks if a specific flag is set for a console variable.
+// IsFlagSet 
+//  @brief Checks if a specific flag is set for a console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //  @param flag: The flag to check against the console variable.
 //
 //  @return True if the flag is set; otherwise, false.
@@ -1865,7 +1907,10 @@ func (w *ConVar) IsFlagSet(flag int64) (bool, error) {
 	return IsConVarFlagSet(w.handle, flag), nil
 }
 
-// AddFlags - Adds flags to a console variable.
+// AddFlags 
+//  @brief Adds flags to a console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //  @param flags: The flags to be added.
 func (w *ConVar) AddFlags(flags ConVarFlag) error {
 	if w.handle == 0 {
@@ -1875,7 +1920,10 @@ func (w *ConVar) AddFlags(flags ConVarFlag) error {
 	return nil
 }
 
-// RemoveFlags - Removes flags from a console variable.
+// RemoveFlags 
+//  @brief Removes flags from a console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //  @param flags: The flags to be removed.
 func (w *ConVar) RemoveFlags(flags ConVarFlag) error {
 	if w.handle == 0 {
@@ -1885,7 +1933,10 @@ func (w *ConVar) RemoveFlags(flags ConVarFlag) error {
 	return nil
 }
 
-// GetFlags - Retrieves the current flags of a console variable.
+// GetFlags 
+//  @brief Retrieves the current flags of a console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //
 //  @return The current flags set on the console variable.
 func (w *ConVar) GetFlags() (ConVarFlag, error) {
@@ -1896,7 +1947,10 @@ func (w *ConVar) GetFlags() (ConVarFlag, error) {
 	return GetConVarFlags(w.handle), nil
 }
 
-// GetBounds - Gets the specified bound (max or min) of a console variable and stores it in the output string.
+// GetBounds 
+//  @brief Gets the specified bound (max or min) of a console variable and stores it in the output string.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //  @param max: Indicates whether to get the maximum (true) or minimum (false) bound.
 //
 //  @return The bound value.
@@ -1908,7 +1962,10 @@ func (w *ConVar) GetBounds(max bool) (string, error) {
 	return GetConVarBounds(w.handle, max), nil
 }
 
-// SetBounds - Sets the specified bound (max or min) for a console variable.
+// SetBounds 
+//  @brief Sets the specified bound (max or min) for a console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //  @param max: Indicates whether to set the maximum (true) or minimum (false) bound.
 //  @param value: The value to set as the bound.
 func (w *ConVar) SetBounds(max bool, value string) error {
@@ -1919,7 +1976,10 @@ func (w *ConVar) SetBounds(max bool, value string) error {
 	return nil
 }
 
-// GetDefault - Retrieves the default value of a console variable and stores it in the output string.
+// GetDefault 
+//  @brief Retrieves the default value of a console variable and stores it in the output string.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //
 //  @return The output value in string format.
 func (w *ConVar) GetDefault() (string, error) {
@@ -1930,7 +1990,10 @@ func (w *ConVar) GetDefault() (string, error) {
 	return GetConVarDefault(w.handle), nil
 }
 
-// GetValue - Retrieves the current value of a console variable and stores it in the output string.
+// GetValue 
+//  @brief Retrieves the current value of a console variable and stores it in the output string.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //
 //  @return The output value in string format.
 func (w *ConVar) GetValue() (string, error) {
@@ -1941,7 +2004,10 @@ func (w *ConVar) GetValue() (string, error) {
 	return GetConVarValue(w.handle), nil
 }
 
-// GetObject - Retrieves the current value of a console variable and stores it in the output.
+// GetObject 
+//  @brief Retrieves the current value of a console variable and stores it in the output.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //
 //  @return The output value.
 func (w *ConVar) GetObject() (any, error) {
@@ -1952,7 +2018,10 @@ func (w *ConVar) GetObject() (any, error) {
 	return GetConVar(w.handle), nil
 }
 
-// GetBool - Retrieves the current value of a boolean console variable.
+// GetBool 
+//  @brief Retrieves the current value of a boolean console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //
 //  @return The current boolean value of the console variable.
 func (w *ConVar) GetBool() (bool, error) {
@@ -1963,7 +2032,10 @@ func (w *ConVar) GetBool() (bool, error) {
 	return GetConVarBool(w.handle), nil
 }
 
-// GetInt16 - Retrieves the current value of a signed 16-bit integer console variable.
+// GetInt16 
+//  @brief Retrieves the current value of a signed 16-bit integer console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //
 //  @return The current int16_t value of the console variable.
 func (w *ConVar) GetInt16() (int16, error) {
@@ -1974,7 +2046,10 @@ func (w *ConVar) GetInt16() (int16, error) {
 	return GetConVarInt16(w.handle), nil
 }
 
-// GetUInt16 - Retrieves the current value of an unsigned 16-bit integer console variable.
+// GetUInt16 
+//  @brief Retrieves the current value of an unsigned 16-bit integer console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //
 //  @return The current uint16_t value of the console variable.
 func (w *ConVar) GetUInt16() (uint16, error) {
@@ -1985,7 +2060,10 @@ func (w *ConVar) GetUInt16() (uint16, error) {
 	return GetConVarUInt16(w.handle), nil
 }
 
-// GetInt32 - Retrieves the current value of a signed 32-bit integer console variable.
+// GetInt32 
+//  @brief Retrieves the current value of a signed 32-bit integer console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //
 //  @return The current int32_t value of the console variable.
 func (w *ConVar) GetInt32() (int32, error) {
@@ -1996,7 +2074,10 @@ func (w *ConVar) GetInt32() (int32, error) {
 	return GetConVarInt32(w.handle), nil
 }
 
-// GetUInt32 - Retrieves the current value of an unsigned 32-bit integer console variable.
+// GetUInt32 
+//  @brief Retrieves the current value of an unsigned 32-bit integer console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //
 //  @return The current uint32_t value of the console variable.
 func (w *ConVar) GetUInt32() (uint32, error) {
@@ -2007,7 +2088,10 @@ func (w *ConVar) GetUInt32() (uint32, error) {
 	return GetConVarUInt32(w.handle), nil
 }
 
-// GetInt64 - Retrieves the current value of a signed 64-bit integer console variable.
+// GetInt64 
+//  @brief Retrieves the current value of a signed 64-bit integer console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //
 //  @return The current int64_t value of the console variable.
 func (w *ConVar) GetInt64() (int64, error) {
@@ -2018,7 +2102,10 @@ func (w *ConVar) GetInt64() (int64, error) {
 	return GetConVarInt64(w.handle), nil
 }
 
-// GetUInt64 - Retrieves the current value of an unsigned 64-bit integer console variable.
+// GetUInt64 
+//  @brief Retrieves the current value of an unsigned 64-bit integer console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //
 //  @return The current uint64_t value of the console variable.
 func (w *ConVar) GetUInt64() (uint64, error) {
@@ -2029,7 +2116,10 @@ func (w *ConVar) GetUInt64() (uint64, error) {
 	return GetConVarUInt64(w.handle), nil
 }
 
-// GetFloat - Retrieves the current value of a float console variable.
+// GetFloat 
+//  @brief Retrieves the current value of a float console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //
 //  @return The current float value of the console variable.
 func (w *ConVar) GetFloat() (float32, error) {
@@ -2040,7 +2130,10 @@ func (w *ConVar) GetFloat() (float32, error) {
 	return GetConVarFloat(w.handle), nil
 }
 
-// GetDouble - Retrieves the current value of a double console variable.
+// GetDouble 
+//  @brief Retrieves the current value of a double console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //
 //  @return The current double value of the console variable.
 func (w *ConVar) GetDouble() (float64, error) {
@@ -2051,7 +2144,10 @@ func (w *ConVar) GetDouble() (float64, error) {
 	return GetConVarDouble(w.handle), nil
 }
 
-// GetString - Retrieves the current value of a string console variable.
+// GetString 
+//  @brief Retrieves the current value of a string console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //
 //  @return The current string value of the console variable.
 func (w *ConVar) GetString() (string, error) {
@@ -2062,7 +2158,10 @@ func (w *ConVar) GetString() (string, error) {
 	return GetConVarString(w.handle), nil
 }
 
-// GetColor - Retrieves the current value of a Color console variable.
+// GetColor 
+//  @brief Retrieves the current value of a Color console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //
 //  @return The current Color value of the console variable.
 func (w *ConVar) GetColor() (plugify.Vector4, error) {
@@ -2073,7 +2172,10 @@ func (w *ConVar) GetColor() (plugify.Vector4, error) {
 	return GetConVarColor(w.handle), nil
 }
 
-// GetVector2 - Retrieves the current value of a Vector2D console variable.
+// GetVector2 
+//  @brief Retrieves the current value of a Vector2D console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //
 //  @return The current Vector2D value of the console variable.
 func (w *ConVar) GetVector2() (plugify.Vector2, error) {
@@ -2084,7 +2186,10 @@ func (w *ConVar) GetVector2() (plugify.Vector2, error) {
 	return GetConVarVector2(w.handle), nil
 }
 
-// GetVector - Retrieves the current value of a Vector console variable.
+// GetVector 
+//  @brief Retrieves the current value of a Vector console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //
 //  @return The current Vector value of the console variable.
 func (w *ConVar) GetVector() (plugify.Vector3, error) {
@@ -2095,7 +2200,10 @@ func (w *ConVar) GetVector() (plugify.Vector3, error) {
 	return GetConVarVector(w.handle), nil
 }
 
-// GetVector4 - Retrieves the current value of a Vector4D console variable.
+// GetVector4 
+//  @brief Retrieves the current value of a Vector4D console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //
 //  @return The current Vector4D value of the console variable.
 func (w *ConVar) GetVector4() (plugify.Vector4, error) {
@@ -2106,7 +2214,10 @@ func (w *ConVar) GetVector4() (plugify.Vector4, error) {
 	return GetConVarVector4(w.handle), nil
 }
 
-// GetQAngle - Retrieves the current value of a QAngle console variable.
+// GetQAngle 
+//  @brief Retrieves the current value of a QAngle console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //
 //  @return The current QAngle value of the console variable.
 func (w *ConVar) GetQAngle() (plugify.Vector3, error) {
@@ -2117,7 +2228,10 @@ func (w *ConVar) GetQAngle() (plugify.Vector3, error) {
 	return GetConVarQAngle(w.handle), nil
 }
 
-// SetValue - Sets the value of a console variable.
+// SetValue 
+//  @brief Sets the value of a console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //  @param value: The string value to set for the console variable.
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
@@ -2129,7 +2243,10 @@ func (w *ConVar) SetValue(value string, replicate bool, notify bool) error {
 	return nil
 }
 
-// Set - Sets the value of a console variable.
+// Set 
+//  @brief Sets the value of a console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //  @param value: The value to set for the console variable.
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
@@ -2141,7 +2258,10 @@ func (w *ConVar) Set(value any, replicate bool, notify bool) error {
 	return nil
 }
 
-// SetBool - Sets the value of a boolean console variable.
+// SetBool 
+//  @brief Sets the value of a boolean console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //  @param value: The value to set for the console variable.
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
@@ -2153,7 +2273,10 @@ func (w *ConVar) SetBool(value bool, replicate bool, notify bool) error {
 	return nil
 }
 
-// SetInt16 - Sets the value of a signed 16-bit integer console variable.
+// SetInt16 
+//  @brief Sets the value of a signed 16-bit integer console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //  @param value: The value to set for the console variable.
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
@@ -2165,7 +2288,10 @@ func (w *ConVar) SetInt16(value int16, replicate bool, notify bool) error {
 	return nil
 }
 
-// SetUInt16 - Sets the value of an unsigned 16-bit integer console variable.
+// SetUInt16 
+//  @brief Sets the value of an unsigned 16-bit integer console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //  @param value: The value to set for the console variable.
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
@@ -2177,7 +2303,10 @@ func (w *ConVar) SetUInt16(value uint16, replicate bool, notify bool) error {
 	return nil
 }
 
-// SetInt32 - Sets the value of a signed 32-bit integer console variable.
+// SetInt32 
+//  @brief Sets the value of a signed 32-bit integer console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //  @param value: The value to set for the console variable.
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
@@ -2189,7 +2318,10 @@ func (w *ConVar) SetInt32(value int32, replicate bool, notify bool) error {
 	return nil
 }
 
-// SetUInt32 - Sets the value of an unsigned 32-bit integer console variable.
+// SetUInt32 
+//  @brief Sets the value of an unsigned 32-bit integer console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //  @param value: The value to set for the console variable.
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
@@ -2201,7 +2333,10 @@ func (w *ConVar) SetUInt32(value uint32, replicate bool, notify bool) error {
 	return nil
 }
 
-// SetInt64 - Sets the value of a signed 64-bit integer console variable.
+// SetInt64 
+//  @brief Sets the value of a signed 64-bit integer console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //  @param value: The value to set for the console variable.
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
@@ -2213,7 +2348,10 @@ func (w *ConVar) SetInt64(value int64, replicate bool, notify bool) error {
 	return nil
 }
 
-// SetUInt64 - Sets the value of an unsigned 64-bit integer console variable.
+// SetUInt64 
+//  @brief Sets the value of an unsigned 64-bit integer console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //  @param value: The value to set for the console variable.
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
@@ -2225,7 +2363,10 @@ func (w *ConVar) SetUInt64(value uint64, replicate bool, notify bool) error {
 	return nil
 }
 
-// SetFloat - Sets the value of a floating-point console variable.
+// SetFloat 
+//  @brief Sets the value of a floating-point console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //  @param value: The value to set for the console variable.
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
@@ -2237,7 +2378,10 @@ func (w *ConVar) SetFloat(value float32, replicate bool, notify bool) error {
 	return nil
 }
 
-// SetDouble - Sets the value of a double-precision floating-point console variable.
+// SetDouble 
+//  @brief Sets the value of a double-precision floating-point console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //  @param value: The value to set for the console variable.
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
@@ -2249,7 +2393,10 @@ func (w *ConVar) SetDouble(value float64, replicate bool, notify bool) error {
 	return nil
 }
 
-// SetString - Sets the value of a string console variable.
+// SetString 
+//  @brief Sets the value of a string console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //  @param value: The value to set for the console variable.
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
@@ -2261,7 +2408,10 @@ func (w *ConVar) SetString(value string, replicate bool, notify bool) error {
 	return nil
 }
 
-// SetColor - Sets the value of a color console variable.
+// SetColor 
+//  @brief Sets the value of a color console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //  @param value: The value to set for the console variable.
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
@@ -2273,7 +2423,10 @@ func (w *ConVar) SetColor(value plugify.Vector4, replicate bool, notify bool) er
 	return nil
 }
 
-// SetVector2 - Sets the value of a 2D vector console variable.
+// SetVector2 
+//  @brief Sets the value of a 2D vector console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //  @param value: The value to set for the console variable.
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
@@ -2285,7 +2438,10 @@ func (w *ConVar) SetVector2(value plugify.Vector2, replicate bool, notify bool) 
 	return nil
 }
 
-// SetVector3 - Sets the value of a 3D vector console variable.
+// SetVector3 
+//  @brief Sets the value of a 3D vector console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //  @param value: The value to set for the console variable.
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
@@ -2297,7 +2453,10 @@ func (w *ConVar) SetVector3(value plugify.Vector3, replicate bool, notify bool) 
 	return nil
 }
 
-// SetVector4 - Sets the value of a 4D vector console variable.
+// SetVector4 
+//  @brief Sets the value of a 4D vector console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //  @param value: The value to set for the console variable.
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
@@ -2309,7 +2468,10 @@ func (w *ConVar) SetVector4(value plugify.Vector4, replicate bool, notify bool) 
 	return nil
 }
 
-// SetQAngle - Sets the value of a quaternion angle console variable.
+// SetQAngle 
+//  @brief Sets the value of a quaternion angle console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //  @param value: The value to set for the console variable.
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
@@ -2321,7 +2483,10 @@ func (w *ConVar) SetQAngle(value plugify.Vector3, replicate bool, notify bool) e
 	return nil
 }
 
-// SendValue - Replicates a console variable value to a specific client. This does not change the actual console variable value.
+// SendValue 
+//  @brief Replicates a console variable value to a specific client. This does not change the actual console variable value.
+//
+//  @param conVarHandle: The handle to the console variable data.
 //  @param playerSlot: The index of the client to replicate the value to.
 //  @param value: The value to send to the client.
 func (w *ConVar) SendValue(playerSlot int32, value string) error {
@@ -2332,7 +2497,9 @@ func (w *ConVar) SendValue(playerSlot int32, value string) error {
 	return nil
 }
 
-// GetClientValue - Retrieves the value of a client's console variable and stores it in the output string.
+// GetClientValue 
+//  @brief Retrieves the value of a client's console variable and stores it in the output string.
+//
 //  @param playerSlot: The index of the client whose console variable value is being retrieved.
 //  @param convarName: The name of the console variable to retrieve.
 //
@@ -2341,7 +2508,9 @@ func (w *ConVar) GetClientValue(playerSlot int32, convarName string) string {
 	return GetClientConVarValue(playerSlot, convarName)
 }
 
-// SetFakeClientValue - Replicates a console variable value to a specific fake client. This does not change the actual console variable value.
+// SetFakeClientValue 
+//  @brief Replicates a console variable value to a specific fake client. This does not change the actual console variable value.
+//
 //  @param playerSlot: The index of the fake client to replicate the value to.
 //  @param convarName: The name of the console variable.
 //  @param convarValue: The value to set for the console variable.

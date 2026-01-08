@@ -2767,7 +2767,8 @@ var (
 	UserMessageErrEmptyHandle = errors.New("UserMessage: empty handle")
 )
 
-// UserMessage - RAII wrapper for UserMessage pointer.
+//  @brief RAII wrapper for UserMessage pointer.
+//
 type UserMessage struct {
 	handle    uintptr
 	cleanup   runtime.Cleanup
@@ -2775,7 +2776,9 @@ type UserMessage struct {
 	noCopy    noCopy
 }
 
-// NewUserMessageUserMessageCreateFromSerializable - Creates a UserMessage from a serializable message.
+// NewUserMessageUserMessageCreateFromSerializable 
+//  @brief Creates a UserMessage from a serializable message.
+//
 //  @param msgSerializable: The serializable message.
 //  @param message: The network message.
 //  @param recipientMask: The recipient mask.
@@ -2783,13 +2786,17 @@ func NewUserMessageUserMessageCreateFromSerializable(msgSerializable uintptr, me
 	return NewUserMessageOwned(UserMessageCreateFromSerializable(msgSerializable, message, recipientMask))
 }
 
-// NewUserMessageUserMessageCreateFromName - Creates a UserMessage from a message name.
+// NewUserMessageUserMessageCreateFromName 
+//  @brief Creates a UserMessage from a message name.
+//
 //  @param messageName: The name of the message.
 func NewUserMessageUserMessageCreateFromName(messageName string) *UserMessage {
 	return NewUserMessageOwned(UserMessageCreateFromName(messageName))
 }
 
-// NewUserMessageUserMessageCreateFromId - Creates a UserMessage from a message ID.
+// NewUserMessageUserMessageCreateFromId 
+//  @brief Creates a UserMessage from a message ID.
+//
 //  @param messageId: The ID of the message.
 func NewUserMessageUserMessageCreateFromId(messageId int16) *UserMessage {
 	return NewUserMessageOwned(UserMessageCreateFromId(messageId))
@@ -2873,7 +2880,10 @@ func (w *UserMessage) IsValid() bool {
 	return w.handle != 0
 }
 
-// Send - Sends a UserMessage to the specified recipients.
+// Send 
+//  @brief Sends a UserMessage to the specified recipients.
+//
+//  @param userMessage: The UserMessage to send.
 func (w *UserMessage) Send() error {
 	if w.handle == 0 {
 		return UserMessageErrEmptyHandle
@@ -2882,7 +2892,10 @@ func (w *UserMessage) Send() error {
 	return nil
 }
 
-// GetMessageName - Gets the name of the message.
+// GetMessageName 
+//  @brief Gets the name of the message.
+//
+//  @param userMessage: The UserMessage instance.
 //
 //  @return The name of the message as a string.
 func (w *UserMessage) GetMessageName() (string, error) {
@@ -2893,7 +2906,10 @@ func (w *UserMessage) GetMessageName() (string, error) {
 	return UserMessageGetMessageName(w.handle), nil
 }
 
-// GetMessageID - Gets the ID of the message.
+// GetMessageID 
+//  @brief Gets the ID of the message.
+//
+//  @param userMessage: The UserMessage instance.
 //
 //  @return The ID of the message.
 func (w *UserMessage) GetMessageID() (int16, error) {
@@ -2904,7 +2920,10 @@ func (w *UserMessage) GetMessageID() (int16, error) {
 	return UserMessageGetMessageID(w.handle), nil
 }
 
-// HasField - Checks if the message has a specific field.
+// HasField 
+//  @brief Checks if the message has a specific field.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field to check.
 //
 //  @return True if the field exists, false otherwise.
@@ -2916,7 +2935,10 @@ func (w *UserMessage) HasField(fieldName string) (bool, error) {
 	return UserMessageHasField(w.handle, fieldName), nil
 }
 
-// GetProtobufMessage - Gets the protobuf message associated with the UserMessage.
+// GetProtobufMessage 
+//  @brief Gets the protobuf message associated with the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //
 //  @return A pointer to the protobuf message.
 func (w *UserMessage) GetProtobufMessage() (uintptr, error) {
@@ -2927,7 +2949,10 @@ func (w *UserMessage) GetProtobufMessage() (uintptr, error) {
 	return UserMessageGetProtobufMessage(w.handle), nil
 }
 
-// GetSerializableMessage - Gets the serializable message associated with the UserMessage.
+// GetSerializableMessage 
+//  @brief Gets the serializable message associated with the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //
 //  @return A pointer to the serializable message.
 func (w *UserMessage) GetSerializableMessage() (uintptr, error) {
@@ -2938,7 +2963,9 @@ func (w *UserMessage) GetSerializableMessage() (uintptr, error) {
 	return UserMessageGetSerializableMessage(w.handle), nil
 }
 
-// FindMessageIdByName - Finds a message ID by its name.
+// FindMessageIdByName 
+//  @brief Finds a message ID by its name.
+//
 //  @param messageName: The name of the message.
 //
 //  @return The ID of the message, or 0 if the message was not found.
@@ -2946,7 +2973,10 @@ func (w *UserMessage) FindMessageIdByName(messageName string) int16 {
 	return UserMessageFindMessageIdByName(messageName)
 }
 
-// GetRecipientMask - Gets the recipient mask for the UserMessage.
+// GetRecipientMask 
+//  @brief Gets the recipient mask for the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //
 //  @return The recipient mask.
 func (w *UserMessage) GetRecipientMask() (uint64, error) {
@@ -2957,7 +2987,10 @@ func (w *UserMessage) GetRecipientMask() (uint64, error) {
 	return UserMessageGetRecipientMask(w.handle), nil
 }
 
-// AddRecipient - Adds a single recipient (player) to the UserMessage.
+// AddRecipient 
+//  @brief Adds a single recipient (player) to the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param playerSlot: The slot index of the player to add as a recipient.
 func (w *UserMessage) AddRecipient(playerSlot int32) error {
 	if w.handle == 0 {
@@ -2967,7 +3000,10 @@ func (w *UserMessage) AddRecipient(playerSlot int32) error {
 	return nil
 }
 
-// AddAllPlayers - Adds all connected players as recipients to the UserMessage.
+// AddAllPlayers 
+//  @brief Adds all connected players as recipients to the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 func (w *UserMessage) AddAllPlayers() error {
 	if w.handle == 0 {
 		return UserMessageErrEmptyHandle
@@ -2976,7 +3012,10 @@ func (w *UserMessage) AddAllPlayers() error {
 	return nil
 }
 
-// SetRecipientMask - Sets the recipient mask for the UserMessage.
+// SetRecipientMask 
+//  @brief Sets the recipient mask for the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param mask: The recipient mask to set.
 func (w *UserMessage) SetRecipientMask(mask uint64) error {
 	if w.handle == 0 {
@@ -2986,7 +3025,10 @@ func (w *UserMessage) SetRecipientMask(mask uint64) error {
 	return nil
 }
 
-// GetMessage - Gets a nested message from a field in the UserMessage.
+// GetMessage 
+//  @brief Gets a nested message from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param message: A pointer to store the retrieved message.
 //
@@ -2999,7 +3041,10 @@ func (w *UserMessage) GetMessage(fieldName string, message *uintptr) (bool, erro
 	return UserMessageGetMessage(w.handle, fieldName, message), nil
 }
 
-// GetRepeatedMessage - Gets a repeated nested message from a field in the UserMessage.
+// GetRepeatedMessage 
+//  @brief Gets a repeated nested message from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param message: A pointer to store the retrieved message.
@@ -3013,7 +3058,10 @@ func (w *UserMessage) GetRepeatedMessage(fieldName string, index int32, message 
 	return UserMessageGetRepeatedMessage(w.handle, fieldName, index, message), nil
 }
 
-// AddMessage - Adds a nested message to a repeated field in the UserMessage.
+// AddMessage 
+//  @brief Adds a nested message to a repeated field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param message: A pointer to the message to add.
 //
@@ -3026,7 +3074,10 @@ func (w *UserMessage) AddMessage(fieldName string, message uintptr) (bool, error
 	return UserMessageAddMessage(w.handle, fieldName, message), nil
 }
 
-// GetRepeatedFieldCount - Gets the count of repeated fields in a field of the UserMessage.
+// GetRepeatedFieldCount 
+//  @brief Gets the count of repeated fields in a field of the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //
 //  @return The count of repeated fields, or -1 if the field is not repeated or does not exist.
@@ -3038,7 +3089,10 @@ func (w *UserMessage) GetRepeatedFieldCount(fieldName string) (int32, error) {
 	return UserMessageGetRepeatedFieldCount(w.handle, fieldName), nil
 }
 
-// RemoveRepeatedFieldValue - Removes a value from a repeated field in the UserMessage.
+// RemoveRepeatedFieldValue 
+//  @brief Removes a value from a repeated field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the value to remove.
 //
@@ -3051,7 +3105,10 @@ func (w *UserMessage) RemoveRepeatedFieldValue(fieldName string, index int32) (b
 	return UserMessageRemoveRepeatedFieldValue(w.handle, fieldName, index), nil
 }
 
-// GetDebugString - Gets the debug string representation of the UserMessage.
+// GetDebugString 
+//  @brief Gets the debug string representation of the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //
 //  @return The debug string as a string.
 func (w *UserMessage) GetDebugString() (string, error) {
@@ -3062,7 +3119,10 @@ func (w *UserMessage) GetDebugString() (string, error) {
 	return UserMessageGetDebugString(w.handle), nil
 }
 
-// ReadEnum - Reads an enum value from a UserMessage.
+// ReadEnum 
+//  @brief Reads an enum value from a UserMessage.
+//
+//  @param userMessage: Pointer to the UserMessage object.
 //  @param fieldName: Name of the field to read.
 //  @param index: Index of the repeated field (use -1 for non-repeated fields).
 //
@@ -3075,7 +3135,10 @@ func (w *UserMessage) ReadEnum(fieldName string, index int32) (int32, error) {
 	return PbReadEnum(w.handle, fieldName, index), nil
 }
 
-// ReadInt32 - Reads a 32-bit integer from a UserMessage.
+// ReadInt32 
+//  @brief Reads a 32-bit integer from a UserMessage.
+//
+//  @param userMessage: Pointer to the UserMessage object.
 //  @param fieldName: Name of the field to read.
 //  @param index: Index of the repeated field (use -1 for non-repeated fields).
 //
@@ -3088,7 +3151,10 @@ func (w *UserMessage) ReadInt32(fieldName string, index int32) (int32, error) {
 	return PbReadInt32(w.handle, fieldName, index), nil
 }
 
-// ReadInt64 - Reads a 64-bit integer from a UserMessage.
+// ReadInt64 
+//  @brief Reads a 64-bit integer from a UserMessage.
+//
+//  @param userMessage: Pointer to the UserMessage object.
 //  @param fieldName: Name of the field to read.
 //  @param index: Index of the repeated field (use -1 for non-repeated fields).
 //
@@ -3101,7 +3167,10 @@ func (w *UserMessage) ReadInt64(fieldName string, index int32) (int64, error) {
 	return PbReadInt64(w.handle, fieldName, index), nil
 }
 
-// ReadUInt32 - Reads an unsigned 32-bit integer from a UserMessage.
+// ReadUInt32 
+//  @brief Reads an unsigned 32-bit integer from a UserMessage.
+//
+//  @param userMessage: Pointer to the UserMessage object.
 //  @param fieldName: Name of the field to read.
 //  @param index: Index of the repeated field (use -1 for non-repeated fields).
 //
@@ -3114,7 +3183,10 @@ func (w *UserMessage) ReadUInt32(fieldName string, index int32) (uint32, error) 
 	return PbReadUInt32(w.handle, fieldName, index), nil
 }
 
-// ReadUInt64 - Reads an unsigned 64-bit integer from a UserMessage.
+// ReadUInt64 
+//  @brief Reads an unsigned 64-bit integer from a UserMessage.
+//
+//  @param userMessage: Pointer to the UserMessage object.
 //  @param fieldName: Name of the field to read.
 //  @param index: Index of the repeated field (use -1 for non-repeated fields).
 //
@@ -3127,7 +3199,10 @@ func (w *UserMessage) ReadUInt64(fieldName string, index int32) (uint64, error) 
 	return PbReadUInt64(w.handle, fieldName, index), nil
 }
 
-// ReadFloat - Reads a floating-point value from a UserMessage.
+// ReadFloat 
+//  @brief Reads a floating-point value from a UserMessage.
+//
+//  @param userMessage: Pointer to the UserMessage object.
 //  @param fieldName: Name of the field to read.
 //  @param index: Index of the repeated field (use -1 for non-repeated fields).
 //
@@ -3140,7 +3215,10 @@ func (w *UserMessage) ReadFloat(fieldName string, index int32) (float32, error) 
 	return PbReadFloat(w.handle, fieldName, index), nil
 }
 
-// ReadDouble - Reads a double-precision floating-point value from a UserMessage.
+// ReadDouble 
+//  @brief Reads a double-precision floating-point value from a UserMessage.
+//
+//  @param userMessage: Pointer to the UserMessage object.
 //  @param fieldName: Name of the field to read.
 //  @param index: Index of the repeated field (use -1 for non-repeated fields).
 //
@@ -3153,7 +3231,10 @@ func (w *UserMessage) ReadDouble(fieldName string, index int32) (float64, error)
 	return PbReadDouble(w.handle, fieldName, index), nil
 }
 
-// ReadBool - Reads a boolean value from a UserMessage.
+// ReadBool 
+//  @brief Reads a boolean value from a UserMessage.
+//
+//  @param userMessage: Pointer to the UserMessage object.
 //  @param fieldName: Name of the field to read.
 //  @param index: Index of the repeated field (use -1 for non-repeated fields).
 //
@@ -3166,7 +3247,10 @@ func (w *UserMessage) ReadBool(fieldName string, index int32) (bool, error) {
 	return PbReadBool(w.handle, fieldName, index), nil
 }
 
-// ReadString - Reads a string from a UserMessage.
+// ReadString 
+//  @brief Reads a string from a UserMessage.
+//
+//  @param userMessage: Pointer to the UserMessage object.
 //  @param fieldName: Name of the field to read.
 //  @param index: Index of the repeated field (use -1 for non-repeated fields).
 //
@@ -3179,7 +3263,10 @@ func (w *UserMessage) ReadString(fieldName string, index int32) (string, error) 
 	return PbReadString(w.handle, fieldName, index), nil
 }
 
-// ReadColor - Reads a color value from a UserMessage.
+// ReadColor 
+//  @brief Reads a color value from a UserMessage.
+//
+//  @param userMessage: Pointer to the UserMessage object.
 //  @param fieldName: Name of the field to read.
 //  @param index: Index of the repeated field (use -1 for non-repeated fields).
 //
@@ -3192,7 +3279,10 @@ func (w *UserMessage) ReadColor(fieldName string, index int32) (plugify.Vector4,
 	return PbReadColor(w.handle, fieldName, index), nil
 }
 
-// ReadVector2 - Reads a 2D vector from a UserMessage.
+// ReadVector2 
+//  @brief Reads a 2D vector from a UserMessage.
+//
+//  @param userMessage: Pointer to the UserMessage object.
 //  @param fieldName: Name of the field to read.
 //  @param index: Index of the repeated field (use -1 for non-repeated fields).
 //
@@ -3205,7 +3295,10 @@ func (w *UserMessage) ReadVector2(fieldName string, index int32) (plugify.Vector
 	return PbReadVector2(w.handle, fieldName, index), nil
 }
 
-// ReadVector3 - Reads a 3D vector from a UserMessage.
+// ReadVector3 
+//  @brief Reads a 3D vector from a UserMessage.
+//
+//  @param userMessage: Pointer to the UserMessage object.
 //  @param fieldName: Name of the field to read.
 //  @param index: Index of the repeated field (use -1 for non-repeated fields).
 //
@@ -3218,7 +3311,10 @@ func (w *UserMessage) ReadVector3(fieldName string, index int32) (plugify.Vector
 	return PbReadVector3(w.handle, fieldName, index), nil
 }
 
-// ReadVector4 - Reads a 4D vector from a UserMessage.
+// ReadVector4 
+//  @brief Reads a 4D vector from a UserMessage.
+//
+//  @param userMessage: Pointer to the UserMessage object.
 //  @param fieldName: Name of the field to read.
 //  @param index: Index of the repeated field (use -1 for non-repeated fields).
 //
@@ -3231,7 +3327,10 @@ func (w *UserMessage) ReadVector4(fieldName string, index int32) (plugify.Vector
 	return PbReadVector4(w.handle, fieldName, index), nil
 }
 
-// ReadQAngle - Reads a QAngle (rotation vector) from a UserMessage.
+// ReadQAngle 
+//  @brief Reads a QAngle (rotation vector) from a UserMessage.
+//
+//  @param userMessage: Pointer to the UserMessage object.
 //  @param fieldName: Name of the field to read.
 //  @param index: Index of the repeated field (use -1 for non-repeated fields).
 //
@@ -3244,7 +3343,10 @@ func (w *UserMessage) ReadQAngle(fieldName string, index int32) (plugify.Vector3
 	return PbReadQAngle(w.handle, fieldName, index), nil
 }
 
-// GetEnum - Gets a enum value from a field in the UserMessage.
+// GetEnum 
+//  @brief Gets a enum value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param out: The output value.
 //
@@ -3257,7 +3359,10 @@ func (w *UserMessage) GetEnum(fieldName string, out *int32) (bool, error) {
 	return PbGetEnum(w.handle, fieldName, out), nil
 }
 
-// SetEnum - Sets a enum value for a field in the UserMessage.
+// SetEnum 
+//  @brief Sets a enum value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to set.
 //
@@ -3270,7 +3375,10 @@ func (w *UserMessage) SetEnum(fieldName string, value int32) (bool, error) {
 	return PbSetEnum(w.handle, fieldName, value), nil
 }
 
-// GetInt32 - Gets a 32-bit integer value from a field in the UserMessage.
+// GetInt32 
+//  @brief Gets a 32-bit integer value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param out: The output value.
 //
@@ -3283,7 +3391,10 @@ func (w *UserMessage) GetInt32(fieldName string, out *int32) (bool, error) {
 	return PbGetInt32(w.handle, fieldName, out), nil
 }
 
-// SetInt32 - Sets a 32-bit integer value for a field in the UserMessage.
+// SetInt32 
+//  @brief Sets a 32-bit integer value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to set.
 //
@@ -3296,7 +3407,10 @@ func (w *UserMessage) SetInt32(fieldName string, value int32) (bool, error) {
 	return PbSetInt32(w.handle, fieldName, value), nil
 }
 
-// GetInt64 - Gets a 64-bit integer value from a field in the UserMessage.
+// GetInt64 
+//  @brief Gets a 64-bit integer value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param out: The output value.
 //
@@ -3309,7 +3423,10 @@ func (w *UserMessage) GetInt64(fieldName string, out *int64) (bool, error) {
 	return PbGetInt64(w.handle, fieldName, out), nil
 }
 
-// SetInt64 - Sets a 64-bit integer value for a field in the UserMessage.
+// SetInt64 
+//  @brief Sets a 64-bit integer value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to set.
 //
@@ -3322,7 +3439,10 @@ func (w *UserMessage) SetInt64(fieldName string, value int64) (bool, error) {
 	return PbSetInt64(w.handle, fieldName, value), nil
 }
 
-// GetUInt32 - Gets an unsigned 32-bit integer value from a field in the UserMessage.
+// GetUInt32 
+//  @brief Gets an unsigned 32-bit integer value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param out: The output value.
 //
@@ -3335,7 +3455,10 @@ func (w *UserMessage) GetUInt32(fieldName string, out *uint32) (bool, error) {
 	return PbGetUInt32(w.handle, fieldName, out), nil
 }
 
-// SetUInt32 - Sets an unsigned 32-bit integer value for a field in the UserMessage.
+// SetUInt32 
+//  @brief Sets an unsigned 32-bit integer value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to set.
 //
@@ -3348,7 +3471,10 @@ func (w *UserMessage) SetUInt32(fieldName string, value uint32) (bool, error) {
 	return PbSetUInt32(w.handle, fieldName, value), nil
 }
 
-// GetUInt64 - Gets an unsigned 64-bit integer value from a field in the UserMessage.
+// GetUInt64 
+//  @brief Gets an unsigned 64-bit integer value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param out: The output value.
 //
@@ -3361,7 +3487,10 @@ func (w *UserMessage) GetUInt64(fieldName string, out *uint64) (bool, error) {
 	return PbGetUInt64(w.handle, fieldName, out), nil
 }
 
-// SetUInt64 - Sets an unsigned 64-bit integer value for a field in the UserMessage.
+// SetUInt64 
+//  @brief Sets an unsigned 64-bit integer value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to set.
 //
@@ -3374,7 +3503,10 @@ func (w *UserMessage) SetUInt64(fieldName string, value uint64) (bool, error) {
 	return PbSetUInt64(w.handle, fieldName, value), nil
 }
 
-// GetBool - Gets a bool value from a field in the UserMessage.
+// GetBool 
+//  @brief Gets a bool value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param out: The output value.
 //
@@ -3387,7 +3519,10 @@ func (w *UserMessage) GetBool(fieldName string, out *bool) (bool, error) {
 	return PbGetBool(w.handle, fieldName, out), nil
 }
 
-// SetBool - Sets a bool value for a field in the UserMessage.
+// SetBool 
+//  @brief Sets a bool value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to set.
 //
@@ -3400,7 +3535,10 @@ func (w *UserMessage) SetBool(fieldName string, value bool) (bool, error) {
 	return PbSetBool(w.handle, fieldName, value), nil
 }
 
-// GetFloat - Gets a float value from a field in the UserMessage.
+// GetFloat 
+//  @brief Gets a float value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param out: The output value.
 //
@@ -3413,7 +3551,10 @@ func (w *UserMessage) GetFloat(fieldName string, out *float32) (bool, error) {
 	return PbGetFloat(w.handle, fieldName, out), nil
 }
 
-// SetFloat - Sets a float value for a field in the UserMessage.
+// SetFloat 
+//  @brief Sets a float value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to set.
 //
@@ -3426,7 +3567,10 @@ func (w *UserMessage) SetFloat(fieldName string, value float32) (bool, error) {
 	return PbSetFloat(w.handle, fieldName, value), nil
 }
 
-// GetDouble - Gets a double value from a field in the UserMessage.
+// GetDouble 
+//  @brief Gets a double value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param out: The output value.
 //
@@ -3439,7 +3583,10 @@ func (w *UserMessage) GetDouble(fieldName string, out *float64) (bool, error) {
 	return PbGetDouble(w.handle, fieldName, out), nil
 }
 
-// SetDouble - Sets a double value for a field in the UserMessage.
+// SetDouble 
+//  @brief Sets a double value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to set.
 //
@@ -3452,7 +3599,10 @@ func (w *UserMessage) SetDouble(fieldName string, value float64) (bool, error) {
 	return PbSetDouble(w.handle, fieldName, value), nil
 }
 
-// GetString - Gets a string value from a field in the UserMessage.
+// GetString 
+//  @brief Gets a string value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param out: The output string.
 //
@@ -3465,7 +3615,10 @@ func (w *UserMessage) GetString(fieldName string, out *string) (bool, error) {
 	return PbGetString(w.handle, fieldName, out), nil
 }
 
-// SetString - Sets a string value for a field in the UserMessage.
+// SetString 
+//  @brief Sets a string value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to set.
 //
@@ -3478,7 +3631,10 @@ func (w *UserMessage) SetString(fieldName string, value string) (bool, error) {
 	return PbSetString(w.handle, fieldName, value), nil
 }
 
-// GetColor - Gets a color value from a field in the UserMessage.
+// GetColor 
+//  @brief Gets a color value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param out: The output string.
 //
@@ -3491,7 +3647,10 @@ func (w *UserMessage) GetColor(fieldName string, out *plugify.Vector4) (bool, er
 	return PbGetColor(w.handle, fieldName, out), nil
 }
 
-// SetColor - Sets a color value for a field in the UserMessage.
+// SetColor 
+//  @brief Sets a color value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to set.
 //
@@ -3504,7 +3663,10 @@ func (w *UserMessage) SetColor(fieldName string, value plugify.Vector4) (bool, e
 	return PbSetColor(w.handle, fieldName, value), nil
 }
 
-// GetVector2 - Gets a Vector2 value from a field in the UserMessage.
+// GetVector2 
+//  @brief Gets a Vector2 value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param out: The output string.
 //
@@ -3517,7 +3679,10 @@ func (w *UserMessage) GetVector2(fieldName string, out *plugify.Vector2) (bool, 
 	return PbGetVector2(w.handle, fieldName, out), nil
 }
 
-// SetVector2 - Sets a Vector2 value for a field in the UserMessage.
+// SetVector2 
+//  @brief Sets a Vector2 value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to set.
 //
@@ -3530,7 +3695,10 @@ func (w *UserMessage) SetVector2(fieldName string, value plugify.Vector2) (bool,
 	return PbSetVector2(w.handle, fieldName, value), nil
 }
 
-// GetVector3 - Gets a Vector3 value from a field in the UserMessage.
+// GetVector3 
+//  @brief Gets a Vector3 value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param out: The output string.
 //
@@ -3543,7 +3711,10 @@ func (w *UserMessage) GetVector3(fieldName string, out *plugify.Vector3) (bool, 
 	return PbGetVector3(w.handle, fieldName, out), nil
 }
 
-// SetVector3 - Sets a Vector3 value for a field in the UserMessage.
+// SetVector3 
+//  @brief Sets a Vector3 value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to set.
 //
@@ -3556,7 +3727,10 @@ func (w *UserMessage) SetVector3(fieldName string, value plugify.Vector3) (bool,
 	return PbSetVector3(w.handle, fieldName, value), nil
 }
 
-// GetVector4 - Gets a Vector4 value from a field in the UserMessage.
+// GetVector4 
+//  @brief Gets a Vector4 value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param out: The output string.
 //
@@ -3569,7 +3743,10 @@ func (w *UserMessage) GetVector4(fieldName string, out *plugify.Vector4) (bool, 
 	return PbGetVector4(w.handle, fieldName, out), nil
 }
 
-// SetVector4 - Sets a Vector3 value for a field in the UserMessage.
+// SetVector4 
+//  @brief Sets a Vector3 value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to set.
 //
@@ -3582,7 +3759,10 @@ func (w *UserMessage) SetVector4(fieldName string, value plugify.Vector4) (bool,
 	return PbSetVector4(w.handle, fieldName, value), nil
 }
 
-// GetQAngle - Gets a QAngle value from a field in the UserMessage.
+// GetQAngle 
+//  @brief Gets a QAngle value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param out: The output string.
 //
@@ -3595,7 +3775,10 @@ func (w *UserMessage) GetQAngle(fieldName string, out *plugify.Vector3) (bool, e
 	return PbGetQAngle(w.handle, fieldName, out), nil
 }
 
-// SetQAngle - Sets a QAngle value for a field in the UserMessage.
+// SetQAngle 
+//  @brief Sets a QAngle value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to set.
 //
@@ -3608,7 +3791,10 @@ func (w *UserMessage) SetQAngle(fieldName string, value plugify.Vector3) (bool, 
 	return PbSetQAngle(w.handle, fieldName, value), nil
 }
 
-// GetRepeatedEnum - Gets a repeated enum value from a field in the UserMessage.
+// GetRepeatedEnum 
+//  @brief Gets a repeated enum value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param out: The output value.
@@ -3622,7 +3808,10 @@ func (w *UserMessage) GetRepeatedEnum(fieldName string, index int32, out *int32)
 	return PbGetRepeatedEnum(w.handle, fieldName, index, out), nil
 }
 
-// SetRepeatedEnum - Sets a repeated enum value for a field in the UserMessage.
+// SetRepeatedEnum 
+//  @brief Sets a repeated enum value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param value: The value to set.
@@ -3636,7 +3825,10 @@ func (w *UserMessage) SetRepeatedEnum(fieldName string, index int32, value int32
 	return PbSetRepeatedEnum(w.handle, fieldName, index, value), nil
 }
 
-// AddEnum - Adds a enum value to a repeated field in the UserMessage.
+// AddEnum 
+//  @brief Adds a enum value to a repeated field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to add.
 //
@@ -3649,7 +3841,10 @@ func (w *UserMessage) AddEnum(fieldName string, value int32) (bool, error) {
 	return PbAddEnum(w.handle, fieldName, value), nil
 }
 
-// GetRepeatedInt32 - Gets a repeated int32_t value from a field in the UserMessage.
+// GetRepeatedInt32 
+//  @brief Gets a repeated int32_t value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param out: The output value.
@@ -3663,7 +3858,10 @@ func (w *UserMessage) GetRepeatedInt32(fieldName string, index int32, out *int32
 	return PbGetRepeatedInt32(w.handle, fieldName, index, out), nil
 }
 
-// SetRepeatedInt32 - Sets a repeated int32_t value for a field in the UserMessage.
+// SetRepeatedInt32 
+//  @brief Sets a repeated int32_t value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param value: The value to set.
@@ -3677,7 +3875,10 @@ func (w *UserMessage) SetRepeatedInt32(fieldName string, index int32, value int3
 	return PbSetRepeatedInt32(w.handle, fieldName, index, value), nil
 }
 
-// AddInt32 - Adds a 32-bit integer value to a repeated field in the UserMessage.
+// AddInt32 
+//  @brief Adds a 32-bit integer value to a repeated field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to add.
 //
@@ -3690,7 +3891,10 @@ func (w *UserMessage) AddInt32(fieldName string, value int32) (bool, error) {
 	return PbAddInt32(w.handle, fieldName, value), nil
 }
 
-// GetRepeatedInt64 - Gets a repeated int64_t value from a field in the UserMessage.
+// GetRepeatedInt64 
+//  @brief Gets a repeated int64_t value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param out: The output value.
@@ -3704,7 +3908,10 @@ func (w *UserMessage) GetRepeatedInt64(fieldName string, index int32, out *int64
 	return PbGetRepeatedInt64(w.handle, fieldName, index, out), nil
 }
 
-// SetRepeatedInt64 - Sets a repeated int64_t value for a field in the UserMessage.
+// SetRepeatedInt64 
+//  @brief Sets a repeated int64_t value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param value: The value to set.
@@ -3718,7 +3925,10 @@ func (w *UserMessage) SetRepeatedInt64(fieldName string, index int32, value int6
 	return PbSetRepeatedInt64(w.handle, fieldName, index, value), nil
 }
 
-// AddInt64 - Adds a 64-bit integer value to a repeated field in the UserMessage.
+// AddInt64 
+//  @brief Adds a 64-bit integer value to a repeated field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to add.
 //
@@ -3731,7 +3941,10 @@ func (w *UserMessage) AddInt64(fieldName string, value int64) (bool, error) {
 	return PbAddInt64(w.handle, fieldName, value), nil
 }
 
-// GetRepeatedUInt32 - Gets a repeated uint32_t value from a field in the UserMessage.
+// GetRepeatedUInt32 
+//  @brief Gets a repeated uint32_t value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param out: The output value.
@@ -3745,7 +3958,10 @@ func (w *UserMessage) GetRepeatedUInt32(fieldName string, index int32, out *uint
 	return PbGetRepeatedUInt32(w.handle, fieldName, index, out), nil
 }
 
-// SetRepeatedUInt32 - Sets a repeated uint32_t value for a field in the UserMessage.
+// SetRepeatedUInt32 
+//  @brief Sets a repeated uint32_t value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param value: The value to set.
@@ -3759,7 +3975,10 @@ func (w *UserMessage) SetRepeatedUInt32(fieldName string, index int32, value uin
 	return PbSetRepeatedUInt32(w.handle, fieldName, index, value), nil
 }
 
-// AddUInt32 - Adds an unsigned 32-bit integer value to a repeated field in the UserMessage.
+// AddUInt32 
+//  @brief Adds an unsigned 32-bit integer value to a repeated field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to add.
 //
@@ -3772,7 +3991,10 @@ func (w *UserMessage) AddUInt32(fieldName string, value uint32) (bool, error) {
 	return PbAddUInt32(w.handle, fieldName, value), nil
 }
 
-// GetRepeatedUInt64 - Gets a repeated uint64_t value from a field in the UserMessage.
+// GetRepeatedUInt64 
+//  @brief Gets a repeated uint64_t value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param out: The output value.
@@ -3786,7 +4008,10 @@ func (w *UserMessage) GetRepeatedUInt64(fieldName string, index int32, out *uint
 	return PbGetRepeatedUInt64(w.handle, fieldName, index, out), nil
 }
 
-// SetRepeatedUInt64 - Sets a repeated uint64_t value for a field in the UserMessage.
+// SetRepeatedUInt64 
+//  @brief Sets a repeated uint64_t value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param value: The value to set.
@@ -3800,7 +4025,10 @@ func (w *UserMessage) SetRepeatedUInt64(fieldName string, index int32, value uin
 	return PbSetRepeatedUInt64(w.handle, fieldName, index, value), nil
 }
 
-// AddUInt64 - Adds an unsigned 64-bit integer value to a repeated field in the UserMessage.
+// AddUInt64 
+//  @brief Adds an unsigned 64-bit integer value to a repeated field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to add.
 //
@@ -3813,7 +4041,10 @@ func (w *UserMessage) AddUInt64(fieldName string, value uint64) (bool, error) {
 	return PbAddUInt64(w.handle, fieldName, value), nil
 }
 
-// GetRepeatedBool - Gets a repeated bool value from a field in the UserMessage.
+// GetRepeatedBool 
+//  @brief Gets a repeated bool value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param out: The output value.
@@ -3827,7 +4058,10 @@ func (w *UserMessage) GetRepeatedBool(fieldName string, index int32, out *bool) 
 	return PbGetRepeatedBool(w.handle, fieldName, index, out), nil
 }
 
-// SetRepeatedBool - Sets a repeated bool value for a field in the UserMessage.
+// SetRepeatedBool 
+//  @brief Sets a repeated bool value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param value: The value to set.
@@ -3841,7 +4075,10 @@ func (w *UserMessage) SetRepeatedBool(fieldName string, index int32, value bool)
 	return PbSetRepeatedBool(w.handle, fieldName, index, value), nil
 }
 
-// AddBool - Adds a bool value to a repeated field in the UserMessage.
+// AddBool 
+//  @brief Adds a bool value to a repeated field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to add.
 //
@@ -3854,7 +4091,10 @@ func (w *UserMessage) AddBool(fieldName string, value bool) (bool, error) {
 	return PbAddBool(w.handle, fieldName, value), nil
 }
 
-// GetRepeatedFloat - Gets a repeated float value from a field in the UserMessage.
+// GetRepeatedFloat 
+//  @brief Gets a repeated float value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param out: The output value.
@@ -3868,7 +4108,10 @@ func (w *UserMessage) GetRepeatedFloat(fieldName string, index int32, out *float
 	return PbGetRepeatedFloat(w.handle, fieldName, index, out), nil
 }
 
-// SetRepeatedFloat - Sets a repeated float value for a field in the UserMessage.
+// SetRepeatedFloat 
+//  @brief Sets a repeated float value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param value: The value to set.
@@ -3882,7 +4125,10 @@ func (w *UserMessage) SetRepeatedFloat(fieldName string, index int32, value floa
 	return PbSetRepeatedFloat(w.handle, fieldName, index, value), nil
 }
 
-// AddFloat - Adds a float value to a repeated field in the UserMessage.
+// AddFloat 
+//  @brief Adds a float value to a repeated field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to add.
 //
@@ -3895,7 +4141,10 @@ func (w *UserMessage) AddFloat(fieldName string, value float32) (bool, error) {
 	return PbAddFloat(w.handle, fieldName, value), nil
 }
 
-// GetRepeatedDouble - Gets a repeated double value from a field in the UserMessage.
+// GetRepeatedDouble 
+//  @brief Gets a repeated double value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param out: The output value.
@@ -3909,7 +4158,10 @@ func (w *UserMessage) GetRepeatedDouble(fieldName string, index int32, out *floa
 	return PbGetRepeatedDouble(w.handle, fieldName, index, out), nil
 }
 
-// SetRepeatedDouble - Sets a repeated double value for a field in the UserMessage.
+// SetRepeatedDouble 
+//  @brief Sets a repeated double value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param value: The value to set.
@@ -3923,7 +4175,10 @@ func (w *UserMessage) SetRepeatedDouble(fieldName string, index int32, value flo
 	return PbSetRepeatedDouble(w.handle, fieldName, index, value), nil
 }
 
-// AddDouble - Adds a double value to a repeated field in the UserMessage.
+// AddDouble 
+//  @brief Adds a double value to a repeated field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to add.
 //
@@ -3936,7 +4191,10 @@ func (w *UserMessage) AddDouble(fieldName string, value float64) (bool, error) {
 	return PbAddDouble(w.handle, fieldName, value), nil
 }
 
-// GetRepeatedString - Gets a repeated string value from a field in the UserMessage.
+// GetRepeatedString 
+//  @brief Gets a repeated string value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param out: The output string.
@@ -3950,7 +4208,10 @@ func (w *UserMessage) GetRepeatedString(fieldName string, index int32, out *stri
 	return PbGetRepeatedString(w.handle, fieldName, index, out), nil
 }
 
-// SetRepeatedString - Sets a repeated string value for a field in the UserMessage.
+// SetRepeatedString 
+//  @brief Sets a repeated string value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param value: The value to set.
@@ -3964,7 +4225,10 @@ func (w *UserMessage) SetRepeatedString(fieldName string, index int32, value str
 	return PbSetRepeatedString(w.handle, fieldName, index, value), nil
 }
 
-// AddString - Adds a string value to a repeated field in the UserMessage.
+// AddString 
+//  @brief Adds a string value to a repeated field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to add.
 //
@@ -3977,7 +4241,10 @@ func (w *UserMessage) AddString(fieldName string, value string) (bool, error) {
 	return PbAddString(w.handle, fieldName, value), nil
 }
 
-// GetRepeatedColor - Gets a repeated color value from a field in the UserMessage.
+// GetRepeatedColor 
+//  @brief Gets a repeated color value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param out: The output color.
@@ -3991,7 +4258,10 @@ func (w *UserMessage) GetRepeatedColor(fieldName string, index int32, out *plugi
 	return PbGetRepeatedColor(w.handle, fieldName, index, out), nil
 }
 
-// SetRepeatedColor - Sets a repeated color value for a field in the UserMessage.
+// SetRepeatedColor 
+//  @brief Sets a repeated color value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param value: The value to set.
@@ -4005,7 +4275,10 @@ func (w *UserMessage) SetRepeatedColor(fieldName string, index int32, value plug
 	return PbSetRepeatedColor(w.handle, fieldName, index, value), nil
 }
 
-// AddColor - Adds a color value to a repeated field in the UserMessage.
+// AddColor 
+//  @brief Adds a color value to a repeated field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to add.
 //
@@ -4018,7 +4291,10 @@ func (w *UserMessage) AddColor(fieldName string, value plugify.Vector4) (bool, e
 	return PbAddColor(w.handle, fieldName, value), nil
 }
 
-// GetRepeatedVector2 - Gets a repeated Vector2 value from a field in the UserMessage.
+// GetRepeatedVector2 
+//  @brief Gets a repeated Vector2 value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param out: The output vector.
@@ -4032,7 +4308,10 @@ func (w *UserMessage) GetRepeatedVector2(fieldName string, index int32, out *plu
 	return PbGetRepeatedVector2(w.handle, fieldName, index, out), nil
 }
 
-// SetRepeatedVector2 - Sets a repeated Vector2 value for a field in the UserMessage.
+// SetRepeatedVector2 
+//  @brief Sets a repeated Vector2 value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param value: The value to set.
@@ -4046,7 +4325,10 @@ func (w *UserMessage) SetRepeatedVector2(fieldName string, index int32, value pl
 	return PbSetRepeatedVector2(w.handle, fieldName, index, value), nil
 }
 
-// AddVector2 - Adds a Vector2 value to a repeated field in the UserMessage.
+// AddVector2 
+//  @brief Adds a Vector2 value to a repeated field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to add.
 //
@@ -4059,7 +4341,10 @@ func (w *UserMessage) AddVector2(fieldName string, value plugify.Vector2) (bool,
 	return PbAddVector2(w.handle, fieldName, value), nil
 }
 
-// GetRepeatedVector3 - Gets a repeated Vector3 value from a field in the UserMessage.
+// GetRepeatedVector3 
+//  @brief Gets a repeated Vector3 value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param out: The output vector.
@@ -4073,7 +4358,10 @@ func (w *UserMessage) GetRepeatedVector3(fieldName string, index int32, out *plu
 	return PbGetRepeatedVector3(w.handle, fieldName, index, out), nil
 }
 
-// SetRepeatedVector3 - Sets a repeated Vector3 value for a field in the UserMessage.
+// SetRepeatedVector3 
+//  @brief Sets a repeated Vector3 value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param value: The value to set.
@@ -4087,7 +4375,10 @@ func (w *UserMessage) SetRepeatedVector3(fieldName string, index int32, value pl
 	return PbSetRepeatedVector3(w.handle, fieldName, index, value), nil
 }
 
-// AddVector3 - Adds a Vector3 value to a repeated field in the UserMessage.
+// AddVector3 
+//  @brief Adds a Vector3 value to a repeated field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to add.
 //
@@ -4100,7 +4391,10 @@ func (w *UserMessage) AddVector3(fieldName string, value plugify.Vector3) (bool,
 	return PbAddVector3(w.handle, fieldName, value), nil
 }
 
-// GetRepeatedVector4 - Gets a repeated Vector4 value from a field in the UserMessage.
+// GetRepeatedVector4 
+//  @brief Gets a repeated Vector4 value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param out: The output vector.
@@ -4114,7 +4408,10 @@ func (w *UserMessage) GetRepeatedVector4(fieldName string, index int32, out *plu
 	return PbGetRepeatedVector4(w.handle, fieldName, index, out), nil
 }
 
-// SetRepeatedVector4 - Sets a repeated Vector4 value for a field in the UserMessage.
+// SetRepeatedVector4 
+//  @brief Sets a repeated Vector4 value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param value: The value to set.
@@ -4128,7 +4425,10 @@ func (w *UserMessage) SetRepeatedVector4(fieldName string, index int32, value pl
 	return PbSetRepeatedVector4(w.handle, fieldName, index, value), nil
 }
 
-// AddVector4 - Adds a Vector4 value to a repeated field in the UserMessage.
+// AddVector4 
+//  @brief Adds a Vector4 value to a repeated field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to add.
 //
@@ -4141,7 +4441,10 @@ func (w *UserMessage) AddVector4(fieldName string, value plugify.Vector4) (bool,
 	return PbAddVector4(w.handle, fieldName, value), nil
 }
 
-// GetRepeatedQAngle - Gets a repeated QAngle value from a field in the UserMessage.
+// GetRepeatedQAngle 
+//  @brief Gets a repeated QAngle value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param out: The output vector.
@@ -4155,7 +4458,10 @@ func (w *UserMessage) GetRepeatedQAngle(fieldName string, index int32, out *plug
 	return PbGetRepeatedQAngle(w.handle, fieldName, index, out), nil
 }
 
-// SetRepeatedQAngle - Sets a repeated QAngle value for a field in the UserMessage.
+// SetRepeatedQAngle 
+//  @brief Sets a repeated QAngle value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param index: The index of the repeated field.
 //  @param value: The value to set.
@@ -4169,7 +4475,10 @@ func (w *UserMessage) SetRepeatedQAngle(fieldName string, index int32, value plu
 	return PbSetRepeatedQAngle(w.handle, fieldName, index, value), nil
 }
 
-// AddQAngle - Adds a QAngle value to a repeated field in the UserMessage.
+// AddQAngle 
+//  @brief Adds a QAngle value to a repeated field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
 //  @param value: The value to add.
 //

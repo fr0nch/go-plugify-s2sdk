@@ -1675,9 +1675,21 @@ func ForcePlayerSuicide(playerSlot int32, explode bool, force bool) {
 //  @brief Disconnects a client from the server as soon as the next frame starts.
 //
 //  @param playerSlot: The index of the player's slot to be kicked.
-func KickClient(playerSlot int32) {
+//  @param reason: The network-level reason code describing why the client is being disconnected.
+//  @param message: The optional internal diagnostic message. If empty, no message is passed to the engine.
+func KickClient(playerSlot int32, reason NetworkDisconnectionReason, message string) {
 	__playerSlot := C.int32_t(playerSlot)
-	C.KickClient(__playerSlot)
+	__reason := C.int32_t(reason)
+	__message := plugify.ConstructString(message)
+	plugify.Block {
+		Try: func() {
+			C.KickClient(__playerSlot, __reason, (*C.String)(unsafe.Pointer(&__message)))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__message)
+		},
+	}.Do()
 }
 
 // BanClient 

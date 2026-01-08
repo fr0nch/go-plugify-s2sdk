@@ -2,6 +2,8 @@ package s2sdk
 
 /*
 #include "entities.h"
+#cgo noescape GetPublicAddress
+#cgo noescape GetLocalAddress
 #cgo noescape EntIndexToEntPointer
 #cgo noescape EntPointerToEntIndex
 #cgo noescape EntPointerToEntHandle
@@ -134,6 +136,56 @@ var _ = unsafe.Sizeof(0)
 var _ = plugify.Plugin.Loaded
 
 // Generated from s2sdk (group: entities)
+
+// GetPublicAddress 
+//  @brief Returns the public network address of the host.
+//
+//  @param onlyBase: If true, omits port, otherwise returning only the base address.
+//
+//  @return A string representation of the public address.
+func GetPublicAddress(onlyBase bool) string {
+	var __retVal string
+	var __retVal_native plugify.PlgString
+	__onlyBase := C.bool(onlyBase)
+	plugify.Block {
+		Try: func() {
+			__native := C.GetPublicAddress(__onlyBase)
+			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
+			// Unmarshal - Convert native data to managed data.
+			__retVal = plugify.GetStringData(&__retVal_native)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__retVal_native)
+		},
+	}.Do()
+	return __retVal
+}
+
+// GetLocalAddress 
+//  @brief Returns the local network address of the host.
+//
+//  @param onlyBase: If true, omits port, otherwise returning only the base address.
+//
+//  @return A string representation of the local address.
+func GetLocalAddress(onlyBase bool) string {
+	var __retVal string
+	var __retVal_native plugify.PlgString
+	__onlyBase := C.bool(onlyBase)
+	plugify.Block {
+		Try: func() {
+			__native := C.GetLocalAddress(__onlyBase)
+			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
+			// Unmarshal - Convert native data to managed data.
+			__retVal = plugify.GetStringData(&__retVal_native)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__retVal_native)
+		},
+	}.Do()
+	return __retVal
+}
 
 // EntIndexToEntPointer 
 //  @brief Converts an entity index into an entity pointer.

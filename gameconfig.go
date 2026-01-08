@@ -296,7 +296,8 @@ var (
 	GameConfigErrEmptyHandle = errors.New("GameConfig: empty handle")
 )
 
-// GameConfig - RAII wrapper for GameConfig handle.
+//  @brief RAII wrapper for GameConfig handle.
+//
 type GameConfig struct {
 	handle    uint32
 	cleanup   runtime.Cleanup
@@ -304,7 +305,9 @@ type GameConfig struct {
 	noCopy    noCopy
 }
 
-// NewGameConfigLoadGameConfigFile - Loads a game configuration file.
+// NewGameConfigLoadGameConfigFile 
+//  @brief Loads a game configuration file.
+//
 //  @param paths: The paths to the game configuration file to be loaded.
 func NewGameConfigLoadGameConfigFile(paths []string) *GameConfig {
 	return NewGameConfigOwned(LoadGameConfigFile(paths))
@@ -388,7 +391,10 @@ func (w *GameConfig) IsValid() bool {
 	return w.handle != 0
 }
 
-// GetPatch - Retrieves a patch associated with the game configuration.
+// GetPatch 
+//  @brief Retrieves a patch associated with the game configuration.
+//
+//  @param id: An id to the game configuration from which to retrieve the patch.
 //  @param name: The name of the patch to be retrieved.
 //
 //  @return A string where the patch will be stored.
@@ -400,7 +406,10 @@ func (w *GameConfig) GetPatch(name string) (string, error) {
 	return GetGameConfigPatch(w.handle, name), nil
 }
 
-// GetOffset - Retrieves the offset associated with a name from the game configuration.
+// GetOffset 
+//  @brief Retrieves the offset associated with a name from the game configuration.
+//
+//  @param id: An id to the game configuration from which to retrieve the offset.
 //  @param name: The name whose offset is to be retrieved.
 //
 //  @return The offset associated with the specified name.
@@ -412,7 +421,10 @@ func (w *GameConfig) GetOffset(name string) (int32, error) {
 	return GetGameConfigOffset(w.handle, name), nil
 }
 
-// GetAddress - Retrieves the address associated with a name from the game configuration.
+// GetAddress 
+//  @brief Retrieves the address associated with a name from the game configuration.
+//
+//  @param id: An id to the game configuration from which to retrieve the address.
 //  @param name: The name whose address is to be retrieved.
 //
 //  @return A pointer to the address associated with the specified name.
@@ -424,7 +436,10 @@ func (w *GameConfig) GetAddress(name string) (uintptr, error) {
 	return GetGameConfigAddress(w.handle, name), nil
 }
 
-// GetVTable - Retrieves a vtable associated with the game configuration.
+// GetVTable 
+//  @brief Retrieves a vtable associated with the game configuration.
+//
+//  @param id: An id to the game configuration from which to retrieve the vtable.
 //  @param name: The name of the vtable to be retrieved.
 //
 //  @return A pointer to the vtable associated with the specified name
@@ -436,7 +451,10 @@ func (w *GameConfig) GetVTable(name string) (uintptr, error) {
 	return GetGameConfigVTable(w.handle, name), nil
 }
 
-// GetSignature - Retrieves the signature associated with a name from the game configuration.
+// GetSignature 
+//  @brief Retrieves the signature associated with a name from the game configuration.
+//
+//  @param id: An id to the game configuration from which to retrieve the signature.
 //  @param name: The name whose signature is to be resolved and retrieved.
 //
 //  @return A pointer to the signature associated with the specified name.

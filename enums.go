@@ -174,6 +174,254 @@ const (
 	DamageTypes_DMG_DANGERZONE DamageTypes = 67108864
 )
 
+// NetworkDisconnectionReason - Enum representing reasons for network disconnection.
+type NetworkDisconnectionReason = int32
+
+const (
+	// Invalid - Invalid.
+	NetworkDisconnectionReason_Invalid NetworkDisconnectionReason = 0
+	// Shutdown - Shutdown.
+	NetworkDisconnectionReason_Shutdown NetworkDisconnectionReason = 1
+	// DisconnectByUser - Disconnect by user.
+	NetworkDisconnectionReason_DisconnectByUser NetworkDisconnectionReason = 2
+	// DisconnectByServer - Disconnect by server.
+	NetworkDisconnectionReason_DisconnectByServer NetworkDisconnectionReason = 3
+	// Lost - Lost.
+	NetworkDisconnectionReason_Lost NetworkDisconnectionReason = 4
+	// Overflow - Overflow.
+	NetworkDisconnectionReason_Overflow NetworkDisconnectionReason = 5
+	// SteamBanned - Steam banned.
+	NetworkDisconnectionReason_SteamBanned NetworkDisconnectionReason = 6
+	// SteamInuse - Steam inuse.
+	NetworkDisconnectionReason_SteamInuse NetworkDisconnectionReason = 7
+	// SteamTicket - Steam ticket.
+	NetworkDisconnectionReason_SteamTicket NetworkDisconnectionReason = 8
+	// SteamLogon - Steam logon.
+	NetworkDisconnectionReason_SteamLogon NetworkDisconnectionReason = 9
+	// SteamAuthcancelled - Steam authcancelled.
+	NetworkDisconnectionReason_SteamAuthcancelled NetworkDisconnectionReason = 10
+	// SteamAuthalreadyused - Steam authalreadyused.
+	NetworkDisconnectionReason_SteamAuthalreadyused NetworkDisconnectionReason = 11
+	// SteamAuthinvalid - Steam authinvalid.
+	NetworkDisconnectionReason_SteamAuthinvalid NetworkDisconnectionReason = 12
+	// SteamVacbanstate - Steam vacbanstate.
+	NetworkDisconnectionReason_SteamVacbanstate NetworkDisconnectionReason = 13
+	// SteamLoggedInElsewhere - Steam logged in elsewhere.
+	NetworkDisconnectionReason_SteamLoggedInElsewhere NetworkDisconnectionReason = 14
+	// SteamVacCheckTimedout - Steam vac check timedout.
+	NetworkDisconnectionReason_SteamVacCheckTimedout NetworkDisconnectionReason = 15
+	// SteamDropped - Steam dropped.
+	NetworkDisconnectionReason_SteamDropped NetworkDisconnectionReason = 16
+	// SteamOwnership - Steam ownership.
+	NetworkDisconnectionReason_SteamOwnership NetworkDisconnectionReason = 17
+	// ServerinfoOverflow - Serverinfo overflow.
+	NetworkDisconnectionReason_ServerinfoOverflow NetworkDisconnectionReason = 18
+	// TickmsgOverflow - Tickmsg overflow.
+	NetworkDisconnectionReason_TickmsgOverflow NetworkDisconnectionReason = 19
+	// StringtablemsgOverflow - Stringtablemsg overflow.
+	NetworkDisconnectionReason_StringtablemsgOverflow NetworkDisconnectionReason = 20
+	// DeltaentmsgOverflow - Deltaentmsg overflow.
+	NetworkDisconnectionReason_DeltaentmsgOverflow NetworkDisconnectionReason = 21
+	// TempentmsgOverflow - Tempentmsg overflow.
+	NetworkDisconnectionReason_TempentmsgOverflow NetworkDisconnectionReason = 22
+	// SoundsmsgOverflow - Soundsmsg overflow.
+	NetworkDisconnectionReason_SoundsmsgOverflow NetworkDisconnectionReason = 23
+	// Snapshotoverflow - Snapshotoverflow.
+	NetworkDisconnectionReason_Snapshotoverflow NetworkDisconnectionReason = 24
+	// Snapshoterror - Snapshoterror.
+	NetworkDisconnectionReason_Snapshoterror NetworkDisconnectionReason = 25
+	// Reliableoverflow - Reliableoverflow.
+	NetworkDisconnectionReason_Reliableoverflow NetworkDisconnectionReason = 26
+	// Baddeltatick - Baddeltatick.
+	NetworkDisconnectionReason_Baddeltatick NetworkDisconnectionReason = 27
+	// Nomoresplits - Nomoresplits.
+	NetworkDisconnectionReason_Nomoresplits NetworkDisconnectionReason = 28
+	// Timedout - Timedout.
+	NetworkDisconnectionReason_Timedout NetworkDisconnectionReason = 29
+	// Disconnected - Disconnected.
+	NetworkDisconnectionReason_Disconnected NetworkDisconnectionReason = 30
+	// Leavingsplit - Leavingsplit.
+	NetworkDisconnectionReason_Leavingsplit NetworkDisconnectionReason = 31
+	// Differentclasstables - Differentclasstables.
+	NetworkDisconnectionReason_Differentclasstables NetworkDisconnectionReason = 32
+	// Badrelaypassword - Badrelaypassword.
+	NetworkDisconnectionReason_Badrelaypassword NetworkDisconnectionReason = 33
+	// Badspectatorpassword - Badspectatorpassword.
+	NetworkDisconnectionReason_Badspectatorpassword NetworkDisconnectionReason = 34
+	// Hltvrestricted - Hltvrestricted.
+	NetworkDisconnectionReason_Hltvrestricted NetworkDisconnectionReason = 35
+	// Nospectators - Nospectators.
+	NetworkDisconnectionReason_Nospectators NetworkDisconnectionReason = 36
+	// Hltvunavailable - Hltvunavailable.
+	NetworkDisconnectionReason_Hltvunavailable NetworkDisconnectionReason = 37
+	// Hltvstop - Hltvstop.
+	NetworkDisconnectionReason_Hltvstop NetworkDisconnectionReason = 38
+	// Kicked - Kicked.
+	NetworkDisconnectionReason_Kicked NetworkDisconnectionReason = 39
+	// Banadded - Banadded.
+	NetworkDisconnectionReason_Banadded NetworkDisconnectionReason = 40
+	// Kickbanadded - Kickbanadded.
+	NetworkDisconnectionReason_Kickbanadded NetworkDisconnectionReason = 41
+	// Hltvdirect - Hltvdirect.
+	NetworkDisconnectionReason_Hltvdirect NetworkDisconnectionReason = 42
+	// PureserverClientextra - Pureserver clientextra.
+	NetworkDisconnectionReason_PureserverClientextra NetworkDisconnectionReason = 43
+	// PureserverMismatch - Pureserver mismatch.
+	NetworkDisconnectionReason_PureserverMismatch NetworkDisconnectionReason = 44
+	// Usercmd - Usercmd.
+	NetworkDisconnectionReason_Usercmd NetworkDisconnectionReason = 45
+	// RejectedByGame - Rejected by game.
+	NetworkDisconnectionReason_RejectedByGame NetworkDisconnectionReason = 46
+	// MessageParseError - Message parse error.
+	NetworkDisconnectionReason_MessageParseError NetworkDisconnectionReason = 47
+	// InvalidMessageError - Invalid message error.
+	NetworkDisconnectionReason_InvalidMessageError NetworkDisconnectionReason = 48
+	// BadServerPassword - Bad server password.
+	NetworkDisconnectionReason_BadServerPassword NetworkDisconnectionReason = 49
+	// DirectConnectReservation - Direct connect reservation.
+	NetworkDisconnectionReason_DirectConnectReservation NetworkDisconnectionReason = 50
+	// ConnectionFailure - Connection failure.
+	NetworkDisconnectionReason_ConnectionFailure NetworkDisconnectionReason = 51
+	// NoPeerGroupHandlers - No peer group handlers.
+	NetworkDisconnectionReason_NoPeerGroupHandlers NetworkDisconnectionReason = 52
+	// Reconnection - Reconnection.
+	NetworkDisconnectionReason_Reconnection NetworkDisconnectionReason = 53
+	// Loopshutdown - Loopshutdown.
+	NetworkDisconnectionReason_Loopshutdown NetworkDisconnectionReason = 54
+	// Loopdeactivate - Loopdeactivate.
+	NetworkDisconnectionReason_Loopdeactivate NetworkDisconnectionReason = 55
+	// HostEndgame - Host endgame.
+	NetworkDisconnectionReason_HostEndgame NetworkDisconnectionReason = 56
+	// LoopLevelloadActivate - Loop levelload activate.
+	NetworkDisconnectionReason_LoopLevelloadActivate NetworkDisconnectionReason = 57
+	// CreateServerFailed - Create server failed.
+	NetworkDisconnectionReason_CreateServerFailed NetworkDisconnectionReason = 58
+	// Exiting - Exiting.
+	NetworkDisconnectionReason_Exiting NetworkDisconnectionReason = 59
+	// RequestHoststateIdle - Request hoststate idle.
+	NetworkDisconnectionReason_RequestHoststateIdle NetworkDisconnectionReason = 60
+	// RequestHoststateHltvrelay - Request hoststate hltvrelay.
+	NetworkDisconnectionReason_RequestHoststateHltvrelay NetworkDisconnectionReason = 61
+	// ClientConsistencyFail - Client consistency fail.
+	NetworkDisconnectionReason_ClientConsistencyFail NetworkDisconnectionReason = 62
+	// ClientUnableToCrcMap - Client unable to crc map.
+	NetworkDisconnectionReason_ClientUnableToCrcMap NetworkDisconnectionReason = 63
+	// ClientNoMap - Client no map.
+	NetworkDisconnectionReason_ClientNoMap NetworkDisconnectionReason = 64
+	// ClientDifferentMap - Client different map.
+	NetworkDisconnectionReason_ClientDifferentMap NetworkDisconnectionReason = 65
+	// ServerRequiresSteam - Server requires steam.
+	NetworkDisconnectionReason_ServerRequiresSteam NetworkDisconnectionReason = 66
+	// SteamDenyMisc - Steam deny misc.
+	NetworkDisconnectionReason_SteamDenyMisc NetworkDisconnectionReason = 67
+	// SteamDenyBadAntiCheat - Steam deny bad anti cheat.
+	NetworkDisconnectionReason_SteamDenyBadAntiCheat NetworkDisconnectionReason = 68
+	// ServerShutdown - Server shutdown.
+	NetworkDisconnectionReason_ServerShutdown NetworkDisconnectionReason = 69
+	// ReplayIncompatible - Replay incompatible.
+	NetworkDisconnectionReason_ReplayIncompatible NetworkDisconnectionReason = 71
+	// ConnectRequestTimedout - Connect request timedout.
+	NetworkDisconnectionReason_ConnectRequestTimedout NetworkDisconnectionReason = 72
+	// ServerIncompatible - Server incompatible.
+	NetworkDisconnectionReason_ServerIncompatible NetworkDisconnectionReason = 73
+	// LocalproblemManyrelays - Localproblem manyrelays.
+	NetworkDisconnectionReason_LocalproblemManyrelays NetworkDisconnectionReason = 74
+	// LocalproblemHostedserverprimaryrelay - Localproblem hostedserverprimaryrelay.
+	NetworkDisconnectionReason_LocalproblemHostedserverprimaryrelay NetworkDisconnectionReason = 75
+	// LocalproblemNetworkconfig - Localproblem networkconfig.
+	NetworkDisconnectionReason_LocalproblemNetworkconfig NetworkDisconnectionReason = 76
+	// LocalproblemOther - Localproblem other.
+	NetworkDisconnectionReason_LocalproblemOther NetworkDisconnectionReason = 77
+	// RemoteTimeout - Remote timeout.
+	NetworkDisconnectionReason_RemoteTimeout NetworkDisconnectionReason = 79
+	// RemoteTimeoutConnecting - Remote timeout connecting.
+	NetworkDisconnectionReason_RemoteTimeoutConnecting NetworkDisconnectionReason = 80
+	// RemoteOther - Remote other.
+	NetworkDisconnectionReason_RemoteOther NetworkDisconnectionReason = 81
+	// RemoteBadcrypt - Remote badcrypt.
+	NetworkDisconnectionReason_RemoteBadcrypt NetworkDisconnectionReason = 82
+	// RemoteCertnottrusted - Remote certnottrusted.
+	NetworkDisconnectionReason_RemoteCertnottrusted NetworkDisconnectionReason = 83
+	// Unusual - Unusual.
+	NetworkDisconnectionReason_Unusual NetworkDisconnectionReason = 84
+	// InternalError - Internal error.
+	NetworkDisconnectionReason_InternalError NetworkDisconnectionReason = 85
+	// RejectBadchallenge - Reject badchallenge.
+	NetworkDisconnectionReason_RejectBadchallenge NetworkDisconnectionReason = 128
+	// RejectNolobby - Reject nolobby.
+	NetworkDisconnectionReason_RejectNolobby NetworkDisconnectionReason = 129
+	// RejectBackgroundMap - Reject background map.
+	NetworkDisconnectionReason_RejectBackgroundMap NetworkDisconnectionReason = 130
+	// RejectSinglePlayer - Reject single player.
+	NetworkDisconnectionReason_RejectSinglePlayer NetworkDisconnectionReason = 131
+	// RejectHiddenGame - Reject hidden game.
+	NetworkDisconnectionReason_RejectHiddenGame NetworkDisconnectionReason = 132
+	// RejectLanrestrict - Reject lanrestrict.
+	NetworkDisconnectionReason_RejectLanrestrict NetworkDisconnectionReason = 133
+	// RejectBadpassword - Reject badpassword.
+	NetworkDisconnectionReason_RejectBadpassword NetworkDisconnectionReason = 134
+	// RejectServerfull - Reject serverfull.
+	NetworkDisconnectionReason_RejectServerfull NetworkDisconnectionReason = 135
+	// RejectInvalidreservation - Reject invalidreservation.
+	NetworkDisconnectionReason_RejectInvalidreservation NetworkDisconnectionReason = 136
+	// RejectFailedchannel - Reject failedchannel.
+	NetworkDisconnectionReason_RejectFailedchannel NetworkDisconnectionReason = 137
+	// RejectConnectFromLobby - Reject connect from lobby.
+	NetworkDisconnectionReason_RejectConnectFromLobby NetworkDisconnectionReason = 138
+	// RejectReservedForLobby - Reject reserved for lobby.
+	NetworkDisconnectionReason_RejectReservedForLobby NetworkDisconnectionReason = 139
+	// RejectInvalidkeylength - Reject invalidkeylength.
+	NetworkDisconnectionReason_RejectInvalidkeylength NetworkDisconnectionReason = 140
+	// RejectOldprotocol - Reject oldprotocol.
+	NetworkDisconnectionReason_RejectOldprotocol NetworkDisconnectionReason = 141
+	// RejectNewprotocol - Reject newprotocol.
+	NetworkDisconnectionReason_RejectNewprotocol NetworkDisconnectionReason = 142
+	// RejectInvalidconnection - Reject invalidconnection.
+	NetworkDisconnectionReason_RejectInvalidconnection NetworkDisconnectionReason = 143
+	// RejectInvalidcertlen - Reject invalidcertlen.
+	NetworkDisconnectionReason_RejectInvalidcertlen NetworkDisconnectionReason = 144
+	// RejectInvalidsteamcertlen - Reject invalidsteamcertlen.
+	NetworkDisconnectionReason_RejectInvalidsteamcertlen NetworkDisconnectionReason = 145
+	// RejectSteam - Reject steam.
+	NetworkDisconnectionReason_RejectSteam NetworkDisconnectionReason = 146
+	// RejectServerauthdisabled - Reject serverauthdisabled.
+	NetworkDisconnectionReason_RejectServerauthdisabled NetworkDisconnectionReason = 147
+	// RejectServercdkeyauthinvalid - Reject servercdkeyauthinvalid.
+	NetworkDisconnectionReason_RejectServercdkeyauthinvalid NetworkDisconnectionReason = 148
+	// RejectBanned - Reject banned.
+	NetworkDisconnectionReason_RejectBanned NetworkDisconnectionReason = 149
+	// KickedTeamkilling - Kicked teamkilling.
+	NetworkDisconnectionReason_KickedTeamkilling NetworkDisconnectionReason = 150
+	// KickedTkStart - Kicked tk start.
+	NetworkDisconnectionReason_KickedTkStart NetworkDisconnectionReason = 151
+	// KickedUntrustedaccount - Kicked untrustedaccount.
+	NetworkDisconnectionReason_KickedUntrustedaccount NetworkDisconnectionReason = 152
+	// KickedConvictedaccount - Kicked convictedaccount.
+	NetworkDisconnectionReason_KickedConvictedaccount NetworkDisconnectionReason = 153
+	// KickedCompetitivecooldown - Kicked competitivecooldown.
+	NetworkDisconnectionReason_KickedCompetitivecooldown NetworkDisconnectionReason = 154
+	// KickedTeamhurting - Kicked teamhurting.
+	NetworkDisconnectionReason_KickedTeamhurting NetworkDisconnectionReason = 155
+	// KickedHostagekilling - Kicked hostagekilling.
+	NetworkDisconnectionReason_KickedHostagekilling NetworkDisconnectionReason = 156
+	// KickedVotedoff - Kicked votedoff.
+	NetworkDisconnectionReason_KickedVotedoff NetworkDisconnectionReason = 157
+	// KickedIdle - Kicked idle.
+	NetworkDisconnectionReason_KickedIdle NetworkDisconnectionReason = 158
+	// KickedSuicide - Kicked suicide.
+	NetworkDisconnectionReason_KickedSuicide NetworkDisconnectionReason = 159
+	// KickedNosteamlogin - Kicked nosteamlogin.
+	NetworkDisconnectionReason_KickedNosteamlogin NetworkDisconnectionReason = 160
+	// KickedNosteamticket - Kicked nosteamticket.
+	NetworkDisconnectionReason_KickedNosteamticket NetworkDisconnectionReason = 161
+	// KickedInputautomation - Kicked inputautomation.
+	NetworkDisconnectionReason_KickedInputautomation NetworkDisconnectionReason = 162
+	// KickedVacnetabnormalbehavior - Kicked vacnetabnormalbehavior.
+	NetworkDisconnectionReason_KickedVacnetabnormalbehavior NetworkDisconnectionReason = 163
+	// KickedInsecureclient - Kicked insecureclient.
+	NetworkDisconnectionReason_KickedInsecureclient NetworkDisconnectionReason = 164
+)
+
 // ConVarFlag - Enum representing various flags for ConVars and ConCommands.
 type ConVarFlag = int64
 

@@ -632,10 +632,10 @@ static void ForcePlayerSuicide(int32_t playerSlot, bool explode, bool force) {
 	__s2sdk_ForcePlayerSuicide(playerSlot, explode, force);
 }
 
-extern void (*__s2sdk_KickClient)(int32_t);
+extern void (*__s2sdk_KickClient)(int32_t, int32_t, String*);
 
-static void KickClient(int32_t playerSlot) {
-	__s2sdk_KickClient(playerSlot);
+static void KickClient(int32_t playerSlot, int32_t reason, String* message) {
+	__s2sdk_KickClient(playerSlot, reason, message);
 }
 
 extern void (*__s2sdk_BanClient)(int32_t, float, bool);

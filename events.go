@@ -778,12 +778,15 @@ var (
 	EventInfoErrEmptyHandle = errors.New("EventInfo: empty handle")
 )
 
-// EventInfo - RAII wrapper for EventInfo pointer.
+//  @brief RAII wrapper for EventInfo pointer.
+//
 type EventInfo struct {
 	handle    uintptr
 }
 
-// NewEventInfoCreateEvent - Creates a game event to be fired later.
+// NewEventInfoCreateEvent 
+//  @brief Creates a game event to be fired later.
+//
 //  @param name: The name of the event to create.
 //  @param force: A boolean indicating whether to force the creation of the event.
 func NewEventInfoCreateEvent(name string, force bool) *EventInfo {
@@ -821,7 +824,10 @@ func (w *EventInfo) IsValid() bool {
 	return w.handle != 0
 }
 
-// Fire - Fires a game event.
+// Fire 
+//  @brief Fires a game event.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param dontBroadcast: A boolean indicating whether to broadcast the event.
 func (w *EventInfo) Fire(dontBroadcast bool) error {
 	if w.handle == 0 {
@@ -831,7 +837,10 @@ func (w *EventInfo) Fire(dontBroadcast bool) error {
 	return nil
 }
 
-// FireToClient - Fires a game event to a specific client.
+// FireToClient 
+//  @brief Fires a game event to a specific client.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param playerSlot: The index of the client to fire the event to.
 func (w *EventInfo) FireToClient(playerSlot int32) error {
 	if w.handle == 0 {
@@ -841,7 +850,10 @@ func (w *EventInfo) FireToClient(playerSlot int32) error {
 	return nil
 }
 
-// Cancel - Cancels a previously created game event that has not been fired.
+// Cancel 
+//  @brief Cancels a previously created game event that has not been fired.
+//
+//  @param event: A pointer to the IGameEvent object of the event to cancel.
 func (w *EventInfo) Cancel() error {
 	if w.handle == 0 {
 		return EventInfoErrEmptyHandle
@@ -850,7 +862,10 @@ func (w *EventInfo) Cancel() error {
 	return nil
 }
 
-// GetBool - Retrieves the boolean value of a game event's key.
+// GetBool 
+//  @brief Retrieves the boolean value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to retrieve the boolean value.
 //
 //  @return The boolean value associated with the key.
@@ -862,7 +877,10 @@ func (w *EventInfo) GetBool(key string) (bool, error) {
 	return GetEventBool(w.handle, key), nil
 }
 
-// GetFloat - Retrieves the float value of a game event's key.
+// GetFloat 
+//  @brief Retrieves the float value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to retrieve the float value.
 //
 //  @return The float value associated with the key.
@@ -874,7 +892,10 @@ func (w *EventInfo) GetFloat(key string) (float32, error) {
 	return GetEventFloat(w.handle, key), nil
 }
 
-// GetInt - Retrieves the integer value of a game event's key.
+// GetInt 
+//  @brief Retrieves the integer value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to retrieve the integer value.
 //
 //  @return The integer value associated with the key.
@@ -886,7 +907,10 @@ func (w *EventInfo) GetInt(key string) (int32, error) {
 	return GetEventInt(w.handle, key), nil
 }
 
-// GetUInt64 - Retrieves the long integer value of a game event's key.
+// GetUInt64 
+//  @brief Retrieves the long integer value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to retrieve the long integer value.
 //
 //  @return The long integer value associated with the key.
@@ -898,7 +922,10 @@ func (w *EventInfo) GetUInt64(key string) (uint64, error) {
 	return GetEventUInt64(w.handle, key), nil
 }
 
-// GetString - Retrieves the string value of a game event's key.
+// GetString 
+//  @brief Retrieves the string value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to retrieve the string value.
 //
 //  @return A string where the result will be stored.
@@ -910,7 +937,10 @@ func (w *EventInfo) GetString(key string) (string, error) {
 	return GetEventString(w.handle, key), nil
 }
 
-// GetPtr - Retrieves the pointer value of a game event's key.
+// GetPtr 
+//  @brief Retrieves the pointer value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to retrieve the pointer value.
 //
 //  @return The pointer value associated with the key.
@@ -922,7 +952,10 @@ func (w *EventInfo) GetPtr(key string) (uintptr, error) {
 	return GetEventPtr(w.handle, key), nil
 }
 
-// GetPlayerController - Retrieves the player controller address of a game event's key.
+// GetPlayerController 
+//  @brief Retrieves the player controller address of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to retrieve the player controller address.
 //
 //  @return A pointer to the player controller associated with the key.
@@ -934,7 +967,10 @@ func (w *EventInfo) GetPlayerController(key string) (uintptr, error) {
 	return GetEventPlayerController(w.handle, key), nil
 }
 
-// GetPlayerIndex - Retrieves the player index of a game event's key.
+// GetPlayerIndex 
+//  @brief Retrieves the player index of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to retrieve the player index.
 //
 //  @return The player index associated with the key.
@@ -946,7 +982,10 @@ func (w *EventInfo) GetPlayerIndex(key string) (int32, error) {
 	return GetEventPlayerIndex(w.handle, key), nil
 }
 
-// GetPlayerSlot - Retrieves the player slot of a game event's key.
+// GetPlayerSlot 
+//  @brief Retrieves the player slot of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to retrieve the player index.
 //
 //  @return The player slot associated with the key.
@@ -958,7 +997,10 @@ func (w *EventInfo) GetPlayerSlot(key string) (int32, error) {
 	return GetEventPlayerSlot(w.handle, key), nil
 }
 
-// GetPlayerPawn - Retrieves the player pawn address of a game event's key.
+// GetPlayerPawn 
+//  @brief Retrieves the player pawn address of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to retrieve the player pawn address.
 //
 //  @return A pointer to the player pawn associated with the key.
@@ -970,7 +1012,10 @@ func (w *EventInfo) GetPlayerPawn(key string) (uintptr, error) {
 	return GetEventPlayerPawn(w.handle, key), nil
 }
 
-// GetEntity - Retrieves the entity address of a game event's key.
+// GetEntity 
+//  @brief Retrieves the entity address of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to retrieve the entity address.
 //
 //  @return A pointer to the entity associated with the key.
@@ -982,7 +1027,10 @@ func (w *EventInfo) GetEntity(key string) (uintptr, error) {
 	return GetEventEntity(w.handle, key), nil
 }
 
-// GetEntityIndex - Retrieves the entity index of a game event's key.
+// GetEntityIndex 
+//  @brief Retrieves the entity index of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to retrieve the entity index.
 //
 //  @return The entity index associated with the key.
@@ -994,7 +1042,10 @@ func (w *EventInfo) GetEntityIndex(key string) (int32, error) {
 	return GetEventEntityIndex(w.handle, key), nil
 }
 
-// GetEntityHandle - Retrieves the entity handle of a game event's key.
+// GetEntityHandle 
+//  @brief Retrieves the entity handle of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to retrieve the entity handle.
 //
 //  @return The entity handle associated with the key.
@@ -1006,7 +1057,10 @@ func (w *EventInfo) GetEntityHandle(key string) (int32, error) {
 	return GetEventEntityHandle(w.handle, key), nil
 }
 
-// GetName - Retrieves the name of a game event.
+// GetName 
+//  @brief Retrieves the name of a game event.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //
 //  @return A string where the result will be stored.
 func (w *EventInfo) GetName() (string, error) {
@@ -1017,7 +1071,10 @@ func (w *EventInfo) GetName() (string, error) {
 	return GetEventName(w.handle), nil
 }
 
-// SetBool - Sets the boolean value of a game event's key.
+// SetBool 
+//  @brief Sets the boolean value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to set the boolean value.
 //  @param value: The boolean value to set.
 func (w *EventInfo) SetBool(key string, value bool) error {
@@ -1028,7 +1085,10 @@ func (w *EventInfo) SetBool(key string, value bool) error {
 	return nil
 }
 
-// SetFloat - Sets the floating point value of a game event's key.
+// SetFloat 
+//  @brief Sets the floating point value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to set the float value.
 //  @param value: The float value to set.
 func (w *EventInfo) SetFloat(key string, value float32) error {
@@ -1039,7 +1099,10 @@ func (w *EventInfo) SetFloat(key string, value float32) error {
 	return nil
 }
 
-// SetInt - Sets the integer value of a game event's key.
+// SetInt 
+//  @brief Sets the integer value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to set the integer value.
 //  @param value: The integer value to set.
 func (w *EventInfo) SetInt(key string, value int32) error {
@@ -1050,7 +1113,10 @@ func (w *EventInfo) SetInt(key string, value int32) error {
 	return nil
 }
 
-// SetUInt64 - Sets the long integer value of a game event's key.
+// SetUInt64 
+//  @brief Sets the long integer value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to set the long integer value.
 //  @param value: The long integer value to set.
 func (w *EventInfo) SetUInt64(key string, value uint64) error {
@@ -1061,7 +1127,10 @@ func (w *EventInfo) SetUInt64(key string, value uint64) error {
 	return nil
 }
 
-// SetString - Sets the string value of a game event's key.
+// SetString 
+//  @brief Sets the string value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to set the string value.
 //  @param value: The string value to set.
 func (w *EventInfo) SetString(key string, value string) error {
@@ -1072,7 +1141,10 @@ func (w *EventInfo) SetString(key string, value string) error {
 	return nil
 }
 
-// SetPtr - Sets the pointer value of a game event's key.
+// SetPtr 
+//  @brief Sets the pointer value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to set the pointer value.
 //  @param value: The pointer value to set.
 func (w *EventInfo) SetPtr(key string, value uintptr) error {
@@ -1083,7 +1155,10 @@ func (w *EventInfo) SetPtr(key string, value uintptr) error {
 	return nil
 }
 
-// SetPlayerController - Sets the player controller address of a game event's key.
+// SetPlayerController 
+//  @brief Sets the player controller address of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to set the player controller address.
 //  @param value: A pointer to the player controller to set.
 func (w *EventInfo) SetPlayerController(key string, value uintptr) error {
@@ -1094,7 +1169,10 @@ func (w *EventInfo) SetPlayerController(key string, value uintptr) error {
 	return nil
 }
 
-// SetPlayerIndex - Sets the player index value of a game event's key.
+// SetPlayerIndex 
+//  @brief Sets the player index value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to set the player index value.
 //  @param value: The player index value to set.
 func (w *EventInfo) SetPlayerIndex(key string, value int32) error {
@@ -1105,7 +1183,10 @@ func (w *EventInfo) SetPlayerIndex(key string, value int32) error {
 	return nil
 }
 
-// SetPlayerSlot - Sets the player slot value of a game event's key.
+// SetPlayerSlot 
+//  @brief Sets the player slot value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to set the player slot value.
 //  @param value: The player slot value to set.
 func (w *EventInfo) SetPlayerSlot(key string, value int32) error {
@@ -1116,7 +1197,10 @@ func (w *EventInfo) SetPlayerSlot(key string, value int32) error {
 	return nil
 }
 
-// SetEntity - Sets the entity address of a game event's key.
+// SetEntity 
+//  @brief Sets the entity address of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to set the entity address.
 //  @param value: A pointer to the entity to set.
 func (w *EventInfo) SetEntity(key string, value uintptr) error {
@@ -1127,7 +1211,10 @@ func (w *EventInfo) SetEntity(key string, value uintptr) error {
 	return nil
 }
 
-// SetEntityIndex - Sets the entity index of a game event's key.
+// SetEntityIndex 
+//  @brief Sets the entity index of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to set the entity index.
 //  @param value: The entity index value to set.
 func (w *EventInfo) SetEntityIndex(key string, value int32) error {
@@ -1138,7 +1225,10 @@ func (w *EventInfo) SetEntityIndex(key string, value int32) error {
 	return nil
 }
 
-// SetEntityHandle - Sets the entity handle of a game event's key.
+// SetEntityHandle 
+//  @brief Sets the entity handle of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to set the entity handle.
 //  @param value: The entity handle value to set.
 func (w *EventInfo) SetEntityHandle(key string, value int32) error {
@@ -1149,7 +1239,10 @@ func (w *EventInfo) SetEntityHandle(key string, value int32) error {
 	return nil
 }
 
-// SetBroadcast - Sets whether an event's broadcasting will be disabled or not.
+// SetBroadcast 
+//  @brief Sets whether an event's broadcasting will be disabled or not.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
 //  @param dontBroadcast: A boolean indicating whether to disable broadcasting.
 func (w *EventInfo) SetBroadcast(dontBroadcast bool) error {
 	if w.handle == 0 {

@@ -346,7 +346,8 @@ var (
 	CheckTransmitInfoErrEmptyHandle = errors.New("CheckTransmitInfo: empty handle")
 )
 
-// CheckTransmitInfo - RAII wrapper for CheckTransmitInfo pointer.
+//  @brief RAII wrapper for CheckTransmitInfo pointer.
+//
 type CheckTransmitInfo struct {
 	handle    uintptr
 }
@@ -380,7 +381,10 @@ func (w *CheckTransmitInfo) IsValid() bool {
 	return w.handle != 0
 }
 
-// SetEntity - Sets a bit in the TransmitEntity bitvec, marking an entity as transmittable.
+// SetEntity 
+//  @brief Sets a bit in the TransmitEntity bitvec, marking an entity as transmittable.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The handle of the entity to mark as transmittable.
 func (w *CheckTransmitInfo) SetEntity(entityHandle int32) error {
 	if w.handle == 0 {
@@ -390,7 +394,10 @@ func (w *CheckTransmitInfo) SetEntity(entityHandle int32) error {
 	return nil
 }
 
-// ClearEntity - Clears a bit in the TransmitEntity bitvec, marking an entity as not transmittable.
+// ClearEntity 
+//  @brief Clears a bit in the TransmitEntity bitvec, marking an entity as not transmittable.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The handle of the entity to mark as not transmittable.
 func (w *CheckTransmitInfo) ClearEntity(entityHandle int32) error {
 	if w.handle == 0 {
@@ -400,7 +407,10 @@ func (w *CheckTransmitInfo) ClearEntity(entityHandle int32) error {
 	return nil
 }
 
-// IsEntitySet - Checks if a bit is set in the TransmitEntity bitvec.
+// IsEntitySet 
+//  @brief Checks if a bit is set in the TransmitEntity bitvec.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The handle of the entity to check.
 //
 //  @return True if the entity is marked as transmittable, false otherwise.
@@ -412,7 +422,10 @@ func (w *CheckTransmitInfo) IsEntitySet(entityHandle int32) (bool, error) {
 	return IsTransmitInfoEntitySet(w.handle, entityHandle), nil
 }
 
-// SetEntityAll - Sets all bits in the TransmitEntity bitvec, marking all entities as transmittable.
+// SetEntityAll 
+//  @brief Sets all bits in the TransmitEntity bitvec, marking all entities as transmittable.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
 func (w *CheckTransmitInfo) SetEntityAll() error {
 	if w.handle == 0 {
 		return CheckTransmitInfoErrEmptyHandle
@@ -421,7 +434,10 @@ func (w *CheckTransmitInfo) SetEntityAll() error {
 	return nil
 }
 
-// ClearEntityAll - Clears all bits in the TransmitEntity bitvec, marking all entities as not transmittable.
+// ClearEntityAll 
+//  @brief Clears all bits in the TransmitEntity bitvec, marking all entities as not transmittable.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
 func (w *CheckTransmitInfo) ClearEntityAll() error {
 	if w.handle == 0 {
 		return CheckTransmitInfoErrEmptyHandle
@@ -430,7 +446,10 @@ func (w *CheckTransmitInfo) ClearEntityAll() error {
 	return nil
 }
 
-// SetNonPlayer - Sets a bit in the TransmitNonPlayers bitvec, marking a non-player entity as transmittable.
+// SetNonPlayer 
+//  @brief Sets a bit in the TransmitNonPlayers bitvec, marking a non-player entity as transmittable.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The index of the non-player entity to mark as transmittable.
 func (w *CheckTransmitInfo) SetNonPlayer(entityHandle int32) error {
 	if w.handle == 0 {
@@ -440,7 +459,10 @@ func (w *CheckTransmitInfo) SetNonPlayer(entityHandle int32) error {
 	return nil
 }
 
-// ClearNonPlayer - Clears a bit in the TransmitNonPlayers bitvec, marking a non-player entity as not transmittable.
+// ClearNonPlayer 
+//  @brief Clears a bit in the TransmitNonPlayers bitvec, marking a non-player entity as not transmittable.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The index of the non-player entity to mark as not transmittable.
 func (w *CheckTransmitInfo) ClearNonPlayer(entityHandle int32) error {
 	if w.handle == 0 {
@@ -450,7 +472,10 @@ func (w *CheckTransmitInfo) ClearNonPlayer(entityHandle int32) error {
 	return nil
 }
 
-// IsNonPlayerSet - Checks if a bit is set in the TransmitNonPlayers bitvec.
+// IsNonPlayerSet 
+//  @brief Checks if a bit is set in the TransmitNonPlayers bitvec.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The index of the non-player entity to check.
 //
 //  @return True if the entity is marked as transmittable, false otherwise.
@@ -462,7 +487,10 @@ func (w *CheckTransmitInfo) IsNonPlayerSet(entityHandle int32) (bool, error) {
 	return IsTransmitInfoNonPlayerSet(w.handle, entityHandle), nil
 }
 
-// SetNonPlayerAll - Sets all bits in the TransmitNonPlayers bitvec, marking all non-player entities as transmittable.
+// SetNonPlayerAll 
+//  @brief Sets all bits in the TransmitNonPlayers bitvec, marking all non-player entities as transmittable.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
 func (w *CheckTransmitInfo) SetNonPlayerAll() error {
 	if w.handle == 0 {
 		return CheckTransmitInfoErrEmptyHandle
@@ -471,7 +499,10 @@ func (w *CheckTransmitInfo) SetNonPlayerAll() error {
 	return nil
 }
 
-// ClearNonPlayerAll - Clears all bits in the TransmitNonPlayers bitvec, marking all non-player entities as not transmittable.
+// ClearNonPlayerAll 
+//  @brief Clears all bits in the TransmitNonPlayers bitvec, marking all non-player entities as not transmittable.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
 func (w *CheckTransmitInfo) ClearNonPlayerAll() error {
 	if w.handle == 0 {
 		return CheckTransmitInfoErrEmptyHandle
@@ -480,7 +511,10 @@ func (w *CheckTransmitInfo) ClearNonPlayerAll() error {
 	return nil
 }
 
-// SetAlways - Sets a bit in the TransmitAlways bitvec, marking an entity to always transmit.
+// SetAlways 
+//  @brief Sets a bit in the TransmitAlways bitvec, marking an entity to always transmit.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The handle of the entity to mark as always transmittable.
 func (w *CheckTransmitInfo) SetAlways(entityHandle int32) error {
 	if w.handle == 0 {
@@ -490,7 +524,10 @@ func (w *CheckTransmitInfo) SetAlways(entityHandle int32) error {
 	return nil
 }
 
-// ClearAlways - Clears a bit in the TransmitAlways bitvec, unmarking an entity from always transmit.
+// ClearAlways 
+//  @brief Clears a bit in the TransmitAlways bitvec, unmarking an entity from always transmit.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The handle of the entity to unmark from always transmit.
 func (w *CheckTransmitInfo) ClearAlways(entityHandle int32) error {
 	if w.handle == 0 {
@@ -500,7 +537,10 @@ func (w *CheckTransmitInfo) ClearAlways(entityHandle int32) error {
 	return nil
 }
 
-// IsAlwaysSet - Checks if a bit is set in the TransmitAlways bitvec.
+// IsAlwaysSet 
+//  @brief Checks if a bit is set in the TransmitAlways bitvec.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The handle of the entity to check.
 //
 //  @return True if the entity is marked to always transmit, false otherwise.
@@ -512,7 +552,10 @@ func (w *CheckTransmitInfo) IsAlwaysSet(entityHandle int32) (bool, error) {
 	return IsTransmitInfoAlwaysSet(w.handle, entityHandle), nil
 }
 
-// SetAlwaysAll - Sets all bits in the TransmitAlways bitvec, marking all entities to always transmit.
+// SetAlwaysAll 
+//  @brief Sets all bits in the TransmitAlways bitvec, marking all entities to always transmit.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
 func (w *CheckTransmitInfo) SetAlwaysAll() error {
 	if w.handle == 0 {
 		return CheckTransmitInfoErrEmptyHandle
@@ -521,7 +564,10 @@ func (w *CheckTransmitInfo) SetAlwaysAll() error {
 	return nil
 }
 
-// ClearAlwaysAll - Clears all bits in the TransmitAlways bitvec, unmarking all entities from always transmit.
+// ClearAlwaysAll 
+//  @brief Clears all bits in the TransmitAlways bitvec, unmarking all entities from always transmit.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
 func (w *CheckTransmitInfo) ClearAlwaysAll() error {
 	if w.handle == 0 {
 		return CheckTransmitInfoErrEmptyHandle
@@ -530,7 +576,10 @@ func (w *CheckTransmitInfo) ClearAlwaysAll() error {
 	return nil
 }
 
-// GetTargetSlotsCount - Gets the count of target player slots.
+// GetTargetSlotsCount 
+//  @brief Gets the count of target player slots.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
 //
 //  @return The number of target player slots, or 0 if the info pointer is null.
 func (w *CheckTransmitInfo) GetTargetSlotsCount() (int32, error) {
@@ -541,7 +590,10 @@ func (w *CheckTransmitInfo) GetTargetSlotsCount() (int32, error) {
 	return GetTransmitInfoTargetSlotsCount(w.handle), nil
 }
 
-// GetTargetSlot - Gets a player slot value at a specific index in the target slots vector.
+// GetTargetSlot 
+//  @brief Gets a player slot value at a specific index in the target slots vector.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param index: The index in the target slots vector.
 //
 //  @return The player slot value, or -1 if the index is invalid or info is null.
@@ -553,7 +605,10 @@ func (w *CheckTransmitInfo) GetTargetSlot(index int32) (int32, error) {
 	return GetTransmitInfoTargetSlot(w.handle, index), nil
 }
 
-// AddTargetSlot - Adds a player slot to the target slots vector.
+// AddTargetSlot 
+//  @brief Adds a player slot to the target slots vector.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param playerSlot: The player slot value to add.
 func (w *CheckTransmitInfo) AddTargetSlot(playerSlot int32) error {
 	if w.handle == 0 {
@@ -563,7 +618,10 @@ func (w *CheckTransmitInfo) AddTargetSlot(playerSlot int32) error {
 	return nil
 }
 
-// RemoveTargetSlot - Removes a player slot from the target slots vector.
+// RemoveTargetSlot 
+//  @brief Removes a player slot from the target slots vector.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param index: Index within the target slots vector to remove.
 func (w *CheckTransmitInfo) RemoveTargetSlot(index int32) error {
 	if w.handle == 0 {
@@ -573,7 +631,10 @@ func (w *CheckTransmitInfo) RemoveTargetSlot(index int32) error {
 	return nil
 }
 
-// GetTargetSlotsAll - Gets the target slots vector.
+// GetTargetSlotsAll 
+//  @brief Gets the target slots vector.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
 //
 //  @return The player slots array.
 func (w *CheckTransmitInfo) GetTargetSlotsAll() ([]int32, error) {
@@ -584,7 +645,10 @@ func (w *CheckTransmitInfo) GetTargetSlotsAll() ([]int32, error) {
 	return GetTransmitInfoTargetSlotsAll(w.handle), nil
 }
 
-// RemoveTargetSlotsAll - Clears all target player slots from the vector.
+// RemoveTargetSlotsAll 
+//  @brief Clears all target player slots from the vector.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
 func (w *CheckTransmitInfo) RemoveTargetSlotsAll() error {
 	if w.handle == 0 {
 		return CheckTransmitInfoErrEmptyHandle
@@ -593,7 +657,10 @@ func (w *CheckTransmitInfo) RemoveTargetSlotsAll() error {
 	return nil
 }
 
-// GetPlayerSlot - Gets the player slot value from the CCheckTransmitInfo.
+// GetPlayerSlot 
+//  @brief Gets the player slot value from the CCheckTransmitInfo.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
 //
 //  @return The player slot value, or -1 if info is null.
 func (w *CheckTransmitInfo) GetPlayerSlot() (int32, error) {
@@ -604,7 +671,10 @@ func (w *CheckTransmitInfo) GetPlayerSlot() (int32, error) {
 	return GetTransmitInfoPlayerSlot(w.handle), nil
 }
 
-// SetPlayerSlot - Sets the player slot value in the CCheckTransmitInfo.
+// SetPlayerSlot 
+//  @brief Sets the player slot value in the CCheckTransmitInfo.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param playerSlot: The player slot value to set.
 func (w *CheckTransmitInfo) SetPlayerSlot(playerSlot int32) error {
 	if w.handle == 0 {
@@ -614,7 +684,10 @@ func (w *CheckTransmitInfo) SetPlayerSlot(playerSlot int32) error {
 	return nil
 }
 
-// GetFullUpdate - Gets the full update flag from the CCheckTransmitInfo.
+// GetFullUpdate 
+//  @brief Gets the full update flag from the CCheckTransmitInfo.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
 //
 //  @return True if full update is enabled, false otherwise.
 func (w *CheckTransmitInfo) GetFullUpdate() (bool, error) {
@@ -625,7 +698,10 @@ func (w *CheckTransmitInfo) GetFullUpdate() (bool, error) {
 	return GetTransmitInfoFullUpdate(w.handle), nil
 }
 
-// SetFullUpdate - Sets the full update flag in the CCheckTransmitInfo.
+// SetFullUpdate 
+//  @brief Sets the full update flag in the CCheckTransmitInfo.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param fullUpdate: The full update flag value to set.
 func (w *CheckTransmitInfo) SetFullUpdate(fullUpdate bool) error {
 	if w.handle == 0 {

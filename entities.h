@@ -2,6 +2,18 @@
 
 #include "shared.h"
 
+extern String (*__s2sdk_GetPublicAddress)(bool);
+
+static String GetPublicAddress(bool onlyBase) {
+	return __s2sdk_GetPublicAddress(onlyBase);
+}
+
+extern String (*__s2sdk_GetLocalAddress)(bool);
+
+static String GetLocalAddress(bool onlyBase) {
+	return __s2sdk_GetLocalAddress(onlyBase);
+}
+
 extern uintptr_t (*__s2sdk_EntIndexToEntPointer)(int32_t);
 
 static uintptr_t EntIndexToEntPointer(int32_t entityIndex) {
