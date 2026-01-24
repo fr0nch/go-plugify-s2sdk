@@ -331,6 +331,7 @@ func GetEventPlayerController(event uintptr, key string) uintptr {
 //  @param key: The key for which to retrieve the player index.
 //
 //  @return The player index associated with the key.
+// Deprecated: Use GetEventPlayerSlot instead. Will be removed soon
 func GetEventPlayerIndex(event uintptr, key string) int32 {
 	var __retVal int32
 	__event := C.uintptr_t(event)
@@ -974,6 +975,7 @@ func (w *EventInfo) GetPlayerController(key string) (uintptr, error) {
 //  @param key: The key for which to retrieve the player index.
 //
 //  @return The player index associated with the key.
+// Deprecated: Use GetEventPlayerSlot instead. Will be removed soon
 func (w *EventInfo) GetPlayerIndex(key string) (int32, error) {
 	if w.handle == 0 {
 		var zero int32

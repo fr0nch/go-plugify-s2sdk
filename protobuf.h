@@ -104,24 +104,6 @@ static void UserMessageSetRecipientMask(uintptr_t userMessage, uint64_t mask) {
 	__s2sdk_UserMessageSetRecipientMask(userMessage, mask);
 }
 
-extern bool (*__s2sdk_UserMessageGetMessage)(uintptr_t, String*, uintptr_t*);
-
-static bool UserMessageGetMessage(uintptr_t userMessage, String* fieldName, uintptr_t* message) {
-	return __s2sdk_UserMessageGetMessage(userMessage, fieldName, message);
-}
-
-extern bool (*__s2sdk_UserMessageGetRepeatedMessage)(uintptr_t, String*, int32_t, uintptr_t*);
-
-static bool UserMessageGetRepeatedMessage(uintptr_t userMessage, String* fieldName, int32_t index, uintptr_t* message) {
-	return __s2sdk_UserMessageGetRepeatedMessage(userMessage, fieldName, index, message);
-}
-
-extern bool (*__s2sdk_UserMessageAddMessage)(uintptr_t, String*, uintptr_t);
-
-static bool UserMessageAddMessage(uintptr_t userMessage, String* fieldName, uintptr_t message) {
-	return __s2sdk_UserMessageAddMessage(userMessage, fieldName, message);
-}
-
 extern int32_t (*__s2sdk_UserMessageGetRepeatedFieldCount)(uintptr_t, String*);
 
 static int32_t UserMessageGetRepeatedFieldCount(uintptr_t userMessage, String* fieldName) {
@@ -222,6 +204,12 @@ extern Vector3 (*__s2sdk_PbReadQAngle)(uintptr_t, String*, int32_t);
 
 static Vector3 PbReadQAngle(uintptr_t userMessage, String* fieldName, int32_t index) {
 	return __s2sdk_PbReadQAngle(userMessage, fieldName, index);
+}
+
+extern uintptr_t (*__s2sdk_PbReadMessage)(uintptr_t, String*, int32_t);
+
+static uintptr_t PbReadMessage(uintptr_t userMessage, String* fieldName, int32_t index) {
+	return __s2sdk_PbReadMessage(userMessage, fieldName, index);
 }
 
 extern bool (*__s2sdk_PbGetEnum)(uintptr_t, String*, int32_t*);
@@ -390,6 +378,18 @@ extern bool (*__s2sdk_PbSetQAngle)(uintptr_t, String*, Vector3*);
 
 static bool PbSetQAngle(uintptr_t userMessage, String* fieldName, Vector3* value) {
 	return __s2sdk_PbSetQAngle(userMessage, fieldName, value);
+}
+
+extern bool (*__s2sdk_PbGetMessage)(uintptr_t, String*, uintptr_t*);
+
+static bool PbGetMessage(uintptr_t userMessage, String* fieldName, uintptr_t* out) {
+	return __s2sdk_PbGetMessage(userMessage, fieldName, out);
+}
+
+extern bool (*__s2sdk_PbSetMessage)(uintptr_t, String*, uintptr_t);
+
+static bool PbSetMessage(uintptr_t userMessage, String* fieldName, uintptr_t value) {
+	return __s2sdk_PbSetMessage(userMessage, fieldName, value);
 }
 
 extern bool (*__s2sdk_PbGetRepeatedEnum)(uintptr_t, String*, int32_t, int32_t*);
@@ -642,5 +642,23 @@ extern bool (*__s2sdk_PbAddQAngle)(uintptr_t, String*, Vector3*);
 
 static bool PbAddQAngle(uintptr_t userMessage, String* fieldName, Vector3* value) {
 	return __s2sdk_PbAddQAngle(userMessage, fieldName, value);
+}
+
+extern bool (*__s2sdk_PbGetRepeatedMessage)(uintptr_t, String*, int32_t, uintptr_t*);
+
+static bool PbGetRepeatedMessage(uintptr_t userMessage, String* fieldName, int32_t index, uintptr_t* out) {
+	return __s2sdk_PbGetRepeatedMessage(userMessage, fieldName, index, out);
+}
+
+extern bool (*__s2sdk_PbSetRepeatedMessage)(uintptr_t, String*, int32_t, uintptr_t);
+
+static bool PbSetRepeatedMessage(uintptr_t userMessage, String* fieldName, int32_t index, uintptr_t value) {
+	return __s2sdk_PbSetRepeatedMessage(userMessage, fieldName, index, value);
+}
+
+extern bool (*__s2sdk_PbAddMessage)(uintptr_t, String*, uintptr_t);
+
+static bool PbAddMessage(uintptr_t userMessage, String* fieldName, uintptr_t value) {
+	return __s2sdk_PbAddMessage(userMessage, fieldName, value);
 }
 

@@ -278,7 +278,7 @@ func Kv3OverlayKeysFrom(kv uintptr, other uintptr, depth bool) {
 //
 //  @param kv: Pointer to the KeyValues3 object
 //
-//  @return Pointer to the CKeyValues3Context, or nullptr if kv is null
+//  @return Pointer to the CKV3Arena, or nullptr if kv is null
 func Kv3GetContext(kv uintptr) uintptr {
 	var __retVal uintptr
 	__kv := C.uintptr_t(kv)
@@ -3759,7 +3759,7 @@ func (w *KeyValues3) OverlayKeysFrom(other *KeyValues3, depth bool) error {
 //
 //  @param kv: Pointer to the KeyValues3 object
 //
-//  @return Pointer to the CKeyValues3Context, or nullptr if kv is null
+//  @return Pointer to the CKV3Arena, or nullptr if kv is null
 func (w *KeyValues3) GetContext() (uintptr, error) {
 	if w.handle == 0 {
 		var zero uintptr

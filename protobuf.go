@@ -19,9 +19,6 @@ package s2sdk
 #cgo noescape UserMessageAddRecipient
 #cgo noescape UserMessageAddAllPlayers
 #cgo noescape UserMessageSetRecipientMask
-#cgo noescape UserMessageGetMessage
-#cgo noescape UserMessageGetRepeatedMessage
-#cgo noescape UserMessageAddMessage
 #cgo noescape UserMessageGetRepeatedFieldCount
 #cgo noescape UserMessageRemoveRepeatedFieldValue
 #cgo noescape UserMessageGetDebugString
@@ -39,6 +36,7 @@ package s2sdk
 #cgo noescape PbReadVector3
 #cgo noescape PbReadVector4
 #cgo noescape PbReadQAngle
+#cgo noescape PbReadMessage
 #cgo noescape PbGetEnum
 #cgo noescape PbSetEnum
 #cgo noescape PbGetInt32
@@ -67,6 +65,8 @@ package s2sdk
 #cgo noescape PbSetVector4
 #cgo noescape PbGetQAngle
 #cgo noescape PbSetQAngle
+#cgo noescape PbGetMessage
+#cgo noescape PbSetMessage
 #cgo noescape PbGetRepeatedEnum
 #cgo noescape PbSetRepeatedEnum
 #cgo noescape PbAddEnum
@@ -109,6 +109,9 @@ package s2sdk
 #cgo noescape PbGetRepeatedQAngle
 #cgo noescape PbSetRepeatedQAngle
 #cgo noescape PbAddQAngle
+#cgo noescape PbGetRepeatedMessage
+#cgo noescape PbSetRepeatedMessage
+#cgo noescape PbAddMessage
 */
 import "C"
 import (
@@ -380,87 +383,6 @@ func UserMessageSetRecipientMask(userMessage uintptr, mask uint64) {
 	__userMessage := C.uintptr_t(userMessage)
 	__mask := C.uint64_t(mask)
 	C.UserMessageSetRecipientMask(__userMessage, __mask)
-}
-
-// UserMessageGetMessage 
-//  @brief Gets a nested message from a field in the UserMessage.
-//
-//  @param userMessage: The UserMessage instance.
-//  @param fieldName: The name of the field.
-//  @param message: A pointer to store the retrieved message.
-//
-//  @return True if the message was successfully retrieved, false otherwise.
-func UserMessageGetMessage(userMessage uintptr, fieldName string, message *uintptr) bool {
-	var __retVal bool
-	__userMessage := C.uintptr_t(userMessage)
-	__fieldName := plugify.ConstructString(fieldName)
-	__message := C.uintptr_t(*message)
-	plugify.Block {
-		Try: func() {
-			__retVal = bool(C.UserMessageGetMessage(__userMessage, (*C.String)(unsafe.Pointer(&__fieldName)), &__message))
-			// Unmarshal - Convert native data to managed data.
-			*message = uintptr(__message)
-		},
-		Finally: func() {
-			// Perform cleanup.
-			plugify.DestroyString(&__fieldName)
-		},
-	}.Do()
-	return __retVal
-}
-
-// UserMessageGetRepeatedMessage 
-//  @brief Gets a repeated nested message from a field in the UserMessage.
-//
-//  @param userMessage: The UserMessage instance.
-//  @param fieldName: The name of the field.
-//  @param index: The index of the repeated field.
-//  @param message: A pointer to store the retrieved message.
-//
-//  @return True if the message was successfully retrieved, false otherwise.
-func UserMessageGetRepeatedMessage(userMessage uintptr, fieldName string, index int32, message *uintptr) bool {
-	var __retVal bool
-	__userMessage := C.uintptr_t(userMessage)
-	__fieldName := plugify.ConstructString(fieldName)
-	__index := C.int32_t(index)
-	__message := C.uintptr_t(*message)
-	plugify.Block {
-		Try: func() {
-			__retVal = bool(C.UserMessageGetRepeatedMessage(__userMessage, (*C.String)(unsafe.Pointer(&__fieldName)), __index, &__message))
-			// Unmarshal - Convert native data to managed data.
-			*message = uintptr(__message)
-		},
-		Finally: func() {
-			// Perform cleanup.
-			plugify.DestroyString(&__fieldName)
-		},
-	}.Do()
-	return __retVal
-}
-
-// UserMessageAddMessage 
-//  @brief Adds a nested message to a repeated field in the UserMessage.
-//
-//  @param userMessage: The UserMessage instance.
-//  @param fieldName: The name of the field.
-//  @param message: A pointer to the message to add.
-//
-//  @return True if the message was successfully added, false otherwise.
-func UserMessageAddMessage(userMessage uintptr, fieldName string, message uintptr) bool {
-	var __retVal bool
-	__userMessage := C.uintptr_t(userMessage)
-	__fieldName := plugify.ConstructString(fieldName)
-	__message := C.uintptr_t(message)
-	plugify.Block {
-		Try: func() {
-			__retVal = bool(C.UserMessageAddMessage(__userMessage, (*C.String)(unsafe.Pointer(&__fieldName)), __message))
-		},
-		Finally: func() {
-			// Perform cleanup.
-			plugify.DestroyString(&__fieldName)
-		},
-	}.Do()
-	return __retVal
 }
 
 // UserMessageGetRepeatedFieldCount 
@@ -887,6 +809,31 @@ func PbReadQAngle(userMessage uintptr, fieldName string, index int32) plugify.Ve
 		Try: func() {
 			__native := C.PbReadQAngle(__userMessage, (*C.String)(unsafe.Pointer(&__fieldName)), __index)
 			__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__fieldName)
+		},
+	}.Do()
+	return __retVal
+}
+
+// PbReadMessage 
+//  @brief Reads a Message from a UserMessage.
+//
+//  @param userMessage: Pointer to the UserMessage object.
+//  @param fieldName: Name of the field to read.
+//  @param index: Index of the repeated field (use -1 for non-repeated fields).
+//
+//  @return The Message value read, or an empty value if invalid.
+func PbReadMessage(userMessage uintptr, fieldName string, index int32) uintptr {
+	var __retVal uintptr
+	__userMessage := C.uintptr_t(userMessage)
+	__fieldName := plugify.ConstructString(fieldName)
+	__index := C.int32_t(index)
+	plugify.Block {
+		Try: func() {
+			__retVal = uintptr(C.PbReadMessage(__userMessage, (*C.String)(unsafe.Pointer(&__fieldName)), __index))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -1579,7 +1526,7 @@ func PbSetVector4(userMessage uintptr, fieldName string, value plugify.Vector4) 
 //
 //  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
-//  @param out: The output string.
+//  @param out: The output vector.
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetQAngle(userMessage uintptr, fieldName string, out *plugify.Vector3) bool {
@@ -1617,6 +1564,58 @@ func PbSetQAngle(userMessage uintptr, fieldName string, value plugify.Vector3) b
 	plugify.Block {
 		Try: func() {
 			__retVal = bool(C.PbSetQAngle(__userMessage, (*C.String)(unsafe.Pointer(&__fieldName)), &__value))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__fieldName)
+		},
+	}.Do()
+	return __retVal
+}
+
+// PbGetMessage 
+//  @brief Gets a Message value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
+//  @param fieldName: The name of the field.
+//  @param out: The output message.
+//
+//  @return True if the field was successfully retrieved, false otherwise.
+func PbGetMessage(userMessage uintptr, fieldName string, out *uintptr) bool {
+	var __retVal bool
+	__userMessage := C.uintptr_t(userMessage)
+	__fieldName := plugify.ConstructString(fieldName)
+	__out := C.uintptr_t(*out)
+	plugify.Block {
+		Try: func() {
+			__retVal = bool(C.PbGetMessage(__userMessage, (*C.String)(unsafe.Pointer(&__fieldName)), &__out))
+			// Unmarshal - Convert native data to managed data.
+			*out = uintptr(__out)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__fieldName)
+		},
+	}.Do()
+	return __retVal
+}
+
+// PbSetMessage 
+//  @brief Sets a Message value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
+//  @param fieldName: The name of the field.
+//  @param value: The value to set.
+//
+//  @return True if the field was successfully set, false otherwise.
+func PbSetMessage(userMessage uintptr, fieldName string, value uintptr) bool {
+	var __retVal bool
+	__userMessage := C.uintptr_t(userMessage)
+	__fieldName := plugify.ConstructString(fieldName)
+	__value := C.uintptr_t(value)
+	plugify.Block {
+		Try: func() {
+			__retVal = bool(C.PbSetMessage(__userMessage, (*C.String)(unsafe.Pointer(&__fieldName)), __value))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -2763,6 +2762,87 @@ func PbAddQAngle(userMessage uintptr, fieldName string, value plugify.Vector3) b
 	return __retVal
 }
 
+// PbGetRepeatedMessage 
+//  @brief Gets a repeated Message value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
+//  @param fieldName: The name of the field.
+//  @param index: The index of the repeated field.
+//  @param out: The output message.
+//
+//  @return True if the field was successfully retrieved, false otherwise.
+func PbGetRepeatedMessage(userMessage uintptr, fieldName string, index int32, out *uintptr) bool {
+	var __retVal bool
+	__userMessage := C.uintptr_t(userMessage)
+	__fieldName := plugify.ConstructString(fieldName)
+	__index := C.int32_t(index)
+	__out := C.uintptr_t(*out)
+	plugify.Block {
+		Try: func() {
+			__retVal = bool(C.PbGetRepeatedMessage(__userMessage, (*C.String)(unsafe.Pointer(&__fieldName)), __index, &__out))
+			// Unmarshal - Convert native data to managed data.
+			*out = uintptr(__out)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__fieldName)
+		},
+	}.Do()
+	return __retVal
+}
+
+// PbSetRepeatedMessage 
+//  @brief Sets a repeated Message value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
+//  @param fieldName: The name of the field.
+//  @param index: The index of the repeated field.
+//  @param value: The value to set.
+//
+//  @return True if the field was successfully set, false otherwise.
+func PbSetRepeatedMessage(userMessage uintptr, fieldName string, index int32, value uintptr) bool {
+	var __retVal bool
+	__userMessage := C.uintptr_t(userMessage)
+	__fieldName := plugify.ConstructString(fieldName)
+	__index := C.int32_t(index)
+	__value := C.uintptr_t(value)
+	plugify.Block {
+		Try: func() {
+			__retVal = bool(C.PbSetRepeatedMessage(__userMessage, (*C.String)(unsafe.Pointer(&__fieldName)), __index, __value))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__fieldName)
+		},
+	}.Do()
+	return __retVal
+}
+
+// PbAddMessage 
+//  @brief Adds a Message value to a repeated field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
+//  @param fieldName: The name of the field.
+//  @param value: The value to add.
+//
+//  @return True if the value was successfully added, false otherwise.
+func PbAddMessage(userMessage uintptr, fieldName string, value uintptr) bool {
+	var __retVal bool
+	__userMessage := C.uintptr_t(userMessage)
+	__fieldName := plugify.ConstructString(fieldName)
+	__value := C.uintptr_t(value)
+	plugify.Block {
+		Try: func() {
+			__retVal = bool(C.PbAddMessage(__userMessage, (*C.String)(unsafe.Pointer(&__fieldName)), __value))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__fieldName)
+		},
+	}.Do()
+	return __retVal
+}
+
 var (
 	UserMessageErrEmptyHandle = errors.New("UserMessage: empty handle")
 )
@@ -3023,55 +3103,6 @@ func (w *UserMessage) SetRecipientMask(mask uint64) error {
 	}
 	UserMessageSetRecipientMask(w.handle, mask)
 	return nil
-}
-
-// GetMessage 
-//  @brief Gets a nested message from a field in the UserMessage.
-//
-//  @param userMessage: The UserMessage instance.
-//  @param fieldName: The name of the field.
-//  @param message: A pointer to store the retrieved message.
-//
-//  @return True if the message was successfully retrieved, false otherwise.
-func (w *UserMessage) GetMessage(fieldName string, message *uintptr) (bool, error) {
-	if w.handle == 0 {
-		var zero bool
-		return zero, UserMessageErrEmptyHandle
-	}
-	return UserMessageGetMessage(w.handle, fieldName, message), nil
-}
-
-// GetRepeatedMessage 
-//  @brief Gets a repeated nested message from a field in the UserMessage.
-//
-//  @param userMessage: The UserMessage instance.
-//  @param fieldName: The name of the field.
-//  @param index: The index of the repeated field.
-//  @param message: A pointer to store the retrieved message.
-//
-//  @return True if the message was successfully retrieved, false otherwise.
-func (w *UserMessage) GetRepeatedMessage(fieldName string, index int32, message *uintptr) (bool, error) {
-	if w.handle == 0 {
-		var zero bool
-		return zero, UserMessageErrEmptyHandle
-	}
-	return UserMessageGetRepeatedMessage(w.handle, fieldName, index, message), nil
-}
-
-// AddMessage 
-//  @brief Adds a nested message to a repeated field in the UserMessage.
-//
-//  @param userMessage: The UserMessage instance.
-//  @param fieldName: The name of the field.
-//  @param message: A pointer to the message to add.
-//
-//  @return True if the message was successfully added, false otherwise.
-func (w *UserMessage) AddMessage(fieldName string, message uintptr) (bool, error) {
-	if w.handle == 0 {
-		var zero bool
-		return zero, UserMessageErrEmptyHandle
-	}
-	return UserMessageAddMessage(w.handle, fieldName, message), nil
 }
 
 // GetRepeatedFieldCount 
@@ -3341,6 +3372,22 @@ func (w *UserMessage) ReadQAngle(fieldName string, index int32) (plugify.Vector3
 		return zero, UserMessageErrEmptyHandle
 	}
 	return PbReadQAngle(w.handle, fieldName, index), nil
+}
+
+// ReadMessage 
+//  @brief Reads a Message from a UserMessage.
+//
+//  @param userMessage: Pointer to the UserMessage object.
+//  @param fieldName: Name of the field to read.
+//  @param index: Index of the repeated field (use -1 for non-repeated fields).
+//
+//  @return The Message value read, or an empty value if invalid.
+func (w *UserMessage) ReadMessage(fieldName string, index int32) (uintptr, error) {
+	if w.handle == 0 {
+		var zero uintptr
+		return zero, UserMessageErrEmptyHandle
+	}
+	return PbReadMessage(w.handle, fieldName, index), nil
 }
 
 // GetEnum 
@@ -3764,7 +3811,7 @@ func (w *UserMessage) SetVector4(fieldName string, value plugify.Vector4) (bool,
 //
 //  @param userMessage: The UserMessage instance.
 //  @param fieldName: The name of the field.
-//  @param out: The output string.
+//  @param out: The output vector.
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func (w *UserMessage) GetQAngle(fieldName string, out *plugify.Vector3) (bool, error) {
@@ -3789,6 +3836,38 @@ func (w *UserMessage) SetQAngle(fieldName string, value plugify.Vector3) (bool, 
 		return zero, UserMessageErrEmptyHandle
 	}
 	return PbSetQAngle(w.handle, fieldName, value), nil
+}
+
+// GetMessage 
+//  @brief Gets a Message value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
+//  @param fieldName: The name of the field.
+//  @param out: The output message.
+//
+//  @return True if the field was successfully retrieved, false otherwise.
+func (w *UserMessage) GetMessage(fieldName string, out *uintptr) (bool, error) {
+	if w.handle == 0 {
+		var zero bool
+		return zero, UserMessageErrEmptyHandle
+	}
+	return PbGetMessage(w.handle, fieldName, out), nil
+}
+
+// SetMessage 
+//  @brief Sets a Message value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
+//  @param fieldName: The name of the field.
+//  @param value: The value to set.
+//
+//  @return True if the field was successfully set, false otherwise.
+func (w *UserMessage) SetMessage(fieldName string, value uintptr) (bool, error) {
+	if w.handle == 0 {
+		var zero bool
+		return zero, UserMessageErrEmptyHandle
+	}
+	return PbSetMessage(w.handle, fieldName, value), nil
 }
 
 // GetRepeatedEnum 
@@ -4489,5 +4568,55 @@ func (w *UserMessage) AddQAngle(fieldName string, value plugify.Vector3) (bool, 
 		return zero, UserMessageErrEmptyHandle
 	}
 	return PbAddQAngle(w.handle, fieldName, value), nil
+}
+
+// GetRepeatedMessage 
+//  @brief Gets a repeated Message value from a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
+//  @param fieldName: The name of the field.
+//  @param index: The index of the repeated field.
+//  @param out: The output message.
+//
+//  @return True if the field was successfully retrieved, false otherwise.
+func (w *UserMessage) GetRepeatedMessage(fieldName string, index int32, out *uintptr) (bool, error) {
+	if w.handle == 0 {
+		var zero bool
+		return zero, UserMessageErrEmptyHandle
+	}
+	return PbGetRepeatedMessage(w.handle, fieldName, index, out), nil
+}
+
+// SetRepeatedMessage 
+//  @brief Sets a repeated Message value for a field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
+//  @param fieldName: The name of the field.
+//  @param index: The index of the repeated field.
+//  @param value: The value to set.
+//
+//  @return True if the field was successfully set, false otherwise.
+func (w *UserMessage) SetRepeatedMessage(fieldName string, index int32, value uintptr) (bool, error) {
+	if w.handle == 0 {
+		var zero bool
+		return zero, UserMessageErrEmptyHandle
+	}
+	return PbSetRepeatedMessage(w.handle, fieldName, index, value), nil
+}
+
+// AddMessage 
+//  @brief Adds a Message value to a repeated field in the UserMessage.
+//
+//  @param userMessage: The UserMessage instance.
+//  @param fieldName: The name of the field.
+//  @param value: The value to add.
+//
+//  @return True if the value was successfully added, false otherwise.
+func (w *UserMessage) AddMessage(fieldName string, value uintptr) (bool, error) {
+	if w.handle == 0 {
+		var zero bool
+		return zero, UserMessageErrEmptyHandle
+	}
+	return PbAddMessage(w.handle, fieldName, value), nil
 }
 

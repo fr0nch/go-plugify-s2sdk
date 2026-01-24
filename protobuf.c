@@ -51,15 +51,6 @@ PLUGIFY_EXPORT void (*__s2sdk_UserMessageAddAllPlayers)(uintptr_t) = NULL;
 PLUGIFY_EXPORT void (*__s2sdk_UserMessageSetRecipientMask)(uintptr_t, uint64_t) = NULL;
 
 
-PLUGIFY_EXPORT bool (*__s2sdk_UserMessageGetMessage)(uintptr_t, String*, uintptr_t*) = NULL;
-
-
-PLUGIFY_EXPORT bool (*__s2sdk_UserMessageGetRepeatedMessage)(uintptr_t, String*, int32_t, uintptr_t*) = NULL;
-
-
-PLUGIFY_EXPORT bool (*__s2sdk_UserMessageAddMessage)(uintptr_t, String*, uintptr_t) = NULL;
-
-
 PLUGIFY_EXPORT int32_t (*__s2sdk_UserMessageGetRepeatedFieldCount)(uintptr_t, String*) = NULL;
 
 
@@ -109,6 +100,9 @@ PLUGIFY_EXPORT Vector4 (*__s2sdk_PbReadVector4)(uintptr_t, String*, int32_t) = N
 
 
 PLUGIFY_EXPORT Vector3 (*__s2sdk_PbReadQAngle)(uintptr_t, String*, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT uintptr_t (*__s2sdk_PbReadMessage)(uintptr_t, String*, int32_t) = NULL;
 
 
 PLUGIFY_EXPORT bool (*__s2sdk_PbGetEnum)(uintptr_t, String*, int32_t*) = NULL;
@@ -193,6 +187,12 @@ PLUGIFY_EXPORT bool (*__s2sdk_PbGetQAngle)(uintptr_t, String*, Vector3*) = NULL;
 
 
 PLUGIFY_EXPORT bool (*__s2sdk_PbSetQAngle)(uintptr_t, String*, Vector3*) = NULL;
+
+
+PLUGIFY_EXPORT bool (*__s2sdk_PbGetMessage)(uintptr_t, String*, uintptr_t*) = NULL;
+
+
+PLUGIFY_EXPORT bool (*__s2sdk_PbSetMessage)(uintptr_t, String*, uintptr_t) = NULL;
 
 
 PLUGIFY_EXPORT bool (*__s2sdk_PbGetRepeatedEnum)(uintptr_t, String*, int32_t, int32_t*) = NULL;
@@ -319,5 +319,14 @@ PLUGIFY_EXPORT bool (*__s2sdk_PbSetRepeatedQAngle)(uintptr_t, String*, int32_t, 
 
 
 PLUGIFY_EXPORT bool (*__s2sdk_PbAddQAngle)(uintptr_t, String*, Vector3*) = NULL;
+
+
+PLUGIFY_EXPORT bool (*__s2sdk_PbGetRepeatedMessage)(uintptr_t, String*, int32_t, uintptr_t*) = NULL;
+
+
+PLUGIFY_EXPORT bool (*__s2sdk_PbSetRepeatedMessage)(uintptr_t, String*, int32_t, uintptr_t) = NULL;
+
+
+PLUGIFY_EXPORT bool (*__s2sdk_PbAddMessage)(uintptr_t, String*, uintptr_t) = NULL;
 
 
