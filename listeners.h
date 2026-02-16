@@ -194,6 +194,18 @@ static void OnServerStartup_Unregister(void* callback) {
 	__s2sdk_OnServerStartup_Unregister(callback);
 }
 
+extern void (*__s2sdk_OnBuildGameSessionManifest_Register)(void*);
+
+static void OnBuildGameSessionManifest_Register(void* callback) {
+	__s2sdk_OnBuildGameSessionManifest_Register(callback);
+}
+
+extern void (*__s2sdk_OnBuildGameSessionManifest_Unregister)(void*);
+
+static void OnBuildGameSessionManifest_Unregister(void* callback) {
+	__s2sdk_OnBuildGameSessionManifest_Unregister(callback);
+}
+
 extern void (*__s2sdk_OnServerActivate_Register)(void*);
 
 static void OnServerActivate_Register(void* callback) {

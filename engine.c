@@ -1,11 +1,5 @@
 #include "shared.h"
 
-PLUGIFY_EXPORT uintptr_t (*__s2sdk_FindModule)(String*) = NULL;
-
-
-PLUGIFY_EXPORT uintptr_t (*__s2sdk_FindInterface)(String*) = NULL;
-
-
 PLUGIFY_EXPORT uintptr_t (*__s2sdk_QueryInterface)(String*, String*) = NULL;
 
 

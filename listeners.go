@@ -34,6 +34,8 @@ package s2sdk
 #cgo noescape OnServerCheckTransmit_Unregister
 #cgo noescape OnServerStartup_Register
 #cgo noescape OnServerStartup_Unregister
+#cgo noescape OnBuildGameSessionManifest_Register
+#cgo noescape OnBuildGameSessionManifest_Unregister
 #cgo noescape OnServerActivate_Register
 #cgo noescape OnServerActivate_Unregister
 #cgo noescape OnServerSpawn_Register
@@ -354,6 +356,24 @@ func OnServerStartup_Register(callback OnServerStartupCallback) {
 func OnServerStartup_Unregister(callback OnServerStartupCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnServerStartup_Unregister(__callback)
+}
+
+// OnBuildGameSessionManifest_Register 
+//  @brief Register callback to event.
+//
+//  @param callback: Function callback.
+func OnBuildGameSessionManifest_Register(callback OnBuildGameSessionManifestCallback) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.OnBuildGameSessionManifest_Register(__callback)
+}
+
+// OnBuildGameSessionManifest_Unregister 
+//  @brief Unregister callback to event.
+//
+//  @param callback: Function callback.
+func OnBuildGameSessionManifest_Unregister(callback OnBuildGameSessionManifestCallback) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.OnBuildGameSessionManifest_Unregister(__callback)
 }
 
 // OnServerActivate_Register 

@@ -96,6 +96,12 @@ PLUGIFY_EXPORT void (*__s2sdk_OnServerStartup_Register)(void*) = NULL;
 PLUGIFY_EXPORT void (*__s2sdk_OnServerStartup_Unregister)(void*) = NULL;
 
 
+PLUGIFY_EXPORT void (*__s2sdk_OnBuildGameSessionManifest_Register)(void*) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_OnBuildGameSessionManifest_Unregister)(void*) = NULL;
+
+
 PLUGIFY_EXPORT void (*__s2sdk_OnServerActivate_Register)(void*) = NULL;
 
 

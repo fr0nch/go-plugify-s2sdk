@@ -105,6 +105,10 @@ type OnServerCheckTransmitCallback func(checkTransmitInfoList []uintptr)
 type OnServerStartupCallback func()
 
 
+// OnBuildGameSessionManifestCallback - Called before server activation to build game session manifest.
+type OnBuildGameSessionManifestCallback func()
+
+
 // OnServerActivateCallback - Called on every server activate.
 type OnServerActivateCallback func()
 

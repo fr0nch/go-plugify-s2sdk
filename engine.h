@@ -2,18 +2,6 @@
 
 #include "shared.h"
 
-extern uintptr_t (*__s2sdk_FindModule)(String*);
-
-static uintptr_t FindModule(String* name) {
-	return __s2sdk_FindModule(name);
-}
-
-extern uintptr_t (*__s2sdk_FindInterface)(String*);
-
-static uintptr_t FindInterface(String* name) {
-	return __s2sdk_FindInterface(name);
-}
-
 extern uintptr_t (*__s2sdk_QueryInterface)(String*, String*);
 
 static uintptr_t QueryInterface(String* module, String* name) {

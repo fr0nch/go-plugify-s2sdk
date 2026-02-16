@@ -2,8 +2,6 @@ package s2sdk
 
 /*
 #include "engine.h"
-#cgo noescape FindModule
-#cgo noescape FindInterface
 #cgo noescape QueryInterface
 #cgo noescape GetGameDirectory
 #cgo noescape GetCurrentMap
@@ -40,48 +38,6 @@ var _ = unsafe.Sizeof(0)
 var _ = plugify.Plugin.Loaded
 
 // Generated from s2sdk (group: engine)
-
-// FindModule 
-//  @brief Finds a module by name.
-//
-//  @param name: The name of the module to find.
-//
-//  @return A pointer to the specified module.
-func FindModule(name string) uintptr {
-	var __retVal uintptr
-	__name := plugify.ConstructString(name)
-	plugify.Block {
-		Try: func() {
-			__retVal = uintptr(C.FindModule((*C.String)(unsafe.Pointer(&__name))))
-		},
-		Finally: func() {
-			// Perform cleanup.
-			plugify.DestroyString(&__name)
-		},
-	}.Do()
-	return __retVal
-}
-
-// FindInterface 
-//  @brief Finds an interface by name.
-//
-//  @param name: The name of the interface to find.
-//
-//  @return A pointer to the interface.
-func FindInterface(name string) uintptr {
-	var __retVal uintptr
-	__name := plugify.ConstructString(name)
-	plugify.Block {
-		Try: func() {
-			__retVal = uintptr(C.FindInterface((*C.String)(unsafe.Pointer(&__name))))
-		},
-		Finally: func() {
-			// Perform cleanup.
-			plugify.DestroyString(&__name)
-		},
-	}.Do()
-	return __retVal
-}
 
 // QueryInterface 
 //  @brief Queries an interface from a specified module.
