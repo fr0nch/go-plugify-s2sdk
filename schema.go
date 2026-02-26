@@ -115,7 +115,7 @@ func GetSchemaOffset(className string, memberName string) int32 {
 //
 //  @param className: The name of the class.
 //
-//  @return The offset of the chain entity in the class (-1 for non-entity classes).
+//  @return The offset of the chain entity in the class (-2 for non-entity classes).
 func GetSchemaChainOffset(className string) int32 {
 	var __retVal int32
 	__className := plugify.ConstructString(className)
@@ -201,7 +201,7 @@ func GetEntData2(entity uintptr, offset int32, size int32) int64 {
 //  @param value: The integer value to set.
 //  @param size: Number of bytes to write (valid values are 1, 2, 4 or 8).
 //  @param changeState: If true, change will be sent over the network.
-//  @param chainOffset: The offset of the chain entity in the class (-1 for non-entity classes).
+//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntData2(entity uintptr, offset int32, value int64, size int32, changeState bool, chainOffset int32) {
 	__entity := C.uintptr_t(entity)
 	__offset := C.int32_t(offset)
@@ -237,7 +237,7 @@ func GetEntDataFloat2(entity uintptr, offset int32, size int32) float64 {
 //  @param value: The float value to set.
 //  @param size: Number of bytes to write (valid values are 1, 2, 4 or 8).
 //  @param changeState: If true, change will be sent over the network.
-//  @param chainOffset: The offset of the chain entity in the class (-1 for non-entity classes).
+//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntDataFloat2(entity uintptr, offset int32, value float64, size int32, changeState bool, chainOffset int32) {
 	__entity := C.uintptr_t(entity)
 	__offset := C.int32_t(offset)
@@ -271,7 +271,7 @@ func GetEntDataColor2(entity uintptr, offset int32) plugify.Vector4 {
 //  @param offset: The offset of the schema to use.
 //  @param value: The color value to set.
 //  @param changeState: If true, change will be sent over the network.
-//  @param chainOffset: The offset of the chain entity in the class (-1 for non-entity classes).
+//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntDataColor2(entity uintptr, offset int32, value plugify.Vector4, changeState bool, chainOffset int32) {
 	__entity := C.uintptr_t(entity)
 	__offset := C.int32_t(offset)
@@ -315,7 +315,7 @@ func GetEntDataString2(entity uintptr, offset int32) string {
 //  @param offset: The offset of the schema to use.
 //  @param value: The string value to set.
 //  @param changeState: If true, change will be sent over the network.
-//  @param chainOffset: The offset of the chain entity in the class (-1 for non-entity classes).
+//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntDataString2(entity uintptr, offset int32, value string, changeState bool, chainOffset int32) {
 	__entity := C.uintptr_t(entity)
 	__offset := C.int32_t(offset)
@@ -356,7 +356,7 @@ func GetEntDataVector2(entity uintptr, offset int32) plugify.Vector3 {
 //  @param offset: The offset of the schema to use.
 //  @param value: The vector value to set.
 //  @param changeState: If true, change will be sent over the network.
-//  @param chainOffset: The offset of the chain entity in the class (-1 for non-entity classes).
+//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntDataVector2(entity uintptr, offset int32, value plugify.Vector3, changeState bool, chainOffset int32) {
 	__entity := C.uintptr_t(entity)
 	__offset := C.int32_t(offset)
@@ -388,7 +388,7 @@ func GetEntDataEnt2(entity uintptr, offset int32) int32 {
 //  @param offset: The offset of the schema to use.
 //  @param value: The entity handle to set.
 //  @param changeState: If true, change will be sent over the network.
-//  @param chainOffset: The offset of the chain entity in the class (-1 for non-entity classes).
+//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntDataEnt2(entity uintptr, offset int32, value int32, changeState bool, chainOffset int32) {
 	__entity := C.uintptr_t(entity)
 	__offset := C.int32_t(offset)
@@ -403,7 +403,7 @@ func SetEntDataEnt2(entity uintptr, offset int32, value int32, changeState bool,
 //
 //  @param entity: Pointer to the instance of the class where the value is to be set.
 //  @param offset: The offset of the schema to use.
-//  @param chainOffset: The offset of the chain entity in the class (-1 for non-entity classes).
+//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func ChangeEntityState2(entity uintptr, offset int32, chainOffset int32) {
 	__entity := C.uintptr_t(entity)
 	__offset := C.int32_t(offset)
@@ -436,7 +436,7 @@ func GetEntData(entityHandle int32, offset int32, size int32) int64 {
 //  @param value: The integer value to set.
 //  @param size: Number of bytes to write (valid values are 1, 2, 4 or 8).
 //  @param changeState: If true, change will be sent over the network.
-//  @param chainOffset: The offset of the chain entity in the class (-1 for non-entity classes).
+//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntData(entityHandle int32, offset int32, value int64, size int32, changeState bool, chainOffset int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__offset := C.int32_t(offset)
@@ -472,7 +472,7 @@ func GetEntDataFloat(entityHandle int32, offset int32, size int32) float64 {
 //  @param value: The float value to set.
 //  @param size: Number of bytes to write (valid values are 1, 2, 4 or 8).
 //  @param changeState: If true, change will be sent over the network.
-//  @param chainOffset: The offset of the chain entity in the class (-1 for non-entity classes).
+//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntDataFloat(entityHandle int32, offset int32, value float64, size int32, changeState bool, chainOffset int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__offset := C.int32_t(offset)
@@ -506,7 +506,7 @@ func GetEntDataColor(entityHandle int32, offset int32) plugify.Vector4 {
 //  @param offset: The offset of the schema to use.
 //  @param value: The color value to set.
 //  @param changeState: If true, change will be sent over the network.
-//  @param chainOffset: The offset of the chain entity in the class (-1 for non-entity classes).
+//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntDataColor(entityHandle int32, offset int32, value plugify.Vector4, changeState bool, chainOffset int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__offset := C.int32_t(offset)
@@ -550,7 +550,7 @@ func GetEntDataString(entityHandle int32, offset int32) string {
 //  @param offset: The offset of the schema to use.
 //  @param value: The string value to set.
 //  @param changeState: If true, change will be sent over the network.
-//  @param chainOffset: The offset of the chain entity in the class (-1 for non-entity classes).
+//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntDataString(entityHandle int32, offset int32, value string, changeState bool, chainOffset int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__offset := C.int32_t(offset)
@@ -591,7 +591,7 @@ func GetEntDataVector(entityHandle int32, offset int32) plugify.Vector3 {
 //  @param offset: The offset of the schema to use.
 //  @param value: The vector value to set.
 //  @param changeState: If true, change will be sent over the network.
-//  @param chainOffset: The offset of the chain entity in the class (-1 for non-entity classes).
+//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntDataVector(entityHandle int32, offset int32, value plugify.Vector3, changeState bool, chainOffset int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__offset := C.int32_t(offset)
@@ -623,7 +623,7 @@ func GetEntDataEnt(entityHandle int32, offset int32) int32 {
 //  @param offset: The offset of the schema to use.
 //  @param value: The entity handle to set.
 //  @param changeState: If true, change will be sent over the network.
-//  @param chainOffset: The offset of the chain entity in the class (-1 for non-entity classes).
+//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntDataEnt(entityHandle int32, offset int32, value int32, changeState bool, chainOffset int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__offset := C.int32_t(offset)
@@ -638,7 +638,7 @@ func SetEntDataEnt(entityHandle int32, offset int32, value int32, changeState bo
 //
 //  @param entityHandle: The handle of the entity from which the value is to be retrieved.
 //  @param offset: The offset of the schema to use.
-//  @param chainOffset: The offset of the chain entity in the class (-1 for non-entity classes).
+//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func ChangeEntityState(entityHandle int32, offset int32, chainOffset int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__offset := C.int32_t(offset)
