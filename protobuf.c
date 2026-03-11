@@ -51,6 +51,9 @@ PLUGIFY_EXPORT void (*__s2sdk_UserMessageAddAllPlayers)(uintptr_t) = NULL;
 PLUGIFY_EXPORT void (*__s2sdk_UserMessageSetRecipientMask)(uintptr_t, uint64_t) = NULL;
 
 
+PLUGIFY_EXPORT void (*__s2sdk_UserMessageRemoveAllRecipient)(uintptr_t) = NULL;
+
+
 PLUGIFY_EXPORT int32_t (*__s2sdk_UserMessageGetRepeatedFieldCount)(uintptr_t, String*) = NULL;
 
 

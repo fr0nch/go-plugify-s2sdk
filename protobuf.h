@@ -104,6 +104,12 @@ static void UserMessageSetRecipientMask(uintptr_t userMessage, uint64_t mask) {
 	__s2sdk_UserMessageSetRecipientMask(userMessage, mask);
 }
 
+extern void (*__s2sdk_UserMessageRemoveAllRecipient)(uintptr_t);
+
+static void UserMessageRemoveAllRecipient(uintptr_t userMessage) {
+	__s2sdk_UserMessageRemoveAllRecipient(userMessage);
+}
+
 extern int32_t (*__s2sdk_UserMessageGetRepeatedFieldCount)(uintptr_t, String*);
 
 static int32_t UserMessageGetRepeatedFieldCount(uintptr_t userMessage, String* fieldName) {

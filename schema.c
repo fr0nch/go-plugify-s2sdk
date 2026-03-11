@@ -141,6 +141,12 @@ PLUGIFY_EXPORT int32_t (*__s2sdk_GetEntSchemaEnt2)(uintptr_t, String*, String*, 
 PLUGIFY_EXPORT void (*__s2sdk_SetEntSchemaEnt2)(uintptr_t, String*, String*, int32_t, bool, int32_t) = NULL;
 
 
+PLUGIFY_EXPORT void (*__s2sdk_PushEntSchemaEnt2)(uintptr_t, String*, String*, int32_t, bool) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_EraseEntSchemaEnt2)(uintptr_t, String*, String*, int32_t, bool) = NULL;
+
+
 PLUGIFY_EXPORT void (*__s2sdk_NetworkStateChanged2)(uintptr_t, String*, String*) = NULL;
 
 
@@ -193,6 +199,12 @@ PLUGIFY_EXPORT int32_t (*__s2sdk_GetEntSchemaEnt)(int32_t, String*, String*, int
 
 
 PLUGIFY_EXPORT void (*__s2sdk_SetEntSchemaEnt)(int32_t, String*, String*, int32_t, bool, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_PushEntSchemaEnt)(int32_t, String*, String*, int32_t, bool) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_EraseEntSchemaEnt)(int32_t, String*, String*, int32_t, bool) = NULL;
 
 
 PLUGIFY_EXPORT void (*__s2sdk_NetworkStateChanged)(int32_t, String*, String*) = NULL;

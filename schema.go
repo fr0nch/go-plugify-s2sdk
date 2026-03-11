@@ -49,6 +49,8 @@ package s2sdk
 #cgo noescape SetEntSchemaVector4D2
 #cgo noescape GetEntSchemaEnt2
 #cgo noescape SetEntSchemaEnt2
+#cgo noescape PushEntSchemaEnt2
+#cgo noescape EraseEntSchemaEnt2
 #cgo noescape NetworkStateChanged2
 #cgo noescape GetEntSchemaArraySize
 #cgo noescape GetEntSchema
@@ -67,6 +69,8 @@ package s2sdk
 #cgo noescape SetEntSchemaVector4D
 #cgo noescape GetEntSchemaEnt
 #cgo noescape SetEntSchemaEnt
+#cgo noescape PushEntSchemaEnt
+#cgo noescape EraseEntSchemaEnt
 #cgo noescape NetworkStateChanged
 */
 import "C"
@@ -1130,6 +1134,58 @@ func SetEntSchemaEnt2(entity uintptr, className string, memberName string, value
 	}.Do()
 }
 
+// PushEntSchemaEnt2 
+//  @brief Pushes an entity handle into an entity's schema collection.
+//
+//  @param entity: Pointer to the instance of the class where the value is to be pushed.
+//  @param className: The name of the class.
+//  @param memberName: The name of the schema member.
+//  @param value: The entity handle to push.
+//  @param changeState: If true, change will be sent over the network.
+func PushEntSchemaEnt2(entity uintptr, className string, memberName string, value int32, changeState bool) {
+	__entity := C.uintptr_t(entity)
+	__className := plugify.ConstructString(className)
+	__memberName := plugify.ConstructString(memberName)
+	__value := C.int32_t(value)
+	__changeState := C.bool(changeState)
+	plugify.Block {
+		Try: func() {
+			C.PushEntSchemaEnt2(__entity, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)), __value, __changeState)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__className)
+			plugify.DestroyString(&__memberName)
+		},
+	}.Do()
+}
+
+// EraseEntSchemaEnt2 
+//  @brief Erases an entity handle from an entity's schema collection by index.
+//
+//  @param entity: Pointer to the instance of the class where the value is to be erased.
+//  @param className: The name of the class.
+//  @param memberName: The name of the schema member.
+//  @param element: Element index to erase (starting from 0).
+//  @param changeState: If true, change will be sent over the network.
+func EraseEntSchemaEnt2(entity uintptr, className string, memberName string, element int32, changeState bool) {
+	__entity := C.uintptr_t(entity)
+	__className := plugify.ConstructString(className)
+	__memberName := plugify.ConstructString(memberName)
+	__element := C.int32_t(element)
+	__changeState := C.bool(changeState)
+	plugify.Block {
+		Try: func() {
+			C.EraseEntSchemaEnt2(__entity, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)), __element, __changeState)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__className)
+			plugify.DestroyString(&__memberName)
+		},
+	}.Do()
+}
+
 // NetworkStateChanged2 
 //  @brief Updates the networked state of a schema field for a given entity pointer.
 //
@@ -1627,6 +1683,58 @@ func SetEntSchemaEnt(entityHandle int32, className string, memberName string, va
 	plugify.Block {
 		Try: func() {
 			C.SetEntSchemaEnt(__entityHandle, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)), __value, __changeState, __element)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__className)
+			plugify.DestroyString(&__memberName)
+		},
+	}.Do()
+}
+
+// PushEntSchemaEnt 
+//  @brief Pushes an entity handle into an entity's schema collection.
+//
+//  @param entityHandle: The handle of the entity whose schema collection is modified.
+//  @param className: The name of the class.
+//  @param memberName: The name of the schema member.
+//  @param value: The entity handle to push.
+//  @param changeState: If true, change will be sent over the network.
+func PushEntSchemaEnt(entityHandle int32, className string, memberName string, value int32, changeState bool) {
+	__entityHandle := C.int32_t(entityHandle)
+	__className := plugify.ConstructString(className)
+	__memberName := plugify.ConstructString(memberName)
+	__value := C.int32_t(value)
+	__changeState := C.bool(changeState)
+	plugify.Block {
+		Try: func() {
+			C.PushEntSchemaEnt(__entityHandle, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)), __value, __changeState)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__className)
+			plugify.DestroyString(&__memberName)
+		},
+	}.Do()
+}
+
+// EraseEntSchemaEnt 
+//  @brief Erases an entity handle from an entity's schema collection by index.
+//
+//  @param entityHandle: The handle of the entity whose schema collection is modified.
+//  @param className: The name of the class.
+//  @param memberName: The name of the schema member.
+//  @param element: Element index to erase (starting from 0).
+//  @param changeState: If true, change will be sent over the network.
+func EraseEntSchemaEnt(entityHandle int32, className string, memberName string, element int32, changeState bool) {
+	__entityHandle := C.int32_t(entityHandle)
+	__className := plugify.ConstructString(className)
+	__memberName := plugify.ConstructString(memberName)
+	__element := C.int32_t(element)
+	__changeState := C.bool(changeState)
+	plugify.Block {
+		Try: func() {
+			C.EraseEntSchemaEnt(__entityHandle, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)), __element, __changeState)
 		},
 		Finally: func() {
 			// Perform cleanup.

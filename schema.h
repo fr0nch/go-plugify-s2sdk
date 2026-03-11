@@ -284,6 +284,18 @@ static void SetEntSchemaEnt2(uintptr_t entity, String* className, String* member
 	__s2sdk_SetEntSchemaEnt2(entity, className, memberName, value, changeState, element);
 }
 
+extern void (*__s2sdk_PushEntSchemaEnt2)(uintptr_t, String*, String*, int32_t, bool);
+
+static void PushEntSchemaEnt2(uintptr_t entity, String* className, String* memberName, int32_t value, bool changeState) {
+	__s2sdk_PushEntSchemaEnt2(entity, className, memberName, value, changeState);
+}
+
+extern void (*__s2sdk_EraseEntSchemaEnt2)(uintptr_t, String*, String*, int32_t, bool);
+
+static void EraseEntSchemaEnt2(uintptr_t entity, String* className, String* memberName, int32_t element, bool changeState) {
+	__s2sdk_EraseEntSchemaEnt2(entity, className, memberName, element, changeState);
+}
+
 extern void (*__s2sdk_NetworkStateChanged2)(uintptr_t, String*, String*);
 
 static void NetworkStateChanged2(uintptr_t entity, String* className, String* memberName) {
@@ -390,6 +402,18 @@ extern void (*__s2sdk_SetEntSchemaEnt)(int32_t, String*, String*, int32_t, bool,
 
 static void SetEntSchemaEnt(int32_t entityHandle, String* className, String* memberName, int32_t value, bool changeState, int32_t element) {
 	__s2sdk_SetEntSchemaEnt(entityHandle, className, memberName, value, changeState, element);
+}
+
+extern void (*__s2sdk_PushEntSchemaEnt)(int32_t, String*, String*, int32_t, bool);
+
+static void PushEntSchemaEnt(int32_t entityHandle, String* className, String* memberName, int32_t value, bool changeState) {
+	__s2sdk_PushEntSchemaEnt(entityHandle, className, memberName, value, changeState);
+}
+
+extern void (*__s2sdk_EraseEntSchemaEnt)(int32_t, String*, String*, int32_t, bool);
+
+static void EraseEntSchemaEnt(int32_t entityHandle, String* className, String* memberName, int32_t element, bool changeState) {
+	__s2sdk_EraseEntSchemaEnt(entityHandle, className, memberName, element, changeState);
 }
 
 extern void (*__s2sdk_NetworkStateChanged)(int32_t, String*, String*);
