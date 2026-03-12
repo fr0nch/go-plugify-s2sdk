@@ -92,7 +92,7 @@ jobs:
       - name: Generate Bindings
         if: steps.current_version.outputs.update_needed == 'true'
         run: |
-          ./plugify-gen -manifest ${{ env.PLUGIN_NAME }}.pplugin.in -output ./ -lang golang
+          ./plugify-gen -manifest ${{ env.PLUGIN_NAME }}.pplugin.in -classes true -output ./ -lang golang
           find . -maxdepth 1 -type f \( -name "*.go" -o -name "*.c" -o -name "*.h" \) -delete
           mv ./${{ env.PLUGIN_SHORT_NAME }}/* ./
           rm -rf plugify-gen ${{ env.PLUGIN_NAME }}.pplugin.in ${{ env.PLUGIN_SHORT_NAME }} aliases.go
