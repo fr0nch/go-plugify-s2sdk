@@ -292,3 +292,177 @@ func GetGameConfigSignatureAll(name string) uintptr {
 	return __retVal
 }
 
+var (
+	GameConfigErrEmptyHandle = errors.New("GameConfig: empty handle")
+)
+
+//  @brief RAII wrapper for GameConfig handle.
+//
+type GameConfig struct {
+	handle    uint32
+	cleanup   runtime.Cleanup
+	ownership ownership
+	noCopy    noCopy
+}
+
+// NewGameConfigLoadGameConfigFile 
+//  @brief Loads a game configuration file.
+//
+//  @param paths: The paths to the game configuration file to be loaded.
+func NewGameConfigLoadGameConfigFile(paths []string) *GameConfig {
+	return NewGameConfigOwned(LoadGameConfigFile(paths))
+}
+
+// NewGameConfigBorrowed creates a GameConfig from a borrowed handle
+func NewGameConfigBorrowed(handle uint32) *GameConfig {
+	if handle == 0 {
+		return &GameConfig{}
+	}
+	return &GameConfig{
+		handle:    handle,
+		ownership: Borrowed,
+	}
+}
+
+// NewGameConfigOwned creates a GameConfig from an owned handle
+func NewGameConfigOwned(handle uint32) *GameConfig {
+	if handle == 0 {
+		return &GameConfig{}
+	}
+	w := &GameConfig{
+		handle:    handle,
+		ownership: Owned,
+	}
+	w.cleanup = runtime.AddCleanup(w, w.finalize, struct{}{})
+	return w
+}
+
+// finalize is the finalizer function (like C++ destructor)
+func (w *GameConfig) finalize(_ struct{}) {
+	if plugify.Plugin.Loaded {
+		w.destroy()
+	}
+}
+
+// destroy cleans up owned handles
+func (w *GameConfig) destroy() {
+	if w.handle != 0 && w.ownership == Owned {
+		CloseGameConfigFile(w.handle)
+	}
+}
+
+// nullify resets the handle
+func (w *GameConfig) nullify() {
+	w.handle = 0
+	w.ownership = Borrowed
+}
+
+// Close explicitly destroys the handle (like C++ destructor, but manual)
+func (w *GameConfig) Close() {
+	w.Reset()
+}
+
+// Get returns the underlying handle
+func (w *GameConfig) Get() uint32 {
+	return w.handle
+}
+
+// Release releases ownership and returns the handle
+func (w *GameConfig) Release() uint32 {
+	if w.ownership == Owned {
+		w.cleanup.Stop()
+	}
+	handle := w.handle
+	w.nullify()
+	return handle
+}
+
+// Reset destroys and resets the handle
+func (w *GameConfig) Reset() {
+	if w.ownership == Owned {
+		w.cleanup.Stop()
+	}
+	w.destroy()
+	w.nullify()
+}
+
+// IsValid returns true if handle is not nil
+func (w *GameConfig) IsValid() bool {
+	return w.handle != 0
+}
+
+// GetPatch 
+//  @brief Retrieves a patch associated with the game configuration.
+//
+//  @param id: An id to the game configuration from which to retrieve the patch.
+//  @param name: The name of the patch to be retrieved.
+//
+//  @return A string where the patch will be stored.
+func (w *GameConfig) GetPatch(name string) (string, error) {
+	if w.handle == 0 {
+		var zero string
+		return zero, GameConfigErrEmptyHandle
+	}
+	return GetGameConfigPatch(w.handle, name), nil
+}
+
+// GetOffset 
+//  @brief Retrieves the offset associated with a name from the game configuration.
+//
+//  @param id: An id to the game configuration from which to retrieve the offset.
+//  @param name: The name whose offset is to be retrieved.
+//
+//  @return The offset associated with the specified name.
+func (w *GameConfig) GetOffset(name string) (int32, error) {
+	if w.handle == 0 {
+		var zero int32
+		return zero, GameConfigErrEmptyHandle
+	}
+	return GetGameConfigOffset(w.handle, name), nil
+}
+
+// GetAddress 
+//  @brief Retrieves the address associated with a name from the game configuration.
+//
+//  @param id: An id to the game configuration from which to retrieve the address.
+//  @param name: The name whose address is to be retrieved.
+//
+//  @return A pointer to the address associated with the specified name.
+func (w *GameConfig) GetAddress(name string) (uintptr, error) {
+	if w.handle == 0 {
+		var zero uintptr
+		return zero, GameConfigErrEmptyHandle
+	}
+	return GetGameConfigAddress(w.handle, name), nil
+}
+
+// GetVTable 
+//  @brief Retrieves a vtable associated with the game configuration.
+//
+//  @param id: An id to the game configuration from which to retrieve the vtable.
+//  @param name: The name of the vtable to be retrieved.
+//
+//  @return A pointer to the vtable associated with the specified name
+func (w *GameConfig) GetVTable(name string) (uintptr, error) {
+	if w.handle == 0 {
+		var zero uintptr
+		return zero, GameConfigErrEmptyHandle
+	}
+	return GetGameConfigVTable(w.handle, name), nil
+}
+
+// GetSignature 
+//  @brief Retrieves the signature associated with a name from the game configuration.
+//
+//  @param id: An id to the game configuration from which to retrieve the signature.
+//  @param name: The name whose signature is to be resolved and retrieved.
+//
+//  @return A pointer to the signature associated with the specified name.
+func (w *GameConfig) GetSignature(name string) (uintptr, error) {
+	if w.handle == 0 {
+		var zero uintptr
+		return zero, GameConfigErrEmptyHandle
+	}
+	return GetGameConfigSignature(w.handle, name), nil
+}
+

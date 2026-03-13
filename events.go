@@ -775,3 +775,482 @@ func LoadEventsFromFile(path string, searchAll bool) int32 {
 	return __retVal
 }
 
+var (
+	EventInfoErrEmptyHandle = errors.New("EventInfo: empty handle")
+)
+
+//  @brief RAII wrapper for EventInfo pointer.
+//
+type EventInfo struct {
+	handle    uintptr
+}
+
+// NewEventInfoCreateEvent 
+//  @brief Creates a game event to be fired later.
+//
+//  @param name: The name of the event to create.
+//  @param force: A boolean indicating whether to force the creation of the event.
+func NewEventInfoCreateEvent(name string, force bool) *EventInfo {
+	return &EventInfo{
+		handle: CreateEvent(name, force),
+	}
+}
+
+// NewEventInfo creates a EventInfo from a handle
+func NewEventInfo(handle uintptr) *EventInfo {
+	return &EventInfo{
+		handle:    handle,
+	}
+}
+
+// Get returns the underlying handle
+func (w *EventInfo) Get() uintptr {
+	return w.handle
+}
+
+// Release releases ownership and returns the handle
+func (w *EventInfo) Release() uintptr {
+	handle := w.handle
+	w.handle = 0
+	return handle
+}
+
+// Reset destroys and resets the handle
+func (w *EventInfo) Reset() {
+	w.handle = 0
+}
+
+// IsValid returns true if handle is not nil
+func (w *EventInfo) IsValid() bool {
+	return w.handle != 0
+}
+
+// Fire 
+//  @brief Fires a game event.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param dontBroadcast: A boolean indicating whether to broadcast the event.
+func (w *EventInfo) Fire(dontBroadcast bool) error {
+	if w.handle == 0 {
+		return EventInfoErrEmptyHandle
+	}
+	FireEvent(w.handle, dontBroadcast)
+	return nil
+}
+
+// FireToClient 
+//  @brief Fires a game event to a specific client.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param playerSlot: The index of the client to fire the event to.
+func (w *EventInfo) FireToClient(playerSlot int32) error {
+	if w.handle == 0 {
+		return EventInfoErrEmptyHandle
+	}
+	FireEventToClient(w.handle, playerSlot)
+	return nil
+}
+
+// Cancel 
+//  @brief Cancels a previously created game event that has not been fired.
+//
+//  @param event: A pointer to the IGameEvent object of the event to cancel.
+func (w *EventInfo) Cancel() error {
+	if w.handle == 0 {
+		return EventInfoErrEmptyHandle
+	}
+	CancelCreatedEvent(w.handle)
+	return nil
+}
+
+// GetBool 
+//  @brief Retrieves the boolean value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param key: The key for which to retrieve the boolean value.
+//
+//  @return The boolean value associated with the key.
+func (w *EventInfo) GetBool(key string) (bool, error) {
+	if w.handle == 0 {
+		var zero bool
+		return zero, EventInfoErrEmptyHandle
+	}
+	return GetEventBool(w.handle, key), nil
+}
+
+// GetFloat 
+//  @brief Retrieves the float value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param key: The key for which to retrieve the float value.
+//
+//  @return The float value associated with the key.
+func (w *EventInfo) GetFloat(key string) (float32, error) {
+	if w.handle == 0 {
+		var zero float32
+		return zero, EventInfoErrEmptyHandle
+	}
+	return GetEventFloat(w.handle, key), nil
+}
+
+// GetInt 
+//  @brief Retrieves the integer value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param key: The key for which to retrieve the integer value.
+//
+//  @return The integer value associated with the key.
+func (w *EventInfo) GetInt(key string) (int32, error) {
+	if w.handle == 0 {
+		var zero int32
+		return zero, EventInfoErrEmptyHandle
+	}
+	return GetEventInt(w.handle, key), nil
+}
+
+// GetUInt64 
+//  @brief Retrieves the long integer value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param key: The key for which to retrieve the long integer value.
+//
+//  @return The long integer value associated with the key.
+func (w *EventInfo) GetUInt64(key string) (uint64, error) {
+	if w.handle == 0 {
+		var zero uint64
+		return zero, EventInfoErrEmptyHandle
+	}
+	return GetEventUInt64(w.handle, key), nil
+}
+
+// GetString 
+//  @brief Retrieves the string value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param key: The key for which to retrieve the string value.
+//
+//  @return A string where the result will be stored.
+func (w *EventInfo) GetString(key string) (string, error) {
+	if w.handle == 0 {
+		var zero string
+		return zero, EventInfoErrEmptyHandle
+	}
+	return GetEventString(w.handle, key), nil
+}
+
+// GetPtr 
+//  @brief Retrieves the pointer value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param key: The key for which to retrieve the pointer value.
+//
+//  @return The pointer value associated with the key.
+func (w *EventInfo) GetPtr(key string) (uintptr, error) {
+	if w.handle == 0 {
+		var zero uintptr
+		return zero, EventInfoErrEmptyHandle
+	}
+	return GetEventPtr(w.handle, key), nil
+}
+
+// GetPlayerController 
+//  @brief Retrieves the player controller address of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param key: The key for which to retrieve the player controller address.
+//
+//  @return A pointer to the player controller associated with the key.
+func (w *EventInfo) GetPlayerController(key string) (uintptr, error) {
+	if w.handle == 0 {
+		var zero uintptr
+		return zero, EventInfoErrEmptyHandle
+	}
+	return GetEventPlayerController(w.handle, key), nil
+}
+
+// GetPlayerIndex 
+//  @brief Retrieves the player index of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param key: The key for which to retrieve the player index.
+//
+//  @return The player index associated with the key.
+// Deprecated: Use GetEventPlayerSlot instead. Will be removed soon
+func (w *EventInfo) GetPlayerIndex(key string) (int32, error) {
+	if w.handle == 0 {
+		var zero int32
+		return zero, EventInfoErrEmptyHandle
+	}
+	return GetEventPlayerIndex(w.handle, key), nil
+}
+
+// GetPlayerSlot 
+//  @brief Retrieves the player slot of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param key: The key for which to retrieve the player index.
+//
+//  @return The player slot associated with the key.
+func (w *EventInfo) GetPlayerSlot(key string) (int32, error) {
+	if w.handle == 0 {
+		var zero int32
+		return zero, EventInfoErrEmptyHandle
+	}
+	return GetEventPlayerSlot(w.handle, key), nil
+}
+
+// GetPlayerPawn 
+//  @brief Retrieves the player pawn address of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param key: The key for which to retrieve the player pawn address.
+//
+//  @return A pointer to the player pawn associated with the key.
+func (w *EventInfo) GetPlayerPawn(key string) (uintptr, error) {
+	if w.handle == 0 {
+		var zero uintptr
+		return zero, EventInfoErrEmptyHandle
+	}
+	return GetEventPlayerPawn(w.handle, key), nil
+}
+
+// GetEntity 
+//  @brief Retrieves the entity address of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param key: The key for which to retrieve the entity address.
+//
+//  @return A pointer to the entity associated with the key.
+func (w *EventInfo) GetEntity(key string) (uintptr, error) {
+	if w.handle == 0 {
+		var zero uintptr
+		return zero, EventInfoErrEmptyHandle
+	}
+	return GetEventEntity(w.handle, key), nil
+}
+
+// GetEntityIndex 
+//  @brief Retrieves the entity index of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param key: The key for which to retrieve the entity index.
+//
+//  @return The entity index associated with the key.
+func (w *EventInfo) GetEntityIndex(key string) (int32, error) {
+	if w.handle == 0 {
+		var zero int32
+		return zero, EventInfoErrEmptyHandle
+	}
+	return GetEventEntityIndex(w.handle, key), nil
+}
+
+// GetEntityHandle 
+//  @brief Retrieves the entity handle of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param key: The key for which to retrieve the entity handle.
+//
+//  @return The entity handle associated with the key.
+func (w *EventInfo) GetEntityHandle(key string) (int32, error) {
+	if w.handle == 0 {
+		var zero int32
+		return zero, EventInfoErrEmptyHandle
+	}
+	return GetEventEntityHandle(w.handle, key), nil
+}
+
+// GetName 
+//  @brief Retrieves the name of a game event.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//
+//  @return A string where the result will be stored.
+func (w *EventInfo) GetName() (string, error) {
+	if w.handle == 0 {
+		var zero string
+		return zero, EventInfoErrEmptyHandle
+	}
+	return GetEventName(w.handle), nil
+}
+
+// SetBool 
+//  @brief Sets the boolean value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param key: The key for which to set the boolean value.
+//  @param value: The boolean value to set.
+func (w *EventInfo) SetBool(key string, value bool) error {
+	if w.handle == 0 {
+		return EventInfoErrEmptyHandle
+	}
+	SetEventBool(w.handle, key, value)
+	return nil
+}
+
+// SetFloat 
+//  @brief Sets the floating point value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param key: The key for which to set the float value.
+//  @param value: The float value to set.
+func (w *EventInfo) SetFloat(key string, value float32) error {
+	if w.handle == 0 {
+		return EventInfoErrEmptyHandle
+	}
+	SetEventFloat(w.handle, key, value)
+	return nil
+}
+
+// SetInt 
+//  @brief Sets the integer value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param key: The key for which to set the integer value.
+//  @param value: The integer value to set.
+func (w *EventInfo) SetInt(key string, value int32) error {
+	if w.handle == 0 {
+		return EventInfoErrEmptyHandle
+	}
+	SetEventInt(w.handle, key, value)
+	return nil
+}
+
+// SetUInt64 
+//  @brief Sets the long integer value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param key: The key for which to set the long integer value.
+//  @param value: The long integer value to set.
+func (w *EventInfo) SetUInt64(key string, value uint64) error {
+	if w.handle == 0 {
+		return EventInfoErrEmptyHandle
+	}
+	SetEventUInt64(w.handle, key, value)
+	return nil
+}
+
+// SetString 
+//  @brief Sets the string value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param key: The key for which to set the string value.
+//  @param value: The string value to set.
+func (w *EventInfo) SetString(key string, value string) error {
+	if w.handle == 0 {
+		return EventInfoErrEmptyHandle
+	}
+	SetEventString(w.handle, key, value)
+	return nil
+}
+
+// SetPtr 
+//  @brief Sets the pointer value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param key: The key for which to set the pointer value.
+//  @param value: The pointer value to set.
+func (w *EventInfo) SetPtr(key string, value uintptr) error {
+	if w.handle == 0 {
+		return EventInfoErrEmptyHandle
+	}
+	SetEventPtr(w.handle, key, value)
+	return nil
+}
+
+// SetPlayerController 
+//  @brief Sets the player controller address of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param key: The key for which to set the player controller address.
+//  @param value: A pointer to the player controller to set.
+func (w *EventInfo) SetPlayerController(key string, value uintptr) error {
+	if w.handle == 0 {
+		return EventInfoErrEmptyHandle
+	}
+	SetEventPlayerController(w.handle, key, value)
+	return nil
+}
+
+// SetPlayerIndex 
+//  @brief Sets the player index value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param key: The key for which to set the player index value.
+//  @param value: The player index value to set.
+func (w *EventInfo) SetPlayerIndex(key string, value int32) error {
+	if w.handle == 0 {
+		return EventInfoErrEmptyHandle
+	}
+	SetEventPlayerIndex(w.handle, key, value)
+	return nil
+}
+
+// SetPlayerSlot 
+//  @brief Sets the player slot value of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param key: The key for which to set the player slot value.
+//  @param value: The player slot value to set.
+func (w *EventInfo) SetPlayerSlot(key string, value int32) error {
+	if w.handle == 0 {
+		return EventInfoErrEmptyHandle
+	}
+	SetEventPlayerSlot(w.handle, key, value)
+	return nil
+}
+
+// SetEntity 
+//  @brief Sets the entity address of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param key: The key for which to set the entity address.
+//  @param value: A pointer to the entity to set.
+func (w *EventInfo) SetEntity(key string, value uintptr) error {
+	if w.handle == 0 {
+		return EventInfoErrEmptyHandle
+	}
+	SetEventEntity(w.handle, key, value)
+	return nil
+}
+
+// SetEntityIndex 
+//  @brief Sets the entity index of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param key: The key for which to set the entity index.
+//  @param value: The entity index value to set.
+func (w *EventInfo) SetEntityIndex(key string, value int32) error {
+	if w.handle == 0 {
+		return EventInfoErrEmptyHandle
+	}
+	SetEventEntityIndex(w.handle, key, value)
+	return nil
+}
+
+// SetEntityHandle 
+//  @brief Sets the entity handle of a game event's key.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param key: The key for which to set the entity handle.
+//  @param value: The entity handle value to set.
+func (w *EventInfo) SetEntityHandle(key string, value int32) error {
+	if w.handle == 0 {
+		return EventInfoErrEmptyHandle
+	}
+	SetEventEntityHandle(w.handle, key, value)
+	return nil
+}
+
+// SetBroadcast 
+//  @brief Sets whether an event's broadcasting will be disabled or not.
+//
+//  @param event: A pointer to the IGameEvent object containing event data.
+//  @param dontBroadcast: A boolean indicating whether to disable broadcasting.
+func (w *EventInfo) SetBroadcast(dontBroadcast bool) error {
+	if w.handle == 0 {
+		return EventInfoErrEmptyHandle
+	}
+	SetEventBroadcast(w.handle, dontBroadcast)
+	return nil
+}
+
