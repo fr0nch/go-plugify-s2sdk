@@ -74,16 +74,52 @@ static void SetEntDataString2(uintptr_t entity, int32_t offset, String* value, b
 	__s2sdk_SetEntDataString2(entity, offset, value, changeState, chainOffset);
 }
 
-extern Vector3 (*__s2sdk_GetEntDataVector2)(uintptr_t, int32_t);
+extern String (*__s2sdk_GetEntDataCString2)(uintptr_t, int32_t, int32_t);
 
-static Vector3 GetEntDataVector2(uintptr_t entity, int32_t offset) {
-	return __s2sdk_GetEntDataVector2(entity, offset);
+static String GetEntDataCString2(uintptr_t entity, int32_t offset, int32_t size) {
+	return __s2sdk_GetEntDataCString2(entity, offset, size);
 }
 
-extern void (*__s2sdk_SetEntDataVector2)(uintptr_t, int32_t, Vector3*, bool, int32_t);
+extern void (*__s2sdk_SetEntDataCString2)(uintptr_t, int32_t, String*, int32_t, bool, int32_t);
 
-static void SetEntDataVector2(uintptr_t entity, int32_t offset, Vector3* value, bool changeState, int32_t chainOffset) {
-	__s2sdk_SetEntDataVector2(entity, offset, value, changeState, chainOffset);
+static void SetEntDataCString2(uintptr_t entity, int32_t offset, String* value, int32_t size, bool changeState, int32_t chainOffset) {
+	__s2sdk_SetEntDataCString2(entity, offset, value, size, changeState, chainOffset);
+}
+
+extern Vector3 (*__s2sdk_GetEntDataVector3D2)(uintptr_t, int32_t);
+
+static Vector3 GetEntDataVector3D2(uintptr_t entity, int32_t offset) {
+	return __s2sdk_GetEntDataVector3D2(entity, offset);
+}
+
+extern void (*__s2sdk_SetEntDataVector3D2)(uintptr_t, int32_t, Vector3*, bool, int32_t);
+
+static void SetEntDataVector3D2(uintptr_t entity, int32_t offset, Vector3* value, bool changeState, int32_t chainOffset) {
+	__s2sdk_SetEntDataVector3D2(entity, offset, value, changeState, chainOffset);
+}
+
+extern Vector4 (*__s2sdk_GetEntDataVector4D2)(uintptr_t, int32_t);
+
+static Vector4 GetEntDataVector4D2(uintptr_t entity, int32_t offset) {
+	return __s2sdk_GetEntDataVector4D2(entity, offset);
+}
+
+extern void (*__s2sdk_SetEntDataVector4D2)(uintptr_t, int32_t, Vector4*, bool, int32_t);
+
+static void SetEntDataVector4D2(uintptr_t entity, int32_t offset, Vector4* value, bool changeState, int32_t chainOffset) {
+	__s2sdk_SetEntDataVector4D2(entity, offset, value, changeState, chainOffset);
+}
+
+extern Vector2 (*__s2sdk_GetEntDataVector2D2)(uintptr_t, int32_t);
+
+static Vector2 GetEntDataVector2D2(uintptr_t entity, int32_t offset) {
+	return __s2sdk_GetEntDataVector2D2(entity, offset);
+}
+
+extern void (*__s2sdk_SetEntDataVector2D2)(uintptr_t, int32_t, Vector2*, bool, int32_t);
+
+static void SetEntDataVector2D2(uintptr_t entity, int32_t offset, Vector2* value, bool changeState, int32_t chainOffset) {
+	__s2sdk_SetEntDataVector2D2(entity, offset, value, changeState, chainOffset);
 }
 
 extern int32_t (*__s2sdk_GetEntDataEnt2)(uintptr_t, int32_t);
@@ -152,16 +188,52 @@ static void SetEntDataString(int32_t entityHandle, int32_t offset, String* value
 	__s2sdk_SetEntDataString(entityHandle, offset, value, changeState, chainOffset);
 }
 
-extern Vector3 (*__s2sdk_GetEntDataVector)(int32_t, int32_t);
+extern String (*__s2sdk_GetEntDataCString)(int32_t, int32_t, int32_t);
 
-static Vector3 GetEntDataVector(int32_t entityHandle, int32_t offset) {
-	return __s2sdk_GetEntDataVector(entityHandle, offset);
+static String GetEntDataCString(int32_t entityHandle, int32_t offset, int32_t size) {
+	return __s2sdk_GetEntDataCString(entityHandle, offset, size);
 }
 
-extern void (*__s2sdk_SetEntDataVector)(int32_t, int32_t, Vector3*, bool, int32_t);
+extern void (*__s2sdk_SetEntDataCString)(int32_t, int32_t, String*, int32_t, bool, int32_t);
 
-static void SetEntDataVector(int32_t entityHandle, int32_t offset, Vector3* value, bool changeState, int32_t chainOffset) {
-	__s2sdk_SetEntDataVector(entityHandle, offset, value, changeState, chainOffset);
+static void SetEntDataCString(int32_t entityHandle, int32_t offset, String* value, int32_t size, bool changeState, int32_t chainOffset) {
+	__s2sdk_SetEntDataCString(entityHandle, offset, value, size, changeState, chainOffset);
+}
+
+extern Vector3 (*__s2sdk_GetEntDataVector3D)(int32_t, int32_t);
+
+static Vector3 GetEntDataVector3D(int32_t entityHandle, int32_t offset) {
+	return __s2sdk_GetEntDataVector3D(entityHandle, offset);
+}
+
+extern void (*__s2sdk_SetEntDataVector3D)(int32_t, int32_t, Vector3*, bool, int32_t);
+
+static void SetEntDataVector3D(int32_t entityHandle, int32_t offset, Vector3* value, bool changeState, int32_t chainOffset) {
+	__s2sdk_SetEntDataVector3D(entityHandle, offset, value, changeState, chainOffset);
+}
+
+extern Vector4 (*__s2sdk_GetEntDataVector4D)(int32_t, int32_t);
+
+static Vector4 GetEntDataVector4D(int32_t entityHandle, int32_t offset) {
+	return __s2sdk_GetEntDataVector4D(entityHandle, offset);
+}
+
+extern void (*__s2sdk_SetEntDataVector4D)(int32_t, int32_t, Vector4*, bool, int32_t);
+
+static void SetEntDataVector4D(int32_t entityHandle, int32_t offset, Vector4* value, bool changeState, int32_t chainOffset) {
+	__s2sdk_SetEntDataVector4D(entityHandle, offset, value, changeState, chainOffset);
+}
+
+extern Vector2 (*__s2sdk_GetEntDataVector2D)(int32_t, int32_t);
+
+static Vector2 GetEntDataVector2D(int32_t entityHandle, int32_t offset) {
+	return __s2sdk_GetEntDataVector2D(entityHandle, offset);
+}
+
+extern void (*__s2sdk_SetEntDataVector2D)(int32_t, int32_t, Vector2*, bool, int32_t);
+
+static void SetEntDataVector2D(int32_t entityHandle, int32_t offset, Vector2* value, bool changeState, int32_t chainOffset) {
+	__s2sdk_SetEntDataVector2D(entityHandle, offset, value, changeState, chainOffset);
 }
 
 extern int32_t (*__s2sdk_GetEntDataEnt)(int32_t, int32_t);
