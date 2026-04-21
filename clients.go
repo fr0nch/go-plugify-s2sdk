@@ -294,7 +294,7 @@ func GetClientAccountId(playerSlot int32) uint32 {
 }
 
 // GetClientSteamID64 
-//  @brief Returns the client's SteamID64 â€” a unique 64-bit identifier of a Steam account.
+//  @brief Returns the client's SteamID64 - a unique 64-bit identifier of a Steam account.
 //
 //  @param playerSlot: The index of the player's slot.
 //

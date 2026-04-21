@@ -333,14 +333,14 @@ func NewGameConfigOwned(handle uint32) *GameConfig {
 		handle:    handle,
 		ownership: Owned,
 	}
-	w.cleanup = runtime.AddCleanup(w, w.finalize, struct{}{})
+	w.cleanup = runtime.AddCleanup(w, destroyGameConfigHandle, handle)
 	return w
 }
 
-// finalize is the finalizer function (like C++ destructor)
-func (w *GameConfig) finalize(_ struct{}) {
-	if plugify.Plugin.Loaded {
-		w.destroy()
+// destroyGameConfigHandle destroys an owned handle.
+func destroyGameConfigHandle(handle uint32) {
+	if plugify.Plugin.Loaded && handle != 0 {
+		CloseGameConfigFile(handle)
 	}
 }
 
@@ -369,7 +369,7 @@ func (w *GameConfig) Get() uint32 {
 
 // Release releases ownership and returns the handle
 func (w *GameConfig) Release() uint32 {
-	if w.ownership == Owned {
+	if w.ownership == Owned && w.handle != 0 {
 		w.cleanup.Stop()
 	}
 	handle := w.handle
@@ -379,7 +379,7 @@ func (w *GameConfig) Release() uint32 {
 
 // Reset destroys and resets the handle
 func (w *GameConfig) Reset() {
-	if w.ownership == Owned {
+	if w.ownership == Owned && w.handle != 0 {
 		w.cleanup.Stop()
 	}
 	w.destroy()

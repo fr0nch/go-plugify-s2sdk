@@ -3669,14 +3669,14 @@ func NewKeyValues3Owned(handle uintptr) *KeyValues3 {
 		handle:    handle,
 		ownership: Owned,
 	}
-	w.cleanup = runtime.AddCleanup(w, w.finalize, struct{}{})
+	w.cleanup = runtime.AddCleanup(w, destroyKeyValues3Handle, handle)
 	return w
 }
 
-// finalize is the finalizer function (like C++ destructor)
-func (w *KeyValues3) finalize(_ struct{}) {
-	if plugify.Plugin.Loaded {
-		w.destroy()
+// destroyKeyValues3Handle destroys an owned handle.
+func destroyKeyValues3Handle(handle uintptr) {
+	if plugify.Plugin.Loaded && handle != 0 {
+		Kv3Destroy(handle)
 	}
 }
 
@@ -3705,7 +3705,7 @@ func (w *KeyValues3) Get() uintptr {
 
 // Release releases ownership and returns the handle
 func (w *KeyValues3) Release() uintptr {
-	if w.ownership == Owned {
+	if w.ownership == Owned && w.handle != 0 {
 		w.cleanup.Stop()
 	}
 	handle := w.handle
@@ -3715,7 +3715,7 @@ func (w *KeyValues3) Release() uintptr {
 
 // Reset destroys and resets the handle
 func (w *KeyValues3) Reset() {
-	if w.ownership == Owned {
+	if w.ownership == Owned && w.handle != 0 {
 		w.cleanup.Stop()
 	}
 	w.destroy()

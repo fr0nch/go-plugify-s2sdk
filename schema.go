@@ -108,7 +108,7 @@ var _ = plugify.Plugin.Loaded
 //  @param className: The name of the class.
 //  @param memberName: The name of the member whose offset is to be retrieved.
 //
-//  @return The offset of the member in the class.
+//  @return The offset of the member in the class, or -1 if the offset is not found.
 func GetSchemaOffset(className string, memberName string) int32 {
 	var __retVal int32
 	__className := plugify.ConstructString(className)
@@ -131,7 +131,7 @@ func GetSchemaOffset(className string, memberName string) int32 {
 //
 //  @param className: The name of the class.
 //
-//  @return The offset of the chain entity in the class (-2 for non-entity classes).
+//  @return The offset of the chain entity in the class, or -1 if the offset is not found.
 func GetSchemaChainOffset(className string) int32 {
 	var __retVal int32
 	__className := plugify.ConstructString(className)

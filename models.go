@@ -288,7 +288,7 @@ func SetEntityModelScale(entityHandle int32, scale float32) {
 //  @brief Sets the render alpha of an entity.
 //
 //  @param entityHandle: The handle of the entity.
-//  @param alpha: The new alpha value (0â€“255).
+//  @param alpha: The new alpha value (0-255).
 func SetEntityRenderAlpha(entityHandle int32, alpha int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__alpha := C.int32_t(alpha)
@@ -299,9 +299,9 @@ func SetEntityRenderAlpha(entityHandle int32, alpha int32) {
 //  @brief Sets the render color of an entity.
 //
 //  @param entityHandle: The handle of the entity.
-//  @param r: The red component (0â€“255).
-//  @param g: The green component (0â€“255).
-//  @param b: The blue component (0â€“255).
+//  @param r: The red component (0-255).
+//  @param g: The green component (0-255).
+//  @param b: The blue component (0-255).
 func SetEntityRenderColor2(entityHandle int32, r int32, g int32, b int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__r := C.int32_t(r)

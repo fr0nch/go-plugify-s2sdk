@@ -2912,14 +2912,14 @@ func NewUserMessageOwned(handle uintptr) *UserMessage {
 		handle:    handle,
 		ownership: Owned,
 	}
-	w.cleanup = runtime.AddCleanup(w, w.finalize, struct{}{})
+	w.cleanup = runtime.AddCleanup(w, destroyUserMessageHandle, handle)
 	return w
 }
 
-// finalize is the finalizer function (like C++ destructor)
-func (w *UserMessage) finalize(_ struct{}) {
-	if plugify.Plugin.Loaded {
-		w.destroy()
+// destroyUserMessageHandle destroys an owned handle.
+func destroyUserMessageHandle(handle uintptr) {
+	if plugify.Plugin.Loaded && handle != 0 {
+		UserMessageDestroy(handle)
 	}
 }
 
@@ -2948,7 +2948,7 @@ func (w *UserMessage) Get() uintptr {
 
 // Release releases ownership and returns the handle
 func (w *UserMessage) Release() uintptr {
-	if w.ownership == Owned {
+	if w.ownership == Owned && w.handle != 0 {
 		w.cleanup.Stop()
 	}
 	handle := w.handle
@@ -2958,7 +2958,7 @@ func (w *UserMessage) Release() uintptr {
 
 // Reset destroys and resets the handle
 func (w *UserMessage) Reset() {
-	if w.ownership == Owned {
+	if w.ownership == Owned && w.handle != 0 {
 		w.cleanup.Stop()
 	}
 	w.destroy()
