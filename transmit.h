@@ -62,34 +62,64 @@ static void ClearTransmitInfoNonPlayerAll(uintptr_t info) {
 	__s2sdk_ClearTransmitInfoNonPlayerAll(info);
 }
 
-extern void (*__s2sdk_SetTransmitInfoAlways)(uintptr_t, int32_t);
+extern void (*__s2sdk_SetTransmitInfoOutOfPVS)(uintptr_t, int32_t);
 
-static void SetTransmitInfoAlways(uintptr_t info, int32_t entityHandle) {
-	__s2sdk_SetTransmitInfoAlways(info, entityHandle);
+static void SetTransmitInfoOutOfPVS(uintptr_t info, int32_t entityHandle) {
+	__s2sdk_SetTransmitInfoOutOfPVS(info, entityHandle);
 }
 
-extern void (*__s2sdk_ClearTransmitInfoAlways)(uintptr_t, int32_t);
+extern void (*__s2sdk_ClearTransmitInfoOutOfPVS)(uintptr_t, int32_t);
 
-static void ClearTransmitInfoAlways(uintptr_t info, int32_t entityHandle) {
-	__s2sdk_ClearTransmitInfoAlways(info, entityHandle);
+static void ClearTransmitInfoOutOfPVS(uintptr_t info, int32_t entityHandle) {
+	__s2sdk_ClearTransmitInfoOutOfPVS(info, entityHandle);
 }
 
-extern bool (*__s2sdk_IsTransmitInfoAlwaysSet)(uintptr_t, int32_t);
+extern bool (*__s2sdk_IsTransmitInfoOutOfPVSSet)(uintptr_t, int32_t);
 
-static bool IsTransmitInfoAlwaysSet(uintptr_t info, int32_t entityHandle) {
-	return __s2sdk_IsTransmitInfoAlwaysSet(info, entityHandle);
+static bool IsTransmitInfoOutOfPVSSet(uintptr_t info, int32_t entityHandle) {
+	return __s2sdk_IsTransmitInfoOutOfPVSSet(info, entityHandle);
 }
 
-extern void (*__s2sdk_SetTransmitInfoAlwaysAll)(uintptr_t);
+extern void (*__s2sdk_SetTransmitInfoOutOfPVSAll)(uintptr_t);
 
-static void SetTransmitInfoAlwaysAll(uintptr_t info) {
-	__s2sdk_SetTransmitInfoAlwaysAll(info);
+static void SetTransmitInfoOutOfPVSAll(uintptr_t info) {
+	__s2sdk_SetTransmitInfoOutOfPVSAll(info);
 }
 
-extern void (*__s2sdk_ClearTransmitInfoAlwaysAll)(uintptr_t);
+extern void (*__s2sdk_ClearTransmitInfoOutOfPVSAll)(uintptr_t);
 
-static void ClearTransmitInfoAlwaysAll(uintptr_t info) {
-	__s2sdk_ClearTransmitInfoAlwaysAll(info);
+static void ClearTransmitInfoOutOfPVSAll(uintptr_t info) {
+	__s2sdk_ClearTransmitInfoOutOfPVSAll(info);
+}
+
+extern void (*__s2sdk_SetTransmitInfoHLTV)(uintptr_t, int32_t);
+
+static void SetTransmitInfoHLTV(uintptr_t info, int32_t entityHandle) {
+	__s2sdk_SetTransmitInfoHLTV(info, entityHandle);
+}
+
+extern void (*__s2sdk_ClearTransmitInfoHLTV)(uintptr_t, int32_t);
+
+static void ClearTransmitInfoHLTV(uintptr_t info, int32_t entityHandle) {
+	__s2sdk_ClearTransmitInfoHLTV(info, entityHandle);
+}
+
+extern bool (*__s2sdk_IsTransmitInfoHLTVSet)(uintptr_t, int32_t);
+
+static bool IsTransmitInfoHLTVSet(uintptr_t info, int32_t entityHandle) {
+	return __s2sdk_IsTransmitInfoHLTVSet(info, entityHandle);
+}
+
+extern void (*__s2sdk_SetTransmitInfoHLTVAll)(uintptr_t);
+
+static void SetTransmitInfoHLTVAll(uintptr_t info) {
+	__s2sdk_SetTransmitInfoHLTVAll(info);
+}
+
+extern void (*__s2sdk_ClearTransmitInfoHLTVAll)(uintptr_t);
+
+static void ClearTransmitInfoHLTVAll(uintptr_t info) {
+	__s2sdk_ClearTransmitInfoHLTVAll(info);
 }
 
 extern int32_t (*__s2sdk_GetTransmitInfoTargetSlotsCount)(uintptr_t);

@@ -30,19 +30,34 @@ PLUGIFY_EXPORT void (*__s2sdk_SetTransmitInfoNonPlayerAll)(uintptr_t) = NULL;
 PLUGIFY_EXPORT void (*__s2sdk_ClearTransmitInfoNonPlayerAll)(uintptr_t) = NULL;
 
 
-PLUGIFY_EXPORT void (*__s2sdk_SetTransmitInfoAlways)(uintptr_t, int32_t) = NULL;
+PLUGIFY_EXPORT void (*__s2sdk_SetTransmitInfoOutOfPVS)(uintptr_t, int32_t) = NULL;
 
 
-PLUGIFY_EXPORT void (*__s2sdk_ClearTransmitInfoAlways)(uintptr_t, int32_t) = NULL;
+PLUGIFY_EXPORT void (*__s2sdk_ClearTransmitInfoOutOfPVS)(uintptr_t, int32_t) = NULL;
 
 
-PLUGIFY_EXPORT bool (*__s2sdk_IsTransmitInfoAlwaysSet)(uintptr_t, int32_t) = NULL;
+PLUGIFY_EXPORT bool (*__s2sdk_IsTransmitInfoOutOfPVSSet)(uintptr_t, int32_t) = NULL;
 
 
-PLUGIFY_EXPORT void (*__s2sdk_SetTransmitInfoAlwaysAll)(uintptr_t) = NULL;
+PLUGIFY_EXPORT void (*__s2sdk_SetTransmitInfoOutOfPVSAll)(uintptr_t) = NULL;
 
 
-PLUGIFY_EXPORT void (*__s2sdk_ClearTransmitInfoAlwaysAll)(uintptr_t) = NULL;
+PLUGIFY_EXPORT void (*__s2sdk_ClearTransmitInfoOutOfPVSAll)(uintptr_t) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_SetTransmitInfoHLTV)(uintptr_t, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_ClearTransmitInfoHLTV)(uintptr_t, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT bool (*__s2sdk_IsTransmitInfoHLTVSet)(uintptr_t, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_SetTransmitInfoHLTVAll)(uintptr_t) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_ClearTransmitInfoHLTVAll)(uintptr_t) = NULL;
 
 
 PLUGIFY_EXPORT int32_t (*__s2sdk_GetTransmitInfoTargetSlotsCount)(uintptr_t) = NULL;
