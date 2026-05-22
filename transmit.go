@@ -571,12 +571,12 @@ func (w *CheckTransmitInfo) ClearNonPlayerAll() error {
 	return nil
 }
 
-// SetAlways 
+// SetOutOfPVS 
 //  @brief Sets a bit in the TransmitOutOfPVS bitvec, marking an entity to always transmit.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The handle of the entity to mark as always transmittable.
-func (w *CheckTransmitInfo) SetAlways(entityHandle int32) error {
+func (w *CheckTransmitInfo) SetOutOfPVS(entityHandle int32) error {
 	if w.handle == 0 {
 		return CheckTransmitInfoErrEmptyHandle
 	}
@@ -584,12 +584,12 @@ func (w *CheckTransmitInfo) SetAlways(entityHandle int32) error {
 	return nil
 }
 
-// ClearAlways 
+// ClearOutOfPVS 
 //  @brief Clears a bit in the TransmitOutOfPVS bitvec, unmarking an entity from always transmit.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The handle of the entity to unmark from always transmit.
-func (w *CheckTransmitInfo) ClearAlways(entityHandle int32) error {
+func (w *CheckTransmitInfo) ClearOutOfPVS(entityHandle int32) error {
 	if w.handle == 0 {
 		return CheckTransmitInfoErrEmptyHandle
 	}
@@ -597,14 +597,14 @@ func (w *CheckTransmitInfo) ClearAlways(entityHandle int32) error {
 	return nil
 }
 
-// IsAlwaysSet 
+// IsOutOfPVSSet 
 //  @brief Checks if a bit is set in the TransmitOutOfPVS bitvec.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The handle of the entity to check.
 //
 //  @return True if the entity is marked to always transmit, false otherwise.
-func (w *CheckTransmitInfo) IsAlwaysSet(entityHandle int32) (bool, error) {
+func (w *CheckTransmitInfo) IsOutOfPVSSet(entityHandle int32) (bool, error) {
 	if w.handle == 0 {
 		var zero bool
 		return zero, CheckTransmitInfoErrEmptyHandle
@@ -612,11 +612,11 @@ func (w *CheckTransmitInfo) IsAlwaysSet(entityHandle int32) (bool, error) {
 	return IsTransmitInfoOutOfPVSSet(w.handle, entityHandle), nil
 }
 
-// SetAlwaysAll 
+// SetOutOfPVSAll 
 //  @brief Sets all bits in the TransmitOutOfPVS bitvec, marking all entities to always transmit.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
-func (w *CheckTransmitInfo) SetAlwaysAll() error {
+func (w *CheckTransmitInfo) SetOutOfPVSAll() error {
 	if w.handle == 0 {
 		return CheckTransmitInfoErrEmptyHandle
 	}
@@ -624,15 +624,80 @@ func (w *CheckTransmitInfo) SetAlwaysAll() error {
 	return nil
 }
 
-// ClearAlwaysAll 
+// ClearOutOfPVSAll 
 //  @brief Clears all bits in the TransmitOutOfPVS bitvec, unmarking all entities from always transmit.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
-func (w *CheckTransmitInfo) ClearAlwaysAll() error {
+func (w *CheckTransmitInfo) ClearOutOfPVSAll() error {
 	if w.handle == 0 {
 		return CheckTransmitInfoErrEmptyHandle
 	}
 	ClearTransmitInfoOutOfPVSAll(w.handle)
+	return nil
+}
+
+// SetHLTV 
+//  @brief Sets a bit in the TransmitHLTV bitvec, marking an entity to always transmit.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
+//  @param entityHandle: The handle of the entity to mark as always transmittable.
+func (w *CheckTransmitInfo) SetHLTV(entityHandle int32) error {
+	if w.handle == 0 {
+		return CheckTransmitInfoErrEmptyHandle
+	}
+	SetTransmitInfoHLTV(w.handle, entityHandle)
+	return nil
+}
+
+// ClearHLTV 
+//  @brief Clears a bit in the TransmitHLTV bitvec, unmarking an entity from always transmit.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
+//  @param entityHandle: The handle of the entity to unmark from always transmit.
+func (w *CheckTransmitInfo) ClearHLTV(entityHandle int32) error {
+	if w.handle == 0 {
+		return CheckTransmitInfoErrEmptyHandle
+	}
+	ClearTransmitInfoHLTV(w.handle, entityHandle)
+	return nil
+}
+
+// IsHLTVSet 
+//  @brief Checks if a bit is set in the TransmitHLTV bitvec.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
+//  @param entityHandle: The handle of the entity to check.
+//
+//  @return True if the entity is marked to always transmit, false otherwise.
+func (w *CheckTransmitInfo) IsHLTVSet(entityHandle int32) (bool, error) {
+	if w.handle == 0 {
+		var zero bool
+		return zero, CheckTransmitInfoErrEmptyHandle
+	}
+	return IsTransmitInfoHLTVSet(w.handle, entityHandle), nil
+}
+
+// SetHLTVAll 
+//  @brief Sets all bits in the TransmitHLTV bitvec, marking all entities to always transmit.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
+func (w *CheckTransmitInfo) SetHLTVAll() error {
+	if w.handle == 0 {
+		return CheckTransmitInfoErrEmptyHandle
+	}
+	SetTransmitInfoHLTVAll(w.handle)
+	return nil
+}
+
+// ClearHLTVAll 
+//  @brief Clears all bits in the TransmitHLTV bitvec, unmarking all entities from always transmit.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
+func (w *CheckTransmitInfo) ClearHLTVAll() error {
+	if w.handle == 0 {
+		return CheckTransmitInfoErrEmptyHandle
+	}
+	ClearTransmitInfoHLTVAll(w.handle)
 	return nil
 }
 

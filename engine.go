@@ -342,28 +342,14 @@ func StopSound(entityHandle int32, sound string) {
 // EmitSoundToClient 
 //  @brief Emits a sound to a specific client.
 //
-//  @param playerSlot: The index of the client to whom the sound will be emitted.
-//  @param channel: The channel through which the sound will be played.
+//  @param playerSlot: The index of the player's slot.
 //  @param sound: The name of the sound to emit.
-//  @param volume: The volume of the sound.
-//  @param soundLevel: The level of the sound.
-//  @param flags: Additional flags for sound playback.
-//  @param pitch: The pitch of the sound.
-//  @param origin: The origin of the sound in 3D space.
-//  @param soundTime: The time at which the sound should be played.
-func EmitSoundToClient(playerSlot int32, channel int32, sound string, volume float32, soundLevel int32, flags int32, pitch int32, origin plugify.Vector3, soundTime float32) {
+func EmitSoundToClient(playerSlot int32, sound string) {
 	__playerSlot := C.int32_t(playerSlot)
-	__channel := C.int32_t(channel)
 	__sound := plugify.ConstructString(sound)
-	__volume := C.float(volume)
-	__soundLevel := C.int32_t(soundLevel)
-	__flags := C.int32_t(flags)
-	__pitch := C.int32_t(pitch)
-	__origin := *(*C.Vector3)(unsafe.Pointer(&origin))
-	__soundTime := C.float(soundTime)
 	plugify.Block {
 		Try: func() {
-			C.EmitSoundToClient(__playerSlot, __channel, (*C.String)(unsafe.Pointer(&__sound)), __volume, __soundLevel, __flags, __pitch, &__origin, __soundTime)
+			C.EmitSoundToClient(__playerSlot, (*C.String)(unsafe.Pointer(&__sound)))
 		},
 		Finally: func() {
 			// Perform cleanup.
