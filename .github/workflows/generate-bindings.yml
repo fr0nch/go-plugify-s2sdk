@@ -153,8 +153,9 @@ jobs:
     permissions:
       actions: write
     steps:
-      - uses: yanovation/delete-old-actions@v1
+      - name: Delete old workflow runs
+        uses: yanovation/delete-old-actions@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          days-ago: 28
+          days-ago: 30
           dry-run: false
