@@ -1,7 +1,12 @@
 name: Delete Old GitHub Actions Runs
+
 on:
-  schedule:
-    - cron: '0 0 * * *'
+  workflow_dispatch:
+    inputs:
+      days-ago:
+        description: "Delete workflow runs older than this many days"
+        required: true
+        default: "30"
 
 jobs:
   delete-old-actions:
@@ -11,5 +16,5 @@ jobs:
       - uses: yanovation/delete-old-actions@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          days-ago: 30
-          dry-run: true
+          days-ago: ${{ inputs.days-ago }}
+          dry-run: ${{ inputs.dry-run }}
