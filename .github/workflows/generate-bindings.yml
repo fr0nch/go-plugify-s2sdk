@@ -159,8 +159,7 @@ jobs:
           gh release create "$VERSION" --notes "$NOTES_WITH_LINK"
 
   delete-old-actions:
-    needs: update-bindings
-    if: ${{ inputs.cleanup_only || needs.update-bindings.result == 'success' }}
+    if: ${{ inputs.cleanup_only || (github.event_name != 'workflow_dispatch' && success()) }}
     runs-on: ubuntu-latest
     permissions:
       actions: write
