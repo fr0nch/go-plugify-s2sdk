@@ -98,6 +98,7 @@ jobs:
           rm -rf plugify-gen ${{ env.PLUGIN_NAME }}.pplugin.in ${{ env.PLUGIN_SHORT_NAME }}
 
       - name: Ensure Go Modules
+        if: steps.current_version.outputs.update_needed == 'true'
         run: |
           ls -la
           
@@ -115,6 +116,7 @@ jobs:
 
 
       - name: Commit and Push changes
+        if: steps.current_version.outputs.update_needed == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -143,3 +145,16 @@ jobs:
           HEADER="Original release notes from [${{ env.PLUGIN_REPO }}](https://github.com/${{ env.PLUGIN_REPO }}/releases/tag/${VERSION})"
           NOTES_WITH_LINK=$(printf "%s\n\n%s" "$HEADER" "$NOTES")
           gh release create "$VERSION" --notes "$NOTES_WITH_LINK"
+
+  delete-old-actions:
+    needs: update-bindings
+    if: ${{ always() && needs.update-bindings.result == 'success' }}
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - uses: yanovation/delete-old-actions@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          days-ago: 28
+          dry-run: false
