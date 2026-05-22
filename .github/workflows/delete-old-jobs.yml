@@ -1,7 +1,7 @@
 name: Delete Old GitHub Actions Runs
 on:
   schedule:
-    - cron: '0 0 * * *'  # Specify your own schedule
+    - cron: '0 0 * * *'
 
 jobs:
   delete-old-actions:
@@ -12,3 +12,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           days-ago: 30
+          dry-run: true
