@@ -159,7 +159,7 @@ jobs:
           gh release create "$VERSION" --notes "$NOTES_WITH_LINK"
 
   delete-old-actions:
-    if: ${{ inputs.cleanup_only || (github.event_name != 'workflow_dispatch' && success()) }}
+    if: ${{ inputs.cleanup_only || success() }}
     runs-on: ubuntu-latest
     permissions:
       actions: write
