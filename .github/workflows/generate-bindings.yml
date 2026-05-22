@@ -4,6 +4,17 @@ on:
   schedule:
     - cron: '0 2 * * *'
   workflow_dispatch:
+    inputs:
+      cleanup_only:
+        description: "Run cleanup of old workflow runs only"
+        required: false
+        type: boolean
+        default: false
+      days_ago:
+        description: "Delete workflow runs older than (days)"
+        required: false
+        type: number
+        default: 30
 
 permissions:
   contents: write
@@ -11,6 +22,7 @@ permissions:
 
 jobs:
   update-bindings:
+    if: ${{ !inputs.cleanup_only }}
     runs-on: ubuntu-latest
     env:
       PLUGIN_REPO: untrustedmodders/plugify-plugin-s2sdk
@@ -148,7 +160,7 @@ jobs:
 
   delete-old-actions:
     needs: update-bindings
-    if: ${{ always() && needs.update-bindings.result == 'success' }}
+    if: ${{ inputs.cleanup_only || needs.update-bindings.result == 'success' }}
     runs-on: ubuntu-latest
     permissions:
       actions: write
@@ -157,5 +169,5 @@ jobs:
         uses: yanovation/delete-old-actions@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          days-ago: 30
+          days-ago: ${{ inputs.days_ago || 30 }}
           dry-run: false
