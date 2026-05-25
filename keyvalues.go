@@ -42,7 +42,7 @@ var _ = errors.New("")
 var _ = reflect.TypeOf(0)
 var _ = runtime.GOOS
 var _ = unsafe.Sizeof(0)
-var _ = plugify.Plugin.Loaded
+var _ = plugify.Plugin()
 
 // Generated from s2sdk (group: keyvalues)
 
@@ -623,7 +623,7 @@ func NewKeyValues1Owned(handle uintptr) *KeyValues1 {
 
 // destroyKeyValues1Handle destroys an owned handle.
 func destroyKeyValues1Handle(handle uintptr) {
-	if plugify.Plugin.Loaded && handle != 0 {
+	if plugify.Plugin().Loaded() && handle != 0 {
 		Kv1Destroy(handle)
 	}
 }

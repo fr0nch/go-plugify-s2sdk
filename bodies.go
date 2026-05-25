@@ -26,7 +26,7 @@ var _ = errors.New("")
 var _ = reflect.TypeOf(0)
 var _ = runtime.GOOS
 var _ = unsafe.Sizeof(0)
-var _ = plugify.Plugin.Loaded
+var _ = plugify.Plugin()
 
 // Generated from s2sdk (group: bodies)
 
