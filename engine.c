@@ -54,6 +54,6 @@ PLUGIFY_EXPORT void (*__s2sdk_EmitSound)(int32_t, String*, int32_t, float, float
 PLUGIFY_EXPORT void (*__s2sdk_StopSound)(int32_t, String*) = NULL;
 
 
-PLUGIFY_EXPORT void (*__s2sdk_EmitSoundToClient)(int32_t, String*) = NULL;
+PLUGIFY_EXPORT void (*__s2sdk_EmitSoundToClient)(int32_t, Vector*, String*, float, float) = NULL;
 
 

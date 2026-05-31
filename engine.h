@@ -110,9 +110,9 @@ static void StopSound(int32_t entityHandle, String* sound) {
 	__s2sdk_StopSound(entityHandle, sound);
 }
 
-extern void (*__s2sdk_EmitSoundToClient)(int32_t, String*);
+extern void (*__s2sdk_EmitSoundToClient)(int32_t, Vector*, String*, float, float);
 
-static void EmitSoundToClient(int32_t playerSlot, String* sound) {
-	__s2sdk_EmitSoundToClient(playerSlot, sound);
+static void EmitSoundToClient(int32_t entityHandle, Vector* playersSlot, String* sound, float volume, float pitch) {
+	__s2sdk_EmitSoundToClient(entityHandle, playersSlot, sound, volume, pitch);
 }
 

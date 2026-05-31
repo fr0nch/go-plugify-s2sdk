@@ -340,19 +340,26 @@ func StopSound(entityHandle int32, sound string) {
 }
 
 // EmitSoundToClient 
-//  @brief Emits a sound to a specific client.
+//  @brief Emits a sound to one or more clients.
 //
-//  @param playerSlot: The index of the player's slot.
+//  @param entityHandle: The handle of the entity that emits the sound.
+//  @param playersSlot: Player slot indices that will hear the sound.
 //  @param sound: The name of the sound to emit.
-func EmitSoundToClient(playerSlot int32, sound string) {
-	__playerSlot := C.int32_t(playerSlot)
+//  @param volume: The volume of the sound.
+//  @param pitch: The pitch of the sound.
+func EmitSoundToClient(entityHandle int32, playersSlot []int32, sound string, volume float32, pitch float32) {
+	__entityHandle := C.int32_t(entityHandle)
+	__playersSlot := plugify.ConstructVectorInt32(playersSlot)
 	__sound := plugify.ConstructString(sound)
+	__volume := C.float(volume)
+	__pitch := C.float(pitch)
 	plugify.Block {
 		Try: func() {
-			C.EmitSoundToClient(__playerSlot, (*C.String)(unsafe.Pointer(&__sound)))
+			C.EmitSoundToClient(__entityHandle, (*C.Vector)(unsafe.Pointer(&__playersSlot)), (*C.String)(unsafe.Pointer(&__sound)), __volume, __pitch)
 		},
 		Finally: func() {
 			// Perform cleanup.
+			plugify.DestroyVectorInt32(&__playersSlot)
 			plugify.DestroyString(&__sound)
 		},
 	}.Do()
