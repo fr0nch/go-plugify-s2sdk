@@ -504,14 +504,14 @@ const (
 	ResultType_Stop ResultType = 3
 )
 
-// CommandCallingContext - The command execution context.
-type CommandCallingContext = int32
+// ConCommandContext - The command execution context.
+type ConCommandContext = int32
 
 const (
 	// Console - The command execute from the client's console.
-	CommandCallingContext_Console CommandCallingContext = 0
+	ConCommandContext_Console ConCommandContext = 0
 	// Chat - The command execute from the client's chat.
-	CommandCallingContext_Chat CommandCallingContext = 1
+	ConCommandContext_Chat ConCommandContext = 1
 )
 
 // HookMode - Enum representing the type of callback.

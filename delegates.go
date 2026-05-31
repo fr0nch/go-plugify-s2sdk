@@ -6,12 +6,12 @@ var _ = plugify.Plugin()
 
 // Generated from s2sdk
 
-// CommandCallback - Handles the execution of a command triggered by a caller. This function processes the command, interprets its context, and handles any provided arguments.
-type CommandCallback func(caller int32, context CommandCallingContext, arguments []string) ResultType
+// ConCommandCallback - Handles the execution of a command triggered by a caller. This function processes the command, interprets its context, and handles any provided arguments.
+type ConCommandCallback func(caller int32, context ConCommandContext, arguments []string) ResultType
 
 
-// ChangeCallback - Handles changes to a console variable's value. This function is called whenever the value of a specific console variable is modified.
-type ChangeCallback func(conVarHandle uint64, newValue string, oldValue string)
+// ConVarCallback - Handles changes to a console variable's value. This function is called whenever the value of a specific console variable is modified.
+type ConVarCallback func(conVarHandle uint64, newValue string, oldValue string)
 
 
 // CvarValueCallback - Handles changes to a console variable's value. This function is called whenever the value of a specific console variable is modified.

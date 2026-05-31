@@ -42,7 +42,7 @@ var _ = plugify.Plugin()
 //  @param type_: Whether the hook was in post mode (after processing) or pre mode (before processing).
 //
 //  @return true if the command was successfully created; otherwise, false.
-func AddAdminCommand(name string, adminFlags int64, description string, flags ConVarFlag, callback CommandCallback, type_ HookMode) bool {
+func AddAdminCommand(name string, adminFlags int64, description string, flags ConVarFlag, callback ConCommandCallback, type_ HookMode) bool {
 	var __retVal bool
 	__name := plugify.ConstructString(name)
 	__adminFlags := C.int64_t(adminFlags)
@@ -73,7 +73,7 @@ func AddAdminCommand(name string, adminFlags int64, description string, flags Co
 //  @param type_: Whether the hook was in post mode (after processing) or pre mode (before processing).
 //
 //  @return true if the command was successfully created; otherwise, false.
-func AddConsoleCommand(name string, description string, flags ConVarFlag, callback CommandCallback, type_ HookMode) bool {
+func AddConsoleCommand(name string, description string, flags ConVarFlag, callback ConCommandCallback, type_ HookMode) bool {
 	var __retVal bool
 	__name := plugify.ConstructString(name)
 	__description := plugify.ConstructString(description)
@@ -100,7 +100,7 @@ func AddConsoleCommand(name string, description string, flags ConVarFlag, callba
 //  @param callback: The callback function associated with the command to be removed.
 //
 //  @return true if the command was successfully removed; otherwise, false.
-func RemoveCommand(name string, callback CommandCallback) bool {
+func RemoveCommand(name string, callback ConCommandCallback) bool {
 	var __retVal bool
 	__name := plugify.ConstructString(name)
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
@@ -124,7 +124,7 @@ func RemoveCommand(name string, callback CommandCallback) bool {
 //  @param type_: Whether the hook was in post mode (after processing) or pre mode (before processing).
 //
 //  @return Returns true if the callback was successfully added, false otherwise.
-func AddCommandListener(name string, callback CommandCallback, type_ HookMode) bool {
+func AddCommandListener(name string, callback ConCommandCallback, type_ HookMode) bool {
 	var __retVal bool
 	__name := plugify.ConstructString(name)
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
@@ -149,7 +149,7 @@ func AddCommandListener(name string, callback CommandCallback, type_ HookMode) b
 //  @param type_: Whether the hook was in post mode (after processing) or pre mode (before processing).
 //
 //  @return Returns true if the callback was successfully removed, false otherwise.
-func RemoveCommandListener(name string, callback CommandCallback, type_ HookMode) bool {
+func RemoveCommandListener(name string, callback ConCommandCallback, type_ HookMode) bool {
 	var __retVal bool
 	__name := plugify.ConstructString(name)
 	__callback := plugify.GetFunctionPointerForDelegate(callback)

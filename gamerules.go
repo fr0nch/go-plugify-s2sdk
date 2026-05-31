@@ -53,7 +53,7 @@ func GetGameRules() uintptr {
 //  @param team: The numeric identifier of the team.
 //
 //  @return A pointer to the corresponding CTeam instance, or nullptr if the team was not found.
-func GetGameTeamManager(team int32) uintptr {
+func GetGameTeamManager(team CSTeam) uintptr {
 	var __retVal uintptr
 	__team := C.int32_t(team)
 	__retVal = uintptr(C.GetGameTeamManager(__team))
@@ -66,7 +66,7 @@ func GetGameTeamManager(team int32) uintptr {
 //  @param team: The numeric identifier of the team.
 //
 //  @return The current score of the team, or -1 if the team could not be found.
-func GetGameTeamScore(team int32) int32 {
+func GetGameTeamScore(team CSTeam) int32 {
 	var __retVal int32
 	__team := C.int32_t(team)
 	__retVal = int32(C.GetGameTeamScore(__team))
@@ -79,7 +79,7 @@ func GetGameTeamScore(team int32) int32 {
 //  @param team: The numeric identifier of the team (e.g., CS_TEAM_T, CS_TEAM_CT, CS_TEAM_SPECTATOR).
 //
 //  @return The number of players on the team, or -1 if game rules are unavailable.
-func GetGamePlayerCount(team int32) int32 {
+func GetGamePlayerCount(team CSTeam) int32 {
 	var __retVal int32
 	__team := C.int32_t(team)
 	__retVal = int32(C.GetGamePlayerCount(__team))

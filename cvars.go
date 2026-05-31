@@ -700,7 +700,7 @@ func FindConVar2(name string, type_ ConVarType) uint64 {
 //
 //  @param conVarHandle: TThe handle to the console variable data.
 //  @param callback: The callback function to be executed when the variable's value changes.
-func HookConVarChange(conVarHandle uint64, callback ChangeCallback) {
+func HookConVarChange(conVarHandle uint64, callback ConVarCallback) {
 	__conVarHandle := C.uint64_t(conVarHandle)
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.HookConVarChange(__conVarHandle, __callback)
@@ -711,7 +711,7 @@ func HookConVarChange(conVarHandle uint64, callback ChangeCallback) {
 //
 //  @param conVarHandle: The handle to the console variable data.
 //  @param callback: The callback function to be removed.
-func UnhookConVarChange(conVarHandle uint64, callback ChangeCallback) {
+func UnhookConVarChange(conVarHandle uint64, callback ConVarCallback) {
 	__conVarHandle := C.uint64_t(conVarHandle)
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.UnhookConVarChange(__conVarHandle, __callback)
@@ -1871,7 +1871,7 @@ func (w *ConVar) Find2(name string, type_ ConVarType) *ConVar {
 //
 //  @param conVarHandle: TThe handle to the console variable data.
 //  @param callback: The callback function to be executed when the variable's value changes.
-func (w *ConVar) HookChange(callback ChangeCallback) error {
+func (w *ConVar) HookChange(callback ConVarCallback) error {
 	if w.handle == 0 {
 		return ConVarErrEmptyHandle
 	}
@@ -1884,7 +1884,7 @@ func (w *ConVar) HookChange(callback ChangeCallback) error {
 //
 //  @param conVarHandle: The handle to the console variable data.
 //  @param callback: The callback function to be removed.
-func (w *ConVar) UnhookChange(callback ChangeCallback) error {
+func (w *ConVar) UnhookChange(callback ConVarCallback) error {
 	if w.handle == 0 {
 		return ConVarErrEmptyHandle
 	}

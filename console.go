@@ -277,7 +277,7 @@ func PrintToChatColoredAll(message string) {
 //  @param context: The context from which the command was called (e.g., Console or Chat).
 //  @param playerSlot: The slot/index of the player receiving the message.
 //  @param message: The message string to be sent as a reply.
-func ReplyToCommand(context CommandCallingContext, playerSlot int32, message string) {
+func ReplyToCommand(context ConCommandContext, playerSlot int32, message string) {
 	__context := C.int32_t(context)
 	__playerSlot := C.int32_t(playerSlot)
 	__message := plugify.ConstructString(message)
