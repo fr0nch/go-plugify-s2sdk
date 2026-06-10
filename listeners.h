@@ -146,6 +146,18 @@ static void OnEntityCreated_Unregister(void* callback) {
 	__s2sdk_OnEntityCreated_Unregister(callback);
 }
 
+extern void (*__s2sdk_OnEntitySpawned_Register)(void*);
+
+static void OnEntitySpawned_Register(void* callback) {
+	__s2sdk_OnEntitySpawned_Register(callback);
+}
+
+extern void (*__s2sdk_OnEntitySpawned_Unregister)(void*);
+
+static void OnEntitySpawned_Unregister(void* callback) {
+	__s2sdk_OnEntitySpawned_Unregister(callback);
+}
+
 extern void (*__s2sdk_OnEntityDeleted_Register)(void*);
 
 static void OnEntityDeleted_Register(void* callback) {

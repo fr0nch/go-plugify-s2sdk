@@ -26,6 +26,8 @@ package s2sdk
 #cgo noescape OnRoundTerminated_Unregister
 #cgo noescape OnEntityCreated_Register
 #cgo noescape OnEntityCreated_Unregister
+#cgo noescape OnEntitySpawned_Register
+#cgo noescape OnEntitySpawned_Unregister
 #cgo noescape OnEntityDeleted_Register
 #cgo noescape OnEntityDeleted_Unregister
 #cgo noescape OnEntityParentChanged_Register
@@ -284,6 +286,24 @@ func OnEntityCreated_Register(callback OnEntityCreatedCallback) {
 func OnEntityCreated_Unregister(callback OnEntityCreatedCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnEntityCreated_Unregister(__callback)
+}
+
+// OnEntitySpawned_Register 
+//  @brief Register callback to event.
+//
+//  @param callback: Function callback.
+func OnEntitySpawned_Register(callback OnEntitySpawnedCallback) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.OnEntitySpawned_Register(__callback)
+}
+
+// OnEntitySpawned_Unregister 
+//  @brief Unregister callback to event.
+//
+//  @param callback: Function callback.
+func OnEntitySpawned_Unregister(callback OnEntitySpawnedCallback) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.OnEntitySpawned_Unregister(__callback)
 }
 
 // OnEntityDeleted_Register 

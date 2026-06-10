@@ -72,6 +72,12 @@ PLUGIFY_EXPORT void (*__s2sdk_OnEntityCreated_Register)(void*) = NULL;
 PLUGIFY_EXPORT void (*__s2sdk_OnEntityCreated_Unregister)(void*) = NULL;
 
 
+PLUGIFY_EXPORT void (*__s2sdk_OnEntitySpawned_Register)(void*) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_OnEntitySpawned_Unregister)(void*) = NULL;
+
+
 PLUGIFY_EXPORT void (*__s2sdk_OnEntityDeleted_Register)(void*) = NULL;
 
 

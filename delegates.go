@@ -89,6 +89,10 @@ type OnRoundTerminatedCallback func(delay float32, reason CSRoundEndReason)
 type OnEntityCreatedCallback func(entityHandle int32)
 
 
+// OnEntitySpawnedCallback - Called when an entity is spawned.
+type OnEntitySpawnedCallback func(entityHandle int32)
+
+
 // OnEntityDeletedCallback - Called when when an entity is destroyed.
 type OnEntityDeletedCallback func(entityHandle int32)
 
