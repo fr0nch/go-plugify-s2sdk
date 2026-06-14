@@ -444,7 +444,7 @@ func Kv3GetTypeAsString(kv uintptr) string {
 			__native := C.Kv3GetTypeAsString(__kv)
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -469,7 +469,7 @@ func Kv3GetSubTypeAsString(kv uintptr) string {
 			__native := C.Kv3GetSubTypeAsString(__kv)
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -496,7 +496,7 @@ func Kv3ToString(kv uintptr, flags uint32) string {
 			__native := C.Kv3ToString(__kv, __flags)
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -1013,7 +1013,7 @@ func Kv3GetString(kv uintptr, defaultValue string) string {
 			__native := C.Kv3GetString(__kv, (*C.String)(unsafe.Pointer(&__defaultValue)))
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -1081,7 +1081,7 @@ func Kv3GetBinaryBlob(kv uintptr) []uint8 {
 			__native := C.Kv3GetBinaryBlob(__kv)
 			__retVal_native = *(*plugify.PlgVector)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetVectorDataUInt8(&__retVal_native)
+			__retVal = plugify.GetVectorDataUInt8[uint8](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -1583,7 +1583,7 @@ func Kv3GetMemberName(kv uintptr, index int32) string {
 			__native := C.Kv3GetMemberName(__kv, __index)
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -2027,7 +2027,7 @@ func Kv3GetMemberString(kv uintptr, name string, defaultValue string) string {
 			__native := C.Kv3GetMemberString(__kv, (*C.String)(unsafe.Pointer(&__name)), (*C.String)(unsafe.Pointer(&__defaultValue)))
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -2906,7 +2906,7 @@ func Kv3LoadFromBuffer(context uintptr, error_ *string, input []uint8, kv_name s
 		Try: func() {
 			__retVal = bool(C.Kv3LoadFromBuffer(__context, (*C.String)(unsafe.Pointer(&__error_)), (*C.Vector)(unsafe.Pointer(&__input)), (*C.String)(unsafe.Pointer(&__kv_name)), __flags))
 			// Unmarshal - Convert native data to managed data.
-			*error_ = plugify.GetStringData(&__error_)
+			*error_ = plugify.GetStringData[string](&__error_)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -2939,7 +2939,7 @@ func Kv3Load(kv uintptr, error_ *string, input []uint8, kv_name string, flags ui
 		Try: func() {
 			__retVal = bool(C.Kv3Load(__kv, (*C.String)(unsafe.Pointer(&__error_)), (*C.Vector)(unsafe.Pointer(&__input)), (*C.String)(unsafe.Pointer(&__kv_name)), __flags))
 			// Unmarshal - Convert native data to managed data.
-			*error_ = plugify.GetStringData(&__error_)
+			*error_ = plugify.GetStringData[string](&__error_)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -2972,7 +2972,7 @@ func Kv3LoadFromText(kv uintptr, error_ *string, input string, kv_name string, f
 		Try: func() {
 			__retVal = bool(C.Kv3LoadFromText(__kv, (*C.String)(unsafe.Pointer(&__error_)), (*C.String)(unsafe.Pointer(&__input)), (*C.String)(unsafe.Pointer(&__kv_name)), __flags))
 			// Unmarshal - Convert native data to managed data.
-			*error_ = plugify.GetStringData(&__error_)
+			*error_ = plugify.GetStringData[string](&__error_)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -3005,7 +3005,7 @@ func Kv3LoadFromFileToContext(context uintptr, error_ *string, filename string, 
 		Try: func() {
 			__retVal = bool(C.Kv3LoadFromFileToContext(__context, (*C.String)(unsafe.Pointer(&__error_)), (*C.String)(unsafe.Pointer(&__filename)), (*C.String)(unsafe.Pointer(&__path)), __flags))
 			// Unmarshal - Convert native data to managed data.
-			*error_ = plugify.GetStringData(&__error_)
+			*error_ = plugify.GetStringData[string](&__error_)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -3038,7 +3038,7 @@ func Kv3LoadFromFile(kv uintptr, error_ *string, filename string, path string, f
 		Try: func() {
 			__retVal = bool(C.Kv3LoadFromFile(__kv, (*C.String)(unsafe.Pointer(&__error_)), (*C.String)(unsafe.Pointer(&__filename)), (*C.String)(unsafe.Pointer(&__path)), __flags))
 			// Unmarshal - Convert native data to managed data.
-			*error_ = plugify.GetStringData(&__error_)
+			*error_ = plugify.GetStringData[string](&__error_)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -3071,7 +3071,7 @@ func Kv3LoadFromJSON(kv uintptr, error_ *string, input string, kv_name string, f
 		Try: func() {
 			__retVal = bool(C.Kv3LoadFromJSON(__kv, (*C.String)(unsafe.Pointer(&__error_)), (*C.String)(unsafe.Pointer(&__input)), (*C.String)(unsafe.Pointer(&__kv_name)), __flags))
 			// Unmarshal - Convert native data to managed data.
-			*error_ = plugify.GetStringData(&__error_)
+			*error_ = plugify.GetStringData[string](&__error_)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -3104,7 +3104,7 @@ func Kv3LoadFromJSONFile(kv uintptr, error_ *string, path string, filename strin
 		Try: func() {
 			__retVal = bool(C.Kv3LoadFromJSONFile(__kv, (*C.String)(unsafe.Pointer(&__error_)), (*C.String)(unsafe.Pointer(&__path)), (*C.String)(unsafe.Pointer(&__filename)), __flags))
 			// Unmarshal - Convert native data to managed data.
-			*error_ = plugify.GetStringData(&__error_)
+			*error_ = plugify.GetStringData[string](&__error_)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -3139,7 +3139,7 @@ func Kv3LoadFromKV1File(kv uintptr, error_ *string, path string, filename string
 		Try: func() {
 			__retVal = bool(C.Kv3LoadFromKV1File(__kv, (*C.String)(unsafe.Pointer(&__error_)), (*C.String)(unsafe.Pointer(&__path)), (*C.String)(unsafe.Pointer(&__filename)), __esc_behavior, __flags))
 			// Unmarshal - Convert native data to managed data.
-			*error_ = plugify.GetStringData(&__error_)
+			*error_ = plugify.GetStringData[string](&__error_)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -3176,7 +3176,7 @@ func Kv3LoadFromKV1Text(kv uintptr, error_ *string, input string, esc_behavior u
 		Try: func() {
 			__retVal = bool(C.Kv3LoadFromKV1Text(__kv, (*C.String)(unsafe.Pointer(&__error_)), (*C.String)(unsafe.Pointer(&__input)), __esc_behavior, (*C.String)(unsafe.Pointer(&__kv_name)), __unk, __flags))
 			// Unmarshal - Convert native data to managed data.
-			*error_ = plugify.GetStringData(&__error_)
+			*error_ = plugify.GetStringData[string](&__error_)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -3217,7 +3217,7 @@ func Kv3LoadFromKV1TextTranslated(kv uintptr, error_ *string, input string, esc_
 		Try: func() {
 			__retVal = bool(C.Kv3LoadFromKV1TextTranslated(__kv, (*C.String)(unsafe.Pointer(&__error_)), (*C.String)(unsafe.Pointer(&__input)), __esc_behavior, __translation, __unk1, (*C.String)(unsafe.Pointer(&__kv_name)), __unk2, __flags))
 			// Unmarshal - Convert native data to managed data.
-			*error_ = plugify.GetStringData(&__error_)
+			*error_ = plugify.GetStringData[string](&__error_)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -3250,7 +3250,7 @@ func Kv3LoadFromKV3OrKV1(kv uintptr, error_ *string, input []uint8, kv_name stri
 		Try: func() {
 			__retVal = bool(C.Kv3LoadFromKV3OrKV1(__kv, (*C.String)(unsafe.Pointer(&__error_)), (*C.Vector)(unsafe.Pointer(&__input)), (*C.String)(unsafe.Pointer(&__kv_name)), __flags))
 			// Unmarshal - Convert native data to managed data.
-			*error_ = plugify.GetStringData(&__error_)
+			*error_ = plugify.GetStringData[string](&__error_)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -3283,7 +3283,7 @@ func Kv3LoadFromOldSchemaText(kv uintptr, error_ *string, input []uint8, kv_name
 		Try: func() {
 			__retVal = bool(C.Kv3LoadFromOldSchemaText(__kv, (*C.String)(unsafe.Pointer(&__error_)), (*C.Vector)(unsafe.Pointer(&__input)), (*C.String)(unsafe.Pointer(&__kv_name)), __flags))
 			// Unmarshal - Convert native data to managed data.
-			*error_ = plugify.GetStringData(&__error_)
+			*error_ = plugify.GetStringData[string](&__error_)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -3316,7 +3316,7 @@ func Kv3LoadTextNoHeader(kv uintptr, error_ *string, input string, kv_name strin
 		Try: func() {
 			__retVal = bool(C.Kv3LoadTextNoHeader(__kv, (*C.String)(unsafe.Pointer(&__error_)), (*C.String)(unsafe.Pointer(&__input)), (*C.String)(unsafe.Pointer(&__kv_name)), __flags))
 			// Unmarshal - Convert native data to managed data.
-			*error_ = plugify.GetStringData(&__error_)
+			*error_ = plugify.GetStringData[string](&__error_)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -3347,7 +3347,7 @@ func Kv3Save(kv uintptr, error_ *string, output *[]uint8, flags uint32) bool {
 		Try: func() {
 			__retVal = bool(C.Kv3Save(__kv, (*C.String)(unsafe.Pointer(&__error_)), (*C.Vector)(unsafe.Pointer(&__output)), __flags))
 			// Unmarshal - Convert native data to managed data.
-			*error_ = plugify.GetStringData(&__error_)
+			*error_ = plugify.GetStringData[string](&__error_)
 			plugify.GetVectorDataUInt8To(&__output, output)
 		},
 		Finally: func() {
@@ -3376,7 +3376,7 @@ func Kv3SaveAsJSON(kv uintptr, error_ *string, output *[]uint8) bool {
 		Try: func() {
 			__retVal = bool(C.Kv3SaveAsJSON(__kv, (*C.String)(unsafe.Pointer(&__error_)), (*C.Vector)(unsafe.Pointer(&__output))))
 			// Unmarshal - Convert native data to managed data.
-			*error_ = plugify.GetStringData(&__error_)
+			*error_ = plugify.GetStringData[string](&__error_)
 			plugify.GetVectorDataUInt8To(&__output, output)
 		},
 		Finally: func() {
@@ -3405,8 +3405,8 @@ func Kv3SaveAsJSONString(kv uintptr, error_ *string, output *string) bool {
 		Try: func() {
 			__retVal = bool(C.Kv3SaveAsJSONString(__kv, (*C.String)(unsafe.Pointer(&__error_)), (*C.String)(unsafe.Pointer(&__output))))
 			// Unmarshal - Convert native data to managed data.
-			*error_ = plugify.GetStringData(&__error_)
-			*output = plugify.GetStringData(&__output)
+			*error_ = plugify.GetStringData[string](&__error_)
+			*output = plugify.GetStringData[string](&__output)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -3436,7 +3436,7 @@ func Kv3SaveAsKV1Text(kv uintptr, error_ *string, output *[]uint8, esc_behavior 
 		Try: func() {
 			__retVal = bool(C.Kv3SaveAsKV1Text(__kv, (*C.String)(unsafe.Pointer(&__error_)), (*C.Vector)(unsafe.Pointer(&__output)), __esc_behavior))
 			// Unmarshal - Convert native data to managed data.
-			*error_ = plugify.GetStringData(&__error_)
+			*error_ = plugify.GetStringData[string](&__error_)
 			plugify.GetVectorDataUInt8To(&__output, output)
 		},
 		Finally: func() {
@@ -3471,7 +3471,7 @@ func Kv3SaveAsKV1TextTranslated(kv uintptr, error_ *string, output *[]uint8, esc
 		Try: func() {
 			__retVal = bool(C.Kv3SaveAsKV1TextTranslated(__kv, (*C.String)(unsafe.Pointer(&__error_)), (*C.Vector)(unsafe.Pointer(&__output)), __esc_behavior, __translation, __unk))
 			// Unmarshal - Convert native data to managed data.
-			*error_ = plugify.GetStringData(&__error_)
+			*error_ = plugify.GetStringData[string](&__error_)
 			plugify.GetVectorDataUInt8To(&__output, output)
 		},
 		Finally: func() {
@@ -3502,7 +3502,7 @@ func Kv3SaveTextNoHeaderToBuffer(kv uintptr, error_ *string, output *[]uint8, fl
 		Try: func() {
 			__retVal = bool(C.Kv3SaveTextNoHeaderToBuffer(__kv, (*C.String)(unsafe.Pointer(&__error_)), (*C.Vector)(unsafe.Pointer(&__output)), __flags))
 			// Unmarshal - Convert native data to managed data.
-			*error_ = plugify.GetStringData(&__error_)
+			*error_ = plugify.GetStringData[string](&__error_)
 			plugify.GetVectorDataUInt8To(&__output, output)
 		},
 		Finally: func() {
@@ -3533,8 +3533,8 @@ func Kv3SaveTextNoHeader(kv uintptr, error_ *string, output *string, flags uint3
 		Try: func() {
 			__retVal = bool(C.Kv3SaveTextNoHeader(__kv, (*C.String)(unsafe.Pointer(&__error_)), (*C.String)(unsafe.Pointer(&__output)), __flags))
 			// Unmarshal - Convert native data to managed data.
-			*error_ = plugify.GetStringData(&__error_)
-			*output = plugify.GetStringData(&__output)
+			*error_ = plugify.GetStringData[string](&__error_)
+			*output = plugify.GetStringData[string](&__output)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -3564,8 +3564,8 @@ func Kv3SaveTextToString(kv uintptr, error_ *string, output *string, flags uint3
 		Try: func() {
 			__retVal = bool(C.Kv3SaveTextToString(__kv, (*C.String)(unsafe.Pointer(&__error_)), (*C.String)(unsafe.Pointer(&__output)), __flags))
 			// Unmarshal - Convert native data to managed data.
-			*error_ = plugify.GetStringData(&__error_)
-			*output = plugify.GetStringData(&__output)
+			*error_ = plugify.GetStringData[string](&__error_)
+			*output = plugify.GetStringData[string](&__output)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -3597,7 +3597,7 @@ func Kv3SaveToFile(kv uintptr, error_ *string, filename string, path string, fla
 		Try: func() {
 			__retVal = bool(C.Kv3SaveToFile(__kv, (*C.String)(unsafe.Pointer(&__error_)), (*C.String)(unsafe.Pointer(&__filename)), (*C.String)(unsafe.Pointer(&__path)), __flags))
 			// Unmarshal - Convert native data to managed data.
-			*error_ = plugify.GetStringData(&__error_)
+			*error_ = plugify.GetStringData[string](&__error_)
 		},
 		Finally: func() {
 			// Perform cleanup.

@@ -152,7 +152,7 @@ func GetPublicAddress(onlyBase bool) string {
 			__native := C.GetPublicAddress(__onlyBase)
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -177,7 +177,7 @@ func GetLocalAddress(onlyBase bool) string {
 			__native := C.GetLocalAddress(__onlyBase)
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -696,7 +696,7 @@ func GetEntityClassname(entityHandle int32) string {
 			__native := C.GetEntityClassname(__entityHandle)
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -719,7 +719,7 @@ func GetEntityName(entityHandle int32) string {
 			__native := C.GetEntityName(__entityHandle)
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -1478,7 +1478,7 @@ func GetEntityModel(entityHandle int32) string {
 			__native := C.GetEntityModel(__entityHandle)
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.

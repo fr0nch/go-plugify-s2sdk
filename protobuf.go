@@ -249,7 +249,7 @@ func UserMessageGetMessageName(userMessage uintptr) string {
 			__native := C.UserMessageGetMessageName(__userMessage)
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -458,7 +458,7 @@ func UserMessageGetDebugString(userMessage uintptr) string {
 			__native := C.UserMessageGetDebugString(__userMessage)
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -687,7 +687,7 @@ func PbReadString(userMessage uintptr, fieldName string, index int32) string {
 			__native := C.PbReadString(__userMessage, (*C.String)(unsafe.Pointer(&__fieldName)), __index)
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -1286,7 +1286,7 @@ func PbGetString(userMessage uintptr, fieldName string, out *string) bool {
 		Try: func() {
 			__retVal = bool(C.PbGetString(__userMessage, (*C.String)(unsafe.Pointer(&__fieldName)), (*C.String)(unsafe.Pointer(&__out))))
 			// Unmarshal - Convert native data to managed data.
-			*out = plugify.GetStringData(&__out)
+			*out = plugify.GetStringData[string](&__out)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -2302,7 +2302,7 @@ func PbGetRepeatedString(userMessage uintptr, fieldName string, index int32, out
 		Try: func() {
 			__retVal = bool(C.PbGetRepeatedString(__userMessage, (*C.String)(unsafe.Pointer(&__fieldName)), __index, (*C.String)(unsafe.Pointer(&__out))))
 			// Unmarshal - Convert native data to managed data.
-			*out = plugify.GetStringData(&__out)
+			*out = plugify.GetStringData[string](&__out)
 		},
 		Finally: func() {
 			// Perform cleanup.

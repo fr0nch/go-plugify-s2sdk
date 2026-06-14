@@ -182,3 +182,45 @@ static void SetTransmitInfoFullUpdate(uintptr_t info, bool fullUpdate) {
 	__s2sdk_SetTransmitInfoFullUpdate(info, fullUpdate);
 }
 
+extern void (*__s2sdk_HideTransmitEntities)(int32_t, Vector*);
+
+static void HideTransmitEntities(int32_t playerSlot, Vector* entHandles) {
+	__s2sdk_HideTransmitEntities(playerSlot, entHandles);
+}
+
+extern void (*__s2sdk_ShowTransmitEntities)(int32_t, Vector*);
+
+static void ShowTransmitEntities(int32_t playerSlot, Vector* entHandles) {
+	__s2sdk_ShowTransmitEntities(playerSlot, entHandles);
+}
+
+extern Vector (*__s2sdk_GetHiddenTransmitEntities)(int32_t);
+
+static Vector GetHiddenTransmitEntities(int32_t playerSlot) {
+	return __s2sdk_GetHiddenTransmitEntities(playerSlot);
+}
+
+extern void (*__s2sdk_HideTransmitEntity)(int32_t, int32_t);
+
+static void HideTransmitEntity(int32_t playerSlot, int32_t entityHandle) {
+	__s2sdk_HideTransmitEntity(playerSlot, entityHandle);
+}
+
+extern void (*__s2sdk_ShowTransmitEntity)(int32_t, int32_t);
+
+static void ShowTransmitEntity(int32_t playerSlot, int32_t entityHandle) {
+	__s2sdk_ShowTransmitEntity(playerSlot, entityHandle);
+}
+
+extern void (*__s2sdk_HideTransmitEntityFromOtherPlayers)(int32_t, int32_t);
+
+static void HideTransmitEntityFromOtherPlayers(int32_t playerSlot, int32_t entityHandle) {
+	__s2sdk_HideTransmitEntityFromOtherPlayers(playerSlot, entityHandle);
+}
+
+extern void (*__s2sdk_ShowTransmitEntityToOtherPlayers)(int32_t, int32_t);
+
+static void ShowTransmitEntityToOtherPlayers(int32_t playerSlot, int32_t entityHandle) {
+	__s2sdk_ShowTransmitEntityToOtherPlayers(playerSlot, entityHandle);
+}
+

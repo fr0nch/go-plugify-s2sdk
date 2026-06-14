@@ -105,6 +105,7 @@ package s2sdk
 #cgo noescape GetClientPawn
 #cgo noescape ProcessTargetString
 #cgo noescape SwitchClientTeam
+#cgo noescape ChangeClientTeam
 #cgo noescape RespawnClient
 #cgo noescape ForcePlayerSuicide
 #cgo noescape KickClient
@@ -270,7 +271,7 @@ func GetClientAuthId(playerSlot int32) string {
 			__native := C.GetClientAuthId(__playerSlot)
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -321,7 +322,7 @@ func GetClientIp(playerSlot int32) string {
 			__native := C.GetClientIp(__playerSlot)
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -346,7 +347,7 @@ func GetClientLanguage(playerSlot int32) string {
 			__native := C.GetClientLanguage(__playerSlot)
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -371,7 +372,7 @@ func GetClientOS(playerSlot int32) string {
 			__native := C.GetClientOS(__playerSlot)
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -396,7 +397,7 @@ func GetClientName(playerSlot int32) string {
 			__native := C.GetClientName(__playerSlot)
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -1217,7 +1218,7 @@ func GetClientModel(playerSlot int32) string {
 			__native := C.GetClientModel(__playerSlot)
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -1627,7 +1628,7 @@ func ProcessTargetString(caller int32, target string) []int32 {
 			__native := C.ProcessTargetString(__caller, (*C.String)(unsafe.Pointer(&__target)))
 			__retVal_native = *(*plugify.PlgVector)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetVectorDataInt32(&__retVal_native)
+			__retVal = plugify.GetVectorDataInt32[int32](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -1647,6 +1648,17 @@ func SwitchClientTeam(playerSlot int32, team CSTeam) {
 	__playerSlot := C.int32_t(playerSlot)
 	__team := C.int32_t(team)
 	C.SwitchClientTeam(__playerSlot, __team)
+}
+
+// ChangeClientTeam 
+//  @brief Changes the player's team.
+//
+//  @param playerSlot: The index of the player's slot.
+//  @param team: The team index to change the client to.
+func ChangeClientTeam(playerSlot int32, team CSTeam) {
+	__playerSlot := C.int32_t(playerSlot)
+	__team := C.int32_t(team)
+	C.ChangeClientTeam(__playerSlot, __team)
 }
 
 // RespawnClient 
@@ -1746,7 +1758,7 @@ func GetClientWeapons(playerSlot int32) []int32 {
 			__native := C.GetClientWeapons(__playerSlot)
 			__retVal_native = *(*plugify.PlgVector)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetVectorDataInt32(&__retVal_native)
+			__retVal = plugify.GetVectorDataInt32[int32](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.

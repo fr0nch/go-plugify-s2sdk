@@ -79,7 +79,7 @@ func GetGameConfigPatch(id uint32, name string) string {
 			__native := C.GetGameConfigPatch(__id, (*C.String)(unsafe.Pointer(&__name)))
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -197,7 +197,7 @@ func GetGameConfigPatchAll(name string) string {
 			__native := C.GetGameConfigPatchAll((*C.String)(unsafe.Pointer(&__name)))
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.

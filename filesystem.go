@@ -39,7 +39,7 @@ func ReadFileVPK(localFileName string, pathId string) string {
 			__native := C.ReadFileVPK((*C.String)(unsafe.Pointer(&__localFileName)), (*C.String)(unsafe.Pointer(&__pathId)))
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -68,7 +68,7 @@ func FindFileAbsoluteList(wildcard string, pathId string) []string {
 			__native := C.FindFileAbsoluteList((*C.String)(unsafe.Pointer(&__wildcard)), (*C.String)(unsafe.Pointer(&__pathId)))
 			__retVal_native = *(*plugify.PlgVector)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetVectorDataString(&__retVal_native)
+			__retVal = plugify.GetVectorDataString[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.

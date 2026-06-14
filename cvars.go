@@ -784,7 +784,7 @@ func GetConVarBounds(conVarHandle uint64, max bool) string {
 			__native := C.GetConVarBounds(__conVarHandle, __max)
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -830,7 +830,7 @@ func GetConVarDefault(conVarHandle uint64) string {
 			__native := C.GetConVarDefault(__conVarHandle)
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -855,7 +855,7 @@ func GetConVarValue(conVarHandle uint64) string {
 			__native := C.GetConVarValue(__conVarHandle)
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -1022,7 +1022,7 @@ func GetConVarString(conVarHandle uint64) string {
 			__native := C.GetConVarString(__conVarHandle)
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -1440,7 +1440,7 @@ func GetClientConVarValue(playerSlot int32, convarName string) string {
 			__native := C.GetClientConVarValue(__playerSlot, (*C.String)(unsafe.Pointer(&__convarName)))
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -1543,7 +1543,7 @@ func GetServerLanguage() string {
 			__native := C.GetServerLanguage()
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -1566,7 +1566,7 @@ func GetAllConVars() []string {
 			__native := C.GetAllConVars()
 			__retVal_native = *(*plugify.PlgVector)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetVectorDataString(&__retVal_native)
+			__retVal = plugify.GetVectorDataString[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.

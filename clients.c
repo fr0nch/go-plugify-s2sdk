@@ -309,6 +309,9 @@ PLUGIFY_EXPORT Vector (*__s2sdk_ProcessTargetString)(int32_t, String*) = NULL;
 PLUGIFY_EXPORT void (*__s2sdk_SwitchClientTeam)(int32_t, int32_t) = NULL;
 
 
+PLUGIFY_EXPORT void (*__s2sdk_ChangeClientTeam)(int32_t, int32_t) = NULL;
+
+
 PLUGIFY_EXPORT void (*__s2sdk_RespawnClient)(int32_t) = NULL;
 
 

@@ -90,3 +90,24 @@ PLUGIFY_EXPORT bool (*__s2sdk_GetTransmitInfoFullUpdate)(uintptr_t) = NULL;
 PLUGIFY_EXPORT void (*__s2sdk_SetTransmitInfoFullUpdate)(uintptr_t, bool) = NULL;
 
 
+PLUGIFY_EXPORT void (*__s2sdk_HideTransmitEntities)(int32_t, Vector*) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_ShowTransmitEntities)(int32_t, Vector*) = NULL;
+
+
+PLUGIFY_EXPORT Vector (*__s2sdk_GetHiddenTransmitEntities)(int32_t) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_HideTransmitEntity)(int32_t, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_ShowTransmitEntity)(int32_t, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_HideTransmitEntityFromOtherPlayers)(int32_t, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_ShowTransmitEntityToOtherPlayers)(int32_t, int32_t) = NULL;
+
+

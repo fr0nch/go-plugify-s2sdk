@@ -32,6 +32,13 @@ package s2sdk
 #cgo noescape SetTransmitInfoPlayerSlot
 #cgo noescape GetTransmitInfoFullUpdate
 #cgo noescape SetTransmitInfoFullUpdate
+#cgo noescape HideTransmitEntities
+#cgo noescape ShowTransmitEntities
+#cgo noescape GetHiddenTransmitEntities
+#cgo noescape HideTransmitEntity
+#cgo noescape ShowTransmitEntity
+#cgo noescape HideTransmitEntityFromOtherPlayers
+#cgo noescape ShowTransmitEntityToOtherPlayers
 */
 import "C"
 import (
@@ -335,7 +342,7 @@ func GetTransmitInfoTargetSlotsAll(info uintptr) []int32 {
 			__native := C.GetTransmitInfoTargetSlotsAll(__info)
 			__retVal_native = *(*plugify.PlgVector)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetVectorDataInt32(&__retVal_native)
+			__retVal = plugify.GetVectorDataInt32[int32](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -400,6 +407,113 @@ func SetTransmitInfoFullUpdate(info uintptr, fullUpdate bool) {
 	__info := C.uintptr_t(info)
 	__fullUpdate := C.bool(fullUpdate)
 	C.SetTransmitInfoFullUpdate(__info, __fullUpdate)
+}
+
+// HideTransmitEntities 
+//  @brief Hides entities from a player's transmit list.
+//
+//  @param playerSlot: The player slot to hide entities from.
+//  @param entHandles: Entity handles to hide.
+func HideTransmitEntities(playerSlot int32, entHandles []int32) {
+	__playerSlot := C.int32_t(playerSlot)
+	__entHandles := plugify.ConstructVectorInt32(entHandles)
+	plugify.Block {
+		Try: func() {
+			C.HideTransmitEntities(__playerSlot, (*C.Vector)(unsafe.Pointer(&__entHandles)))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyVectorInt32(&__entHandles)
+		},
+	}.Do()
+}
+
+// ShowTransmitEntities 
+//  @brief Shows previously hidden entities to a player.
+//
+//  @param playerSlot: The player slot to show entities to.
+//  @param entHandles: Entity handles to show.
+func ShowTransmitEntities(playerSlot int32, entHandles []int32) {
+	__playerSlot := C.int32_t(playerSlot)
+	__entHandles := plugify.ConstructVectorInt32(entHandles)
+	plugify.Block {
+		Try: func() {
+			C.ShowTransmitEntities(__playerSlot, (*C.Vector)(unsafe.Pointer(&__entHandles)))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyVectorInt32(&__entHandles)
+		},
+	}.Do()
+}
+
+// GetHiddenTransmitEntities 
+//  @brief Gets all hidden entity handles for a player.
+//
+//  @param playerSlot: The player slot to query.
+//
+//  @return Array of hidden entity handles.
+func GetHiddenTransmitEntities(playerSlot int32) []int32 {
+	var __retVal []int32
+	var __retVal_native plugify.PlgVector
+	__playerSlot := C.int32_t(playerSlot)
+	plugify.Block {
+		Try: func() {
+			__native := C.GetHiddenTransmitEntities(__playerSlot)
+			__retVal_native = *(*plugify.PlgVector)(unsafe.Pointer(&__native))
+			// Unmarshal - Convert native data to managed data.
+			__retVal = plugify.GetVectorDataInt32[int32](&__retVal_native)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyVectorInt32(&__retVal_native)
+		},
+	}.Do()
+	return __retVal
+}
+
+// HideTransmitEntity 
+//  @brief Hides a single entity from a player's transmit list.
+//
+//  @param playerSlot: The player slot to hide the entity from.
+//  @param entityHandle: Entity handle to hide.
+func HideTransmitEntity(playerSlot int32, entityHandle int32) {
+	__playerSlot := C.int32_t(playerSlot)
+	__entityHandle := C.int32_t(entityHandle)
+	C.HideTransmitEntity(__playerSlot, __entityHandle)
+}
+
+// ShowTransmitEntity 
+//  @brief Shows a previously hidden entity to a player.
+//
+//  @param playerSlot: The player slot to show the entity to.
+//  @param entityHandle: Entity handle to show.
+func ShowTransmitEntity(playerSlot int32, entityHandle int32) {
+	__playerSlot := C.int32_t(playerSlot)
+	__entityHandle := C.int32_t(entityHandle)
+	C.ShowTransmitEntity(__playerSlot, __entityHandle)
+}
+
+// HideTransmitEntityFromOtherPlayers 
+//  @brief Hides an entity from all players except the owner.
+//
+//  @param playerSlot: The owner player slot who will still see the entity.
+//  @param entityHandle: Entity handle to hide from other players.
+func HideTransmitEntityFromOtherPlayers(playerSlot int32, entityHandle int32) {
+	__playerSlot := C.int32_t(playerSlot)
+	__entityHandle := C.int32_t(entityHandle)
+	C.HideTransmitEntityFromOtherPlayers(__playerSlot, __entityHandle)
+}
+
+// ShowTransmitEntityToOtherPlayers 
+//  @brief Shows a previously hidden entity to all players except the owner.
+//
+//  @param playerSlot: The owner player slot who was excluded from hiding.
+//  @param entityHandle: Entity handle to show to other players.
+func ShowTransmitEntityToOtherPlayers(playerSlot int32, entityHandle int32) {
+	__playerSlot := C.int32_t(playerSlot)
+	__entityHandle := C.int32_t(entityHandle)
+	C.ShowTransmitEntityToOtherPlayers(__playerSlot, __entityHandle)
 }
 
 var (

@@ -198,7 +198,7 @@ func ServerCommandEx(command string) string {
 			__native := C.ServerCommandEx((*C.String)(unsafe.Pointer(&__command)))
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData(&__retVal_native)
+			__retVal = plugify.GetStringData[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -262,7 +262,7 @@ func GetAllConCommands(flags ConVarFlag) []string {
 			__native := C.GetAllConCommands(__flags)
 			__retVal_native = *(*plugify.PlgVector)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetVectorDataString(&__retVal_native)
+			__retVal = plugify.GetVectorDataString[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -285,7 +285,7 @@ func GetAllCommands() []string {
 			__native := C.GetAllCommands()
 			__retVal_native = *(*plugify.PlgVector)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetVectorDataString(&__retVal_native)
+			__retVal = plugify.GetVectorDataString[string](&__retVal_native)
 		},
 		Finally: func() {
 			// Perform cleanup.

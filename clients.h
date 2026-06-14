@@ -620,6 +620,12 @@ static void SwitchClientTeam(int32_t playerSlot, int32_t team) {
 	__s2sdk_SwitchClientTeam(playerSlot, team);
 }
 
+extern void (*__s2sdk_ChangeClientTeam)(int32_t, int32_t);
+
+static void ChangeClientTeam(int32_t playerSlot, int32_t team) {
+	__s2sdk_ChangeClientTeam(playerSlot, team);
+}
+
 extern void (*__s2sdk_RespawnClient)(int32_t);
 
 static void RespawnClient(int32_t playerSlot) {
