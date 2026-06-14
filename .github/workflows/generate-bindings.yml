@@ -181,7 +181,7 @@ jobs:
           REM_S2SDK: ${{ steps.remote_versions.outputs.s2sdk }}
           REM_GOPLUGIFY: ${{ steps.remote_versions.outputs.goplugify }}
         run: |
-          echo "### Auto-generated updates:" > release_notes.md
+          echo "### Upstream Updates:" > release_notes.md
           
           if [ "$S2SDK_CHANGED" == "true" ]; then
             echo "" >> release_notes.md
