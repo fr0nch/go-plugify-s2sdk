@@ -46,6 +46,9 @@ jobs:
           S2SDK_TAG=$(gh release list --repo ${{ env.PLUGIN_REPO }} --limit 1 --exclude-drafts --exclude-pre-releases --json tagName --jq '.[0].tagName')
           GOPLUGIFY_TAG=$(gh release list --repo ${{ env.GO_PLUGIFY_REPO }} --limit 1 --exclude-drafts --exclude-pre-releases --json tagName --jq '.[0].tagName')
           
+          gh release view "$S2SDK_TAG" --repo ${{ env.PLUGIN_REPO }} --json body --jq '.body' > /tmp/s2sdk_notes.txt
+          gh release view "$GOPLUGIFY_TAG" --repo ${{ env.GO_PLUGIFY_REPO }} --json body --jq '.body' > /tmp/goplugify_notes.txt
+          
           echo "s2sdk=$S2SDK_TAG" >> $GITHUB_OUTPUT
           echo "goplugify=$GOPLUGIFY_TAG" >> $GITHUB_OUTPUT
         env:
@@ -68,10 +71,24 @@ jobs:
           echo "Current: Project=$CUR_PROJ, S2SDK=$CUR_S2SDK, go-plugify=$CUR_GOPLUGIFY"
           echo "Remote: S2SDK=$REM_S2SDK, go-plugify=$REM_GOPLUGIFY"
 
-          if [ "$CUR_S2SDK" != "$REM_S2SDK" ] || [ "$CUR_GOPLUGIFY" != "$REM_GOPLUGIFY" ]; then
+          S2SDK_CHANGED="false"
+          if [ "$CUR_S2SDK" != "$REM_S2SDK" ]; then
+            S2SDK_CHANGED="true"
+          fi
+
+          GOPLUGIFY_CHANGED="false"
+          if [ "$CUR_GOPLUGIFY" != "$REM_GOPLUGIFY" ]; then
+            GOPLUGIFY_CHANGED="true"
+          fi
+
+          echo "s2sdk_changed=$S2SDK_CHANGED" >> $GITHUB_OUTPUT
+          echo "goplugify_changed=$GOPLUGIFY_CHANGED" >> $GITHUB_OUTPUT
+
+          if [ "$S2SDK_CHANGED" == "true" ] || [ "$GOPLUGIFY_CHANGED" == "true" ]; then
             echo "New version(s) detected!"
             echo "update_needed=true" >> $GITHUB_OUTPUT
           
+            # Увеличиваем последнюю цифру (patch) проекта
             NEW_PROJ=$(echo $CUR_PROJ | awk -F. -v OFS=. '{$NF++;print}')
             echo "new_project_version=$NEW_PROJ" >> $GITHUB_OUTPUT
           else
@@ -146,7 +163,7 @@ jobs:
             exit 0
           fi
 
-          if [ "${{ steps.current_version.outputs.update_needed }}" == "true" ]; then
+          if [ "${{ steps.version_check.outputs.update_needed }}" == "true" ]; then
             git commit -m "feat: release ${{ steps.version_check.outputs.new_project_version }} (s2sdk: ${{ steps.remote_versions.outputs.s2sdk }}, go-plugify: ${{ steps.remote_versions.outputs.goplugify }})"
           else
             git commit -m "chore: update go.mod and go.sum"
@@ -159,9 +176,31 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERSION: ${{ steps.version_check.outputs.new_project_version }}
+          S2SDK_CHANGED: ${{ steps.version_check.outputs.s2sdk_changed }}
+          GOPLUGIFY_CHANGED: ${{ steps.version_check.outputs.goplugify_changed }}
+          REM_S2SDK: ${{ steps.remote_versions.outputs.s2sdk }}
+          REM_GOPLUGIFY: ${{ steps.remote_versions.outputs.goplugify }}
         run: |
-          NOTES="### Auto-generated updates:\n- \`plugify-plugin-s2sdk\` updated to **${{ steps.remote_versions.outputs.s2sdk }}**\n- \`go-plugify\` updated to **${{ steps.remote_versions.outputs.goplugify }}**"
-          gh release create "$VERSION" --notes "$NOTES"
+          echo "### Auto-generated updates:" > release_notes.md
+          
+          if [ "$S2SDK_CHANGED" == "true" ]; then
+            echo "" >> release_notes.md
+            echo "#### \`plugify-plugin-s2sdk\` updated to **$REM_S2SDK**" >> release_notes.md
+            echo "" >> release_notes.md
+            cat /tmp/s2sdk_notes.txt >> release_notes.md
+            echo "" >> release_notes.md
+            echo "---" >> release_notes.md
+          fi
+          
+          if [ "$GOPLUGIFY_CHANGED" == "true" ]; then
+            echo "" >> release_notes.md
+            echo "#### \`go-plugify\` updated to **$REM_GOPLUGIFY**" >> release_notes.md
+            echo "" >> release_notes.md
+            cat /tmp/goplugify_notes.txt >> release_notes.md
+            echo "" >> release_notes.md
+          fi
+          
+          gh release create "$VERSION" --notes-file release_notes.md
 
   delete-old-actions:
     if: ${{ inputs.cleanup_only || success() }}
