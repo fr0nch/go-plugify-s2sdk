@@ -43,13 +43,13 @@ jobs:
       - name: Get latest remote versions
         id: remote_versions
         run: |
-          S2SDK_TAG=$(gh release list --repo ${{ env.PLUGIN_REPO }} --limit 1 --exclude-drafts --exclude-pre-releases --json tagName --jq '.[0].tagName')
+          PLUGIN_TAG=$(gh release list --repo ${{ env.PLUGIN_REPO }} --limit 1 --exclude-drafts --exclude-pre-releases --json tagName --jq '.[0].tagName')
           GOPLUGIFY_TAG=$(gh release list --repo ${{ env.GO_PLUGIFY_REPO }} --limit 1 --exclude-drafts --exclude-pre-releases --json tagName --jq '.[0].tagName')
           
-          gh release view "$S2SDK_TAG" --repo ${{ env.PLUGIN_REPO }} --json body --jq '.body' > /tmp/s2sdk_notes.txt
+          gh release view "$PLUGIN_TAG" --repo ${{ env.PLUGIN_REPO }} --json body --jq '.body' > /tmp/plugin_notes.txt
           gh release view "$GOPLUGIFY_TAG" --repo ${{ env.GO_PLUGIFY_REPO }} --json body --jq '.body' > /tmp/goplugify_notes.txt
           
-          echo "s2sdk=$S2SDK_TAG" >> $GITHUB_OUTPUT
+          echo "plugin=$PLUGIN_TAG" >> $GITHUB_OUTPUT
           echo "goplugify=$GOPLUGIFY_TAG" >> $GITHUB_OUTPUT
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -58,22 +58,22 @@ jobs:
         id: version_check
         run: |
           if [ ! -f .github/versions.json ]; then
-            echo '{"project": "v0.0.0", "s2sdk": "v0.0.0", "go-plugify": "v0.0.0"}' > .github/versions.json
+            echo '{"project": "v0.0.0", "plugin": "v0.0.0", "go-plugify": "v0.0.0"}' > .github/versions.json
           fi
 
           CUR_PROJ=$(jq -r '.project' .github/versions.json)
-          CUR_S2SDK=$(jq -r '.s2sdk' .github/versions.json)
+          CUR_PLUGIN=$(jq -r '.plugin' .github/versions.json)
           CUR_GOPLUGIFY=$(jq -r '."go-plugify"' .github/versions.json)
 
-          REM_S2SDK="${{ steps.remote_versions.outputs.s2sdk }}"
+          REM_PLUGIN="${{ steps.remote_versions.outputs.plugin }}"
           REM_GOPLUGIFY="${{ steps.remote_versions.outputs.goplugify }}"
 
-          echo "Current: Project=$CUR_PROJ, S2SDK=$CUR_S2SDK, go-plugify=$CUR_GOPLUGIFY"
-          echo "Remote: S2SDK=$REM_S2SDK, go-plugify=$REM_GOPLUGIFY"
+          echo "Current: Project=$CUR_PROJ, Plugin=$CUR_PLUGIN, go-plugify=$CUR_GOPLUGIFY"
+          echo "Remote: Plugin=$REM_PLUGIN, go-plugify=$REM_GOPLUGIFY"
 
-          S2SDK_CHANGED="false"
-          if [ "$CUR_S2SDK" != "$REM_S2SDK" ]; then
-            S2SDK_CHANGED="true"
+          PLUGIN_CHANGED="false"
+          if [ "$CUR_PLUGIN" != "$REM_PLUGIN" ]; then
+            PLUGIN_CHANGED="true"
           fi
 
           GOPLUGIFY_CHANGED="false"
@@ -81,14 +81,13 @@ jobs:
             GOPLUGIFY_CHANGED="true"
           fi
 
-          echo "s2sdk_changed=$S2SDK_CHANGED" >> $GITHUB_OUTPUT
+          echo "plugin_changed=$PLUGIN_CHANGED" >> $GITHUB_OUTPUT
           echo "goplugify_changed=$GOPLUGIFY_CHANGED" >> $GITHUB_OUTPUT
 
-          if [ "$S2SDK_CHANGED" == "true" ] || [ "$GOPLUGIFY_CHANGED" == "true" ]; then
+          if [ "$PLUGIN_CHANGED" == "true" ] || [ "$GOPLUGIFY_CHANGED" == "true" ]; then
             echo "New version(s) detected!"
             echo "update_needed=true" >> $GITHUB_OUTPUT
           
-            # Увеличиваем последнюю цифру (patch) проекта
             NEW_PROJ=$(echo $CUR_PROJ | awk -F. -v OFS=. '{$NF++;print}')
             echo "new_project_version=$NEW_PROJ" >> $GITHUB_OUTPUT
           else
@@ -145,9 +144,9 @@ jobs:
         if: steps.version_check.outputs.update_needed == 'true'
         run: |
           jq --arg p "${{ steps.version_check.outputs.new_project_version }}" \
-             --arg s "${{ steps.remote_versions.outputs.s2sdk }}" \
+             --arg s "${{ steps.remote_versions.outputs.plugin }}" \
              --arg g "${{ steps.remote_versions.outputs.goplugify }}" \
-             '.project = $p | .s2sdk = $s | ."go-plugify" = $g' \
+             '.project = $p | .plugin = $s | ."go-plugify" = $g' \
              .github/versions.json > tmp.json && mv tmp.json .github/versions.json
 
 
@@ -164,7 +163,7 @@ jobs:
           fi
 
           if [ "${{ steps.version_check.outputs.update_needed }}" == "true" ]; then
-            git commit -m "feat: release ${{ steps.version_check.outputs.new_project_version }} (s2sdk: ${{ steps.remote_versions.outputs.s2sdk }}, go-plugify: ${{ steps.remote_versions.outputs.goplugify }})"
+            git commit -m "feat: release ${{ steps.version_check.outputs.new_project_version }} (plugin: ${{ steps.remote_versions.outputs.plugin }}, go-plugify: ${{ steps.remote_versions.outputs.goplugify }})"
           else
             git commit -m "chore: update go.mod and go.sum"
           fi
@@ -176,18 +175,18 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERSION: ${{ steps.version_check.outputs.new_project_version }}
-          S2SDK_CHANGED: ${{ steps.version_check.outputs.s2sdk_changed }}
+          PLUGIN_CHANGED: ${{ steps.version_check.outputs.plugin_changed }}
           GOPLUGIFY_CHANGED: ${{ steps.version_check.outputs.goplugify_changed }}
-          REM_S2SDK: ${{ steps.remote_versions.outputs.s2sdk }}
+          REM_PLUGIN: ${{ steps.remote_versions.outputs.plugin }}
           REM_GOPLUGIFY: ${{ steps.remote_versions.outputs.goplugify }}
         run: |
           echo "### Upstream Updates:" > release_notes.md
           
-          if [ "$S2SDK_CHANGED" == "true" ]; then
+          if [ "$PLUGIN_CHANGED" == "true" ]; then
             echo "" >> release_notes.md
-            echo "#### \`plugify-plugin-s2sdk\` updated to **$REM_S2SDK**" >> release_notes.md
+            echo "#### \`${{ env.PLUGIN_REPO }}\` updated to **$REM_PLUGIN**" >> release_notes.md
             echo "" >> release_notes.md
-            cat /tmp/s2sdk_notes.txt >> release_notes.md
+            cat /tmp/plugin_notes.txt >> release_notes.md
             echo "" >> release_notes.md
             echo "---" >> release_notes.md
           fi
