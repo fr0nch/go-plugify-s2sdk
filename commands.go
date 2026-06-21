@@ -27,9 +27,30 @@ var _ = errors.New("")
 var _ = reflect.TypeOf(0)
 var _ = runtime.GOOS
 var _ = unsafe.Sizeof(0)
-var _ = plugify.Plugin()
+var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: commands)
+
+var P_AddAdminCommand = func(name string, adminFlags int64, description string, flags ConVarFlag, callback ConCommandCallback, type_ HookMode) bool {
+	var __retVal bool
+	__name := plugify.ConstructString(name)
+	__adminFlags := C.int64_t(adminFlags)
+	__description := plugify.ConstructString(description)
+	__flags := C.int64_t(flags)
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__type_ := C.uint8_t(type_)
+	plugify.Block {
+		Try: func() {
+			__retVal = bool(C.AddAdminCommand((*C.String)(unsafe.Pointer(&__name)), __adminFlags, (*C.String)(unsafe.Pointer(&__description)), __flags, __callback, __type_))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__name)
+			plugify.DestroyString(&__description)
+		},
+	}.Do()
+	return __retVal
+}
 
 // AddAdminCommand 
 //  @brief Creates a console command as an administrative command.
@@ -43,16 +64,19 @@ var _ = plugify.Plugin()
 //
 //  @return true if the command was successfully created; otherwise, false.
 func AddAdminCommand(name string, adminFlags int64, description string, flags ConVarFlag, callback ConCommandCallback, type_ HookMode) bool {
+	return P_AddAdminCommand(name, adminFlags, description, flags, callback, type_)
+}
+
+var P_AddConsoleCommand = func(name string, description string, flags ConVarFlag, callback ConCommandCallback, type_ HookMode) bool {
 	var __retVal bool
 	__name := plugify.ConstructString(name)
-	__adminFlags := C.int64_t(adminFlags)
 	__description := plugify.ConstructString(description)
 	__flags := C.int64_t(flags)
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	__type_ := C.uint8_t(type_)
 	plugify.Block {
 		Try: func() {
-			__retVal = bool(C.AddAdminCommand((*C.String)(unsafe.Pointer(&__name)), __adminFlags, (*C.String)(unsafe.Pointer(&__description)), __flags, __callback, __type_))
+			__retVal = bool(C.AddConsoleCommand((*C.String)(unsafe.Pointer(&__name)), (*C.String)(unsafe.Pointer(&__description)), __flags, __callback, __type_))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -74,20 +98,20 @@ func AddAdminCommand(name string, adminFlags int64, description string, flags Co
 //
 //  @return true if the command was successfully created; otherwise, false.
 func AddConsoleCommand(name string, description string, flags ConVarFlag, callback ConCommandCallback, type_ HookMode) bool {
+	return P_AddConsoleCommand(name, description, flags, callback, type_)
+}
+
+var P_RemoveCommand = func(name string, callback ConCommandCallback) bool {
 	var __retVal bool
 	__name := plugify.ConstructString(name)
-	__description := plugify.ConstructString(description)
-	__flags := C.int64_t(flags)
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
-	__type_ := C.uint8_t(type_)
 	plugify.Block {
 		Try: func() {
-			__retVal = bool(C.AddConsoleCommand((*C.String)(unsafe.Pointer(&__name)), (*C.String)(unsafe.Pointer(&__description)), __flags, __callback, __type_))
+			__retVal = bool(C.RemoveCommand((*C.String)(unsafe.Pointer(&__name)), __callback))
 		},
 		Finally: func() {
 			// Perform cleanup.
 			plugify.DestroyString(&__name)
-			plugify.DestroyString(&__description)
 		},
 	}.Do()
 	return __retVal
@@ -101,12 +125,17 @@ func AddConsoleCommand(name string, description string, flags ConVarFlag, callba
 //
 //  @return true if the command was successfully removed; otherwise, false.
 func RemoveCommand(name string, callback ConCommandCallback) bool {
+	return P_RemoveCommand(name, callback)
+}
+
+var P_AddCommandListener = func(name string, callback ConCommandCallback, type_ HookMode) bool {
 	var __retVal bool
 	__name := plugify.ConstructString(name)
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__type_ := C.uint8_t(type_)
 	plugify.Block {
 		Try: func() {
-			__retVal = bool(C.RemoveCommand((*C.String)(unsafe.Pointer(&__name)), __callback))
+			__retVal = bool(C.AddCommandListener((*C.String)(unsafe.Pointer(&__name)), __callback, __type_))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -125,13 +154,17 @@ func RemoveCommand(name string, callback ConCommandCallback) bool {
 //
 //  @return Returns true if the callback was successfully added, false otherwise.
 func AddCommandListener(name string, callback ConCommandCallback, type_ HookMode) bool {
+	return P_AddCommandListener(name, callback, type_)
+}
+
+var P_RemoveCommandListener = func(name string, callback ConCommandCallback, type_ HookMode) bool {
 	var __retVal bool
 	__name := plugify.ConstructString(name)
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	__type_ := C.uint8_t(type_)
 	plugify.Block {
 		Try: func() {
-			__retVal = bool(C.AddCommandListener((*C.String)(unsafe.Pointer(&__name)), __callback, __type_))
+			__retVal = bool(C.RemoveCommandListener((*C.String)(unsafe.Pointer(&__name)), __callback, __type_))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -150,27 +183,10 @@ func AddCommandListener(name string, callback ConCommandCallback, type_ HookMode
 //
 //  @return Returns true if the callback was successfully removed, false otherwise.
 func RemoveCommandListener(name string, callback ConCommandCallback, type_ HookMode) bool {
-	var __retVal bool
-	__name := plugify.ConstructString(name)
-	__callback := plugify.GetFunctionPointerForDelegate(callback)
-	__type_ := C.uint8_t(type_)
-	plugify.Block {
-		Try: func() {
-			__retVal = bool(C.RemoveCommandListener((*C.String)(unsafe.Pointer(&__name)), __callback, __type_))
-		},
-		Finally: func() {
-			// Perform cleanup.
-			plugify.DestroyString(&__name)
-		},
-	}.Do()
-	return __retVal
+	return P_RemoveCommandListener(name, callback, type_)
 }
 
-// ServerCommand 
-//  @brief Executes a server command as if it were run on the server console or through RCON.
-//
-//  @param command: The command to execute on the server.
-func ServerCommand(command string) {
+var P_ServerCommand = func(command string) {
 	__command := plugify.ConstructString(command)
 	plugify.Block {
 		Try: func() {
@@ -183,13 +199,15 @@ func ServerCommand(command string) {
 	}.Do()
 }
 
-// ServerCommandEx 
-//  @brief Executes a server command as if it were on the server console (or RCON) and stores the printed text into buffer.
+// ServerCommand 
+//  @brief Executes a server command as if it were run on the server console or through RCON.
 //
 //  @param command: The command to execute on the server.
-//
-//  @return String to store command result into.
-func ServerCommandEx(command string) string {
+func ServerCommand(command string) {
+	P_ServerCommand(command)
+}
+
+var P_ServerCommandEx = func(command string) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__command := plugify.ConstructString(command)
@@ -209,17 +227,45 @@ func ServerCommandEx(command string) string {
 	return __retVal
 }
 
+// ServerCommandEx 
+//  @brief Executes a server command as if it were on the server console (or RCON) and stores the printed text into buffer.
+//
+//  @param command: The command to execute on the server.
+//
+//  @return String to store command result into.
+func ServerCommandEx(command string) string {
+	return P_ServerCommandEx(command)
+}
+
+var P_ClientCommand = func(playerSlot int32, command string) {
+	__playerSlot := C.int32_t(playerSlot)
+	__command := plugify.ConstructString(command)
+	plugify.Block {
+		Try: func() {
+			C.ClientCommand(__playerSlot, (*C.String)(unsafe.Pointer(&__command)))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__command)
+		},
+	}.Do()
+}
+
 // ClientCommand 
 //  @brief Executes a client command.
 //
 //  @param playerSlot: The index of the client executing the command.
 //  @param command: The command to execute on the client.
 func ClientCommand(playerSlot int32, command string) {
+	P_ClientCommand(playerSlot, command)
+}
+
+var P_FakeClientCommand = func(playerSlot int32, command string) {
 	__playerSlot := C.int32_t(playerSlot)
 	__command := plugify.ConstructString(command)
 	plugify.Block {
 		Try: func() {
-			C.ClientCommand(__playerSlot, (*C.String)(unsafe.Pointer(&__command)))
+			C.FakeClientCommand(__playerSlot, (*C.String)(unsafe.Pointer(&__command)))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -234,26 +280,10 @@ func ClientCommand(playerSlot int32, command string) {
 //  @param playerSlot: The index of the client.
 //  @param command: The command to be executed by the client.
 func FakeClientCommand(playerSlot int32, command string) {
-	__playerSlot := C.int32_t(playerSlot)
-	__command := plugify.ConstructString(command)
-	plugify.Block {
-		Try: func() {
-			C.FakeClientCommand(__playerSlot, (*C.String)(unsafe.Pointer(&__command)))
-		},
-		Finally: func() {
-			// Perform cleanup.
-			plugify.DestroyString(&__command)
-		},
-	}.Do()
+	P_FakeClientCommand(playerSlot, command)
 }
 
-// GetAllConCommands 
-//  @brief  Returns the names of all registered console commands and cvars.
-//
-//  @param flags: Additional flags for the console variable.
-//
-//  @return The vector of command/cvar names.
-func GetAllConCommands(flags ConVarFlag) []string {
+var P_GetAllConCommands = func(flags ConVarFlag) []string {
 	var __retVal []string
 	var __retVal_native plugify.PlgVector
 	__flags := C.int64_t(flags)
@@ -272,12 +302,17 @@ func GetAllConCommands(flags ConVarFlag) []string {
 	return __retVal
 }
 
-// GetAllCommands 
-//  @brief Returns all console commands registered by this plugin.
+// GetAllConCommands 
+//  @brief  Returns the names of all registered console commands and cvars.
 //
+//  @param flags: Additional flags for the console variable.
 //
-//  @return The vector of ConCommand names.
-func GetAllCommands() []string {
+//  @return The vector of command/cvar names.
+func GetAllConCommands(flags ConVarFlag) []string {
+	return P_GetAllConCommands(flags)
+}
+
+var P_GetAllCommands = func() []string {
 	var __retVal []string
 	var __retVal_native plugify.PlgVector
 	plugify.Block {
@@ -293,5 +328,14 @@ func GetAllCommands() []string {
 		},
 	}.Do()
 	return __retVal
+}
+
+// GetAllCommands 
+//  @brief Returns all console commands registered by this plugin.
+//
+//
+//  @return The vector of ConCommand names.
+func GetAllCommands() []string {
+	return P_GetAllCommands()
 }
 

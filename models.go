@@ -38,9 +38,18 @@ var _ = errors.New("")
 var _ = reflect.TypeOf(0)
 var _ = runtime.GOOS
 var _ = unsafe.Sizeof(0)
-var _ = plugify.Plugin()
+var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: models)
+
+var P_GetEntityAttachmentAngles = func(entityHandle int32, attachmentIndex int32) plugify.Vector3 {
+	var __retVal plugify.Vector3
+	__entityHandle := C.int32_t(entityHandle)
+	__attachmentIndex := C.int32_t(attachmentIndex)
+	__native := C.GetEntityAttachmentAngles(__entityHandle, __attachmentIndex)
+	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
+	return __retVal
+}
 
 // GetEntityAttachmentAngles 
 //  @brief Retrieves the attachment angles of an entity.
@@ -50,10 +59,14 @@ var _ = plugify.Plugin()
 //
 //  @return A vector representing the attachment angles (pitch, yaw, roll).
 func GetEntityAttachmentAngles(entityHandle int32, attachmentIndex int32) plugify.Vector3 {
+	return P_GetEntityAttachmentAngles(entityHandle, attachmentIndex)
+}
+
+var P_GetEntityAttachmentForward = func(entityHandle int32, attachmentIndex int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__entityHandle := C.int32_t(entityHandle)
 	__attachmentIndex := C.int32_t(attachmentIndex)
-	__native := C.GetEntityAttachmentAngles(__entityHandle, __attachmentIndex)
+	__native := C.GetEntityAttachmentForward(__entityHandle, __attachmentIndex)
 	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
 	return __retVal
 }
@@ -66,10 +79,14 @@ func GetEntityAttachmentAngles(entityHandle int32, attachmentIndex int32) plugif
 //
 //  @return A vector representing the forward direction of the attachment.
 func GetEntityAttachmentForward(entityHandle int32, attachmentIndex int32) plugify.Vector3 {
+	return P_GetEntityAttachmentForward(entityHandle, attachmentIndex)
+}
+
+var P_GetEntityAttachmentOrigin = func(entityHandle int32, attachmentIndex int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__entityHandle := C.int32_t(entityHandle)
 	__attachmentIndex := C.int32_t(attachmentIndex)
-	__native := C.GetEntityAttachmentForward(__entityHandle, __attachmentIndex)
+	__native := C.GetEntityAttachmentOrigin(__entityHandle, __attachmentIndex)
 	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
 	return __retVal
 }
@@ -82,11 +99,13 @@ func GetEntityAttachmentForward(entityHandle int32, attachmentIndex int32) plugi
 //
 //  @return A vector representing the origin of the attachment.
 func GetEntityAttachmentOrigin(entityHandle int32, attachmentIndex int32) plugify.Vector3 {
-	var __retVal plugify.Vector3
+	return P_GetEntityAttachmentOrigin(entityHandle, attachmentIndex)
+}
+
+var P_GetEntityMaterialGroupHash = func(entityHandle int32) uint32 {
+	var __retVal uint32
 	__entityHandle := C.int32_t(entityHandle)
-	__attachmentIndex := C.int32_t(attachmentIndex)
-	__native := C.GetEntityAttachmentOrigin(__entityHandle, __attachmentIndex)
-	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
+	__retVal = uint32(C.GetEntityMaterialGroupHash(__entityHandle))
 	return __retVal
 }
 
@@ -97,9 +116,13 @@ func GetEntityAttachmentOrigin(entityHandle int32, attachmentIndex int32) plugif
 //
 //  @return The material group hash.
 func GetEntityMaterialGroupHash(entityHandle int32) uint32 {
-	var __retVal uint32
+	return P_GetEntityMaterialGroupHash(entityHandle)
+}
+
+var P_GetEntityMaterialGroupMask = func(entityHandle int32) uint64 {
+	var __retVal uint64
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = uint32(C.GetEntityMaterialGroupHash(__entityHandle))
+	__retVal = uint64(C.GetEntityMaterialGroupMask(__entityHandle))
 	return __retVal
 }
 
@@ -110,9 +133,13 @@ func GetEntityMaterialGroupHash(entityHandle int32) uint32 {
 //
 //  @return The mesh group mask.
 func GetEntityMaterialGroupMask(entityHandle int32) uint64 {
-	var __retVal uint64
+	return P_GetEntityMaterialGroupMask(entityHandle)
+}
+
+var P_GetEntityModelScale = func(entityHandle int32) float32 {
+	var __retVal float32
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = uint64(C.GetEntityMaterialGroupMask(__entityHandle))
+	__retVal = float32(C.GetEntityModelScale(__entityHandle))
 	return __retVal
 }
 
@@ -123,9 +150,13 @@ func GetEntityMaterialGroupMask(entityHandle int32) uint64 {
 //
 //  @return The model scale factor.
 func GetEntityModelScale(entityHandle int32) float32 {
-	var __retVal float32
+	return P_GetEntityModelScale(entityHandle)
+}
+
+var P_GetEntityRenderAlpha = func(entityHandle int32) int32 {
+	var __retVal int32
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = float32(C.GetEntityModelScale(__entityHandle))
+	__retVal = int32(C.GetEntityRenderAlpha(__entityHandle))
 	return __retVal
 }
 
@@ -136,9 +167,14 @@ func GetEntityModelScale(entityHandle int32) float32 {
 //
 //  @return The alpha modulation value.
 func GetEntityRenderAlpha(entityHandle int32) int32 {
-	var __retVal int32
+	return P_GetEntityRenderAlpha(entityHandle)
+}
+
+var P_GetEntityRenderColor2 = func(entityHandle int32) plugify.Vector3 {
+	var __retVal plugify.Vector3
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = int32(C.GetEntityRenderAlpha(__entityHandle))
+	__native := C.GetEntityRenderColor2(__entityHandle)
+	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
 	return __retVal
 }
 
@@ -149,21 +185,10 @@ func GetEntityRenderAlpha(entityHandle int32) int32 {
 //
 //  @return A vector representing the render color (R, G, B).
 func GetEntityRenderColor2(entityHandle int32) plugify.Vector3 {
-	var __retVal plugify.Vector3
-	__entityHandle := C.int32_t(entityHandle)
-	__native := C.GetEntityRenderColor2(__entityHandle)
-	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
-	return __retVal
+	return P_GetEntityRenderColor2(entityHandle)
 }
 
-// ScriptLookupAttachment 
-//  @brief Retrieves an attachment index by name.
-//
-//  @param entityHandle: The handle of the entity.
-//  @param attachmentName: The name of the attachment.
-//
-//  @return The attachment index, or -1 if not found.
-func ScriptLookupAttachment(entityHandle int32, attachmentName string) int32 {
+var P_ScriptLookupAttachment = func(entityHandle int32, attachmentName string) int32 {
 	var __retVal int32
 	__entityHandle := C.int32_t(entityHandle)
 	__attachmentName := plugify.ConstructString(attachmentName)
@@ -179,6 +204,24 @@ func ScriptLookupAttachment(entityHandle int32, attachmentName string) int32 {
 	return __retVal
 }
 
+// ScriptLookupAttachment 
+//  @brief Retrieves an attachment index by name.
+//
+//  @param entityHandle: The handle of the entity.
+//  @param attachmentName: The name of the attachment.
+//
+//  @return The attachment index, or -1 if not found.
+func ScriptLookupAttachment(entityHandle int32, attachmentName string) int32 {
+	return P_ScriptLookupAttachment(entityHandle, attachmentName)
+}
+
+var P_SetEntityBodygroup = func(entityHandle int32, group int32, value int32) {
+	__entityHandle := C.int32_t(entityHandle)
+	__group := C.int32_t(group)
+	__value := C.int32_t(value)
+	C.SetEntityBodygroup(__entityHandle, __group, __value)
+}
+
 // SetEntityBodygroup 
 //  @brief Sets a bodygroup value by index.
 //
@@ -186,19 +229,10 @@ func ScriptLookupAttachment(entityHandle int32, attachmentName string) int32 {
 //  @param group: The bodygroup index.
 //  @param value: The new value to set for the bodygroup.
 func SetEntityBodygroup(entityHandle int32, group int32, value int32) {
-	__entityHandle := C.int32_t(entityHandle)
-	__group := C.int32_t(group)
-	__value := C.int32_t(value)
-	C.SetEntityBodygroup(__entityHandle, __group, __value)
+	P_SetEntityBodygroup(entityHandle, group, value)
 }
 
-// SetEntityBodygroupByName 
-//  @brief Sets a bodygroup value by name.
-//
-//  @param entityHandle: The handle of the entity.
-//  @param name: The bodygroup name.
-//  @param value: The new value to set for the bodygroup.
-func SetEntityBodygroupByName(entityHandle int32, name string, value int32) {
+var P_SetEntityBodygroupByName = func(entityHandle int32, name string, value int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__name := plugify.ConstructString(name)
 	__value := C.int32_t(value)
@@ -213,12 +247,17 @@ func SetEntityBodygroupByName(entityHandle int32, name string, value int32) {
 	}.Do()
 }
 
-// SetEntityLightGroup 
-//  @brief Sets the light group of an entity.
+// SetEntityBodygroupByName 
+//  @brief Sets a bodygroup value by name.
 //
 //  @param entityHandle: The handle of the entity.
-//  @param lightGroup: The light group name.
-func SetEntityLightGroup(entityHandle int32, lightGroup string) {
+//  @param name: The bodygroup name.
+//  @param value: The new value to set for the bodygroup.
+func SetEntityBodygroupByName(entityHandle int32, name string, value int32) {
+	P_SetEntityBodygroupByName(entityHandle, name, value)
+}
+
+var P_SetEntityLightGroup = func(entityHandle int32, lightGroup string) {
 	__entityHandle := C.int32_t(entityHandle)
 	__lightGroup := plugify.ConstructString(lightGroup)
 	plugify.Block {
@@ -232,12 +271,16 @@ func SetEntityLightGroup(entityHandle int32, lightGroup string) {
 	}.Do()
 }
 
-// SetEntityMaterialGroup 
-//  @brief Sets the material group of an entity.
+// SetEntityLightGroup 
+//  @brief Sets the light group of an entity.
 //
 //  @param entityHandle: The handle of the entity.
-//  @param materialGroup: The material group name.
-func SetEntityMaterialGroup(entityHandle int32, materialGroup string) {
+//  @param lightGroup: The light group name.
+func SetEntityLightGroup(entityHandle int32, lightGroup string) {
+	P_SetEntityLightGroup(entityHandle, lightGroup)
+}
+
+var P_SetEntityMaterialGroup = func(entityHandle int32, materialGroup string) {
 	__entityHandle := C.int32_t(entityHandle)
 	__materialGroup := plugify.ConstructString(materialGroup)
 	plugify.Block {
@@ -251,15 +294,34 @@ func SetEntityMaterialGroup(entityHandle int32, materialGroup string) {
 	}.Do()
 }
 
+// SetEntityMaterialGroup 
+//  @brief Sets the material group of an entity.
+//
+//  @param entityHandle: The handle of the entity.
+//  @param materialGroup: The material group name.
+func SetEntityMaterialGroup(entityHandle int32, materialGroup string) {
+	P_SetEntityMaterialGroup(entityHandle, materialGroup)
+}
+
+var P_SetEntityMaterialGroupHash = func(entityHandle int32, hash uint32) {
+	__entityHandle := C.int32_t(entityHandle)
+	__hash := C.uint32_t(hash)
+	C.SetEntityMaterialGroupHash(__entityHandle, __hash)
+}
+
 // SetEntityMaterialGroupHash 
 //  @brief Sets the material group hash of an entity.
 //
 //  @param entityHandle: The handle of the entity.
 //  @param hash: The new material group hash to set.
 func SetEntityMaterialGroupHash(entityHandle int32, hash uint32) {
+	P_SetEntityMaterialGroupHash(entityHandle, hash)
+}
+
+var P_SetEntityMaterialGroupMask = func(entityHandle int32, mask uint64) {
 	__entityHandle := C.int32_t(entityHandle)
-	__hash := C.uint32_t(hash)
-	C.SetEntityMaterialGroupHash(__entityHandle, __hash)
+	__mask := C.uint64_t(mask)
+	C.SetEntityMaterialGroupMask(__entityHandle, __mask)
 }
 
 // SetEntityMaterialGroupMask 
@@ -268,9 +330,13 @@ func SetEntityMaterialGroupHash(entityHandle int32, hash uint32) {
 //  @param entityHandle: The handle of the entity.
 //  @param mask: The new mesh group mask to set.
 func SetEntityMaterialGroupMask(entityHandle int32, mask uint64) {
+	P_SetEntityMaterialGroupMask(entityHandle, mask)
+}
+
+var P_SetEntityModelScale = func(entityHandle int32, scale float32) {
 	__entityHandle := C.int32_t(entityHandle)
-	__mask := C.uint64_t(mask)
-	C.SetEntityMaterialGroupMask(__entityHandle, __mask)
+	__scale := C.float(scale)
+	C.SetEntityModelScale(__entityHandle, __scale)
 }
 
 // SetEntityModelScale 
@@ -279,9 +345,13 @@ func SetEntityMaterialGroupMask(entityHandle int32, mask uint64) {
 //  @param entityHandle: The handle of the entity.
 //  @param scale: The new scale factor.
 func SetEntityModelScale(entityHandle int32, scale float32) {
+	P_SetEntityModelScale(entityHandle, scale)
+}
+
+var P_SetEntityRenderAlpha = func(entityHandle int32, alpha int32) {
 	__entityHandle := C.int32_t(entityHandle)
-	__scale := C.float(scale)
-	C.SetEntityModelScale(__entityHandle, __scale)
+	__alpha := C.int32_t(alpha)
+	C.SetEntityRenderAlpha(__entityHandle, __alpha)
 }
 
 // SetEntityRenderAlpha 
@@ -290,9 +360,15 @@ func SetEntityModelScale(entityHandle int32, scale float32) {
 //  @param entityHandle: The handle of the entity.
 //  @param alpha: The new alpha value (0-255).
 func SetEntityRenderAlpha(entityHandle int32, alpha int32) {
+	P_SetEntityRenderAlpha(entityHandle, alpha)
+}
+
+var P_SetEntityRenderColor2 = func(entityHandle int32, r int32, g int32, b int32) {
 	__entityHandle := C.int32_t(entityHandle)
-	__alpha := C.int32_t(alpha)
-	C.SetEntityRenderAlpha(__entityHandle, __alpha)
+	__r := C.int32_t(r)
+	__g := C.int32_t(g)
+	__b := C.int32_t(b)
+	C.SetEntityRenderColor2(__entityHandle, __r, __g, __b)
 }
 
 // SetEntityRenderColor2 
@@ -303,11 +379,13 @@ func SetEntityRenderAlpha(entityHandle int32, alpha int32) {
 //  @param g: The green component (0-255).
 //  @param b: The blue component (0-255).
 func SetEntityRenderColor2(entityHandle int32, r int32, g int32, b int32) {
+	P_SetEntityRenderColor2(entityHandle, r, g, b)
+}
+
+var P_SetEntityRenderMode2 = func(entityHandle int32, mode int32) {
 	__entityHandle := C.int32_t(entityHandle)
-	__r := C.int32_t(r)
-	__g := C.int32_t(g)
-	__b := C.int32_t(b)
-	C.SetEntityRenderColor2(__entityHandle, __r, __g, __b)
+	__mode := C.int32_t(mode)
+	C.SetEntityRenderMode2(__entityHandle, __mode)
 }
 
 // SetEntityRenderMode2 
@@ -316,17 +394,10 @@ func SetEntityRenderColor2(entityHandle int32, r int32, g int32, b int32) {
 //  @param entityHandle: The handle of the entity.
 //  @param mode: The new render mode value.
 func SetEntityRenderMode2(entityHandle int32, mode int32) {
-	__entityHandle := C.int32_t(entityHandle)
-	__mode := C.int32_t(mode)
-	C.SetEntityRenderMode2(__entityHandle, __mode)
+	P_SetEntityRenderMode2(entityHandle, mode)
 }
 
-// SetEntitySingleMeshGroup 
-//  @brief Sets a single mesh group for an entity.
-//
-//  @param entityHandle: The handle of the entity.
-//  @param meshGroupName: The name of the mesh group.
-func SetEntitySingleMeshGroup(entityHandle int32, meshGroupName string) {
+var P_SetEntitySingleMeshGroup = func(entityHandle int32, meshGroupName string) {
 	__entityHandle := C.int32_t(entityHandle)
 	__meshGroupName := plugify.ConstructString(meshGroupName)
 	plugify.Block {
@@ -340,6 +411,22 @@ func SetEntitySingleMeshGroup(entityHandle int32, meshGroupName string) {
 	}.Do()
 }
 
+// SetEntitySingleMeshGroup 
+//  @brief Sets a single mesh group for an entity.
+//
+//  @param entityHandle: The handle of the entity.
+//  @param meshGroupName: The name of the mesh group.
+func SetEntitySingleMeshGroup(entityHandle int32, meshGroupName string) {
+	P_SetEntitySingleMeshGroup(entityHandle, meshGroupName)
+}
+
+var P_SetEntitySize = func(entityHandle int32, mins plugify.Vector3, maxs plugify.Vector3) {
+	__entityHandle := C.int32_t(entityHandle)
+	__mins := *(*C.Vector3)(unsafe.Pointer(&mins))
+	__maxs := *(*C.Vector3)(unsafe.Pointer(&maxs))
+	C.SetEntitySize(__entityHandle, &__mins, &__maxs)
+}
+
 // SetEntitySize 
 //  @brief Sets the size (bounding box) of an entity.
 //
@@ -347,10 +434,13 @@ func SetEntitySingleMeshGroup(entityHandle int32, meshGroupName string) {
 //  @param mins: The minimum bounding box vector.
 //  @param maxs: The maximum bounding box vector.
 func SetEntitySize(entityHandle int32, mins plugify.Vector3, maxs plugify.Vector3) {
+	P_SetEntitySize(entityHandle, mins, maxs)
+}
+
+var P_SetEntitySkin = func(entityHandle int32, skin int32) {
 	__entityHandle := C.int32_t(entityHandle)
-	__mins := *(*C.Vector3)(unsafe.Pointer(&mins))
-	__maxs := *(*C.Vector3)(unsafe.Pointer(&maxs))
-	C.SetEntitySize(__entityHandle, &__mins, &__maxs)
+	__skin := C.int32_t(skin)
+	C.SetEntitySkin(__entityHandle, __skin)
 }
 
 // SetEntitySkin 
@@ -359,8 +449,6 @@ func SetEntitySize(entityHandle int32, mins plugify.Vector3, maxs plugify.Vector
 //  @param entityHandle: The handle of the entity.
 //  @param skin: The new skin index.
 func SetEntitySkin(entityHandle int32, skin int32) {
-	__entityHandle := C.int32_t(entityHandle)
-	__skin := C.int32_t(skin)
-	C.SetEntitySkin(__entityHandle, __skin)
+	P_SetEntitySkin(entityHandle, skin)
 }
 

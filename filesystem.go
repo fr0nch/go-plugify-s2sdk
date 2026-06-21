@@ -18,18 +18,11 @@ var _ = errors.New("")
 var _ = reflect.TypeOf(0)
 var _ = runtime.GOOS
 var _ = unsafe.Sizeof(0)
-var _ = plugify.Plugin()
+var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: filesystem)
 
-// ReadFileVPK 
-//  @brief Reads a file and returns its contents as a string.
-//
-//  @param localFileName: The relative path of the file to read.
-//  @param pathId: The filesystem search path ID (e.g., "GAME"). If empty, uses "GAME".
-//
-//  @return The file contents, or an empty string on failure.
-func ReadFileVPK(localFileName string, pathId string) string {
+var P_ReadFileVPK = func(localFileName string, pathId string) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__localFileName := plugify.ConstructString(localFileName)
@@ -51,14 +44,18 @@ func ReadFileVPK(localFileName string, pathId string) string {
 	return __retVal
 }
 
-// FindFileAbsoluteList 
-//  @brief Finds all files matching the given wildcard and path ID.
+// ReadFileVPK 
+//  @brief Reads a file and returns its contents as a string.
 //
-//  @param wildcard: The wildcard pattern to match.
+//  @param localFileName: The relative path of the file to read.
 //  @param pathId: The filesystem search path ID (e.g., "GAME"). If empty, uses "GAME".
 //
-//  @return The list of absolute file paths matching the wildcard.
-func FindFileAbsoluteList(wildcard string, pathId string) []string {
+//  @return The file contents, or an empty string on failure.
+func ReadFileVPK(localFileName string, pathId string) string {
+	return P_ReadFileVPK(localFileName, pathId)
+}
+
+var P_FindFileAbsoluteList = func(wildcard string, pathId string) []string {
 	var __retVal []string
 	var __retVal_native plugify.PlgVector
 	__wildcard := plugify.ConstructString(wildcard)
@@ -78,5 +75,16 @@ func FindFileAbsoluteList(wildcard string, pathId string) []string {
 		},
 	}.Do()
 	return __retVal
+}
+
+// FindFileAbsoluteList 
+//  @brief Finds all files matching the given wildcard and path ID.
+//
+//  @param wildcard: The wildcard pattern to match.
+//  @param pathId: The filesystem search path ID (e.g., "GAME"). If empty, uses "GAME".
+//
+//  @return The list of absolute file paths matching the wildcard.
+func FindFileAbsoluteList(wildcard string, pathId string) []string {
+	return P_FindFileAbsoluteList(wildcard, pathId)
 }
 

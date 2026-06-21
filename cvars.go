@@ -85,20 +85,11 @@ var _ = errors.New("")
 var _ = reflect.TypeOf(0)
 var _ = runtime.GOOS
 var _ = unsafe.Sizeof(0)
-var _ = plugify.Plugin()
+var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: cvars)
 
-// CreateConVar 
-//  @brief Creates a new console variable.
-//
-//  @param name: The name of the console variable.
-//  @param defaultValue: The default value of the console variable.
-//  @param description: A description of the console variable's purpose.
-//  @param flags: Additional flags for the console variable.
-//
-//  @return A handle to the created console variable.
-func CreateConVar(name string, defaultValue any, description string, flags ConVarFlag) uint64 {
+var P_CreateConVar = func(name string, defaultValue any, description string, flags ConVarFlag) uint64 {
 	var __retVal uint64
 	__name := plugify.ConstructString(name)
 	__defaultValue := plugify.ConstructVariant(defaultValue)
@@ -112,6 +103,42 @@ func CreateConVar(name string, defaultValue any, description string, flags ConVa
 			// Perform cleanup.
 			plugify.DestroyString(&__name)
 			plugify.DestroyVariant(&__defaultValue)
+			plugify.DestroyString(&__description)
+		},
+	}.Do()
+	return __retVal
+}
+
+// CreateConVar 
+//  @brief Creates a new console variable.
+//
+//  @param name: The name of the console variable.
+//  @param defaultValue: The default value of the console variable.
+//  @param description: A description of the console variable's purpose.
+//  @param flags: Additional flags for the console variable.
+//
+//  @return A handle to the created console variable.
+func CreateConVar(name string, defaultValue any, description string, flags ConVarFlag) uint64 {
+	return P_CreateConVar(name, defaultValue, description, flags)
+}
+
+var P_CreateConVarBool = func(name string, defaultValue bool, description string, flags ConVarFlag, hasMin bool, min bool, hasMax bool, max bool) uint64 {
+	var __retVal uint64
+	__name := plugify.ConstructString(name)
+	__defaultValue := C.bool(defaultValue)
+	__description := plugify.ConstructString(description)
+	__flags := C.int64_t(flags)
+	__hasMin := C.bool(hasMin)
+	__min := C.bool(min)
+	__hasMax := C.bool(hasMax)
+	__max := C.bool(max)
+	plugify.Block {
+		Try: func() {
+			__retVal = uint64(C.CreateConVarBool((*C.String)(unsafe.Pointer(&__name)), __defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, __min, __hasMax, __max))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__name)
 			plugify.DestroyString(&__description)
 		},
 	}.Do()
@@ -132,18 +159,22 @@ func CreateConVar(name string, defaultValue any, description string, flags ConVa
 //
 //  @return A handle to the created console variable data.
 func CreateConVarBool(name string, defaultValue bool, description string, flags ConVarFlag, hasMin bool, min bool, hasMax bool, max bool) uint64 {
+	return P_CreateConVarBool(name, defaultValue, description, flags, hasMin, min, hasMax, max)
+}
+
+var P_CreateConVarInt16 = func(name string, defaultValue int16, description string, flags ConVarFlag, hasMin bool, min int16, hasMax bool, max int16) uint64 {
 	var __retVal uint64
 	__name := plugify.ConstructString(name)
-	__defaultValue := C.bool(defaultValue)
+	__defaultValue := C.int16_t(defaultValue)
 	__description := plugify.ConstructString(description)
 	__flags := C.int64_t(flags)
 	__hasMin := C.bool(hasMin)
-	__min := C.bool(min)
+	__min := C.int16_t(min)
 	__hasMax := C.bool(hasMax)
-	__max := C.bool(max)
+	__max := C.int16_t(max)
 	plugify.Block {
 		Try: func() {
-			__retVal = uint64(C.CreateConVarBool((*C.String)(unsafe.Pointer(&__name)), __defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, __min, __hasMax, __max))
+			__retVal = uint64(C.CreateConVarInt16((*C.String)(unsafe.Pointer(&__name)), __defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, __min, __hasMax, __max))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -168,18 +199,22 @@ func CreateConVarBool(name string, defaultValue bool, description string, flags 
 //
 //  @return A handle to the created console variable data.
 func CreateConVarInt16(name string, defaultValue int16, description string, flags ConVarFlag, hasMin bool, min int16, hasMax bool, max int16) uint64 {
+	return P_CreateConVarInt16(name, defaultValue, description, flags, hasMin, min, hasMax, max)
+}
+
+var P_CreateConVarUInt16 = func(name string, defaultValue uint16, description string, flags ConVarFlag, hasMin bool, min uint16, hasMax bool, max uint16) uint64 {
 	var __retVal uint64
 	__name := plugify.ConstructString(name)
-	__defaultValue := C.int16_t(defaultValue)
+	__defaultValue := C.uint16_t(defaultValue)
 	__description := plugify.ConstructString(description)
 	__flags := C.int64_t(flags)
 	__hasMin := C.bool(hasMin)
-	__min := C.int16_t(min)
+	__min := C.uint16_t(min)
 	__hasMax := C.bool(hasMax)
-	__max := C.int16_t(max)
+	__max := C.uint16_t(max)
 	plugify.Block {
 		Try: func() {
-			__retVal = uint64(C.CreateConVarInt16((*C.String)(unsafe.Pointer(&__name)), __defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, __min, __hasMax, __max))
+			__retVal = uint64(C.CreateConVarUInt16((*C.String)(unsafe.Pointer(&__name)), __defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, __min, __hasMax, __max))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -204,18 +239,22 @@ func CreateConVarInt16(name string, defaultValue int16, description string, flag
 //
 //  @return A handle to the created console variable data.
 func CreateConVarUInt16(name string, defaultValue uint16, description string, flags ConVarFlag, hasMin bool, min uint16, hasMax bool, max uint16) uint64 {
+	return P_CreateConVarUInt16(name, defaultValue, description, flags, hasMin, min, hasMax, max)
+}
+
+var P_CreateConVarInt32 = func(name string, defaultValue int32, description string, flags ConVarFlag, hasMin bool, min int32, hasMax bool, max int32) uint64 {
 	var __retVal uint64
 	__name := plugify.ConstructString(name)
-	__defaultValue := C.uint16_t(defaultValue)
+	__defaultValue := C.int32_t(defaultValue)
 	__description := plugify.ConstructString(description)
 	__flags := C.int64_t(flags)
 	__hasMin := C.bool(hasMin)
-	__min := C.uint16_t(min)
+	__min := C.int32_t(min)
 	__hasMax := C.bool(hasMax)
-	__max := C.uint16_t(max)
+	__max := C.int32_t(max)
 	plugify.Block {
 		Try: func() {
-			__retVal = uint64(C.CreateConVarUInt16((*C.String)(unsafe.Pointer(&__name)), __defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, __min, __hasMax, __max))
+			__retVal = uint64(C.CreateConVarInt32((*C.String)(unsafe.Pointer(&__name)), __defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, __min, __hasMax, __max))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -240,18 +279,22 @@ func CreateConVarUInt16(name string, defaultValue uint16, description string, fl
 //
 //  @return A handle to the created console variable data.
 func CreateConVarInt32(name string, defaultValue int32, description string, flags ConVarFlag, hasMin bool, min int32, hasMax bool, max int32) uint64 {
+	return P_CreateConVarInt32(name, defaultValue, description, flags, hasMin, min, hasMax, max)
+}
+
+var P_CreateConVarUInt32 = func(name string, defaultValue uint32, description string, flags ConVarFlag, hasMin bool, min uint32, hasMax bool, max uint32) uint64 {
 	var __retVal uint64
 	__name := plugify.ConstructString(name)
-	__defaultValue := C.int32_t(defaultValue)
+	__defaultValue := C.uint32_t(defaultValue)
 	__description := plugify.ConstructString(description)
 	__flags := C.int64_t(flags)
 	__hasMin := C.bool(hasMin)
-	__min := C.int32_t(min)
+	__min := C.uint32_t(min)
 	__hasMax := C.bool(hasMax)
-	__max := C.int32_t(max)
+	__max := C.uint32_t(max)
 	plugify.Block {
 		Try: func() {
-			__retVal = uint64(C.CreateConVarInt32((*C.String)(unsafe.Pointer(&__name)), __defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, __min, __hasMax, __max))
+			__retVal = uint64(C.CreateConVarUInt32((*C.String)(unsafe.Pointer(&__name)), __defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, __min, __hasMax, __max))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -276,18 +319,22 @@ func CreateConVarInt32(name string, defaultValue int32, description string, flag
 //
 //  @return A handle to the created console variable data.
 func CreateConVarUInt32(name string, defaultValue uint32, description string, flags ConVarFlag, hasMin bool, min uint32, hasMax bool, max uint32) uint64 {
+	return P_CreateConVarUInt32(name, defaultValue, description, flags, hasMin, min, hasMax, max)
+}
+
+var P_CreateConVarInt64 = func(name string, defaultValue int64, description string, flags ConVarFlag, hasMin bool, min int64, hasMax bool, max int64) uint64 {
 	var __retVal uint64
 	__name := plugify.ConstructString(name)
-	__defaultValue := C.uint32_t(defaultValue)
+	__defaultValue := C.int64_t(defaultValue)
 	__description := plugify.ConstructString(description)
 	__flags := C.int64_t(flags)
 	__hasMin := C.bool(hasMin)
-	__min := C.uint32_t(min)
+	__min := C.int64_t(min)
 	__hasMax := C.bool(hasMax)
-	__max := C.uint32_t(max)
+	__max := C.int64_t(max)
 	plugify.Block {
 		Try: func() {
-			__retVal = uint64(C.CreateConVarUInt32((*C.String)(unsafe.Pointer(&__name)), __defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, __min, __hasMax, __max))
+			__retVal = uint64(C.CreateConVarInt64((*C.String)(unsafe.Pointer(&__name)), __defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, __min, __hasMax, __max))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -312,18 +359,22 @@ func CreateConVarUInt32(name string, defaultValue uint32, description string, fl
 //
 //  @return A handle to the created console variable data.
 func CreateConVarInt64(name string, defaultValue int64, description string, flags ConVarFlag, hasMin bool, min int64, hasMax bool, max int64) uint64 {
+	return P_CreateConVarInt64(name, defaultValue, description, flags, hasMin, min, hasMax, max)
+}
+
+var P_CreateConVarUInt64 = func(name string, defaultValue uint64, description string, flags ConVarFlag, hasMin bool, min uint64, hasMax bool, max uint64) uint64 {
 	var __retVal uint64
 	__name := plugify.ConstructString(name)
-	__defaultValue := C.int64_t(defaultValue)
+	__defaultValue := C.uint64_t(defaultValue)
 	__description := plugify.ConstructString(description)
 	__flags := C.int64_t(flags)
 	__hasMin := C.bool(hasMin)
-	__min := C.int64_t(min)
+	__min := C.uint64_t(min)
 	__hasMax := C.bool(hasMax)
-	__max := C.int64_t(max)
+	__max := C.uint64_t(max)
 	plugify.Block {
 		Try: func() {
-			__retVal = uint64(C.CreateConVarInt64((*C.String)(unsafe.Pointer(&__name)), __defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, __min, __hasMax, __max))
+			__retVal = uint64(C.CreateConVarUInt64((*C.String)(unsafe.Pointer(&__name)), __defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, __min, __hasMax, __max))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -348,18 +399,22 @@ func CreateConVarInt64(name string, defaultValue int64, description string, flag
 //
 //  @return A handle to the created console variable data.
 func CreateConVarUInt64(name string, defaultValue uint64, description string, flags ConVarFlag, hasMin bool, min uint64, hasMax bool, max uint64) uint64 {
+	return P_CreateConVarUInt64(name, defaultValue, description, flags, hasMin, min, hasMax, max)
+}
+
+var P_CreateConVarFloat = func(name string, defaultValue float32, description string, flags ConVarFlag, hasMin bool, min float32, hasMax bool, max float32) uint64 {
 	var __retVal uint64
 	__name := plugify.ConstructString(name)
-	__defaultValue := C.uint64_t(defaultValue)
+	__defaultValue := C.float(defaultValue)
 	__description := plugify.ConstructString(description)
 	__flags := C.int64_t(flags)
 	__hasMin := C.bool(hasMin)
-	__min := C.uint64_t(min)
+	__min := C.float(min)
 	__hasMax := C.bool(hasMax)
-	__max := C.uint64_t(max)
+	__max := C.float(max)
 	plugify.Block {
 		Try: func() {
-			__retVal = uint64(C.CreateConVarUInt64((*C.String)(unsafe.Pointer(&__name)), __defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, __min, __hasMax, __max))
+			__retVal = uint64(C.CreateConVarFloat((*C.String)(unsafe.Pointer(&__name)), __defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, __min, __hasMax, __max))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -384,18 +439,22 @@ func CreateConVarUInt64(name string, defaultValue uint64, description string, fl
 //
 //  @return A handle to the created console variable data.
 func CreateConVarFloat(name string, defaultValue float32, description string, flags ConVarFlag, hasMin bool, min float32, hasMax bool, max float32) uint64 {
+	return P_CreateConVarFloat(name, defaultValue, description, flags, hasMin, min, hasMax, max)
+}
+
+var P_CreateConVarDouble = func(name string, defaultValue float64, description string, flags ConVarFlag, hasMin bool, min float64, hasMax bool, max float64) uint64 {
 	var __retVal uint64
 	__name := plugify.ConstructString(name)
-	__defaultValue := C.float(defaultValue)
+	__defaultValue := C.double(defaultValue)
 	__description := plugify.ConstructString(description)
 	__flags := C.int64_t(flags)
 	__hasMin := C.bool(hasMin)
-	__min := C.float(min)
+	__min := C.double(min)
 	__hasMax := C.bool(hasMax)
-	__max := C.float(max)
+	__max := C.double(max)
 	plugify.Block {
 		Try: func() {
-			__retVal = uint64(C.CreateConVarFloat((*C.String)(unsafe.Pointer(&__name)), __defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, __min, __hasMax, __max))
+			__retVal = uint64(C.CreateConVarDouble((*C.String)(unsafe.Pointer(&__name)), __defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, __min, __hasMax, __max))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -420,18 +479,22 @@ func CreateConVarFloat(name string, defaultValue float32, description string, fl
 //
 //  @return A handle to the created console variable data.
 func CreateConVarDouble(name string, defaultValue float64, description string, flags ConVarFlag, hasMin bool, min float64, hasMax bool, max float64) uint64 {
+	return P_CreateConVarDouble(name, defaultValue, description, flags, hasMin, min, hasMax, max)
+}
+
+var P_CreateConVarColor = func(name string, defaultValue plugify.Vector4, description string, flags ConVarFlag, hasMin bool, min plugify.Vector4, hasMax bool, max plugify.Vector4) uint64 {
 	var __retVal uint64
 	__name := plugify.ConstructString(name)
-	__defaultValue := C.double(defaultValue)
+	__defaultValue := *(*C.Vector4)(unsafe.Pointer(&defaultValue))
 	__description := plugify.ConstructString(description)
 	__flags := C.int64_t(flags)
 	__hasMin := C.bool(hasMin)
-	__min := C.double(min)
+	__min := *(*C.Vector4)(unsafe.Pointer(&min))
 	__hasMax := C.bool(hasMax)
-	__max := C.double(max)
+	__max := *(*C.Vector4)(unsafe.Pointer(&max))
 	plugify.Block {
 		Try: func() {
-			__retVal = uint64(C.CreateConVarDouble((*C.String)(unsafe.Pointer(&__name)), __defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, __min, __hasMax, __max))
+			__retVal = uint64(C.CreateConVarColor((*C.String)(unsafe.Pointer(&__name)), &__defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, &__min, __hasMax, &__max))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -456,18 +519,22 @@ func CreateConVarDouble(name string, defaultValue float64, description string, f
 //
 //  @return A handle to the created console variable data.
 func CreateConVarColor(name string, defaultValue plugify.Vector4, description string, flags ConVarFlag, hasMin bool, min plugify.Vector4, hasMax bool, max plugify.Vector4) uint64 {
+	return P_CreateConVarColor(name, defaultValue, description, flags, hasMin, min, hasMax, max)
+}
+
+var P_CreateConVarVector2 = func(name string, defaultValue plugify.Vector2, description string, flags ConVarFlag, hasMin bool, min plugify.Vector2, hasMax bool, max plugify.Vector2) uint64 {
 	var __retVal uint64
 	__name := plugify.ConstructString(name)
-	__defaultValue := *(*C.Vector4)(unsafe.Pointer(&defaultValue))
+	__defaultValue := *(*C.Vector2)(unsafe.Pointer(&defaultValue))
 	__description := plugify.ConstructString(description)
 	__flags := C.int64_t(flags)
 	__hasMin := C.bool(hasMin)
-	__min := *(*C.Vector4)(unsafe.Pointer(&min))
+	__min := *(*C.Vector2)(unsafe.Pointer(&min))
 	__hasMax := C.bool(hasMax)
-	__max := *(*C.Vector4)(unsafe.Pointer(&max))
+	__max := *(*C.Vector2)(unsafe.Pointer(&max))
 	plugify.Block {
 		Try: func() {
-			__retVal = uint64(C.CreateConVarColor((*C.String)(unsafe.Pointer(&__name)), &__defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, &__min, __hasMax, &__max))
+			__retVal = uint64(C.CreateConVarVector2((*C.String)(unsafe.Pointer(&__name)), &__defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, &__min, __hasMax, &__max))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -492,18 +559,22 @@ func CreateConVarColor(name string, defaultValue plugify.Vector4, description st
 //
 //  @return A handle to the created console variable data.
 func CreateConVarVector2(name string, defaultValue plugify.Vector2, description string, flags ConVarFlag, hasMin bool, min plugify.Vector2, hasMax bool, max plugify.Vector2) uint64 {
+	return P_CreateConVarVector2(name, defaultValue, description, flags, hasMin, min, hasMax, max)
+}
+
+var P_CreateConVarVector3 = func(name string, defaultValue plugify.Vector3, description string, flags ConVarFlag, hasMin bool, min plugify.Vector3, hasMax bool, max plugify.Vector3) uint64 {
 	var __retVal uint64
 	__name := plugify.ConstructString(name)
-	__defaultValue := *(*C.Vector2)(unsafe.Pointer(&defaultValue))
+	__defaultValue := *(*C.Vector3)(unsafe.Pointer(&defaultValue))
 	__description := plugify.ConstructString(description)
 	__flags := C.int64_t(flags)
 	__hasMin := C.bool(hasMin)
-	__min := *(*C.Vector2)(unsafe.Pointer(&min))
+	__min := *(*C.Vector3)(unsafe.Pointer(&min))
 	__hasMax := C.bool(hasMax)
-	__max := *(*C.Vector2)(unsafe.Pointer(&max))
+	__max := *(*C.Vector3)(unsafe.Pointer(&max))
 	plugify.Block {
 		Try: func() {
-			__retVal = uint64(C.CreateConVarVector2((*C.String)(unsafe.Pointer(&__name)), &__defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, &__min, __hasMax, &__max))
+			__retVal = uint64(C.CreateConVarVector3((*C.String)(unsafe.Pointer(&__name)), &__defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, &__min, __hasMax, &__max))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -528,18 +599,22 @@ func CreateConVarVector2(name string, defaultValue plugify.Vector2, description 
 //
 //  @return A handle to the created console variable data.
 func CreateConVarVector3(name string, defaultValue plugify.Vector3, description string, flags ConVarFlag, hasMin bool, min plugify.Vector3, hasMax bool, max plugify.Vector3) uint64 {
+	return P_CreateConVarVector3(name, defaultValue, description, flags, hasMin, min, hasMax, max)
+}
+
+var P_CreateConVarVector4 = func(name string, defaultValue plugify.Vector4, description string, flags ConVarFlag, hasMin bool, min plugify.Vector4, hasMax bool, max plugify.Vector4) uint64 {
 	var __retVal uint64
 	__name := plugify.ConstructString(name)
-	__defaultValue := *(*C.Vector3)(unsafe.Pointer(&defaultValue))
+	__defaultValue := *(*C.Vector4)(unsafe.Pointer(&defaultValue))
 	__description := plugify.ConstructString(description)
 	__flags := C.int64_t(flags)
 	__hasMin := C.bool(hasMin)
-	__min := *(*C.Vector3)(unsafe.Pointer(&min))
+	__min := *(*C.Vector4)(unsafe.Pointer(&min))
 	__hasMax := C.bool(hasMax)
-	__max := *(*C.Vector3)(unsafe.Pointer(&max))
+	__max := *(*C.Vector4)(unsafe.Pointer(&max))
 	plugify.Block {
 		Try: func() {
-			__retVal = uint64(C.CreateConVarVector3((*C.String)(unsafe.Pointer(&__name)), &__defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, &__min, __hasMax, &__max))
+			__retVal = uint64(C.CreateConVarVector4((*C.String)(unsafe.Pointer(&__name)), &__defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, &__min, __hasMax, &__max))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -564,18 +639,22 @@ func CreateConVarVector3(name string, defaultValue plugify.Vector3, description 
 //
 //  @return A handle to the created console variable data.
 func CreateConVarVector4(name string, defaultValue plugify.Vector4, description string, flags ConVarFlag, hasMin bool, min plugify.Vector4, hasMax bool, max plugify.Vector4) uint64 {
+	return P_CreateConVarVector4(name, defaultValue, description, flags, hasMin, min, hasMax, max)
+}
+
+var P_CreateConVarQAngle = func(name string, defaultValue plugify.Vector3, description string, flags ConVarFlag, hasMin bool, min plugify.Vector3, hasMax bool, max plugify.Vector3) uint64 {
 	var __retVal uint64
 	__name := plugify.ConstructString(name)
-	__defaultValue := *(*C.Vector4)(unsafe.Pointer(&defaultValue))
+	__defaultValue := *(*C.Vector3)(unsafe.Pointer(&defaultValue))
 	__description := plugify.ConstructString(description)
 	__flags := C.int64_t(flags)
 	__hasMin := C.bool(hasMin)
-	__min := *(*C.Vector4)(unsafe.Pointer(&min))
+	__min := *(*C.Vector3)(unsafe.Pointer(&min))
 	__hasMax := C.bool(hasMax)
-	__max := *(*C.Vector4)(unsafe.Pointer(&max))
+	__max := *(*C.Vector3)(unsafe.Pointer(&max))
 	plugify.Block {
 		Try: func() {
-			__retVal = uint64(C.CreateConVarVector4((*C.String)(unsafe.Pointer(&__name)), &__defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, &__min, __hasMax, &__max))
+			__retVal = uint64(C.CreateConVarQAngle((*C.String)(unsafe.Pointer(&__name)), &__defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, &__min, __hasMax, &__max))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -600,38 +679,10 @@ func CreateConVarVector4(name string, defaultValue plugify.Vector4, description 
 //
 //  @return A handle to the created console variable data.
 func CreateConVarQAngle(name string, defaultValue plugify.Vector3, description string, flags ConVarFlag, hasMin bool, min plugify.Vector3, hasMax bool, max plugify.Vector3) uint64 {
-	var __retVal uint64
-	__name := plugify.ConstructString(name)
-	__defaultValue := *(*C.Vector3)(unsafe.Pointer(&defaultValue))
-	__description := plugify.ConstructString(description)
-	__flags := C.int64_t(flags)
-	__hasMin := C.bool(hasMin)
-	__min := *(*C.Vector3)(unsafe.Pointer(&min))
-	__hasMax := C.bool(hasMax)
-	__max := *(*C.Vector3)(unsafe.Pointer(&max))
-	plugify.Block {
-		Try: func() {
-			__retVal = uint64(C.CreateConVarQAngle((*C.String)(unsafe.Pointer(&__name)), &__defaultValue, (*C.String)(unsafe.Pointer(&__description)), __flags, __hasMin, &__min, __hasMax, &__max))
-		},
-		Finally: func() {
-			// Perform cleanup.
-			plugify.DestroyString(&__name)
-			plugify.DestroyString(&__description)
-		},
-	}.Do()
-	return __retVal
+	return P_CreateConVarQAngle(name, defaultValue, description, flags, hasMin, min, hasMax, max)
 }
 
-// CreateConVarString 
-//  @brief Creates a new string console variable.
-//
-//  @param name: The name of the console variable.
-//  @param defaultValue: The default value of the console variable.
-//  @param description: A description of the console variable's purpose.
-//  @param flags: Additional flags for the console variable.
-//
-//  @return A handle to the created console variable.
-func CreateConVarString(name string, defaultValue string, description string, flags ConVarFlag) uint64 {
+var P_CreateConVarString = func(name string, defaultValue string, description string, flags ConVarFlag) uint64 {
 	var __retVal uint64
 	__name := plugify.ConstructString(name)
 	__defaultValue := plugify.ConstructString(defaultValue)
@@ -651,6 +702,34 @@ func CreateConVarString(name string, defaultValue string, description string, fl
 	return __retVal
 }
 
+// CreateConVarString 
+//  @brief Creates a new string console variable.
+//
+//  @param name: The name of the console variable.
+//  @param defaultValue: The default value of the console variable.
+//  @param description: A description of the console variable's purpose.
+//  @param flags: Additional flags for the console variable.
+//
+//  @return A handle to the created console variable.
+func CreateConVarString(name string, defaultValue string, description string, flags ConVarFlag) uint64 {
+	return P_CreateConVarString(name, defaultValue, description, flags)
+}
+
+var P_FindConVar = func(name string) uint64 {
+	var __retVal uint64
+	__name := plugify.ConstructString(name)
+	plugify.Block {
+		Try: func() {
+			__retVal = uint64(C.FindConVar((*C.String)(unsafe.Pointer(&__name))))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__name)
+		},
+	}.Do()
+	return __retVal
+}
+
 // FindConVar 
 //  @brief Searches for a console variable.
 //
@@ -658,11 +737,16 @@ func CreateConVarString(name string, defaultValue string, description string, fl
 //
 //  @return A handle to the console variable data if found; otherwise, nullptr.
 func FindConVar(name string) uint64 {
+	return P_FindConVar(name)
+}
+
+var P_FindConVar2 = func(name string, type_ ConVarType) uint64 {
 	var __retVal uint64
 	__name := plugify.ConstructString(name)
+	__type_ := C.int16_t(type_)
 	plugify.Block {
 		Try: func() {
-			__retVal = uint64(C.FindConVar((*C.String)(unsafe.Pointer(&__name))))
+			__retVal = uint64(C.FindConVar2((*C.String)(unsafe.Pointer(&__name)), __type_))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -680,19 +764,13 @@ func FindConVar(name string) uint64 {
 //
 //  @return A handle to the console variable data if found; otherwise, nullptr.
 func FindConVar2(name string, type_ ConVarType) uint64 {
-	var __retVal uint64
-	__name := plugify.ConstructString(name)
-	__type_ := C.int16_t(type_)
-	plugify.Block {
-		Try: func() {
-			__retVal = uint64(C.FindConVar2((*C.String)(unsafe.Pointer(&__name)), __type_))
-		},
-		Finally: func() {
-			// Perform cleanup.
-			plugify.DestroyString(&__name)
-		},
-	}.Do()
-	return __retVal
+	return P_FindConVar2(name, type_)
+}
+
+var P_HookConVarChange = func(conVarHandle uint64, callback ConVarCallback) {
+	__conVarHandle := C.uint64_t(conVarHandle)
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.HookConVarChange(__conVarHandle, __callback)
 }
 
 // HookConVarChange 
@@ -701,9 +779,13 @@ func FindConVar2(name string, type_ ConVarType) uint64 {
 //  @param conVarHandle: TThe handle to the console variable data.
 //  @param callback: The callback function to be executed when the variable's value changes.
 func HookConVarChange(conVarHandle uint64, callback ConVarCallback) {
+	P_HookConVarChange(conVarHandle, callback)
+}
+
+var P_UnhookConVarChange = func(conVarHandle uint64, callback ConVarCallback) {
 	__conVarHandle := C.uint64_t(conVarHandle)
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
-	C.HookConVarChange(__conVarHandle, __callback)
+	C.UnhookConVarChange(__conVarHandle, __callback)
 }
 
 // UnhookConVarChange 
@@ -712,9 +794,15 @@ func HookConVarChange(conVarHandle uint64, callback ConVarCallback) {
 //  @param conVarHandle: The handle to the console variable data.
 //  @param callback: The callback function to be removed.
 func UnhookConVarChange(conVarHandle uint64, callback ConVarCallback) {
+	P_UnhookConVarChange(conVarHandle, callback)
+}
+
+var P_IsConVarFlagSet = func(conVarHandle uint64, flag int64) bool {
+	var __retVal bool
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__callback := plugify.GetFunctionPointerForDelegate(callback)
-	C.UnhookConVarChange(__conVarHandle, __callback)
+	__flag := C.int64_t(flag)
+	__retVal = bool(C.IsConVarFlagSet(__conVarHandle, __flag))
+	return __retVal
 }
 
 // IsConVarFlagSet 
@@ -725,11 +813,13 @@ func UnhookConVarChange(conVarHandle uint64, callback ConVarCallback) {
 //
 //  @return True if the flag is set; otherwise, false.
 func IsConVarFlagSet(conVarHandle uint64, flag int64) bool {
-	var __retVal bool
+	return P_IsConVarFlagSet(conVarHandle, flag)
+}
+
+var P_AddConVarFlags = func(conVarHandle uint64, flags ConVarFlag) {
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__flag := C.int64_t(flag)
-	__retVal = bool(C.IsConVarFlagSet(__conVarHandle, __flag))
-	return __retVal
+	__flags := C.int64_t(flags)
+	C.AddConVarFlags(__conVarHandle, __flags)
 }
 
 // AddConVarFlags 
@@ -738,9 +828,13 @@ func IsConVarFlagSet(conVarHandle uint64, flag int64) bool {
 //  @param conVarHandle: The handle to the console variable data.
 //  @param flags: The flags to be added.
 func AddConVarFlags(conVarHandle uint64, flags ConVarFlag) {
+	P_AddConVarFlags(conVarHandle, flags)
+}
+
+var P_RemoveConVarFlags = func(conVarHandle uint64, flags ConVarFlag) {
 	__conVarHandle := C.uint64_t(conVarHandle)
 	__flags := C.int64_t(flags)
-	C.AddConVarFlags(__conVarHandle, __flags)
+	C.RemoveConVarFlags(__conVarHandle, __flags)
 }
 
 // RemoveConVarFlags 
@@ -749,9 +843,14 @@ func AddConVarFlags(conVarHandle uint64, flags ConVarFlag) {
 //  @param conVarHandle: The handle to the console variable data.
 //  @param flags: The flags to be removed.
 func RemoveConVarFlags(conVarHandle uint64, flags ConVarFlag) {
+	P_RemoveConVarFlags(conVarHandle, flags)
+}
+
+var P_GetConVarFlags = func(conVarHandle uint64) ConVarFlag {
+	var __retVal ConVarFlag
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__flags := C.int64_t(flags)
-	C.RemoveConVarFlags(__conVarHandle, __flags)
+	__retVal = int64(C.GetConVarFlags(__conVarHandle))
+	return __retVal
 }
 
 // GetConVarFlags 
@@ -761,20 +860,10 @@ func RemoveConVarFlags(conVarHandle uint64, flags ConVarFlag) {
 //
 //  @return The current flags set on the console variable.
 func GetConVarFlags(conVarHandle uint64) ConVarFlag {
-	var __retVal ConVarFlag
-	__conVarHandle := C.uint64_t(conVarHandle)
-	__retVal = int64(C.GetConVarFlags(__conVarHandle))
-	return __retVal
+	return P_GetConVarFlags(conVarHandle)
 }
 
-// GetConVarBounds 
-//  @brief Gets the specified bound (max or min) of a console variable and stores it in the output string.
-//
-//  @param conVarHandle: The handle to the console variable data.
-//  @param max: Indicates whether to get the maximum (true) or minimum (false) bound.
-//
-//  @return The bound value.
-func GetConVarBounds(conVarHandle uint64, max bool) string {
+var P_GetConVarBounds = func(conVarHandle uint64, max bool) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__conVarHandle := C.uint64_t(conVarHandle)
@@ -794,13 +883,18 @@ func GetConVarBounds(conVarHandle uint64, max bool) string {
 	return __retVal
 }
 
-// SetConVarBounds 
-//  @brief Sets the specified bound (max or min) for a console variable.
+// GetConVarBounds 
+//  @brief Gets the specified bound (max or min) of a console variable and stores it in the output string.
 //
 //  @param conVarHandle: The handle to the console variable data.
-//  @param max: Indicates whether to set the maximum (true) or minimum (false) bound.
-//  @param value: The value to set as the bound.
-func SetConVarBounds(conVarHandle uint64, max bool, value string) {
+//  @param max: Indicates whether to get the maximum (true) or minimum (false) bound.
+//
+//  @return The bound value.
+func GetConVarBounds(conVarHandle uint64, max bool) string {
+	return P_GetConVarBounds(conVarHandle, max)
+}
+
+var P_SetConVarBounds = func(conVarHandle uint64, max bool, value string) {
 	__conVarHandle := C.uint64_t(conVarHandle)
 	__max := C.bool(max)
 	__value := plugify.ConstructString(value)
@@ -815,6 +909,35 @@ func SetConVarBounds(conVarHandle uint64, max bool, value string) {
 	}.Do()
 }
 
+// SetConVarBounds 
+//  @brief Sets the specified bound (max or min) for a console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
+//  @param max: Indicates whether to set the maximum (true) or minimum (false) bound.
+//  @param value: The value to set as the bound.
+func SetConVarBounds(conVarHandle uint64, max bool, value string) {
+	P_SetConVarBounds(conVarHandle, max, value)
+}
+
+var P_GetConVarDefault = func(conVarHandle uint64) string {
+	var __retVal string
+	var __retVal_native plugify.PlgString
+	__conVarHandle := C.uint64_t(conVarHandle)
+	plugify.Block {
+		Try: func() {
+			__native := C.GetConVarDefault(__conVarHandle)
+			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
+			// Unmarshal - Convert native data to managed data.
+			__retVal = plugify.GetStringData[string](&__retVal_native)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__retVal_native)
+		},
+	}.Do()
+	return __retVal
+}
+
 // GetConVarDefault 
 //  @brief Retrieves the default value of a console variable and stores it in the output string.
 //
@@ -822,12 +945,16 @@ func SetConVarBounds(conVarHandle uint64, max bool, value string) {
 //
 //  @return The output value in string format.
 func GetConVarDefault(conVarHandle uint64) string {
+	return P_GetConVarDefault(conVarHandle)
+}
+
+var P_GetConVarValue = func(conVarHandle uint64) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__conVarHandle := C.uint64_t(conVarHandle)
 	plugify.Block {
 		Try: func() {
-			__native := C.GetConVarDefault(__conVarHandle)
+			__native := C.GetConVarValue(__conVarHandle)
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
 			__retVal = plugify.GetStringData[string](&__retVal_native)
@@ -847,31 +974,10 @@ func GetConVarDefault(conVarHandle uint64) string {
 //
 //  @return The output value in string format.
 func GetConVarValue(conVarHandle uint64) string {
-	var __retVal string
-	var __retVal_native plugify.PlgString
-	__conVarHandle := C.uint64_t(conVarHandle)
-	plugify.Block {
-		Try: func() {
-			__native := C.GetConVarValue(__conVarHandle)
-			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
-			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData[string](&__retVal_native)
-		},
-		Finally: func() {
-			// Perform cleanup.
-			plugify.DestroyString(&__retVal_native)
-		},
-	}.Do()
-	return __retVal
+	return P_GetConVarValue(conVarHandle)
 }
 
-// GetConVar 
-//  @brief Retrieves the current value of a console variable and stores it in the output.
-//
-//  @param conVarHandle: The handle to the console variable data.
-//
-//  @return The output value.
-func GetConVar(conVarHandle uint64) any {
+var P_GetConVar = func(conVarHandle uint64) any {
 	var __retVal any
 	var __retVal_native plugify.PlgVariant
 	__conVarHandle := C.uint64_t(conVarHandle)
@@ -890,6 +996,23 @@ func GetConVar(conVarHandle uint64) any {
 	return __retVal
 }
 
+// GetConVar 
+//  @brief Retrieves the current value of a console variable and stores it in the output.
+//
+//  @param conVarHandle: The handle to the console variable data.
+//
+//  @return The output value.
+func GetConVar(conVarHandle uint64) any {
+	return P_GetConVar(conVarHandle)
+}
+
+var P_GetConVarBool = func(conVarHandle uint64) bool {
+	var __retVal bool
+	__conVarHandle := C.uint64_t(conVarHandle)
+	__retVal = bool(C.GetConVarBool(__conVarHandle))
+	return __retVal
+}
+
 // GetConVarBool 
 //  @brief Retrieves the current value of a boolean console variable.
 //
@@ -897,9 +1020,13 @@ func GetConVar(conVarHandle uint64) any {
 //
 //  @return The current boolean value of the console variable.
 func GetConVarBool(conVarHandle uint64) bool {
-	var __retVal bool
+	return P_GetConVarBool(conVarHandle)
+}
+
+var P_GetConVarInt16 = func(conVarHandle uint64) int16 {
+	var __retVal int16
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__retVal = bool(C.GetConVarBool(__conVarHandle))
+	__retVal = int16(C.GetConVarInt16(__conVarHandle))
 	return __retVal
 }
 
@@ -910,9 +1037,13 @@ func GetConVarBool(conVarHandle uint64) bool {
 //
 //  @return The current int16_t value of the console variable.
 func GetConVarInt16(conVarHandle uint64) int16 {
-	var __retVal int16
+	return P_GetConVarInt16(conVarHandle)
+}
+
+var P_GetConVarUInt16 = func(conVarHandle uint64) uint16 {
+	var __retVal uint16
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__retVal = int16(C.GetConVarInt16(__conVarHandle))
+	__retVal = uint16(C.GetConVarUInt16(__conVarHandle))
 	return __retVal
 }
 
@@ -923,9 +1054,13 @@ func GetConVarInt16(conVarHandle uint64) int16 {
 //
 //  @return The current uint16_t value of the console variable.
 func GetConVarUInt16(conVarHandle uint64) uint16 {
-	var __retVal uint16
+	return P_GetConVarUInt16(conVarHandle)
+}
+
+var P_GetConVarInt32 = func(conVarHandle uint64) int32 {
+	var __retVal int32
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__retVal = uint16(C.GetConVarUInt16(__conVarHandle))
+	__retVal = int32(C.GetConVarInt32(__conVarHandle))
 	return __retVal
 }
 
@@ -936,9 +1071,13 @@ func GetConVarUInt16(conVarHandle uint64) uint16 {
 //
 //  @return The current int32_t value of the console variable.
 func GetConVarInt32(conVarHandle uint64) int32 {
-	var __retVal int32
+	return P_GetConVarInt32(conVarHandle)
+}
+
+var P_GetConVarUInt32 = func(conVarHandle uint64) uint32 {
+	var __retVal uint32
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__retVal = int32(C.GetConVarInt32(__conVarHandle))
+	__retVal = uint32(C.GetConVarUInt32(__conVarHandle))
 	return __retVal
 }
 
@@ -949,9 +1088,13 @@ func GetConVarInt32(conVarHandle uint64) int32 {
 //
 //  @return The current uint32_t value of the console variable.
 func GetConVarUInt32(conVarHandle uint64) uint32 {
-	var __retVal uint32
+	return P_GetConVarUInt32(conVarHandle)
+}
+
+var P_GetConVarInt64 = func(conVarHandle uint64) int64 {
+	var __retVal int64
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__retVal = uint32(C.GetConVarUInt32(__conVarHandle))
+	__retVal = int64(C.GetConVarInt64(__conVarHandle))
 	return __retVal
 }
 
@@ -962,9 +1105,13 @@ func GetConVarUInt32(conVarHandle uint64) uint32 {
 //
 //  @return The current int64_t value of the console variable.
 func GetConVarInt64(conVarHandle uint64) int64 {
-	var __retVal int64
+	return P_GetConVarInt64(conVarHandle)
+}
+
+var P_GetConVarUInt64 = func(conVarHandle uint64) uint64 {
+	var __retVal uint64
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__retVal = int64(C.GetConVarInt64(__conVarHandle))
+	__retVal = uint64(C.GetConVarUInt64(__conVarHandle))
 	return __retVal
 }
 
@@ -975,9 +1122,13 @@ func GetConVarInt64(conVarHandle uint64) int64 {
 //
 //  @return The current uint64_t value of the console variable.
 func GetConVarUInt64(conVarHandle uint64) uint64 {
-	var __retVal uint64
+	return P_GetConVarUInt64(conVarHandle)
+}
+
+var P_GetConVarFloat = func(conVarHandle uint64) float32 {
+	var __retVal float32
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__retVal = uint64(C.GetConVarUInt64(__conVarHandle))
+	__retVal = float32(C.GetConVarFloat(__conVarHandle))
 	return __retVal
 }
 
@@ -988,9 +1139,13 @@ func GetConVarUInt64(conVarHandle uint64) uint64 {
 //
 //  @return The current float value of the console variable.
 func GetConVarFloat(conVarHandle uint64) float32 {
-	var __retVal float32
+	return P_GetConVarFloat(conVarHandle)
+}
+
+var P_GetConVarDouble = func(conVarHandle uint64) float64 {
+	var __retVal float64
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__retVal = float32(C.GetConVarFloat(__conVarHandle))
+	__retVal = float64(C.GetConVarDouble(__conVarHandle))
 	return __retVal
 }
 
@@ -1001,19 +1156,10 @@ func GetConVarFloat(conVarHandle uint64) float32 {
 //
 //  @return The current double value of the console variable.
 func GetConVarDouble(conVarHandle uint64) float64 {
-	var __retVal float64
-	__conVarHandle := C.uint64_t(conVarHandle)
-	__retVal = float64(C.GetConVarDouble(__conVarHandle))
-	return __retVal
+	return P_GetConVarDouble(conVarHandle)
 }
 
-// GetConVarString 
-//  @brief Retrieves the current value of a string console variable.
-//
-//  @param conVarHandle: The handle to the console variable data.
-//
-//  @return The current string value of the console variable.
-func GetConVarString(conVarHandle uint64) string {
+var P_GetConVarString = func(conVarHandle uint64) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__conVarHandle := C.uint64_t(conVarHandle)
@@ -1032,6 +1178,24 @@ func GetConVarString(conVarHandle uint64) string {
 	return __retVal
 }
 
+// GetConVarString 
+//  @brief Retrieves the current value of a string console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
+//
+//  @return The current string value of the console variable.
+func GetConVarString(conVarHandle uint64) string {
+	return P_GetConVarString(conVarHandle)
+}
+
+var P_GetConVarColor = func(conVarHandle uint64) plugify.Vector4 {
+	var __retVal plugify.Vector4
+	__conVarHandle := C.uint64_t(conVarHandle)
+	__native := C.GetConVarColor(__conVarHandle)
+	__retVal = *(*plugify.Vector4)(unsafe.Pointer(&__native))
+	return __retVal
+}
+
 // GetConVarColor 
 //  @brief Retrieves the current value of a Color console variable.
 //
@@ -1039,10 +1203,14 @@ func GetConVarString(conVarHandle uint64) string {
 //
 //  @return The current Color value of the console variable.
 func GetConVarColor(conVarHandle uint64) plugify.Vector4 {
-	var __retVal plugify.Vector4
+	return P_GetConVarColor(conVarHandle)
+}
+
+var P_GetConVarVector2 = func(conVarHandle uint64) plugify.Vector2 {
+	var __retVal plugify.Vector2
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__native := C.GetConVarColor(__conVarHandle)
-	__retVal = *(*plugify.Vector4)(unsafe.Pointer(&__native))
+	__native := C.GetConVarVector2(__conVarHandle)
+	__retVal = *(*plugify.Vector2)(unsafe.Pointer(&__native))
 	return __retVal
 }
 
@@ -1053,10 +1221,14 @@ func GetConVarColor(conVarHandle uint64) plugify.Vector4 {
 //
 //  @return The current Vector2D value of the console variable.
 func GetConVarVector2(conVarHandle uint64) plugify.Vector2 {
-	var __retVal plugify.Vector2
+	return P_GetConVarVector2(conVarHandle)
+}
+
+var P_GetConVarVector = func(conVarHandle uint64) plugify.Vector3 {
+	var __retVal plugify.Vector3
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__native := C.GetConVarVector2(__conVarHandle)
-	__retVal = *(*plugify.Vector2)(unsafe.Pointer(&__native))
+	__native := C.GetConVarVector(__conVarHandle)
+	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
 	return __retVal
 }
 
@@ -1067,10 +1239,14 @@ func GetConVarVector2(conVarHandle uint64) plugify.Vector2 {
 //
 //  @return The current Vector value of the console variable.
 func GetConVarVector(conVarHandle uint64) plugify.Vector3 {
-	var __retVal plugify.Vector3
+	return P_GetConVarVector(conVarHandle)
+}
+
+var P_GetConVarVector4 = func(conVarHandle uint64) plugify.Vector4 {
+	var __retVal plugify.Vector4
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__native := C.GetConVarVector(__conVarHandle)
-	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
+	__native := C.GetConVarVector4(__conVarHandle)
+	__retVal = *(*plugify.Vector4)(unsafe.Pointer(&__native))
 	return __retVal
 }
 
@@ -1081,10 +1257,14 @@ func GetConVarVector(conVarHandle uint64) plugify.Vector3 {
 //
 //  @return The current Vector4D value of the console variable.
 func GetConVarVector4(conVarHandle uint64) plugify.Vector4 {
-	var __retVal plugify.Vector4
+	return P_GetConVarVector4(conVarHandle)
+}
+
+var P_GetConVarQAngle = func(conVarHandle uint64) plugify.Vector3 {
+	var __retVal plugify.Vector3
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__native := C.GetConVarVector4(__conVarHandle)
-	__retVal = *(*plugify.Vector4)(unsafe.Pointer(&__native))
+	__native := C.GetConVarQAngle(__conVarHandle)
+	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
 	return __retVal
 }
 
@@ -1095,21 +1275,10 @@ func GetConVarVector4(conVarHandle uint64) plugify.Vector4 {
 //
 //  @return The current QAngle value of the console variable.
 func GetConVarQAngle(conVarHandle uint64) plugify.Vector3 {
-	var __retVal plugify.Vector3
-	__conVarHandle := C.uint64_t(conVarHandle)
-	__native := C.GetConVarQAngle(__conVarHandle)
-	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
-	return __retVal
+	return P_GetConVarQAngle(conVarHandle)
 }
 
-// SetConVarValue 
-//  @brief Sets the value of a console variable.
-//
-//  @param conVarHandle: The handle to the console variable data.
-//  @param value: The string value to set for the console variable.
-//  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
-//  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
-func SetConVarValue(conVarHandle uint64, value string, replicate bool, notify bool) {
+var P_SetConVarValue = func(conVarHandle uint64, value string, replicate bool, notify bool) {
 	__conVarHandle := C.uint64_t(conVarHandle)
 	__value := plugify.ConstructString(value)
 	__replicate := C.bool(replicate)
@@ -1125,14 +1294,18 @@ func SetConVarValue(conVarHandle uint64, value string, replicate bool, notify bo
 	}.Do()
 }
 
-// SetConVar 
+// SetConVarValue 
 //  @brief Sets the value of a console variable.
 //
 //  @param conVarHandle: The handle to the console variable data.
-//  @param value: The value to set for the console variable.
+//  @param value: The string value to set for the console variable.
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
-func SetConVar(conVarHandle uint64, value any, replicate bool, notify bool) {
+func SetConVarValue(conVarHandle uint64, value string, replicate bool, notify bool) {
+	P_SetConVarValue(conVarHandle, value, replicate, notify)
+}
+
+var P_SetConVar = func(conVarHandle uint64, value any, replicate bool, notify bool) {
 	__conVarHandle := C.uint64_t(conVarHandle)
 	__value := plugify.ConstructVariant(value)
 	__replicate := C.bool(replicate)
@@ -1148,6 +1321,25 @@ func SetConVar(conVarHandle uint64, value any, replicate bool, notify bool) {
 	}.Do()
 }
 
+// SetConVar 
+//  @brief Sets the value of a console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
+//  @param value: The value to set for the console variable.
+//  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
+//  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
+func SetConVar(conVarHandle uint64, value any, replicate bool, notify bool) {
+	P_SetConVar(conVarHandle, value, replicate, notify)
+}
+
+var P_SetConVarBool = func(conVarHandle uint64, value bool, replicate bool, notify bool) {
+	__conVarHandle := C.uint64_t(conVarHandle)
+	__value := C.bool(value)
+	__replicate := C.bool(replicate)
+	__notify := C.bool(notify)
+	C.SetConVarBool(__conVarHandle, __value, __replicate, __notify)
+}
+
 // SetConVarBool 
 //  @brief Sets the value of a boolean console variable.
 //
@@ -1156,11 +1348,15 @@ func SetConVar(conVarHandle uint64, value any, replicate bool, notify bool) {
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
 func SetConVarBool(conVarHandle uint64, value bool, replicate bool, notify bool) {
+	P_SetConVarBool(conVarHandle, value, replicate, notify)
+}
+
+var P_SetConVarInt16 = func(conVarHandle uint64, value int16, replicate bool, notify bool) {
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__value := C.bool(value)
+	__value := C.int16_t(value)
 	__replicate := C.bool(replicate)
 	__notify := C.bool(notify)
-	C.SetConVarBool(__conVarHandle, __value, __replicate, __notify)
+	C.SetConVarInt16(__conVarHandle, __value, __replicate, __notify)
 }
 
 // SetConVarInt16 
@@ -1171,11 +1367,15 @@ func SetConVarBool(conVarHandle uint64, value bool, replicate bool, notify bool)
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
 func SetConVarInt16(conVarHandle uint64, value int16, replicate bool, notify bool) {
+	P_SetConVarInt16(conVarHandle, value, replicate, notify)
+}
+
+var P_SetConVarUInt16 = func(conVarHandle uint64, value uint16, replicate bool, notify bool) {
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__value := C.int16_t(value)
+	__value := C.uint16_t(value)
 	__replicate := C.bool(replicate)
 	__notify := C.bool(notify)
-	C.SetConVarInt16(__conVarHandle, __value, __replicate, __notify)
+	C.SetConVarUInt16(__conVarHandle, __value, __replicate, __notify)
 }
 
 // SetConVarUInt16 
@@ -1186,11 +1386,15 @@ func SetConVarInt16(conVarHandle uint64, value int16, replicate bool, notify boo
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
 func SetConVarUInt16(conVarHandle uint64, value uint16, replicate bool, notify bool) {
+	P_SetConVarUInt16(conVarHandle, value, replicate, notify)
+}
+
+var P_SetConVarInt32 = func(conVarHandle uint64, value int32, replicate bool, notify bool) {
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__value := C.uint16_t(value)
+	__value := C.int32_t(value)
 	__replicate := C.bool(replicate)
 	__notify := C.bool(notify)
-	C.SetConVarUInt16(__conVarHandle, __value, __replicate, __notify)
+	C.SetConVarInt32(__conVarHandle, __value, __replicate, __notify)
 }
 
 // SetConVarInt32 
@@ -1201,11 +1405,15 @@ func SetConVarUInt16(conVarHandle uint64, value uint16, replicate bool, notify b
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
 func SetConVarInt32(conVarHandle uint64, value int32, replicate bool, notify bool) {
+	P_SetConVarInt32(conVarHandle, value, replicate, notify)
+}
+
+var P_SetConVarUInt32 = func(conVarHandle uint64, value uint32, replicate bool, notify bool) {
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__value := C.int32_t(value)
+	__value := C.uint32_t(value)
 	__replicate := C.bool(replicate)
 	__notify := C.bool(notify)
-	C.SetConVarInt32(__conVarHandle, __value, __replicate, __notify)
+	C.SetConVarUInt32(__conVarHandle, __value, __replicate, __notify)
 }
 
 // SetConVarUInt32 
@@ -1216,11 +1424,15 @@ func SetConVarInt32(conVarHandle uint64, value int32, replicate bool, notify boo
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
 func SetConVarUInt32(conVarHandle uint64, value uint32, replicate bool, notify bool) {
+	P_SetConVarUInt32(conVarHandle, value, replicate, notify)
+}
+
+var P_SetConVarInt64 = func(conVarHandle uint64, value int64, replicate bool, notify bool) {
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__value := C.uint32_t(value)
+	__value := C.int64_t(value)
 	__replicate := C.bool(replicate)
 	__notify := C.bool(notify)
-	C.SetConVarUInt32(__conVarHandle, __value, __replicate, __notify)
+	C.SetConVarInt64(__conVarHandle, __value, __replicate, __notify)
 }
 
 // SetConVarInt64 
@@ -1231,11 +1443,15 @@ func SetConVarUInt32(conVarHandle uint64, value uint32, replicate bool, notify b
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
 func SetConVarInt64(conVarHandle uint64, value int64, replicate bool, notify bool) {
+	P_SetConVarInt64(conVarHandle, value, replicate, notify)
+}
+
+var P_SetConVarUInt64 = func(conVarHandle uint64, value uint64, replicate bool, notify bool) {
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__value := C.int64_t(value)
+	__value := C.uint64_t(value)
 	__replicate := C.bool(replicate)
 	__notify := C.bool(notify)
-	C.SetConVarInt64(__conVarHandle, __value, __replicate, __notify)
+	C.SetConVarUInt64(__conVarHandle, __value, __replicate, __notify)
 }
 
 // SetConVarUInt64 
@@ -1246,11 +1462,15 @@ func SetConVarInt64(conVarHandle uint64, value int64, replicate bool, notify boo
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
 func SetConVarUInt64(conVarHandle uint64, value uint64, replicate bool, notify bool) {
+	P_SetConVarUInt64(conVarHandle, value, replicate, notify)
+}
+
+var P_SetConVarFloat = func(conVarHandle uint64, value float32, replicate bool, notify bool) {
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__value := C.uint64_t(value)
+	__value := C.float(value)
 	__replicate := C.bool(replicate)
 	__notify := C.bool(notify)
-	C.SetConVarUInt64(__conVarHandle, __value, __replicate, __notify)
+	C.SetConVarFloat(__conVarHandle, __value, __replicate, __notify)
 }
 
 // SetConVarFloat 
@@ -1261,11 +1481,15 @@ func SetConVarUInt64(conVarHandle uint64, value uint64, replicate bool, notify b
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
 func SetConVarFloat(conVarHandle uint64, value float32, replicate bool, notify bool) {
+	P_SetConVarFloat(conVarHandle, value, replicate, notify)
+}
+
+var P_SetConVarDouble = func(conVarHandle uint64, value float64, replicate bool, notify bool) {
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__value := C.float(value)
+	__value := C.double(value)
 	__replicate := C.bool(replicate)
 	__notify := C.bool(notify)
-	C.SetConVarFloat(__conVarHandle, __value, __replicate, __notify)
+	C.SetConVarDouble(__conVarHandle, __value, __replicate, __notify)
 }
 
 // SetConVarDouble 
@@ -1276,21 +1500,10 @@ func SetConVarFloat(conVarHandle uint64, value float32, replicate bool, notify b
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
 func SetConVarDouble(conVarHandle uint64, value float64, replicate bool, notify bool) {
-	__conVarHandle := C.uint64_t(conVarHandle)
-	__value := C.double(value)
-	__replicate := C.bool(replicate)
-	__notify := C.bool(notify)
-	C.SetConVarDouble(__conVarHandle, __value, __replicate, __notify)
+	P_SetConVarDouble(conVarHandle, value, replicate, notify)
 }
 
-// SetConVarString 
-//  @brief Sets the value of a string console variable.
-//
-//  @param conVarHandle: The handle to the console variable data.
-//  @param value: The value to set for the console variable.
-//  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
-//  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
-func SetConVarString(conVarHandle uint64, value string, replicate bool, notify bool) {
+var P_SetConVarString = func(conVarHandle uint64, value string, replicate bool, notify bool) {
 	__conVarHandle := C.uint64_t(conVarHandle)
 	__value := plugify.ConstructString(value)
 	__replicate := C.bool(replicate)
@@ -1306,6 +1519,25 @@ func SetConVarString(conVarHandle uint64, value string, replicate bool, notify b
 	}.Do()
 }
 
+// SetConVarString 
+//  @brief Sets the value of a string console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
+//  @param value: The value to set for the console variable.
+//  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
+//  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
+func SetConVarString(conVarHandle uint64, value string, replicate bool, notify bool) {
+	P_SetConVarString(conVarHandle, value, replicate, notify)
+}
+
+var P_SetConVarColor = func(conVarHandle uint64, value plugify.Vector4, replicate bool, notify bool) {
+	__conVarHandle := C.uint64_t(conVarHandle)
+	__value := *(*C.Vector4)(unsafe.Pointer(&value))
+	__replicate := C.bool(replicate)
+	__notify := C.bool(notify)
+	C.SetConVarColor(__conVarHandle, &__value, __replicate, __notify)
+}
+
 // SetConVarColor 
 //  @brief Sets the value of a color console variable.
 //
@@ -1314,11 +1546,15 @@ func SetConVarString(conVarHandle uint64, value string, replicate bool, notify b
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
 func SetConVarColor(conVarHandle uint64, value plugify.Vector4, replicate bool, notify bool) {
+	P_SetConVarColor(conVarHandle, value, replicate, notify)
+}
+
+var P_SetConVarVector2 = func(conVarHandle uint64, value plugify.Vector2, replicate bool, notify bool) {
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__value := *(*C.Vector4)(unsafe.Pointer(&value))
+	__value := *(*C.Vector2)(unsafe.Pointer(&value))
 	__replicate := C.bool(replicate)
 	__notify := C.bool(notify)
-	C.SetConVarColor(__conVarHandle, &__value, __replicate, __notify)
+	C.SetConVarVector2(__conVarHandle, &__value, __replicate, __notify)
 }
 
 // SetConVarVector2 
@@ -1329,11 +1565,15 @@ func SetConVarColor(conVarHandle uint64, value plugify.Vector4, replicate bool, 
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
 func SetConVarVector2(conVarHandle uint64, value plugify.Vector2, replicate bool, notify bool) {
+	P_SetConVarVector2(conVarHandle, value, replicate, notify)
+}
+
+var P_SetConVarVector3 = func(conVarHandle uint64, value plugify.Vector3, replicate bool, notify bool) {
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__value := *(*C.Vector2)(unsafe.Pointer(&value))
+	__value := *(*C.Vector3)(unsafe.Pointer(&value))
 	__replicate := C.bool(replicate)
 	__notify := C.bool(notify)
-	C.SetConVarVector2(__conVarHandle, &__value, __replicate, __notify)
+	C.SetConVarVector3(__conVarHandle, &__value, __replicate, __notify)
 }
 
 // SetConVarVector3 
@@ -1344,11 +1584,15 @@ func SetConVarVector2(conVarHandle uint64, value plugify.Vector2, replicate bool
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
 func SetConVarVector3(conVarHandle uint64, value plugify.Vector3, replicate bool, notify bool) {
+	P_SetConVarVector3(conVarHandle, value, replicate, notify)
+}
+
+var P_SetConVarVector4 = func(conVarHandle uint64, value plugify.Vector4, replicate bool, notify bool) {
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__value := *(*C.Vector3)(unsafe.Pointer(&value))
+	__value := *(*C.Vector4)(unsafe.Pointer(&value))
 	__replicate := C.bool(replicate)
 	__notify := C.bool(notify)
-	C.SetConVarVector3(__conVarHandle, &__value, __replicate, __notify)
+	C.SetConVarVector4(__conVarHandle, &__value, __replicate, __notify)
 }
 
 // SetConVarVector4 
@@ -1359,11 +1603,15 @@ func SetConVarVector3(conVarHandle uint64, value plugify.Vector3, replicate bool
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
 func SetConVarVector4(conVarHandle uint64, value plugify.Vector4, replicate bool, notify bool) {
+	P_SetConVarVector4(conVarHandle, value, replicate, notify)
+}
+
+var P_SetConVarQAngle = func(conVarHandle uint64, value plugify.Vector3, replicate bool, notify bool) {
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__value := *(*C.Vector4)(unsafe.Pointer(&value))
+	__value := *(*C.Vector3)(unsafe.Pointer(&value))
 	__replicate := C.bool(replicate)
 	__notify := C.bool(notify)
-	C.SetConVarVector4(__conVarHandle, &__value, __replicate, __notify)
+	C.SetConVarQAngle(__conVarHandle, &__value, __replicate, __notify)
 }
 
 // SetConVarQAngle 
@@ -1374,11 +1622,22 @@ func SetConVarVector4(conVarHandle uint64, value plugify.Vector4, replicate bool
 //  @param replicate: If set to true, the new convar value will be set on all clients. This will only work if the convar has the FCVAR_REPLICATED flag and actually exists on clients.
 //  @param notify: If set to true, clients will be notified that the convar has changed. This will only work if the convar has the FCVAR_NOTIFY flag.
 func SetConVarQAngle(conVarHandle uint64, value plugify.Vector3, replicate bool, notify bool) {
+	P_SetConVarQAngle(conVarHandle, value, replicate, notify)
+}
+
+var P_SendConVarValue = func(playerSlot int32, conVarHandle uint64, value string) {
+	__playerSlot := C.int32_t(playerSlot)
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__value := *(*C.Vector3)(unsafe.Pointer(&value))
-	__replicate := C.bool(replicate)
-	__notify := C.bool(notify)
-	C.SetConVarQAngle(__conVarHandle, &__value, __replicate, __notify)
+	__value := plugify.ConstructString(value)
+	plugify.Block {
+		Try: func() {
+			C.SendConVarValue(__playerSlot, __conVarHandle, (*C.String)(unsafe.Pointer(&__value)))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__value)
+		},
+	}.Do()
 }
 
 // SendConVarValue 
@@ -1388,12 +1647,16 @@ func SetConVarQAngle(conVarHandle uint64, value plugify.Vector3, replicate bool,
 //  @param conVarHandle: The handle to the console variable data.
 //  @param value: The value to send to the client.
 func SendConVarValue(playerSlot int32, conVarHandle uint64, value string) {
-	__playerSlot := C.int32_t(playerSlot)
+	P_SendConVarValue(playerSlot, conVarHandle, value)
+}
+
+var P_SendConVarValue2 = func(conVarHandle uint64, playerSlot int32, value string) {
 	__conVarHandle := C.uint64_t(conVarHandle)
+	__playerSlot := C.int32_t(playerSlot)
 	__value := plugify.ConstructString(value)
 	plugify.Block {
 		Try: func() {
-			C.SendConVarValue(__playerSlot, __conVarHandle, (*C.String)(unsafe.Pointer(&__value)))
+			C.SendConVarValue2(__conVarHandle, __playerSlot, (*C.String)(unsafe.Pointer(&__value)))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -1409,28 +1672,10 @@ func SendConVarValue(playerSlot int32, conVarHandle uint64, value string) {
 //  @param playerSlot: The index of the client to replicate the value to.
 //  @param value: The value to send to the client.
 func SendConVarValue2(conVarHandle uint64, playerSlot int32, value string) {
-	__conVarHandle := C.uint64_t(conVarHandle)
-	__playerSlot := C.int32_t(playerSlot)
-	__value := plugify.ConstructString(value)
-	plugify.Block {
-		Try: func() {
-			C.SendConVarValue2(__conVarHandle, __playerSlot, (*C.String)(unsafe.Pointer(&__value)))
-		},
-		Finally: func() {
-			// Perform cleanup.
-			plugify.DestroyString(&__value)
-		},
-	}.Do()
+	P_SendConVarValue2(conVarHandle, playerSlot, value)
 }
 
-// GetClientConVarValue 
-//  @brief Retrieves the value of a client's console variable and stores it in the output string.
-//
-//  @param playerSlot: The index of the client whose console variable value is being retrieved.
-//  @param convarName: The name of the console variable to retrieve.
-//
-//  @return The output string to store the client's console variable value.
-func GetClientConVarValue(playerSlot int32, convarName string) string {
+var P_GetClientConVarValue = func(playerSlot int32, convarName string) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__playerSlot := C.int32_t(playerSlot)
@@ -1451,13 +1696,18 @@ func GetClientConVarValue(playerSlot int32, convarName string) string {
 	return __retVal
 }
 
-// SetFakeClientConVarValue 
-//  @brief Replicates a console variable value to a specific fake client. This does not change the actual console variable value.
+// GetClientConVarValue 
+//  @brief Retrieves the value of a client's console variable and stores it in the output string.
 //
-//  @param playerSlot: The index of the fake client to replicate the value to.
-//  @param convarName: The name of the console variable.
-//  @param convarValue: The value to set for the console variable.
-func SetFakeClientConVarValue(playerSlot int32, convarName string, convarValue string) {
+//  @param playerSlot: The index of the client whose console variable value is being retrieved.
+//  @param convarName: The name of the console variable to retrieve.
+//
+//  @return The output string to store the client's console variable value.
+func GetClientConVarValue(playerSlot int32, convarName string) string {
+	return P_GetClientConVarValue(playerSlot, convarName)
+}
+
+var P_SetFakeClientConVarValue = func(playerSlot int32, convarName string, convarValue string) {
 	__playerSlot := C.int32_t(playerSlot)
 	__convarName := plugify.ConstructString(convarName)
 	__convarValue := plugify.ConstructString(convarValue)
@@ -1473,16 +1723,17 @@ func SetFakeClientConVarValue(playerSlot int32, convarName string, convarValue s
 	}.Do()
 }
 
-// QueryClientConVar 
-//  @brief Starts a query to retrieve the value of a client's console variable.
+// SetFakeClientConVarValue 
+//  @brief Replicates a console variable value to a specific fake client. This does not change the actual console variable value.
 //
-//  @param playerSlot: The index of the player's slot to query the value from.
-//  @param convarName: The name of client convar to query.
-//  @param callback: A function to use as a callback when the query has finished.
-//  @param data: Optional values to pass to the callback function.
-//
-//  @return A cookie that uniquely identifies the query. Returns -1 on failure, such as when used on a bot.
-func QueryClientConVar(playerSlot int32, convarName string, callback CvarValueCallback, data []any) int32 {
+//  @param playerSlot: The index of the fake client to replicate the value to.
+//  @param convarName: The name of the console variable.
+//  @param convarValue: The value to set for the console variable.
+func SetFakeClientConVarValue(playerSlot int32, convarName string, convarValue string) {
+	P_SetFakeClientConVarValue(playerSlot, convarName, convarValue)
+}
+
+var P_QueryClientConVar = func(playerSlot int32, convarName string, callback CvarValueCallback, data []any) int32 {
 	var __retVal int32
 	__playerSlot := C.int32_t(playerSlot)
 	__convarName := plugify.ConstructString(convarName)
@@ -1501,16 +1752,20 @@ func QueryClientConVar(playerSlot int32, convarName string, callback CvarValueCa
 	return __retVal
 }
 
-// AutoExecConfig 
-//  @brief  Specifies that the given config file should be executed.
+// QueryClientConVar 
+//  @brief Starts a query to retrieve the value of a client's console variable.
 //
-//  @param conVarHandles: List of handles to the console variable data.
-//  @param autoCreate: If true, and the config file does not exist, such a config file will be automatically created and populated with information from the plugin's registered cvars.
-//  @param name: Name of the config file, excluding the .cfg extension. Cannot be empty.
-//  @param folder: Folder under cfg/ to use. By default this is "plugify." Can be empty.
+//  @param playerSlot: The index of the player's slot to query the value from.
+//  @param convarName: The name of client convar to query.
+//  @param callback: A function to use as a callback when the query has finished.
+//  @param data: Optional values to pass to the callback function.
 //
-//  @return True on success, false otherwise.
-func AutoExecConfig(conVarHandles []uint64, autoCreate bool, name string, folder string) bool {
+//  @return A cookie that uniquely identifies the query. Returns -1 on failure, such as when used on a bot.
+func QueryClientConVar(playerSlot int32, convarName string, callback CvarValueCallback, data []any) int32 {
+	return P_QueryClientConVar(playerSlot, convarName, callback, data)
+}
+
+var P_AutoExecConfig = func(conVarHandles []uint64, autoCreate bool, name string, folder string) bool {
 	var __retVal bool
 	__conVarHandles := plugify.ConstructVectorUInt64(conVarHandles)
 	__autoCreate := C.bool(autoCreate)
@@ -1530,12 +1785,20 @@ func AutoExecConfig(conVarHandles []uint64, autoCreate bool, name string, folder
 	return __retVal
 }
 
-// GetServerLanguage 
-//  @brief Returns the current server language.
+// AutoExecConfig 
+//  @brief  Specifies that the given config file should be executed.
 //
+//  @param conVarHandles: List of handles to the console variable data.
+//  @param autoCreate: If true, and the config file does not exist, such a config file will be automatically created and populated with information from the plugin's registered cvars.
+//  @param name: Name of the config file, excluding the .cfg extension. Cannot be empty.
+//  @param folder: Folder under cfg/ to use. By default this is "plugify." Can be empty.
 //
-//  @return The server language as a string.
-func GetServerLanguage() string {
+//  @return True on success, false otherwise.
+func AutoExecConfig(conVarHandles []uint64, autoCreate bool, name string, folder string) bool {
+	return P_AutoExecConfig(conVarHandles, autoCreate, name, folder)
+}
+
+var P_GetServerLanguage = func() string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	plugify.Block {
@@ -1553,12 +1816,16 @@ func GetServerLanguage() string {
 	return __retVal
 }
 
-// GetAllConVars 
-//  @brief Returns all console variables registered by this plugin
+// GetServerLanguage 
+//  @brief Returns the current server language.
 //
 //
-//  @return The vector of ConVar names.
-func GetAllConVars() []string {
+//  @return The server language as a string.
+func GetServerLanguage() string {
+	return P_GetServerLanguage()
+}
+
+var P_GetAllConVars = func() []string {
 	var __retVal []string
 	var __retVal_native plugify.PlgVector
 	plugify.Block {
@@ -1574,6 +1841,15 @@ func GetAllConVars() []string {
 		},
 	}.Do()
 	return __retVal
+}
+
+// GetAllConVars 
+//  @brief Returns all console variables registered by this plugin
+//
+//
+//  @return The vector of ConVar names.
+func GetAllConVars() []string {
+	return P_GetAllConVars()
 }
 
 var (

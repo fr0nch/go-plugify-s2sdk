@@ -2,7 +2,7 @@ module github.com/fr0nch/go-plugify-s2sdk/v2
 
 go 1.25.5
 
-require github.com/untrustedmodders/go-plugify v1.9.0
+require github.com/untrustedmodders/go-plugify v1.10.0
 
 require (
 	golang.org/x/mod v0.37.0 // indirect

@@ -98,18 +98,11 @@ var _ = errors.New("")
 var _ = reflect.TypeOf(0)
 var _ = runtime.GOOS
 var _ = unsafe.Sizeof(0)
-var _ = plugify.Plugin()
+var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: schema)
 
-// GetSchemaOffset 
-//  @brief Get the offset of a member in a given schema class.
-//
-//  @param className: The name of the class.
-//  @param memberName: The name of the member whose offset is to be retrieved.
-//
-//  @return The offset of the member in the class, or -1 if the offset is not found.
-func GetSchemaOffset(className string, memberName string) int32 {
+var P_GetSchemaOffset = func(className string, memberName string) int32 {
 	var __retVal int32
 	__className := plugify.ConstructString(className)
 	__memberName := plugify.ConstructString(memberName)
@@ -126,13 +119,18 @@ func GetSchemaOffset(className string, memberName string) int32 {
 	return __retVal
 }
 
-// GetSchemaChainOffset 
-//  @brief Get the offset of a chain in a given schema class.
+// GetSchemaOffset 
+//  @brief Get the offset of a member in a given schema class.
 //
 //  @param className: The name of the class.
+//  @param memberName: The name of the member whose offset is to be retrieved.
 //
-//  @return The offset of the chain entity in the class, or -1 if the offset is not found.
-func GetSchemaChainOffset(className string) int32 {
+//  @return The offset of the member in the class, or -1 if the offset is not found.
+func GetSchemaOffset(className string, memberName string) int32 {
+	return P_GetSchemaOffset(className, memberName)
+}
+
+var P_GetSchemaChainOffset = func(className string) int32 {
 	var __retVal int32
 	__className := plugify.ConstructString(className)
 	plugify.Block {
@@ -147,14 +145,17 @@ func GetSchemaChainOffset(className string) int32 {
 	return __retVal
 }
 
-// IsSchemaFieldNetworked 
-//  @brief Check if a schema field is networked.
+// GetSchemaChainOffset 
+//  @brief Get the offset of a chain in a given schema class.
 //
 //  @param className: The name of the class.
-//  @param memberName: The name of the member to check.
 //
-//  @return True if the member is networked, false otherwise.
-func IsSchemaFieldNetworked(className string, memberName string) bool {
+//  @return The offset of the chain entity in the class, or -1 if the offset is not found.
+func GetSchemaChainOffset(className string) int32 {
+	return P_GetSchemaChainOffset(className)
+}
+
+var P_IsSchemaFieldNetworked = func(className string, memberName string) bool {
 	var __retVal bool
 	__className := plugify.ConstructString(className)
 	__memberName := plugify.ConstructString(memberName)
@@ -171,13 +172,18 @@ func IsSchemaFieldNetworked(className string, memberName string) bool {
 	return __retVal
 }
 
-// GetSchemaClassSize 
-//  @brief Get the size of a schema class.
+// IsSchemaFieldNetworked 
+//  @brief Check if a schema field is networked.
 //
 //  @param className: The name of the class.
+//  @param memberName: The name of the member to check.
 //
-//  @return The size of the class in bytes, or -1 if the class is not found.
-func GetSchemaClassSize(className string) int32 {
+//  @return True if the member is networked, false otherwise.
+func IsSchemaFieldNetworked(className string, memberName string) bool {
+	return P_IsSchemaFieldNetworked(className, memberName)
+}
+
+var P_GetSchemaClassSize = func(className string) int32 {
 	var __retVal int32
 	__className := plugify.ConstructString(className)
 	plugify.Block {
@@ -192,6 +198,25 @@ func GetSchemaClassSize(className string) int32 {
 	return __retVal
 }
 
+// GetSchemaClassSize 
+//  @brief Get the size of a schema class.
+//
+//  @param className: The name of the class.
+//
+//  @return The size of the class in bytes, or -1 if the class is not found.
+func GetSchemaClassSize(className string) int32 {
+	return P_GetSchemaClassSize(className)
+}
+
+var P_GetEntData2 = func(entity uintptr, offset int32, size int32) int64 {
+	var __retVal int64
+	__entity := C.uintptr_t(entity)
+	__offset := C.int32_t(offset)
+	__size := C.int32_t(size)
+	__retVal = int64(C.GetEntData2(__entity, __offset, __size))
+	return __retVal
+}
+
 // GetEntData2 
 //  @brief Peeks into an entity's object schema and retrieves the integer value at the given offset.
 //
@@ -201,12 +226,17 @@ func GetSchemaClassSize(className string) int32 {
 //
 //  @return The integer value at the given memory location.
 func GetEntData2(entity uintptr, offset int32, size int32) int64 {
-	var __retVal int64
+	return P_GetEntData2(entity, offset, size)
+}
+
+var P_SetEntData2 = func(entity uintptr, offset int32, value int64, size int32, changeState bool, chainOffset int32) {
 	__entity := C.uintptr_t(entity)
 	__offset := C.int32_t(offset)
+	__value := C.int64_t(value)
 	__size := C.int32_t(size)
-	__retVal = int64(C.GetEntData2(__entity, __offset, __size))
-	return __retVal
+	__changeState := C.bool(changeState)
+	__chainOffset := C.int32_t(chainOffset)
+	C.SetEntData2(__entity, __offset, __value, __size, __changeState, __chainOffset)
 }
 
 // SetEntData2 
@@ -219,13 +249,16 @@ func GetEntData2(entity uintptr, offset int32, size int32) int64 {
 //  @param changeState: If true, change will be sent over the network.
 //  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntData2(entity uintptr, offset int32, value int64, size int32, changeState bool, chainOffset int32) {
+	P_SetEntData2(entity, offset, value, size, changeState, chainOffset)
+}
+
+var P_GetEntDataFloat2 = func(entity uintptr, offset int32, size int32) float64 {
+	var __retVal float64
 	__entity := C.uintptr_t(entity)
 	__offset := C.int32_t(offset)
-	__value := C.int64_t(value)
 	__size := C.int32_t(size)
-	__changeState := C.bool(changeState)
-	__chainOffset := C.int32_t(chainOffset)
-	C.SetEntData2(__entity, __offset, __value, __size, __changeState, __chainOffset)
+	__retVal = float64(C.GetEntDataFloat2(__entity, __offset, __size))
+	return __retVal
 }
 
 // GetEntDataFloat2 
@@ -237,12 +270,17 @@ func SetEntData2(entity uintptr, offset int32, value int64, size int32, changeSt
 //
 //  @return The float value at the given memory location.
 func GetEntDataFloat2(entity uintptr, offset int32, size int32) float64 {
-	var __retVal float64
+	return P_GetEntDataFloat2(entity, offset, size)
+}
+
+var P_SetEntDataFloat2 = func(entity uintptr, offset int32, value float64, size int32, changeState bool, chainOffset int32) {
 	__entity := C.uintptr_t(entity)
 	__offset := C.int32_t(offset)
+	__value := C.double(value)
 	__size := C.int32_t(size)
-	__retVal = float64(C.GetEntDataFloat2(__entity, __offset, __size))
-	return __retVal
+	__changeState := C.bool(changeState)
+	__chainOffset := C.int32_t(chainOffset)
+	C.SetEntDataFloat2(__entity, __offset, __value, __size, __changeState, __chainOffset)
 }
 
 // SetEntDataFloat2 
@@ -255,13 +293,16 @@ func GetEntDataFloat2(entity uintptr, offset int32, size int32) float64 {
 //  @param changeState: If true, change will be sent over the network.
 //  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntDataFloat2(entity uintptr, offset int32, value float64, size int32, changeState bool, chainOffset int32) {
+	P_SetEntDataFloat2(entity, offset, value, size, changeState, chainOffset)
+}
+
+var P_GetEntDataColor2 = func(entity uintptr, offset int32) plugify.Vector4 {
+	var __retVal plugify.Vector4
 	__entity := C.uintptr_t(entity)
 	__offset := C.int32_t(offset)
-	__value := C.double(value)
-	__size := C.int32_t(size)
-	__changeState := C.bool(changeState)
-	__chainOffset := C.int32_t(chainOffset)
-	C.SetEntDataFloat2(__entity, __offset, __value, __size, __changeState, __chainOffset)
+	__native := C.GetEntDataColor2(__entity, __offset)
+	__retVal = *(*plugify.Vector4)(unsafe.Pointer(&__native))
+	return __retVal
 }
 
 // GetEntDataColor2 
@@ -272,12 +313,16 @@ func SetEntDataFloat2(entity uintptr, offset int32, value float64, size int32, c
 //
 //  @return The color value at the given memory location.
 func GetEntDataColor2(entity uintptr, offset int32) plugify.Vector4 {
-	var __retVal plugify.Vector4
+	return P_GetEntDataColor2(entity, offset)
+}
+
+var P_SetEntDataColor2 = func(entity uintptr, offset int32, value plugify.Vector4, changeState bool, chainOffset int32) {
 	__entity := C.uintptr_t(entity)
 	__offset := C.int32_t(offset)
-	__native := C.GetEntDataColor2(__entity, __offset)
-	__retVal = *(*plugify.Vector4)(unsafe.Pointer(&__native))
-	return __retVal
+	__value := *(*C.Vector4)(unsafe.Pointer(&value))
+	__changeState := C.bool(changeState)
+	__chainOffset := C.int32_t(chainOffset)
+	C.SetEntDataColor2(__entity, __offset, &__value, __changeState, __chainOffset)
 }
 
 // SetEntDataColor2 
@@ -289,22 +334,10 @@ func GetEntDataColor2(entity uintptr, offset int32) plugify.Vector4 {
 //  @param changeState: If true, change will be sent over the network.
 //  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntDataColor2(entity uintptr, offset int32, value plugify.Vector4, changeState bool, chainOffset int32) {
-	__entity := C.uintptr_t(entity)
-	__offset := C.int32_t(offset)
-	__value := *(*C.Vector4)(unsafe.Pointer(&value))
-	__changeState := C.bool(changeState)
-	__chainOffset := C.int32_t(chainOffset)
-	C.SetEntDataColor2(__entity, __offset, &__value, __changeState, __chainOffset)
+	P_SetEntDataColor2(entity, offset, value, changeState, chainOffset)
 }
 
-// GetEntDataString2 
-//  @brief Peeks into an entity's object schema and retrieves the string value at the given offset.
-//
-//  @param entity: Pointer to the instance of the class where the value is to be set.
-//  @param offset: The offset of the schema to use.
-//
-//  @return The string value at the given memory location.
-func GetEntDataString2(entity uintptr, offset int32) string {
+var P_GetEntDataString2 = func(entity uintptr, offset int32) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__entity := C.uintptr_t(entity)
@@ -324,15 +357,18 @@ func GetEntDataString2(entity uintptr, offset int32) string {
 	return __retVal
 }
 
-// SetEntDataString2 
-//  @brief Peeks into an entity's object data and sets the string at the given offset.
+// GetEntDataString2 
+//  @brief Peeks into an entity's object schema and retrieves the string value at the given offset.
 //
 //  @param entity: Pointer to the instance of the class where the value is to be set.
 //  @param offset: The offset of the schema to use.
-//  @param value: The string value to set.
-//  @param changeState: If true, change will be sent over the network.
-//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
-func SetEntDataString2(entity uintptr, offset int32, value string, changeState bool, chainOffset int32) {
+//
+//  @return The string value at the given memory location.
+func GetEntDataString2(entity uintptr, offset int32) string {
+	return P_GetEntDataString2(entity, offset)
+}
+
+var P_SetEntDataString2 = func(entity uintptr, offset int32, value string, changeState bool, chainOffset int32) {
 	__entity := C.uintptr_t(entity)
 	__offset := C.int32_t(offset)
 	__value := plugify.ConstructString(value)
@@ -349,15 +385,19 @@ func SetEntDataString2(entity uintptr, offset int32, value string, changeState b
 	}.Do()
 }
 
-// GetEntDataCString2 
-//  @brief Peeks into an entity's object schema and retrieves the string value at the given offset.
+// SetEntDataString2 
+//  @brief Peeks into an entity's object data and sets the string at the given offset.
 //
 //  @param entity: Pointer to the instance of the class where the value is to be set.
 //  @param offset: The offset of the schema to use.
-//  @param size: Number of bytes to read.
-//
-//  @return The string value at the given memory location.
-func GetEntDataCString2(entity uintptr, offset int32, size int32) string {
+//  @param value: The string value to set.
+//  @param changeState: If true, change will be sent over the network.
+//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
+func SetEntDataString2(entity uintptr, offset int32, value string, changeState bool, chainOffset int32) {
+	P_SetEntDataString2(entity, offset, value, changeState, chainOffset)
+}
+
+var P_GetEntDataCString2 = func(entity uintptr, offset int32, size int32) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__entity := C.uintptr_t(entity)
@@ -378,16 +418,19 @@ func GetEntDataCString2(entity uintptr, offset int32, size int32) string {
 	return __retVal
 }
 
-// SetEntDataCString2 
-//  @brief Peeks into an entity's object data and sets the string at the given offset.
+// GetEntDataCString2 
+//  @brief Peeks into an entity's object schema and retrieves the string value at the given offset.
 //
 //  @param entity: Pointer to the instance of the class where the value is to be set.
 //  @param offset: The offset of the schema to use.
-//  @param value: The string value to set.
-//  @param size: Number of bytes to write.
-//  @param changeState: If true, change will be sent over the network.
-//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
-func SetEntDataCString2(entity uintptr, offset int32, value string, size int32, changeState bool, chainOffset int32) {
+//  @param size: Number of bytes to read.
+//
+//  @return The string value at the given memory location.
+func GetEntDataCString2(entity uintptr, offset int32, size int32) string {
+	return P_GetEntDataCString2(entity, offset, size)
+}
+
+var P_SetEntDataCString2 = func(entity uintptr, offset int32, value string, size int32, changeState bool, chainOffset int32) {
 	__entity := C.uintptr_t(entity)
 	__offset := C.int32_t(offset)
 	__value := plugify.ConstructString(value)
@@ -405,6 +448,28 @@ func SetEntDataCString2(entity uintptr, offset int32, value string, size int32, 
 	}.Do()
 }
 
+// SetEntDataCString2 
+//  @brief Peeks into an entity's object data and sets the string at the given offset.
+//
+//  @param entity: Pointer to the instance of the class where the value is to be set.
+//  @param offset: The offset of the schema to use.
+//  @param value: The string value to set.
+//  @param size: Number of bytes to write.
+//  @param changeState: If true, change will be sent over the network.
+//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
+func SetEntDataCString2(entity uintptr, offset int32, value string, size int32, changeState bool, chainOffset int32) {
+	P_SetEntDataCString2(entity, offset, value, size, changeState, chainOffset)
+}
+
+var P_GetEntDataVector3D2 = func(entity uintptr, offset int32) plugify.Vector3 {
+	var __retVal plugify.Vector3
+	__entity := C.uintptr_t(entity)
+	__offset := C.int32_t(offset)
+	__native := C.GetEntDataVector3D2(__entity, __offset)
+	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
+	return __retVal
+}
+
 // GetEntDataVector3D2 
 //  @brief Peeks into an entity's object schema and retrieves the vector value at the given offset.
 //
@@ -413,12 +478,16 @@ func SetEntDataCString2(entity uintptr, offset int32, value string, size int32, 
 //
 //  @return The vector value at the given memory location.
 func GetEntDataVector3D2(entity uintptr, offset int32) plugify.Vector3 {
-	var __retVal plugify.Vector3
+	return P_GetEntDataVector3D2(entity, offset)
+}
+
+var P_SetEntDataVector3D2 = func(entity uintptr, offset int32, value plugify.Vector3, changeState bool, chainOffset int32) {
 	__entity := C.uintptr_t(entity)
 	__offset := C.int32_t(offset)
-	__native := C.GetEntDataVector3D2(__entity, __offset)
-	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
-	return __retVal
+	__value := *(*C.Vector3)(unsafe.Pointer(&value))
+	__changeState := C.bool(changeState)
+	__chainOffset := C.int32_t(chainOffset)
+	C.SetEntDataVector3D2(__entity, __offset, &__value, __changeState, __chainOffset)
 }
 
 // SetEntDataVector3D2 
@@ -430,12 +499,16 @@ func GetEntDataVector3D2(entity uintptr, offset int32) plugify.Vector3 {
 //  @param changeState: If true, change will be sent over the network.
 //  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntDataVector3D2(entity uintptr, offset int32, value plugify.Vector3, changeState bool, chainOffset int32) {
+	P_SetEntDataVector3D2(entity, offset, value, changeState, chainOffset)
+}
+
+var P_GetEntDataVector4D2 = func(entity uintptr, offset int32) plugify.Vector4 {
+	var __retVal plugify.Vector4
 	__entity := C.uintptr_t(entity)
 	__offset := C.int32_t(offset)
-	__value := *(*C.Vector3)(unsafe.Pointer(&value))
-	__changeState := C.bool(changeState)
-	__chainOffset := C.int32_t(chainOffset)
-	C.SetEntDataVector3D2(__entity, __offset, &__value, __changeState, __chainOffset)
+	__native := C.GetEntDataVector4D2(__entity, __offset)
+	__retVal = *(*plugify.Vector4)(unsafe.Pointer(&__native))
+	return __retVal
 }
 
 // GetEntDataVector4D2 
@@ -446,12 +519,16 @@ func SetEntDataVector3D2(entity uintptr, offset int32, value plugify.Vector3, ch
 //
 //  @return The vector value at the given memory location.
 func GetEntDataVector4D2(entity uintptr, offset int32) plugify.Vector4 {
-	var __retVal plugify.Vector4
+	return P_GetEntDataVector4D2(entity, offset)
+}
+
+var P_SetEntDataVector4D2 = func(entity uintptr, offset int32, value plugify.Vector4, changeState bool, chainOffset int32) {
 	__entity := C.uintptr_t(entity)
 	__offset := C.int32_t(offset)
-	__native := C.GetEntDataVector4D2(__entity, __offset)
-	__retVal = *(*plugify.Vector4)(unsafe.Pointer(&__native))
-	return __retVal
+	__value := *(*C.Vector4)(unsafe.Pointer(&value))
+	__changeState := C.bool(changeState)
+	__chainOffset := C.int32_t(chainOffset)
+	C.SetEntDataVector4D2(__entity, __offset, &__value, __changeState, __chainOffset)
 }
 
 // SetEntDataVector4D2 
@@ -463,12 +540,16 @@ func GetEntDataVector4D2(entity uintptr, offset int32) plugify.Vector4 {
 //  @param changeState: If true, change will be sent over the network.
 //  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntDataVector4D2(entity uintptr, offset int32, value plugify.Vector4, changeState bool, chainOffset int32) {
+	P_SetEntDataVector4D2(entity, offset, value, changeState, chainOffset)
+}
+
+var P_GetEntDataVector2D2 = func(entity uintptr, offset int32) plugify.Vector2 {
+	var __retVal plugify.Vector2
 	__entity := C.uintptr_t(entity)
 	__offset := C.int32_t(offset)
-	__value := *(*C.Vector4)(unsafe.Pointer(&value))
-	__changeState := C.bool(changeState)
-	__chainOffset := C.int32_t(chainOffset)
-	C.SetEntDataVector4D2(__entity, __offset, &__value, __changeState, __chainOffset)
+	__native := C.GetEntDataVector2D2(__entity, __offset)
+	__retVal = *(*plugify.Vector2)(unsafe.Pointer(&__native))
+	return __retVal
 }
 
 // GetEntDataVector2D2 
@@ -479,12 +560,16 @@ func SetEntDataVector4D2(entity uintptr, offset int32, value plugify.Vector4, ch
 //
 //  @return The vector value at the given memory location.
 func GetEntDataVector2D2(entity uintptr, offset int32) plugify.Vector2 {
-	var __retVal plugify.Vector2
+	return P_GetEntDataVector2D2(entity, offset)
+}
+
+var P_SetEntDataVector2D2 = func(entity uintptr, offset int32, value plugify.Vector2, changeState bool, chainOffset int32) {
 	__entity := C.uintptr_t(entity)
 	__offset := C.int32_t(offset)
-	__native := C.GetEntDataVector2D2(__entity, __offset)
-	__retVal = *(*plugify.Vector2)(unsafe.Pointer(&__native))
-	return __retVal
+	__value := *(*C.Vector2)(unsafe.Pointer(&value))
+	__changeState := C.bool(changeState)
+	__chainOffset := C.int32_t(chainOffset)
+	C.SetEntDataVector2D2(__entity, __offset, &__value, __changeState, __chainOffset)
 }
 
 // SetEntDataVector2D2 
@@ -496,12 +581,15 @@ func GetEntDataVector2D2(entity uintptr, offset int32) plugify.Vector2 {
 //  @param changeState: If true, change will be sent over the network.
 //  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntDataVector2D2(entity uintptr, offset int32, value plugify.Vector2, changeState bool, chainOffset int32) {
+	P_SetEntDataVector2D2(entity, offset, value, changeState, chainOffset)
+}
+
+var P_GetEntDataEnt2 = func(entity uintptr, offset int32) int32 {
+	var __retVal int32
 	__entity := C.uintptr_t(entity)
 	__offset := C.int32_t(offset)
-	__value := *(*C.Vector2)(unsafe.Pointer(&value))
-	__changeState := C.bool(changeState)
-	__chainOffset := C.int32_t(chainOffset)
-	C.SetEntDataVector2D2(__entity, __offset, &__value, __changeState, __chainOffset)
+	__retVal = int32(C.GetEntDataEnt2(__entity, __offset))
+	return __retVal
 }
 
 // GetEntDataEnt2 
@@ -512,11 +600,16 @@ func SetEntDataVector2D2(entity uintptr, offset int32, value plugify.Vector2, ch
 //
 //  @return The entity handle at the given memory location.
 func GetEntDataEnt2(entity uintptr, offset int32) int32 {
-	var __retVal int32
+	return P_GetEntDataEnt2(entity, offset)
+}
+
+var P_SetEntDataEnt2 = func(entity uintptr, offset int32, value int32, changeState bool, chainOffset int32) {
 	__entity := C.uintptr_t(entity)
 	__offset := C.int32_t(offset)
-	__retVal = int32(C.GetEntDataEnt2(__entity, __offset))
-	return __retVal
+	__value := C.int32_t(value)
+	__changeState := C.bool(changeState)
+	__chainOffset := C.int32_t(chainOffset)
+	C.SetEntDataEnt2(__entity, __offset, __value, __changeState, __chainOffset)
 }
 
 // SetEntDataEnt2 
@@ -528,12 +621,14 @@ func GetEntDataEnt2(entity uintptr, offset int32) int32 {
 //  @param changeState: If true, change will be sent over the network.
 //  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntDataEnt2(entity uintptr, offset int32, value int32, changeState bool, chainOffset int32) {
+	P_SetEntDataEnt2(entity, offset, value, changeState, chainOffset)
+}
+
+var P_ChangeEntityState2 = func(entity uintptr, offset int32, chainOffset int32) {
 	__entity := C.uintptr_t(entity)
 	__offset := C.int32_t(offset)
-	__value := C.int32_t(value)
-	__changeState := C.bool(changeState)
 	__chainOffset := C.int32_t(chainOffset)
-	C.SetEntDataEnt2(__entity, __offset, __value, __changeState, __chainOffset)
+	C.ChangeEntityState2(__entity, __offset, __chainOffset)
 }
 
 // ChangeEntityState2 
@@ -543,10 +638,16 @@ func SetEntDataEnt2(entity uintptr, offset int32, value int32, changeState bool,
 //  @param offset: The offset of the schema to use.
 //  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func ChangeEntityState2(entity uintptr, offset int32, chainOffset int32) {
-	__entity := C.uintptr_t(entity)
+	P_ChangeEntityState2(entity, offset, chainOffset)
+}
+
+var P_GetEntData = func(entityHandle int32, offset int32, size int32) int64 {
+	var __retVal int64
+	__entityHandle := C.int32_t(entityHandle)
 	__offset := C.int32_t(offset)
-	__chainOffset := C.int32_t(chainOffset)
-	C.ChangeEntityState2(__entity, __offset, __chainOffset)
+	__size := C.int32_t(size)
+	__retVal = int64(C.GetEntData(__entityHandle, __offset, __size))
+	return __retVal
 }
 
 // GetEntData 
@@ -558,12 +659,17 @@ func ChangeEntityState2(entity uintptr, offset int32, chainOffset int32) {
 //
 //  @return The integer value at the given memory location.
 func GetEntData(entityHandle int32, offset int32, size int32) int64 {
-	var __retVal int64
+	return P_GetEntData(entityHandle, offset, size)
+}
+
+var P_SetEntData = func(entityHandle int32, offset int32, value int64, size int32, changeState bool, chainOffset int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__offset := C.int32_t(offset)
+	__value := C.int64_t(value)
 	__size := C.int32_t(size)
-	__retVal = int64(C.GetEntData(__entityHandle, __offset, __size))
-	return __retVal
+	__changeState := C.bool(changeState)
+	__chainOffset := C.int32_t(chainOffset)
+	C.SetEntData(__entityHandle, __offset, __value, __size, __changeState, __chainOffset)
 }
 
 // SetEntData 
@@ -576,13 +682,16 @@ func GetEntData(entityHandle int32, offset int32, size int32) int64 {
 //  @param changeState: If true, change will be sent over the network.
 //  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntData(entityHandle int32, offset int32, value int64, size int32, changeState bool, chainOffset int32) {
+	P_SetEntData(entityHandle, offset, value, size, changeState, chainOffset)
+}
+
+var P_GetEntDataFloat = func(entityHandle int32, offset int32, size int32) float64 {
+	var __retVal float64
 	__entityHandle := C.int32_t(entityHandle)
 	__offset := C.int32_t(offset)
-	__value := C.int64_t(value)
 	__size := C.int32_t(size)
-	__changeState := C.bool(changeState)
-	__chainOffset := C.int32_t(chainOffset)
-	C.SetEntData(__entityHandle, __offset, __value, __size, __changeState, __chainOffset)
+	__retVal = float64(C.GetEntDataFloat(__entityHandle, __offset, __size))
+	return __retVal
 }
 
 // GetEntDataFloat 
@@ -594,12 +703,17 @@ func SetEntData(entityHandle int32, offset int32, value int64, size int32, chang
 //
 //  @return The float value at the given memory location.
 func GetEntDataFloat(entityHandle int32, offset int32, size int32) float64 {
-	var __retVal float64
+	return P_GetEntDataFloat(entityHandle, offset, size)
+}
+
+var P_SetEntDataFloat = func(entityHandle int32, offset int32, value float64, size int32, changeState bool, chainOffset int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__offset := C.int32_t(offset)
+	__value := C.double(value)
 	__size := C.int32_t(size)
-	__retVal = float64(C.GetEntDataFloat(__entityHandle, __offset, __size))
-	return __retVal
+	__changeState := C.bool(changeState)
+	__chainOffset := C.int32_t(chainOffset)
+	C.SetEntDataFloat(__entityHandle, __offset, __value, __size, __changeState, __chainOffset)
 }
 
 // SetEntDataFloat 
@@ -612,13 +726,16 @@ func GetEntDataFloat(entityHandle int32, offset int32, size int32) float64 {
 //  @param changeState: If true, change will be sent over the network.
 //  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntDataFloat(entityHandle int32, offset int32, value float64, size int32, changeState bool, chainOffset int32) {
+	P_SetEntDataFloat(entityHandle, offset, value, size, changeState, chainOffset)
+}
+
+var P_GetEntDataColor = func(entityHandle int32, offset int32) plugify.Vector4 {
+	var __retVal plugify.Vector4
 	__entityHandle := C.int32_t(entityHandle)
 	__offset := C.int32_t(offset)
-	__value := C.double(value)
-	__size := C.int32_t(size)
-	__changeState := C.bool(changeState)
-	__chainOffset := C.int32_t(chainOffset)
-	C.SetEntDataFloat(__entityHandle, __offset, __value, __size, __changeState, __chainOffset)
+	__native := C.GetEntDataColor(__entityHandle, __offset)
+	__retVal = *(*plugify.Vector4)(unsafe.Pointer(&__native))
+	return __retVal
 }
 
 // GetEntDataColor 
@@ -629,12 +746,16 @@ func SetEntDataFloat(entityHandle int32, offset int32, value float64, size int32
 //
 //  @return The color value at the given memory location.
 func GetEntDataColor(entityHandle int32, offset int32) plugify.Vector4 {
-	var __retVal plugify.Vector4
+	return P_GetEntDataColor(entityHandle, offset)
+}
+
+var P_SetEntDataColor = func(entityHandle int32, offset int32, value plugify.Vector4, changeState bool, chainOffset int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__offset := C.int32_t(offset)
-	__native := C.GetEntDataColor(__entityHandle, __offset)
-	__retVal = *(*plugify.Vector4)(unsafe.Pointer(&__native))
-	return __retVal
+	__value := *(*C.Vector4)(unsafe.Pointer(&value))
+	__changeState := C.bool(changeState)
+	__chainOffset := C.int32_t(chainOffset)
+	C.SetEntDataColor(__entityHandle, __offset, &__value, __changeState, __chainOffset)
 }
 
 // SetEntDataColor 
@@ -646,22 +767,10 @@ func GetEntDataColor(entityHandle int32, offset int32) plugify.Vector4 {
 //  @param changeState: If true, change will be sent over the network.
 //  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntDataColor(entityHandle int32, offset int32, value plugify.Vector4, changeState bool, chainOffset int32) {
-	__entityHandle := C.int32_t(entityHandle)
-	__offset := C.int32_t(offset)
-	__value := *(*C.Vector4)(unsafe.Pointer(&value))
-	__changeState := C.bool(changeState)
-	__chainOffset := C.int32_t(chainOffset)
-	C.SetEntDataColor(__entityHandle, __offset, &__value, __changeState, __chainOffset)
+	P_SetEntDataColor(entityHandle, offset, value, changeState, chainOffset)
 }
 
-// GetEntDataString 
-//  @brief Peeks into an entity's object schema and retrieves the string value at the given offset.
-//
-//  @param entityHandle: The handle of the entity from which the value is to be retrieved.
-//  @param offset: The offset of the schema to use.
-//
-//  @return The string value at the given memory location.
-func GetEntDataString(entityHandle int32, offset int32) string {
+var P_GetEntDataString = func(entityHandle int32, offset int32) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__entityHandle := C.int32_t(entityHandle)
@@ -681,15 +790,18 @@ func GetEntDataString(entityHandle int32, offset int32) string {
 	return __retVal
 }
 
-// SetEntDataString 
-//  @brief Peeks into an entity's object data and sets the string at the given offset.
+// GetEntDataString 
+//  @brief Peeks into an entity's object schema and retrieves the string value at the given offset.
 //
 //  @param entityHandle: The handle of the entity from which the value is to be retrieved.
 //  @param offset: The offset of the schema to use.
-//  @param value: The string value to set.
-//  @param changeState: If true, change will be sent over the network.
-//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
-func SetEntDataString(entityHandle int32, offset int32, value string, changeState bool, chainOffset int32) {
+//
+//  @return The string value at the given memory location.
+func GetEntDataString(entityHandle int32, offset int32) string {
+	return P_GetEntDataString(entityHandle, offset)
+}
+
+var P_SetEntDataString = func(entityHandle int32, offset int32, value string, changeState bool, chainOffset int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__offset := C.int32_t(offset)
 	__value := plugify.ConstructString(value)
@@ -706,15 +818,19 @@ func SetEntDataString(entityHandle int32, offset int32, value string, changeStat
 	}.Do()
 }
 
-// GetEntDataCString 
-//  @brief Peeks into an entity's object schema and retrieves the string value at the given offset.
+// SetEntDataString 
+//  @brief Peeks into an entity's object data and sets the string at the given offset.
 //
 //  @param entityHandle: The handle of the entity from which the value is to be retrieved.
 //  @param offset: The offset of the schema to use.
-//  @param size: Number of bytes to read.
-//
-//  @return The string value at the given memory location.
-func GetEntDataCString(entityHandle int32, offset int32, size int32) string {
+//  @param value: The string value to set.
+//  @param changeState: If true, change will be sent over the network.
+//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
+func SetEntDataString(entityHandle int32, offset int32, value string, changeState bool, chainOffset int32) {
+	P_SetEntDataString(entityHandle, offset, value, changeState, chainOffset)
+}
+
+var P_GetEntDataCString = func(entityHandle int32, offset int32, size int32) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__entityHandle := C.int32_t(entityHandle)
@@ -735,16 +851,19 @@ func GetEntDataCString(entityHandle int32, offset int32, size int32) string {
 	return __retVal
 }
 
-// SetEntDataCString 
-//  @brief Peeks into an entity's object data and sets the string at the given offset.
+// GetEntDataCString 
+//  @brief Peeks into an entity's object schema and retrieves the string value at the given offset.
 //
 //  @param entityHandle: The handle of the entity from which the value is to be retrieved.
 //  @param offset: The offset of the schema to use.
-//  @param value: The string value to set.
-//  @param size: Number of bytes to write.
-//  @param changeState: If true, change will be sent over the network.
-//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
-func SetEntDataCString(entityHandle int32, offset int32, value string, size int32, changeState bool, chainOffset int32) {
+//  @param size: Number of bytes to read.
+//
+//  @return The string value at the given memory location.
+func GetEntDataCString(entityHandle int32, offset int32, size int32) string {
+	return P_GetEntDataCString(entityHandle, offset, size)
+}
+
+var P_SetEntDataCString = func(entityHandle int32, offset int32, value string, size int32, changeState bool, chainOffset int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__offset := C.int32_t(offset)
 	__value := plugify.ConstructString(value)
@@ -762,6 +881,28 @@ func SetEntDataCString(entityHandle int32, offset int32, value string, size int3
 	}.Do()
 }
 
+// SetEntDataCString 
+//  @brief Peeks into an entity's object data and sets the string at the given offset.
+//
+//  @param entityHandle: The handle of the entity from which the value is to be retrieved.
+//  @param offset: The offset of the schema to use.
+//  @param value: The string value to set.
+//  @param size: Number of bytes to write.
+//  @param changeState: If true, change will be sent over the network.
+//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
+func SetEntDataCString(entityHandle int32, offset int32, value string, size int32, changeState bool, chainOffset int32) {
+	P_SetEntDataCString(entityHandle, offset, value, size, changeState, chainOffset)
+}
+
+var P_GetEntDataVector3D = func(entityHandle int32, offset int32) plugify.Vector3 {
+	var __retVal plugify.Vector3
+	__entityHandle := C.int32_t(entityHandle)
+	__offset := C.int32_t(offset)
+	__native := C.GetEntDataVector3D(__entityHandle, __offset)
+	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
+	return __retVal
+}
+
 // GetEntDataVector3D 
 //  @brief Peeks into an entity's object schema and retrieves the vector value at the given offset.
 //
@@ -770,12 +911,16 @@ func SetEntDataCString(entityHandle int32, offset int32, value string, size int3
 //
 //  @return The vector value at the given memory location.
 func GetEntDataVector3D(entityHandle int32, offset int32) plugify.Vector3 {
-	var __retVal plugify.Vector3
+	return P_GetEntDataVector3D(entityHandle, offset)
+}
+
+var P_SetEntDataVector3D = func(entityHandle int32, offset int32, value plugify.Vector3, changeState bool, chainOffset int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__offset := C.int32_t(offset)
-	__native := C.GetEntDataVector3D(__entityHandle, __offset)
-	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
-	return __retVal
+	__value := *(*C.Vector3)(unsafe.Pointer(&value))
+	__changeState := C.bool(changeState)
+	__chainOffset := C.int32_t(chainOffset)
+	C.SetEntDataVector3D(__entityHandle, __offset, &__value, __changeState, __chainOffset)
 }
 
 // SetEntDataVector3D 
@@ -787,12 +932,16 @@ func GetEntDataVector3D(entityHandle int32, offset int32) plugify.Vector3 {
 //  @param changeState: If true, change will be sent over the network.
 //  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntDataVector3D(entityHandle int32, offset int32, value plugify.Vector3, changeState bool, chainOffset int32) {
+	P_SetEntDataVector3D(entityHandle, offset, value, changeState, chainOffset)
+}
+
+var P_GetEntDataVector4D = func(entityHandle int32, offset int32) plugify.Vector4 {
+	var __retVal plugify.Vector4
 	__entityHandle := C.int32_t(entityHandle)
 	__offset := C.int32_t(offset)
-	__value := *(*C.Vector3)(unsafe.Pointer(&value))
-	__changeState := C.bool(changeState)
-	__chainOffset := C.int32_t(chainOffset)
-	C.SetEntDataVector3D(__entityHandle, __offset, &__value, __changeState, __chainOffset)
+	__native := C.GetEntDataVector4D(__entityHandle, __offset)
+	__retVal = *(*plugify.Vector4)(unsafe.Pointer(&__native))
+	return __retVal
 }
 
 // GetEntDataVector4D 
@@ -803,12 +952,16 @@ func SetEntDataVector3D(entityHandle int32, offset int32, value plugify.Vector3,
 //
 //  @return The vector value at the given memory location.
 func GetEntDataVector4D(entityHandle int32, offset int32) plugify.Vector4 {
-	var __retVal plugify.Vector4
+	return P_GetEntDataVector4D(entityHandle, offset)
+}
+
+var P_SetEntDataVector4D = func(entityHandle int32, offset int32, value plugify.Vector4, changeState bool, chainOffset int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__offset := C.int32_t(offset)
-	__native := C.GetEntDataVector4D(__entityHandle, __offset)
-	__retVal = *(*plugify.Vector4)(unsafe.Pointer(&__native))
-	return __retVal
+	__value := *(*C.Vector4)(unsafe.Pointer(&value))
+	__changeState := C.bool(changeState)
+	__chainOffset := C.int32_t(chainOffset)
+	C.SetEntDataVector4D(__entityHandle, __offset, &__value, __changeState, __chainOffset)
 }
 
 // SetEntDataVector4D 
@@ -820,12 +973,16 @@ func GetEntDataVector4D(entityHandle int32, offset int32) plugify.Vector4 {
 //  @param changeState: If true, change will be sent over the network.
 //  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntDataVector4D(entityHandle int32, offset int32, value plugify.Vector4, changeState bool, chainOffset int32) {
+	P_SetEntDataVector4D(entityHandle, offset, value, changeState, chainOffset)
+}
+
+var P_GetEntDataVector2D = func(entityHandle int32, offset int32) plugify.Vector2 {
+	var __retVal plugify.Vector2
 	__entityHandle := C.int32_t(entityHandle)
 	__offset := C.int32_t(offset)
-	__value := *(*C.Vector4)(unsafe.Pointer(&value))
-	__changeState := C.bool(changeState)
-	__chainOffset := C.int32_t(chainOffset)
-	C.SetEntDataVector4D(__entityHandle, __offset, &__value, __changeState, __chainOffset)
+	__native := C.GetEntDataVector2D(__entityHandle, __offset)
+	__retVal = *(*plugify.Vector2)(unsafe.Pointer(&__native))
+	return __retVal
 }
 
 // GetEntDataVector2D 
@@ -836,12 +993,16 @@ func SetEntDataVector4D(entityHandle int32, offset int32, value plugify.Vector4,
 //
 //  @return The vector value at the given memory location.
 func GetEntDataVector2D(entityHandle int32, offset int32) plugify.Vector2 {
-	var __retVal plugify.Vector2
+	return P_GetEntDataVector2D(entityHandle, offset)
+}
+
+var P_SetEntDataVector2D = func(entityHandle int32, offset int32, value plugify.Vector2, changeState bool, chainOffset int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__offset := C.int32_t(offset)
-	__native := C.GetEntDataVector2D(__entityHandle, __offset)
-	__retVal = *(*plugify.Vector2)(unsafe.Pointer(&__native))
-	return __retVal
+	__value := *(*C.Vector2)(unsafe.Pointer(&value))
+	__changeState := C.bool(changeState)
+	__chainOffset := C.int32_t(chainOffset)
+	C.SetEntDataVector2D(__entityHandle, __offset, &__value, __changeState, __chainOffset)
 }
 
 // SetEntDataVector2D 
@@ -853,12 +1014,15 @@ func GetEntDataVector2D(entityHandle int32, offset int32) plugify.Vector2 {
 //  @param changeState: If true, change will be sent over the network.
 //  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntDataVector2D(entityHandle int32, offset int32, value plugify.Vector2, changeState bool, chainOffset int32) {
+	P_SetEntDataVector2D(entityHandle, offset, value, changeState, chainOffset)
+}
+
+var P_GetEntDataEnt = func(entityHandle int32, offset int32) int32 {
+	var __retVal int32
 	__entityHandle := C.int32_t(entityHandle)
 	__offset := C.int32_t(offset)
-	__value := *(*C.Vector2)(unsafe.Pointer(&value))
-	__changeState := C.bool(changeState)
-	__chainOffset := C.int32_t(chainOffset)
-	C.SetEntDataVector2D(__entityHandle, __offset, &__value, __changeState, __chainOffset)
+	__retVal = int32(C.GetEntDataEnt(__entityHandle, __offset))
+	return __retVal
 }
 
 // GetEntDataEnt 
@@ -869,11 +1033,16 @@ func SetEntDataVector2D(entityHandle int32, offset int32, value plugify.Vector2,
 //
 //  @return The entity handle at the given memory location.
 func GetEntDataEnt(entityHandle int32, offset int32) int32 {
-	var __retVal int32
+	return P_GetEntDataEnt(entityHandle, offset)
+}
+
+var P_SetEntDataEnt = func(entityHandle int32, offset int32, value int32, changeState bool, chainOffset int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__offset := C.int32_t(offset)
-	__retVal = int32(C.GetEntDataEnt(__entityHandle, __offset))
-	return __retVal
+	__value := C.int32_t(value)
+	__changeState := C.bool(changeState)
+	__chainOffset := C.int32_t(chainOffset)
+	C.SetEntDataEnt(__entityHandle, __offset, __value, __changeState, __chainOffset)
 }
 
 // SetEntDataEnt 
@@ -885,12 +1054,14 @@ func GetEntDataEnt(entityHandle int32, offset int32) int32 {
 //  @param changeState: If true, change will be sent over the network.
 //  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntDataEnt(entityHandle int32, offset int32, value int32, changeState bool, chainOffset int32) {
+	P_SetEntDataEnt(entityHandle, offset, value, changeState, chainOffset)
+}
+
+var P_ChangeEntityState = func(entityHandle int32, offset int32, chainOffset int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__offset := C.int32_t(offset)
-	__value := C.int32_t(value)
-	__changeState := C.bool(changeState)
 	__chainOffset := C.int32_t(chainOffset)
-	C.SetEntDataEnt(__entityHandle, __offset, __value, __changeState, __chainOffset)
+	C.ChangeEntityState(__entityHandle, __offset, __chainOffset)
 }
 
 // ChangeEntityState 
@@ -900,10 +1071,25 @@ func SetEntDataEnt(entityHandle int32, offset int32, value int32, changeState bo
 //  @param offset: The offset of the schema to use.
 //  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func ChangeEntityState(entityHandle int32, offset int32, chainOffset int32) {
-	__entityHandle := C.int32_t(entityHandle)
-	__offset := C.int32_t(offset)
-	__chainOffset := C.int32_t(chainOffset)
-	C.ChangeEntityState(__entityHandle, __offset, __chainOffset)
+	P_ChangeEntityState(entityHandle, offset, chainOffset)
+}
+
+var P_GetEntSchemaArraySize2 = func(entity uintptr, className string, memberName string) int32 {
+	var __retVal int32
+	__entity := C.uintptr_t(entity)
+	__className := plugify.ConstructString(className)
+	__memberName := plugify.ConstructString(memberName)
+	plugify.Block {
+		Try: func() {
+			__retVal = int32(C.GetEntSchemaArraySize2(__entity, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName))))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__className)
+			plugify.DestroyString(&__memberName)
+		},
+	}.Do()
+	return __retVal
 }
 
 // GetEntSchemaArraySize2 
@@ -915,13 +1101,18 @@ func ChangeEntityState(entityHandle int32, offset int32, chainOffset int32) {
 //
 //  @return Size of array (in elements) or 0 if schema is not an array.
 func GetEntSchemaArraySize2(entity uintptr, className string, memberName string) int32 {
-	var __retVal int32
+	return P_GetEntSchemaArraySize2(entity, className, memberName)
+}
+
+var P_GetEntSchema2 = func(entity uintptr, className string, memberName string, element int32) int64 {
+	var __retVal int64
 	__entity := C.uintptr_t(entity)
 	__className := plugify.ConstructString(className)
 	__memberName := plugify.ConstructString(memberName)
+	__element := C.int32_t(element)
 	plugify.Block {
 		Try: func() {
-			__retVal = int32(C.GetEntSchemaArraySize2(__entity, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName))))
+			__retVal = int64(C.GetEntSchema2(__entity, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)), __element))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -942,34 +1133,10 @@ func GetEntSchemaArraySize2(entity uintptr, className string, memberName string)
 //
 //  @return An integer value at the given schema offset.
 func GetEntSchema2(entity uintptr, className string, memberName string, element int32) int64 {
-	var __retVal int64
-	__entity := C.uintptr_t(entity)
-	__className := plugify.ConstructString(className)
-	__memberName := plugify.ConstructString(memberName)
-	__element := C.int32_t(element)
-	plugify.Block {
-		Try: func() {
-			__retVal = int64(C.GetEntSchema2(__entity, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)), __element))
-		},
-		Finally: func() {
-			// Perform cleanup.
-			plugify.DestroyString(&__className)
-			plugify.DestroyString(&__memberName)
-		},
-	}.Do()
-	return __retVal
+	return P_GetEntSchema2(entity, className, memberName, element)
 }
 
-// SetEntSchema2 
-//  @brief Sets an integer value in an entity's schema.
-//
-//  @param entity: Pointer to the instance of the class where the value is to be set.
-//  @param className: The name of the class.
-//  @param memberName: The name of the schema member.
-//  @param value: The integer value to set.
-//  @param changeState: If true, change will be sent over the network.
-//  @param element: Element # (starting from 0) if schema is an array.
-func SetEntSchema2(entity uintptr, className string, memberName string, value int64, changeState bool, element int32) {
+var P_SetEntSchema2 = func(entity uintptr, className string, memberName string, value int64, changeState bool, element int32) {
 	__entity := C.uintptr_t(entity)
 	__className := plugify.ConstructString(className)
 	__memberName := plugify.ConstructString(memberName)
@@ -988,16 +1155,20 @@ func SetEntSchema2(entity uintptr, className string, memberName string, value in
 	}.Do()
 }
 
-// GetEntSchemaFloat2 
-//  @brief Retrieves a float value from an entity's schema.
+// SetEntSchema2 
+//  @brief Sets an integer value in an entity's schema.
 //
 //  @param entity: Pointer to the instance of the class where the value is to be set.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
+//  @param value: The integer value to set.
+//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-//
-//  @return A float value at the given schema offset.
-func GetEntSchemaFloat2(entity uintptr, className string, memberName string, element int32) float64 {
+func SetEntSchema2(entity uintptr, className string, memberName string, value int64, changeState bool, element int32) {
+	P_SetEntSchema2(entity, className, memberName, value, changeState, element)
+}
+
+var P_GetEntSchemaFloat2 = func(entity uintptr, className string, memberName string, element int32) float64 {
 	var __retVal float64
 	__entity := C.uintptr_t(entity)
 	__className := plugify.ConstructString(className)
@@ -1016,16 +1187,20 @@ func GetEntSchemaFloat2(entity uintptr, className string, memberName string, ele
 	return __retVal
 }
 
-// SetEntSchemaFloat2 
-//  @brief Sets a float value in an entity's schema.
+// GetEntSchemaFloat2 
+//  @brief Retrieves a float value from an entity's schema.
 //
 //  @param entity: Pointer to the instance of the class where the value is to be set.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
-//  @param value: The float value to set.
-//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-func SetEntSchemaFloat2(entity uintptr, className string, memberName string, value float64, changeState bool, element int32) {
+//
+//  @return A float value at the given schema offset.
+func GetEntSchemaFloat2(entity uintptr, className string, memberName string, element int32) float64 {
+	return P_GetEntSchemaFloat2(entity, className, memberName, element)
+}
+
+var P_SetEntSchemaFloat2 = func(entity uintptr, className string, memberName string, value float64, changeState bool, element int32) {
 	__entity := C.uintptr_t(entity)
 	__className := plugify.ConstructString(className)
 	__memberName := plugify.ConstructString(memberName)
@@ -1044,16 +1219,20 @@ func SetEntSchemaFloat2(entity uintptr, className string, memberName string, val
 	}.Do()
 }
 
-// GetEntSchemaColor2 
-//  @brief Retrieves a color value from an entity's schema.
+// SetEntSchemaFloat2 
+//  @brief Sets a float value in an entity's schema.
 //
 //  @param entity: Pointer to the instance of the class where the value is to be set.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
+//  @param value: The float value to set.
+//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-//
-//  @return A color value at the given schema offset.
-func GetEntSchemaColor2(entity uintptr, className string, memberName string, element int32) plugify.Vector4 {
+func SetEntSchemaFloat2(entity uintptr, className string, memberName string, value float64, changeState bool, element int32) {
+	P_SetEntSchemaFloat2(entity, className, memberName, value, changeState, element)
+}
+
+var P_GetEntSchemaColor2 = func(entity uintptr, className string, memberName string, element int32) plugify.Vector4 {
 	var __retVal plugify.Vector4
 	__entity := C.uintptr_t(entity)
 	__className := plugify.ConstructString(className)
@@ -1073,16 +1252,20 @@ func GetEntSchemaColor2(entity uintptr, className string, memberName string, ele
 	return __retVal
 }
 
-// SetEntSchemaColor2 
-//  @brief Sets a color value in an entity's schema.
+// GetEntSchemaColor2 
+//  @brief Retrieves a color value from an entity's schema.
 //
 //  @param entity: Pointer to the instance of the class where the value is to be set.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
-//  @param value: The color value to set.
-//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-func SetEntSchemaColor2(entity uintptr, className string, memberName string, value plugify.Vector4, changeState bool, element int32) {
+//
+//  @return A color value at the given schema offset.
+func GetEntSchemaColor2(entity uintptr, className string, memberName string, element int32) plugify.Vector4 {
+	return P_GetEntSchemaColor2(entity, className, memberName, element)
+}
+
+var P_SetEntSchemaColor2 = func(entity uintptr, className string, memberName string, value plugify.Vector4, changeState bool, element int32) {
 	__entity := C.uintptr_t(entity)
 	__className := plugify.ConstructString(className)
 	__memberName := plugify.ConstructString(memberName)
@@ -1101,16 +1284,20 @@ func SetEntSchemaColor2(entity uintptr, className string, memberName string, val
 	}.Do()
 }
 
-// GetEntSchemaString2 
-//  @brief Retrieves a string value from an entity's schema.
+// SetEntSchemaColor2 
+//  @brief Sets a color value in an entity's schema.
 //
 //  @param entity: Pointer to the instance of the class where the value is to be set.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
+//  @param value: The color value to set.
+//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-//
-//  @return A string value at the given schema offset.
-func GetEntSchemaString2(entity uintptr, className string, memberName string, element int32) string {
+func SetEntSchemaColor2(entity uintptr, className string, memberName string, value plugify.Vector4, changeState bool, element int32) {
+	P_SetEntSchemaColor2(entity, className, memberName, value, changeState, element)
+}
+
+var P_GetEntSchemaString2 = func(entity uintptr, className string, memberName string, element int32) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__entity := C.uintptr_t(entity)
@@ -1134,16 +1321,20 @@ func GetEntSchemaString2(entity uintptr, className string, memberName string, el
 	return __retVal
 }
 
-// SetEntSchemaString2 
-//  @brief Sets a string value in an entity's schema.
+// GetEntSchemaString2 
+//  @brief Retrieves a string value from an entity's schema.
 //
 //  @param entity: Pointer to the instance of the class where the value is to be set.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
-//  @param value: The string value to set.
-//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-func SetEntSchemaString2(entity uintptr, className string, memberName string, value string, changeState bool, element int32) {
+//
+//  @return A string value at the given schema offset.
+func GetEntSchemaString2(entity uintptr, className string, memberName string, element int32) string {
+	return P_GetEntSchemaString2(entity, className, memberName, element)
+}
+
+var P_SetEntSchemaString2 = func(entity uintptr, className string, memberName string, value string, changeState bool, element int32) {
 	__entity := C.uintptr_t(entity)
 	__className := plugify.ConstructString(className)
 	__memberName := plugify.ConstructString(memberName)
@@ -1163,16 +1354,20 @@ func SetEntSchemaString2(entity uintptr, className string, memberName string, va
 	}.Do()
 }
 
-// GetEntSchemaVector3D2 
-//  @brief Retrieves a vector value from an entity's schema.
+// SetEntSchemaString2 
+//  @brief Sets a string value in an entity's schema.
 //
 //  @param entity: Pointer to the instance of the class where the value is to be set.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
+//  @param value: The string value to set.
+//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-//
-//  @return A vector value at the given schema offset.
-func GetEntSchemaVector3D2(entity uintptr, className string, memberName string, element int32) plugify.Vector3 {
+func SetEntSchemaString2(entity uintptr, className string, memberName string, value string, changeState bool, element int32) {
+	P_SetEntSchemaString2(entity, className, memberName, value, changeState, element)
+}
+
+var P_GetEntSchemaVector3D2 = func(entity uintptr, className string, memberName string, element int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__entity := C.uintptr_t(entity)
 	__className := plugify.ConstructString(className)
@@ -1192,16 +1387,20 @@ func GetEntSchemaVector3D2(entity uintptr, className string, memberName string, 
 	return __retVal
 }
 
-// SetEntSchemaVector3D2 
-//  @brief Sets a vector value in an entity's schema.
+// GetEntSchemaVector3D2 
+//  @brief Retrieves a vector value from an entity's schema.
 //
 //  @param entity: Pointer to the instance of the class where the value is to be set.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
-//  @param value: The vector value to set.
-//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-func SetEntSchemaVector3D2(entity uintptr, className string, memberName string, value plugify.Vector3, changeState bool, element int32) {
+//
+//  @return A vector value at the given schema offset.
+func GetEntSchemaVector3D2(entity uintptr, className string, memberName string, element int32) plugify.Vector3 {
+	return P_GetEntSchemaVector3D2(entity, className, memberName, element)
+}
+
+var P_SetEntSchemaVector3D2 = func(entity uintptr, className string, memberName string, value plugify.Vector3, changeState bool, element int32) {
 	__entity := C.uintptr_t(entity)
 	__className := plugify.ConstructString(className)
 	__memberName := plugify.ConstructString(memberName)
@@ -1220,16 +1419,20 @@ func SetEntSchemaVector3D2(entity uintptr, className string, memberName string, 
 	}.Do()
 }
 
-// GetEntSchemaVector2D2 
-//  @brief Retrieves a vector value from an entity's schema.
+// SetEntSchemaVector3D2 
+//  @brief Sets a vector value in an entity's schema.
 //
 //  @param entity: Pointer to the instance of the class where the value is to be set.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
+//  @param value: The vector value to set.
+//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-//
-//  @return A vector value at the given schema offset.
-func GetEntSchemaVector2D2(entity uintptr, className string, memberName string, element int32) plugify.Vector2 {
+func SetEntSchemaVector3D2(entity uintptr, className string, memberName string, value plugify.Vector3, changeState bool, element int32) {
+	P_SetEntSchemaVector3D2(entity, className, memberName, value, changeState, element)
+}
+
+var P_GetEntSchemaVector2D2 = func(entity uintptr, className string, memberName string, element int32) plugify.Vector2 {
 	var __retVal plugify.Vector2
 	__entity := C.uintptr_t(entity)
 	__className := plugify.ConstructString(className)
@@ -1249,16 +1452,20 @@ func GetEntSchemaVector2D2(entity uintptr, className string, memberName string, 
 	return __retVal
 }
 
-// SetEntSchemaVector2D2 
-//  @brief Sets a vector value in an entity's schema.
+// GetEntSchemaVector2D2 
+//  @brief Retrieves a vector value from an entity's schema.
 //
 //  @param entity: Pointer to the instance of the class where the value is to be set.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
-//  @param value: The vector value to set.
-//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-func SetEntSchemaVector2D2(entity uintptr, className string, memberName string, value plugify.Vector2, changeState bool, element int32) {
+//
+//  @return A vector value at the given schema offset.
+func GetEntSchemaVector2D2(entity uintptr, className string, memberName string, element int32) plugify.Vector2 {
+	return P_GetEntSchemaVector2D2(entity, className, memberName, element)
+}
+
+var P_SetEntSchemaVector2D2 = func(entity uintptr, className string, memberName string, value plugify.Vector2, changeState bool, element int32) {
 	__entity := C.uintptr_t(entity)
 	__className := plugify.ConstructString(className)
 	__memberName := plugify.ConstructString(memberName)
@@ -1277,16 +1484,20 @@ func SetEntSchemaVector2D2(entity uintptr, className string, memberName string, 
 	}.Do()
 }
 
-// GetEntSchemaVector4D2 
-//  @brief Retrieves a vector value from an entity's schema.
+// SetEntSchemaVector2D2 
+//  @brief Sets a vector value in an entity's schema.
 //
 //  @param entity: Pointer to the instance of the class where the value is to be set.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
+//  @param value: The vector value to set.
+//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-//
-//  @return A vector value at the given schema offset.
-func GetEntSchemaVector4D2(entity uintptr, className string, memberName string, element int32) plugify.Vector4 {
+func SetEntSchemaVector2D2(entity uintptr, className string, memberName string, value plugify.Vector2, changeState bool, element int32) {
+	P_SetEntSchemaVector2D2(entity, className, memberName, value, changeState, element)
+}
+
+var P_GetEntSchemaVector4D2 = func(entity uintptr, className string, memberName string, element int32) plugify.Vector4 {
 	var __retVal plugify.Vector4
 	__entity := C.uintptr_t(entity)
 	__className := plugify.ConstructString(className)
@@ -1306,16 +1517,20 @@ func GetEntSchemaVector4D2(entity uintptr, className string, memberName string, 
 	return __retVal
 }
 
-// SetEntSchemaVector4D2 
-//  @brief Sets a vector value in an entity's schema.
+// GetEntSchemaVector4D2 
+//  @brief Retrieves a vector value from an entity's schema.
 //
 //  @param entity: Pointer to the instance of the class where the value is to be set.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
-//  @param value: The vector value to set.
-//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-func SetEntSchemaVector4D2(entity uintptr, className string, memberName string, value plugify.Vector4, changeState bool, element int32) {
+//
+//  @return A vector value at the given schema offset.
+func GetEntSchemaVector4D2(entity uintptr, className string, memberName string, element int32) plugify.Vector4 {
+	return P_GetEntSchemaVector4D2(entity, className, memberName, element)
+}
+
+var P_SetEntSchemaVector4D2 = func(entity uintptr, className string, memberName string, value plugify.Vector4, changeState bool, element int32) {
 	__entity := C.uintptr_t(entity)
 	__className := plugify.ConstructString(className)
 	__memberName := plugify.ConstructString(memberName)
@@ -1334,16 +1549,20 @@ func SetEntSchemaVector4D2(entity uintptr, className string, memberName string, 
 	}.Do()
 }
 
-// GetEntSchemaEnt2 
-//  @brief Retrieves an entity handle from an entity's schema.
+// SetEntSchemaVector4D2 
+//  @brief Sets a vector value in an entity's schema.
 //
 //  @param entity: Pointer to the instance of the class where the value is to be set.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
+//  @param value: The vector value to set.
+//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-//
-//  @return A string value at the given schema offset.
-func GetEntSchemaEnt2(entity uintptr, className string, memberName string, element int32) int32 {
+func SetEntSchemaVector4D2(entity uintptr, className string, memberName string, value plugify.Vector4, changeState bool, element int32) {
+	P_SetEntSchemaVector4D2(entity, className, memberName, value, changeState, element)
+}
+
+var P_GetEntSchemaEnt2 = func(entity uintptr, className string, memberName string, element int32) int32 {
 	var __retVal int32
 	__entity := C.uintptr_t(entity)
 	__className := plugify.ConstructString(className)
@@ -1362,16 +1581,20 @@ func GetEntSchemaEnt2(entity uintptr, className string, memberName string, eleme
 	return __retVal
 }
 
-// SetEntSchemaEnt2 
-//  @brief Sets an entity handle in an entity's schema.
+// GetEntSchemaEnt2 
+//  @brief Retrieves an entity handle from an entity's schema.
 //
 //  @param entity: Pointer to the instance of the class where the value is to be set.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
-//  @param value: The entity handle to set.
-//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-func SetEntSchemaEnt2(entity uintptr, className string, memberName string, value int32, changeState bool, element int32) {
+//
+//  @return A string value at the given schema offset.
+func GetEntSchemaEnt2(entity uintptr, className string, memberName string, element int32) int32 {
+	return P_GetEntSchemaEnt2(entity, className, memberName, element)
+}
+
+var P_SetEntSchemaEnt2 = func(entity uintptr, className string, memberName string, value int32, changeState bool, element int32) {
 	__entity := C.uintptr_t(entity)
 	__className := plugify.ConstructString(className)
 	__memberName := plugify.ConstructString(memberName)
@@ -1390,6 +1613,37 @@ func SetEntSchemaEnt2(entity uintptr, className string, memberName string, value
 	}.Do()
 }
 
+// SetEntSchemaEnt2 
+//  @brief Sets an entity handle in an entity's schema.
+//
+//  @param entity: Pointer to the instance of the class where the value is to be set.
+//  @param className: The name of the class.
+//  @param memberName: The name of the schema member.
+//  @param value: The entity handle to set.
+//  @param changeState: If true, change will be sent over the network.
+//  @param element: Element # (starting from 0) if schema is an array.
+func SetEntSchemaEnt2(entity uintptr, className string, memberName string, value int32, changeState bool, element int32) {
+	P_SetEntSchemaEnt2(entity, className, memberName, value, changeState, element)
+}
+
+var P_PushEntSchemaEnt2 = func(entity uintptr, className string, memberName string, value int32, changeState bool) {
+	__entity := C.uintptr_t(entity)
+	__className := plugify.ConstructString(className)
+	__memberName := plugify.ConstructString(memberName)
+	__value := C.int32_t(value)
+	__changeState := C.bool(changeState)
+	plugify.Block {
+		Try: func() {
+			C.PushEntSchemaEnt2(__entity, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)), __value, __changeState)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__className)
+			plugify.DestroyString(&__memberName)
+		},
+	}.Do()
+}
+
 // PushEntSchemaEnt2 
 //  @brief Pushes an entity handle into an entity's schema collection.
 //
@@ -1399,14 +1653,18 @@ func SetEntSchemaEnt2(entity uintptr, className string, memberName string, value
 //  @param value: The entity handle to push.
 //  @param changeState: If true, change will be sent over the network.
 func PushEntSchemaEnt2(entity uintptr, className string, memberName string, value int32, changeState bool) {
+	P_PushEntSchemaEnt2(entity, className, memberName, value, changeState)
+}
+
+var P_EraseEntSchemaEnt2 = func(entity uintptr, className string, memberName string, element int32, changeState bool) {
 	__entity := C.uintptr_t(entity)
 	__className := plugify.ConstructString(className)
 	__memberName := plugify.ConstructString(memberName)
-	__value := C.int32_t(value)
+	__element := C.int32_t(element)
 	__changeState := C.bool(changeState)
 	plugify.Block {
 		Try: func() {
-			C.PushEntSchemaEnt2(__entity, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)), __value, __changeState)
+			C.EraseEntSchemaEnt2(__entity, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)), __element, __changeState)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -1425,14 +1683,16 @@ func PushEntSchemaEnt2(entity uintptr, className string, memberName string, valu
 //  @param element: Element index to erase (starting from 0).
 //  @param changeState: If true, change will be sent over the network.
 func EraseEntSchemaEnt2(entity uintptr, className string, memberName string, element int32, changeState bool) {
+	P_EraseEntSchemaEnt2(entity, className, memberName, element, changeState)
+}
+
+var P_NetworkStateChanged2 = func(entity uintptr, className string, memberName string) {
 	__entity := C.uintptr_t(entity)
 	__className := plugify.ConstructString(className)
 	__memberName := plugify.ConstructString(memberName)
-	__element := C.int32_t(element)
-	__changeState := C.bool(changeState)
 	plugify.Block {
 		Try: func() {
-			C.EraseEntSchemaEnt2(__entity, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)), __element, __changeState)
+			C.NetworkStateChanged2(__entity, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -1449,12 +1709,17 @@ func EraseEntSchemaEnt2(entity uintptr, className string, memberName string, ele
 //  @param className: The name of the class that contains the member.
 //  @param memberName: The name of the member to be set.
 func NetworkStateChanged2(entity uintptr, className string, memberName string) {
-	__entity := C.uintptr_t(entity)
+	P_NetworkStateChanged2(entity, className, memberName)
+}
+
+var P_GetEntSchemaArraySize = func(entityHandle int32, className string, memberName string) int32 {
+	var __retVal int32
+	__entityHandle := C.int32_t(entityHandle)
 	__className := plugify.ConstructString(className)
 	__memberName := plugify.ConstructString(memberName)
 	plugify.Block {
 		Try: func() {
-			C.NetworkStateChanged2(__entity, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)))
+			__retVal = int32(C.GetEntSchemaArraySize(__entityHandle, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName))))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -1462,6 +1727,7 @@ func NetworkStateChanged2(entity uintptr, className string, memberName string) {
 			plugify.DestroyString(&__memberName)
 		},
 	}.Do()
+	return __retVal
 }
 
 // GetEntSchemaArraySize 
@@ -1473,13 +1739,18 @@ func NetworkStateChanged2(entity uintptr, className string, memberName string) {
 //
 //  @return Size of array (in elements) or 0 if schema is not an array.
 func GetEntSchemaArraySize(entityHandle int32, className string, memberName string) int32 {
-	var __retVal int32
+	return P_GetEntSchemaArraySize(entityHandle, className, memberName)
+}
+
+var P_GetEntSchema = func(entityHandle int32, className string, memberName string, element int32) int64 {
+	var __retVal int64
 	__entityHandle := C.int32_t(entityHandle)
 	__className := plugify.ConstructString(className)
 	__memberName := plugify.ConstructString(memberName)
+	__element := C.int32_t(element)
 	plugify.Block {
 		Try: func() {
-			__retVal = int32(C.GetEntSchemaArraySize(__entityHandle, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName))))
+			__retVal = int64(C.GetEntSchema(__entityHandle, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)), __element))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -1500,34 +1771,10 @@ func GetEntSchemaArraySize(entityHandle int32, className string, memberName stri
 //
 //  @return An integer value at the given schema offset.
 func GetEntSchema(entityHandle int32, className string, memberName string, element int32) int64 {
-	var __retVal int64
-	__entityHandle := C.int32_t(entityHandle)
-	__className := plugify.ConstructString(className)
-	__memberName := plugify.ConstructString(memberName)
-	__element := C.int32_t(element)
-	plugify.Block {
-		Try: func() {
-			__retVal = int64(C.GetEntSchema(__entityHandle, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)), __element))
-		},
-		Finally: func() {
-			// Perform cleanup.
-			plugify.DestroyString(&__className)
-			plugify.DestroyString(&__memberName)
-		},
-	}.Do()
-	return __retVal
+	return P_GetEntSchema(entityHandle, className, memberName, element)
 }
 
-// SetEntSchema 
-//  @brief Sets an integer value in an entity's schema.
-//
-//  @param entityHandle: The handle of the entity from which the value is to be retrieved.
-//  @param className: The name of the class.
-//  @param memberName: The name of the schema member.
-//  @param value: The integer value to set.
-//  @param changeState: If true, change will be sent over the network.
-//  @param element: Element # (starting from 0) if schema is an array.
-func SetEntSchema(entityHandle int32, className string, memberName string, value int64, changeState bool, element int32) {
+var P_SetEntSchema = func(entityHandle int32, className string, memberName string, value int64, changeState bool, element int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__className := plugify.ConstructString(className)
 	__memberName := plugify.ConstructString(memberName)
@@ -1546,16 +1793,20 @@ func SetEntSchema(entityHandle int32, className string, memberName string, value
 	}.Do()
 }
 
-// GetEntSchemaFloat 
-//  @brief Retrieves a float value from an entity's schema.
+// SetEntSchema 
+//  @brief Sets an integer value in an entity's schema.
 //
 //  @param entityHandle: The handle of the entity from which the value is to be retrieved.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
+//  @param value: The integer value to set.
+//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-//
-//  @return A float value at the given schema offset.
-func GetEntSchemaFloat(entityHandle int32, className string, memberName string, element int32) float64 {
+func SetEntSchema(entityHandle int32, className string, memberName string, value int64, changeState bool, element int32) {
+	P_SetEntSchema(entityHandle, className, memberName, value, changeState, element)
+}
+
+var P_GetEntSchemaFloat = func(entityHandle int32, className string, memberName string, element int32) float64 {
 	var __retVal float64
 	__entityHandle := C.int32_t(entityHandle)
 	__className := plugify.ConstructString(className)
@@ -1574,16 +1825,20 @@ func GetEntSchemaFloat(entityHandle int32, className string, memberName string, 
 	return __retVal
 }
 
-// SetEntSchemaFloat 
-//  @brief Sets a float value in an entity's schema.
+// GetEntSchemaFloat 
+//  @brief Retrieves a float value from an entity's schema.
 //
 //  @param entityHandle: The handle of the entity from which the value is to be retrieved.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
-//  @param value: The float value to set.
-//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-func SetEntSchemaFloat(entityHandle int32, className string, memberName string, value float64, changeState bool, element int32) {
+//
+//  @return A float value at the given schema offset.
+func GetEntSchemaFloat(entityHandle int32, className string, memberName string, element int32) float64 {
+	return P_GetEntSchemaFloat(entityHandle, className, memberName, element)
+}
+
+var P_SetEntSchemaFloat = func(entityHandle int32, className string, memberName string, value float64, changeState bool, element int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__className := plugify.ConstructString(className)
 	__memberName := plugify.ConstructString(memberName)
@@ -1602,16 +1857,20 @@ func SetEntSchemaFloat(entityHandle int32, className string, memberName string, 
 	}.Do()
 }
 
-// GetEntSchemaColor 
-//  @brief Retrieves a color value from an entity's schema.
+// SetEntSchemaFloat 
+//  @brief Sets a float value in an entity's schema.
 //
 //  @param entityHandle: The handle of the entity from which the value is to be retrieved.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
+//  @param value: The float value to set.
+//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-//
-//  @return A color value at the given schema offset.
-func GetEntSchemaColor(entityHandle int32, className string, memberName string, element int32) plugify.Vector4 {
+func SetEntSchemaFloat(entityHandle int32, className string, memberName string, value float64, changeState bool, element int32) {
+	P_SetEntSchemaFloat(entityHandle, className, memberName, value, changeState, element)
+}
+
+var P_GetEntSchemaColor = func(entityHandle int32, className string, memberName string, element int32) plugify.Vector4 {
 	var __retVal plugify.Vector4
 	__entityHandle := C.int32_t(entityHandle)
 	__className := plugify.ConstructString(className)
@@ -1631,16 +1890,20 @@ func GetEntSchemaColor(entityHandle int32, className string, memberName string, 
 	return __retVal
 }
 
-// SetEntSchemaColor 
-//  @brief Sets a color value in an entity's schema.
+// GetEntSchemaColor 
+//  @brief Retrieves a color value from an entity's schema.
 //
 //  @param entityHandle: The handle of the entity from which the value is to be retrieved.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
-//  @param value: The color value to set.
-//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-func SetEntSchemaColor(entityHandle int32, className string, memberName string, value plugify.Vector4, changeState bool, element int32) {
+//
+//  @return A color value at the given schema offset.
+func GetEntSchemaColor(entityHandle int32, className string, memberName string, element int32) plugify.Vector4 {
+	return P_GetEntSchemaColor(entityHandle, className, memberName, element)
+}
+
+var P_SetEntSchemaColor = func(entityHandle int32, className string, memberName string, value plugify.Vector4, changeState bool, element int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__className := plugify.ConstructString(className)
 	__memberName := plugify.ConstructString(memberName)
@@ -1659,16 +1922,20 @@ func SetEntSchemaColor(entityHandle int32, className string, memberName string, 
 	}.Do()
 }
 
-// GetEntSchemaString 
-//  @brief Retrieves a string value from an entity's schema.
+// SetEntSchemaColor 
+//  @brief Sets a color value in an entity's schema.
 //
 //  @param entityHandle: The handle of the entity from which the value is to be retrieved.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
+//  @param value: The color value to set.
+//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-//
-//  @return A string value at the given schema offset.
-func GetEntSchemaString(entityHandle int32, className string, memberName string, element int32) string {
+func SetEntSchemaColor(entityHandle int32, className string, memberName string, value plugify.Vector4, changeState bool, element int32) {
+	P_SetEntSchemaColor(entityHandle, className, memberName, value, changeState, element)
+}
+
+var P_GetEntSchemaString = func(entityHandle int32, className string, memberName string, element int32) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__entityHandle := C.int32_t(entityHandle)
@@ -1692,16 +1959,20 @@ func GetEntSchemaString(entityHandle int32, className string, memberName string,
 	return __retVal
 }
 
-// SetEntSchemaString 
-//  @brief Sets a string value in an entity's schema.
+// GetEntSchemaString 
+//  @brief Retrieves a string value from an entity's schema.
 //
 //  @param entityHandle: The handle of the entity from which the value is to be retrieved.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
-//  @param value: The string value to set.
-//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-func SetEntSchemaString(entityHandle int32, className string, memberName string, value string, changeState bool, element int32) {
+//
+//  @return A string value at the given schema offset.
+func GetEntSchemaString(entityHandle int32, className string, memberName string, element int32) string {
+	return P_GetEntSchemaString(entityHandle, className, memberName, element)
+}
+
+var P_SetEntSchemaString = func(entityHandle int32, className string, memberName string, value string, changeState bool, element int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__className := plugify.ConstructString(className)
 	__memberName := plugify.ConstructString(memberName)
@@ -1721,16 +1992,20 @@ func SetEntSchemaString(entityHandle int32, className string, memberName string,
 	}.Do()
 }
 
-// GetEntSchemaVector3D 
-//  @brief Retrieves a vector value from an entity's schema.
+// SetEntSchemaString 
+//  @brief Sets a string value in an entity's schema.
 //
 //  @param entityHandle: The handle of the entity from which the value is to be retrieved.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
+//  @param value: The string value to set.
+//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-//
-//  @return A string value at the given schema offset.
-func GetEntSchemaVector3D(entityHandle int32, className string, memberName string, element int32) plugify.Vector3 {
+func SetEntSchemaString(entityHandle int32, className string, memberName string, value string, changeState bool, element int32) {
+	P_SetEntSchemaString(entityHandle, className, memberName, value, changeState, element)
+}
+
+var P_GetEntSchemaVector3D = func(entityHandle int32, className string, memberName string, element int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__entityHandle := C.int32_t(entityHandle)
 	__className := plugify.ConstructString(className)
@@ -1750,16 +2025,20 @@ func GetEntSchemaVector3D(entityHandle int32, className string, memberName strin
 	return __retVal
 }
 
-// SetEntSchemaVector3D 
-//  @brief Sets a vector value in an entity's schema.
+// GetEntSchemaVector3D 
+//  @brief Retrieves a vector value from an entity's schema.
 //
 //  @param entityHandle: The handle of the entity from which the value is to be retrieved.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
-//  @param value: The vector value to set.
-//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-func SetEntSchemaVector3D(entityHandle int32, className string, memberName string, value plugify.Vector3, changeState bool, element int32) {
+//
+//  @return A string value at the given schema offset.
+func GetEntSchemaVector3D(entityHandle int32, className string, memberName string, element int32) plugify.Vector3 {
+	return P_GetEntSchemaVector3D(entityHandle, className, memberName, element)
+}
+
+var P_SetEntSchemaVector3D = func(entityHandle int32, className string, memberName string, value plugify.Vector3, changeState bool, element int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__className := plugify.ConstructString(className)
 	__memberName := plugify.ConstructString(memberName)
@@ -1778,16 +2057,20 @@ func SetEntSchemaVector3D(entityHandle int32, className string, memberName strin
 	}.Do()
 }
 
-// GetEntSchemaVector2D 
-//  @brief Retrieves a vector value from an entity's schema.
+// SetEntSchemaVector3D 
+//  @brief Sets a vector value in an entity's schema.
 //
 //  @param entityHandle: The handle of the entity from which the value is to be retrieved.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
+//  @param value: The vector value to set.
+//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-//
-//  @return A string value at the given schema offset.
-func GetEntSchemaVector2D(entityHandle int32, className string, memberName string, element int32) plugify.Vector2 {
+func SetEntSchemaVector3D(entityHandle int32, className string, memberName string, value plugify.Vector3, changeState bool, element int32) {
+	P_SetEntSchemaVector3D(entityHandle, className, memberName, value, changeState, element)
+}
+
+var P_GetEntSchemaVector2D = func(entityHandle int32, className string, memberName string, element int32) plugify.Vector2 {
 	var __retVal plugify.Vector2
 	__entityHandle := C.int32_t(entityHandle)
 	__className := plugify.ConstructString(className)
@@ -1807,16 +2090,20 @@ func GetEntSchemaVector2D(entityHandle int32, className string, memberName strin
 	return __retVal
 }
 
-// SetEntSchemaVector2D 
-//  @brief Sets a vector value in an entity's schema.
+// GetEntSchemaVector2D 
+//  @brief Retrieves a vector value from an entity's schema.
 //
 //  @param entityHandle: The handle of the entity from which the value is to be retrieved.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
-//  @param value: The vector value to set.
-//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-func SetEntSchemaVector2D(entityHandle int32, className string, memberName string, value plugify.Vector2, changeState bool, element int32) {
+//
+//  @return A string value at the given schema offset.
+func GetEntSchemaVector2D(entityHandle int32, className string, memberName string, element int32) plugify.Vector2 {
+	return P_GetEntSchemaVector2D(entityHandle, className, memberName, element)
+}
+
+var P_SetEntSchemaVector2D = func(entityHandle int32, className string, memberName string, value plugify.Vector2, changeState bool, element int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__className := plugify.ConstructString(className)
 	__memberName := plugify.ConstructString(memberName)
@@ -1835,16 +2122,20 @@ func SetEntSchemaVector2D(entityHandle int32, className string, memberName strin
 	}.Do()
 }
 
-// GetEntSchemaVector4D 
-//  @brief Retrieves a vector value from an entity's schema.
+// SetEntSchemaVector2D 
+//  @brief Sets a vector value in an entity's schema.
 //
 //  @param entityHandle: The handle of the entity from which the value is to be retrieved.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
+//  @param value: The vector value to set.
+//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-//
-//  @return A string value at the given schema offset.
-func GetEntSchemaVector4D(entityHandle int32, className string, memberName string, element int32) plugify.Vector4 {
+func SetEntSchemaVector2D(entityHandle int32, className string, memberName string, value plugify.Vector2, changeState bool, element int32) {
+	P_SetEntSchemaVector2D(entityHandle, className, memberName, value, changeState, element)
+}
+
+var P_GetEntSchemaVector4D = func(entityHandle int32, className string, memberName string, element int32) plugify.Vector4 {
 	var __retVal plugify.Vector4
 	__entityHandle := C.int32_t(entityHandle)
 	__className := plugify.ConstructString(className)
@@ -1864,16 +2155,20 @@ func GetEntSchemaVector4D(entityHandle int32, className string, memberName strin
 	return __retVal
 }
 
-// SetEntSchemaVector4D 
-//  @brief Sets a vector value in an entity's schema.
+// GetEntSchemaVector4D 
+//  @brief Retrieves a vector value from an entity's schema.
 //
 //  @param entityHandle: The handle of the entity from which the value is to be retrieved.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
-//  @param value: The vector value to set.
-//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-func SetEntSchemaVector4D(entityHandle int32, className string, memberName string, value plugify.Vector4, changeState bool, element int32) {
+//
+//  @return A string value at the given schema offset.
+func GetEntSchemaVector4D(entityHandle int32, className string, memberName string, element int32) plugify.Vector4 {
+	return P_GetEntSchemaVector4D(entityHandle, className, memberName, element)
+}
+
+var P_SetEntSchemaVector4D = func(entityHandle int32, className string, memberName string, value plugify.Vector4, changeState bool, element int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__className := plugify.ConstructString(className)
 	__memberName := plugify.ConstructString(memberName)
@@ -1892,16 +2187,20 @@ func SetEntSchemaVector4D(entityHandle int32, className string, memberName strin
 	}.Do()
 }
 
-// GetEntSchemaEnt 
-//  @brief Retrieves an entity handle from an entity's schema.
+// SetEntSchemaVector4D 
+//  @brief Sets a vector value in an entity's schema.
 //
 //  @param entityHandle: The handle of the entity from which the value is to be retrieved.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
+//  @param value: The vector value to set.
+//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-//
-//  @return A string value at the given schema offset.
-func GetEntSchemaEnt(entityHandle int32, className string, memberName string, element int32) int32 {
+func SetEntSchemaVector4D(entityHandle int32, className string, memberName string, value plugify.Vector4, changeState bool, element int32) {
+	P_SetEntSchemaVector4D(entityHandle, className, memberName, value, changeState, element)
+}
+
+var P_GetEntSchemaEnt = func(entityHandle int32, className string, memberName string, element int32) int32 {
 	var __retVal int32
 	__entityHandle := C.int32_t(entityHandle)
 	__className := plugify.ConstructString(className)
@@ -1920,16 +2219,20 @@ func GetEntSchemaEnt(entityHandle int32, className string, memberName string, el
 	return __retVal
 }
 
-// SetEntSchemaEnt 
-//  @brief Sets an entity handle in an entity's schema.
+// GetEntSchemaEnt 
+//  @brief Retrieves an entity handle from an entity's schema.
 //
 //  @param entityHandle: The handle of the entity from which the value is to be retrieved.
 //  @param className: The name of the class.
 //  @param memberName: The name of the schema member.
-//  @param value: The entity handle to set.
-//  @param changeState: If true, change will be sent over the network.
 //  @param element: Element # (starting from 0) if schema is an array.
-func SetEntSchemaEnt(entityHandle int32, className string, memberName string, value int32, changeState bool, element int32) {
+//
+//  @return A string value at the given schema offset.
+func GetEntSchemaEnt(entityHandle int32, className string, memberName string, element int32) int32 {
+	return P_GetEntSchemaEnt(entityHandle, className, memberName, element)
+}
+
+var P_SetEntSchemaEnt = func(entityHandle int32, className string, memberName string, value int32, changeState bool, element int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__className := plugify.ConstructString(className)
 	__memberName := plugify.ConstructString(memberName)
@@ -1948,6 +2251,37 @@ func SetEntSchemaEnt(entityHandle int32, className string, memberName string, va
 	}.Do()
 }
 
+// SetEntSchemaEnt 
+//  @brief Sets an entity handle in an entity's schema.
+//
+//  @param entityHandle: The handle of the entity from which the value is to be retrieved.
+//  @param className: The name of the class.
+//  @param memberName: The name of the schema member.
+//  @param value: The entity handle to set.
+//  @param changeState: If true, change will be sent over the network.
+//  @param element: Element # (starting from 0) if schema is an array.
+func SetEntSchemaEnt(entityHandle int32, className string, memberName string, value int32, changeState bool, element int32) {
+	P_SetEntSchemaEnt(entityHandle, className, memberName, value, changeState, element)
+}
+
+var P_PushEntSchemaEnt = func(entityHandle int32, className string, memberName string, value int32, changeState bool) {
+	__entityHandle := C.int32_t(entityHandle)
+	__className := plugify.ConstructString(className)
+	__memberName := plugify.ConstructString(memberName)
+	__value := C.int32_t(value)
+	__changeState := C.bool(changeState)
+	plugify.Block {
+		Try: func() {
+			C.PushEntSchemaEnt(__entityHandle, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)), __value, __changeState)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__className)
+			plugify.DestroyString(&__memberName)
+		},
+	}.Do()
+}
+
 // PushEntSchemaEnt 
 //  @brief Pushes an entity handle into an entity's schema collection.
 //
@@ -1957,14 +2291,18 @@ func SetEntSchemaEnt(entityHandle int32, className string, memberName string, va
 //  @param value: The entity handle to push.
 //  @param changeState: If true, change will be sent over the network.
 func PushEntSchemaEnt(entityHandle int32, className string, memberName string, value int32, changeState bool) {
+	P_PushEntSchemaEnt(entityHandle, className, memberName, value, changeState)
+}
+
+var P_EraseEntSchemaEnt = func(entityHandle int32, className string, memberName string, element int32, changeState bool) {
 	__entityHandle := C.int32_t(entityHandle)
 	__className := plugify.ConstructString(className)
 	__memberName := plugify.ConstructString(memberName)
-	__value := C.int32_t(value)
+	__element := C.int32_t(element)
 	__changeState := C.bool(changeState)
 	plugify.Block {
 		Try: func() {
-			C.PushEntSchemaEnt(__entityHandle, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)), __value, __changeState)
+			C.EraseEntSchemaEnt(__entityHandle, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)), __element, __changeState)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -1983,14 +2321,16 @@ func PushEntSchemaEnt(entityHandle int32, className string, memberName string, v
 //  @param element: Element index to erase (starting from 0).
 //  @param changeState: If true, change will be sent over the network.
 func EraseEntSchemaEnt(entityHandle int32, className string, memberName string, element int32, changeState bool) {
+	P_EraseEntSchemaEnt(entityHandle, className, memberName, element, changeState)
+}
+
+var P_NetworkStateChanged = func(entityHandle int32, className string, memberName string) {
 	__entityHandle := C.int32_t(entityHandle)
 	__className := plugify.ConstructString(className)
 	__memberName := plugify.ConstructString(memberName)
-	__element := C.int32_t(element)
-	__changeState := C.bool(changeState)
 	plugify.Block {
 		Try: func() {
-			C.EraseEntSchemaEnt(__entityHandle, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)), __element, __changeState)
+			C.NetworkStateChanged(__entityHandle, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -2007,18 +2347,6 @@ func EraseEntSchemaEnt(entityHandle int32, className string, memberName string, 
 //  @param className: The name of the class that contains the member.
 //  @param memberName: The name of the member to be set.
 func NetworkStateChanged(entityHandle int32, className string, memberName string) {
-	__entityHandle := C.int32_t(entityHandle)
-	__className := plugify.ConstructString(className)
-	__memberName := plugify.ConstructString(memberName)
-	plugify.Block {
-		Try: func() {
-			C.NetworkStateChanged(__entityHandle, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)))
-		},
-		Finally: func() {
-			// Perform cleanup.
-			plugify.DestroyString(&__className)
-			plugify.DestroyString(&__memberName)
-		},
-	}.Do()
+	P_NetworkStateChanged(entityHandle, className, memberName)
 }
 

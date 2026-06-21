@@ -28,26 +28,24 @@ var _ = errors.New("")
 var _ = reflect.TypeOf(0)
 var _ = runtime.GOOS
 var _ = unsafe.Sizeof(0)
-var _ = plugify.Plugin()
+var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: gameconfig)
+
+var P_CloseGameConfigFile = func(id uint32) {
+	__id := C.uint32_t(id)
+	C.CloseGameConfigFile(__id)
+}
 
 // CloseGameConfigFile 
 //  @brief Closes a game configuration file.
 //
 //  @param id: An id to the game configuration to be closed.
 func CloseGameConfigFile(id uint32) {
-	__id := C.uint32_t(id)
-	C.CloseGameConfigFile(__id)
+	P_CloseGameConfigFile(id)
 }
 
-// LoadGameConfigFile 
-//  @brief Loads a game configuration file.
-//
-//  @param paths: The paths to the game configuration file to be loaded.
-//
-//  @return A id to the loaded game configuration object, or -1 if loading fails.
-func LoadGameConfigFile(paths []string) uint32 {
+var P_LoadGameConfigFile = func(paths []string) uint32 {
 	var __retVal uint32
 	__paths := plugify.ConstructVectorString(paths)
 	plugify.Block {
@@ -62,14 +60,17 @@ func LoadGameConfigFile(paths []string) uint32 {
 	return __retVal
 }
 
-// GetGameConfigPatch 
-//  @brief Retrieves a patch associated with the game configuration.
+// LoadGameConfigFile 
+//  @brief Loads a game configuration file.
 //
-//  @param id: An id to the game configuration from which to retrieve the patch.
-//  @param name: The name of the patch to be retrieved.
+//  @param paths: The paths to the game configuration file to be loaded.
 //
-//  @return A string where the patch will be stored.
-func GetGameConfigPatch(id uint32, name string) string {
+//  @return A id to the loaded game configuration object, or -1 if loading fails.
+func LoadGameConfigFile(paths []string) uint32 {
+	return P_LoadGameConfigFile(paths)
+}
+
+var P_GetGameConfigPatch = func(id uint32, name string) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__id := C.uint32_t(id)
@@ -90,6 +91,33 @@ func GetGameConfigPatch(id uint32, name string) string {
 	return __retVal
 }
 
+// GetGameConfigPatch 
+//  @brief Retrieves a patch associated with the game configuration.
+//
+//  @param id: An id to the game configuration from which to retrieve the patch.
+//  @param name: The name of the patch to be retrieved.
+//
+//  @return A string where the patch will be stored.
+func GetGameConfigPatch(id uint32, name string) string {
+	return P_GetGameConfigPatch(id, name)
+}
+
+var P_GetGameConfigOffset = func(id uint32, name string) int32 {
+	var __retVal int32
+	__id := C.uint32_t(id)
+	__name := plugify.ConstructString(name)
+	plugify.Block {
+		Try: func() {
+			__retVal = int32(C.GetGameConfigOffset(__id, (*C.String)(unsafe.Pointer(&__name))))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__name)
+		},
+	}.Do()
+	return __retVal
+}
+
 // GetGameConfigOffset 
 //  @brief Retrieves the offset associated with a name from the game configuration.
 //
@@ -98,12 +126,16 @@ func GetGameConfigPatch(id uint32, name string) string {
 //
 //  @return The offset associated with the specified name.
 func GetGameConfigOffset(id uint32, name string) int32 {
-	var __retVal int32
+	return P_GetGameConfigOffset(id, name)
+}
+
+var P_GetGameConfigAddress = func(id uint32, name string) uintptr {
+	var __retVal uintptr
 	__id := C.uint32_t(id)
 	__name := plugify.ConstructString(name)
 	plugify.Block {
 		Try: func() {
-			__retVal = int32(C.GetGameConfigOffset(__id, (*C.String)(unsafe.Pointer(&__name))))
+			__retVal = uintptr(C.GetGameConfigAddress(__id, (*C.String)(unsafe.Pointer(&__name))))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -121,12 +153,16 @@ func GetGameConfigOffset(id uint32, name string) int32 {
 //
 //  @return A pointer to the address associated with the specified name.
 func GetGameConfigAddress(id uint32, name string) uintptr {
+	return P_GetGameConfigAddress(id, name)
+}
+
+var P_GetGameConfigVTable = func(id uint32, name string) uintptr {
 	var __retVal uintptr
 	__id := C.uint32_t(id)
 	__name := plugify.ConstructString(name)
 	plugify.Block {
 		Try: func() {
-			__retVal = uintptr(C.GetGameConfigAddress(__id, (*C.String)(unsafe.Pointer(&__name))))
+			__retVal = uintptr(C.GetGameConfigVTable(__id, (*C.String)(unsafe.Pointer(&__name))))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -144,12 +180,16 @@ func GetGameConfigAddress(id uint32, name string) uintptr {
 //
 //  @return A pointer to the vtable associated with the specified name
 func GetGameConfigVTable(id uint32, name string) uintptr {
+	return P_GetGameConfigVTable(id, name)
+}
+
+var P_GetGameConfigSignature = func(id uint32, name string) uintptr {
 	var __retVal uintptr
 	__id := C.uint32_t(id)
 	__name := plugify.ConstructString(name)
 	plugify.Block {
 		Try: func() {
-			__retVal = uintptr(C.GetGameConfigVTable(__id, (*C.String)(unsafe.Pointer(&__name))))
+			__retVal = uintptr(C.GetGameConfigSignature(__id, (*C.String)(unsafe.Pointer(&__name))))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -167,28 +207,10 @@ func GetGameConfigVTable(id uint32, name string) uintptr {
 //
 //  @return A pointer to the signature associated with the specified name.
 func GetGameConfigSignature(id uint32, name string) uintptr {
-	var __retVal uintptr
-	__id := C.uint32_t(id)
-	__name := plugify.ConstructString(name)
-	plugify.Block {
-		Try: func() {
-			__retVal = uintptr(C.GetGameConfigSignature(__id, (*C.String)(unsafe.Pointer(&__name))))
-		},
-		Finally: func() {
-			// Perform cleanup.
-			plugify.DestroyString(&__name)
-		},
-	}.Do()
-	return __retVal
+	return P_GetGameConfigSignature(id, name)
 }
 
-// GetGameConfigPatchAll 
-//  @brief Retrieves a patch by scanning all loaded game configurations.
-//
-//  @param name: The name of the patch to be retrieved.
-//
-//  @return A string containing the patch, or an empty string if not found.
-func GetGameConfigPatchAll(name string) string {
+var P_GetGameConfigPatchAll = func(name string) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__name := plugify.ConstructString(name)
@@ -208,6 +230,31 @@ func GetGameConfigPatchAll(name string) string {
 	return __retVal
 }
 
+// GetGameConfigPatchAll 
+//  @brief Retrieves a patch by scanning all loaded game configurations.
+//
+//  @param name: The name of the patch to be retrieved.
+//
+//  @return A string containing the patch, or an empty string if not found.
+func GetGameConfigPatchAll(name string) string {
+	return P_GetGameConfigPatchAll(name)
+}
+
+var P_GetGameConfigOffsetAll = func(name string) int32 {
+	var __retVal int32
+	__name := plugify.ConstructString(name)
+	plugify.Block {
+		Try: func() {
+			__retVal = int32(C.GetGameConfigOffsetAll((*C.String)(unsafe.Pointer(&__name))))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__name)
+		},
+	}.Do()
+	return __retVal
+}
+
 // GetGameConfigOffsetAll 
 //  @brief Retrieves an offset by scanning all loaded game configurations.
 //
@@ -215,11 +262,15 @@ func GetGameConfigPatchAll(name string) string {
 //
 //  @return The offset associated with the specified name, or -1 if not found.
 func GetGameConfigOffsetAll(name string) int32 {
-	var __retVal int32
+	return P_GetGameConfigOffsetAll(name)
+}
+
+var P_GetGameConfigAddressAll = func(name string) uintptr {
+	var __retVal uintptr
 	__name := plugify.ConstructString(name)
 	plugify.Block {
 		Try: func() {
-			__retVal = int32(C.GetGameConfigOffsetAll((*C.String)(unsafe.Pointer(&__name))))
+			__retVal = uintptr(C.GetGameConfigAddressAll((*C.String)(unsafe.Pointer(&__name))))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -236,11 +287,15 @@ func GetGameConfigOffsetAll(name string) int32 {
 //
 //  @return A pointer to the address associated with the specified name, or nullptr if not found.
 func GetGameConfigAddressAll(name string) uintptr {
+	return P_GetGameConfigAddressAll(name)
+}
+
+var P_GetGameConfigVTableAll = func(name string) uintptr {
 	var __retVal uintptr
 	__name := plugify.ConstructString(name)
 	plugify.Block {
 		Try: func() {
-			__retVal = uintptr(C.GetGameConfigAddressAll((*C.String)(unsafe.Pointer(&__name))))
+			__retVal = uintptr(C.GetGameConfigVTableAll((*C.String)(unsafe.Pointer(&__name))))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -257,11 +312,15 @@ func GetGameConfigAddressAll(name string) uintptr {
 //
 //  @return A pointer to the vtable associated with the specified name, or nullptr if not found.
 func GetGameConfigVTableAll(name string) uintptr {
+	return P_GetGameConfigVTableAll(name)
+}
+
+var P_GetGameConfigSignatureAll = func(name string) uintptr {
 	var __retVal uintptr
 	__name := plugify.ConstructString(name)
 	plugify.Block {
 		Try: func() {
-			__retVal = uintptr(C.GetGameConfigVTableAll((*C.String)(unsafe.Pointer(&__name))))
+			__retVal = uintptr(C.GetGameConfigSignatureAll((*C.String)(unsafe.Pointer(&__name))))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -278,18 +337,7 @@ func GetGameConfigVTableAll(name string) uintptr {
 //
 //  @return A pointer to the signature associated with the specified name, or nullptr if not found.
 func GetGameConfigSignatureAll(name string) uintptr {
-	var __retVal uintptr
-	__name := plugify.ConstructString(name)
-	plugify.Block {
-		Try: func() {
-			__retVal = uintptr(C.GetGameConfigSignatureAll((*C.String)(unsafe.Pointer(&__name))))
-		},
-		Finally: func() {
-			// Perform cleanup.
-			plugify.DestroyString(&__name)
-		},
-	}.Do()
-	return __retVal
+	return P_GetGameConfigSignatureAll(name)
 }
 
 var (
@@ -339,7 +387,7 @@ func NewGameConfigOwned(handle uint32) *GameConfig {
 
 // destroyGameConfigHandle destroys an owned handle.
 func destroyGameConfigHandle(handle uint32) {
-	if plugify.Plugin().Loaded() && handle != 0 {
+	if handle != 0 {
 		CloseGameConfigFile(handle)
 	}
 }

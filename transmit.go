@@ -53,9 +53,15 @@ var _ = errors.New("")
 var _ = reflect.TypeOf(0)
 var _ = runtime.GOOS
 var _ = unsafe.Sizeof(0)
-var _ = plugify.Plugin()
+var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: transmit)
+
+var P_SetTransmitInfoEntity = func(info uintptr, entityHandle int32) {
+	__info := C.uintptr_t(info)
+	__entityHandle := C.int32_t(entityHandle)
+	C.SetTransmitInfoEntity(__info, __entityHandle)
+}
 
 // SetTransmitInfoEntity 
 //  @brief Sets a bit in the TransmitEntity bitvec, marking an entity as transmittable.
@@ -63,9 +69,13 @@ var _ = plugify.Plugin()
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The handle of the entity to mark as transmittable.
 func SetTransmitInfoEntity(info uintptr, entityHandle int32) {
+	P_SetTransmitInfoEntity(info, entityHandle)
+}
+
+var P_ClearTransmitInfoEntity = func(info uintptr, entityHandle int32) {
 	__info := C.uintptr_t(info)
 	__entityHandle := C.int32_t(entityHandle)
-	C.SetTransmitInfoEntity(__info, __entityHandle)
+	C.ClearTransmitInfoEntity(__info, __entityHandle)
 }
 
 // ClearTransmitInfoEntity 
@@ -74,9 +84,15 @@ func SetTransmitInfoEntity(info uintptr, entityHandle int32) {
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The handle of the entity to mark as not transmittable.
 func ClearTransmitInfoEntity(info uintptr, entityHandle int32) {
+	P_ClearTransmitInfoEntity(info, entityHandle)
+}
+
+var P_IsTransmitInfoEntitySet = func(info uintptr, entityHandle int32) bool {
+	var __retVal bool
 	__info := C.uintptr_t(info)
 	__entityHandle := C.int32_t(entityHandle)
-	C.ClearTransmitInfoEntity(__info, __entityHandle)
+	__retVal = bool(C.IsTransmitInfoEntitySet(__info, __entityHandle))
+	return __retVal
 }
 
 // IsTransmitInfoEntitySet 
@@ -87,11 +103,12 @@ func ClearTransmitInfoEntity(info uintptr, entityHandle int32) {
 //
 //  @return True if the entity is marked as transmittable, false otherwise.
 func IsTransmitInfoEntitySet(info uintptr, entityHandle int32) bool {
-	var __retVal bool
+	return P_IsTransmitInfoEntitySet(info, entityHandle)
+}
+
+var P_SetTransmitInfoEntityAll = func(info uintptr) {
 	__info := C.uintptr_t(info)
-	__entityHandle := C.int32_t(entityHandle)
-	__retVal = bool(C.IsTransmitInfoEntitySet(__info, __entityHandle))
-	return __retVal
+	C.SetTransmitInfoEntityAll(__info)
 }
 
 // SetTransmitInfoEntityAll 
@@ -99,8 +116,12 @@ func IsTransmitInfoEntitySet(info uintptr, entityHandle int32) bool {
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 func SetTransmitInfoEntityAll(info uintptr) {
+	P_SetTransmitInfoEntityAll(info)
+}
+
+var P_ClearTransmitInfoEntityAll = func(info uintptr) {
 	__info := C.uintptr_t(info)
-	C.SetTransmitInfoEntityAll(__info)
+	C.ClearTransmitInfoEntityAll(__info)
 }
 
 // ClearTransmitInfoEntityAll 
@@ -108,8 +129,13 @@ func SetTransmitInfoEntityAll(info uintptr) {
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 func ClearTransmitInfoEntityAll(info uintptr) {
+	P_ClearTransmitInfoEntityAll(info)
+}
+
+var P_SetTransmitInfoNonPlayer = func(info uintptr, entityHandle int32) {
 	__info := C.uintptr_t(info)
-	C.ClearTransmitInfoEntityAll(__info)
+	__entityHandle := C.int32_t(entityHandle)
+	C.SetTransmitInfoNonPlayer(__info, __entityHandle)
 }
 
 // SetTransmitInfoNonPlayer 
@@ -118,9 +144,13 @@ func ClearTransmitInfoEntityAll(info uintptr) {
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The index of the non-player entity to mark as transmittable.
 func SetTransmitInfoNonPlayer(info uintptr, entityHandle int32) {
+	P_SetTransmitInfoNonPlayer(info, entityHandle)
+}
+
+var P_ClearTransmitInfoNonPlayer = func(info uintptr, entityHandle int32) {
 	__info := C.uintptr_t(info)
 	__entityHandle := C.int32_t(entityHandle)
-	C.SetTransmitInfoNonPlayer(__info, __entityHandle)
+	C.ClearTransmitInfoNonPlayer(__info, __entityHandle)
 }
 
 // ClearTransmitInfoNonPlayer 
@@ -129,9 +159,15 @@ func SetTransmitInfoNonPlayer(info uintptr, entityHandle int32) {
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The index of the non-player entity to mark as not transmittable.
 func ClearTransmitInfoNonPlayer(info uintptr, entityHandle int32) {
+	P_ClearTransmitInfoNonPlayer(info, entityHandle)
+}
+
+var P_IsTransmitInfoNonPlayerSet = func(info uintptr, entityHandle int32) bool {
+	var __retVal bool
 	__info := C.uintptr_t(info)
 	__entityHandle := C.int32_t(entityHandle)
-	C.ClearTransmitInfoNonPlayer(__info, __entityHandle)
+	__retVal = bool(C.IsTransmitInfoNonPlayerSet(__info, __entityHandle))
+	return __retVal
 }
 
 // IsTransmitInfoNonPlayerSet 
@@ -142,11 +178,12 @@ func ClearTransmitInfoNonPlayer(info uintptr, entityHandle int32) {
 //
 //  @return True if the entity is marked as transmittable, false otherwise.
 func IsTransmitInfoNonPlayerSet(info uintptr, entityHandle int32) bool {
-	var __retVal bool
+	return P_IsTransmitInfoNonPlayerSet(info, entityHandle)
+}
+
+var P_SetTransmitInfoNonPlayerAll = func(info uintptr) {
 	__info := C.uintptr_t(info)
-	__entityHandle := C.int32_t(entityHandle)
-	__retVal = bool(C.IsTransmitInfoNonPlayerSet(__info, __entityHandle))
-	return __retVal
+	C.SetTransmitInfoNonPlayerAll(__info)
 }
 
 // SetTransmitInfoNonPlayerAll 
@@ -154,8 +191,12 @@ func IsTransmitInfoNonPlayerSet(info uintptr, entityHandle int32) bool {
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 func SetTransmitInfoNonPlayerAll(info uintptr) {
+	P_SetTransmitInfoNonPlayerAll(info)
+}
+
+var P_ClearTransmitInfoNonPlayerAll = func(info uintptr) {
 	__info := C.uintptr_t(info)
-	C.SetTransmitInfoNonPlayerAll(__info)
+	C.ClearTransmitInfoNonPlayerAll(__info)
 }
 
 // ClearTransmitInfoNonPlayerAll 
@@ -163,8 +204,13 @@ func SetTransmitInfoNonPlayerAll(info uintptr) {
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 func ClearTransmitInfoNonPlayerAll(info uintptr) {
+	P_ClearTransmitInfoNonPlayerAll(info)
+}
+
+var P_SetTransmitInfoOutOfPVS = func(info uintptr, entityHandle int32) {
 	__info := C.uintptr_t(info)
-	C.ClearTransmitInfoNonPlayerAll(__info)
+	__entityHandle := C.int32_t(entityHandle)
+	C.SetTransmitInfoOutOfPVS(__info, __entityHandle)
 }
 
 // SetTransmitInfoOutOfPVS 
@@ -173,9 +219,13 @@ func ClearTransmitInfoNonPlayerAll(info uintptr) {
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The handle of the entity to mark as always transmittable.
 func SetTransmitInfoOutOfPVS(info uintptr, entityHandle int32) {
+	P_SetTransmitInfoOutOfPVS(info, entityHandle)
+}
+
+var P_ClearTransmitInfoOutOfPVS = func(info uintptr, entityHandle int32) {
 	__info := C.uintptr_t(info)
 	__entityHandle := C.int32_t(entityHandle)
-	C.SetTransmitInfoOutOfPVS(__info, __entityHandle)
+	C.ClearTransmitInfoOutOfPVS(__info, __entityHandle)
 }
 
 // ClearTransmitInfoOutOfPVS 
@@ -184,9 +234,15 @@ func SetTransmitInfoOutOfPVS(info uintptr, entityHandle int32) {
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The handle of the entity to unmark from always transmit.
 func ClearTransmitInfoOutOfPVS(info uintptr, entityHandle int32) {
+	P_ClearTransmitInfoOutOfPVS(info, entityHandle)
+}
+
+var P_IsTransmitInfoOutOfPVSSet = func(info uintptr, entityHandle int32) bool {
+	var __retVal bool
 	__info := C.uintptr_t(info)
 	__entityHandle := C.int32_t(entityHandle)
-	C.ClearTransmitInfoOutOfPVS(__info, __entityHandle)
+	__retVal = bool(C.IsTransmitInfoOutOfPVSSet(__info, __entityHandle))
+	return __retVal
 }
 
 // IsTransmitInfoOutOfPVSSet 
@@ -197,11 +253,12 @@ func ClearTransmitInfoOutOfPVS(info uintptr, entityHandle int32) {
 //
 //  @return True if the entity is marked to always transmit, false otherwise.
 func IsTransmitInfoOutOfPVSSet(info uintptr, entityHandle int32) bool {
-	var __retVal bool
+	return P_IsTransmitInfoOutOfPVSSet(info, entityHandle)
+}
+
+var P_SetTransmitInfoOutOfPVSAll = func(info uintptr) {
 	__info := C.uintptr_t(info)
-	__entityHandle := C.int32_t(entityHandle)
-	__retVal = bool(C.IsTransmitInfoOutOfPVSSet(__info, __entityHandle))
-	return __retVal
+	C.SetTransmitInfoOutOfPVSAll(__info)
 }
 
 // SetTransmitInfoOutOfPVSAll 
@@ -209,8 +266,12 @@ func IsTransmitInfoOutOfPVSSet(info uintptr, entityHandle int32) bool {
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 func SetTransmitInfoOutOfPVSAll(info uintptr) {
+	P_SetTransmitInfoOutOfPVSAll(info)
+}
+
+var P_ClearTransmitInfoOutOfPVSAll = func(info uintptr) {
 	__info := C.uintptr_t(info)
-	C.SetTransmitInfoOutOfPVSAll(__info)
+	C.ClearTransmitInfoOutOfPVSAll(__info)
 }
 
 // ClearTransmitInfoOutOfPVSAll 
@@ -218,8 +279,13 @@ func SetTransmitInfoOutOfPVSAll(info uintptr) {
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 func ClearTransmitInfoOutOfPVSAll(info uintptr) {
+	P_ClearTransmitInfoOutOfPVSAll(info)
+}
+
+var P_SetTransmitInfoHLTV = func(info uintptr, entityHandle int32) {
 	__info := C.uintptr_t(info)
-	C.ClearTransmitInfoOutOfPVSAll(__info)
+	__entityHandle := C.int32_t(entityHandle)
+	C.SetTransmitInfoHLTV(__info, __entityHandle)
 }
 
 // SetTransmitInfoHLTV 
@@ -228,9 +294,13 @@ func ClearTransmitInfoOutOfPVSAll(info uintptr) {
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The handle of the entity to mark as always transmittable.
 func SetTransmitInfoHLTV(info uintptr, entityHandle int32) {
+	P_SetTransmitInfoHLTV(info, entityHandle)
+}
+
+var P_ClearTransmitInfoHLTV = func(info uintptr, entityHandle int32) {
 	__info := C.uintptr_t(info)
 	__entityHandle := C.int32_t(entityHandle)
-	C.SetTransmitInfoHLTV(__info, __entityHandle)
+	C.ClearTransmitInfoHLTV(__info, __entityHandle)
 }
 
 // ClearTransmitInfoHLTV 
@@ -239,9 +309,15 @@ func SetTransmitInfoHLTV(info uintptr, entityHandle int32) {
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The handle of the entity to unmark from always transmit.
 func ClearTransmitInfoHLTV(info uintptr, entityHandle int32) {
+	P_ClearTransmitInfoHLTV(info, entityHandle)
+}
+
+var P_IsTransmitInfoHLTVSet = func(info uintptr, entityHandle int32) bool {
+	var __retVal bool
 	__info := C.uintptr_t(info)
 	__entityHandle := C.int32_t(entityHandle)
-	C.ClearTransmitInfoHLTV(__info, __entityHandle)
+	__retVal = bool(C.IsTransmitInfoHLTVSet(__info, __entityHandle))
+	return __retVal
 }
 
 // IsTransmitInfoHLTVSet 
@@ -252,11 +328,12 @@ func ClearTransmitInfoHLTV(info uintptr, entityHandle int32) {
 //
 //  @return True if the entity is marked to always transmit, false otherwise.
 func IsTransmitInfoHLTVSet(info uintptr, entityHandle int32) bool {
-	var __retVal bool
+	return P_IsTransmitInfoHLTVSet(info, entityHandle)
+}
+
+var P_SetTransmitInfoHLTVAll = func(info uintptr) {
 	__info := C.uintptr_t(info)
-	__entityHandle := C.int32_t(entityHandle)
-	__retVal = bool(C.IsTransmitInfoHLTVSet(__info, __entityHandle))
-	return __retVal
+	C.SetTransmitInfoHLTVAll(__info)
 }
 
 // SetTransmitInfoHLTVAll 
@@ -264,8 +341,12 @@ func IsTransmitInfoHLTVSet(info uintptr, entityHandle int32) bool {
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 func SetTransmitInfoHLTVAll(info uintptr) {
+	P_SetTransmitInfoHLTVAll(info)
+}
+
+var P_ClearTransmitInfoHLTVAll = func(info uintptr) {
 	__info := C.uintptr_t(info)
-	C.SetTransmitInfoHLTVAll(__info)
+	C.ClearTransmitInfoHLTVAll(__info)
 }
 
 // ClearTransmitInfoHLTVAll 
@@ -273,8 +354,14 @@ func SetTransmitInfoHLTVAll(info uintptr) {
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 func ClearTransmitInfoHLTVAll(info uintptr) {
+	P_ClearTransmitInfoHLTVAll(info)
+}
+
+var P_GetTransmitInfoTargetSlotsCount = func(info uintptr) int32 {
+	var __retVal int32
 	__info := C.uintptr_t(info)
-	C.ClearTransmitInfoHLTVAll(__info)
+	__retVal = int32(C.GetTransmitInfoTargetSlotsCount(__info))
+	return __retVal
 }
 
 // GetTransmitInfoTargetSlotsCount 
@@ -284,9 +371,14 @@ func ClearTransmitInfoHLTVAll(info uintptr) {
 //
 //  @return The number of target player slots, or 0 if the info pointer is null.
 func GetTransmitInfoTargetSlotsCount(info uintptr) int32 {
+	return P_GetTransmitInfoTargetSlotsCount(info)
+}
+
+var P_GetTransmitInfoTargetSlot = func(info uintptr, index int32) int32 {
 	var __retVal int32
 	__info := C.uintptr_t(info)
-	__retVal = int32(C.GetTransmitInfoTargetSlotsCount(__info))
+	__index := C.int32_t(index)
+	__retVal = int32(C.GetTransmitInfoTargetSlot(__info, __index))
 	return __retVal
 }
 
@@ -298,11 +390,13 @@ func GetTransmitInfoTargetSlotsCount(info uintptr) int32 {
 //
 //  @return The player slot value, or -1 if the index is invalid or info is null.
 func GetTransmitInfoTargetSlot(info uintptr, index int32) int32 {
-	var __retVal int32
+	return P_GetTransmitInfoTargetSlot(info, index)
+}
+
+var P_AddTransmitInfoTargetSlot = func(info uintptr, playerSlot int32) {
 	__info := C.uintptr_t(info)
-	__index := C.int32_t(index)
-	__retVal = int32(C.GetTransmitInfoTargetSlot(__info, __index))
-	return __retVal
+	__playerSlot := C.int32_t(playerSlot)
+	C.AddTransmitInfoTargetSlot(__info, __playerSlot)
 }
 
 // AddTransmitInfoTargetSlot 
@@ -311,9 +405,13 @@ func GetTransmitInfoTargetSlot(info uintptr, index int32) int32 {
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param playerSlot: The player slot value to add.
 func AddTransmitInfoTargetSlot(info uintptr, playerSlot int32) {
+	P_AddTransmitInfoTargetSlot(info, playerSlot)
+}
+
+var P_RemoveTransmitInfoTargetSlot = func(info uintptr, index int32) {
 	__info := C.uintptr_t(info)
-	__playerSlot := C.int32_t(playerSlot)
-	C.AddTransmitInfoTargetSlot(__info, __playerSlot)
+	__index := C.int32_t(index)
+	C.RemoveTransmitInfoTargetSlot(__info, __index)
 }
 
 // RemoveTransmitInfoTargetSlot 
@@ -322,18 +420,10 @@ func AddTransmitInfoTargetSlot(info uintptr, playerSlot int32) {
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param index: Index within the target slots vector to remove.
 func RemoveTransmitInfoTargetSlot(info uintptr, index int32) {
-	__info := C.uintptr_t(info)
-	__index := C.int32_t(index)
-	C.RemoveTransmitInfoTargetSlot(__info, __index)
+	P_RemoveTransmitInfoTargetSlot(info, index)
 }
 
-// GetTransmitInfoTargetSlotsAll 
-//  @brief Gets the target slots vector.
-//
-//  @param info: Pointer to the CCheckTransmitInfo structure.
-//
-//  @return The player slots array.
-func GetTransmitInfoTargetSlotsAll(info uintptr) []int32 {
+var P_GetTransmitInfoTargetSlotsAll = func(info uintptr) []int32 {
 	var __retVal []int32
 	var __retVal_native plugify.PlgVector
 	__info := C.uintptr_t(info)
@@ -352,13 +442,34 @@ func GetTransmitInfoTargetSlotsAll(info uintptr) []int32 {
 	return __retVal
 }
 
+// GetTransmitInfoTargetSlotsAll 
+//  @brief Gets the target slots vector.
+//
+//  @param info: Pointer to the CCheckTransmitInfo structure.
+//
+//  @return The player slots array.
+func GetTransmitInfoTargetSlotsAll(info uintptr) []int32 {
+	return P_GetTransmitInfoTargetSlotsAll(info)
+}
+
+var P_RemoveTransmitInfoTargetSlotsAll = func(info uintptr) {
+	__info := C.uintptr_t(info)
+	C.RemoveTransmitInfoTargetSlotsAll(__info)
+}
+
 // RemoveTransmitInfoTargetSlotsAll 
 //  @brief Clears all target player slots from the vector.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 func RemoveTransmitInfoTargetSlotsAll(info uintptr) {
+	P_RemoveTransmitInfoTargetSlotsAll(info)
+}
+
+var P_GetTransmitInfoPlayerSlot = func(info uintptr) int32 {
+	var __retVal int32
 	__info := C.uintptr_t(info)
-	C.RemoveTransmitInfoTargetSlotsAll(__info)
+	__retVal = int32(C.GetTransmitInfoPlayerSlot(__info))
+	return __retVal
 }
 
 // GetTransmitInfoPlayerSlot 
@@ -368,10 +479,13 @@ func RemoveTransmitInfoTargetSlotsAll(info uintptr) {
 //
 //  @return The player slot value, or -1 if info is null.
 func GetTransmitInfoPlayerSlot(info uintptr) int32 {
-	var __retVal int32
+	return P_GetTransmitInfoPlayerSlot(info)
+}
+
+var P_SetTransmitInfoPlayerSlot = func(info uintptr, playerSlot int32) {
 	__info := C.uintptr_t(info)
-	__retVal = int32(C.GetTransmitInfoPlayerSlot(__info))
-	return __retVal
+	__playerSlot := C.int32_t(playerSlot)
+	C.SetTransmitInfoPlayerSlot(__info, __playerSlot)
 }
 
 // SetTransmitInfoPlayerSlot 
@@ -380,9 +494,14 @@ func GetTransmitInfoPlayerSlot(info uintptr) int32 {
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param playerSlot: The player slot value to set.
 func SetTransmitInfoPlayerSlot(info uintptr, playerSlot int32) {
+	P_SetTransmitInfoPlayerSlot(info, playerSlot)
+}
+
+var P_GetTransmitInfoFullUpdate = func(info uintptr) bool {
+	var __retVal bool
 	__info := C.uintptr_t(info)
-	__playerSlot := C.int32_t(playerSlot)
-	C.SetTransmitInfoPlayerSlot(__info, __playerSlot)
+	__retVal = bool(C.GetTransmitInfoFullUpdate(__info))
+	return __retVal
 }
 
 // GetTransmitInfoFullUpdate 
@@ -392,10 +511,13 @@ func SetTransmitInfoPlayerSlot(info uintptr, playerSlot int32) {
 //
 //  @return True if full update is enabled, false otherwise.
 func GetTransmitInfoFullUpdate(info uintptr) bool {
-	var __retVal bool
+	return P_GetTransmitInfoFullUpdate(info)
+}
+
+var P_SetTransmitInfoFullUpdate = func(info uintptr, fullUpdate bool) {
 	__info := C.uintptr_t(info)
-	__retVal = bool(C.GetTransmitInfoFullUpdate(__info))
-	return __retVal
+	__fullUpdate := C.bool(fullUpdate)
+	C.SetTransmitInfoFullUpdate(__info, __fullUpdate)
 }
 
 // SetTransmitInfoFullUpdate 
@@ -404,9 +526,21 @@ func GetTransmitInfoFullUpdate(info uintptr) bool {
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param fullUpdate: The full update flag value to set.
 func SetTransmitInfoFullUpdate(info uintptr, fullUpdate bool) {
-	__info := C.uintptr_t(info)
-	__fullUpdate := C.bool(fullUpdate)
-	C.SetTransmitInfoFullUpdate(__info, __fullUpdate)
+	P_SetTransmitInfoFullUpdate(info, fullUpdate)
+}
+
+var P_HideTransmitEntities = func(playerSlot int32, entHandles []int32) {
+	__playerSlot := C.int32_t(playerSlot)
+	__entHandles := plugify.ConstructVectorInt32(entHandles)
+	plugify.Block {
+		Try: func() {
+			C.HideTransmitEntities(__playerSlot, (*C.Vector)(unsafe.Pointer(&__entHandles)))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyVectorInt32(&__entHandles)
+		},
+	}.Do()
 }
 
 // HideTransmitEntities 
@@ -415,11 +549,15 @@ func SetTransmitInfoFullUpdate(info uintptr, fullUpdate bool) {
 //  @param playerSlot: The player slot to hide entities from.
 //  @param entHandles: Entity handles to hide.
 func HideTransmitEntities(playerSlot int32, entHandles []int32) {
+	P_HideTransmitEntities(playerSlot, entHandles)
+}
+
+var P_ShowTransmitEntities = func(playerSlot int32, entHandles []int32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__entHandles := plugify.ConstructVectorInt32(entHandles)
 	plugify.Block {
 		Try: func() {
-			C.HideTransmitEntities(__playerSlot, (*C.Vector)(unsafe.Pointer(&__entHandles)))
+			C.ShowTransmitEntities(__playerSlot, (*C.Vector)(unsafe.Pointer(&__entHandles)))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -434,26 +572,10 @@ func HideTransmitEntities(playerSlot int32, entHandles []int32) {
 //  @param playerSlot: The player slot to show entities to.
 //  @param entHandles: Entity handles to show.
 func ShowTransmitEntities(playerSlot int32, entHandles []int32) {
-	__playerSlot := C.int32_t(playerSlot)
-	__entHandles := plugify.ConstructVectorInt32(entHandles)
-	plugify.Block {
-		Try: func() {
-			C.ShowTransmitEntities(__playerSlot, (*C.Vector)(unsafe.Pointer(&__entHandles)))
-		},
-		Finally: func() {
-			// Perform cleanup.
-			plugify.DestroyVectorInt32(&__entHandles)
-		},
-	}.Do()
+	P_ShowTransmitEntities(playerSlot, entHandles)
 }
 
-// GetHiddenTransmitEntities 
-//  @brief Gets all hidden entity handles for a player.
-//
-//  @param playerSlot: The player slot to query.
-//
-//  @return Array of hidden entity handles.
-func GetHiddenTransmitEntities(playerSlot int32) []int32 {
+var P_GetHiddenTransmitEntities = func(playerSlot int32) []int32 {
 	var __retVal []int32
 	var __retVal_native plugify.PlgVector
 	__playerSlot := C.int32_t(playerSlot)
@@ -472,15 +594,35 @@ func GetHiddenTransmitEntities(playerSlot int32) []int32 {
 	return __retVal
 }
 
+// GetHiddenTransmitEntities 
+//  @brief Gets all hidden entity handles for a player.
+//
+//  @param playerSlot: The player slot to query.
+//
+//  @return Array of hidden entity handles.
+func GetHiddenTransmitEntities(playerSlot int32) []int32 {
+	return P_GetHiddenTransmitEntities(playerSlot)
+}
+
+var P_HideTransmitEntity = func(playerSlot int32, entityHandle int32) {
+	__playerSlot := C.int32_t(playerSlot)
+	__entityHandle := C.int32_t(entityHandle)
+	C.HideTransmitEntity(__playerSlot, __entityHandle)
+}
+
 // HideTransmitEntity 
 //  @brief Hides a single entity from a player's transmit list.
 //
 //  @param playerSlot: The player slot to hide the entity from.
 //  @param entityHandle: Entity handle to hide.
 func HideTransmitEntity(playerSlot int32, entityHandle int32) {
+	P_HideTransmitEntity(playerSlot, entityHandle)
+}
+
+var P_ShowTransmitEntity = func(playerSlot int32, entityHandle int32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__entityHandle := C.int32_t(entityHandle)
-	C.HideTransmitEntity(__playerSlot, __entityHandle)
+	C.ShowTransmitEntity(__playerSlot, __entityHandle)
 }
 
 // ShowTransmitEntity 
@@ -489,9 +631,13 @@ func HideTransmitEntity(playerSlot int32, entityHandle int32) {
 //  @param playerSlot: The player slot to show the entity to.
 //  @param entityHandle: Entity handle to show.
 func ShowTransmitEntity(playerSlot int32, entityHandle int32) {
+	P_ShowTransmitEntity(playerSlot, entityHandle)
+}
+
+var P_HideTransmitEntityFromOtherPlayers = func(playerSlot int32, entityHandle int32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__entityHandle := C.int32_t(entityHandle)
-	C.ShowTransmitEntity(__playerSlot, __entityHandle)
+	C.HideTransmitEntityFromOtherPlayers(__playerSlot, __entityHandle)
 }
 
 // HideTransmitEntityFromOtherPlayers 
@@ -500,9 +646,13 @@ func ShowTransmitEntity(playerSlot int32, entityHandle int32) {
 //  @param playerSlot: The owner player slot who will still see the entity.
 //  @param entityHandle: Entity handle to hide from other players.
 func HideTransmitEntityFromOtherPlayers(playerSlot int32, entityHandle int32) {
+	P_HideTransmitEntityFromOtherPlayers(playerSlot, entityHandle)
+}
+
+var P_ShowTransmitEntityToOtherPlayers = func(playerSlot int32, entityHandle int32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__entityHandle := C.int32_t(entityHandle)
-	C.HideTransmitEntityFromOtherPlayers(__playerSlot, __entityHandle)
+	C.ShowTransmitEntityToOtherPlayers(__playerSlot, __entityHandle)
 }
 
 // ShowTransmitEntityToOtherPlayers 
@@ -511,9 +661,7 @@ func HideTransmitEntityFromOtherPlayers(playerSlot int32, entityHandle int32) {
 //  @param playerSlot: The owner player slot who was excluded from hiding.
 //  @param entityHandle: Entity handle to show to other players.
 func ShowTransmitEntityToOtherPlayers(playerSlot int32, entityHandle int32) {
-	__playerSlot := C.int32_t(playerSlot)
-	__entityHandle := C.int32_t(entityHandle)
-	C.ShowTransmitEntityToOtherPlayers(__playerSlot, __entityHandle)
+	P_ShowTransmitEntityToOtherPlayers(playerSlot, entityHandle)
 }
 
 var (

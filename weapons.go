@@ -23,17 +23,11 @@ var _ = errors.New("")
 var _ = reflect.TypeOf(0)
 var _ = runtime.GOOS
 var _ = unsafe.Sizeof(0)
-var _ = plugify.Plugin()
+var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: weapons)
 
-// GetWeaponVDataFromKey 
-//  @brief Retrieves the weapon VData for a given weapon name.
-//
-//  @param name: The name of the weapon.
-//
-//  @return A pointer to the `CCSWeaponBaseVData` if the entity handle is valid and represents a player weapon; otherwise, nullptr.
-func GetWeaponVDataFromKey(name string) uintptr {
+var P_GetWeaponVDataFromKey = func(name string) uintptr {
 	var __retVal uintptr
 	__name := plugify.ConstructString(name)
 	plugify.Block {
@@ -48,6 +42,23 @@ func GetWeaponVDataFromKey(name string) uintptr {
 	return __retVal
 }
 
+// GetWeaponVDataFromKey 
+//  @brief Retrieves the weapon VData for a given weapon name.
+//
+//  @param name: The name of the weapon.
+//
+//  @return A pointer to the `CCSWeaponBaseVData` if the entity handle is valid and represents a player weapon; otherwise, nullptr.
+func GetWeaponVDataFromKey(name string) uintptr {
+	return P_GetWeaponVDataFromKey(name)
+}
+
+var P_GetWeaponVData = func(entityHandle int32) uintptr {
+	var __retVal uintptr
+	__entityHandle := C.int32_t(entityHandle)
+	__retVal = uintptr(C.GetWeaponVData(__entityHandle))
+	return __retVal
+}
+
 // GetWeaponVData 
 //  @brief Retrieves the weapon VData for a given weapon.
 //
@@ -55,9 +66,13 @@ func GetWeaponVDataFromKey(name string) uintptr {
 //
 //  @return A pointer to the `CCSWeaponBaseVData` if the entity handle is valid and represents a player weapon; otherwise, nullptr.
 func GetWeaponVData(entityHandle int32) uintptr {
-	var __retVal uintptr
+	return P_GetWeaponVData(entityHandle)
+}
+
+var P_GetWeaponType = func(entityHandle int32) CSWeaponType {
+	var __retVal CSWeaponType
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = uintptr(C.GetWeaponVData(__entityHandle))
+	__retVal = uint32(C.GetWeaponType(__entityHandle))
 	return __retVal
 }
 
@@ -68,9 +83,13 @@ func GetWeaponVData(entityHandle int32) uintptr {
 //
 //  @return The type of the weapon, or WEAPONTYPE_UNKNOWN if the entity is invalid.
 func GetWeaponType(entityHandle int32) CSWeaponType {
-	var __retVal CSWeaponType
+	return P_GetWeaponType(entityHandle)
+}
+
+var P_GetWeaponCategory = func(entityHandle int32) CSWeaponCategory {
+	var __retVal CSWeaponCategory
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = uint32(C.GetWeaponType(__entityHandle))
+	__retVal = uint32(C.GetWeaponCategory(__entityHandle))
 	return __retVal
 }
 
@@ -81,9 +100,13 @@ func GetWeaponType(entityHandle int32) CSWeaponType {
 //
 //  @return The category of the weapon, or WEAPONCATEGORY_OTHER if the entity is invalid.
 func GetWeaponCategory(entityHandle int32) CSWeaponCategory {
-	var __retVal CSWeaponCategory
+	return P_GetWeaponCategory(entityHandle)
+}
+
+var P_GetWeaponGearSlot = func(entityHandle int32) GearSlot {
+	var __retVal GearSlot
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = uint32(C.GetWeaponCategory(__entityHandle))
+	__retVal = uint32(C.GetWeaponGearSlot(__entityHandle))
 	return __retVal
 }
 
@@ -94,9 +117,13 @@ func GetWeaponCategory(entityHandle int32) CSWeaponCategory {
 //
 //  @return The gear slot of the weapon, or GEAR_SLOT_INVALID if the entity is invalid.
 func GetWeaponGearSlot(entityHandle int32) GearSlot {
-	var __retVal GearSlot
+	return P_GetWeaponGearSlot(entityHandle)
+}
+
+var P_GetWeaponItemDefinition = func(entityHandle int32) WeaponDefIndex {
+	var __retVal WeaponDefIndex
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = uint32(C.GetWeaponGearSlot(__entityHandle))
+	__retVal = uint16(C.GetWeaponItemDefinition(__entityHandle))
 	return __retVal
 }
 
@@ -107,19 +134,10 @@ func GetWeaponGearSlot(entityHandle int32) GearSlot {
 //
 //  @return The weapon definition index as a `uint16_t`, or 0 if the entity handle is invalid.
 func GetWeaponItemDefinition(entityHandle int32) WeaponDefIndex {
-	var __retVal WeaponDefIndex
-	__entityHandle := C.int32_t(entityHandle)
-	__retVal = uint16(C.GetWeaponItemDefinition(__entityHandle))
-	return __retVal
+	return P_GetWeaponItemDefinition(entityHandle)
 }
 
-// GetWeaponItemDefinitionByName 
-//  @brief Retrieves the item definition index associated with a given item name.
-//
-//  @param itemName: The name of the item.
-//
-//  @return The weapon definition index as a `uint16_t`, or 0 if the entity handle is invalid.
-func GetWeaponItemDefinitionByName(itemName string) WeaponDefIndex {
+var P_GetWeaponItemDefinitionByName = func(itemName string) WeaponDefIndex {
 	var __retVal WeaponDefIndex
 	__itemName := plugify.ConstructString(itemName)
 	plugify.Block {
@@ -132,5 +150,15 @@ func GetWeaponItemDefinitionByName(itemName string) WeaponDefIndex {
 		},
 	}.Do()
 	return __retVal
+}
+
+// GetWeaponItemDefinitionByName 
+//  @brief Retrieves the item definition index associated with a given item name.
+//
+//  @param itemName: The name of the item.
+//
+//  @return The weapon definition index as a `uint16_t`, or 0 if the entity handle is invalid.
+func GetWeaponItemDefinitionByName(itemName string) WeaponDefIndex {
+	return P_GetWeaponItemDefinitionByName(itemName)
 }
 

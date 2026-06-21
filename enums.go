@@ -3,7 +3,7 @@ package s2sdk
 // Generated from s2sdk
 
 // MoveType - Enum representing various movement types for entities.
-type MoveType = int32
+type MoveType int32
 
 const (
 	// None - Never moves.
@@ -31,7 +31,7 @@ const (
 )
 
 // RenderMode - Enum representing rendering modes for materials.
-type RenderMode = uint8
+type RenderMode uint8
 
 const (
 	// Normal - Standard rendering mode (src).
@@ -61,7 +61,7 @@ const (
 )
 
 // CSTeam - Enum representing the possible teams in Counter-Strike.
-type CSTeam = int32
+type CSTeam int32
 
 const (
 	// None - No team.
@@ -75,7 +75,7 @@ const (
 )
 
 // FieldType - Represents the possible types of data that can be passed as a value in input actions.
-type FieldType = int32
+type FieldType int32
 
 const (
 	// Auto - Automatically detect the type of the value.
@@ -121,7 +121,7 @@ const (
 )
 
 // DamageTypes - Enum representing various damage types.
-type DamageTypes = int32
+type DamageTypes int32
 
 const (
 	// DMG_GENERIC - Generic damage.
@@ -175,7 +175,7 @@ const (
 )
 
 // NetworkDisconnectionReason - Enum representing reasons for network disconnection.
-type NetworkDisconnectionReason = int32
+type NetworkDisconnectionReason int32
 
 const (
 	// Invalid - Invalid.
@@ -423,7 +423,7 @@ const (
 )
 
 // ConVarFlag - Enum representing various flags for ConVars and ConCommands.
-type ConVarFlag = int64
+type ConVarFlag int64
 
 const (
 	// None - The default, no flags at all.
@@ -491,7 +491,7 @@ const (
 )
 
 // ResultType - Enum representing the possible results of an operation.
-type ResultType = int32
+type ResultType int32
 
 const (
 	// Continue - The action continues to be processed without interruption.
@@ -505,7 +505,7 @@ const (
 )
 
 // ConCommandContext - The command execution context.
-type ConCommandContext = int32
+type ConCommandContext int32
 
 const (
 	// Console - The command execute from the client's console.
@@ -515,7 +515,7 @@ const (
 )
 
 // HookMode - Enum representing the type of callback.
-type HookMode = uint8
+type HookMode uint8
 
 const (
 	// Pre - Callback will be executed before the original function
@@ -524,7 +524,7 @@ const (
 	HookMode_Post HookMode = 1
 )
 
-type ConVarType = int16
+type ConVarType int16
 
 const (
 	// Invalid - Invalid type
@@ -564,7 +564,7 @@ const (
 )
 
 // CvarValueStatus - Enum representing various flags for ConVars and ConCommands.
-type CvarValueStatus = int32
+type CvarValueStatus int32
 
 const (
 	// ValueIntact - It got the value fine.
@@ -578,7 +578,7 @@ const (
 )
 
 // EventHookError - Enum representing the type of callback.
-type EventHookError = int32
+type EventHookError int32
 
 const (
 	// Okay - Indicates that the event hook was successfully created.
@@ -592,7 +592,7 @@ const (
 )
 
 // LoggingVerbosity - Enum representing the possible verbosity of a logger.
-type LoggingVerbosity = int32
+type LoggingVerbosity int32
 
 const (
 	// Off - Turns off all spew.
@@ -608,7 +608,7 @@ const (
 )
 
 // LoggingSeverity - Enum representing the possible verbosity of a logger.
-type LoggingSeverity = int32
+type LoggingSeverity int32
 
 const (
 	// Off - Turns off all spew.
@@ -626,7 +626,7 @@ const (
 )
 
 // LoggingChannelFlags - Logging channel behavior flags, set on channel creation.
-type LoggingChannelFlags = int32
+type LoggingChannelFlags int32
 
 const (
 	// ConsoleOnly - Indicates that the spew is only relevant to interactive consoles.
@@ -636,7 +636,7 @@ const (
 )
 
 // VoteCreateFailed - Enum representing the possible reasons a vote creation or processing has failed.
-type VoteCreateFailed = int32
+type VoteCreateFailed int32
 
 const (
 	// Generic - Generic vote failure.
@@ -712,7 +712,7 @@ const (
 )
 
 // VoteAction - Enum representing the possible types of a vote actions.
-type VoteAction = int32
+type VoteAction int32
 
 const (
 	// Start - Triggered when the vote begins. No additional parameters are used.
@@ -724,7 +724,7 @@ const (
 )
 
 // VoteEndReason - Enum representing the possible types of a vote.
-type VoteEndReason = int32
+type VoteEndReason int32
 
 const (
 	// AllVotes - All possible votes were cast.
@@ -736,7 +736,7 @@ const (
 )
 
 // TimerFlag - Enum representing the possible flags of a timer.
-type TimerFlag = int32
+type TimerFlag int32
 
 const (
 	// Default - Timer with no unique properties.
@@ -748,7 +748,7 @@ const (
 )
 
 // CSRoundEndReason - Enum representing the possible reasons for a round ending in Counter-Strike.
-type CSRoundEndReason = int32
+type CSRoundEndReason int32
 
 const (
 	// TargetBombed - Target successfully bombed.
@@ -798,7 +798,7 @@ const (
 )
 
 // CSWeaponType - Enum representing different weapon types.
-type CSWeaponType = uint32
+type CSWeaponType uint32
 
 const (
 	CSWeaponType_Knife CSWeaponType = 0
@@ -817,7 +817,7 @@ const (
 )
 
 // CSWeaponCategory - Enum representing different weapon categories.
-type CSWeaponCategory = uint32
+type CSWeaponCategory uint32
 
 const (
 	CSWeaponCategory_Other CSWeaponCategory = 0
@@ -830,7 +830,7 @@ const (
 )
 
 // GearSlot - Enum representing different gear slots.
-type GearSlot = uint32
+type GearSlot uint32
 
 const (
 	GearSlot_Invalid GearSlot = 4294967295
@@ -853,7 +853,7 @@ const (
 )
 
 // WeaponDefIndex - Enum representing different weapon definition indices.
-type WeaponDefIndex = uint16
+type WeaponDefIndex uint16
 
 const (
 	WeaponDefIndex_Invalid WeaponDefIndex = 0

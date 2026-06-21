@@ -133,9 +133,28 @@ var _ = errors.New("")
 var _ = reflect.TypeOf(0)
 var _ = runtime.GOOS
 var _ = unsafe.Sizeof(0)
-var _ = plugify.Plugin()
+var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: entities)
+
+var P_GetPublicAddress = func(onlyBase bool) string {
+	var __retVal string
+	var __retVal_native plugify.PlgString
+	__onlyBase := C.bool(onlyBase)
+	plugify.Block {
+		Try: func() {
+			__native := C.GetPublicAddress(__onlyBase)
+			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
+			// Unmarshal - Convert native data to managed data.
+			__retVal = plugify.GetStringData[string](&__retVal_native)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__retVal_native)
+		},
+	}.Do()
+	return __retVal
+}
 
 // GetPublicAddress 
 //  @brief Returns the public network address of the host.
@@ -144,12 +163,16 @@ var _ = plugify.Plugin()
 //
 //  @return A string representation of the public address.
 func GetPublicAddress(onlyBase bool) string {
+	return P_GetPublicAddress(onlyBase)
+}
+
+var P_GetLocalAddress = func(onlyBase bool) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__onlyBase := C.bool(onlyBase)
 	plugify.Block {
 		Try: func() {
-			__native := C.GetPublicAddress(__onlyBase)
+			__native := C.GetLocalAddress(__onlyBase)
 			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
 			__retVal = plugify.GetStringData[string](&__retVal_native)
@@ -169,21 +192,13 @@ func GetPublicAddress(onlyBase bool) string {
 //
 //  @return A string representation of the local address.
 func GetLocalAddress(onlyBase bool) string {
-	var __retVal string
-	var __retVal_native plugify.PlgString
-	__onlyBase := C.bool(onlyBase)
-	plugify.Block {
-		Try: func() {
-			__native := C.GetLocalAddress(__onlyBase)
-			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
-			// Unmarshal - Convert native data to managed data.
-			__retVal = plugify.GetStringData[string](&__retVal_native)
-		},
-		Finally: func() {
-			// Perform cleanup.
-			plugify.DestroyString(&__retVal_native)
-		},
-	}.Do()
+	return P_GetLocalAddress(onlyBase)
+}
+
+var P_EntIndexToEntPointer = func(entityIndex int32) uintptr {
+	var __retVal uintptr
+	__entityIndex := C.int32_t(entityIndex)
+	__retVal = uintptr(C.EntIndexToEntPointer(__entityIndex))
 	return __retVal
 }
 
@@ -194,9 +209,13 @@ func GetLocalAddress(onlyBase bool) string {
 //
 //  @return A pointer to the entity instance, or nullptr if the entity does not exist.
 func EntIndexToEntPointer(entityIndex int32) uintptr {
-	var __retVal uintptr
-	__entityIndex := C.int32_t(entityIndex)
-	__retVal = uintptr(C.EntIndexToEntPointer(__entityIndex))
+	return P_EntIndexToEntPointer(entityIndex)
+}
+
+var P_EntPointerToEntIndex = func(entity uintptr) int32 {
+	var __retVal int32
+	__entity := C.uintptr_t(entity)
+	__retVal = int32(C.EntPointerToEntIndex(__entity))
 	return __retVal
 }
 
@@ -207,9 +226,13 @@ func EntIndexToEntPointer(entityIndex int32) uintptr {
 //
 //  @return The index of the entity, or -1 if the entity is nullptr.
 func EntPointerToEntIndex(entity uintptr) int32 {
+	return P_EntPointerToEntIndex(entity)
+}
+
+var P_EntPointerToEntHandle = func(entity uintptr) int32 {
 	var __retVal int32
 	__entity := C.uintptr_t(entity)
-	__retVal = int32(C.EntPointerToEntIndex(__entity))
+	__retVal = int32(C.EntPointerToEntHandle(__entity))
 	return __retVal
 }
 
@@ -220,9 +243,13 @@ func EntPointerToEntIndex(entity uintptr) int32 {
 //
 //  @return The entity handle as an integer, or INVALID_EHANDLE_INDEX if the entity is nullptr.
 func EntPointerToEntHandle(entity uintptr) int32 {
-	var __retVal int32
-	__entity := C.uintptr_t(entity)
-	__retVal = int32(C.EntPointerToEntHandle(__entity))
+	return P_EntPointerToEntHandle(entity)
+}
+
+var P_EntHandleToEntPointer = func(entityHandle int32) uintptr {
+	var __retVal uintptr
+	__entityHandle := C.int32_t(entityHandle)
+	__retVal = uintptr(C.EntHandleToEntPointer(__entityHandle))
 	return __retVal
 }
 
@@ -233,9 +260,13 @@ func EntPointerToEntHandle(entity uintptr) int32 {
 //
 //  @return A pointer to the entity instance, or nullptr if the handle is invalid.
 func EntHandleToEntPointer(entityHandle int32) uintptr {
-	var __retVal uintptr
-	__entityHandle := C.int32_t(entityHandle)
-	__retVal = uintptr(C.EntHandleToEntPointer(__entityHandle))
+	return P_EntHandleToEntPointer(entityHandle)
+}
+
+var P_EntIndexToEntHandle = func(entityIndex int32) int32 {
+	var __retVal int32
+	__entityIndex := C.int32_t(entityIndex)
+	__retVal = int32(C.EntIndexToEntHandle(__entityIndex))
 	return __retVal
 }
 
@@ -246,9 +277,13 @@ func EntHandleToEntPointer(entityHandle int32) uintptr {
 //
 //  @return The entity handle as an integer, or -1 if the entity index is invalid.
 func EntIndexToEntHandle(entityIndex int32) int32 {
+	return P_EntIndexToEntHandle(entityIndex)
+}
+
+var P_EntHandleToEntIndex = func(entityHandle int32) int32 {
 	var __retVal int32
-	__entityIndex := C.int32_t(entityIndex)
-	__retVal = int32(C.EntIndexToEntHandle(__entityIndex))
+	__entityHandle := C.int32_t(entityHandle)
+	__retVal = int32(C.EntHandleToEntIndex(__entityHandle))
 	return __retVal
 }
 
@@ -259,9 +294,13 @@ func EntIndexToEntHandle(entityIndex int32) int32 {
 //
 //  @return The index of the entity, or -1 if the handle is invalid.
 func EntHandleToEntIndex(entityHandle int32) int32 {
-	var __retVal int32
+	return P_EntHandleToEntIndex(entityHandle)
+}
+
+var P_IsValidEntHandle = func(entityHandle int32) bool {
+	var __retVal bool
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = int32(C.EntHandleToEntIndex(__entityHandle))
+	__retVal = bool(C.IsValidEntHandle(__entityHandle))
 	return __retVal
 }
 
@@ -272,9 +311,13 @@ func EntHandleToEntIndex(entityHandle int32) int32 {
 //
 //  @return True if the entity handle is valid, false otherwise.
 func IsValidEntHandle(entityHandle int32) bool {
+	return P_IsValidEntHandle(entityHandle)
+}
+
+var P_IsValidEntPointer = func(entity uintptr) bool {
 	var __retVal bool
-	__entityHandle := C.int32_t(entityHandle)
-	__retVal = bool(C.IsValidEntHandle(__entityHandle))
+	__entity := C.uintptr_t(entity)
+	__retVal = bool(C.IsValidEntPointer(__entity))
 	return __retVal
 }
 
@@ -285,9 +328,11 @@ func IsValidEntHandle(entityHandle int32) bool {
 //
 //  @return True if the entity pointer is valid, false otherwise.
 func IsValidEntPointer(entity uintptr) bool {
-	var __retVal bool
-	__entity := C.uintptr_t(entity)
-	__retVal = bool(C.IsValidEntPointer(__entity))
+	return P_IsValidEntPointer(entity)
+}
+
+var P_GetFirstActiveEntity = func() int32 {
+	__retVal := int32(C.GetFirstActiveEntity())
 	return __retVal
 }
 
@@ -297,7 +342,13 @@ func IsValidEntPointer(entity uintptr) bool {
 //
 //  @return A handle to the first active entity.
 func GetFirstActiveEntity() int32 {
-	__retVal := int32(C.GetFirstActiveEntity())
+	return P_GetFirstActiveEntity()
+}
+
+var P_GetPrevActiveEntity = func(entityHandle int32) int32 {
+	var __retVal int32
+	__entityHandle := C.int32_t(entityHandle)
+	__retVal = int32(C.GetPrevActiveEntity(__entityHandle))
 	return __retVal
 }
 
@@ -307,9 +358,13 @@ func GetFirstActiveEntity() int32 {
 //
 //  @return Handle to the previous entity.
 func GetPrevActiveEntity(entityHandle int32) int32 {
+	return P_GetPrevActiveEntity(entityHandle)
+}
+
+var P_GetNextActiveEntity = func(entityHandle int32) int32 {
 	var __retVal int32
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = int32(C.GetPrevActiveEntity(__entityHandle))
+	__retVal = int32(C.GetNextActiveEntity(__entityHandle))
 	return __retVal
 }
 
@@ -319,9 +374,25 @@ func GetPrevActiveEntity(entityHandle int32) int32 {
 //
 //  @return Handle to the next entity.
 func GetNextActiveEntity(entityHandle int32) int32 {
-	var __retVal int32
-	__entityHandle := C.int32_t(entityHandle)
-	__retVal = int32(C.GetNextActiveEntity(__entityHandle))
+	return P_GetNextActiveEntity(entityHandle)
+}
+
+var P_HookEntityOutput = func(classname string, output string, callback HookEntityOutputCallback, type_ HookMode) bool {
+	var __retVal bool
+	__classname := plugify.ConstructString(classname)
+	__output := plugify.ConstructString(output)
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__type_ := C.uint8_t(type_)
+	plugify.Block {
+		Try: func() {
+			__retVal = bool(C.HookEntityOutput((*C.String)(unsafe.Pointer(&__classname)), (*C.String)(unsafe.Pointer(&__output)), __callback, __type_))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__classname)
+			plugify.DestroyString(&__output)
+		},
+	}.Do()
 	return __retVal
 }
 
@@ -335,6 +406,10 @@ func GetNextActiveEntity(entityHandle int32) int32 {
 //
 //  @return True if the hook was successfully added, false otherwise.
 func HookEntityOutput(classname string, output string, callback HookEntityOutputCallback, type_ HookMode) bool {
+	return P_HookEntityOutput(classname, output, callback, type_)
+}
+
+var P_UnhookEntityOutput = func(classname string, output string, callback HookEntityOutputCallback, type_ HookMode) bool {
 	var __retVal bool
 	__classname := plugify.ConstructString(classname)
 	__output := plugify.ConstructString(output)
@@ -342,7 +417,7 @@ func HookEntityOutput(classname string, output string, callback HookEntityOutput
 	__type_ := C.uint8_t(type_)
 	plugify.Block {
 		Try: func() {
-			__retVal = bool(C.HookEntityOutput((*C.String)(unsafe.Pointer(&__classname)), (*C.String)(unsafe.Pointer(&__output)), __callback, __type_))
+			__retVal = bool(C.UnhookEntityOutput((*C.String)(unsafe.Pointer(&__classname)), (*C.String)(unsafe.Pointer(&__output)), __callback, __type_))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -363,19 +438,20 @@ func HookEntityOutput(classname string, output string, callback HookEntityOutput
 //
 //  @return True if the hook was successfully removed, false otherwise.
 func UnhookEntityOutput(classname string, output string, callback HookEntityOutputCallback, type_ HookMode) bool {
-	var __retVal bool
+	return P_UnhookEntityOutput(classname, output, callback, type_)
+}
+
+var P_FindEntityByClassname = func(startFrom int32, classname string) int32 {
+	var __retVal int32
+	__startFrom := C.int32_t(startFrom)
 	__classname := plugify.ConstructString(classname)
-	__output := plugify.ConstructString(output)
-	__callback := plugify.GetFunctionPointerForDelegate(callback)
-	__type_ := C.uint8_t(type_)
 	plugify.Block {
 		Try: func() {
-			__retVal = bool(C.UnhookEntityOutput((*C.String)(unsafe.Pointer(&__classname)), (*C.String)(unsafe.Pointer(&__output)), __callback, __type_))
+			__retVal = int32(C.FindEntityByClassname(__startFrom, (*C.String)(unsafe.Pointer(&__classname))))
 		},
 		Finally: func() {
 			// Perform cleanup.
 			plugify.DestroyString(&__classname)
-			plugify.DestroyString(&__output)
 		},
 	}.Do()
 	return __retVal
@@ -389,12 +465,18 @@ func UnhookEntityOutput(classname string, output string, callback HookEntityOutp
 //
 //  @return The handle of the found entity, or INVALID_EHANDLE_INDEX if none found.
 func FindEntityByClassname(startFrom int32, classname string) int32 {
+	return P_FindEntityByClassname(startFrom, classname)
+}
+
+var P_FindEntityByClassnameNearest = func(startFrom int32, classname string, origin plugify.Vector3, maxRadius float32) int32 {
 	var __retVal int32
 	__startFrom := C.int32_t(startFrom)
 	__classname := plugify.ConstructString(classname)
+	__origin := *(*C.Vector3)(unsafe.Pointer(&origin))
+	__maxRadius := C.float(maxRadius)
 	plugify.Block {
 		Try: func() {
-			__retVal = int32(C.FindEntityByClassname(__startFrom, (*C.String)(unsafe.Pointer(&__classname))))
+			__retVal = int32(C.FindEntityByClassnameNearest(__startFrom, (*C.String)(unsafe.Pointer(&__classname)), &__origin, __maxRadius))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -414,14 +496,18 @@ func FindEntityByClassname(startFrom int32, classname string) int32 {
 //
 //  @return The handle of the found entity, or INVALID_EHANDLE_INDEX if none found.
 func FindEntityByClassnameNearest(startFrom int32, classname string, origin plugify.Vector3, maxRadius float32) int32 {
+	return P_FindEntityByClassnameNearest(startFrom, classname, origin, maxRadius)
+}
+
+var P_FindEntityByClassnameWithin = func(startFrom int32, classname string, origin plugify.Vector3, radius float32) int32 {
 	var __retVal int32
 	__startFrom := C.int32_t(startFrom)
 	__classname := plugify.ConstructString(classname)
 	__origin := *(*C.Vector3)(unsafe.Pointer(&origin))
-	__maxRadius := C.float(maxRadius)
+	__radius := C.float(radius)
 	plugify.Block {
 		Try: func() {
-			__retVal = int32(C.FindEntityByClassnameNearest(__startFrom, (*C.String)(unsafe.Pointer(&__classname)), &__origin, __maxRadius))
+			__retVal = int32(C.FindEntityByClassnameWithin(__startFrom, (*C.String)(unsafe.Pointer(&__classname)), &__origin, __radius))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -441,18 +527,20 @@ func FindEntityByClassnameNearest(startFrom int32, classname string, origin plug
 //
 //  @return The handle of the found entity, or INVALID_EHANDLE_INDEX if none found.
 func FindEntityByClassnameWithin(startFrom int32, classname string, origin plugify.Vector3, radius float32) int32 {
+	return P_FindEntityByClassnameWithin(startFrom, classname, origin, radius)
+}
+
+var P_FindEntityByName = func(startFrom int32, name string) int32 {
 	var __retVal int32
 	__startFrom := C.int32_t(startFrom)
-	__classname := plugify.ConstructString(classname)
-	__origin := *(*C.Vector3)(unsafe.Pointer(&origin))
-	__radius := C.float(radius)
+	__name := plugify.ConstructString(name)
 	plugify.Block {
 		Try: func() {
-			__retVal = int32(C.FindEntityByClassnameWithin(__startFrom, (*C.String)(unsafe.Pointer(&__classname)), &__origin, __radius))
+			__retVal = int32(C.FindEntityByName(__startFrom, (*C.String)(unsafe.Pointer(&__name))))
 		},
 		Finally: func() {
 			// Perform cleanup.
-			plugify.DestroyString(&__classname)
+			plugify.DestroyString(&__name)
 		},
 	}.Do()
 	return __retVal
@@ -466,12 +554,17 @@ func FindEntityByClassnameWithin(startFrom int32, classname string, origin plugi
 //
 //  @return The handle of the found entity, or INVALID_EHANDLE_INDEX if none found.
 func FindEntityByName(startFrom int32, name string) int32 {
+	return P_FindEntityByName(startFrom, name)
+}
+
+var P_FindEntityByNameNearest = func(name string, origin plugify.Vector3, maxRadius float32) int32 {
 	var __retVal int32
-	__startFrom := C.int32_t(startFrom)
 	__name := plugify.ConstructString(name)
+	__origin := *(*C.Vector3)(unsafe.Pointer(&origin))
+	__maxRadius := C.float(maxRadius)
 	plugify.Block {
 		Try: func() {
-			__retVal = int32(C.FindEntityByName(__startFrom, (*C.String)(unsafe.Pointer(&__name))))
+			__retVal = int32(C.FindEntityByNameNearest((*C.String)(unsafe.Pointer(&__name)), &__origin, __maxRadius))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -490,13 +583,18 @@ func FindEntityByName(startFrom int32, name string) int32 {
 //
 //  @return The handle of the nearest entity, or INVALID_EHANDLE_INDEX if none found.
 func FindEntityByNameNearest(name string, origin plugify.Vector3, maxRadius float32) int32 {
+	return P_FindEntityByNameNearest(name, origin, maxRadius)
+}
+
+var P_FindEntityByNameWithin = func(startFrom int32, name string, origin plugify.Vector3, radius float32) int32 {
 	var __retVal int32
+	__startFrom := C.int32_t(startFrom)
 	__name := plugify.ConstructString(name)
 	__origin := *(*C.Vector3)(unsafe.Pointer(&origin))
-	__maxRadius := C.float(maxRadius)
+	__radius := C.float(radius)
 	plugify.Block {
 		Try: func() {
-			__retVal = int32(C.FindEntityByNameNearest((*C.String)(unsafe.Pointer(&__name)), &__origin, __maxRadius))
+			__retVal = int32(C.FindEntityByNameWithin(__startFrom, (*C.String)(unsafe.Pointer(&__name)), &__origin, __radius))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -516,14 +614,16 @@ func FindEntityByNameNearest(name string, origin plugify.Vector3, maxRadius floa
 //
 //  @return The handle of the found entity, or INVALID_EHANDLE_INDEX if none found.
 func FindEntityByNameWithin(startFrom int32, name string, origin plugify.Vector3, radius float32) int32 {
+	return P_FindEntityByNameWithin(startFrom, name, origin, radius)
+}
+
+var P_FindEntityByTarget = func(startFrom int32, name string) int32 {
 	var __retVal int32
 	__startFrom := C.int32_t(startFrom)
 	__name := plugify.ConstructString(name)
-	__origin := *(*C.Vector3)(unsafe.Pointer(&origin))
-	__radius := C.float(radius)
 	plugify.Block {
 		Try: func() {
-			__retVal = int32(C.FindEntityByNameWithin(__startFrom, (*C.String)(unsafe.Pointer(&__name)), &__origin, __radius))
+			__retVal = int32(C.FindEntityByTarget(__startFrom, (*C.String)(unsafe.Pointer(&__name))))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -541,18 +641,15 @@ func FindEntityByNameWithin(startFrom int32, name string, origin plugify.Vector3
 //
 //  @return The handle of the found entity, or INVALID_EHANDLE_INDEX if none found.
 func FindEntityByTarget(startFrom int32, name string) int32 {
+	return P_FindEntityByTarget(startFrom, name)
+}
+
+var P_FindEntityInSphere = func(startFrom int32, origin plugify.Vector3, radius float32) int32 {
 	var __retVal int32
 	__startFrom := C.int32_t(startFrom)
-	__name := plugify.ConstructString(name)
-	plugify.Block {
-		Try: func() {
-			__retVal = int32(C.FindEntityByTarget(__startFrom, (*C.String)(unsafe.Pointer(&__name))))
-		},
-		Finally: func() {
-			// Perform cleanup.
-			plugify.DestroyString(&__name)
-		},
-	}.Do()
+	__origin := *(*C.Vector3)(unsafe.Pointer(&origin))
+	__radius := C.float(radius)
+	__retVal = int32(C.FindEntityInSphere(__startFrom, &__origin, __radius))
 	return __retVal
 }
 
@@ -565,11 +662,21 @@ func FindEntityByTarget(startFrom int32, name string) int32 {
 //
 //  @return The handle of the found entity, or INVALID_EHANDLE_INDEX if none found.
 func FindEntityInSphere(startFrom int32, origin plugify.Vector3, radius float32) int32 {
+	return P_FindEntityInSphere(startFrom, origin, radius)
+}
+
+var P_SpawnEntityByName = func(className string) int32 {
 	var __retVal int32
-	__startFrom := C.int32_t(startFrom)
-	__origin := *(*C.Vector3)(unsafe.Pointer(&origin))
-	__radius := C.float(radius)
-	__retVal = int32(C.FindEntityInSphere(__startFrom, &__origin, __radius))
+	__className := plugify.ConstructString(className)
+	plugify.Block {
+		Try: func() {
+			__retVal = int32(C.SpawnEntityByName((*C.String)(unsafe.Pointer(&__className))))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__className)
+		},
+	}.Do()
 	return __retVal
 }
 
@@ -580,11 +687,15 @@ func FindEntityInSphere(startFrom int32, origin plugify.Vector3, radius float32)
 //
 //  @return The handle of the created entity, or INVALID_EHANDLE_INDEX if creation failed.
 func SpawnEntityByName(className string) int32 {
+	return P_SpawnEntityByName(className)
+}
+
+var P_CreateEntityByName = func(className string) int32 {
 	var __retVal int32
 	__className := plugify.ConstructString(className)
 	plugify.Block {
 		Try: func() {
-			__retVal = int32(C.SpawnEntityByName((*C.String)(unsafe.Pointer(&__className))))
+			__retVal = int32(C.CreateEntityByName((*C.String)(unsafe.Pointer(&__className))))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -601,18 +712,12 @@ func SpawnEntityByName(className string) int32 {
 //
 //  @return The entity handle of the created entity, or INVALID_EHANDLE_INDEX if the entity could not be created.
 func CreateEntityByName(className string) int32 {
-	var __retVal int32
-	__className := plugify.ConstructString(className)
-	plugify.Block {
-		Try: func() {
-			__retVal = int32(C.CreateEntityByName((*C.String)(unsafe.Pointer(&__className))))
-		},
-		Finally: func() {
-			// Perform cleanup.
-			plugify.DestroyString(&__className)
-		},
-	}.Do()
-	return __retVal
+	return P_CreateEntityByName(className)
+}
+
+var P_DispatchSpawn = func(entityHandle int32) {
+	__entityHandle := C.int32_t(entityHandle)
+	C.DispatchSpawn(__entityHandle)
 }
 
 // DispatchSpawn 
@@ -620,17 +725,10 @@ func CreateEntityByName(className string) int32 {
 //
 //  @param entityHandle: The handle of the entity to spawn.
 func DispatchSpawn(entityHandle int32) {
-	__entityHandle := C.int32_t(entityHandle)
-	C.DispatchSpawn(__entityHandle)
+	P_DispatchSpawn(entityHandle)
 }
 
-// DispatchSpawn2 
-//  @brief Spawns an entity into the game with key-value properties.
-//
-//  @param entityHandle: The handle of the entity to spawn.
-//  @param keys: A vector of keys representing the property names to set on the entity.
-//  @param values: A vector of values corresponding to the keys, representing the property values to set on the entity.
-func DispatchSpawn2(entityHandle int32, keys []string, values []any) {
+var P_DispatchSpawn2 = func(entityHandle int32, keys []string, values []any) {
 	__entityHandle := C.int32_t(entityHandle)
 	__keys := plugify.ConstructVectorString(keys)
 	__values := plugify.ConstructVectorVariant(values)
@@ -646,13 +744,34 @@ func DispatchSpawn2(entityHandle int32, keys []string, values []any) {
 	}.Do()
 }
 
+// DispatchSpawn2 
+//  @brief Spawns an entity into the game with key-value properties.
+//
+//  @param entityHandle: The handle of the entity to spawn.
+//  @param keys: A vector of keys representing the property names to set on the entity.
+//  @param values: A vector of values corresponding to the keys, representing the property values to set on the entity.
+func DispatchSpawn2(entityHandle int32, keys []string, values []any) {
+	P_DispatchSpawn2(entityHandle, keys, values)
+}
+
+var P_RemoveEntity = func(entityHandle int32) {
+	__entityHandle := C.int32_t(entityHandle)
+	C.RemoveEntity(__entityHandle)
+}
+
 // RemoveEntity 
 //  @brief Marks an entity for deletion.
 //
 //  @param entityHandle: The handle of the entity to be deleted.
 func RemoveEntity(entityHandle int32) {
+	P_RemoveEntity(entityHandle)
+}
+
+var P_IsEntityPlayerController = func(entityHandle int32) bool {
+	var __retVal bool
 	__entityHandle := C.int32_t(entityHandle)
-	C.RemoveEntity(__entityHandle)
+	__retVal = bool(C.IsEntityPlayerController(__entityHandle))
+	return __retVal
 }
 
 // IsEntityPlayerController 
@@ -662,9 +781,13 @@ func RemoveEntity(entityHandle int32) {
 //
 //  @return True if the entity is a player controller, false otherwise.
 func IsEntityPlayerController(entityHandle int32) bool {
+	return P_IsEntityPlayerController(entityHandle)
+}
+
+var P_IsEntityPlayerPawn = func(entityHandle int32) bool {
 	var __retVal bool
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = bool(C.IsEntityPlayerController(__entityHandle))
+	__retVal = bool(C.IsEntityPlayerPawn(__entityHandle))
 	return __retVal
 }
 
@@ -675,19 +798,10 @@ func IsEntityPlayerController(entityHandle int32) bool {
 //
 //  @return True if the entity is a player pawn, false otherwise.
 func IsEntityPlayerPawn(entityHandle int32) bool {
-	var __retVal bool
-	__entityHandle := C.int32_t(entityHandle)
-	__retVal = bool(C.IsEntityPlayerPawn(__entityHandle))
-	return __retVal
+	return P_IsEntityPlayerPawn(entityHandle)
 }
 
-// GetEntityClassname 
-//  @brief Retrieves the class name of an entity.
-//
-//  @param entityHandle: The handle of the entity whose class name is to be retrieved.
-//
-//  @return A string where the class name will be stored.
-func GetEntityClassname(entityHandle int32) string {
+var P_GetEntityClassname = func(entityHandle int32) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__entityHandle := C.int32_t(entityHandle)
@@ -706,11 +820,17 @@ func GetEntityClassname(entityHandle int32) string {
 	return __retVal
 }
 
-// GetEntityName 
-//  @brief Retrieves the name of an entity.
+// GetEntityClassname 
+//  @brief Retrieves the class name of an entity.
 //
-//  @param entityHandle: The handle of the entity whose name is to be retrieved.
-func GetEntityName(entityHandle int32) string {
+//  @param entityHandle: The handle of the entity whose class name is to be retrieved.
+//
+//  @return A string where the class name will be stored.
+func GetEntityClassname(entityHandle int32) string {
+	return P_GetEntityClassname(entityHandle)
+}
+
+var P_GetEntityName = func(entityHandle int32) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__entityHandle := C.int32_t(entityHandle)
@@ -729,12 +849,15 @@ func GetEntityName(entityHandle int32) string {
 	return __retVal
 }
 
-// SetEntityName 
-//  @brief Sets the name of an entity.
+// GetEntityName 
+//  @brief Retrieves the name of an entity.
 //
-//  @param entityHandle: The handle of the entity whose name is to be set.
-//  @param name: The new name to set for the entity.
-func SetEntityName(entityHandle int32, name string) {
+//  @param entityHandle: The handle of the entity whose name is to be retrieved.
+func GetEntityName(entityHandle int32) string {
+	return P_GetEntityName(entityHandle)
+}
+
+var P_SetEntityName = func(entityHandle int32, name string) {
 	__entityHandle := C.int32_t(entityHandle)
 	__name := plugify.ConstructString(name)
 	plugify.Block {
@@ -748,6 +871,22 @@ func SetEntityName(entityHandle int32, name string) {
 	}.Do()
 }
 
+// SetEntityName 
+//  @brief Sets the name of an entity.
+//
+//  @param entityHandle: The handle of the entity whose name is to be set.
+//  @param name: The new name to set for the entity.
+func SetEntityName(entityHandle int32, name string) {
+	P_SetEntityName(entityHandle, name)
+}
+
+var P_GetEntityMoveType = func(entityHandle int32) MoveType {
+	var __retVal MoveType
+	__entityHandle := C.int32_t(entityHandle)
+	__retVal = int32(C.GetEntityMoveType(__entityHandle))
+	return __retVal
+}
+
 // GetEntityMoveType 
 //  @brief Retrieves the movement type of an entity.
 //
@@ -755,10 +894,13 @@ func SetEntityName(entityHandle int32, name string) {
 //
 //  @return The movement type of the entity, or 0 if the entity is invalid.
 func GetEntityMoveType(entityHandle int32) MoveType {
-	var __retVal MoveType
+	return P_GetEntityMoveType(entityHandle)
+}
+
+var P_SetEntityMoveType = func(entityHandle int32, moveType MoveType) {
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = int32(C.GetEntityMoveType(__entityHandle))
-	return __retVal
+	__moveType := C.int32_t(moveType)
+	C.SetEntityMoveType(__entityHandle, __moveType)
 }
 
 // SetEntityMoveType 
@@ -767,9 +909,14 @@ func GetEntityMoveType(entityHandle int32) MoveType {
 //  @param entityHandle: The handle of the entity whose movement type is to be set.
 //  @param moveType: The new movement type to set for the entity.
 func SetEntityMoveType(entityHandle int32, moveType MoveType) {
+	P_SetEntityMoveType(entityHandle, moveType)
+}
+
+var P_GetEntityGravity = func(entityHandle int32) float32 {
+	var __retVal float32
 	__entityHandle := C.int32_t(entityHandle)
-	__moveType := C.int32_t(moveType)
-	C.SetEntityMoveType(__entityHandle, __moveType)
+	__retVal = float32(C.GetEntityGravity(__entityHandle))
+	return __retVal
 }
 
 // GetEntityGravity 
@@ -779,10 +926,13 @@ func SetEntityMoveType(entityHandle int32, moveType MoveType) {
 //
 //  @return The gravity scale of the entity, or 0.0f if the entity is invalid.
 func GetEntityGravity(entityHandle int32) float32 {
-	var __retVal float32
+	return P_GetEntityGravity(entityHandle)
+}
+
+var P_SetEntityGravity = func(entityHandle int32, gravity float32) {
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = float32(C.GetEntityGravity(__entityHandle))
-	return __retVal
+	__gravity := C.float(gravity)
+	C.SetEntityGravity(__entityHandle, __gravity)
 }
 
 // SetEntityGravity 
@@ -791,9 +941,14 @@ func GetEntityGravity(entityHandle int32) float32 {
 //  @param entityHandle: The handle of the entity whose gravity scale is to be set.
 //  @param gravity: The new gravity scale to set for the entity.
 func SetEntityGravity(entityHandle int32, gravity float32) {
+	P_SetEntityGravity(entityHandle, gravity)
+}
+
+var P_GetEntityFlags = func(entityHandle int32) int32 {
+	var __retVal int32
 	__entityHandle := C.int32_t(entityHandle)
-	__gravity := C.float(gravity)
-	C.SetEntityGravity(__entityHandle, __gravity)
+	__retVal = int32(C.GetEntityFlags(__entityHandle))
+	return __retVal
 }
 
 // GetEntityFlags 
@@ -803,10 +958,13 @@ func SetEntityGravity(entityHandle int32, gravity float32) {
 //
 //  @return The flags of the entity, or 0 if the entity is invalid.
 func GetEntityFlags(entityHandle int32) int32 {
-	var __retVal int32
+	return P_GetEntityFlags(entityHandle)
+}
+
+var P_SetEntityFlags = func(entityHandle int32, flags int32) {
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = int32(C.GetEntityFlags(__entityHandle))
-	return __retVal
+	__flags := C.int32_t(flags)
+	C.SetEntityFlags(__entityHandle, __flags)
 }
 
 // SetEntityFlags 
@@ -815,9 +973,15 @@ func GetEntityFlags(entityHandle int32) int32 {
 //  @param entityHandle: The handle of the entity whose flags are to be set.
 //  @param flags: The new flags to set for the entity.
 func SetEntityFlags(entityHandle int32, flags int32) {
+	P_SetEntityFlags(entityHandle, flags)
+}
+
+var P_GetEntityRenderColor = func(entityHandle int32) plugify.Vector4 {
+	var __retVal plugify.Vector4
 	__entityHandle := C.int32_t(entityHandle)
-	__flags := C.int32_t(flags)
-	C.SetEntityFlags(__entityHandle, __flags)
+	__native := C.GetEntityRenderColor(__entityHandle)
+	__retVal = *(*plugify.Vector4)(unsafe.Pointer(&__native))
+	return __retVal
 }
 
 // GetEntityRenderColor 
@@ -827,11 +991,13 @@ func SetEntityFlags(entityHandle int32, flags int32) {
 //
 //  @return The raw color value of the entity's render color, or 0 if the entity is invalid.
 func GetEntityRenderColor(entityHandle int32) plugify.Vector4 {
-	var __retVal plugify.Vector4
+	return P_GetEntityRenderColor(entityHandle)
+}
+
+var P_SetEntityRenderColor = func(entityHandle int32, color plugify.Vector4) {
 	__entityHandle := C.int32_t(entityHandle)
-	__native := C.GetEntityRenderColor(__entityHandle)
-	__retVal = *(*plugify.Vector4)(unsafe.Pointer(&__native))
-	return __retVal
+	__color := *(*C.Vector4)(unsafe.Pointer(&color))
+	C.SetEntityRenderColor(__entityHandle, &__color)
 }
 
 // SetEntityRenderColor 
@@ -840,9 +1006,14 @@ func GetEntityRenderColor(entityHandle int32) plugify.Vector4 {
 //  @param entityHandle: The handle of the entity whose render color is to be set.
 //  @param color: The new raw color value to set for the entity's render color.
 func SetEntityRenderColor(entityHandle int32, color plugify.Vector4) {
+	P_SetEntityRenderColor(entityHandle, color)
+}
+
+var P_GetEntityRenderMode = func(entityHandle int32) RenderMode {
+	var __retVal RenderMode
 	__entityHandle := C.int32_t(entityHandle)
-	__color := *(*C.Vector4)(unsafe.Pointer(&color))
-	C.SetEntityRenderColor(__entityHandle, &__color)
+	__retVal = uint8(C.GetEntityRenderMode(__entityHandle))
+	return __retVal
 }
 
 // GetEntityRenderMode 
@@ -852,10 +1023,13 @@ func SetEntityRenderColor(entityHandle int32, color plugify.Vector4) {
 //
 //  @return The render mode of the entity, or 0 if the entity is invalid.
 func GetEntityRenderMode(entityHandle int32) RenderMode {
-	var __retVal RenderMode
+	return P_GetEntityRenderMode(entityHandle)
+}
+
+var P_SetEntityRenderMode = func(entityHandle int32, renderMode RenderMode) {
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = uint8(C.GetEntityRenderMode(__entityHandle))
-	return __retVal
+	__renderMode := C.uint8_t(renderMode)
+	C.SetEntityRenderMode(__entityHandle, __renderMode)
 }
 
 // SetEntityRenderMode 
@@ -864,9 +1038,14 @@ func GetEntityRenderMode(entityHandle int32) RenderMode {
 //  @param entityHandle: The handle of the entity whose render mode is to be set.
 //  @param renderMode: The new render mode to set for the entity.
 func SetEntityRenderMode(entityHandle int32, renderMode RenderMode) {
+	P_SetEntityRenderMode(entityHandle, renderMode)
+}
+
+var P_GetEntityMass = func(entityHandle int32) int32 {
+	var __retVal int32
 	__entityHandle := C.int32_t(entityHandle)
-	__renderMode := C.uint8_t(renderMode)
-	C.SetEntityRenderMode(__entityHandle, __renderMode)
+	__retVal = int32(C.GetEntityMass(__entityHandle))
+	return __retVal
 }
 
 // GetEntityMass 
@@ -876,10 +1055,13 @@ func SetEntityRenderMode(entityHandle int32, renderMode RenderMode) {
 //
 //  @return The mass of the entity, or 0 if the entity is invalid.
 func GetEntityMass(entityHandle int32) int32 {
-	var __retVal int32
+	return P_GetEntityMass(entityHandle)
+}
+
+var P_SetEntityMass = func(entityHandle int32, mass int32) {
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = int32(C.GetEntityMass(__entityHandle))
-	return __retVal
+	__mass := C.int32_t(mass)
+	C.SetEntityMass(__entityHandle, __mass)
 }
 
 // SetEntityMass 
@@ -888,9 +1070,14 @@ func GetEntityMass(entityHandle int32) int32 {
 //  @param entityHandle: The handle of the entity whose mass is to be set.
 //  @param mass: The new mass value to set for the entity.
 func SetEntityMass(entityHandle int32, mass int32) {
+	P_SetEntityMass(entityHandle, mass)
+}
+
+var P_GetEntityFriction = func(entityHandle int32) float32 {
+	var __retVal float32
 	__entityHandle := C.int32_t(entityHandle)
-	__mass := C.int32_t(mass)
-	C.SetEntityMass(__entityHandle, __mass)
+	__retVal = float32(C.GetEntityFriction(__entityHandle))
+	return __retVal
 }
 
 // GetEntityFriction 
@@ -900,10 +1087,13 @@ func SetEntityMass(entityHandle int32, mass int32) {
 //
 //  @return The friction of the entity, or 0 if the entity is invalid.
 func GetEntityFriction(entityHandle int32) float32 {
-	var __retVal float32
+	return P_GetEntityFriction(entityHandle)
+}
+
+var P_SetEntityFriction = func(entityHandle int32, friction float32) {
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = float32(C.GetEntityFriction(__entityHandle))
-	return __retVal
+	__friction := C.float(friction)
+	C.SetEntityFriction(__entityHandle, __friction)
 }
 
 // SetEntityFriction 
@@ -912,9 +1102,14 @@ func GetEntityFriction(entityHandle int32) float32 {
 //  @param entityHandle: The handle of the entity whose friction is to be set.
 //  @param friction: The new friction value to set for the entity.
 func SetEntityFriction(entityHandle int32, friction float32) {
+	P_SetEntityFriction(entityHandle, friction)
+}
+
+var P_GetEntityHealth = func(entityHandle int32) int32 {
+	var __retVal int32
 	__entityHandle := C.int32_t(entityHandle)
-	__friction := C.float(friction)
-	C.SetEntityFriction(__entityHandle, __friction)
+	__retVal = int32(C.GetEntityHealth(__entityHandle))
+	return __retVal
 }
 
 // GetEntityHealth 
@@ -924,10 +1119,13 @@ func SetEntityFriction(entityHandle int32, friction float32) {
 //
 //  @return The health of the entity, or 0 if the entity is invalid.
 func GetEntityHealth(entityHandle int32) int32 {
-	var __retVal int32
+	return P_GetEntityHealth(entityHandle)
+}
+
+var P_SetEntityHealth = func(entityHandle int32, health int32) {
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = int32(C.GetEntityHealth(__entityHandle))
-	return __retVal
+	__health := C.int32_t(health)
+	C.SetEntityHealth(__entityHandle, __health)
 }
 
 // SetEntityHealth 
@@ -936,9 +1134,14 @@ func GetEntityHealth(entityHandle int32) int32 {
 //  @param entityHandle: The handle of the entity whose health is to be set.
 //  @param health: The new health value to set for the entity.
 func SetEntityHealth(entityHandle int32, health int32) {
+	P_SetEntityHealth(entityHandle, health)
+}
+
+var P_GetEntityMaxHealth = func(entityHandle int32) int32 {
+	var __retVal int32
 	__entityHandle := C.int32_t(entityHandle)
-	__health := C.int32_t(health)
-	C.SetEntityHealth(__entityHandle, __health)
+	__retVal = int32(C.GetEntityMaxHealth(__entityHandle))
+	return __retVal
 }
 
 // GetEntityMaxHealth 
@@ -948,10 +1151,13 @@ func SetEntityHealth(entityHandle int32, health int32) {
 //
 //  @return The max health of the entity, or 0 if the entity is invalid.
 func GetEntityMaxHealth(entityHandle int32) int32 {
-	var __retVal int32
+	return P_GetEntityMaxHealth(entityHandle)
+}
+
+var P_SetEntityMaxHealth = func(entityHandle int32, maxHealth int32) {
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = int32(C.GetEntityMaxHealth(__entityHandle))
-	return __retVal
+	__maxHealth := C.int32_t(maxHealth)
+	C.SetEntityMaxHealth(__entityHandle, __maxHealth)
 }
 
 // SetEntityMaxHealth 
@@ -960,9 +1166,14 @@ func GetEntityMaxHealth(entityHandle int32) int32 {
 //  @param entityHandle: The handle of the entity whose max health is to be set.
 //  @param maxHealth: The new max health value to set for the entity.
 func SetEntityMaxHealth(entityHandle int32, maxHealth int32) {
+	P_SetEntityMaxHealth(entityHandle, maxHealth)
+}
+
+var P_GetEntityTeam = func(entityHandle int32) CSTeam {
+	var __retVal CSTeam
 	__entityHandle := C.int32_t(entityHandle)
-	__maxHealth := C.int32_t(maxHealth)
-	C.SetEntityMaxHealth(__entityHandle, __maxHealth)
+	__retVal = int32(C.GetEntityTeam(__entityHandle))
+	return __retVal
 }
 
 // GetEntityTeam 
@@ -972,10 +1183,13 @@ func SetEntityMaxHealth(entityHandle int32, maxHealth int32) {
 //
 //  @return The team number of the entity, or 0 if the entity is invalid.
 func GetEntityTeam(entityHandle int32) CSTeam {
-	var __retVal CSTeam
+	return P_GetEntityTeam(entityHandle)
+}
+
+var P_SetEntityTeam = func(entityHandle int32, team CSTeam) {
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = int32(C.GetEntityTeam(__entityHandle))
-	return __retVal
+	__team := C.int32_t(team)
+	C.SetEntityTeam(__entityHandle, __team)
 }
 
 // SetEntityTeam 
@@ -984,9 +1198,14 @@ func GetEntityTeam(entityHandle int32) CSTeam {
 //  @param entityHandle: The handle of the entity whose team number is to be set.
 //  @param team: The new team number to set for the entity.
 func SetEntityTeam(entityHandle int32, team CSTeam) {
+	P_SetEntityTeam(entityHandle, team)
+}
+
+var P_GetEntityOwner = func(entityHandle int32) int32 {
+	var __retVal int32
 	__entityHandle := C.int32_t(entityHandle)
-	__team := C.int32_t(team)
-	C.SetEntityTeam(__entityHandle, __team)
+	__retVal = int32(C.GetEntityOwner(__entityHandle))
+	return __retVal
 }
 
 // GetEntityOwner 
@@ -996,10 +1215,13 @@ func SetEntityTeam(entityHandle int32, team CSTeam) {
 //
 //  @return The handle of the owner entity, or INVALID_EHANDLE_INDEX if the entity is invalid.
 func GetEntityOwner(entityHandle int32) int32 {
-	var __retVal int32
+	return P_GetEntityOwner(entityHandle)
+}
+
+var P_SetEntityOwner = func(entityHandle int32, ownerHandle int32) {
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = int32(C.GetEntityOwner(__entityHandle))
-	return __retVal
+	__ownerHandle := C.int32_t(ownerHandle)
+	C.SetEntityOwner(__entityHandle, __ownerHandle)
 }
 
 // SetEntityOwner 
@@ -1008,9 +1230,14 @@ func GetEntityOwner(entityHandle int32) int32 {
 //  @param entityHandle: The handle of the entity whose owner is to be set.
 //  @param ownerHandle: The handle of the new owner entity.
 func SetEntityOwner(entityHandle int32, ownerHandle int32) {
+	P_SetEntityOwner(entityHandle, ownerHandle)
+}
+
+var P_GetEntityParent = func(entityHandle int32) int32 {
+	var __retVal int32
 	__entityHandle := C.int32_t(entityHandle)
-	__ownerHandle := C.int32_t(ownerHandle)
-	C.SetEntityOwner(__entityHandle, __ownerHandle)
+	__retVal = int32(C.GetEntityParent(__entityHandle))
+	return __retVal
 }
 
 // GetEntityParent 
@@ -1020,10 +1247,13 @@ func SetEntityOwner(entityHandle int32, ownerHandle int32) {
 //
 //  @return The handle of the parent entity, or INVALID_EHANDLE_INDEX if the entity is invalid.
 func GetEntityParent(entityHandle int32) int32 {
-	var __retVal int32
+	return P_GetEntityParent(entityHandle)
+}
+
+var P_SetEntityParent = func(entityHandle int32, parentHandle int32) {
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = int32(C.GetEntityParent(__entityHandle))
-	return __retVal
+	__parentHandle := C.int32_t(parentHandle)
+	C.SetEntityParent(__entityHandle, __parentHandle)
 }
 
 // SetEntityParent 
@@ -1032,18 +1262,10 @@ func GetEntityParent(entityHandle int32) int32 {
 //  @param entityHandle: The handle of the entity whose parent is to be set.
 //  @param parentHandle: The handle of the new parent entity. (Can be invalid to clean parent)
 func SetEntityParent(entityHandle int32, parentHandle int32) {
-	__entityHandle := C.int32_t(entityHandle)
-	__parentHandle := C.int32_t(parentHandle)
-	C.SetEntityParent(__entityHandle, __parentHandle)
+	P_SetEntityParent(entityHandle, parentHandle)
 }
 
-// SetEntityParentAttachment 
-//  @brief Sets the parent of an entity to attachment by name.
-//
-//  @param entityHandle: The handle of the entity whose parent is to be set.
-//  @param parentHandle: The handle of the new parent entity.
-//  @param attachmentName: The name of the entity's attachment.
-func SetEntityParentAttachment(entityHandle int32, parentHandle int32, attachmentName string) {
+var P_SetEntityParentAttachment = func(entityHandle int32, parentHandle int32, attachmentName string) {
 	__entityHandle := C.int32_t(entityHandle)
 	__parentHandle := C.int32_t(parentHandle)
 	__attachmentName := plugify.ConstructString(attachmentName)
@@ -1058,6 +1280,24 @@ func SetEntityParentAttachment(entityHandle int32, parentHandle int32, attachmen
 	}.Do()
 }
 
+// SetEntityParentAttachment 
+//  @brief Sets the parent of an entity to attachment by name.
+//
+//  @param entityHandle: The handle of the entity whose parent is to be set.
+//  @param parentHandle: The handle of the new parent entity.
+//  @param attachmentName: The name of the entity's attachment.
+func SetEntityParentAttachment(entityHandle int32, parentHandle int32, attachmentName string) {
+	P_SetEntityParentAttachment(entityHandle, parentHandle, attachmentName)
+}
+
+var P_GetEntityAbsOrigin = func(entityHandle int32) plugify.Vector3 {
+	var __retVal plugify.Vector3
+	__entityHandle := C.int32_t(entityHandle)
+	__native := C.GetEntityAbsOrigin(__entityHandle)
+	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
+	return __retVal
+}
+
 // GetEntityAbsOrigin 
 //  @brief Retrieves the absolute origin of an entity.
 //
@@ -1065,11 +1305,13 @@ func SetEntityParentAttachment(entityHandle int32, parentHandle int32, attachmen
 //
 //  @return A vector where the absolute origin will be stored.
 func GetEntityAbsOrigin(entityHandle int32) plugify.Vector3 {
-	var __retVal plugify.Vector3
+	return P_GetEntityAbsOrigin(entityHandle)
+}
+
+var P_SetEntityAbsOrigin = func(entityHandle int32, origin plugify.Vector3) {
 	__entityHandle := C.int32_t(entityHandle)
-	__native := C.GetEntityAbsOrigin(__entityHandle)
-	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
-	return __retVal
+	__origin := *(*C.Vector3)(unsafe.Pointer(&origin))
+	C.SetEntityAbsOrigin(__entityHandle, &__origin)
 }
 
 // SetEntityAbsOrigin 
@@ -1078,9 +1320,14 @@ func GetEntityAbsOrigin(entityHandle int32) plugify.Vector3 {
 //  @param entityHandle: The handle of the entity whose absolute origin is to be set.
 //  @param origin: The new absolute origin to set for the entity.
 func SetEntityAbsOrigin(entityHandle int32, origin plugify.Vector3) {
+	P_SetEntityAbsOrigin(entityHandle, origin)
+}
+
+var P_GetEntityAbsScale = func(entityHandle int32) float32 {
+	var __retVal float32
 	__entityHandle := C.int32_t(entityHandle)
-	__origin := *(*C.Vector3)(unsafe.Pointer(&origin))
-	C.SetEntityAbsOrigin(__entityHandle, &__origin)
+	__retVal = float32(C.GetEntityAbsScale(__entityHandle))
+	return __retVal
 }
 
 // GetEntityAbsScale 
@@ -1090,10 +1337,13 @@ func SetEntityAbsOrigin(entityHandle int32, origin plugify.Vector3) {
 //
 //  @return A vector where the absolute scale will be stored.
 func GetEntityAbsScale(entityHandle int32) float32 {
-	var __retVal float32
+	return P_GetEntityAbsScale(entityHandle)
+}
+
+var P_SetEntityAbsScale = func(entityHandle int32, scale float32) {
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = float32(C.GetEntityAbsScale(__entityHandle))
-	return __retVal
+	__scale := C.float(scale)
+	C.SetEntityAbsScale(__entityHandle, __scale)
 }
 
 // SetEntityAbsScale 
@@ -1102,9 +1352,15 @@ func GetEntityAbsScale(entityHandle int32) float32 {
 //  @param entityHandle: The handle of the entity whose absolute scale is to be set.
 //  @param scale: The new absolute scale to set for the entity.
 func SetEntityAbsScale(entityHandle int32, scale float32) {
+	P_SetEntityAbsScale(entityHandle, scale)
+}
+
+var P_GetEntityAbsAngles = func(entityHandle int32) plugify.Vector3 {
+	var __retVal plugify.Vector3
 	__entityHandle := C.int32_t(entityHandle)
-	__scale := C.float(scale)
-	C.SetEntityAbsScale(__entityHandle, __scale)
+	__native := C.GetEntityAbsAngles(__entityHandle)
+	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
+	return __retVal
 }
 
 // GetEntityAbsAngles 
@@ -1114,11 +1370,13 @@ func SetEntityAbsScale(entityHandle int32, scale float32) {
 //
 //  @return A QAngle where the angular rotation will be stored.
 func GetEntityAbsAngles(entityHandle int32) plugify.Vector3 {
-	var __retVal plugify.Vector3
+	return P_GetEntityAbsAngles(entityHandle)
+}
+
+var P_SetEntityAbsAngles = func(entityHandle int32, angle plugify.Vector3) {
 	__entityHandle := C.int32_t(entityHandle)
-	__native := C.GetEntityAbsAngles(__entityHandle)
-	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
-	return __retVal
+	__angle := *(*C.Vector3)(unsafe.Pointer(&angle))
+	C.SetEntityAbsAngles(__entityHandle, &__angle)
 }
 
 // SetEntityAbsAngles 
@@ -1127,9 +1385,15 @@ func GetEntityAbsAngles(entityHandle int32) plugify.Vector3 {
 //  @param entityHandle: The handle of the entity whose angular rotation is to be set.
 //  @param angle: The new angular rotation to set for the entity.
 func SetEntityAbsAngles(entityHandle int32, angle plugify.Vector3) {
+	P_SetEntityAbsAngles(entityHandle, angle)
+}
+
+var P_GetEntityLocalOrigin = func(entityHandle int32) plugify.Vector3 {
+	var __retVal plugify.Vector3
 	__entityHandle := C.int32_t(entityHandle)
-	__angle := *(*C.Vector3)(unsafe.Pointer(&angle))
-	C.SetEntityAbsAngles(__entityHandle, &__angle)
+	__native := C.GetEntityLocalOrigin(__entityHandle)
+	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
+	return __retVal
 }
 
 // GetEntityLocalOrigin 
@@ -1139,11 +1403,13 @@ func SetEntityAbsAngles(entityHandle int32, angle plugify.Vector3) {
 //
 //  @return A vector where the local origin will be stored.
 func GetEntityLocalOrigin(entityHandle int32) plugify.Vector3 {
-	var __retVal plugify.Vector3
+	return P_GetEntityLocalOrigin(entityHandle)
+}
+
+var P_SetEntityLocalOrigin = func(entityHandle int32, origin plugify.Vector3) {
 	__entityHandle := C.int32_t(entityHandle)
-	__native := C.GetEntityLocalOrigin(__entityHandle)
-	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
-	return __retVal
+	__origin := *(*C.Vector3)(unsafe.Pointer(&origin))
+	C.SetEntityLocalOrigin(__entityHandle, &__origin)
 }
 
 // SetEntityLocalOrigin 
@@ -1152,9 +1418,14 @@ func GetEntityLocalOrigin(entityHandle int32) plugify.Vector3 {
 //  @param entityHandle: The handle of the entity whose local origin is to be set.
 //  @param origin: The new local origin to set for the entity.
 func SetEntityLocalOrigin(entityHandle int32, origin plugify.Vector3) {
+	P_SetEntityLocalOrigin(entityHandle, origin)
+}
+
+var P_GetEntityLocalScale = func(entityHandle int32) float32 {
+	var __retVal float32
 	__entityHandle := C.int32_t(entityHandle)
-	__origin := *(*C.Vector3)(unsafe.Pointer(&origin))
-	C.SetEntityLocalOrigin(__entityHandle, &__origin)
+	__retVal = float32(C.GetEntityLocalScale(__entityHandle))
+	return __retVal
 }
 
 // GetEntityLocalScale 
@@ -1164,10 +1435,13 @@ func SetEntityLocalOrigin(entityHandle int32, origin plugify.Vector3) {
 //
 //  @return A vector where the local scale will be stored.
 func GetEntityLocalScale(entityHandle int32) float32 {
-	var __retVal float32
+	return P_GetEntityLocalScale(entityHandle)
+}
+
+var P_SetEntityLocalScale = func(entityHandle int32, scale float32) {
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = float32(C.GetEntityLocalScale(__entityHandle))
-	return __retVal
+	__scale := C.float(scale)
+	C.SetEntityLocalScale(__entityHandle, __scale)
 }
 
 // SetEntityLocalScale 
@@ -1176,9 +1450,15 @@ func GetEntityLocalScale(entityHandle int32) float32 {
 //  @param entityHandle: The handle of the entity whose local scale is to be set.
 //  @param scale: The new local scale to set for the entity.
 func SetEntityLocalScale(entityHandle int32, scale float32) {
+	P_SetEntityLocalScale(entityHandle, scale)
+}
+
+var P_GetEntityLocalAngles = func(entityHandle int32) plugify.Vector3 {
+	var __retVal plugify.Vector3
 	__entityHandle := C.int32_t(entityHandle)
-	__scale := C.float(scale)
-	C.SetEntityLocalScale(__entityHandle, __scale)
+	__native := C.GetEntityLocalAngles(__entityHandle)
+	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
+	return __retVal
 }
 
 // GetEntityLocalAngles 
@@ -1188,11 +1468,13 @@ func SetEntityLocalScale(entityHandle int32, scale float32) {
 //
 //  @return A QAngle where the angular rotation will be stored.
 func GetEntityLocalAngles(entityHandle int32) plugify.Vector3 {
-	var __retVal plugify.Vector3
+	return P_GetEntityLocalAngles(entityHandle)
+}
+
+var P_SetEntityLocalAngles = func(entityHandle int32, angle plugify.Vector3) {
 	__entityHandle := C.int32_t(entityHandle)
-	__native := C.GetEntityLocalAngles(__entityHandle)
-	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
-	return __retVal
+	__angle := *(*C.Vector3)(unsafe.Pointer(&angle))
+	C.SetEntityLocalAngles(__entityHandle, &__angle)
 }
 
 // SetEntityLocalAngles 
@@ -1201,9 +1483,15 @@ func GetEntityLocalAngles(entityHandle int32) plugify.Vector3 {
 //  @param entityHandle: The handle of the entity whose angular rotation is to be set.
 //  @param angle: The new angular rotation to set for the entity.
 func SetEntityLocalAngles(entityHandle int32, angle plugify.Vector3) {
+	P_SetEntityLocalAngles(entityHandle, angle)
+}
+
+var P_GetEntityAbsVelocity = func(entityHandle int32) plugify.Vector3 {
+	var __retVal plugify.Vector3
 	__entityHandle := C.int32_t(entityHandle)
-	__angle := *(*C.Vector3)(unsafe.Pointer(&angle))
-	C.SetEntityLocalAngles(__entityHandle, &__angle)
+	__native := C.GetEntityAbsVelocity(__entityHandle)
+	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
+	return __retVal
 }
 
 // GetEntityAbsVelocity 
@@ -1213,11 +1501,13 @@ func SetEntityLocalAngles(entityHandle int32, angle plugify.Vector3) {
 //
 //  @return A vector where the absolute velocity will be stored.
 func GetEntityAbsVelocity(entityHandle int32) plugify.Vector3 {
-	var __retVal plugify.Vector3
+	return P_GetEntityAbsVelocity(entityHandle)
+}
+
+var P_SetEntityAbsVelocity = func(entityHandle int32, velocity plugify.Vector3) {
 	__entityHandle := C.int32_t(entityHandle)
-	__native := C.GetEntityAbsVelocity(__entityHandle)
-	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
-	return __retVal
+	__velocity := *(*C.Vector3)(unsafe.Pointer(&velocity))
+	C.SetEntityAbsVelocity(__entityHandle, &__velocity)
 }
 
 // SetEntityAbsVelocity 
@@ -1226,9 +1516,15 @@ func GetEntityAbsVelocity(entityHandle int32) plugify.Vector3 {
 //  @param entityHandle: The handle of the entity whose absolute velocity is to be set.
 //  @param velocity: The new absolute velocity to set for the entity.
 func SetEntityAbsVelocity(entityHandle int32, velocity plugify.Vector3) {
+	P_SetEntityAbsVelocity(entityHandle, velocity)
+}
+
+var P_GetEntityBaseVelocity = func(entityHandle int32) plugify.Vector3 {
+	var __retVal plugify.Vector3
 	__entityHandle := C.int32_t(entityHandle)
-	__velocity := *(*C.Vector3)(unsafe.Pointer(&velocity))
-	C.SetEntityAbsVelocity(__entityHandle, &__velocity)
+	__native := C.GetEntityBaseVelocity(__entityHandle)
+	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
+	return __retVal
 }
 
 // GetEntityBaseVelocity 
@@ -1238,9 +1534,13 @@ func SetEntityAbsVelocity(entityHandle int32, velocity plugify.Vector3) {
 //
 //  @return A vector where the base velocity will be stored.
 func GetEntityBaseVelocity(entityHandle int32) plugify.Vector3 {
+	return P_GetEntityBaseVelocity(entityHandle)
+}
+
+var P_GetEntityLocalAngVelocity = func(entityHandle int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__entityHandle := C.int32_t(entityHandle)
-	__native := C.GetEntityBaseVelocity(__entityHandle)
+	__native := C.GetEntityLocalAngVelocity(__entityHandle)
 	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
 	return __retVal
 }
@@ -1252,9 +1552,13 @@ func GetEntityBaseVelocity(entityHandle int32) plugify.Vector3 {
 //
 //  @return A vector where the local angular velocity will be stored.
 func GetEntityLocalAngVelocity(entityHandle int32) plugify.Vector3 {
+	return P_GetEntityLocalAngVelocity(entityHandle)
+}
+
+var P_GetEntityAngVelocity = func(entityHandle int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__entityHandle := C.int32_t(entityHandle)
-	__native := C.GetEntityLocalAngVelocity(__entityHandle)
+	__native := C.GetEntityAngVelocity(__entityHandle)
 	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
 	return __retVal
 }
@@ -1266,11 +1570,13 @@ func GetEntityLocalAngVelocity(entityHandle int32) plugify.Vector3 {
 //
 //  @return A vector where the angular velocity will be stored.
 func GetEntityAngVelocity(entityHandle int32) plugify.Vector3 {
-	var __retVal plugify.Vector3
+	return P_GetEntityAngVelocity(entityHandle)
+}
+
+var P_SetEntityAngVelocity = func(entityHandle int32, velocity plugify.Vector3) {
 	__entityHandle := C.int32_t(entityHandle)
-	__native := C.GetEntityAngVelocity(__entityHandle)
-	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
-	return __retVal
+	__velocity := *(*C.Vector3)(unsafe.Pointer(&velocity))
+	C.SetEntityAngVelocity(__entityHandle, &__velocity)
 }
 
 // SetEntityAngVelocity 
@@ -1279,9 +1585,15 @@ func GetEntityAngVelocity(entityHandle int32) plugify.Vector3 {
 //  @param entityHandle: The handle of the entity whose angular velocity is to be set.
 //  @param velocity: The new angular velocity to set for the entity.
 func SetEntityAngVelocity(entityHandle int32, velocity plugify.Vector3) {
+	P_SetEntityAngVelocity(entityHandle, velocity)
+}
+
+var P_GetEntityLocalVelocity = func(entityHandle int32) plugify.Vector3 {
+	var __retVal plugify.Vector3
 	__entityHandle := C.int32_t(entityHandle)
-	__velocity := *(*C.Vector3)(unsafe.Pointer(&velocity))
-	C.SetEntityAngVelocity(__entityHandle, &__velocity)
+	__native := C.GetEntityLocalVelocity(__entityHandle)
+	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
+	return __retVal
 }
 
 // GetEntityLocalVelocity 
@@ -1291,9 +1603,13 @@ func SetEntityAngVelocity(entityHandle int32, velocity plugify.Vector3) {
 //
 //  @return A vector where the local velocity will be stored.
 func GetEntityLocalVelocity(entityHandle int32) plugify.Vector3 {
+	return P_GetEntityLocalVelocity(entityHandle)
+}
+
+var P_GetEntityAngRotation = func(entityHandle int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__entityHandle := C.int32_t(entityHandle)
-	__native := C.GetEntityLocalVelocity(__entityHandle)
+	__native := C.GetEntityAngRotation(__entityHandle)
 	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
 	return __retVal
 }
@@ -1305,11 +1621,13 @@ func GetEntityLocalVelocity(entityHandle int32) plugify.Vector3 {
 //
 //  @return A vector where the angular rotation will be stored.
 func GetEntityAngRotation(entityHandle int32) plugify.Vector3 {
-	var __retVal plugify.Vector3
+	return P_GetEntityAngRotation(entityHandle)
+}
+
+var P_SetEntityAngRotation = func(entityHandle int32, rotation plugify.Vector3) {
 	__entityHandle := C.int32_t(entityHandle)
-	__native := C.GetEntityAngRotation(__entityHandle)
-	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
-	return __retVal
+	__rotation := *(*C.Vector3)(unsafe.Pointer(&rotation))
+	C.SetEntityAngRotation(__entityHandle, &__rotation)
 }
 
 // SetEntityAngRotation 
@@ -1318,9 +1636,16 @@ func GetEntityAngRotation(entityHandle int32) plugify.Vector3 {
 //  @param entityHandle: The handle of the entity whose angular rotation is to be set.
 //  @param rotation: The new angular rotation to set for the entity.
 func SetEntityAngRotation(entityHandle int32, rotation plugify.Vector3) {
+	P_SetEntityAngRotation(entityHandle, rotation)
+}
+
+var P_TransformPointEntityToWorld = func(entityHandle int32, point plugify.Vector3) plugify.Vector3 {
+	var __retVal plugify.Vector3
 	__entityHandle := C.int32_t(entityHandle)
-	__rotation := *(*C.Vector3)(unsafe.Pointer(&rotation))
-	C.SetEntityAngRotation(__entityHandle, &__rotation)
+	__point := *(*C.Vector3)(unsafe.Pointer(&point))
+	__native := C.TransformPointEntityToWorld(__entityHandle, &__point)
+	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
+	return __retVal
 }
 
 // TransformPointEntityToWorld 
@@ -1331,10 +1656,14 @@ func SetEntityAngRotation(entityHandle int32, rotation plugify.Vector3) {
 //
 //  @return The point transformed to world space coordinates
 func TransformPointEntityToWorld(entityHandle int32, point plugify.Vector3) plugify.Vector3 {
+	return P_TransformPointEntityToWorld(entityHandle, point)
+}
+
+var P_TransformPointWorldToEntity = func(entityHandle int32, point plugify.Vector3) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__entityHandle := C.int32_t(entityHandle)
 	__point := *(*C.Vector3)(unsafe.Pointer(&point))
-	__native := C.TransformPointEntityToWorld(__entityHandle, &__point)
+	__native := C.TransformPointWorldToEntity(__entityHandle, &__point)
 	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
 	return __retVal
 }
@@ -1347,10 +1676,13 @@ func TransformPointEntityToWorld(entityHandle int32, point plugify.Vector3) plug
 //
 //  @return The point transformed to entity local space coordinates
 func TransformPointWorldToEntity(entityHandle int32, point plugify.Vector3) plugify.Vector3 {
+	return P_TransformPointWorldToEntity(entityHandle, point)
+}
+
+var P_GetEntityEyePosition = func(entityHandle int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__entityHandle := C.int32_t(entityHandle)
-	__point := *(*C.Vector3)(unsafe.Pointer(&point))
-	__native := C.TransformPointWorldToEntity(__entityHandle, &__point)
+	__native := C.GetEntityEyePosition(__entityHandle)
 	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
 	return __retVal
 }
@@ -1362,9 +1694,13 @@ func TransformPointWorldToEntity(entityHandle int32, point plugify.Vector3) plug
 //
 //  @return Eye position in absolute/world coordinates
 func GetEntityEyePosition(entityHandle int32) plugify.Vector3 {
+	return P_GetEntityEyePosition(entityHandle)
+}
+
+var P_GetEntityEyeAngles = func(entityHandle int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__entityHandle := C.int32_t(entityHandle)
-	__native := C.GetEntityEyePosition(__entityHandle)
+	__native := C.GetEntityEyeAngles(__entityHandle)
 	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
 	return __retVal
 }
@@ -1376,11 +1712,13 @@ func GetEntityEyePosition(entityHandle int32) plugify.Vector3 {
 //
 //  @return Eye angles as a vector (pitch, yaw, roll)
 func GetEntityEyeAngles(entityHandle int32) plugify.Vector3 {
-	var __retVal plugify.Vector3
+	return P_GetEntityEyeAngles(entityHandle)
+}
+
+var P_SetEntityForwardVector = func(entityHandle int32, forward plugify.Vector3) {
 	__entityHandle := C.int32_t(entityHandle)
-	__native := C.GetEntityEyeAngles(__entityHandle)
-	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
-	return __retVal
+	__forward := *(*C.Vector3)(unsafe.Pointer(&forward))
+	C.SetEntityForwardVector(__entityHandle, &__forward)
 }
 
 // SetEntityForwardVector 
@@ -1388,9 +1726,15 @@ func GetEntityEyeAngles(entityHandle int32) plugify.Vector3 {
 //
 //  @param entityHandle: The handle of the entity whose forward velocity is to be set.
 func SetEntityForwardVector(entityHandle int32, forward plugify.Vector3) {
+	P_SetEntityForwardVector(entityHandle, forward)
+}
+
+var P_GetEntityForwardVector = func(entityHandle int32) plugify.Vector3 {
+	var __retVal plugify.Vector3
 	__entityHandle := C.int32_t(entityHandle)
-	__forward := *(*C.Vector3)(unsafe.Pointer(&forward))
-	C.SetEntityForwardVector(__entityHandle, &__forward)
+	__native := C.GetEntityForwardVector(__entityHandle)
+	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
+	return __retVal
 }
 
 // GetEntityForwardVector 
@@ -1400,9 +1744,13 @@ func SetEntityForwardVector(entityHandle int32, forward plugify.Vector3) {
 //
 //  @return Forward-facing direction vector of the entity
 func GetEntityForwardVector(entityHandle int32) plugify.Vector3 {
+	return P_GetEntityForwardVector(entityHandle)
+}
+
+var P_GetEntityLeftVector = func(entityHandle int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__entityHandle := C.int32_t(entityHandle)
-	__native := C.GetEntityForwardVector(__entityHandle)
+	__native := C.GetEntityLeftVector(__entityHandle)
 	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
 	return __retVal
 }
@@ -1414,9 +1762,13 @@ func GetEntityForwardVector(entityHandle int32) plugify.Vector3 {
 //
 //  @return Left-facing direction vector of the entity (aligned with the y axis)
 func GetEntityLeftVector(entityHandle int32) plugify.Vector3 {
+	return P_GetEntityLeftVector(entityHandle)
+}
+
+var P_GetEntityRightVector = func(entityHandle int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__entityHandle := C.int32_t(entityHandle)
-	__native := C.GetEntityLeftVector(__entityHandle)
+	__native := C.GetEntityRightVector(__entityHandle)
 	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
 	return __retVal
 }
@@ -1428,9 +1780,13 @@ func GetEntityLeftVector(entityHandle int32) plugify.Vector3 {
 //
 //  @return Right-facing direction vector of the entity
 func GetEntityRightVector(entityHandle int32) plugify.Vector3 {
+	return P_GetEntityRightVector(entityHandle)
+}
+
+var P_GetEntityUpVector = func(entityHandle int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__entityHandle := C.int32_t(entityHandle)
-	__native := C.GetEntityRightVector(__entityHandle)
+	__native := C.GetEntityUpVector(__entityHandle)
 	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
 	return __retVal
 }
@@ -1442,10 +1798,14 @@ func GetEntityRightVector(entityHandle int32) plugify.Vector3 {
 //
 //  @return Up-facing direction vector of the entity
 func GetEntityUpVector(entityHandle int32) plugify.Vector3 {
-	var __retVal plugify.Vector3
+	return P_GetEntityUpVector(entityHandle)
+}
+
+var P_GetEntityTransform = func(entityHandle int32) plugify.Matrix4x4 {
+	var __retVal plugify.Matrix4x4
 	__entityHandle := C.int32_t(entityHandle)
-	__native := C.GetEntityUpVector(__entityHandle)
-	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
+	__native := C.GetEntityTransform(__entityHandle)
+	__retVal = *(*plugify.Matrix4x4)(unsafe.Pointer(&__native))
 	return __retVal
 }
 
@@ -1456,20 +1816,10 @@ func GetEntityUpVector(entityHandle int32) plugify.Vector3 {
 //
 //  @return 4x4 transformation matrix representing entity's position, rotation, and scale in world space
 func GetEntityTransform(entityHandle int32) plugify.Matrix4x4 {
-	var __retVal plugify.Matrix4x4
-	__entityHandle := C.int32_t(entityHandle)
-	__native := C.GetEntityTransform(__entityHandle)
-	__retVal = *(*plugify.Matrix4x4)(unsafe.Pointer(&__native))
-	return __retVal
+	return P_GetEntityTransform(entityHandle)
 }
 
-// GetEntityModel 
-//  @brief Retrieves the model name of an entity.
-//
-//  @param entityHandle: The handle of the entity whose model name is to be retrieved.
-//
-//  @return A string where the model name will be stored.
-func GetEntityModel(entityHandle int32) string {
+var P_GetEntityModel = func(entityHandle int32) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__entityHandle := C.int32_t(entityHandle)
@@ -1488,12 +1838,17 @@ func GetEntityModel(entityHandle int32) string {
 	return __retVal
 }
 
-// SetEntityModel 
-//  @brief Sets the model name of an entity.
+// GetEntityModel 
+//  @brief Retrieves the model name of an entity.
 //
-//  @param entityHandle: The handle of the entity whose model name is to be set.
-//  @param model: The new model name to set for the entity.
-func SetEntityModel(entityHandle int32, model string) {
+//  @param entityHandle: The handle of the entity whose model name is to be retrieved.
+//
+//  @return A string where the model name will be stored.
+func GetEntityModel(entityHandle int32) string {
+	return P_GetEntityModel(entityHandle)
+}
+
+var P_SetEntityModel = func(entityHandle int32, model string) {
 	__entityHandle := C.int32_t(entityHandle)
 	__model := plugify.ConstructString(model)
 	plugify.Block {
@@ -1507,6 +1862,22 @@ func SetEntityModel(entityHandle int32, model string) {
 	}.Do()
 }
 
+// SetEntityModel 
+//  @brief Sets the model name of an entity.
+//
+//  @param entityHandle: The handle of the entity whose model name is to be set.
+//  @param model: The new model name to set for the entity.
+func SetEntityModel(entityHandle int32, model string) {
+	P_SetEntityModel(entityHandle, model)
+}
+
+var P_GetEntityWaterLevel = func(entityHandle int32) float32 {
+	var __retVal float32
+	__entityHandle := C.int32_t(entityHandle)
+	__retVal = float32(C.GetEntityWaterLevel(__entityHandle))
+	return __retVal
+}
+
 // GetEntityWaterLevel 
 //  @brief Retrieves the water level of an entity.
 //
@@ -1514,9 +1885,13 @@ func SetEntityModel(entityHandle int32, model string) {
 //
 //  @return The water level of the entity, or 0.0f if the entity is invalid.
 func GetEntityWaterLevel(entityHandle int32) float32 {
-	var __retVal float32
+	return P_GetEntityWaterLevel(entityHandle)
+}
+
+var P_GetEntityGroundEntity = func(entityHandle int32) int32 {
+	var __retVal int32
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = float32(C.GetEntityWaterLevel(__entityHandle))
+	__retVal = int32(C.GetEntityGroundEntity(__entityHandle))
 	return __retVal
 }
 
@@ -1527,9 +1902,13 @@ func GetEntityWaterLevel(entityHandle int32) float32 {
 //
 //  @return The handle of the ground entity, or INVALID_EHANDLE_INDEX if the entity is invalid.
 func GetEntityGroundEntity(entityHandle int32) int32 {
+	return P_GetEntityGroundEntity(entityHandle)
+}
+
+var P_GetEntityEffects = func(entityHandle int32) int32 {
 	var __retVal int32
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = int32(C.GetEntityGroundEntity(__entityHandle))
+	__retVal = int32(C.GetEntityEffects(__entityHandle))
 	return __retVal
 }
 
@@ -1540,10 +1919,13 @@ func GetEntityGroundEntity(entityHandle int32) int32 {
 //
 //  @return The effect flags of the entity, or 0 if the entity is invalid.
 func GetEntityEffects(entityHandle int32) int32 {
-	var __retVal int32
+	return P_GetEntityEffects(entityHandle)
+}
+
+var P_AddEntityEffects = func(entityHandle int32, effects int32) {
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = int32(C.GetEntityEffects(__entityHandle))
-	return __retVal
+	__effects := C.int32_t(effects)
+	C.AddEntityEffects(__entityHandle, __effects)
 }
 
 // AddEntityEffects 
@@ -1552,9 +1934,13 @@ func GetEntityEffects(entityHandle int32) int32 {
 //  @param entityHandle: The handle of the entity to modify
 //  @param effects: Render effect flags to add
 func AddEntityEffects(entityHandle int32, effects int32) {
+	P_AddEntityEffects(entityHandle, effects)
+}
+
+var P_RemoveEntityEffects = func(entityHandle int32, effects int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__effects := C.int32_t(effects)
-	C.AddEntityEffects(__entityHandle, __effects)
+	C.RemoveEntityEffects(__entityHandle, __effects)
 }
 
 // RemoveEntityEffects 
@@ -1563,9 +1949,15 @@ func AddEntityEffects(entityHandle int32, effects int32) {
 //  @param entityHandle: The handle of the entity to modify
 //  @param effects: Render effect flags to remove
 func RemoveEntityEffects(entityHandle int32, effects int32) {
+	P_RemoveEntityEffects(entityHandle, effects)
+}
+
+var P_GetEntityBoundingMaxs = func(entityHandle int32) plugify.Vector3 {
+	var __retVal plugify.Vector3
 	__entityHandle := C.int32_t(entityHandle)
-	__effects := C.int32_t(effects)
-	C.RemoveEntityEffects(__entityHandle, __effects)
+	__native := C.GetEntityBoundingMaxs(__entityHandle)
+	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
+	return __retVal
 }
 
 // GetEntityBoundingMaxs 
@@ -1575,9 +1967,13 @@ func RemoveEntityEffects(entityHandle int32, effects int32) {
 //
 //  @return Vector containing the maximum bounds of the entity's bounding box
 func GetEntityBoundingMaxs(entityHandle int32) plugify.Vector3 {
+	return P_GetEntityBoundingMaxs(entityHandle)
+}
+
+var P_GetEntityBoundingMins = func(entityHandle int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__entityHandle := C.int32_t(entityHandle)
-	__native := C.GetEntityBoundingMaxs(__entityHandle)
+	__native := C.GetEntityBoundingMins(__entityHandle)
 	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
 	return __retVal
 }
@@ -1589,9 +1985,13 @@ func GetEntityBoundingMaxs(entityHandle int32) plugify.Vector3 {
 //
 //  @return Vector containing the minimum bounds of the entity's bounding box
 func GetEntityBoundingMins(entityHandle int32) plugify.Vector3 {
+	return P_GetEntityBoundingMins(entityHandle)
+}
+
+var P_GetEntityCenter = func(entityHandle int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__entityHandle := C.int32_t(entityHandle)
-	__native := C.GetEntityBoundingMins(__entityHandle)
+	__native := C.GetEntityCenter(__entityHandle)
 	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
 	return __retVal
 }
@@ -1603,11 +2003,15 @@ func GetEntityBoundingMins(entityHandle int32) plugify.Vector3 {
 //
 //  @return Vector pointing to the center of the entity in absolute/world coordinates
 func GetEntityCenter(entityHandle int32) plugify.Vector3 {
-	var __retVal plugify.Vector3
+	return P_GetEntityCenter(entityHandle)
+}
+
+var P_TeleportEntity = func(entityHandle int32, origin plugify.Vector3, angles plugify.Vector3, velocity plugify.Vector3) {
 	__entityHandle := C.int32_t(entityHandle)
-	__native := C.GetEntityCenter(__entityHandle)
-	__retVal = *(*plugify.Vector3)(unsafe.Pointer(&__native))
-	return __retVal
+	__origin := *(*C.Vector3)(unsafe.Pointer(&origin))
+	__angles := *(*C.Vector3)(unsafe.Pointer(&angles))
+	__velocity := *(*C.Vector3)(unsafe.Pointer(&velocity))
+	C.TeleportEntity(__entityHandle, &__origin, &__angles, &__velocity)
 }
 
 // TeleportEntity 
@@ -1618,11 +2022,13 @@ func GetEntityCenter(entityHandle int32) plugify.Vector3 {
 //  @param angles: A pointer to a QAngle representing the new orientation. Use nan vector to not set.
 //  @param velocity: A pointer to a Vector representing the new velocity. Use nan vector to not set.
 func TeleportEntity(entityHandle int32, origin plugify.Vector3, angles plugify.Vector3, velocity plugify.Vector3) {
+	P_TeleportEntity(entityHandle, origin, angles, velocity)
+}
+
+var P_ApplyAbsVelocityImpulseToEntity = func(entityHandle int32, vecImpulse plugify.Vector3) {
 	__entityHandle := C.int32_t(entityHandle)
-	__origin := *(*C.Vector3)(unsafe.Pointer(&origin))
-	__angles := *(*C.Vector3)(unsafe.Pointer(&angles))
-	__velocity := *(*C.Vector3)(unsafe.Pointer(&velocity))
-	C.TeleportEntity(__entityHandle, &__origin, &__angles, &__velocity)
+	__vecImpulse := *(*C.Vector3)(unsafe.Pointer(&vecImpulse))
+	C.ApplyAbsVelocityImpulseToEntity(__entityHandle, &__vecImpulse)
 }
 
 // ApplyAbsVelocityImpulseToEntity 
@@ -1631,9 +2037,13 @@ func TeleportEntity(entityHandle int32, origin plugify.Vector3, angles plugify.V
 //  @param entityHandle: The handle of the entity to apply impulse to
 //  @param vecImpulse: Velocity impulse vector to apply
 func ApplyAbsVelocityImpulseToEntity(entityHandle int32, vecImpulse plugify.Vector3) {
+	P_ApplyAbsVelocityImpulseToEntity(entityHandle, vecImpulse)
+}
+
+var P_ApplyLocalAngularVelocityImpulseToEntity = func(entityHandle int32, angImpulse plugify.Vector3) {
 	__entityHandle := C.int32_t(entityHandle)
-	__vecImpulse := *(*C.Vector3)(unsafe.Pointer(&vecImpulse))
-	C.ApplyAbsVelocityImpulseToEntity(__entityHandle, &__vecImpulse)
+	__angImpulse := *(*C.Vector3)(unsafe.Pointer(&angImpulse))
+	C.ApplyLocalAngularVelocityImpulseToEntity(__entityHandle, &__angImpulse)
 }
 
 // ApplyLocalAngularVelocityImpulseToEntity 
@@ -1642,22 +2052,10 @@ func ApplyAbsVelocityImpulseToEntity(entityHandle int32, vecImpulse plugify.Vect
 //  @param entityHandle: The handle of the entity to apply impulse to
 //  @param angImpulse: Angular velocity impulse vector to apply
 func ApplyLocalAngularVelocityImpulseToEntity(entityHandle int32, angImpulse plugify.Vector3) {
-	__entityHandle := C.int32_t(entityHandle)
-	__angImpulse := *(*C.Vector3)(unsafe.Pointer(&angImpulse))
-	C.ApplyLocalAngularVelocityImpulseToEntity(__entityHandle, &__angImpulse)
+	P_ApplyLocalAngularVelocityImpulseToEntity(entityHandle, angImpulse)
 }
 
-// AcceptEntityInput 
-//  @brief Invokes a named input method on a specified entity.
-//
-//  @param entityHandle: The handle of the target entity that will receive the input.
-//  @param inputName: The name of the input action to invoke.
-//  @param activatorHandle: The handle of the entity that initiated the sequence of actions.
-//  @param callerHandle: The handle of the entity sending this event.
-//  @param value: The value associated with the input action.
-//  @param type_: The type or classification of the value.
-//  @param outputId: An identifier for tracking the output of this operation.
-func AcceptEntityInput(entityHandle int32, inputName string, activatorHandle int32, callerHandle int32, value any, type_ FieldType, outputId int32) {
+var P_AcceptEntityInput = func(entityHandle int32, inputName string, activatorHandle int32, callerHandle int32, value any, type_ FieldType, outputId int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__inputName := plugify.ConstructString(inputName)
 	__activatorHandle := C.int32_t(activatorHandle)
@@ -1677,6 +2075,36 @@ func AcceptEntityInput(entityHandle int32, inputName string, activatorHandle int
 	}.Do()
 }
 
+// AcceptEntityInput 
+//  @brief Invokes a named input method on a specified entity.
+//
+//  @param entityHandle: The handle of the target entity that will receive the input.
+//  @param inputName: The name of the input action to invoke.
+//  @param activatorHandle: The handle of the entity that initiated the sequence of actions.
+//  @param callerHandle: The handle of the entity sending this event.
+//  @param value: The value associated with the input action.
+//  @param type_: The type or classification of the value.
+//  @param outputId: An identifier for tracking the output of this operation.
+func AcceptEntityInput(entityHandle int32, inputName string, activatorHandle int32, callerHandle int32, value any, type_ FieldType, outputId int32) {
+	P_AcceptEntityInput(entityHandle, inputName, activatorHandle, callerHandle, value, type_, outputId)
+}
+
+var P_ConnectEntityOutput = func(entityHandle int32, output string, functionName string) {
+	__entityHandle := C.int32_t(entityHandle)
+	__output := plugify.ConstructString(output)
+	__functionName := plugify.ConstructString(functionName)
+	plugify.Block {
+		Try: func() {
+			C.ConnectEntityOutput(__entityHandle, (*C.String)(unsafe.Pointer(&__output)), (*C.String)(unsafe.Pointer(&__functionName)))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__output)
+			plugify.DestroyString(&__functionName)
+		},
+	}.Do()
+}
+
 // ConnectEntityOutput 
 //  @brief Connects a script function to an entity output.
 //
@@ -1684,12 +2112,16 @@ func AcceptEntityInput(entityHandle int32, inputName string, activatorHandle int
 //  @param output: The name of the output to connect to.
 //  @param functionName: The name of the script function to call.
 func ConnectEntityOutput(entityHandle int32, output string, functionName string) {
+	P_ConnectEntityOutput(entityHandle, output, functionName)
+}
+
+var P_DisconnectEntityOutput = func(entityHandle int32, output string, functionName string) {
 	__entityHandle := C.int32_t(entityHandle)
 	__output := plugify.ConstructString(output)
 	__functionName := plugify.ConstructString(functionName)
 	plugify.Block {
 		Try: func() {
-			C.ConnectEntityOutput(__entityHandle, (*C.String)(unsafe.Pointer(&__output)), (*C.String)(unsafe.Pointer(&__functionName)))
+			C.DisconnectEntityOutput(__entityHandle, (*C.String)(unsafe.Pointer(&__output)), (*C.String)(unsafe.Pointer(&__functionName)))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -1706,12 +2138,17 @@ func ConnectEntityOutput(entityHandle int32, output string, functionName string)
 //  @param output: The name of the output.
 //  @param functionName: The name of the script function to disconnect.
 func DisconnectEntityOutput(entityHandle int32, output string, functionName string) {
+	P_DisconnectEntityOutput(entityHandle, output, functionName)
+}
+
+var P_DisconnectEntityRedirectedOutput = func(entityHandle int32, output string, functionName string, targetHandle int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__output := plugify.ConstructString(output)
 	__functionName := plugify.ConstructString(functionName)
+	__targetHandle := C.int32_t(targetHandle)
 	plugify.Block {
 		Try: func() {
-			C.DisconnectEntityOutput(__entityHandle, (*C.String)(unsafe.Pointer(&__output)), (*C.String)(unsafe.Pointer(&__functionName)))
+			C.DisconnectEntityRedirectedOutput(__entityHandle, (*C.String)(unsafe.Pointer(&__output)), (*C.String)(unsafe.Pointer(&__functionName)), __targetHandle)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -1729,33 +2166,10 @@ func DisconnectEntityOutput(entityHandle int32, output string, functionName stri
 //  @param functionName: The function name to disconnect.
 //  @param targetHandle: The handle of the entity whose output is being disconnected.
 func DisconnectEntityRedirectedOutput(entityHandle int32, output string, functionName string, targetHandle int32) {
-	__entityHandle := C.int32_t(entityHandle)
-	__output := plugify.ConstructString(output)
-	__functionName := plugify.ConstructString(functionName)
-	__targetHandle := C.int32_t(targetHandle)
-	plugify.Block {
-		Try: func() {
-			C.DisconnectEntityRedirectedOutput(__entityHandle, (*C.String)(unsafe.Pointer(&__output)), (*C.String)(unsafe.Pointer(&__functionName)), __targetHandle)
-		},
-		Finally: func() {
-			// Perform cleanup.
-			plugify.DestroyString(&__output)
-			plugify.DestroyString(&__functionName)
-		},
-	}.Do()
+	P_DisconnectEntityRedirectedOutput(entityHandle, output, functionName, targetHandle)
 }
 
-// FireEntityOutput 
-//  @brief Fires an entity output.
-//
-//  @param entityHandle: The handle of the entity firing the output.
-//  @param outputName: The name of the output to fire.
-//  @param activatorHandle: The entity activating the output.
-//  @param callerHandle: The entity that called the output.
-//  @param value: The value associated with the input action.
-//  @param type_: The type or classification of the value.
-//  @param delay: Delay in seconds before firing the output.
-func FireEntityOutput(entityHandle int32, outputName string, activatorHandle int32, callerHandle int32, value any, type_ FieldType, delay float32) {
+var P_FireEntityOutput = func(entityHandle int32, outputName string, activatorHandle int32, callerHandle int32, value any, type_ FieldType, delay float32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__outputName := plugify.ConstructString(outputName)
 	__activatorHandle := C.int32_t(activatorHandle)
@@ -1775,14 +2189,21 @@ func FireEntityOutput(entityHandle int32, outputName string, activatorHandle int
 	}.Do()
 }
 
-// RedirectEntityOutput 
-//  @brief Redirects an entity output to call a function on another entity.
+// FireEntityOutput 
+//  @brief Fires an entity output.
 //
-//  @param entityHandle: The handle of the entity whose output is being redirected.
-//  @param output: The name of the output to redirect.
-//  @param functionName: The function name to call on the target entity.
-//  @param targetHandle: The handle of the entity that will receive the output call.
-func RedirectEntityOutput(entityHandle int32, output string, functionName string, targetHandle int32) {
+//  @param entityHandle: The handle of the entity firing the output.
+//  @param outputName: The name of the output to fire.
+//  @param activatorHandle: The entity activating the output.
+//  @param callerHandle: The entity that called the output.
+//  @param value: The value associated with the input action.
+//  @param type_: The type or classification of the value.
+//  @param delay: Delay in seconds before firing the output.
+func FireEntityOutput(entityHandle int32, outputName string, activatorHandle int32, callerHandle int32, value any, type_ FieldType, delay float32) {
+	P_FireEntityOutput(entityHandle, outputName, activatorHandle, callerHandle, value, type_, delay)
+}
+
+var P_RedirectEntityOutput = func(entityHandle int32, output string, functionName string, targetHandle int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__output := plugify.ConstructString(output)
 	__functionName := plugify.ConstructString(functionName)
@@ -1799,6 +2220,24 @@ func RedirectEntityOutput(entityHandle int32, output string, functionName string
 	}.Do()
 }
 
+// RedirectEntityOutput 
+//  @brief Redirects an entity output to call a function on another entity.
+//
+//  @param entityHandle: The handle of the entity whose output is being redirected.
+//  @param output: The name of the output to redirect.
+//  @param functionName: The function name to call on the target entity.
+//  @param targetHandle: The handle of the entity that will receive the output call.
+func RedirectEntityOutput(entityHandle int32, output string, functionName string, targetHandle int32) {
+	P_RedirectEntityOutput(entityHandle, output, functionName, targetHandle)
+}
+
+var P_FollowEntity = func(entityHandle int32, attachmentHandle int32, boneMerge bool) {
+	__entityHandle := C.int32_t(entityHandle)
+	__attachmentHandle := C.int32_t(attachmentHandle)
+	__boneMerge := C.bool(boneMerge)
+	C.FollowEntity(__entityHandle, __attachmentHandle, __boneMerge)
+}
+
 // FollowEntity 
 //  @brief Makes an entity follow another entity with optional bone merging.
 //
@@ -1806,19 +2245,10 @@ func RedirectEntityOutput(entityHandle int32, output string, functionName string
 //  @param attachmentHandle: The handle of the entity to follow
 //  @param boneMerge: If true, bones will be merged between entities
 func FollowEntity(entityHandle int32, attachmentHandle int32, boneMerge bool) {
-	__entityHandle := C.int32_t(entityHandle)
-	__attachmentHandle := C.int32_t(attachmentHandle)
-	__boneMerge := C.bool(boneMerge)
-	C.FollowEntity(__entityHandle, __attachmentHandle, __boneMerge)
+	P_FollowEntity(entityHandle, attachmentHandle, boneMerge)
 }
 
-// FollowEntityMerge 
-//  @brief Makes an entity follow another entity and merge with a specific bone or attachment.
-//
-//  @param entityHandle: The handle of the entity that will follow
-//  @param attachmentHandle: The handle of the entity to follow
-//  @param boneOrAttachName: Name of the bone or attachment point to merge with
-func FollowEntityMerge(entityHandle int32, attachmentHandle int32, boneOrAttachName string) {
+var P_FollowEntityMerge = func(entityHandle int32, attachmentHandle int32, boneOrAttachName string) {
 	__entityHandle := C.int32_t(entityHandle)
 	__attachmentHandle := C.int32_t(attachmentHandle)
 	__boneOrAttachName := plugify.ConstructString(boneOrAttachName)
@@ -1831,6 +2261,29 @@ func FollowEntityMerge(entityHandle int32, attachmentHandle int32, boneOrAttachN
 			plugify.DestroyString(&__boneOrAttachName)
 		},
 	}.Do()
+}
+
+// FollowEntityMerge 
+//  @brief Makes an entity follow another entity and merge with a specific bone or attachment.
+//
+//  @param entityHandle: The handle of the entity that will follow
+//  @param attachmentHandle: The handle of the entity to follow
+//  @param boneOrAttachName: Name of the bone or attachment point to merge with
+func FollowEntityMerge(entityHandle int32, attachmentHandle int32, boneOrAttachName string) {
+	P_FollowEntityMerge(entityHandle, attachmentHandle, boneOrAttachName)
+}
+
+var P_TakeEntityDamage = func(entityHandle int32, inflictorHandle int32, attackerHandle int32, force plugify.Vector3, hitPos plugify.Vector3, damage float32, damageTypes DamageTypes) int32 {
+	var __retVal int32
+	__entityHandle := C.int32_t(entityHandle)
+	__inflictorHandle := C.int32_t(inflictorHandle)
+	__attackerHandle := C.int32_t(attackerHandle)
+	__force := *(*C.Vector3)(unsafe.Pointer(&force))
+	__hitPos := *(*C.Vector3)(unsafe.Pointer(&hitPos))
+	__damage := C.float(damage)
+	__damageTypes := C.int32_t(damageTypes)
+	__retVal = int32(C.TakeEntityDamage(__entityHandle, __inflictorHandle, __attackerHandle, &__force, &__hitPos, __damage, __damageTypes))
+	return __retVal
 }
 
 // TakeEntityDamage 
@@ -1846,15 +2299,23 @@ func FollowEntityMerge(entityHandle int32, attachmentHandle int32, boneOrAttachN
 //
 //  @return Amount of damage actually applied to the entity
 func TakeEntityDamage(entityHandle int32, inflictorHandle int32, attackerHandle int32, force plugify.Vector3, hitPos plugify.Vector3, damage float32, damageTypes DamageTypes) int32 {
-	var __retVal int32
+	return P_TakeEntityDamage(entityHandle, inflictorHandle, attackerHandle, force, hitPos, damage, damageTypes)
+}
+
+var P_GetEntityAttributeFloatValue = func(entityHandle int32, name string, defaultValue float32) float32 {
+	var __retVal float32
 	__entityHandle := C.int32_t(entityHandle)
-	__inflictorHandle := C.int32_t(inflictorHandle)
-	__attackerHandle := C.int32_t(attackerHandle)
-	__force := *(*C.Vector3)(unsafe.Pointer(&force))
-	__hitPos := *(*C.Vector3)(unsafe.Pointer(&hitPos))
-	__damage := C.float(damage)
-	__damageTypes := C.int32_t(damageTypes)
-	__retVal = int32(C.TakeEntityDamage(__entityHandle, __inflictorHandle, __attackerHandle, &__force, &__hitPos, __damage, __damageTypes))
+	__name := plugify.ConstructString(name)
+	__defaultValue := C.float(defaultValue)
+	plugify.Block {
+		Try: func() {
+			__retVal = float32(C.GetEntityAttributeFloatValue(__entityHandle, (*C.String)(unsafe.Pointer(&__name)), __defaultValue))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__name)
+		},
+	}.Do()
 	return __retVal
 }
 
@@ -1867,13 +2328,17 @@ func TakeEntityDamage(entityHandle int32, inflictorHandle int32, attackerHandle 
 //
 //  @return The float value of the attribute, or the default value if missing or invalid.
 func GetEntityAttributeFloatValue(entityHandle int32, name string, defaultValue float32) float32 {
-	var __retVal float32
+	return P_GetEntityAttributeFloatValue(entityHandle, name, defaultValue)
+}
+
+var P_GetEntityAttributeIntValue = func(entityHandle int32, name string, defaultValue int32) int32 {
+	var __retVal int32
 	__entityHandle := C.int32_t(entityHandle)
 	__name := plugify.ConstructString(name)
-	__defaultValue := C.float(defaultValue)
+	__defaultValue := C.int32_t(defaultValue)
 	plugify.Block {
 		Try: func() {
-			__retVal = float32(C.GetEntityAttributeFloatValue(__entityHandle, (*C.String)(unsafe.Pointer(&__name)), __defaultValue))
+			__retVal = int32(C.GetEntityAttributeIntValue(__entityHandle, (*C.String)(unsafe.Pointer(&__name)), __defaultValue))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -1892,20 +2357,22 @@ func GetEntityAttributeFloatValue(entityHandle int32, name string, defaultValue 
 //
 //  @return The integer value of the attribute, or the default value if missing or invalid.
 func GetEntityAttributeIntValue(entityHandle int32, name string, defaultValue int32) int32 {
-	var __retVal int32
+	return P_GetEntityAttributeIntValue(entityHandle, name, defaultValue)
+}
+
+var P_SetEntityAttributeFloatValue = func(entityHandle int32, name string, value float32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__name := plugify.ConstructString(name)
-	__defaultValue := C.int32_t(defaultValue)
+	__value := C.float(value)
 	plugify.Block {
 		Try: func() {
-			__retVal = int32(C.GetEntityAttributeIntValue(__entityHandle, (*C.String)(unsafe.Pointer(&__name)), __defaultValue))
+			C.SetEntityAttributeFloatValue(__entityHandle, (*C.String)(unsafe.Pointer(&__name)), __value)
 		},
 		Finally: func() {
 			// Perform cleanup.
 			plugify.DestroyString(&__name)
 		},
 	}.Do()
-	return __retVal
 }
 
 // SetEntityAttributeFloatValue 
@@ -1915,12 +2382,16 @@ func GetEntityAttributeIntValue(entityHandle int32, name string, defaultValue in
 //  @param name: The name of the attribute.
 //  @param value: The float value to assign to the attribute.
 func SetEntityAttributeFloatValue(entityHandle int32, name string, value float32) {
+	P_SetEntityAttributeFloatValue(entityHandle, name, value)
+}
+
+var P_SetEntityAttributeIntValue = func(entityHandle int32, name string, value int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__name := plugify.ConstructString(name)
-	__value := C.float(value)
+	__value := C.int32_t(value)
 	plugify.Block {
 		Try: func() {
-			C.SetEntityAttributeFloatValue(__entityHandle, (*C.String)(unsafe.Pointer(&__name)), __value)
+			C.SetEntityAttributeIntValue(__entityHandle, (*C.String)(unsafe.Pointer(&__name)), __value)
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -1936,12 +2407,15 @@ func SetEntityAttributeFloatValue(entityHandle int32, name string, value float32
 //  @param name: The name of the attribute.
 //  @param value: The integer value to assign to the attribute.
 func SetEntityAttributeIntValue(entityHandle int32, name string, value int32) {
+	P_SetEntityAttributeIntValue(entityHandle, name, value)
+}
+
+var P_DeleteEntityAttribute = func(entityHandle int32, name string) {
 	__entityHandle := C.int32_t(entityHandle)
 	__name := plugify.ConstructString(name)
-	__value := C.int32_t(value)
 	plugify.Block {
 		Try: func() {
-			C.SetEntityAttributeIntValue(__entityHandle, (*C.String)(unsafe.Pointer(&__name)), __value)
+			C.DeleteEntityAttribute(__entityHandle, (*C.String)(unsafe.Pointer(&__name)))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -1956,27 +2430,10 @@ func SetEntityAttributeIntValue(entityHandle int32, name string, value int32) {
 //  @param entityHandle: The handle of the entity.
 //  @param name: The name of the attribute to delete.
 func DeleteEntityAttribute(entityHandle int32, name string) {
-	__entityHandle := C.int32_t(entityHandle)
-	__name := plugify.ConstructString(name)
-	plugify.Block {
-		Try: func() {
-			C.DeleteEntityAttribute(__entityHandle, (*C.String)(unsafe.Pointer(&__name)))
-		},
-		Finally: func() {
-			// Perform cleanup.
-			plugify.DestroyString(&__name)
-		},
-	}.Do()
+	P_DeleteEntityAttribute(entityHandle, name)
 }
 
-// HasEntityAttribute 
-//  @brief Checks if an entity has a specific attribute.
-//
-//  @param entityHandle: The handle of the entity.
-//  @param name: The name of the attribute to check.
-//
-//  @return True if the attribute exists, false otherwise.
-func HasEntityAttribute(entityHandle int32, name string) bool {
+var P_HasEntityAttribute = func(entityHandle int32, name string) bool {
 	var __retVal bool
 	__entityHandle := C.int32_t(entityHandle)
 	__name := plugify.ConstructString(name)
@@ -1990,5 +2447,16 @@ func HasEntityAttribute(entityHandle int32, name string) bool {
 		},
 	}.Do()
 	return __retVal
+}
+
+// HasEntityAttribute 
+//  @brief Checks if an entity has a specific attribute.
+//
+//  @param entityHandle: The handle of the entity.
+//  @param name: The name of the attribute to check.
+//
+//  @return True if the attribute exists, false otherwise.
+func HasEntityAttribute(entityHandle int32, name string) bool {
+	return P_HasEntityAttribute(entityHandle, name)
 }
 

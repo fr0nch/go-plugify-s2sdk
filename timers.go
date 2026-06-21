@@ -21,20 +21,11 @@ var _ = errors.New("")
 var _ = reflect.TypeOf(0)
 var _ = runtime.GOOS
 var _ = unsafe.Sizeof(0)
-var _ = plugify.Plugin()
+var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: timers)
 
-// CreateTimer 
-//  @brief Creates a new timer that executes a callback function at specified delays.
-//
-//  @param delay: The time delay in seconds between each callback execution.
-//  @param callback: The function to be called when the timer expires.
-//  @param flags: Flags that modify the behavior of the timer (e.g., no-map change, repeating).
-//  @param userData: An array intended to hold user-related data, allowing for elements of any type.
-//
-//  @return A id to the newly created Timer object, or -1 if the timer could not be created.
-func CreateTimer(delay float64, callback TimerCallback, flags TimerFlag, userData []any) uint32 {
+var P_CreateTimer = func(delay float64, callback TimerCallback, flags TimerFlag, userData []any) uint32 {
 	var __retVal uint32
 	__delay := C.double(delay)
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
@@ -52,13 +43,36 @@ func CreateTimer(delay float64, callback TimerCallback, flags TimerFlag, userDat
 	return __retVal
 }
 
+// CreateTimer 
+//  @brief Creates a new timer that executes a callback function at specified delays.
+//
+//  @param delay: The time delay in seconds between each callback execution.
+//  @param callback: The function to be called when the timer expires.
+//  @param flags: Flags that modify the behavior of the timer (e.g., no-map change, repeating).
+//  @param userData: An array intended to hold user-related data, allowing for elements of any type.
+//
+//  @return A id to the newly created Timer object, or -1 if the timer could not be created.
+func CreateTimer(delay float64, callback TimerCallback, flags TimerFlag, userData []any) uint32 {
+	return P_CreateTimer(delay, callback, flags, userData)
+}
+
+var P_KillsTimer = func(timer uint32) {
+	__timer := C.uint32_t(timer)
+	C.KillsTimer(__timer)
+}
+
 // KillsTimer 
 //  @brief Stops and removes an existing timer.
 //
 //  @param timer: A id of the Timer object to be stopped and removed.
 func KillsTimer(timer uint32) {
+	P_KillsTimer(timer)
+}
+
+var P_RescheduleTimer = func(timer uint32, newDaly float64) {
 	__timer := C.uint32_t(timer)
-	C.KillsTimer(__timer)
+	__newDaly := C.double(newDaly)
+	C.RescheduleTimer(__timer, __newDaly)
 }
 
 // RescheduleTimer 
@@ -67,9 +81,12 @@ func KillsTimer(timer uint32) {
 //  @param timer: A id of the Timer object to be stopped and removed.
 //  @param newDaly: The new delay in seconds between each callback execution.
 func RescheduleTimer(timer uint32, newDaly float64) {
-	__timer := C.uint32_t(timer)
-	__newDaly := C.double(newDaly)
-	C.RescheduleTimer(__timer, __newDaly)
+	P_RescheduleTimer(timer, newDaly)
+}
+
+var P_GetTickInterval = func() float64 {
+	__retVal := float64(C.GetTickInterval())
+	return __retVal
 }
 
 // GetTickInterval 
@@ -78,7 +95,11 @@ func RescheduleTimer(timer uint32, newDaly float64) {
 //
 //  @return The tick interval value.
 func GetTickInterval() float64 {
-	__retVal := float64(C.GetTickInterval())
+	return P_GetTickInterval()
+}
+
+var P_GetTickedTime = func() float64 {
+	__retVal := float64(C.GetTickedTime())
 	return __retVal
 }
 
@@ -88,7 +109,6 @@ func GetTickInterval() float64 {
 //
 //  @return The ticked time value.
 func GetTickedTime() float64 {
-	__retVal := float64(C.GetTickedTime())
-	return __retVal
+	return P_GetTickedTime()
 }
 

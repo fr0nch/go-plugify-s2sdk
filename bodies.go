@@ -26,9 +26,16 @@ var _ = errors.New("")
 var _ = reflect.TypeOf(0)
 var _ = runtime.GOOS
 var _ = unsafe.Sizeof(0)
-var _ = plugify.Plugin()
+var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: bodies)
+
+var P_AddBodyImpulseAtPosition = func(entityHandle int32, position plugify.Vector3, impulse plugify.Vector3) {
+	__entityHandle := C.int32_t(entityHandle)
+	__position := *(*C.Vector3)(unsafe.Pointer(&position))
+	__impulse := *(*C.Vector3)(unsafe.Pointer(&impulse))
+	C.AddBodyImpulseAtPosition(__entityHandle, &__position, &__impulse)
+}
 
 // AddBodyImpulseAtPosition 
 //  @brief Applies an impulse to an entity at a specific world position.
@@ -37,10 +44,14 @@ var _ = plugify.Plugin()
 //  @param position: The world position where the impulse will be applied.
 //  @param impulse: The impulse vector to apply.
 func AddBodyImpulseAtPosition(entityHandle int32, position plugify.Vector3, impulse plugify.Vector3) {
+	P_AddBodyImpulseAtPosition(entityHandle, position, impulse)
+}
+
+var P_AddBodyVelocity = func(entityHandle int32, linearVelocity plugify.Vector3, angularVelocity plugify.Vector3) {
 	__entityHandle := C.int32_t(entityHandle)
-	__position := *(*C.Vector3)(unsafe.Pointer(&position))
-	__impulse := *(*C.Vector3)(unsafe.Pointer(&impulse))
-	C.AddBodyImpulseAtPosition(__entityHandle, &__position, &__impulse)
+	__linearVelocity := *(*C.Vector3)(unsafe.Pointer(&linearVelocity))
+	__angularVelocity := *(*C.Vector3)(unsafe.Pointer(&angularVelocity))
+	C.AddBodyVelocity(__entityHandle, &__linearVelocity, &__angularVelocity)
 }
 
 // AddBodyVelocity 
@@ -50,10 +61,12 @@ func AddBodyImpulseAtPosition(entityHandle int32, position plugify.Vector3, impu
 //  @param linearVelocity: The linear velocity vector to add.
 //  @param angularVelocity: The angular velocity vector to add.
 func AddBodyVelocity(entityHandle int32, linearVelocity plugify.Vector3, angularVelocity plugify.Vector3) {
+	P_AddBodyVelocity(entityHandle, linearVelocity, angularVelocity)
+}
+
+var P_DetachBodyFromParent = func(entityHandle int32) {
 	__entityHandle := C.int32_t(entityHandle)
-	__linearVelocity := *(*C.Vector3)(unsafe.Pointer(&linearVelocity))
-	__angularVelocity := *(*C.Vector3)(unsafe.Pointer(&angularVelocity))
-	C.AddBodyVelocity(__entityHandle, &__linearVelocity, &__angularVelocity)
+	C.DetachBodyFromParent(__entityHandle)
 }
 
 // DetachBodyFromParent 
@@ -61,8 +74,14 @@ func AddBodyVelocity(entityHandle int32, linearVelocity plugify.Vector3, angular
 //
 //  @param entityHandle: The handle of the entity.
 func DetachBodyFromParent(entityHandle int32) {
+	P_DetachBodyFromParent(entityHandle)
+}
+
+var P_GetBodySequence = func(entityHandle int32) int32 {
+	var __retVal int32
 	__entityHandle := C.int32_t(entityHandle)
-	C.DetachBodyFromParent(__entityHandle)
+	__retVal = int32(C.GetBodySequence(__entityHandle))
+	return __retVal
 }
 
 // GetBodySequence 
@@ -72,9 +91,13 @@ func DetachBodyFromParent(entityHandle int32) {
 //
 //  @return The sequence ID of the active sequence, or -1 if invalid.
 func GetBodySequence(entityHandle int32) int32 {
-	var __retVal int32
+	return P_GetBodySequence(entityHandle)
+}
+
+var P_IsBodyAttachedToParent = func(entityHandle int32) bool {
+	var __retVal bool
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = int32(C.GetBodySequence(__entityHandle))
+	__retVal = bool(C.IsBodyAttachedToParent(__entityHandle))
 	return __retVal
 }
 
@@ -85,20 +108,10 @@ func GetBodySequence(entityHandle int32) int32 {
 //
 //  @return True if attached to a parent, false otherwise.
 func IsBodyAttachedToParent(entityHandle int32) bool {
-	var __retVal bool
-	__entityHandle := C.int32_t(entityHandle)
-	__retVal = bool(C.IsBodyAttachedToParent(__entityHandle))
-	return __retVal
+	return P_IsBodyAttachedToParent(entityHandle)
 }
 
-// LookupBodySequence 
-//  @brief Looks up a sequence ID by its name.
-//
-//  @param entityHandle: The handle of the entity.
-//  @param name: The name of the sequence.
-//
-//  @return The sequence ID, or -1 if not found.
-func LookupBodySequence(entityHandle int32, name string) int32 {
+var P_LookupBodySequence = func(entityHandle int32, name string) int32 {
 	var __retVal int32
 	__entityHandle := C.int32_t(entityHandle)
 	__name := plugify.ConstructString(name)
@@ -114,14 +127,18 @@ func LookupBodySequence(entityHandle int32, name string) int32 {
 	return __retVal
 }
 
-// SetBodySequenceDuration 
-//  @brief Retrieves the duration of a specified sequence.
+// LookupBodySequence 
+//  @brief Looks up a sequence ID by its name.
 //
 //  @param entityHandle: The handle of the entity.
-//  @param sequenceName: The name of the sequence.
+//  @param name: The name of the sequence.
 //
-//  @return The duration of the sequence in seconds, or 0 if invalid.
-func SetBodySequenceDuration(entityHandle int32, sequenceName string) float32 {
+//  @return The sequence ID, or -1 if not found.
+func LookupBodySequence(entityHandle int32, name string) int32 {
+	return P_LookupBodySequence(entityHandle, name)
+}
+
+var P_SetBodySequenceDuration = func(entityHandle int32, sequenceName string) float32 {
 	var __retVal float32
 	__entityHandle := C.int32_t(entityHandle)
 	__sequenceName := plugify.ConstructString(sequenceName)
@@ -137,23 +154,33 @@ func SetBodySequenceDuration(entityHandle int32, sequenceName string) float32 {
 	return __retVal
 }
 
+// SetBodySequenceDuration 
+//  @brief Retrieves the duration of a specified sequence.
+//
+//  @param entityHandle: The handle of the entity.
+//  @param sequenceName: The name of the sequence.
+//
+//  @return The duration of the sequence in seconds, or 0 if invalid.
+func SetBodySequenceDuration(entityHandle int32, sequenceName string) float32 {
+	return P_SetBodySequenceDuration(entityHandle, sequenceName)
+}
+
+var P_SetBodyAngularVelocity = func(entityHandle int32, angVelocity plugify.Vector3) {
+	__entityHandle := C.int32_t(entityHandle)
+	__angVelocity := *(*C.Vector3)(unsafe.Pointer(&angVelocity))
+	C.SetBodyAngularVelocity(__entityHandle, &__angVelocity)
+}
+
 // SetBodyAngularVelocity 
 //  @brief Sets the angular velocity of the entity.
 //
 //  @param entityHandle: The handle of the entity.
 //  @param angVelocity: The new angular velocity vector.
 func SetBodyAngularVelocity(entityHandle int32, angVelocity plugify.Vector3) {
-	__entityHandle := C.int32_t(entityHandle)
-	__angVelocity := *(*C.Vector3)(unsafe.Pointer(&angVelocity))
-	C.SetBodyAngularVelocity(__entityHandle, &__angVelocity)
+	P_SetBodyAngularVelocity(entityHandle, angVelocity)
 }
 
-// SetBodyMaterialGroup 
-//  @brief Sets the material group of the entity.
-//
-//  @param entityHandle: The handle of the entity.
-//  @param materialGroup: The material group token to assign.
-func SetBodyMaterialGroup(entityHandle int32, materialGroup string) {
+var P_SetBodyMaterialGroup = func(entityHandle int32, materialGroup string) {
 	__entityHandle := C.int32_t(entityHandle)
 	__materialGroup := plugify.ConstructString(materialGroup)
 	plugify.Block {
@@ -167,14 +194,27 @@ func SetBodyMaterialGroup(entityHandle int32, materialGroup string) {
 	}.Do()
 }
 
+// SetBodyMaterialGroup 
+//  @brief Sets the material group of the entity.
+//
+//  @param entityHandle: The handle of the entity.
+//  @param materialGroup: The material group token to assign.
+func SetBodyMaterialGroup(entityHandle int32, materialGroup string) {
+	P_SetBodyMaterialGroup(entityHandle, materialGroup)
+}
+
+var P_SetBodyVelocity = func(entityHandle int32, velocity plugify.Vector3) {
+	__entityHandle := C.int32_t(entityHandle)
+	__velocity := *(*C.Vector3)(unsafe.Pointer(&velocity))
+	C.SetBodyVelocity(__entityHandle, &__velocity)
+}
+
 // SetBodyVelocity 
 //  @brief Sets the linear velocity of the entity.
 //
 //  @param entityHandle: The handle of the entity.
 //  @param velocity: The new velocity vector.
 func SetBodyVelocity(entityHandle int32, velocity plugify.Vector3) {
-	__entityHandle := C.int32_t(entityHandle)
-	__velocity := *(*C.Vector3)(unsafe.Pointer(&velocity))
-	C.SetBodyVelocity(__entityHandle, &__velocity)
+	P_SetBodyVelocity(entityHandle, velocity)
 }
 
