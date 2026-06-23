@@ -46,7 +46,7 @@ var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: keyvalues)
 
-var P_Kv1Create = func(setName string) uintptr {
+var _Kv1Create = func(setName string) uintptr {
 	var __retVal uintptr
 	__setName := plugify.ConstructString(setName)
 	plugify.Block {
@@ -68,10 +68,10 @@ var P_Kv1Create = func(setName string) uintptr {
 //
 //  @return Pointer to the newly created KeyValues object
 func Kv1Create(setName string) uintptr {
-	return P_Kv1Create(setName)
+	return _Kv1Create(setName)
 }
 
-var P_Kv1Destroy = func(kv uintptr) {
+var _Kv1Destroy = func(kv uintptr) {
 	__kv := C.uintptr_t(kv)
 	C.Kv1Destroy(__kv)
 }
@@ -81,10 +81,10 @@ var P_Kv1Destroy = func(kv uintptr) {
 //
 //  @param kv: Pointer to the KeyValues object to destroy
 func Kv1Destroy(kv uintptr) {
-	P_Kv1Destroy(kv)
+	_Kv1Destroy(kv)
 }
 
-var P_Kv1GetName = func(kv uintptr) string {
+var _Kv1GetName = func(kv uintptr) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__kv := C.uintptr_t(kv)
@@ -110,10 +110,10 @@ var P_Kv1GetName = func(kv uintptr) string {
 //
 //  @return The name of the KeyValues section
 func Kv1GetName(kv uintptr) string {
-	return P_Kv1GetName(kv)
+	return _Kv1GetName(kv)
 }
 
-var P_Kv1SetName = func(kv uintptr, name string) {
+var _Kv1SetName = func(kv uintptr, name string) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	plugify.Block {
@@ -133,10 +133,10 @@ var P_Kv1SetName = func(kv uintptr, name string) {
 //  @param kv: Pointer to the KeyValues object
 //  @param name: The new name to assign to this KeyValues section
 func Kv1SetName(kv uintptr, name string) {
-	P_Kv1SetName(kv, name)
+	_Kv1SetName(kv, name)
 }
 
-var P_Kv1FindKey = func(kv uintptr, keyName string) uintptr {
+var _Kv1FindKey = func(kv uintptr, keyName string) uintptr {
 	var __retVal uintptr
 	__kv := C.uintptr_t(kv)
 	__keyName := plugify.ConstructString(keyName)
@@ -160,10 +160,10 @@ var P_Kv1FindKey = func(kv uintptr, keyName string) uintptr {
 //
 //  @return Pointer to the found KeyValues subkey, or NULL if not found
 func Kv1FindKey(kv uintptr, keyName string) uintptr {
-	return P_Kv1FindKey(kv, keyName)
+	return _Kv1FindKey(kv, keyName)
 }
 
-var P_Kv1FindOrCreateKey = func(kv uintptr, keyName string) uintptr {
+var _Kv1FindOrCreateKey = func(kv uintptr, keyName string) uintptr {
 	var __retVal uintptr
 	__kv := C.uintptr_t(kv)
 	__keyName := plugify.ConstructString(keyName)
@@ -187,10 +187,10 @@ var P_Kv1FindOrCreateKey = func(kv uintptr, keyName string) uintptr {
 //
 //  @return Pointer to the found or newly created KeyValues subkey (never NULL)
 func Kv1FindOrCreateKey(kv uintptr, keyName string) uintptr {
-	return P_Kv1FindOrCreateKey(kv, keyName)
+	return _Kv1FindOrCreateKey(kv, keyName)
 }
 
-var P_Kv1CreateKey = func(kv uintptr, keyName string) uintptr {
+var _Kv1CreateKey = func(kv uintptr, keyName string) uintptr {
 	var __retVal uintptr
 	__kv := C.uintptr_t(kv)
 	__keyName := plugify.ConstructString(keyName)
@@ -214,10 +214,10 @@ var P_Kv1CreateKey = func(kv uintptr, keyName string) uintptr {
 //
 //  @return Pointer to the newly created KeyValues subkey
 func Kv1CreateKey(kv uintptr, keyName string) uintptr {
-	return P_Kv1CreateKey(kv, keyName)
+	return _Kv1CreateKey(kv, keyName)
 }
 
-var P_Kv1CreateNewKey = func(kv uintptr) uintptr {
+var _Kv1CreateNewKey = func(kv uintptr) uintptr {
 	var __retVal uintptr
 	__kv := C.uintptr_t(kv)
 	__retVal = uintptr(C.Kv1CreateNewKey(__kv))
@@ -231,10 +231,10 @@ var P_Kv1CreateNewKey = func(kv uintptr) uintptr {
 //
 //  @return Pointer to the newly created KeyValues subkey
 func Kv1CreateNewKey(kv uintptr) uintptr {
-	return P_Kv1CreateNewKey(kv)
+	return _Kv1CreateNewKey(kv)
 }
 
-var P_Kv1AddSubKey = func(kv uintptr, subKey uintptr) {
+var _Kv1AddSubKey = func(kv uintptr, subKey uintptr) {
 	__kv := C.uintptr_t(kv)
 	__subKey := C.uintptr_t(subKey)
 	C.Kv1AddSubKey(__kv, __subKey)
@@ -246,10 +246,10 @@ var P_Kv1AddSubKey = func(kv uintptr, subKey uintptr) {
 //  @param kv: Pointer to the parent KeyValues object
 //  @param subKey: Pointer to the KeyValues object to add as a child
 func Kv1AddSubKey(kv uintptr, subKey uintptr) {
-	P_Kv1AddSubKey(kv, subKey)
+	_Kv1AddSubKey(kv, subKey)
 }
 
-var P_Kv1GetFirstSubKey = func(kv uintptr) uintptr {
+var _Kv1GetFirstSubKey = func(kv uintptr) uintptr {
 	var __retVal uintptr
 	__kv := C.uintptr_t(kv)
 	__retVal = uintptr(C.Kv1GetFirstSubKey(__kv))
@@ -263,10 +263,10 @@ var P_Kv1GetFirstSubKey = func(kv uintptr) uintptr {
 //
 //  @return Pointer to the first subkey, or NULL if there are no children
 func Kv1GetFirstSubKey(kv uintptr) uintptr {
-	return P_Kv1GetFirstSubKey(kv)
+	return _Kv1GetFirstSubKey(kv)
 }
 
-var P_Kv1GetNextKey = func(kv uintptr) uintptr {
+var _Kv1GetNextKey = func(kv uintptr) uintptr {
 	var __retVal uintptr
 	__kv := C.uintptr_t(kv)
 	__retVal = uintptr(C.Kv1GetNextKey(__kv))
@@ -280,10 +280,10 @@ var P_Kv1GetNextKey = func(kv uintptr) uintptr {
 //
 //  @return Pointer to the next sibling key, or NULL if this is the last sibling
 func Kv1GetNextKey(kv uintptr) uintptr {
-	return P_Kv1GetNextKey(kv)
+	return _Kv1GetNextKey(kv)
 }
 
-var P_Kv1GetColor = func(kv uintptr, keyName string, defaultValue plugify.Vector4) plugify.Vector4 {
+var _Kv1GetColor = func(kv uintptr, keyName string, defaultValue plugify.Vector4) plugify.Vector4 {
 	var __retVal plugify.Vector4
 	__kv := C.uintptr_t(kv)
 	__keyName := plugify.ConstructString(keyName)
@@ -310,10 +310,10 @@ var P_Kv1GetColor = func(kv uintptr, keyName string, defaultValue plugify.Vector
 //
 //  @return The color value as a 32-bit integer (RGBA)
 func Kv1GetColor(kv uintptr, keyName string, defaultValue plugify.Vector4) plugify.Vector4 {
-	return P_Kv1GetColor(kv, keyName, defaultValue)
+	return _Kv1GetColor(kv, keyName, defaultValue)
 }
 
-var P_Kv1SetColor = func(kv uintptr, keyName string, value plugify.Vector4) {
+var _Kv1SetColor = func(kv uintptr, keyName string, value plugify.Vector4) {
 	__kv := C.uintptr_t(kv)
 	__keyName := plugify.ConstructString(keyName)
 	__value := *(*C.Vector4)(unsafe.Pointer(&value))
@@ -335,10 +335,10 @@ var P_Kv1SetColor = func(kv uintptr, keyName string, value plugify.Vector4) {
 //  @param keyName: The name of the key to set the color for
 //  @param value: The color value as a 32-bit integer (RGBA)
 func Kv1SetColor(kv uintptr, keyName string, value plugify.Vector4) {
-	P_Kv1SetColor(kv, keyName, value)
+	_Kv1SetColor(kv, keyName, value)
 }
 
-var P_Kv1GetInt = func(kv uintptr, keyName string, defaultValue int32) int32 {
+var _Kv1GetInt = func(kv uintptr, keyName string, defaultValue int32) int32 {
 	var __retVal int32
 	__kv := C.uintptr_t(kv)
 	__keyName := plugify.ConstructString(keyName)
@@ -364,10 +364,10 @@ var P_Kv1GetInt = func(kv uintptr, keyName string, defaultValue int32) int32 {
 //
 //  @return The integer value associated with the key, or defaultValue if not found
 func Kv1GetInt(kv uintptr, keyName string, defaultValue int32) int32 {
-	return P_Kv1GetInt(kv, keyName, defaultValue)
+	return _Kv1GetInt(kv, keyName, defaultValue)
 }
 
-var P_Kv1SetInt = func(kv uintptr, keyName string, value int32) {
+var _Kv1SetInt = func(kv uintptr, keyName string, value int32) {
 	__kv := C.uintptr_t(kv)
 	__keyName := plugify.ConstructString(keyName)
 	__value := C.int32_t(value)
@@ -389,10 +389,10 @@ var P_Kv1SetInt = func(kv uintptr, keyName string, value int32) {
 //  @param keyName: The name of the key to set the integer for
 //  @param value: The integer value to set
 func Kv1SetInt(kv uintptr, keyName string, value int32) {
-	P_Kv1SetInt(kv, keyName, value)
+	_Kv1SetInt(kv, keyName, value)
 }
 
-var P_Kv1GetFloat = func(kv uintptr, keyName string, defaultValue float32) float32 {
+var _Kv1GetFloat = func(kv uintptr, keyName string, defaultValue float32) float32 {
 	var __retVal float32
 	__kv := C.uintptr_t(kv)
 	__keyName := plugify.ConstructString(keyName)
@@ -418,10 +418,10 @@ var P_Kv1GetFloat = func(kv uintptr, keyName string, defaultValue float32) float
 //
 //  @return The float value associated with the key, or defaultValue if not found
 func Kv1GetFloat(kv uintptr, keyName string, defaultValue float32) float32 {
-	return P_Kv1GetFloat(kv, keyName, defaultValue)
+	return _Kv1GetFloat(kv, keyName, defaultValue)
 }
 
-var P_Kv1SetFloat = func(kv uintptr, keyName string, value float32) {
+var _Kv1SetFloat = func(kv uintptr, keyName string, value float32) {
 	__kv := C.uintptr_t(kv)
 	__keyName := plugify.ConstructString(keyName)
 	__value := C.float(value)
@@ -443,10 +443,10 @@ var P_Kv1SetFloat = func(kv uintptr, keyName string, value float32) {
 //  @param keyName: The name of the key to set the float for
 //  @param value: The float value to set
 func Kv1SetFloat(kv uintptr, keyName string, value float32) {
-	P_Kv1SetFloat(kv, keyName, value)
+	_Kv1SetFloat(kv, keyName, value)
 }
 
-var P_Kv1GetString = func(kv uintptr, keyName string, defaultValue string) string {
+var _Kv1GetString = func(kv uintptr, keyName string, defaultValue string) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__kv := C.uintptr_t(kv)
@@ -478,10 +478,10 @@ var P_Kv1GetString = func(kv uintptr, keyName string, defaultValue string) strin
 //
 //  @return The string value associated with the key, or defaultValue if not found
 func Kv1GetString(kv uintptr, keyName string, defaultValue string) string {
-	return P_Kv1GetString(kv, keyName, defaultValue)
+	return _Kv1GetString(kv, keyName, defaultValue)
 }
 
-var P_Kv1SetString = func(kv uintptr, keyName string, value string) {
+var _Kv1SetString = func(kv uintptr, keyName string, value string) {
 	__kv := C.uintptr_t(kv)
 	__keyName := plugify.ConstructString(keyName)
 	__value := plugify.ConstructString(value)
@@ -504,10 +504,10 @@ var P_Kv1SetString = func(kv uintptr, keyName string, value string) {
 //  @param keyName: The name of the key to set the string for
 //  @param value: The string value to set
 func Kv1SetString(kv uintptr, keyName string, value string) {
-	P_Kv1SetString(kv, keyName, value)
+	_Kv1SetString(kv, keyName, value)
 }
 
-var P_Kv1GetPtr = func(kv uintptr, keyName string, defaultValue uintptr) uintptr {
+var _Kv1GetPtr = func(kv uintptr, keyName string, defaultValue uintptr) uintptr {
 	var __retVal uintptr
 	__kv := C.uintptr_t(kv)
 	__keyName := plugify.ConstructString(keyName)
@@ -533,10 +533,10 @@ var P_Kv1GetPtr = func(kv uintptr, keyName string, defaultValue uintptr) uintptr
 //
 //  @return The pointer value associated with the key, or defaultValue if not found
 func Kv1GetPtr(kv uintptr, keyName string, defaultValue uintptr) uintptr {
-	return P_Kv1GetPtr(kv, keyName, defaultValue)
+	return _Kv1GetPtr(kv, keyName, defaultValue)
 }
 
-var P_Kv1SetPtr = func(kv uintptr, keyName string, value uintptr) {
+var _Kv1SetPtr = func(kv uintptr, keyName string, value uintptr) {
 	__kv := C.uintptr_t(kv)
 	__keyName := plugify.ConstructString(keyName)
 	__value := C.uintptr_t(value)
@@ -558,10 +558,10 @@ var P_Kv1SetPtr = func(kv uintptr, keyName string, value uintptr) {
 //  @param keyName: The name of the key to set the pointer for
 //  @param value: The pointer value to set
 func Kv1SetPtr(kv uintptr, keyName string, value uintptr) {
-	P_Kv1SetPtr(kv, keyName, value)
+	_Kv1SetPtr(kv, keyName, value)
 }
 
-var P_Kv1GetBool = func(kv uintptr, keyName string, defaultValue bool) bool {
+var _Kv1GetBool = func(kv uintptr, keyName string, defaultValue bool) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__keyName := plugify.ConstructString(keyName)
@@ -587,10 +587,10 @@ var P_Kv1GetBool = func(kv uintptr, keyName string, defaultValue bool) bool {
 //
 //  @return The boolean value associated with the key, or defaultValue if not found
 func Kv1GetBool(kv uintptr, keyName string, defaultValue bool) bool {
-	return P_Kv1GetBool(kv, keyName, defaultValue)
+	return _Kv1GetBool(kv, keyName, defaultValue)
 }
 
-var P_Kv1SetBool = func(kv uintptr, keyName string, value bool) {
+var _Kv1SetBool = func(kv uintptr, keyName string, value bool) {
 	__kv := C.uintptr_t(kv)
 	__keyName := plugify.ConstructString(keyName)
 	__value := C.bool(value)
@@ -612,10 +612,10 @@ var P_Kv1SetBool = func(kv uintptr, keyName string, value bool) {
 //  @param keyName: The name of the key to set the boolean for
 //  @param value: The boolean value to set
 func Kv1SetBool(kv uintptr, keyName string, value bool) {
-	P_Kv1SetBool(kv, keyName, value)
+	_Kv1SetBool(kv, keyName, value)
 }
 
-var P_Kv1MakeCopy = func(kv uintptr) uintptr {
+var _Kv1MakeCopy = func(kv uintptr) uintptr {
 	var __retVal uintptr
 	__kv := C.uintptr_t(kv)
 	__retVal = uintptr(C.Kv1MakeCopy(__kv))
@@ -629,10 +629,10 @@ var P_Kv1MakeCopy = func(kv uintptr) uintptr {
 //
 //  @return Pointer to the newly allocated copy of the KeyValues tree
 func Kv1MakeCopy(kv uintptr) uintptr {
-	return P_Kv1MakeCopy(kv)
+	return _Kv1MakeCopy(kv)
 }
 
-var P_Kv1Clear = func(kv uintptr) {
+var _Kv1Clear = func(kv uintptr) {
 	__kv := C.uintptr_t(kv)
 	C.Kv1Clear(__kv)
 }
@@ -642,10 +642,10 @@ var P_Kv1Clear = func(kv uintptr) {
 //
 //  @param kv: Pointer to the KeyValues object to clear
 func Kv1Clear(kv uintptr) {
-	P_Kv1Clear(kv)
+	_Kv1Clear(kv)
 }
 
-var P_Kv1IsEmpty = func(kv uintptr, keyName string) bool {
+var _Kv1IsEmpty = func(kv uintptr, keyName string) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__keyName := plugify.ConstructString(keyName)
@@ -669,7 +669,7 @@ var P_Kv1IsEmpty = func(kv uintptr, keyName string) bool {
 //
 //  @return true if the key exists and is empty, false otherwise
 func Kv1IsEmpty(kv uintptr, keyName string) bool {
-	return P_Kv1IsEmpty(kv, keyName)
+	return _Kv1IsEmpty(kv, keyName)
 }
 
 var (

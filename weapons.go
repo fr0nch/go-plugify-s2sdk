@@ -27,7 +27,7 @@ var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: weapons)
 
-var P_GetWeaponVDataFromKey = func(name string) uintptr {
+var _GetWeaponVDataFromKey = func(name string) uintptr {
 	var __retVal uintptr
 	__name := plugify.ConstructString(name)
 	plugify.Block {
@@ -49,10 +49,10 @@ var P_GetWeaponVDataFromKey = func(name string) uintptr {
 //
 //  @return A pointer to the `CCSWeaponBaseVData` if the entity handle is valid and represents a player weapon; otherwise, nullptr.
 func GetWeaponVDataFromKey(name string) uintptr {
-	return P_GetWeaponVDataFromKey(name)
+	return _GetWeaponVDataFromKey(name)
 }
 
-var P_GetWeaponVData = func(entityHandle int32) uintptr {
+var _GetWeaponVData = func(entityHandle int32) uintptr {
 	var __retVal uintptr
 	__entityHandle := C.int32_t(entityHandle)
 	__retVal = uintptr(C.GetWeaponVData(__entityHandle))
@@ -66,10 +66,10 @@ var P_GetWeaponVData = func(entityHandle int32) uintptr {
 //
 //  @return A pointer to the `CCSWeaponBaseVData` if the entity handle is valid and represents a player weapon; otherwise, nullptr.
 func GetWeaponVData(entityHandle int32) uintptr {
-	return P_GetWeaponVData(entityHandle)
+	return _GetWeaponVData(entityHandle)
 }
 
-var P_GetWeaponType = func(entityHandle int32) CSWeaponType {
+var _GetWeaponType = func(entityHandle int32) CSWeaponType {
 	var __retVal CSWeaponType
 	__entityHandle := C.int32_t(entityHandle)
 	__retVal = uint32(C.GetWeaponType(__entityHandle))
@@ -83,10 +83,10 @@ var P_GetWeaponType = func(entityHandle int32) CSWeaponType {
 //
 //  @return The type of the weapon, or WEAPONTYPE_UNKNOWN if the entity is invalid.
 func GetWeaponType(entityHandle int32) CSWeaponType {
-	return P_GetWeaponType(entityHandle)
+	return _GetWeaponType(entityHandle)
 }
 
-var P_GetWeaponCategory = func(entityHandle int32) CSWeaponCategory {
+var _GetWeaponCategory = func(entityHandle int32) CSWeaponCategory {
 	var __retVal CSWeaponCategory
 	__entityHandle := C.int32_t(entityHandle)
 	__retVal = uint32(C.GetWeaponCategory(__entityHandle))
@@ -100,10 +100,10 @@ var P_GetWeaponCategory = func(entityHandle int32) CSWeaponCategory {
 //
 //  @return The category of the weapon, or WEAPONCATEGORY_OTHER if the entity is invalid.
 func GetWeaponCategory(entityHandle int32) CSWeaponCategory {
-	return P_GetWeaponCategory(entityHandle)
+	return _GetWeaponCategory(entityHandle)
 }
 
-var P_GetWeaponGearSlot = func(entityHandle int32) GearSlot {
+var _GetWeaponGearSlot = func(entityHandle int32) GearSlot {
 	var __retVal GearSlot
 	__entityHandle := C.int32_t(entityHandle)
 	__retVal = uint32(C.GetWeaponGearSlot(__entityHandle))
@@ -117,10 +117,10 @@ var P_GetWeaponGearSlot = func(entityHandle int32) GearSlot {
 //
 //  @return The gear slot of the weapon, or GEAR_SLOT_INVALID if the entity is invalid.
 func GetWeaponGearSlot(entityHandle int32) GearSlot {
-	return P_GetWeaponGearSlot(entityHandle)
+	return _GetWeaponGearSlot(entityHandle)
 }
 
-var P_GetWeaponItemDefinition = func(entityHandle int32) WeaponDefIndex {
+var _GetWeaponItemDefinition = func(entityHandle int32) WeaponDefIndex {
 	var __retVal WeaponDefIndex
 	__entityHandle := C.int32_t(entityHandle)
 	__retVal = uint16(C.GetWeaponItemDefinition(__entityHandle))
@@ -134,10 +134,10 @@ var P_GetWeaponItemDefinition = func(entityHandle int32) WeaponDefIndex {
 //
 //  @return The weapon definition index as a `uint16_t`, or 0 if the entity handle is invalid.
 func GetWeaponItemDefinition(entityHandle int32) WeaponDefIndex {
-	return P_GetWeaponItemDefinition(entityHandle)
+	return _GetWeaponItemDefinition(entityHandle)
 }
 
-var P_GetWeaponItemDefinitionByName = func(itemName string) WeaponDefIndex {
+var _GetWeaponItemDefinitionByName = func(itemName string) WeaponDefIndex {
 	var __retVal WeaponDefIndex
 	__itemName := plugify.ConstructString(itemName)
 	plugify.Block {
@@ -159,6 +159,6 @@ var P_GetWeaponItemDefinitionByName = func(itemName string) WeaponDefIndex {
 //
 //  @return The weapon definition index as a `uint16_t`, or 0 if the entity handle is invalid.
 func GetWeaponItemDefinitionByName(itemName string) WeaponDefIndex {
-	return P_GetWeaponItemDefinitionByName(itemName)
+	return _GetWeaponItemDefinitionByName(itemName)
 }
 

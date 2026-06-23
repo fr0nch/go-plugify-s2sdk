@@ -25,7 +25,7 @@ var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: timers)
 
-var P_CreateTimer = func(delay float64, callback TimerCallback, flags TimerFlag, userData []any) uint32 {
+var _CreateTimer = func(delay float64, callback TimerCallback, flags TimerFlag, userData []any) uint32 {
 	var __retVal uint32
 	__delay := C.double(delay)
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
@@ -53,10 +53,10 @@ var P_CreateTimer = func(delay float64, callback TimerCallback, flags TimerFlag,
 //
 //  @return A id to the newly created Timer object, or -1 if the timer could not be created.
 func CreateTimer(delay float64, callback TimerCallback, flags TimerFlag, userData []any) uint32 {
-	return P_CreateTimer(delay, callback, flags, userData)
+	return _CreateTimer(delay, callback, flags, userData)
 }
 
-var P_KillsTimer = func(timer uint32) {
+var _KillsTimer = func(timer uint32) {
 	__timer := C.uint32_t(timer)
 	C.KillsTimer(__timer)
 }
@@ -66,10 +66,10 @@ var P_KillsTimer = func(timer uint32) {
 //
 //  @param timer: A id of the Timer object to be stopped and removed.
 func KillsTimer(timer uint32) {
-	P_KillsTimer(timer)
+	_KillsTimer(timer)
 }
 
-var P_RescheduleTimer = func(timer uint32, newDaly float64) {
+var _RescheduleTimer = func(timer uint32, newDaly float64) {
 	__timer := C.uint32_t(timer)
 	__newDaly := C.double(newDaly)
 	C.RescheduleTimer(__timer, __newDaly)
@@ -81,10 +81,10 @@ var P_RescheduleTimer = func(timer uint32, newDaly float64) {
 //  @param timer: A id of the Timer object to be stopped and removed.
 //  @param newDaly: The new delay in seconds between each callback execution.
 func RescheduleTimer(timer uint32, newDaly float64) {
-	P_RescheduleTimer(timer, newDaly)
+	_RescheduleTimer(timer, newDaly)
 }
 
-var P_GetTickInterval = func() float64 {
+var _GetTickInterval = func() float64 {
 	__retVal := float64(C.GetTickInterval())
 	return __retVal
 }
@@ -95,10 +95,10 @@ var P_GetTickInterval = func() float64 {
 //
 //  @return The tick interval value.
 func GetTickInterval() float64 {
-	return P_GetTickInterval()
+	return _GetTickInterval()
 }
 
-var P_GetTickedTime = func() float64 {
+var _GetTickedTime = func() float64 {
 	__retVal := float64(C.GetTickedTime())
 	return __retVal
 }
@@ -109,6 +109,6 @@ var P_GetTickedTime = func() float64 {
 //
 //  @return The ticked time value.
 func GetTickedTime() float64 {
-	return P_GetTickedTime()
+	return _GetTickedTime()
 }
 

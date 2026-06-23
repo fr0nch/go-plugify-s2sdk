@@ -32,7 +32,7 @@ var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: gameconfig)
 
-var P_CloseGameConfigFile = func(id uint32) {
+var _CloseGameConfigFile = func(id uint32) {
 	__id := C.uint32_t(id)
 	C.CloseGameConfigFile(__id)
 }
@@ -42,10 +42,10 @@ var P_CloseGameConfigFile = func(id uint32) {
 //
 //  @param id: An id to the game configuration to be closed.
 func CloseGameConfigFile(id uint32) {
-	P_CloseGameConfigFile(id)
+	_CloseGameConfigFile(id)
 }
 
-var P_LoadGameConfigFile = func(paths []string) uint32 {
+var _LoadGameConfigFile = func(paths []string) uint32 {
 	var __retVal uint32
 	__paths := plugify.ConstructVectorString(paths)
 	plugify.Block {
@@ -67,10 +67,10 @@ var P_LoadGameConfigFile = func(paths []string) uint32 {
 //
 //  @return A id to the loaded game configuration object, or -1 if loading fails.
 func LoadGameConfigFile(paths []string) uint32 {
-	return P_LoadGameConfigFile(paths)
+	return _LoadGameConfigFile(paths)
 }
 
-var P_GetGameConfigPatch = func(id uint32, name string) string {
+var _GetGameConfigPatch = func(id uint32, name string) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__id := C.uint32_t(id)
@@ -99,10 +99,10 @@ var P_GetGameConfigPatch = func(id uint32, name string) string {
 //
 //  @return A string where the patch will be stored.
 func GetGameConfigPatch(id uint32, name string) string {
-	return P_GetGameConfigPatch(id, name)
+	return _GetGameConfigPatch(id, name)
 }
 
-var P_GetGameConfigOffset = func(id uint32, name string) int32 {
+var _GetGameConfigOffset = func(id uint32, name string) int32 {
 	var __retVal int32
 	__id := C.uint32_t(id)
 	__name := plugify.ConstructString(name)
@@ -126,10 +126,10 @@ var P_GetGameConfigOffset = func(id uint32, name string) int32 {
 //
 //  @return The offset associated with the specified name.
 func GetGameConfigOffset(id uint32, name string) int32 {
-	return P_GetGameConfigOffset(id, name)
+	return _GetGameConfigOffset(id, name)
 }
 
-var P_GetGameConfigAddress = func(id uint32, name string) uintptr {
+var _GetGameConfigAddress = func(id uint32, name string) uintptr {
 	var __retVal uintptr
 	__id := C.uint32_t(id)
 	__name := plugify.ConstructString(name)
@@ -153,10 +153,10 @@ var P_GetGameConfigAddress = func(id uint32, name string) uintptr {
 //
 //  @return A pointer to the address associated with the specified name.
 func GetGameConfigAddress(id uint32, name string) uintptr {
-	return P_GetGameConfigAddress(id, name)
+	return _GetGameConfigAddress(id, name)
 }
 
-var P_GetGameConfigVTable = func(id uint32, name string) uintptr {
+var _GetGameConfigVTable = func(id uint32, name string) uintptr {
 	var __retVal uintptr
 	__id := C.uint32_t(id)
 	__name := plugify.ConstructString(name)
@@ -180,10 +180,10 @@ var P_GetGameConfigVTable = func(id uint32, name string) uintptr {
 //
 //  @return A pointer to the vtable associated with the specified name
 func GetGameConfigVTable(id uint32, name string) uintptr {
-	return P_GetGameConfigVTable(id, name)
+	return _GetGameConfigVTable(id, name)
 }
 
-var P_GetGameConfigSignature = func(id uint32, name string) uintptr {
+var _GetGameConfigSignature = func(id uint32, name string) uintptr {
 	var __retVal uintptr
 	__id := C.uint32_t(id)
 	__name := plugify.ConstructString(name)
@@ -207,10 +207,10 @@ var P_GetGameConfigSignature = func(id uint32, name string) uintptr {
 //
 //  @return A pointer to the signature associated with the specified name.
 func GetGameConfigSignature(id uint32, name string) uintptr {
-	return P_GetGameConfigSignature(id, name)
+	return _GetGameConfigSignature(id, name)
 }
 
-var P_GetGameConfigPatchAll = func(name string) string {
+var _GetGameConfigPatchAll = func(name string) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__name := plugify.ConstructString(name)
@@ -237,10 +237,10 @@ var P_GetGameConfigPatchAll = func(name string) string {
 //
 //  @return A string containing the patch, or an empty string if not found.
 func GetGameConfigPatchAll(name string) string {
-	return P_GetGameConfigPatchAll(name)
+	return _GetGameConfigPatchAll(name)
 }
 
-var P_GetGameConfigOffsetAll = func(name string) int32 {
+var _GetGameConfigOffsetAll = func(name string) int32 {
 	var __retVal int32
 	__name := plugify.ConstructString(name)
 	plugify.Block {
@@ -262,10 +262,10 @@ var P_GetGameConfigOffsetAll = func(name string) int32 {
 //
 //  @return The offset associated with the specified name, or -1 if not found.
 func GetGameConfigOffsetAll(name string) int32 {
-	return P_GetGameConfigOffsetAll(name)
+	return _GetGameConfigOffsetAll(name)
 }
 
-var P_GetGameConfigAddressAll = func(name string) uintptr {
+var _GetGameConfigAddressAll = func(name string) uintptr {
 	var __retVal uintptr
 	__name := plugify.ConstructString(name)
 	plugify.Block {
@@ -287,10 +287,10 @@ var P_GetGameConfigAddressAll = func(name string) uintptr {
 //
 //  @return A pointer to the address associated with the specified name, or nullptr if not found.
 func GetGameConfigAddressAll(name string) uintptr {
-	return P_GetGameConfigAddressAll(name)
+	return _GetGameConfigAddressAll(name)
 }
 
-var P_GetGameConfigVTableAll = func(name string) uintptr {
+var _GetGameConfigVTableAll = func(name string) uintptr {
 	var __retVal uintptr
 	__name := plugify.ConstructString(name)
 	plugify.Block {
@@ -312,10 +312,10 @@ var P_GetGameConfigVTableAll = func(name string) uintptr {
 //
 //  @return A pointer to the vtable associated with the specified name, or nullptr if not found.
 func GetGameConfigVTableAll(name string) uintptr {
-	return P_GetGameConfigVTableAll(name)
+	return _GetGameConfigVTableAll(name)
 }
 
-var P_GetGameConfigSignatureAll = func(name string) uintptr {
+var _GetGameConfigSignatureAll = func(name string) uintptr {
 	var __retVal uintptr
 	__name := plugify.ConstructString(name)
 	plugify.Block {
@@ -337,7 +337,7 @@ var P_GetGameConfigSignatureAll = func(name string) uintptr {
 //
 //  @return A pointer to the signature associated with the specified name, or nullptr if not found.
 func GetGameConfigSignatureAll(name string) uintptr {
-	return P_GetGameConfigSignatureAll(name)
+	return _GetGameConfigSignatureAll(name)
 }
 
 var (

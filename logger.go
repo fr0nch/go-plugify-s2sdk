@@ -37,7 +37,7 @@ var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: logger)
 
-var P_RegisterLoggingChannel = func(name string, flags int32, verbosity LoggingVerbosity, color plugify.Vector4) int32 {
+var _RegisterLoggingChannel = func(name string, flags int32, verbosity LoggingVerbosity, color plugify.Vector4) int32 {
 	var __retVal int32
 	__name := plugify.ConstructString(name)
 	__flags := C.int32_t(flags)
@@ -65,10 +65,10 @@ var P_RegisterLoggingChannel = func(name string, flags int32, verbosity LoggingV
 //
 //  @return The ID of the newly created logging channel.
 func RegisterLoggingChannel(name string, flags int32, verbosity LoggingVerbosity, color plugify.Vector4) int32 {
-	return P_RegisterLoggingChannel(name, flags, verbosity, color)
+	return _RegisterLoggingChannel(name, flags, verbosity, color)
 }
 
-var P_AddLoggerTagToChannel = func(channelID int32, tagName string) {
+var _AddLoggerTagToChannel = func(channelID int32, tagName string) {
 	__channelID := C.int32_t(channelID)
 	__tagName := plugify.ConstructString(tagName)
 	plugify.Block {
@@ -88,10 +88,10 @@ var P_AddLoggerTagToChannel = func(channelID int32, tagName string) {
 //  @param channelID: The ID of the logging channel to which the tag will be added.
 //  @param tagName: The name of the tag to add to the channel.
 func AddLoggerTagToChannel(channelID int32, tagName string) {
-	P_AddLoggerTagToChannel(channelID, tagName)
+	_AddLoggerTagToChannel(channelID, tagName)
 }
 
-var P_HasLoggerTag = func(channelID int32, tag string) bool {
+var _HasLoggerTag = func(channelID int32, tag string) bool {
 	var __retVal bool
 	__channelID := C.int32_t(channelID)
 	__tag := plugify.ConstructString(tag)
@@ -115,10 +115,10 @@ var P_HasLoggerTag = func(channelID int32, tag string) bool {
 //
 //  @return True if the tag exists in the channel, otherwise false.
 func HasLoggerTag(channelID int32, tag string) bool {
-	return P_HasLoggerTag(channelID, tag)
+	return _HasLoggerTag(channelID, tag)
 }
 
-var P_IsLoggerChannelEnabledBySeverity = func(channelID int32, severity LoggingSeverity) bool {
+var _IsLoggerChannelEnabledBySeverity = func(channelID int32, severity LoggingSeverity) bool {
 	var __retVal bool
 	__channelID := C.int32_t(channelID)
 	__severity := C.int32_t(severity)
@@ -134,10 +134,10 @@ var P_IsLoggerChannelEnabledBySeverity = func(channelID int32, severity LoggingS
 //
 //  @return True if the channel is enabled for the specified severity, otherwise false.
 func IsLoggerChannelEnabledBySeverity(channelID int32, severity LoggingSeverity) bool {
-	return P_IsLoggerChannelEnabledBySeverity(channelID, severity)
+	return _IsLoggerChannelEnabledBySeverity(channelID, severity)
 }
 
-var P_IsLoggerChannelEnabledByVerbosity = func(channelID int32, verbosity LoggingVerbosity) bool {
+var _IsLoggerChannelEnabledByVerbosity = func(channelID int32, verbosity LoggingVerbosity) bool {
 	var __retVal bool
 	__channelID := C.int32_t(channelID)
 	__verbosity := C.int32_t(verbosity)
@@ -153,10 +153,10 @@ var P_IsLoggerChannelEnabledByVerbosity = func(channelID int32, verbosity Loggin
 //
 //  @return True if the channel is enabled for the specified verbosity, otherwise false.
 func IsLoggerChannelEnabledByVerbosity(channelID int32, verbosity LoggingVerbosity) bool {
-	return P_IsLoggerChannelEnabledByVerbosity(channelID, verbosity)
+	return _IsLoggerChannelEnabledByVerbosity(channelID, verbosity)
 }
 
-var P_GetLoggerChannelVerbosity = func(channelID int32) int32 {
+var _GetLoggerChannelVerbosity = func(channelID int32) int32 {
 	var __retVal int32
 	__channelID := C.int32_t(channelID)
 	__retVal = int32(C.GetLoggerChannelVerbosity(__channelID))
@@ -170,10 +170,10 @@ var P_GetLoggerChannelVerbosity = func(channelID int32) int32 {
 //
 //  @return The verbosity level of the specified logging channel.
 func GetLoggerChannelVerbosity(channelID int32) int32 {
-	return P_GetLoggerChannelVerbosity(channelID)
+	return _GetLoggerChannelVerbosity(channelID)
 }
 
-var P_SetLoggerChannelVerbosity = func(channelID int32, verbosity LoggingVerbosity) {
+var _SetLoggerChannelVerbosity = func(channelID int32, verbosity LoggingVerbosity) {
 	__channelID := C.int32_t(channelID)
 	__verbosity := C.int32_t(verbosity)
 	C.SetLoggerChannelVerbosity(__channelID, __verbosity)
@@ -185,10 +185,10 @@ var P_SetLoggerChannelVerbosity = func(channelID int32, verbosity LoggingVerbosi
 //  @param channelID: The ID of the logging channel.
 //  @param verbosity: The new verbosity level to set.
 func SetLoggerChannelVerbosity(channelID int32, verbosity LoggingVerbosity) {
-	P_SetLoggerChannelVerbosity(channelID, verbosity)
+	_SetLoggerChannelVerbosity(channelID, verbosity)
 }
 
-var P_SetLoggerChannelVerbosityByName = func(channelID int32, name string, verbosity LoggingVerbosity) {
+var _SetLoggerChannelVerbosityByName = func(channelID int32, name string, verbosity LoggingVerbosity) {
 	__channelID := C.int32_t(channelID)
 	__name := plugify.ConstructString(name)
 	__verbosity := C.int32_t(verbosity)
@@ -210,10 +210,10 @@ var P_SetLoggerChannelVerbosityByName = func(channelID int32, name string, verbo
 //  @param name: The name of the logging channel.
 //  @param verbosity: The new verbosity level to set.
 func SetLoggerChannelVerbosityByName(channelID int32, name string, verbosity LoggingVerbosity) {
-	P_SetLoggerChannelVerbosityByName(channelID, name, verbosity)
+	_SetLoggerChannelVerbosityByName(channelID, name, verbosity)
 }
 
-var P_SetLoggerChannelVerbosityByTag = func(channelID int32, tag string, verbosity LoggingVerbosity) {
+var _SetLoggerChannelVerbosityByTag = func(channelID int32, tag string, verbosity LoggingVerbosity) {
 	__channelID := C.int32_t(channelID)
 	__tag := plugify.ConstructString(tag)
 	__verbosity := C.int32_t(verbosity)
@@ -235,10 +235,10 @@ var P_SetLoggerChannelVerbosityByTag = func(channelID int32, tag string, verbosi
 //  @param tag: The name of the tag.
 //  @param verbosity: The new verbosity level to set.
 func SetLoggerChannelVerbosityByTag(channelID int32, tag string, verbosity LoggingVerbosity) {
-	P_SetLoggerChannelVerbosityByTag(channelID, tag, verbosity)
+	_SetLoggerChannelVerbosityByTag(channelID, tag, verbosity)
 }
 
-var P_GetLoggerChannelColor = func(channelID int32) plugify.Vector4 {
+var _GetLoggerChannelColor = func(channelID int32) plugify.Vector4 {
 	var __retVal plugify.Vector4
 	__channelID := C.int32_t(channelID)
 	__native := C.GetLoggerChannelColor(__channelID)
@@ -253,10 +253,10 @@ var P_GetLoggerChannelColor = func(channelID int32) plugify.Vector4 {
 //
 //  @return The color value of the specified logging channel.
 func GetLoggerChannelColor(channelID int32) plugify.Vector4 {
-	return P_GetLoggerChannelColor(channelID)
+	return _GetLoggerChannelColor(channelID)
 }
 
-var P_SetLoggerChannelColor = func(channelID int32, color plugify.Vector4) {
+var _SetLoggerChannelColor = func(channelID int32, color plugify.Vector4) {
 	__channelID := C.int32_t(channelID)
 	__color := *(*C.Vector4)(unsafe.Pointer(&color))
 	C.SetLoggerChannelColor(__channelID, &__color)
@@ -268,10 +268,10 @@ var P_SetLoggerChannelColor = func(channelID int32, color plugify.Vector4) {
 //  @param channelID: The ID of the logging channel.
 //  @param color: The new color value to set for the channel.
 func SetLoggerChannelColor(channelID int32, color plugify.Vector4) {
-	P_SetLoggerChannelColor(channelID, color)
+	_SetLoggerChannelColor(channelID, color)
 }
 
-var P_GetLoggerChannelFlags = func(channelID int32) int32 {
+var _GetLoggerChannelFlags = func(channelID int32) int32 {
 	var __retVal int32
 	__channelID := C.int32_t(channelID)
 	__retVal = int32(C.GetLoggerChannelFlags(__channelID))
@@ -285,10 +285,10 @@ var P_GetLoggerChannelFlags = func(channelID int32) int32 {
 //
 //  @return The flags of the specified logging channel.
 func GetLoggerChannelFlags(channelID int32) int32 {
-	return P_GetLoggerChannelFlags(channelID)
+	return _GetLoggerChannelFlags(channelID)
 }
 
-var P_SetLoggerChannelFlags = func(channelID int32, eFlags LoggingChannelFlags) {
+var _SetLoggerChannelFlags = func(channelID int32, eFlags LoggingChannelFlags) {
 	__channelID := C.int32_t(channelID)
 	__eFlags := C.int32_t(eFlags)
 	C.SetLoggerChannelFlags(__channelID, __eFlags)
@@ -300,10 +300,10 @@ var P_SetLoggerChannelFlags = func(channelID int32, eFlags LoggingChannelFlags) 
 //  @param channelID: The ID of the logging channel.
 //  @param eFlags: The new flags to set for the channel.
 func SetLoggerChannelFlags(channelID int32, eFlags LoggingChannelFlags) {
-	P_SetLoggerChannelFlags(channelID, eFlags)
+	_SetLoggerChannelFlags(channelID, eFlags)
 }
 
-var P_Log = func(channelID int32, severity LoggingSeverity, message string) int32 {
+var _Log = func(channelID int32, severity LoggingSeverity, message string) int32 {
 	var __retVal int32
 	__channelID := C.int32_t(channelID)
 	__severity := C.int32_t(severity)
@@ -329,10 +329,10 @@ var P_Log = func(channelID int32, severity LoggingSeverity, message string) int3
 //
 //  @return An integer indicating the result of the logging operation.
 func Log(channelID int32, severity LoggingSeverity, message string) int32 {
-	return P_Log(channelID, severity, message)
+	return _Log(channelID, severity, message)
 }
 
-var P_LogColored = func(channelID int32, severity LoggingSeverity, color plugify.Vector4, message string) int32 {
+var _LogColored = func(channelID int32, severity LoggingSeverity, color plugify.Vector4, message string) int32 {
 	var __retVal int32
 	__channelID := C.int32_t(channelID)
 	__severity := C.int32_t(severity)
@@ -360,10 +360,10 @@ var P_LogColored = func(channelID int32, severity LoggingSeverity, color plugify
 //
 //  @return An integer indicating the result of the logging operation.
 func LogColored(channelID int32, severity LoggingSeverity, color plugify.Vector4, message string) int32 {
-	return P_LogColored(channelID, severity, color, message)
+	return _LogColored(channelID, severity, color, message)
 }
 
-var P_LogFull = func(channelID int32, severity LoggingSeverity, file string, line int32, function string, message string) int32 {
+var _LogFull = func(channelID int32, severity LoggingSeverity, file string, line int32, function string, message string) int32 {
 	var __retVal int32
 	__channelID := C.int32_t(channelID)
 	__severity := C.int32_t(severity)
@@ -397,10 +397,10 @@ var P_LogFull = func(channelID int32, severity LoggingSeverity, file string, lin
 //
 //  @return An integer indicating the result of the logging operation.
 func LogFull(channelID int32, severity LoggingSeverity, file string, line int32, function string, message string) int32 {
-	return P_LogFull(channelID, severity, file, line, function, message)
+	return _LogFull(channelID, severity, file, line, function, message)
 }
 
-var P_LogFullColored = func(channelID int32, severity LoggingSeverity, file string, line int32, function string, color plugify.Vector4, message string) int32 {
+var _LogFullColored = func(channelID int32, severity LoggingSeverity, file string, line int32, function string, color plugify.Vector4, message string) int32 {
 	var __retVal int32
 	__channelID := C.int32_t(channelID)
 	__severity := C.int32_t(severity)
@@ -436,6 +436,6 @@ var P_LogFullColored = func(channelID int32, severity LoggingSeverity, file stri
 //
 //  @return An integer indicating the result of the logging operation.
 func LogFullColored(channelID int32, severity LoggingSeverity, file string, line int32, function string, color plugify.Vector4, message string) int32 {
-	return P_LogFullColored(channelID, severity, file, line, function, color, message)
+	return _LogFullColored(channelID, severity, file, line, function, color, message)
 }
 

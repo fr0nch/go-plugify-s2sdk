@@ -22,7 +22,7 @@ var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: filesystem)
 
-var P_ReadFileVPK = func(localFileName string, pathId string) string {
+var _ReadFileVPK = func(localFileName string, pathId string) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__localFileName := plugify.ConstructString(localFileName)
@@ -52,10 +52,10 @@ var P_ReadFileVPK = func(localFileName string, pathId string) string {
 //
 //  @return The file contents, or an empty string on failure.
 func ReadFileVPK(localFileName string, pathId string) string {
-	return P_ReadFileVPK(localFileName, pathId)
+	return _ReadFileVPK(localFileName, pathId)
 }
 
-var P_FindFileAbsoluteList = func(wildcard string, pathId string) []string {
+var _FindFileAbsoluteList = func(wildcard string, pathId string) []string {
 	var __retVal []string
 	var __retVal_native plugify.PlgVector
 	__wildcard := plugify.ConstructString(wildcard)
@@ -85,6 +85,6 @@ var P_FindFileAbsoluteList = func(wildcard string, pathId string) []string {
 //
 //  @return The list of absolute file paths matching the wildcard.
 func FindFileAbsoluteList(wildcard string, pathId string) []string {
-	return P_FindFileAbsoluteList(wildcard, pathId)
+	return _FindFileAbsoluteList(wildcard, pathId)
 }
 

@@ -27,7 +27,7 @@ var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: panorama)
 
-var P_PanoramaSendYesNoVote = func(duration float64, caller int32, voteTitle string, detailStr string, votePassTitle string, detailPassStr string, failReason VoteCreateFailed, filter uint64, result YesNoVoteResult, handler YesNoVoteHandler) bool {
+var _PanoramaSendYesNoVote = func(duration float64, caller int32, voteTitle string, detailStr string, votePassTitle string, detailPassStr string, failReason VoteCreateFailed, filter uint64, result YesNoVoteResult, handler YesNoVoteHandler) bool {
 	var __retVal bool
 	__duration := C.double(duration)
 	__caller := C.int32_t(caller)
@@ -68,10 +68,10 @@ var P_PanoramaSendYesNoVote = func(duration float64, caller int32, voteTitle str
 //  @param result: Called when a menu action is completed.
 //  @param handler: Called when the vote has finished.
 func PanoramaSendYesNoVote(duration float64, caller int32, voteTitle string, detailStr string, votePassTitle string, detailPassStr string, failReason VoteCreateFailed, filter uint64, result YesNoVoteResult, handler YesNoVoteHandler) bool {
-	return P_PanoramaSendYesNoVote(duration, caller, voteTitle, detailStr, votePassTitle, detailPassStr, failReason, filter, result, handler)
+	return _PanoramaSendYesNoVote(duration, caller, voteTitle, detailStr, votePassTitle, detailPassStr, failReason, filter, result, handler)
 }
 
-var P_PanoramaSendYesNoVoteToAll = func(duration float64, caller int32, voteTitle string, detailStr string, votePassTitle string, detailPassStr string, failReason VoteCreateFailed, result YesNoVoteResult, handler YesNoVoteHandler) bool {
+var _PanoramaSendYesNoVoteToAll = func(duration float64, caller int32, voteTitle string, detailStr string, votePassTitle string, detailPassStr string, failReason VoteCreateFailed, result YesNoVoteResult, handler YesNoVoteHandler) bool {
 	var __retVal bool
 	__duration := C.double(duration)
 	__caller := C.int32_t(caller)
@@ -110,10 +110,10 @@ var P_PanoramaSendYesNoVoteToAll = func(duration float64, caller int32, voteTitl
 //  @param result: Called when a menu action is completed.
 //  @param handler: Called when the vote has finished.
 func PanoramaSendYesNoVoteToAll(duration float64, caller int32, voteTitle string, detailStr string, votePassTitle string, detailPassStr string, failReason VoteCreateFailed, result YesNoVoteResult, handler YesNoVoteHandler) bool {
-	return P_PanoramaSendYesNoVoteToAll(duration, caller, voteTitle, detailStr, votePassTitle, detailPassStr, failReason, result, handler)
+	return _PanoramaSendYesNoVoteToAll(duration, caller, voteTitle, detailStr, votePassTitle, detailPassStr, failReason, result, handler)
 }
 
-var P_PanoramaRemovePlayerFromVote = func(playerSlot int32) {
+var _PanoramaRemovePlayerFromVote = func(playerSlot int32) {
 	__playerSlot := C.int32_t(playerSlot)
 	C.PanoramaRemovePlayerFromVote(__playerSlot)
 }
@@ -123,10 +123,10 @@ var P_PanoramaRemovePlayerFromVote = func(playerSlot int32) {
 //
 //  @param playerSlot: The slot/index of the player to remove from the vote.
 func PanoramaRemovePlayerFromVote(playerSlot int32) {
-	P_PanoramaRemovePlayerFromVote(playerSlot)
+	_PanoramaRemovePlayerFromVote(playerSlot)
 }
 
-var P_PanoramaIsPlayerInVotePool = func(playerSlot int32) bool {
+var _PanoramaIsPlayerInVotePool = func(playerSlot int32) bool {
 	var __retVal bool
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = bool(C.PanoramaIsPlayerInVotePool(__playerSlot))
@@ -140,10 +140,10 @@ var P_PanoramaIsPlayerInVotePool = func(playerSlot int32) bool {
 //
 //  @return true if the player is in the vote pool, false otherwise.
 func PanoramaIsPlayerInVotePool(playerSlot int32) bool {
-	return P_PanoramaIsPlayerInVotePool(playerSlot)
+	return _PanoramaIsPlayerInVotePool(playerSlot)
 }
 
-var P_PanoramaRedrawVoteToClient = func(playerSlot int32) bool {
+var _PanoramaRedrawVoteToClient = func(playerSlot int32) bool {
 	var __retVal bool
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = bool(C.PanoramaRedrawVoteToClient(__playerSlot))
@@ -157,10 +157,10 @@ var P_PanoramaRedrawVoteToClient = func(playerSlot int32) bool {
 //
 //  @return true if the vote UI was successfully redrawn, false otherwise.
 func PanoramaRedrawVoteToClient(playerSlot int32) bool {
-	return P_PanoramaRedrawVoteToClient(playerSlot)
+	return _PanoramaRedrawVoteToClient(playerSlot)
 }
 
-var P_PanoramaIsVoteInProgress = func() bool {
+var _PanoramaIsVoteInProgress = func() bool {
 	__retVal := bool(C.PanoramaIsVoteInProgress())
 	return __retVal
 }
@@ -171,10 +171,10 @@ var P_PanoramaIsVoteInProgress = func() bool {
 //
 //  @return true if a vote is active, false otherwise.
 func PanoramaIsVoteInProgress() bool {
-	return P_PanoramaIsVoteInProgress()
+	return _PanoramaIsVoteInProgress()
 }
 
-var P_PanoramaEndVote = func(reason VoteEndReason) {
+var _PanoramaEndVote = func(reason VoteEndReason) {
 	__reason := C.int32_t(reason)
 	C.PanoramaEndVote(__reason)
 }
@@ -184,6 +184,6 @@ var P_PanoramaEndVote = func(reason VoteEndReason) {
 //
 //  @param reason: The reason for ending the vote.
 func PanoramaEndVote(reason VoteEndReason) {
-	P_PanoramaEndVote(reason)
+	_PanoramaEndVote(reason)
 }
 

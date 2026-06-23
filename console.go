@@ -34,7 +34,7 @@ var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: console)
 
-var P_PrintToServer = func(msg string) {
+var _PrintToServer = func(msg string) {
 	__msg := plugify.ConstructString(msg)
 	plugify.Block {
 		Try: func() {
@@ -52,10 +52,10 @@ var P_PrintToServer = func(msg string) {
 //
 //  @param msg: The message to be sent to the server console.
 func PrintToServer(msg string) {
-	P_PrintToServer(msg)
+	_PrintToServer(msg)
 }
 
-var P_PrintToConsole = func(playerSlot int32, message string) {
+var _PrintToConsole = func(playerSlot int32, message string) {
 	__playerSlot := C.int32_t(playerSlot)
 	__message := plugify.ConstructString(message)
 	plugify.Block {
@@ -75,10 +75,10 @@ var P_PrintToConsole = func(playerSlot int32, message string) {
 //  @param playerSlot: The index of the player's slot to whom the message will be sent.
 //  @param message: The message to be sent to the client's console.
 func PrintToConsole(playerSlot int32, message string) {
-	P_PrintToConsole(playerSlot, message)
+	_PrintToConsole(playerSlot, message)
 }
 
-var P_PrintToChat = func(playerSlot int32, message string) {
+var _PrintToChat = func(playerSlot int32, message string) {
 	__playerSlot := C.int32_t(playerSlot)
 	__message := plugify.ConstructString(message)
 	plugify.Block {
@@ -98,10 +98,10 @@ var P_PrintToChat = func(playerSlot int32, message string) {
 //  @param playerSlot: The index of the player's slot to whom the message will be sent.
 //  @param message: The message to be printed in the chat area.
 func PrintToChat(playerSlot int32, message string) {
-	P_PrintToChat(playerSlot, message)
+	_PrintToChat(playerSlot, message)
 }
 
-var P_PrintCenterText = func(playerSlot int32, message string) {
+var _PrintCenterText = func(playerSlot int32, message string) {
 	__playerSlot := C.int32_t(playerSlot)
 	__message := plugify.ConstructString(message)
 	plugify.Block {
@@ -121,10 +121,10 @@ var P_PrintCenterText = func(playerSlot int32, message string) {
 //  @param playerSlot: The index of the player's slot to whom the message will be sent.
 //  @param message: The message to be printed in the center of the screen.
 func PrintCenterText(playerSlot int32, message string) {
-	P_PrintCenterText(playerSlot, message)
+	_PrintCenterText(playerSlot, message)
 }
 
-var P_PrintAlertText = func(playerSlot int32, message string) {
+var _PrintAlertText = func(playerSlot int32, message string) {
 	__playerSlot := C.int32_t(playerSlot)
 	__message := plugify.ConstructString(message)
 	plugify.Block {
@@ -144,10 +144,10 @@ var P_PrintAlertText = func(playerSlot int32, message string) {
 //  @param playerSlot: The index of the player's slot to whom the message will be sent.
 //  @param message: The message to be printed in the alert box.
 func PrintAlertText(playerSlot int32, message string) {
-	P_PrintAlertText(playerSlot, message)
+	_PrintAlertText(playerSlot, message)
 }
 
-var P_PrintCentreHtml = func(playerSlot int32, message string, duration int32) {
+var _PrintCentreHtml = func(playerSlot int32, message string, duration int32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__message := plugify.ConstructString(message)
 	__duration := C.int32_t(duration)
@@ -169,10 +169,10 @@ var P_PrintCentreHtml = func(playerSlot int32, message string, duration int32) {
 //  @param message: The HTML-formatted message to be printed.
 //  @param duration: The duration of the message in seconds.
 func PrintCentreHtml(playerSlot int32, message string, duration int32) {
-	P_PrintCentreHtml(playerSlot, message, duration)
+	_PrintCentreHtml(playerSlot, message, duration)
 }
 
-var P_PrintToConsoleAll = func(message string) {
+var _PrintToConsoleAll = func(message string) {
 	__message := plugify.ConstructString(message)
 	plugify.Block {
 		Try: func() {
@@ -190,10 +190,10 @@ var P_PrintToConsoleAll = func(message string) {
 //
 //  @param message: The message to be sent to all clients' consoles.
 func PrintToConsoleAll(message string) {
-	P_PrintToConsoleAll(message)
+	_PrintToConsoleAll(message)
 }
 
-var P_PrintToChatAll = func(message string) {
+var _PrintToChatAll = func(message string) {
 	__message := plugify.ConstructString(message)
 	plugify.Block {
 		Try: func() {
@@ -211,10 +211,10 @@ var P_PrintToChatAll = func(message string) {
 //
 //  @param message: The message to be printed in the chat area for all clients.
 func PrintToChatAll(message string) {
-	P_PrintToChatAll(message)
+	_PrintToChatAll(message)
 }
 
-var P_PrintCenterTextAll = func(message string) {
+var _PrintCenterTextAll = func(message string) {
 	__message := plugify.ConstructString(message)
 	plugify.Block {
 		Try: func() {
@@ -232,10 +232,10 @@ var P_PrintCenterTextAll = func(message string) {
 //
 //  @param message: The message to be printed in the center of the screen for all clients.
 func PrintCenterTextAll(message string) {
-	P_PrintCenterTextAll(message)
+	_PrintCenterTextAll(message)
 }
 
-var P_PrintAlertTextAll = func(message string) {
+var _PrintAlertTextAll = func(message string) {
 	__message := plugify.ConstructString(message)
 	plugify.Block {
 		Try: func() {
@@ -253,10 +253,10 @@ var P_PrintAlertTextAll = func(message string) {
 //
 //  @param message: The message to be printed in an alert box for all clients.
 func PrintAlertTextAll(message string) {
-	P_PrintAlertTextAll(message)
+	_PrintAlertTextAll(message)
 }
 
-var P_PrintCentreHtmlAll = func(message string, duration int32) {
+var _PrintCentreHtmlAll = func(message string, duration int32) {
 	__message := plugify.ConstructString(message)
 	__duration := C.int32_t(duration)
 	plugify.Block {
@@ -276,10 +276,10 @@ var P_PrintCentreHtmlAll = func(message string, duration int32) {
 //  @param message: The HTML-formatted message to be printed in the center of the screen for all clients.
 //  @param duration: The duration of the message in seconds.
 func PrintCentreHtmlAll(message string, duration int32) {
-	P_PrintCentreHtmlAll(message, duration)
+	_PrintCentreHtmlAll(message, duration)
 }
 
-var P_PrintToChatColored = func(playerSlot int32, message string) {
+var _PrintToChatColored = func(playerSlot int32, message string) {
 	__playerSlot := C.int32_t(playerSlot)
 	__message := plugify.ConstructString(message)
 	plugify.Block {
@@ -299,10 +299,10 @@ var P_PrintToChatColored = func(playerSlot int32, message string) {
 //  @param playerSlot: The index of the player's slot to whom the message will be sent.
 //  @param message: The message to be printed in the chat area with color.
 func PrintToChatColored(playerSlot int32, message string) {
-	P_PrintToChatColored(playerSlot, message)
+	_PrintToChatColored(playerSlot, message)
 }
 
-var P_PrintToChatColoredAll = func(message string) {
+var _PrintToChatColoredAll = func(message string) {
 	__message := plugify.ConstructString(message)
 	plugify.Block {
 		Try: func() {
@@ -320,10 +320,10 @@ var P_PrintToChatColoredAll = func(message string) {
 //
 //  @param message: The colored message to be printed in the chat area for all clients.
 func PrintToChatColoredAll(message string) {
-	P_PrintToChatColoredAll(message)
+	_PrintToChatColoredAll(message)
 }
 
-var P_ReplyToCommand = func(context ConCommandContext, playerSlot int32, message string) {
+var _ReplyToCommand = func(context ConCommandContext, playerSlot int32, message string) {
 	__context := C.int32_t(context)
 	__playerSlot := C.int32_t(playerSlot)
 	__message := plugify.ConstructString(message)
@@ -345,6 +345,6 @@ var P_ReplyToCommand = func(context ConCommandContext, playerSlot int32, message
 //  @param playerSlot: The slot/index of the player receiving the message.
 //  @param message: The message string to be sent as a reply.
 func ReplyToCommand(context ConCommandContext, playerSlot int32, message string) {
-	P_ReplyToCommand(context, playerSlot, message)
+	_ReplyToCommand(context, playerSlot, message)
 }
 

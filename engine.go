@@ -39,7 +39,7 @@ var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: engine)
 
-var P_QueryInterface = func(module string, name string) uintptr {
+var _QueryInterface = func(module string, name string) uintptr {
 	var __retVal uintptr
 	__module := plugify.ConstructString(module)
 	__name := plugify.ConstructString(name)
@@ -64,10 +64,10 @@ var P_QueryInterface = func(module string, name string) uintptr {
 //
 //  @return A pointer to the queried interface.
 func QueryInterface(module string, name string) uintptr {
-	return P_QueryInterface(module, name)
+	return _QueryInterface(module, name)
 }
 
-var P_GetGameDirectory = func() string {
+var _GetGameDirectory = func() string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	plugify.Block {
@@ -91,10 +91,10 @@ var P_GetGameDirectory = func() string {
 //
 //  @return A reference to a string where the game directory path will be stored.
 func GetGameDirectory() string {
-	return P_GetGameDirectory()
+	return _GetGameDirectory()
 }
 
-var P_GetCurrentMap = func() string {
+var _GetCurrentMap = func() string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	plugify.Block {
@@ -118,10 +118,10 @@ var P_GetCurrentMap = func() string {
 //
 //  @return A reference to a string where the current map name will be stored.
 func GetCurrentMap() string {
-	return P_GetCurrentMap()
+	return _GetCurrentMap()
 }
 
-var P_IsMapValid = func(mapname string) bool {
+var _IsMapValid = func(mapname string) bool {
 	var __retVal bool
 	__mapname := plugify.ConstructString(mapname)
 	plugify.Block {
@@ -143,10 +143,10 @@ var P_IsMapValid = func(mapname string) bool {
 //
 //  @return True if the map is valid, false otherwise.
 func IsMapValid(mapname string) bool {
-	return P_IsMapValid(mapname)
+	return _IsMapValid(mapname)
 }
 
-var P_GetGameTime = func() float32 {
+var _GetGameTime = func() float32 {
 	__retVal := float32(C.GetGameTime())
 	return __retVal
 }
@@ -157,10 +157,10 @@ var P_GetGameTime = func() float32 {
 //
 //  @return The current game time.
 func GetGameTime() float32 {
-	return P_GetGameTime()
+	return _GetGameTime()
 }
 
-var P_GetGameTickCount = func() int32 {
+var _GetGameTickCount = func() int32 {
 	__retVal := int32(C.GetGameTickCount())
 	return __retVal
 }
@@ -171,10 +171,10 @@ var P_GetGameTickCount = func() int32 {
 //
 //  @return The current tick count of the game.
 func GetGameTickCount() int32 {
-	return P_GetGameTickCount()
+	return _GetGameTickCount()
 }
 
-var P_GetGameFrameTime = func() float32 {
+var _GetGameFrameTime = func() float32 {
 	__retVal := float32(C.GetGameFrameTime())
 	return __retVal
 }
@@ -185,10 +185,10 @@ var P_GetGameFrameTime = func() float32 {
 //
 //  @return The frame time of the last processed frame.
 func GetGameFrameTime() float32 {
-	return P_GetGameFrameTime()
+	return _GetGameFrameTime()
 }
 
-var P_GetEngineTime = func() float64 {
+var _GetEngineTime = func() float64 {
 	__retVal := float64(C.GetEngineTime())
 	return __retVal
 }
@@ -199,10 +199,10 @@ var P_GetEngineTime = func() float64 {
 //
 //  @return A high-precision time value.
 func GetEngineTime() float64 {
-	return P_GetEngineTime()
+	return _GetEngineTime()
 }
 
-var P_GetMaxClients = func() int32 {
+var _GetMaxClients = func() int32 {
 	__retVal := int32(C.GetMaxClients())
 	return __retVal
 }
@@ -213,10 +213,10 @@ var P_GetMaxClients = func() int32 {
 //
 //  @return The maximum client count, or -1 if global variables are not initialized.
 func GetMaxClients() int32 {
-	return P_GetMaxClients()
+	return _GetMaxClients()
 }
 
-var P_Precache = func(resource string) {
+var _Precache = func(resource string) {
 	__resource := plugify.ConstructString(resource)
 	plugify.Block {
 		Try: func() {
@@ -234,10 +234,10 @@ var P_Precache = func(resource string) {
 //
 //  @param resource: The name of the resource to be precached.
 func Precache(resource string) {
-	P_Precache(resource)
+	_Precache(resource)
 }
 
-var P_IsPrecached = func(resource string) bool {
+var _IsPrecached = func(resource string) bool {
 	var __retVal bool
 	__resource := plugify.ConstructString(resource)
 	plugify.Block {
@@ -257,10 +257,10 @@ var P_IsPrecached = func(resource string) bool {
 //
 //  @param resource: The name of the file to check.
 func IsPrecached(resource string) bool {
-	return P_IsPrecached(resource)
+	return _IsPrecached(resource)
 }
 
-var P_GetEconItemSystem = func() uintptr {
+var _GetEconItemSystem = func() uintptr {
 	__retVal := uintptr(C.GetEconItemSystem())
 	return __retVal
 }
@@ -271,10 +271,10 @@ var P_GetEconItemSystem = func() uintptr {
 //
 //  @return A pointer to the Econ Item System.
 func GetEconItemSystem() uintptr {
-	return P_GetEconItemSystem()
+	return _GetEconItemSystem()
 }
 
-var P_IsServerPaused = func() bool {
+var _IsServerPaused = func() bool {
 	__retVal := bool(C.IsServerPaused())
 	return __retVal
 }
@@ -285,10 +285,10 @@ var P_IsServerPaused = func() bool {
 //
 //  @return True if the server is paused, false otherwise.
 func IsServerPaused() bool {
-	return P_IsServerPaused()
+	return _IsServerPaused()
 }
 
-var P_QueueTaskForNextFrame = func(callback TaskCallback, userData []any) {
+var _QueueTaskForNextFrame = func(callback TaskCallback, userData []any) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	__userData := plugify.ConstructVectorVariant(userData)
 	plugify.Block {
@@ -308,10 +308,10 @@ var P_QueueTaskForNextFrame = func(callback TaskCallback, userData []any) {
 //  @param callback: A callback function to be executed on the next frame.
 //  @param userData: An array intended to hold user-related data, allowing for elements of any type.
 func QueueTaskForNextFrame(callback TaskCallback, userData []any) {
-	P_QueueTaskForNextFrame(callback, userData)
+	_QueueTaskForNextFrame(callback, userData)
 }
 
-var P_QueueTaskForNextWorldUpdate = func(callback TaskCallback, userData []any) {
+var _QueueTaskForNextWorldUpdate = func(callback TaskCallback, userData []any) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	__userData := plugify.ConstructVectorVariant(userData)
 	plugify.Block {
@@ -331,10 +331,10 @@ var P_QueueTaskForNextWorldUpdate = func(callback TaskCallback, userData []any) 
 //  @param callback: A callback function to be executed on the next world update.
 //  @param userData: An array intended to hold user-related data, allowing for elements of any type.
 func QueueTaskForNextWorldUpdate(callback TaskCallback, userData []any) {
-	P_QueueTaskForNextWorldUpdate(callback, userData)
+	_QueueTaskForNextWorldUpdate(callback, userData)
 }
 
-var P_GetSoundDuration = func(name string) float32 {
+var _GetSoundDuration = func(name string) float32 {
 	var __retVal float32
 	__name := plugify.ConstructString(name)
 	plugify.Block {
@@ -356,10 +356,10 @@ var P_GetSoundDuration = func(name string) float32 {
 //
 //  @return The duration of the sound in seconds.
 func GetSoundDuration(name string) float32 {
-	return P_GetSoundDuration(name)
+	return _GetSoundDuration(name)
 }
 
-var P_EmitSound = func(entityHandle int32, sound string, pitch int32, volume float32, delay float32) {
+var _EmitSound = func(entityHandle int32, sound string, pitch int32, volume float32, delay float32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__sound := plugify.ConstructString(sound)
 	__pitch := C.int32_t(pitch)
@@ -385,10 +385,10 @@ var P_EmitSound = func(entityHandle int32, sound string, pitch int32, volume flo
 //  @param volume: The volume of the sound.
 //  @param delay: The delay before the sound is played.
 func EmitSound(entityHandle int32, sound string, pitch int32, volume float32, delay float32) {
-	P_EmitSound(entityHandle, sound, pitch, volume, delay)
+	_EmitSound(entityHandle, sound, pitch, volume, delay)
 }
 
-var P_StopSound = func(entityHandle int32, sound string) {
+var _StopSound = func(entityHandle int32, sound string) {
 	__entityHandle := C.int32_t(entityHandle)
 	__sound := plugify.ConstructString(sound)
 	plugify.Block {
@@ -408,10 +408,10 @@ var P_StopSound = func(entityHandle int32, sound string) {
 //  @param entityHandle: The handle of the entity that will stop the sound.
 //  @param sound: The name of the sound to stop.
 func StopSound(entityHandle int32, sound string) {
-	P_StopSound(entityHandle, sound)
+	_StopSound(entityHandle, sound)
 }
 
-var P_EmitSoundToClient = func(entityHandle int32, playersSlot []int32, sound string, volume float32, pitch float32) {
+var _EmitSoundToClient = func(entityHandle int32, playersSlot []int32, sound string, volume float32, pitch float32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__playersSlot := plugify.ConstructVectorInt32(playersSlot)
 	__sound := plugify.ConstructString(sound)
@@ -438,6 +438,6 @@ var P_EmitSoundToClient = func(entityHandle int32, playersSlot []int32, sound st
 //  @param volume: The volume of the sound.
 //  @param pitch: The pitch of the sound.
 func EmitSoundToClient(entityHandle int32, playersSlot []int32, sound string, volume float32, pitch float32) {
-	P_EmitSoundToClient(entityHandle, playersSlot, sound, volume, pitch)
+	_EmitSoundToClient(entityHandle, playersSlot, sound, volume, pitch)
 }
 

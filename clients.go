@@ -152,7 +152,7 @@ var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: clients)
 
-var P_EntPointerToPlayerSlot = func(entity uintptr) int32 {
+var _EntPointerToPlayerSlot = func(entity uintptr) int32 {
 	var __retVal int32
 	__entity := C.uintptr_t(entity)
 	__retVal = int32(C.EntPointerToPlayerSlot(__entity))
@@ -166,10 +166,10 @@ var P_EntPointerToPlayerSlot = func(entity uintptr) int32 {
 //
 //  @return The player slot if valid, otherwise -1.
 func EntPointerToPlayerSlot(entity uintptr) int32 {
-	return P_EntPointerToPlayerSlot(entity)
+	return _EntPointerToPlayerSlot(entity)
 }
 
-var P_PlayerSlotToEntPointer = func(playerSlot int32) uintptr {
+var _PlayerSlotToEntPointer = func(playerSlot int32) uintptr {
 	var __retVal uintptr
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = uintptr(C.PlayerSlotToEntPointer(__playerSlot))
@@ -183,10 +183,10 @@ var P_PlayerSlotToEntPointer = func(playerSlot int32) uintptr {
 //
 //  @return Pointer to the entity instance, or nullptr if the slot is invalid.
 func PlayerSlotToEntPointer(playerSlot int32) uintptr {
-	return P_PlayerSlotToEntPointer(playerSlot)
+	return _PlayerSlotToEntPointer(playerSlot)
 }
 
-var P_PlayerSlotToEntHandle = func(playerSlot int32) int32 {
+var _PlayerSlotToEntHandle = func(playerSlot int32) int32 {
 	var __retVal int32
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = int32(C.PlayerSlotToEntHandle(__playerSlot))
@@ -200,10 +200,10 @@ var P_PlayerSlotToEntHandle = func(playerSlot int32) int32 {
 //
 //  @return The index of the entity, or -1 if the handle is invalid.
 func PlayerSlotToEntHandle(playerSlot int32) int32 {
-	return P_PlayerSlotToEntHandle(playerSlot)
+	return _PlayerSlotToEntHandle(playerSlot)
 }
 
-var P_PlayerSlotToClientPtr = func(playerSlot int32) uintptr {
+var _PlayerSlotToClientPtr = func(playerSlot int32) uintptr {
 	var __retVal uintptr
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = uintptr(C.PlayerSlotToClientPtr(__playerSlot))
@@ -217,10 +217,10 @@ var P_PlayerSlotToClientPtr = func(playerSlot int32) uintptr {
 //
 //  @return A pointer to the client object if found, otherwise nullptr.
 func PlayerSlotToClientPtr(playerSlot int32) uintptr {
-	return P_PlayerSlotToClientPtr(playerSlot)
+	return _PlayerSlotToClientPtr(playerSlot)
 }
 
-var P_ClientPtrToPlayerSlot = func(client uintptr) int32 {
+var _ClientPtrToPlayerSlot = func(client uintptr) int32 {
 	var __retVal int32
 	__client := C.uintptr_t(client)
 	__retVal = int32(C.ClientPtrToPlayerSlot(__client))
@@ -234,10 +234,10 @@ var P_ClientPtrToPlayerSlot = func(client uintptr) int32 {
 //
 //  @return The player slot if found, otherwise -1.
 func ClientPtrToPlayerSlot(client uintptr) int32 {
-	return P_ClientPtrToPlayerSlot(client)
+	return _ClientPtrToPlayerSlot(client)
 }
 
-var P_PlayerSlotToClientIndex = func(playerSlot int32) int32 {
+var _PlayerSlotToClientIndex = func(playerSlot int32) int32 {
 	var __retVal int32
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = int32(C.PlayerSlotToClientIndex(__playerSlot))
@@ -251,10 +251,10 @@ var P_PlayerSlotToClientIndex = func(playerSlot int32) int32 {
 //
 //  @return The entity index if valid, otherwise 0.
 func PlayerSlotToClientIndex(playerSlot int32) int32 {
-	return P_PlayerSlotToClientIndex(playerSlot)
+	return _PlayerSlotToClientIndex(playerSlot)
 }
 
-var P_ClientIndexToPlayerSlot = func(clientIndex int32) int32 {
+var _ClientIndexToPlayerSlot = func(clientIndex int32) int32 {
 	var __retVal int32
 	__clientIndex := C.int32_t(clientIndex)
 	__retVal = int32(C.ClientIndexToPlayerSlot(__clientIndex))
@@ -268,10 +268,10 @@ var P_ClientIndexToPlayerSlot = func(clientIndex int32) int32 {
 //
 //  @return The player slot if valid, otherwise -1.
 func ClientIndexToPlayerSlot(clientIndex int32) int32 {
-	return P_ClientIndexToPlayerSlot(clientIndex)
+	return _ClientIndexToPlayerSlot(clientIndex)
 }
 
-var P_PlayerServicesToPlayerSlot = func(service uintptr) int32 {
+var _PlayerServicesToPlayerSlot = func(service uintptr) int32 {
 	var __retVal int32
 	__service := C.uintptr_t(service)
 	__retVal = int32(C.PlayerServicesToPlayerSlot(__service))
@@ -285,10 +285,10 @@ var P_PlayerServicesToPlayerSlot = func(service uintptr) int32 {
 //
 //  @return The player slot if valid, otherwise -1.
 func PlayerServicesToPlayerSlot(service uintptr) int32 {
-	return P_PlayerServicesToPlayerSlot(service)
+	return _PlayerServicesToPlayerSlot(service)
 }
 
-var P_GetClientAuthId = func(playerSlot int32) string {
+var _GetClientAuthId = func(playerSlot int32) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__playerSlot := C.int32_t(playerSlot)
@@ -314,10 +314,10 @@ var P_GetClientAuthId = func(playerSlot int32) string {
 //
 //  @return The authentication string.
 func GetClientAuthId(playerSlot int32) string {
-	return P_GetClientAuthId(playerSlot)
+	return _GetClientAuthId(playerSlot)
 }
 
-var P_GetClientAccountId = func(playerSlot int32) uint32 {
+var _GetClientAccountId = func(playerSlot int32) uint32 {
 	var __retVal uint32
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = uint32(C.GetClientAccountId(__playerSlot))
@@ -331,10 +331,10 @@ var P_GetClientAccountId = func(playerSlot int32) uint32 {
 //
 //  @return uint32_t The client's steam account ID.
 func GetClientAccountId(playerSlot int32) uint32 {
-	return P_GetClientAccountId(playerSlot)
+	return _GetClientAccountId(playerSlot)
 }
 
-var P_GetClientSteamID64 = func(playerSlot int32) uint64 {
+var _GetClientSteamID64 = func(playerSlot int32) uint64 {
 	var __retVal uint64
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = uint64(C.GetClientSteamID64(__playerSlot))
@@ -348,10 +348,10 @@ var P_GetClientSteamID64 = func(playerSlot int32) uint64 {
 //
 //  @return uint64_t The client's SteamID64.
 func GetClientSteamID64(playerSlot int32) uint64 {
-	return P_GetClientSteamID64(playerSlot)
+	return _GetClientSteamID64(playerSlot)
 }
 
-var P_GetClientIp = func(playerSlot int32) string {
+var _GetClientIp = func(playerSlot int32) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__playerSlot := C.int32_t(playerSlot)
@@ -377,10 +377,10 @@ var P_GetClientIp = func(playerSlot int32) string {
 //
 //  @return The client's IP address.
 func GetClientIp(playerSlot int32) string {
-	return P_GetClientIp(playerSlot)
+	return _GetClientIp(playerSlot)
 }
 
-var P_GetClientLanguage = func(playerSlot int32) string {
+var _GetClientLanguage = func(playerSlot int32) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__playerSlot := C.int32_t(playerSlot)
@@ -406,10 +406,10 @@ var P_GetClientLanguage = func(playerSlot int32) string {
 //
 //  @return The client's language.
 func GetClientLanguage(playerSlot int32) string {
-	return P_GetClientLanguage(playerSlot)
+	return _GetClientLanguage(playerSlot)
 }
 
-var P_GetClientOS = func(playerSlot int32) string {
+var _GetClientOS = func(playerSlot int32) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__playerSlot := C.int32_t(playerSlot)
@@ -435,10 +435,10 @@ var P_GetClientOS = func(playerSlot int32) string {
 //
 //  @return The client's operating system.
 func GetClientOS(playerSlot int32) string {
-	return P_GetClientOS(playerSlot)
+	return _GetClientOS(playerSlot)
 }
 
-var P_GetClientName = func(playerSlot int32) string {
+var _GetClientName = func(playerSlot int32) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__playerSlot := C.int32_t(playerSlot)
@@ -464,10 +464,10 @@ var P_GetClientName = func(playerSlot int32) string {
 //
 //  @return The client's name.
 func GetClientName(playerSlot int32) string {
-	return P_GetClientName(playerSlot)
+	return _GetClientName(playerSlot)
 }
 
-var P_GetClientTime = func(playerSlot int32) float32 {
+var _GetClientTime = func(playerSlot int32) float32 {
 	var __retVal float32
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = float32(C.GetClientTime(__playerSlot))
@@ -481,10 +481,10 @@ var P_GetClientTime = func(playerSlot int32) float32 {
 //
 //  @return float Connection time in seconds.
 func GetClientTime(playerSlot int32) float32 {
-	return P_GetClientTime(playerSlot)
+	return _GetClientTime(playerSlot)
 }
 
-var P_GetClientLatency = func(playerSlot int32) float32 {
+var _GetClientLatency = func(playerSlot int32) float32 {
 	var __retVal float32
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = float32(C.GetClientLatency(__playerSlot))
@@ -498,10 +498,10 @@ var P_GetClientLatency = func(playerSlot int32) float32 {
 //
 //  @return float Latency value.
 func GetClientLatency(playerSlot int32) float32 {
-	return P_GetClientLatency(playerSlot)
+	return _GetClientLatency(playerSlot)
 }
 
-var P_GetUserFlagBits = func(playerSlot int32) uint64 {
+var _GetUserFlagBits = func(playerSlot int32) uint64 {
 	var __retVal uint64
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = uint64(C.GetUserFlagBits(__playerSlot))
@@ -515,10 +515,10 @@ var P_GetUserFlagBits = func(playerSlot int32) uint64 {
 //
 //  @return uint64 Access flags as a bitmask.
 func GetUserFlagBits(playerSlot int32) uint64 {
-	return P_GetUserFlagBits(playerSlot)
+	return _GetUserFlagBits(playerSlot)
 }
 
-var P_SetUserFlagBits = func(playerSlot int32, flags uint64) {
+var _SetUserFlagBits = func(playerSlot int32, flags uint64) {
 	__playerSlot := C.int32_t(playerSlot)
 	__flags := C.uint64_t(flags)
 	C.SetUserFlagBits(__playerSlot, __flags)
@@ -530,10 +530,10 @@ var P_SetUserFlagBits = func(playerSlot int32, flags uint64) {
 //  @param playerSlot: The index of the player's slot.
 //  @param flags: Bitmask representing the flags to be set.
 func SetUserFlagBits(playerSlot int32, flags uint64) {
-	P_SetUserFlagBits(playerSlot, flags)
+	_SetUserFlagBits(playerSlot, flags)
 }
 
-var P_AddUserFlags = func(playerSlot int32, flags uint64) {
+var _AddUserFlags = func(playerSlot int32, flags uint64) {
 	__playerSlot := C.int32_t(playerSlot)
 	__flags := C.uint64_t(flags)
 	C.AddUserFlags(__playerSlot, __flags)
@@ -545,10 +545,10 @@ var P_AddUserFlags = func(playerSlot int32, flags uint64) {
 //  @param playerSlot: The index of the player's slot.
 //  @param flags: Bitmask representing the flags to be added.
 func AddUserFlags(playerSlot int32, flags uint64) {
-	P_AddUserFlags(playerSlot, flags)
+	_AddUserFlags(playerSlot, flags)
 }
 
-var P_RemoveUserFlags = func(playerSlot int32, flags uint64) {
+var _RemoveUserFlags = func(playerSlot int32, flags uint64) {
 	__playerSlot := C.int32_t(playerSlot)
 	__flags := C.uint64_t(flags)
 	C.RemoveUserFlags(__playerSlot, __flags)
@@ -560,10 +560,10 @@ var P_RemoveUserFlags = func(playerSlot int32, flags uint64) {
 //  @param playerSlot: The index of the player's slot.
 //  @param flags: Bitmask representing the flags to be removed.
 func RemoveUserFlags(playerSlot int32, flags uint64) {
-	P_RemoveUserFlags(playerSlot, flags)
+	_RemoveUserFlags(playerSlot, flags)
 }
 
-var P_IsClientAuthorized = func(playerSlot int32) bool {
+var _IsClientAuthorized = func(playerSlot int32) bool {
 	var __retVal bool
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = bool(C.IsClientAuthorized(__playerSlot))
@@ -577,10 +577,10 @@ var P_IsClientAuthorized = func(playerSlot int32) bool {
 //
 //  @return true if the player is authenticated, false otherwise.
 func IsClientAuthorized(playerSlot int32) bool {
-	return P_IsClientAuthorized(playerSlot)
+	return _IsClientAuthorized(playerSlot)
 }
 
-var P_IsClientConnected = func(playerSlot int32) bool {
+var _IsClientConnected = func(playerSlot int32) bool {
 	var __retVal bool
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = bool(C.IsClientConnected(__playerSlot))
@@ -594,10 +594,10 @@ var P_IsClientConnected = func(playerSlot int32) bool {
 //
 //  @return true if the player is connected, false otherwise.
 func IsClientConnected(playerSlot int32) bool {
-	return P_IsClientConnected(playerSlot)
+	return _IsClientConnected(playerSlot)
 }
 
-var P_IsClientInGame = func(playerSlot int32) bool {
+var _IsClientInGame = func(playerSlot int32) bool {
 	var __retVal bool
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = bool(C.IsClientInGame(__playerSlot))
@@ -611,10 +611,10 @@ var P_IsClientInGame = func(playerSlot int32) bool {
 //
 //  @return true if the player is in the game, false otherwise.
 func IsClientInGame(playerSlot int32) bool {
-	return P_IsClientInGame(playerSlot)
+	return _IsClientInGame(playerSlot)
 }
 
-var P_IsClientSourceTV = func(playerSlot int32) bool {
+var _IsClientSourceTV = func(playerSlot int32) bool {
 	var __retVal bool
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = bool(C.IsClientSourceTV(__playerSlot))
@@ -628,10 +628,10 @@ var P_IsClientSourceTV = func(playerSlot int32) bool {
 //
 //  @return true if the client is the SourceTV bot, false otherwise.
 func IsClientSourceTV(playerSlot int32) bool {
-	return P_IsClientSourceTV(playerSlot)
+	return _IsClientSourceTV(playerSlot)
 }
 
-var P_IsClientAlive = func(playerSlot int32) bool {
+var _IsClientAlive = func(playerSlot int32) bool {
 	var __retVal bool
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = bool(C.IsClientAlive(__playerSlot))
@@ -645,10 +645,10 @@ var P_IsClientAlive = func(playerSlot int32) bool {
 //
 //  @return true if the client is alive, false if dead.
 func IsClientAlive(playerSlot int32) bool {
-	return P_IsClientAlive(playerSlot)
+	return _IsClientAlive(playerSlot)
 }
 
-var P_IsFakeClient = func(playerSlot int32) bool {
+var _IsFakeClient = func(playerSlot int32) bool {
 	var __retVal bool
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = bool(C.IsFakeClient(__playerSlot))
@@ -662,10 +662,10 @@ var P_IsFakeClient = func(playerSlot int32) bool {
 //
 //  @return true if the client is a fake client, false otherwise.
 func IsFakeClient(playerSlot int32) bool {
-	return P_IsFakeClient(playerSlot)
+	return _IsFakeClient(playerSlot)
 }
 
-var P_GetClientMoveType = func(playerSlot int32) MoveType {
+var _GetClientMoveType = func(playerSlot int32) MoveType {
 	var __retVal MoveType
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = int32(C.GetClientMoveType(__playerSlot))
@@ -679,10 +679,10 @@ var P_GetClientMoveType = func(playerSlot int32) MoveType {
 //
 //  @return The movement type of the entity, or 0 if the entity is invalid.
 func GetClientMoveType(playerSlot int32) MoveType {
-	return P_GetClientMoveType(playerSlot)
+	return _GetClientMoveType(playerSlot)
 }
 
-var P_SetClientMoveType = func(playerSlot int32, moveType MoveType) {
+var _SetClientMoveType = func(playerSlot int32, moveType MoveType) {
 	__playerSlot := C.int32_t(playerSlot)
 	__moveType := C.int32_t(moveType)
 	C.SetClientMoveType(__playerSlot, __moveType)
@@ -694,10 +694,10 @@ var P_SetClientMoveType = func(playerSlot int32, moveType MoveType) {
 //  @param playerSlot: The index of the player's slot whose movement type is to be set.
 //  @param moveType: The movement type of the entity, or 0 if the entity is invalid.
 func SetClientMoveType(playerSlot int32, moveType MoveType) {
-	P_SetClientMoveType(playerSlot, moveType)
+	_SetClientMoveType(playerSlot, moveType)
 }
 
-var P_GetClientGravity = func(playerSlot int32) float32 {
+var _GetClientGravity = func(playerSlot int32) float32 {
 	var __retVal float32
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = float32(C.GetClientGravity(__playerSlot))
@@ -711,10 +711,10 @@ var P_GetClientGravity = func(playerSlot int32) float32 {
 //
 //  @return The gravity scale of the client, or 0.0f if the client is invalid.
 func GetClientGravity(playerSlot int32) float32 {
-	return P_GetClientGravity(playerSlot)
+	return _GetClientGravity(playerSlot)
 }
 
-var P_SetClientGravity = func(playerSlot int32, gravity float32) {
+var _SetClientGravity = func(playerSlot int32, gravity float32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__gravity := C.float(gravity)
 	C.SetClientGravity(__playerSlot, __gravity)
@@ -726,10 +726,10 @@ var P_SetClientGravity = func(playerSlot int32, gravity float32) {
 //  @param playerSlot: The index of the player's slot whose gravity scale is to be set.
 //  @param gravity: The new gravity scale to set for the client.
 func SetClientGravity(playerSlot int32, gravity float32) {
-	P_SetClientGravity(playerSlot, gravity)
+	_SetClientGravity(playerSlot, gravity)
 }
 
-var P_GetClientFlags = func(playerSlot int32) int32 {
+var _GetClientFlags = func(playerSlot int32) int32 {
 	var __retVal int32
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = int32(C.GetClientFlags(__playerSlot))
@@ -743,10 +743,10 @@ var P_GetClientFlags = func(playerSlot int32) int32 {
 //
 //  @return The flags of the client, or 0 if the client is invalid.
 func GetClientFlags(playerSlot int32) int32 {
-	return P_GetClientFlags(playerSlot)
+	return _GetClientFlags(playerSlot)
 }
 
-var P_SetClientFlags = func(playerSlot int32, flags int32) {
+var _SetClientFlags = func(playerSlot int32, flags int32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__flags := C.int32_t(flags)
 	C.SetClientFlags(__playerSlot, __flags)
@@ -758,10 +758,10 @@ var P_SetClientFlags = func(playerSlot int32, flags int32) {
 //  @param playerSlot: The index of the player's slot whose flags are to be set.
 //  @param flags: The new flags to set for the client.
 func SetClientFlags(playerSlot int32, flags int32) {
-	P_SetClientFlags(playerSlot, flags)
+	_SetClientFlags(playerSlot, flags)
 }
 
-var P_GetClientRenderColor = func(playerSlot int32) plugify.Vector4 {
+var _GetClientRenderColor = func(playerSlot int32) plugify.Vector4 {
 	var __retVal plugify.Vector4
 	__playerSlot := C.int32_t(playerSlot)
 	__native := C.GetClientRenderColor(__playerSlot)
@@ -776,10 +776,10 @@ var P_GetClientRenderColor = func(playerSlot int32) plugify.Vector4 {
 //
 //  @return The raw color value of the client's render color, or 0 if the client is invalid.
 func GetClientRenderColor(playerSlot int32) plugify.Vector4 {
-	return P_GetClientRenderColor(playerSlot)
+	return _GetClientRenderColor(playerSlot)
 }
 
-var P_SetClientRenderColor = func(playerSlot int32, color plugify.Vector4) {
+var _SetClientRenderColor = func(playerSlot int32, color plugify.Vector4) {
 	__playerSlot := C.int32_t(playerSlot)
 	__color := *(*C.Vector4)(unsafe.Pointer(&color))
 	C.SetClientRenderColor(__playerSlot, &__color)
@@ -791,10 +791,10 @@ var P_SetClientRenderColor = func(playerSlot int32, color plugify.Vector4) {
 //  @param playerSlot: The index of the player's slot whose render color is to be set.
 //  @param color: The new raw color value to set for the client's render color.
 func SetClientRenderColor(playerSlot int32, color plugify.Vector4) {
-	P_SetClientRenderColor(playerSlot, color)
+	_SetClientRenderColor(playerSlot, color)
 }
 
-var P_GetClientRenderMode = func(playerSlot int32) RenderMode {
+var _GetClientRenderMode = func(playerSlot int32) RenderMode {
 	var __retVal RenderMode
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = uint8(C.GetClientRenderMode(__playerSlot))
@@ -808,10 +808,10 @@ var P_GetClientRenderMode = func(playerSlot int32) RenderMode {
 //
 //  @return The render mode of the client, or 0 if the client is invalid.
 func GetClientRenderMode(playerSlot int32) RenderMode {
-	return P_GetClientRenderMode(playerSlot)
+	return _GetClientRenderMode(playerSlot)
 }
 
-var P_SetClientRenderMode = func(playerSlot int32, renderMode RenderMode) {
+var _SetClientRenderMode = func(playerSlot int32, renderMode RenderMode) {
 	__playerSlot := C.int32_t(playerSlot)
 	__renderMode := C.uint8_t(renderMode)
 	C.SetClientRenderMode(__playerSlot, __renderMode)
@@ -823,10 +823,10 @@ var P_SetClientRenderMode = func(playerSlot int32, renderMode RenderMode) {
 //  @param playerSlot: The index of the player's slot whose render mode is to be set.
 //  @param renderMode: The new render mode to set for the client.
 func SetClientRenderMode(playerSlot int32, renderMode RenderMode) {
-	P_SetClientRenderMode(playerSlot, renderMode)
+	_SetClientRenderMode(playerSlot, renderMode)
 }
 
-var P_GetClientMass = func(playerSlot int32) int32 {
+var _GetClientMass = func(playerSlot int32) int32 {
 	var __retVal int32
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = int32(C.GetClientMass(__playerSlot))
@@ -840,10 +840,10 @@ var P_GetClientMass = func(playerSlot int32) int32 {
 //
 //  @return The mass of the client, or 0 if the client is invalid.
 func GetClientMass(playerSlot int32) int32 {
-	return P_GetClientMass(playerSlot)
+	return _GetClientMass(playerSlot)
 }
 
-var P_SetClientMass = func(playerSlot int32, mass int32) {
+var _SetClientMass = func(playerSlot int32, mass int32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__mass := C.int32_t(mass)
 	C.SetClientMass(__playerSlot, __mass)
@@ -855,10 +855,10 @@ var P_SetClientMass = func(playerSlot int32, mass int32) {
 //  @param playerSlot: The index of the player's slot whose mass is to be set.
 //  @param mass: The new mass value to set for the client.
 func SetClientMass(playerSlot int32, mass int32) {
-	P_SetClientMass(playerSlot, mass)
+	_SetClientMass(playerSlot, mass)
 }
 
-var P_GetClientFriction = func(playerSlot int32) float32 {
+var _GetClientFriction = func(playerSlot int32) float32 {
 	var __retVal float32
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = float32(C.GetClientFriction(__playerSlot))
@@ -872,10 +872,10 @@ var P_GetClientFriction = func(playerSlot int32) float32 {
 //
 //  @return The friction of the client, or 0 if the client is invalid.
 func GetClientFriction(playerSlot int32) float32 {
-	return P_GetClientFriction(playerSlot)
+	return _GetClientFriction(playerSlot)
 }
 
-var P_SetClientFriction = func(playerSlot int32, friction float32) {
+var _SetClientFriction = func(playerSlot int32, friction float32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__friction := C.float(friction)
 	C.SetClientFriction(__playerSlot, __friction)
@@ -887,10 +887,10 @@ var P_SetClientFriction = func(playerSlot int32, friction float32) {
 //  @param playerSlot: The index of the player's slot whose friction is to be set.
 //  @param friction: The new friction value to set for the client.
 func SetClientFriction(playerSlot int32, friction float32) {
-	P_SetClientFriction(playerSlot, friction)
+	_SetClientFriction(playerSlot, friction)
 }
 
-var P_GetClientHealth = func(playerSlot int32) int32 {
+var _GetClientHealth = func(playerSlot int32) int32 {
 	var __retVal int32
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = int32(C.GetClientHealth(__playerSlot))
@@ -904,10 +904,10 @@ var P_GetClientHealth = func(playerSlot int32) int32 {
 //
 //  @return The health of the client, or 0 if the client is invalid.
 func GetClientHealth(playerSlot int32) int32 {
-	return P_GetClientHealth(playerSlot)
+	return _GetClientHealth(playerSlot)
 }
 
-var P_SetClientHealth = func(playerSlot int32, health int32) {
+var _SetClientHealth = func(playerSlot int32, health int32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__health := C.int32_t(health)
 	C.SetClientHealth(__playerSlot, __health)
@@ -919,10 +919,10 @@ var P_SetClientHealth = func(playerSlot int32, health int32) {
 //  @param playerSlot: The index of the player's slot whose health is to be set.
 //  @param health: The new health value to set for the client.
 func SetClientHealth(playerSlot int32, health int32) {
-	P_SetClientHealth(playerSlot, health)
+	_SetClientHealth(playerSlot, health)
 }
 
-var P_GetClientMaxHealth = func(playerSlot int32) int32 {
+var _GetClientMaxHealth = func(playerSlot int32) int32 {
 	var __retVal int32
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = int32(C.GetClientMaxHealth(__playerSlot))
@@ -936,10 +936,10 @@ var P_GetClientMaxHealth = func(playerSlot int32) int32 {
 //
 //  @return The max health of the client, or 0 if the client is invalid.
 func GetClientMaxHealth(playerSlot int32) int32 {
-	return P_GetClientMaxHealth(playerSlot)
+	return _GetClientMaxHealth(playerSlot)
 }
 
-var P_SetClientMaxHealth = func(playerSlot int32, maxHealth int32) {
+var _SetClientMaxHealth = func(playerSlot int32, maxHealth int32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__maxHealth := C.int32_t(maxHealth)
 	C.SetClientMaxHealth(__playerSlot, __maxHealth)
@@ -951,10 +951,10 @@ var P_SetClientMaxHealth = func(playerSlot int32, maxHealth int32) {
 //  @param playerSlot: The index of the player's slot whose max health is to be set.
 //  @param maxHealth: The new max health value to set for the client.
 func SetClientMaxHealth(playerSlot int32, maxHealth int32) {
-	P_SetClientMaxHealth(playerSlot, maxHealth)
+	_SetClientMaxHealth(playerSlot, maxHealth)
 }
 
-var P_GetClientTeam = func(playerSlot int32) CSTeam {
+var _GetClientTeam = func(playerSlot int32) CSTeam {
 	var __retVal CSTeam
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = int32(C.GetClientTeam(__playerSlot))
@@ -968,10 +968,10 @@ var P_GetClientTeam = func(playerSlot int32) CSTeam {
 //
 //  @return The team number of the client, or 0 if the client is invalid.
 func GetClientTeam(playerSlot int32) CSTeam {
-	return P_GetClientTeam(playerSlot)
+	return _GetClientTeam(playerSlot)
 }
 
-var P_SetClientTeam = func(playerSlot int32, team CSTeam) {
+var _SetClientTeam = func(playerSlot int32, team CSTeam) {
 	__playerSlot := C.int32_t(playerSlot)
 	__team := C.int32_t(team)
 	C.SetClientTeam(__playerSlot, __team)
@@ -983,10 +983,10 @@ var P_SetClientTeam = func(playerSlot int32, team CSTeam) {
 //  @param playerSlot: The index of the player's slot whose team number is to be set.
 //  @param team: The new team number to set for the client.
 func SetClientTeam(playerSlot int32, team CSTeam) {
-	P_SetClientTeam(playerSlot, team)
+	_SetClientTeam(playerSlot, team)
 }
 
-var P_GetClientAbsOrigin = func(playerSlot int32) plugify.Vector3 {
+var _GetClientAbsOrigin = func(playerSlot int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__playerSlot := C.int32_t(playerSlot)
 	__native := C.GetClientAbsOrigin(__playerSlot)
@@ -1001,10 +1001,10 @@ var P_GetClientAbsOrigin = func(playerSlot int32) plugify.Vector3 {
 //
 //  @return A vector where the absolute origin will be stored.
 func GetClientAbsOrigin(playerSlot int32) plugify.Vector3 {
-	return P_GetClientAbsOrigin(playerSlot)
+	return _GetClientAbsOrigin(playerSlot)
 }
 
-var P_SetClientAbsOrigin = func(playerSlot int32, origin plugify.Vector3) {
+var _SetClientAbsOrigin = func(playerSlot int32, origin plugify.Vector3) {
 	__playerSlot := C.int32_t(playerSlot)
 	__origin := *(*C.Vector3)(unsafe.Pointer(&origin))
 	C.SetClientAbsOrigin(__playerSlot, &__origin)
@@ -1016,10 +1016,10 @@ var P_SetClientAbsOrigin = func(playerSlot int32, origin plugify.Vector3) {
 //  @param playerSlot: The index of the player's slot whose absolute origin is to be set.
 //  @param origin: The new absolute origin to set for the client.
 func SetClientAbsOrigin(playerSlot int32, origin plugify.Vector3) {
-	P_SetClientAbsOrigin(playerSlot, origin)
+	_SetClientAbsOrigin(playerSlot, origin)
 }
 
-var P_GetClientAbsScale = func(playerSlot int32) float32 {
+var _GetClientAbsScale = func(playerSlot int32) float32 {
 	var __retVal float32
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = float32(C.GetClientAbsScale(__playerSlot))
@@ -1033,10 +1033,10 @@ var P_GetClientAbsScale = func(playerSlot int32) float32 {
 //
 //  @return A vector where the absolute scale will be stored.
 func GetClientAbsScale(playerSlot int32) float32 {
-	return P_GetClientAbsScale(playerSlot)
+	return _GetClientAbsScale(playerSlot)
 }
 
-var P_SetClientAbsScale = func(playerSlot int32, scale float32) {
+var _SetClientAbsScale = func(playerSlot int32, scale float32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__scale := C.float(scale)
 	C.SetClientAbsScale(__playerSlot, __scale)
@@ -1048,10 +1048,10 @@ var P_SetClientAbsScale = func(playerSlot int32, scale float32) {
 //  @param playerSlot: The index of the player's slot whose absolute scale is to be set.
 //  @param scale: The new absolute scale to set for the client.
 func SetClientAbsScale(playerSlot int32, scale float32) {
-	P_SetClientAbsScale(playerSlot, scale)
+	_SetClientAbsScale(playerSlot, scale)
 }
 
-var P_GetClientAbsAngles = func(playerSlot int32) plugify.Vector3 {
+var _GetClientAbsAngles = func(playerSlot int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__playerSlot := C.int32_t(playerSlot)
 	__native := C.GetClientAbsAngles(__playerSlot)
@@ -1066,10 +1066,10 @@ var P_GetClientAbsAngles = func(playerSlot int32) plugify.Vector3 {
 //
 //  @return A QAngle where the angular rotation will be stored.
 func GetClientAbsAngles(playerSlot int32) plugify.Vector3 {
-	return P_GetClientAbsAngles(playerSlot)
+	return _GetClientAbsAngles(playerSlot)
 }
 
-var P_SetClientAbsAngles = func(playerSlot int32, angle plugify.Vector3) {
+var _SetClientAbsAngles = func(playerSlot int32, angle plugify.Vector3) {
 	__playerSlot := C.int32_t(playerSlot)
 	__angle := *(*C.Vector3)(unsafe.Pointer(&angle))
 	C.SetClientAbsAngles(__playerSlot, &__angle)
@@ -1081,10 +1081,10 @@ var P_SetClientAbsAngles = func(playerSlot int32, angle plugify.Vector3) {
 //  @param playerSlot: The index of the player's slot whose angular rotation is to be set.
 //  @param angle: The new angular rotation to set for the client.
 func SetClientAbsAngles(playerSlot int32, angle plugify.Vector3) {
-	P_SetClientAbsAngles(playerSlot, angle)
+	_SetClientAbsAngles(playerSlot, angle)
 }
 
-var P_GetClientLocalOrigin = func(playerSlot int32) plugify.Vector3 {
+var _GetClientLocalOrigin = func(playerSlot int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__playerSlot := C.int32_t(playerSlot)
 	__native := C.GetClientLocalOrigin(__playerSlot)
@@ -1099,10 +1099,10 @@ var P_GetClientLocalOrigin = func(playerSlot int32) plugify.Vector3 {
 //
 //  @return A vector where the local origin will be stored.
 func GetClientLocalOrigin(playerSlot int32) plugify.Vector3 {
-	return P_GetClientLocalOrigin(playerSlot)
+	return _GetClientLocalOrigin(playerSlot)
 }
 
-var P_SetClientLocalOrigin = func(playerSlot int32, origin plugify.Vector3) {
+var _SetClientLocalOrigin = func(playerSlot int32, origin plugify.Vector3) {
 	__playerSlot := C.int32_t(playerSlot)
 	__origin := *(*C.Vector3)(unsafe.Pointer(&origin))
 	C.SetClientLocalOrigin(__playerSlot, &__origin)
@@ -1114,10 +1114,10 @@ var P_SetClientLocalOrigin = func(playerSlot int32, origin plugify.Vector3) {
 //  @param playerSlot: The index of the player's slot whose local origin is to be set.
 //  @param origin: The new local origin to set for the client.
 func SetClientLocalOrigin(playerSlot int32, origin plugify.Vector3) {
-	P_SetClientLocalOrigin(playerSlot, origin)
+	_SetClientLocalOrigin(playerSlot, origin)
 }
 
-var P_GetClientLocalScale = func(playerSlot int32) float32 {
+var _GetClientLocalScale = func(playerSlot int32) float32 {
 	var __retVal float32
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = float32(C.GetClientLocalScale(__playerSlot))
@@ -1131,10 +1131,10 @@ var P_GetClientLocalScale = func(playerSlot int32) float32 {
 //
 //  @return A vector where the local scale will be stored.
 func GetClientLocalScale(playerSlot int32) float32 {
-	return P_GetClientLocalScale(playerSlot)
+	return _GetClientLocalScale(playerSlot)
 }
 
-var P_SetClientLocalScale = func(playerSlot int32, scale float32) {
+var _SetClientLocalScale = func(playerSlot int32, scale float32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__scale := C.float(scale)
 	C.SetClientLocalScale(__playerSlot, __scale)
@@ -1146,10 +1146,10 @@ var P_SetClientLocalScale = func(playerSlot int32, scale float32) {
 //  @param playerSlot: The index of the player's slot whose local scale is to be set.
 //  @param scale: The new local scale to set for the client.
 func SetClientLocalScale(playerSlot int32, scale float32) {
-	P_SetClientLocalScale(playerSlot, scale)
+	_SetClientLocalScale(playerSlot, scale)
 }
 
-var P_GetClientLocalAngles = func(playerSlot int32) plugify.Vector3 {
+var _GetClientLocalAngles = func(playerSlot int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__playerSlot := C.int32_t(playerSlot)
 	__native := C.GetClientLocalAngles(__playerSlot)
@@ -1164,10 +1164,10 @@ var P_GetClientLocalAngles = func(playerSlot int32) plugify.Vector3 {
 //
 //  @return A QAngle where the angular rotation will be stored.
 func GetClientLocalAngles(playerSlot int32) plugify.Vector3 {
-	return P_GetClientLocalAngles(playerSlot)
+	return _GetClientLocalAngles(playerSlot)
 }
 
-var P_SetClientLocalAngles = func(playerSlot int32, angle plugify.Vector3) {
+var _SetClientLocalAngles = func(playerSlot int32, angle plugify.Vector3) {
 	__playerSlot := C.int32_t(playerSlot)
 	__angle := *(*C.Vector3)(unsafe.Pointer(&angle))
 	C.SetClientLocalAngles(__playerSlot, &__angle)
@@ -1179,10 +1179,10 @@ var P_SetClientLocalAngles = func(playerSlot int32, angle plugify.Vector3) {
 //  @param playerSlot: The index of the player's slot whose angular rotation is to be set.
 //  @param angle: The new angular rotation to set for the client.
 func SetClientLocalAngles(playerSlot int32, angle plugify.Vector3) {
-	P_SetClientLocalAngles(playerSlot, angle)
+	_SetClientLocalAngles(playerSlot, angle)
 }
 
-var P_GetClientAbsVelocity = func(playerSlot int32) plugify.Vector3 {
+var _GetClientAbsVelocity = func(playerSlot int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__playerSlot := C.int32_t(playerSlot)
 	__native := C.GetClientAbsVelocity(__playerSlot)
@@ -1197,10 +1197,10 @@ var P_GetClientAbsVelocity = func(playerSlot int32) plugify.Vector3 {
 //
 //  @return A vector where the absolute velocity will be stored.
 func GetClientAbsVelocity(playerSlot int32) plugify.Vector3 {
-	return P_GetClientAbsVelocity(playerSlot)
+	return _GetClientAbsVelocity(playerSlot)
 }
 
-var P_SetClientAbsVelocity = func(playerSlot int32, velocity plugify.Vector3) {
+var _SetClientAbsVelocity = func(playerSlot int32, velocity plugify.Vector3) {
 	__playerSlot := C.int32_t(playerSlot)
 	__velocity := *(*C.Vector3)(unsafe.Pointer(&velocity))
 	C.SetClientAbsVelocity(__playerSlot, &__velocity)
@@ -1212,10 +1212,10 @@ var P_SetClientAbsVelocity = func(playerSlot int32, velocity plugify.Vector3) {
 //  @param playerSlot: The index of the player's slot whose absolute velocity is to be set.
 //  @param velocity: The new absolute velocity to set for the client.
 func SetClientAbsVelocity(playerSlot int32, velocity plugify.Vector3) {
-	P_SetClientAbsVelocity(playerSlot, velocity)
+	_SetClientAbsVelocity(playerSlot, velocity)
 }
 
-var P_GetClientBaseVelocity = func(playerSlot int32) plugify.Vector3 {
+var _GetClientBaseVelocity = func(playerSlot int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__playerSlot := C.int32_t(playerSlot)
 	__native := C.GetClientBaseVelocity(__playerSlot)
@@ -1230,10 +1230,10 @@ var P_GetClientBaseVelocity = func(playerSlot int32) plugify.Vector3 {
 //
 //  @return A vector where the base velocity will be stored.
 func GetClientBaseVelocity(playerSlot int32) plugify.Vector3 {
-	return P_GetClientBaseVelocity(playerSlot)
+	return _GetClientBaseVelocity(playerSlot)
 }
 
-var P_GetClientLocalAngVelocity = func(playerSlot int32) plugify.Vector3 {
+var _GetClientLocalAngVelocity = func(playerSlot int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__playerSlot := C.int32_t(playerSlot)
 	__native := C.GetClientLocalAngVelocity(__playerSlot)
@@ -1248,10 +1248,10 @@ var P_GetClientLocalAngVelocity = func(playerSlot int32) plugify.Vector3 {
 //
 //  @return A vector where the local angular velocity will be stored.
 func GetClientLocalAngVelocity(playerSlot int32) plugify.Vector3 {
-	return P_GetClientLocalAngVelocity(playerSlot)
+	return _GetClientLocalAngVelocity(playerSlot)
 }
 
-var P_GetClientAngVelocity = func(playerSlot int32) plugify.Vector3 {
+var _GetClientAngVelocity = func(playerSlot int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__playerSlot := C.int32_t(playerSlot)
 	__native := C.GetClientAngVelocity(__playerSlot)
@@ -1266,10 +1266,10 @@ var P_GetClientAngVelocity = func(playerSlot int32) plugify.Vector3 {
 //
 //  @return A vector where the angular velocity will be stored.
 func GetClientAngVelocity(playerSlot int32) plugify.Vector3 {
-	return P_GetClientAngVelocity(playerSlot)
+	return _GetClientAngVelocity(playerSlot)
 }
 
-var P_SetClientAngVelocity = func(playerSlot int32, velocity plugify.Vector3) {
+var _SetClientAngVelocity = func(playerSlot int32, velocity plugify.Vector3) {
 	__playerSlot := C.int32_t(playerSlot)
 	__velocity := *(*C.Vector3)(unsafe.Pointer(&velocity))
 	C.SetClientAngVelocity(__playerSlot, &__velocity)
@@ -1281,10 +1281,10 @@ var P_SetClientAngVelocity = func(playerSlot int32, velocity plugify.Vector3) {
 //  @param playerSlot: The index of the player's slot whose angular velocity is to be set.
 //  @param velocity: The new angular velocity to set for the client.
 func SetClientAngVelocity(playerSlot int32, velocity plugify.Vector3) {
-	P_SetClientAngVelocity(playerSlot, velocity)
+	_SetClientAngVelocity(playerSlot, velocity)
 }
 
-var P_GetClientLocalVelocity = func(playerSlot int32) plugify.Vector3 {
+var _GetClientLocalVelocity = func(playerSlot int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__playerSlot := C.int32_t(playerSlot)
 	__native := C.GetClientLocalVelocity(__playerSlot)
@@ -1299,10 +1299,10 @@ var P_GetClientLocalVelocity = func(playerSlot int32) plugify.Vector3 {
 //
 //  @return A vector where the local velocity will be stored.
 func GetClientLocalVelocity(playerSlot int32) plugify.Vector3 {
-	return P_GetClientLocalVelocity(playerSlot)
+	return _GetClientLocalVelocity(playerSlot)
 }
 
-var P_GetClientAngRotation = func(playerSlot int32) plugify.Vector3 {
+var _GetClientAngRotation = func(playerSlot int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__playerSlot := C.int32_t(playerSlot)
 	__native := C.GetClientAngRotation(__playerSlot)
@@ -1317,10 +1317,10 @@ var P_GetClientAngRotation = func(playerSlot int32) plugify.Vector3 {
 //
 //  @return A vector where the angular rotation will be stored.
 func GetClientAngRotation(playerSlot int32) plugify.Vector3 {
-	return P_GetClientAngRotation(playerSlot)
+	return _GetClientAngRotation(playerSlot)
 }
 
-var P_SetClientAngRotation = func(playerSlot int32, rotation plugify.Vector3) {
+var _SetClientAngRotation = func(playerSlot int32, rotation plugify.Vector3) {
 	__playerSlot := C.int32_t(playerSlot)
 	__rotation := *(*C.Vector3)(unsafe.Pointer(&rotation))
 	C.SetClientAngRotation(__playerSlot, &__rotation)
@@ -1332,10 +1332,10 @@ var P_SetClientAngRotation = func(playerSlot int32, rotation plugify.Vector3) {
 //  @param playerSlot: The index of the player's slot whose angular rotation is to be set.
 //  @param rotation: The new angular rotation to set for the client.
 func SetClientAngRotation(playerSlot int32, rotation plugify.Vector3) {
-	P_SetClientAngRotation(playerSlot, rotation)
+	_SetClientAngRotation(playerSlot, rotation)
 }
 
-var P_TransformPointClientToWorld = func(playerSlot int32, point plugify.Vector3) plugify.Vector3 {
+var _TransformPointClientToWorld = func(playerSlot int32, point plugify.Vector3) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__playerSlot := C.int32_t(playerSlot)
 	__point := *(*C.Vector3)(unsafe.Pointer(&point))
@@ -1352,10 +1352,10 @@ var P_TransformPointClientToWorld = func(playerSlot int32, point plugify.Vector3
 //
 //  @return The point transformed to world space coordinates
 func TransformPointClientToWorld(playerSlot int32, point plugify.Vector3) plugify.Vector3 {
-	return P_TransformPointClientToWorld(playerSlot, point)
+	return _TransformPointClientToWorld(playerSlot, point)
 }
 
-var P_TransformPointWorldToClient = func(playerSlot int32, point plugify.Vector3) plugify.Vector3 {
+var _TransformPointWorldToClient = func(playerSlot int32, point plugify.Vector3) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__playerSlot := C.int32_t(playerSlot)
 	__point := *(*C.Vector3)(unsafe.Pointer(&point))
@@ -1372,10 +1372,10 @@ var P_TransformPointWorldToClient = func(playerSlot int32, point plugify.Vector3
 //
 //  @return The point transformed to client local space coordinates
 func TransformPointWorldToClient(playerSlot int32, point plugify.Vector3) plugify.Vector3 {
-	return P_TransformPointWorldToClient(playerSlot, point)
+	return _TransformPointWorldToClient(playerSlot, point)
 }
 
-var P_GetClientEyePosition = func(playerSlot int32) plugify.Vector3 {
+var _GetClientEyePosition = func(playerSlot int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__playerSlot := C.int32_t(playerSlot)
 	__native := C.GetClientEyePosition(__playerSlot)
@@ -1390,10 +1390,10 @@ var P_GetClientEyePosition = func(playerSlot int32) plugify.Vector3 {
 //
 //  @return Eye position in absolute/world coordinates
 func GetClientEyePosition(playerSlot int32) plugify.Vector3 {
-	return P_GetClientEyePosition(playerSlot)
+	return _GetClientEyePosition(playerSlot)
 }
 
-var P_GetClientEyeAngles = func(playerSlot int32) plugify.Vector3 {
+var _GetClientEyeAngles = func(playerSlot int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__playerSlot := C.int32_t(playerSlot)
 	__native := C.GetClientEyeAngles(__playerSlot)
@@ -1408,10 +1408,10 @@ var P_GetClientEyeAngles = func(playerSlot int32) plugify.Vector3 {
 //
 //  @return Eye angles as a vector (pitch, yaw, roll)
 func GetClientEyeAngles(playerSlot int32) plugify.Vector3 {
-	return P_GetClientEyeAngles(playerSlot)
+	return _GetClientEyeAngles(playerSlot)
 }
 
-var P_SetClientForwardVector = func(playerSlot int32, forward plugify.Vector3) {
+var _SetClientForwardVector = func(playerSlot int32, forward plugify.Vector3) {
 	__playerSlot := C.int32_t(playerSlot)
 	__forward := *(*C.Vector3)(unsafe.Pointer(&forward))
 	C.SetClientForwardVector(__playerSlot, &__forward)
@@ -1422,10 +1422,10 @@ var P_SetClientForwardVector = func(playerSlot int32, forward plugify.Vector3) {
 //
 //  @param playerSlot: The index of the player's slot whose forward velocity is to be set.
 func SetClientForwardVector(playerSlot int32, forward plugify.Vector3) {
-	P_SetClientForwardVector(playerSlot, forward)
+	_SetClientForwardVector(playerSlot, forward)
 }
 
-var P_GetClientForwardVector = func(playerSlot int32) plugify.Vector3 {
+var _GetClientForwardVector = func(playerSlot int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__playerSlot := C.int32_t(playerSlot)
 	__native := C.GetClientForwardVector(__playerSlot)
@@ -1440,10 +1440,10 @@ var P_GetClientForwardVector = func(playerSlot int32) plugify.Vector3 {
 //
 //  @return Forward-facing direction vector of the client
 func GetClientForwardVector(playerSlot int32) plugify.Vector3 {
-	return P_GetClientForwardVector(playerSlot)
+	return _GetClientForwardVector(playerSlot)
 }
 
-var P_GetClientLeftVector = func(playerSlot int32) plugify.Vector3 {
+var _GetClientLeftVector = func(playerSlot int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__playerSlot := C.int32_t(playerSlot)
 	__native := C.GetClientLeftVector(__playerSlot)
@@ -1458,10 +1458,10 @@ var P_GetClientLeftVector = func(playerSlot int32) plugify.Vector3 {
 //
 //  @return Left-facing direction vector of the client (aligned with the y axis)
 func GetClientLeftVector(playerSlot int32) plugify.Vector3 {
-	return P_GetClientLeftVector(playerSlot)
+	return _GetClientLeftVector(playerSlot)
 }
 
-var P_GetClientRightVector = func(playerSlot int32) plugify.Vector3 {
+var _GetClientRightVector = func(playerSlot int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__playerSlot := C.int32_t(playerSlot)
 	__native := C.GetClientRightVector(__playerSlot)
@@ -1476,10 +1476,10 @@ var P_GetClientRightVector = func(playerSlot int32) plugify.Vector3 {
 //
 //  @return Right-facing direction vector of the client
 func GetClientRightVector(playerSlot int32) plugify.Vector3 {
-	return P_GetClientRightVector(playerSlot)
+	return _GetClientRightVector(playerSlot)
 }
 
-var P_GetClientUpVector = func(playerSlot int32) plugify.Vector3 {
+var _GetClientUpVector = func(playerSlot int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__playerSlot := C.int32_t(playerSlot)
 	__native := C.GetClientUpVector(__playerSlot)
@@ -1494,10 +1494,10 @@ var P_GetClientUpVector = func(playerSlot int32) plugify.Vector3 {
 //
 //  @return Up-facing direction vector of the client
 func GetClientUpVector(playerSlot int32) plugify.Vector3 {
-	return P_GetClientUpVector(playerSlot)
+	return _GetClientUpVector(playerSlot)
 }
 
-var P_GetClientTransform = func(playerSlot int32) plugify.Matrix4x4 {
+var _GetClientTransform = func(playerSlot int32) plugify.Matrix4x4 {
 	var __retVal plugify.Matrix4x4
 	__playerSlot := C.int32_t(playerSlot)
 	__native := C.GetClientTransform(__playerSlot)
@@ -1512,10 +1512,10 @@ var P_GetClientTransform = func(playerSlot int32) plugify.Matrix4x4 {
 //
 //  @return 4x4 transformation matrix representing client's position, rotation, and scale in world space
 func GetClientTransform(playerSlot int32) plugify.Matrix4x4 {
-	return P_GetClientTransform(playerSlot)
+	return _GetClientTransform(playerSlot)
 }
 
-var P_GetClientModel = func(playerSlot int32) string {
+var _GetClientModel = func(playerSlot int32) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__playerSlot := C.int32_t(playerSlot)
@@ -1541,10 +1541,10 @@ var P_GetClientModel = func(playerSlot int32) string {
 //
 //  @return A string where the model name will be stored.
 func GetClientModel(playerSlot int32) string {
-	return P_GetClientModel(playerSlot)
+	return _GetClientModel(playerSlot)
 }
 
-var P_SetClientModel = func(playerSlot int32, model string) {
+var _SetClientModel = func(playerSlot int32, model string) {
 	__playerSlot := C.int32_t(playerSlot)
 	__model := plugify.ConstructString(model)
 	plugify.Block {
@@ -1564,10 +1564,10 @@ var P_SetClientModel = func(playerSlot int32, model string) {
 //  @param playerSlot: The index of the player's slot whose model name is to be set.
 //  @param model: The new model name to set for the client.
 func SetClientModel(playerSlot int32, model string) {
-	P_SetClientModel(playerSlot, model)
+	_SetClientModel(playerSlot, model)
 }
 
-var P_GetClientWaterLevel = func(playerSlot int32) float32 {
+var _GetClientWaterLevel = func(playerSlot int32) float32 {
 	var __retVal float32
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = float32(C.GetClientWaterLevel(__playerSlot))
@@ -1581,10 +1581,10 @@ var P_GetClientWaterLevel = func(playerSlot int32) float32 {
 //
 //  @return The water level of the client, or 0.0f if the client is invalid.
 func GetClientWaterLevel(playerSlot int32) float32 {
-	return P_GetClientWaterLevel(playerSlot)
+	return _GetClientWaterLevel(playerSlot)
 }
 
-var P_GetClientGroundEntity = func(playerSlot int32) int32 {
+var _GetClientGroundEntity = func(playerSlot int32) int32 {
 	var __retVal int32
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = int32(C.GetClientGroundEntity(__playerSlot))
@@ -1598,10 +1598,10 @@ var P_GetClientGroundEntity = func(playerSlot int32) int32 {
 //
 //  @return The handle of the ground client, or INVALID_EHANDLE_INDEX if the client is invalid.
 func GetClientGroundEntity(playerSlot int32) int32 {
-	return P_GetClientGroundEntity(playerSlot)
+	return _GetClientGroundEntity(playerSlot)
 }
 
-var P_GetClientEffects = func(playerSlot int32) int32 {
+var _GetClientEffects = func(playerSlot int32) int32 {
 	var __retVal int32
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = int32(C.GetClientEffects(__playerSlot))
@@ -1615,10 +1615,10 @@ var P_GetClientEffects = func(playerSlot int32) int32 {
 //
 //  @return The effect flags of the client, or 0 if the client is invalid.
 func GetClientEffects(playerSlot int32) int32 {
-	return P_GetClientEffects(playerSlot)
+	return _GetClientEffects(playerSlot)
 }
 
-var P_AddClientEffects = func(playerSlot int32, effects int32) {
+var _AddClientEffects = func(playerSlot int32, effects int32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__effects := C.int32_t(effects)
 	C.AddClientEffects(__playerSlot, __effects)
@@ -1630,10 +1630,10 @@ var P_AddClientEffects = func(playerSlot int32, effects int32) {
 //  @param playerSlot: The index of the player's slot to modify
 //  @param effects: Render effect flags to add
 func AddClientEffects(playerSlot int32, effects int32) {
-	P_AddClientEffects(playerSlot, effects)
+	_AddClientEffects(playerSlot, effects)
 }
 
-var P_RemoveClientEffects = func(playerSlot int32, effects int32) {
+var _RemoveClientEffects = func(playerSlot int32, effects int32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__effects := C.int32_t(effects)
 	C.RemoveClientEffects(__playerSlot, __effects)
@@ -1645,10 +1645,10 @@ var P_RemoveClientEffects = func(playerSlot int32, effects int32) {
 //  @param playerSlot: The index of the player's slot to modify
 //  @param effects: Render effect flags to remove
 func RemoveClientEffects(playerSlot int32, effects int32) {
-	P_RemoveClientEffects(playerSlot, effects)
+	_RemoveClientEffects(playerSlot, effects)
 }
 
-var P_GetClientBoundingMaxs = func(playerSlot int32) plugify.Vector3 {
+var _GetClientBoundingMaxs = func(playerSlot int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__playerSlot := C.int32_t(playerSlot)
 	__native := C.GetClientBoundingMaxs(__playerSlot)
@@ -1663,10 +1663,10 @@ var P_GetClientBoundingMaxs = func(playerSlot int32) plugify.Vector3 {
 //
 //  @return Vector containing the maximum bounds of the client's bounding box
 func GetClientBoundingMaxs(playerSlot int32) plugify.Vector3 {
-	return P_GetClientBoundingMaxs(playerSlot)
+	return _GetClientBoundingMaxs(playerSlot)
 }
 
-var P_GetClientBoundingMins = func(playerSlot int32) plugify.Vector3 {
+var _GetClientBoundingMins = func(playerSlot int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__playerSlot := C.int32_t(playerSlot)
 	__native := C.GetClientBoundingMins(__playerSlot)
@@ -1681,10 +1681,10 @@ var P_GetClientBoundingMins = func(playerSlot int32) plugify.Vector3 {
 //
 //  @return Vector containing the minimum bounds of the client's bounding box
 func GetClientBoundingMins(playerSlot int32) plugify.Vector3 {
-	return P_GetClientBoundingMins(playerSlot)
+	return _GetClientBoundingMins(playerSlot)
 }
 
-var P_GetClientCenter = func(playerSlot int32) plugify.Vector3 {
+var _GetClientCenter = func(playerSlot int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__playerSlot := C.int32_t(playerSlot)
 	__native := C.GetClientCenter(__playerSlot)
@@ -1699,10 +1699,10 @@ var P_GetClientCenter = func(playerSlot int32) plugify.Vector3 {
 //
 //  @return Vector pointing to the center of the client in absolute/world coordinates
 func GetClientCenter(playerSlot int32) plugify.Vector3 {
-	return P_GetClientCenter(playerSlot)
+	return _GetClientCenter(playerSlot)
 }
 
-var P_TeleportClient = func(playerSlot int32, origin plugify.Vector3, angles plugify.Vector3, velocity plugify.Vector3) {
+var _TeleportClient = func(playerSlot int32, origin plugify.Vector3, angles plugify.Vector3, velocity plugify.Vector3) {
 	__playerSlot := C.int32_t(playerSlot)
 	__origin := *(*C.Vector3)(unsafe.Pointer(&origin))
 	__angles := *(*C.Vector3)(unsafe.Pointer(&angles))
@@ -1718,10 +1718,10 @@ var P_TeleportClient = func(playerSlot int32, origin plugify.Vector3, angles plu
 //  @param angles: A pointer to a QAngle representing the new orientation. Use nan vector to not set.
 //  @param velocity: A pointer to a Vector representing the new velocity. Use nan vector to not set.
 func TeleportClient(playerSlot int32, origin plugify.Vector3, angles plugify.Vector3, velocity plugify.Vector3) {
-	P_TeleportClient(playerSlot, origin, angles, velocity)
+	_TeleportClient(playerSlot, origin, angles, velocity)
 }
 
-var P_ApplyAbsVelocityImpulseToClient = func(playerSlot int32, vecImpulse plugify.Vector3) {
+var _ApplyAbsVelocityImpulseToClient = func(playerSlot int32, vecImpulse plugify.Vector3) {
 	__playerSlot := C.int32_t(playerSlot)
 	__vecImpulse := *(*C.Vector3)(unsafe.Pointer(&vecImpulse))
 	C.ApplyAbsVelocityImpulseToClient(__playerSlot, &__vecImpulse)
@@ -1733,10 +1733,10 @@ var P_ApplyAbsVelocityImpulseToClient = func(playerSlot int32, vecImpulse plugif
 //  @param playerSlot: The index of the player's slot to apply impulse to
 //  @param vecImpulse: Velocity impulse vector to apply
 func ApplyAbsVelocityImpulseToClient(playerSlot int32, vecImpulse plugify.Vector3) {
-	P_ApplyAbsVelocityImpulseToClient(playerSlot, vecImpulse)
+	_ApplyAbsVelocityImpulseToClient(playerSlot, vecImpulse)
 }
 
-var P_ApplyLocalAngularVelocityImpulseToClient = func(playerSlot int32, angImpulse plugify.Vector3) {
+var _ApplyLocalAngularVelocityImpulseToClient = func(playerSlot int32, angImpulse plugify.Vector3) {
 	__playerSlot := C.int32_t(playerSlot)
 	__angImpulse := *(*C.Vector3)(unsafe.Pointer(&angImpulse))
 	C.ApplyLocalAngularVelocityImpulseToClient(__playerSlot, &__angImpulse)
@@ -1748,10 +1748,10 @@ var P_ApplyLocalAngularVelocityImpulseToClient = func(playerSlot int32, angImpul
 //  @param playerSlot: The index of the player's slot to apply impulse to
 //  @param angImpulse: Angular velocity impulse vector to apply
 func ApplyLocalAngularVelocityImpulseToClient(playerSlot int32, angImpulse plugify.Vector3) {
-	P_ApplyLocalAngularVelocityImpulseToClient(playerSlot, angImpulse)
+	_ApplyLocalAngularVelocityImpulseToClient(playerSlot, angImpulse)
 }
 
-var P_AcceptClientInput = func(playerSlot int32, inputName string, activatorHandle int32, callerHandle int32, value any, type_ FieldType, outputId int32) {
+var _AcceptClientInput = func(playerSlot int32, inputName string, activatorHandle int32, callerHandle int32, value any, type_ FieldType, outputId int32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__inputName := plugify.ConstructString(inputName)
 	__activatorHandle := C.int32_t(activatorHandle)
@@ -1782,10 +1782,10 @@ var P_AcceptClientInput = func(playerSlot int32, inputName string, activatorHand
 //  @param type_: The type or classification of the value.
 //  @param outputId: An identifier for tracking the output of this operation.
 func AcceptClientInput(playerSlot int32, inputName string, activatorHandle int32, callerHandle int32, value any, type_ FieldType, outputId int32) {
-	P_AcceptClientInput(playerSlot, inputName, activatorHandle, callerHandle, value, type_, outputId)
+	_AcceptClientInput(playerSlot, inputName, activatorHandle, callerHandle, value, type_, outputId)
 }
 
-var P_ConnectClientOutput = func(playerSlot int32, output string, functionName string) {
+var _ConnectClientOutput = func(playerSlot int32, output string, functionName string) {
 	__playerSlot := C.int32_t(playerSlot)
 	__output := plugify.ConstructString(output)
 	__functionName := plugify.ConstructString(functionName)
@@ -1808,10 +1808,10 @@ var P_ConnectClientOutput = func(playerSlot int32, output string, functionName s
 //  @param output: The name of the output to connect to.
 //  @param functionName: The name of the script function to call.
 func ConnectClientOutput(playerSlot int32, output string, functionName string) {
-	P_ConnectClientOutput(playerSlot, output, functionName)
+	_ConnectClientOutput(playerSlot, output, functionName)
 }
 
-var P_DisconnectClientOutput = func(playerSlot int32, output string, functionName string) {
+var _DisconnectClientOutput = func(playerSlot int32, output string, functionName string) {
 	__playerSlot := C.int32_t(playerSlot)
 	__output := plugify.ConstructString(output)
 	__functionName := plugify.ConstructString(functionName)
@@ -1834,10 +1834,10 @@ var P_DisconnectClientOutput = func(playerSlot int32, output string, functionNam
 //  @param output: The name of the output.
 //  @param functionName: The name of the script function to disconnect.
 func DisconnectClientOutput(playerSlot int32, output string, functionName string) {
-	P_DisconnectClientOutput(playerSlot, output, functionName)
+	_DisconnectClientOutput(playerSlot, output, functionName)
 }
 
-var P_DisconnectClientRedirectedOutput = func(playerSlot int32, output string, functionName string, targetHandle int32) {
+var _DisconnectClientRedirectedOutput = func(playerSlot int32, output string, functionName string, targetHandle int32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__output := plugify.ConstructString(output)
 	__functionName := plugify.ConstructString(functionName)
@@ -1862,10 +1862,10 @@ var P_DisconnectClientRedirectedOutput = func(playerSlot int32, output string, f
 //  @param functionName: The function name to disconnect.
 //  @param targetHandle: The handle of the entity whose output is being disconnected.
 func DisconnectClientRedirectedOutput(playerSlot int32, output string, functionName string, targetHandle int32) {
-	P_DisconnectClientRedirectedOutput(playerSlot, output, functionName, targetHandle)
+	_DisconnectClientRedirectedOutput(playerSlot, output, functionName, targetHandle)
 }
 
-var P_FireClientOutput = func(playerSlot int32, outputName string, activatorHandle int32, callerHandle int32, value any, type_ FieldType, delay float32) {
+var _FireClientOutput = func(playerSlot int32, outputName string, activatorHandle int32, callerHandle int32, value any, type_ FieldType, delay float32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__outputName := plugify.ConstructString(outputName)
 	__activatorHandle := C.int32_t(activatorHandle)
@@ -1896,10 +1896,10 @@ var P_FireClientOutput = func(playerSlot int32, outputName string, activatorHand
 //  @param type_: The type or classification of the value.
 //  @param delay: Delay in seconds before firing the output.
 func FireClientOutput(playerSlot int32, outputName string, activatorHandle int32, callerHandle int32, value any, type_ FieldType, delay float32) {
-	P_FireClientOutput(playerSlot, outputName, activatorHandle, callerHandle, value, type_, delay)
+	_FireClientOutput(playerSlot, outputName, activatorHandle, callerHandle, value, type_, delay)
 }
 
-var P_RedirectClientOutput = func(playerSlot int32, output string, functionName string, targetHandle int32) {
+var _RedirectClientOutput = func(playerSlot int32, output string, functionName string, targetHandle int32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__output := plugify.ConstructString(output)
 	__functionName := plugify.ConstructString(functionName)
@@ -1924,10 +1924,10 @@ var P_RedirectClientOutput = func(playerSlot int32, output string, functionName 
 //  @param functionName: The function name to call on the target player.
 //  @param targetHandle: The handle of the entity that will receive the output call.
 func RedirectClientOutput(playerSlot int32, output string, functionName string, targetHandle int32) {
-	P_RedirectClientOutput(playerSlot, output, functionName, targetHandle)
+	_RedirectClientOutput(playerSlot, output, functionName, targetHandle)
 }
 
-var P_FollowClient = func(playerSlot int32, attachmentHandle int32, boneMerge bool) {
+var _FollowClient = func(playerSlot int32, attachmentHandle int32, boneMerge bool) {
 	__playerSlot := C.int32_t(playerSlot)
 	__attachmentHandle := C.int32_t(attachmentHandle)
 	__boneMerge := C.bool(boneMerge)
@@ -1941,10 +1941,10 @@ var P_FollowClient = func(playerSlot int32, attachmentHandle int32, boneMerge bo
 //  @param attachmentHandle: The index of the player's slot to follow
 //  @param boneMerge: If true, bones will be merged between entities
 func FollowClient(playerSlot int32, attachmentHandle int32, boneMerge bool) {
-	P_FollowClient(playerSlot, attachmentHandle, boneMerge)
+	_FollowClient(playerSlot, attachmentHandle, boneMerge)
 }
 
-var P_FollowClientMerge = func(playerSlot int32, attachmentHandle int32, boneOrAttachName string) {
+var _FollowClientMerge = func(playerSlot int32, attachmentHandle int32, boneOrAttachName string) {
 	__playerSlot := C.int32_t(playerSlot)
 	__attachmentHandle := C.int32_t(attachmentHandle)
 	__boneOrAttachName := plugify.ConstructString(boneOrAttachName)
@@ -1966,10 +1966,10 @@ var P_FollowClientMerge = func(playerSlot int32, attachmentHandle int32, boneOrA
 //  @param attachmentHandle: The index of the player's slot to follow
 //  @param boneOrAttachName: Name of the bone or attachment point to merge with
 func FollowClientMerge(playerSlot int32, attachmentHandle int32, boneOrAttachName string) {
-	P_FollowClientMerge(playerSlot, attachmentHandle, boneOrAttachName)
+	_FollowClientMerge(playerSlot, attachmentHandle, boneOrAttachName)
 }
 
-var P_TakeClientDamage = func(playerSlot int32, inflictorSlot int32, attackerSlot int32, force plugify.Vector3, hitPos plugify.Vector3, damage float32, damageTypes DamageTypes) int32 {
+var _TakeClientDamage = func(playerSlot int32, inflictorSlot int32, attackerSlot int32, force plugify.Vector3, hitPos plugify.Vector3, damage float32, damageTypes DamageTypes) int32 {
 	var __retVal int32
 	__playerSlot := C.int32_t(playerSlot)
 	__inflictorSlot := C.int32_t(inflictorSlot)
@@ -1995,10 +1995,10 @@ var P_TakeClientDamage = func(playerSlot int32, inflictorSlot int32, attackerSlo
 //
 //  @return Amount of damage actually applied to the client
 func TakeClientDamage(playerSlot int32, inflictorSlot int32, attackerSlot int32, force plugify.Vector3, hitPos plugify.Vector3, damage float32, damageTypes DamageTypes) int32 {
-	return P_TakeClientDamage(playerSlot, inflictorSlot, attackerSlot, force, hitPos, damage, damageTypes)
+	return _TakeClientDamage(playerSlot, inflictorSlot, attackerSlot, force, hitPos, damage, damageTypes)
 }
 
-var P_GetClientPawn = func(playerSlot int32) uintptr {
+var _GetClientPawn = func(playerSlot int32) uintptr {
 	var __retVal uintptr
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = uintptr(C.GetClientPawn(__playerSlot))
@@ -2012,10 +2012,10 @@ var P_GetClientPawn = func(playerSlot int32) uintptr {
 //
 //  @return A pointer to the client's pawn entity, or nullptr if the client or controller is invalid.
 func GetClientPawn(playerSlot int32) uintptr {
-	return P_GetClientPawn(playerSlot)
+	return _GetClientPawn(playerSlot)
 }
 
-var P_ProcessTargetString = func(caller int32, target string) []int32 {
+var _ProcessTargetString = func(caller int32, target string) []int32 {
 	var __retVal []int32
 	var __retVal_native plugify.PlgVector
 	__caller := C.int32_t(caller)
@@ -2044,10 +2044,10 @@ var P_ProcessTargetString = func(caller int32, target string) []int32 {
 //
 //  @return A vector where the result of the targeting operation will be stored.
 func ProcessTargetString(caller int32, target string) []int32 {
-	return P_ProcessTargetString(caller, target)
+	return _ProcessTargetString(caller, target)
 }
 
-var P_SwitchClientTeam = func(playerSlot int32, team CSTeam) {
+var _SwitchClientTeam = func(playerSlot int32, team CSTeam) {
 	__playerSlot := C.int32_t(playerSlot)
 	__team := C.int32_t(team)
 	C.SwitchClientTeam(__playerSlot, __team)
@@ -2059,10 +2059,10 @@ var P_SwitchClientTeam = func(playerSlot int32, team CSTeam) {
 //  @param playerSlot: The index of the player's slot.
 //  @param team: The team index to switch the client to.
 func SwitchClientTeam(playerSlot int32, team CSTeam) {
-	P_SwitchClientTeam(playerSlot, team)
+	_SwitchClientTeam(playerSlot, team)
 }
 
-var P_ChangeClientTeam = func(playerSlot int32, team CSTeam) {
+var _ChangeClientTeam = func(playerSlot int32, team CSTeam) {
 	__playerSlot := C.int32_t(playerSlot)
 	__team := C.int32_t(team)
 	C.ChangeClientTeam(__playerSlot, __team)
@@ -2074,10 +2074,10 @@ var P_ChangeClientTeam = func(playerSlot int32, team CSTeam) {
 //  @param playerSlot: The index of the player's slot.
 //  @param team: The team index to change the client to.
 func ChangeClientTeam(playerSlot int32, team CSTeam) {
-	P_ChangeClientTeam(playerSlot, team)
+	_ChangeClientTeam(playerSlot, team)
 }
 
-var P_RespawnClient = func(playerSlot int32) {
+var _RespawnClient = func(playerSlot int32) {
 	__playerSlot := C.int32_t(playerSlot)
 	C.RespawnClient(__playerSlot)
 }
@@ -2087,10 +2087,10 @@ var P_RespawnClient = func(playerSlot int32) {
 //
 //  @param playerSlot: The index of the player's slot to respawn.
 func RespawnClient(playerSlot int32) {
-	P_RespawnClient(playerSlot)
+	_RespawnClient(playerSlot)
 }
 
-var P_ForcePlayerSuicide = func(playerSlot int32, explode bool, force bool) {
+var _ForcePlayerSuicide = func(playerSlot int32, explode bool, force bool) {
 	__playerSlot := C.int32_t(playerSlot)
 	__explode := C.bool(explode)
 	__force := C.bool(force)
@@ -2104,10 +2104,10 @@ var P_ForcePlayerSuicide = func(playerSlot int32, explode bool, force bool) {
 //  @param explode: If true, the client will explode upon death.
 //  @param force: If true, the suicide will be forced.
 func ForcePlayerSuicide(playerSlot int32, explode bool, force bool) {
-	P_ForcePlayerSuicide(playerSlot, explode, force)
+	_ForcePlayerSuicide(playerSlot, explode, force)
 }
 
-var P_KickClient = func(playerSlot int32, reason NetworkDisconnectionReason, message string) {
+var _KickClient = func(playerSlot int32, reason NetworkDisconnectionReason, message string) {
 	__playerSlot := C.int32_t(playerSlot)
 	__reason := C.int32_t(reason)
 	__message := plugify.ConstructString(message)
@@ -2129,10 +2129,10 @@ var P_KickClient = func(playerSlot int32, reason NetworkDisconnectionReason, mes
 //  @param reason: The network-level reason code describing why the client is being disconnected.
 //  @param message: The optional internal diagnostic message. If empty, no message is passed to the engine.
 func KickClient(playerSlot int32, reason NetworkDisconnectionReason, message string) {
-	P_KickClient(playerSlot, reason, message)
+	_KickClient(playerSlot, reason, message)
 }
 
-var P_BanClient = func(playerSlot int32, duration float32, kick bool) {
+var _BanClient = func(playerSlot int32, duration float32, kick bool) {
 	__playerSlot := C.int32_t(playerSlot)
 	__duration := C.float(duration)
 	__kick := C.bool(kick)
@@ -2146,10 +2146,10 @@ var P_BanClient = func(playerSlot int32, duration float32, kick bool) {
 //  @param duration: Duration of the ban in seconds.
 //  @param kick: If true, the client will be kicked immediately after being banned.
 func BanClient(playerSlot int32, duration float32, kick bool) {
-	P_BanClient(playerSlot, duration, kick)
+	_BanClient(playerSlot, duration, kick)
 }
 
-var P_BanIdentity = func(steamId uint64, duration float32, kick bool) {
+var _BanIdentity = func(steamId uint64, duration float32, kick bool) {
 	__steamId := C.uint64_t(steamId)
 	__duration := C.float(duration)
 	__kick := C.bool(kick)
@@ -2163,10 +2163,10 @@ var P_BanIdentity = func(steamId uint64, duration float32, kick bool) {
 //  @param duration: Duration of the ban in seconds.
 //  @param kick: If true, the client will be kicked immediately after being banned.
 func BanIdentity(steamId uint64, duration float32, kick bool) {
-	P_BanIdentity(steamId, duration, kick)
+	_BanIdentity(steamId, duration, kick)
 }
 
-var P_GetClientActiveWeapon = func(playerSlot int32) int32 {
+var _GetClientActiveWeapon = func(playerSlot int32) int32 {
 	var __retVal int32
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = int32(C.GetClientActiveWeapon(__playerSlot))
@@ -2180,10 +2180,10 @@ var P_GetClientActiveWeapon = func(playerSlot int32) int32 {
 //
 //  @return The entity handle of the active weapon, or INVALID_EHANDLE_INDEX if the client is invalid or has no active weapon.
 func GetClientActiveWeapon(playerSlot int32) int32 {
-	return P_GetClientActiveWeapon(playerSlot)
+	return _GetClientActiveWeapon(playerSlot)
 }
 
-var P_GetClientWeapons = func(playerSlot int32) []int32 {
+var _GetClientWeapons = func(playerSlot int32) []int32 {
 	var __retVal []int32
 	var __retVal_native plugify.PlgVector
 	__playerSlot := C.int32_t(playerSlot)
@@ -2209,10 +2209,10 @@ var P_GetClientWeapons = func(playerSlot int32) []int32 {
 //
 //  @return A vector of entity handles for the client's weapons, or an empty vector if the client is invalid or has no weapons.
 func GetClientWeapons(playerSlot int32) []int32 {
-	return P_GetClientWeapons(playerSlot)
+	return _GetClientWeapons(playerSlot)
 }
 
-var P_RemoveWeapons = func(playerSlot int32, removeSuit bool) {
+var _RemoveWeapons = func(playerSlot int32, removeSuit bool) {
 	__playerSlot := C.int32_t(playerSlot)
 	__removeSuit := C.bool(removeSuit)
 	C.RemoveWeapons(__playerSlot, __removeSuit)
@@ -2224,10 +2224,10 @@ var P_RemoveWeapons = func(playerSlot int32, removeSuit bool) {
 //  @param playerSlot: The index of the player's slot.
 //  @param removeSuit: A boolean indicating whether to also remove the client's suit.
 func RemoveWeapons(playerSlot int32, removeSuit bool) {
-	P_RemoveWeapons(playerSlot, removeSuit)
+	_RemoveWeapons(playerSlot, removeSuit)
 }
 
-var P_DropWeapon = func(playerSlot int32, weaponHandle int32, target plugify.Vector3, velocity plugify.Vector3) {
+var _DropWeapon = func(playerSlot int32, weaponHandle int32, target plugify.Vector3, velocity plugify.Vector3) {
 	__playerSlot := C.int32_t(playerSlot)
 	__weaponHandle := C.int32_t(weaponHandle)
 	__target := *(*C.Vector3)(unsafe.Pointer(&target))
@@ -2243,10 +2243,10 @@ var P_DropWeapon = func(playerSlot int32, weaponHandle int32, target plugify.Vec
 //  @param target: Target direction.
 //  @param velocity: Velocity to toss weapon or zero to just drop weapon.
 func DropWeapon(playerSlot int32, weaponHandle int32, target plugify.Vector3, velocity plugify.Vector3) {
-	P_DropWeapon(playerSlot, weaponHandle, target, velocity)
+	_DropWeapon(playerSlot, weaponHandle, target, velocity)
 }
 
-var P_SelectWeapon = func(playerSlot int32, weaponHandle int32) {
+var _SelectWeapon = func(playerSlot int32, weaponHandle int32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__weaponHandle := C.int32_t(weaponHandle)
 	C.SelectWeapon(__playerSlot, __weaponHandle)
@@ -2258,10 +2258,10 @@ var P_SelectWeapon = func(playerSlot int32, weaponHandle int32) {
 //  @param playerSlot: The index of the player's slot.
 //  @param weaponHandle: The handle of weapon to bump.
 func SelectWeapon(playerSlot int32, weaponHandle int32) {
-	P_SelectWeapon(playerSlot, weaponHandle)
+	_SelectWeapon(playerSlot, weaponHandle)
 }
 
-var P_SwitchWeapon = func(playerSlot int32, weaponHandle int32) {
+var _SwitchWeapon = func(playerSlot int32, weaponHandle int32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__weaponHandle := C.int32_t(weaponHandle)
 	C.SwitchWeapon(__playerSlot, __weaponHandle)
@@ -2273,10 +2273,10 @@ var P_SwitchWeapon = func(playerSlot int32, weaponHandle int32) {
 //  @param playerSlot: The index of the player's slot.
 //  @param weaponHandle: The handle of weapon to switch.
 func SwitchWeapon(playerSlot int32, weaponHandle int32) {
-	P_SwitchWeapon(playerSlot, weaponHandle)
+	_SwitchWeapon(playerSlot, weaponHandle)
 }
 
-var P_RemoveWeapon = func(playerSlot int32, weaponHandle int32) {
+var _RemoveWeapon = func(playerSlot int32, weaponHandle int32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__weaponHandle := C.int32_t(weaponHandle)
 	C.RemoveWeapon(__playerSlot, __weaponHandle)
@@ -2288,10 +2288,10 @@ var P_RemoveWeapon = func(playerSlot int32, weaponHandle int32) {
 //  @param playerSlot: The index of the player's slot.
 //  @param weaponHandle: The handle of weapon to remove.
 func RemoveWeapon(playerSlot int32, weaponHandle int32) {
-	P_RemoveWeapon(playerSlot, weaponHandle)
+	_RemoveWeapon(playerSlot, weaponHandle)
 }
 
-var P_GiveNamedItem = func(playerSlot int32, itemName string) int32 {
+var _GiveNamedItem = func(playerSlot int32, itemName string) int32 {
 	var __retVal int32
 	__playerSlot := C.int32_t(playerSlot)
 	__itemName := plugify.ConstructString(itemName)
@@ -2315,10 +2315,10 @@ var P_GiveNamedItem = func(playerSlot int32, itemName string) int32 {
 //
 //  @return The entity handle of the created item, or INVALID_EHANDLE_INDEX if the client or item is invalid.
 func GiveNamedItem(playerSlot int32, itemName string) int32 {
-	return P_GiveNamedItem(playerSlot, itemName)
+	return _GiveNamedItem(playerSlot, itemName)
 }
 
-var P_GetClientButtons = func(playerSlot int32, buttonIndex int32) uint64 {
+var _GetClientButtons = func(playerSlot int32, buttonIndex int32) uint64 {
 	var __retVal uint64
 	__playerSlot := C.int32_t(playerSlot)
 	__buttonIndex := C.int32_t(buttonIndex)
@@ -2334,10 +2334,10 @@ var P_GetClientButtons = func(playerSlot int32, buttonIndex int32) uint64 {
 //
 //  @return uint64_t The state of the specified button, or 0 if the client or button index is invalid.
 func GetClientButtons(playerSlot int32, buttonIndex int32) uint64 {
-	return P_GetClientButtons(playerSlot, buttonIndex)
+	return _GetClientButtons(playerSlot, buttonIndex)
 }
 
-var P_GetClientArmor = func(playerSlot int32) int32 {
+var _GetClientArmor = func(playerSlot int32) int32 {
 	var __retVal int32
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = int32(C.GetClientArmor(__playerSlot))
@@ -2351,10 +2351,10 @@ var P_GetClientArmor = func(playerSlot int32) int32 {
 //
 //  @return The armor value of the client.
 func GetClientArmor(playerSlot int32) int32 {
-	return P_GetClientArmor(playerSlot)
+	return _GetClientArmor(playerSlot)
 }
 
-var P_SetClientArmor = func(playerSlot int32, armor int32) {
+var _SetClientArmor = func(playerSlot int32, armor int32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__armor := C.int32_t(armor)
 	C.SetClientArmor(__playerSlot, __armor)
@@ -2366,10 +2366,10 @@ var P_SetClientArmor = func(playerSlot int32, armor int32) {
 //  @param playerSlot: The index of the player's slot.
 //  @param armor: The armor value to set.
 func SetClientArmor(playerSlot int32, armor int32) {
-	P_SetClientArmor(playerSlot, armor)
+	_SetClientArmor(playerSlot, armor)
 }
 
-var P_GetClientSpeed = func(playerSlot int32) float32 {
+var _GetClientSpeed = func(playerSlot int32) float32 {
 	var __retVal float32
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = float32(C.GetClientSpeed(__playerSlot))
@@ -2383,10 +2383,10 @@ var P_GetClientSpeed = func(playerSlot int32) float32 {
 //
 //  @return The speed value of the client.
 func GetClientSpeed(playerSlot int32) float32 {
-	return P_GetClientSpeed(playerSlot)
+	return _GetClientSpeed(playerSlot)
 }
 
-var P_SetClientSpeed = func(playerSlot int32, speed float32) {
+var _SetClientSpeed = func(playerSlot int32, speed float32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__speed := C.float(speed)
 	C.SetClientSpeed(__playerSlot, __speed)
@@ -2398,10 +2398,10 @@ var P_SetClientSpeed = func(playerSlot int32, speed float32) {
 //  @param playerSlot: The index of the player's slot.
 //  @param speed: The speed value to set.
 func SetClientSpeed(playerSlot int32, speed float32) {
-	P_SetClientSpeed(playerSlot, speed)
+	_SetClientSpeed(playerSlot, speed)
 }
 
-var P_GetClientMoney = func(playerSlot int32) int32 {
+var _GetClientMoney = func(playerSlot int32) int32 {
 	var __retVal int32
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = int32(C.GetClientMoney(__playerSlot))
@@ -2415,10 +2415,10 @@ var P_GetClientMoney = func(playerSlot int32) int32 {
 //
 //  @return The amount of money the client has, or 0 if the player slot is invalid.
 func GetClientMoney(playerSlot int32) int32 {
-	return P_GetClientMoney(playerSlot)
+	return _GetClientMoney(playerSlot)
 }
 
-var P_SetClientMoney = func(playerSlot int32, money int32) {
+var _SetClientMoney = func(playerSlot int32, money int32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__money := C.int32_t(money)
 	C.SetClientMoney(__playerSlot, __money)
@@ -2430,10 +2430,10 @@ var P_SetClientMoney = func(playerSlot int32, money int32) {
 //  @param playerSlot: The index of the player's slot.
 //  @param money: The amount of money to set.
 func SetClientMoney(playerSlot int32, money int32) {
-	P_SetClientMoney(playerSlot, money)
+	_SetClientMoney(playerSlot, money)
 }
 
-var P_GetClientKills = func(playerSlot int32) int32 {
+var _GetClientKills = func(playerSlot int32) int32 {
 	var __retVal int32
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = int32(C.GetClientKills(__playerSlot))
@@ -2447,10 +2447,10 @@ var P_GetClientKills = func(playerSlot int32) int32 {
 //
 //  @return The number of kills the client has, or 0 if the player slot is invalid.
 func GetClientKills(playerSlot int32) int32 {
-	return P_GetClientKills(playerSlot)
+	return _GetClientKills(playerSlot)
 }
 
-var P_SetClientKills = func(playerSlot int32, kills int32) {
+var _SetClientKills = func(playerSlot int32, kills int32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__kills := C.int32_t(kills)
 	C.SetClientKills(__playerSlot, __kills)
@@ -2462,10 +2462,10 @@ var P_SetClientKills = func(playerSlot int32, kills int32) {
 //  @param playerSlot: The index of the player's slot.
 //  @param kills: The number of kills to set.
 func SetClientKills(playerSlot int32, kills int32) {
-	P_SetClientKills(playerSlot, kills)
+	_SetClientKills(playerSlot, kills)
 }
 
-var P_GetClientDeaths = func(playerSlot int32) int32 {
+var _GetClientDeaths = func(playerSlot int32) int32 {
 	var __retVal int32
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = int32(C.GetClientDeaths(__playerSlot))
@@ -2479,10 +2479,10 @@ var P_GetClientDeaths = func(playerSlot int32) int32 {
 //
 //  @return The number of deaths the client has, or 0 if the player slot is invalid.
 func GetClientDeaths(playerSlot int32) int32 {
-	return P_GetClientDeaths(playerSlot)
+	return _GetClientDeaths(playerSlot)
 }
 
-var P_SetClientDeaths = func(playerSlot int32, deaths int32) {
+var _SetClientDeaths = func(playerSlot int32, deaths int32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__deaths := C.int32_t(deaths)
 	C.SetClientDeaths(__playerSlot, __deaths)
@@ -2494,10 +2494,10 @@ var P_SetClientDeaths = func(playerSlot int32, deaths int32) {
 //  @param playerSlot: The index of the player's slot.
 //  @param deaths: The number of deaths to set.
 func SetClientDeaths(playerSlot int32, deaths int32) {
-	P_SetClientDeaths(playerSlot, deaths)
+	_SetClientDeaths(playerSlot, deaths)
 }
 
-var P_GetClientAssists = func(playerSlot int32) int32 {
+var _GetClientAssists = func(playerSlot int32) int32 {
 	var __retVal int32
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = int32(C.GetClientAssists(__playerSlot))
@@ -2511,10 +2511,10 @@ var P_GetClientAssists = func(playerSlot int32) int32 {
 //
 //  @return The number of assists the client has, or 0 if the player slot is invalid.
 func GetClientAssists(playerSlot int32) int32 {
-	return P_GetClientAssists(playerSlot)
+	return _GetClientAssists(playerSlot)
 }
 
-var P_SetClientAssists = func(playerSlot int32, assists int32) {
+var _SetClientAssists = func(playerSlot int32, assists int32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__assists := C.int32_t(assists)
 	C.SetClientAssists(__playerSlot, __assists)
@@ -2526,10 +2526,10 @@ var P_SetClientAssists = func(playerSlot int32, assists int32) {
 //  @param playerSlot: The index of the player's slot.
 //  @param assists: The number of assists to set.
 func SetClientAssists(playerSlot int32, assists int32) {
-	P_SetClientAssists(playerSlot, assists)
+	_SetClientAssists(playerSlot, assists)
 }
 
-var P_GetClientDamage = func(playerSlot int32) int32 {
+var _GetClientDamage = func(playerSlot int32) int32 {
 	var __retVal int32
 	__playerSlot := C.int32_t(playerSlot)
 	__retVal = int32(C.GetClientDamage(__playerSlot))
@@ -2543,10 +2543,10 @@ var P_GetClientDamage = func(playerSlot int32) int32 {
 //
 //  @return The total damage dealt by the client, or 0 if the player slot is invalid.
 func GetClientDamage(playerSlot int32) int32 {
-	return P_GetClientDamage(playerSlot)
+	return _GetClientDamage(playerSlot)
 }
 
-var P_SetClientDamage = func(playerSlot int32, damage int32) {
+var _SetClientDamage = func(playerSlot int32, damage int32) {
 	__playerSlot := C.int32_t(playerSlot)
 	__damage := C.int32_t(damage)
 	C.SetClientDamage(__playerSlot, __damage)
@@ -2558,6 +2558,6 @@ var P_SetClientDamage = func(playerSlot int32, damage int32) {
 //  @param playerSlot: The index of the player's slot.
 //  @param damage: The amount of damage to set.
 func SetClientDamage(playerSlot int32, damage int32) {
-	P_SetClientDamage(playerSlot, damage)
+	_SetClientDamage(playerSlot, damage)
 }
 

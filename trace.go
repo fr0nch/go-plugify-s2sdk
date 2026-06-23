@@ -24,7 +24,7 @@ var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: trace)
 
-var P_TraceCollideable = func(start plugify.Vector3, end plugify.Vector3, entityHandle int32, outPos *plugify.Vector3, outFraction *float64, outHit *bool, outStartSolid *bool, outNormal *plugify.Vector3) bool {
+var _TraceCollideable = func(start plugify.Vector3, end plugify.Vector3, entityHandle int32, outPos *plugify.Vector3, outFraction *float64, outHit *bool, outStartSolid *bool, outNormal *plugify.Vector3) bool {
 	var __retVal bool
 	__start := *(*C.Vector3)(unsafe.Pointer(&start))
 	__end := *(*C.Vector3)(unsafe.Pointer(&end))
@@ -58,10 +58,10 @@ var P_TraceCollideable = func(start plugify.Vector3, end plugify.Vector3, entity
 //
 //  @return True if trace hit something, false otherwise
 func TraceCollideable(start plugify.Vector3, end plugify.Vector3, entityHandle int32, outPos *plugify.Vector3, outFraction *float64, outHit *bool, outStartSolid *bool, outNormal *plugify.Vector3) bool {
-	return P_TraceCollideable(start, end, entityHandle, outPos, outFraction, outHit, outStartSolid, outNormal)
+	return _TraceCollideable(start, end, entityHandle, outPos, outFraction, outHit, outStartSolid, outNormal)
 }
 
-var P_TraceCollideable2 = func(start plugify.Vector3, end plugify.Vector3, entityHandle int32, mins uintptr, maxs uintptr, outPos *plugify.Vector3, outFraction *float64, outHit *bool, outStartSolid *bool, outNormal *plugify.Vector3) bool {
+var _TraceCollideable2 = func(start plugify.Vector3, end plugify.Vector3, entityHandle int32, mins uintptr, maxs uintptr, outPos *plugify.Vector3, outFraction *float64, outHit *bool, outStartSolid *bool, outNormal *plugify.Vector3) bool {
 	var __retVal bool
 	__start := *(*C.Vector3)(unsafe.Pointer(&start))
 	__end := *(*C.Vector3)(unsafe.Pointer(&end))
@@ -99,10 +99,10 @@ var P_TraceCollideable2 = func(start plugify.Vector3, end plugify.Vector3, entit
 //
 //  @return True if trace hit something, false otherwise
 func TraceCollideable2(start plugify.Vector3, end plugify.Vector3, entityHandle int32, mins uintptr, maxs uintptr, outPos *plugify.Vector3, outFraction *float64, outHit *bool, outStartSolid *bool, outNormal *plugify.Vector3) bool {
-	return P_TraceCollideable2(start, end, entityHandle, mins, maxs, outPos, outFraction, outHit, outStartSolid, outNormal)
+	return _TraceCollideable2(start, end, entityHandle, mins, maxs, outPos, outFraction, outHit, outStartSolid, outNormal)
 }
 
-var P_TraceHull = func(start plugify.Vector3, end plugify.Vector3, min plugify.Vector3, max plugify.Vector3, mask int32, ignoreHandle int32, outPos *plugify.Vector3, outFraction *float64, outHit *bool, outEntHit *int32, outStartSolid *bool) bool {
+var _TraceHull = func(start plugify.Vector3, end plugify.Vector3, min plugify.Vector3, max plugify.Vector3, mask int32, ignoreHandle int32, outPos *plugify.Vector3, outFraction *float64, outHit *bool, outEntHit *int32, outStartSolid *bool) bool {
 	var __retVal bool
 	__start := *(*C.Vector3)(unsafe.Pointer(&start))
 	__end := *(*C.Vector3)(unsafe.Pointer(&end))
@@ -142,10 +142,10 @@ var P_TraceHull = func(start plugify.Vector3, end plugify.Vector3, min plugify.V
 //
 //  @return True if trace hit something, false otherwise
 func TraceHull(start plugify.Vector3, end plugify.Vector3, min plugify.Vector3, max plugify.Vector3, mask int32, ignoreHandle int32, outPos *plugify.Vector3, outFraction *float64, outHit *bool, outEntHit *int32, outStartSolid *bool) bool {
-	return P_TraceHull(start, end, min, max, mask, ignoreHandle, outPos, outFraction, outHit, outEntHit, outStartSolid)
+	return _TraceHull(start, end, min, max, mask, ignoreHandle, outPos, outFraction, outHit, outEntHit, outStartSolid)
 }
 
-var P_TraceLine = func(startPos plugify.Vector3, endPos plugify.Vector3, mask int32, ignoreHandle int32, outPos *plugify.Vector3, outFraction *float64, outHit *bool, outEntHit *int32, outStartSolid *bool) bool {
+var _TraceLine = func(startPos plugify.Vector3, endPos plugify.Vector3, mask int32, ignoreHandle int32, outPos *plugify.Vector3, outFraction *float64, outHit *bool, outEntHit *int32, outStartSolid *bool) bool {
 	var __retVal bool
 	__startPos := *(*C.Vector3)(unsafe.Pointer(&startPos))
 	__endPos := *(*C.Vector3)(unsafe.Pointer(&endPos))
@@ -181,6 +181,6 @@ var P_TraceLine = func(startPos plugify.Vector3, endPos plugify.Vector3, mask in
 //
 //  @return True if trace hit something, false otherwise
 func TraceLine(startPos plugify.Vector3, endPos plugify.Vector3, mask int32, ignoreHandle int32, outPos *plugify.Vector3, outFraction *float64, outHit *bool, outEntHit *int32, outStartSolid *bool) bool {
-	return P_TraceLine(startPos, endPos, mask, ignoreHandle, outPos, outFraction, outHit, outEntHit, outStartSolid)
+	return _TraceLine(startPos, endPos, mask, ignoreHandle, outPos, outFraction, outHit, outEntHit, outStartSolid)
 }
 

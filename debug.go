@@ -32,7 +32,7 @@ var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: debug)
 
-var P_DebugBreak = func() {
+var _DebugBreak = func() {
 	C.DebugBreak()
 }
 
@@ -40,10 +40,10 @@ var P_DebugBreak = func() {
 //  @brief Triggers a breakpoint in the debugger.
 //
 func DebugBreak() {
-	P_DebugBreak()
+	_DebugBreak()
 }
 
-var P_DebugDrawBox = func(center plugify.Vector3, mins plugify.Vector3, maxs plugify.Vector3, r int32, g int32, b int32, a int32, duration float32) {
+var _DebugDrawBox = func(center plugify.Vector3, mins plugify.Vector3, maxs plugify.Vector3, r int32, g int32, b int32, a int32, duration float32) {
 	__center := *(*C.Vector3)(unsafe.Pointer(&center))
 	__mins := *(*C.Vector3)(unsafe.Pointer(&mins))
 	__maxs := *(*C.Vector3)(unsafe.Pointer(&maxs))
@@ -67,10 +67,10 @@ var P_DebugDrawBox = func(center plugify.Vector3, mins plugify.Vector3, maxs plu
 //  @param a: Alpha (transparency) value.
 //  @param duration: Duration (in seconds) to display the box.
 func DebugDrawBox(center plugify.Vector3, mins plugify.Vector3, maxs plugify.Vector3, r int32, g int32, b int32, a int32, duration float32) {
-	P_DebugDrawBox(center, mins, maxs, r, g, b, a, duration)
+	_DebugDrawBox(center, mins, maxs, r, g, b, a, duration)
 }
 
-var P_DebugDrawBoxDirection = func(center plugify.Vector3, mins plugify.Vector3, maxs plugify.Vector3, forward plugify.Vector3, color plugify.Vector3, alpha float32, duration float32) {
+var _DebugDrawBoxDirection = func(center plugify.Vector3, mins plugify.Vector3, maxs plugify.Vector3, forward plugify.Vector3, color plugify.Vector3, alpha float32, duration float32) {
 	__center := *(*C.Vector3)(unsafe.Pointer(&center))
 	__mins := *(*C.Vector3)(unsafe.Pointer(&mins))
 	__maxs := *(*C.Vector3)(unsafe.Pointer(&maxs))
@@ -92,10 +92,10 @@ var P_DebugDrawBoxDirection = func(center plugify.Vector3, mins plugify.Vector3,
 //  @param alpha: Alpha transparency.
 //  @param duration: Duration (in seconds) to display the box.
 func DebugDrawBoxDirection(center plugify.Vector3, mins plugify.Vector3, maxs plugify.Vector3, forward plugify.Vector3, color plugify.Vector3, alpha float32, duration float32) {
-	P_DebugDrawBoxDirection(center, mins, maxs, forward, color, alpha, duration)
+	_DebugDrawBoxDirection(center, mins, maxs, forward, color, alpha, duration)
 }
 
-var P_DebugDrawCircle = func(center plugify.Vector3, color plugify.Vector3, alpha float32, radius float32, zTest bool, duration float32) {
+var _DebugDrawCircle = func(center plugify.Vector3, color plugify.Vector3, alpha float32, radius float32, zTest bool, duration float32) {
 	__center := *(*C.Vector3)(unsafe.Pointer(&center))
 	__color := *(*C.Vector3)(unsafe.Pointer(&color))
 	__alpha := C.float(alpha)
@@ -115,10 +115,10 @@ var P_DebugDrawCircle = func(center plugify.Vector3, color plugify.Vector3, alph
 //  @param zTest: Whether to perform depth testing.
 //  @param duration: Duration (in seconds) to display the circle.
 func DebugDrawCircle(center plugify.Vector3, color plugify.Vector3, alpha float32, radius float32, zTest bool, duration float32) {
-	P_DebugDrawCircle(center, color, alpha, radius, zTest, duration)
+	_DebugDrawCircle(center, color, alpha, radius, zTest, duration)
 }
 
-var P_DebugDrawClear = func() {
+var _DebugDrawClear = func() {
 	C.DebugDrawClear()
 }
 
@@ -126,10 +126,10 @@ var P_DebugDrawClear = func() {
 //  @brief Clears all debug overlays.
 //
 func DebugDrawClear() {
-	P_DebugDrawClear()
+	_DebugDrawClear()
 }
 
-var P_DebugDrawLine = func(origin plugify.Vector3, target plugify.Vector3, r int32, g int32, b int32, zTest bool, duration float32) {
+var _DebugDrawLine = func(origin plugify.Vector3, target plugify.Vector3, r int32, g int32, b int32, zTest bool, duration float32) {
 	__origin := *(*C.Vector3)(unsafe.Pointer(&origin))
 	__target := *(*C.Vector3)(unsafe.Pointer(&target))
 	__r := C.int32_t(r)
@@ -151,10 +151,10 @@ var P_DebugDrawLine = func(origin plugify.Vector3, target plugify.Vector3, r int
 //  @param zTest: Whether to perform depth testing.
 //  @param duration: Duration (in seconds) to display the line.
 func DebugDrawLine(origin plugify.Vector3, target plugify.Vector3, r int32, g int32, b int32, zTest bool, duration float32) {
-	P_DebugDrawLine(origin, target, r, g, b, zTest, duration)
+	_DebugDrawLine(origin, target, r, g, b, zTest, duration)
 }
 
-var P_DebugDrawLine_vCol = func(start plugify.Vector3, end plugify.Vector3, color plugify.Vector3, zTest bool, duration float32) {
+var _DebugDrawLine_vCol = func(start plugify.Vector3, end plugify.Vector3, color plugify.Vector3, zTest bool, duration float32) {
 	__start := *(*C.Vector3)(unsafe.Pointer(&start))
 	__end := *(*C.Vector3)(unsafe.Pointer(&end))
 	__color := *(*C.Vector3)(unsafe.Pointer(&color))
@@ -172,10 +172,10 @@ var P_DebugDrawLine_vCol = func(start plugify.Vector3, end plugify.Vector3, colo
 //  @param zTest: Whether to perform depth testing.
 //  @param duration: Duration (in seconds) to display the line.
 func DebugDrawLine_vCol(start plugify.Vector3, end plugify.Vector3, color plugify.Vector3, zTest bool, duration float32) {
-	P_DebugDrawLine_vCol(start, end, color, zTest, duration)
+	_DebugDrawLine_vCol(start, end, color, zTest, duration)
 }
 
-var P_DebugDrawScreenTextLine = func(x float32, y float32, lineOffset int32, text string, r int32, g int32, b int32, a int32, duration float32) {
+var _DebugDrawScreenTextLine = func(x float32, y float32, lineOffset int32, text string, r int32, g int32, b int32, a int32, duration float32) {
 	__x := C.float(x)
 	__y := C.float(y)
 	__lineOffset := C.int32_t(lineOffset)
@@ -209,10 +209,10 @@ var P_DebugDrawScreenTextLine = func(x float32, y float32, lineOffset int32, tex
 //  @param a: Alpha transparency value.
 //  @param duration: Duration (in seconds) to display the text.
 func DebugDrawScreenTextLine(x float32, y float32, lineOffset int32, text string, r int32, g int32, b int32, a int32, duration float32) {
-	P_DebugDrawScreenTextLine(x, y, lineOffset, text, r, g, b, a, duration)
+	_DebugDrawScreenTextLine(x, y, lineOffset, text, r, g, b, a, duration)
 }
 
-var P_DebugDrawSphere = func(center plugify.Vector3, color plugify.Vector3, alpha float32, radius float32, zTest bool, duration float32) {
+var _DebugDrawSphere = func(center plugify.Vector3, color plugify.Vector3, alpha float32, radius float32, zTest bool, duration float32) {
 	__center := *(*C.Vector3)(unsafe.Pointer(&center))
 	__color := *(*C.Vector3)(unsafe.Pointer(&color))
 	__alpha := C.float(alpha)
@@ -232,10 +232,10 @@ var P_DebugDrawSphere = func(center plugify.Vector3, color plugify.Vector3, alph
 //  @param zTest: Whether to perform depth testing.
 //  @param duration: Duration (in seconds) to display the sphere.
 func DebugDrawSphere(center plugify.Vector3, color plugify.Vector3, alpha float32, radius float32, zTest bool, duration float32) {
-	P_DebugDrawSphere(center, color, alpha, radius, zTest, duration)
+	_DebugDrawSphere(center, color, alpha, radius, zTest, duration)
 }
 
-var P_DebugDrawText = func(origin plugify.Vector3, text string, viewCheck bool, duration float32) {
+var _DebugDrawText = func(origin plugify.Vector3, text string, viewCheck bool, duration float32) {
 	__origin := *(*C.Vector3)(unsafe.Pointer(&origin))
 	__text := plugify.ConstructString(text)
 	__viewCheck := C.bool(viewCheck)
@@ -259,10 +259,10 @@ var P_DebugDrawText = func(origin plugify.Vector3, text string, viewCheck bool, 
 //  @param viewCheck: If true, only draws when visible to camera.
 //  @param duration: Duration (in seconds) to display the text.
 func DebugDrawText(origin plugify.Vector3, text string, viewCheck bool, duration float32) {
-	P_DebugDrawText(origin, text, viewCheck, duration)
+	_DebugDrawText(origin, text, viewCheck, duration)
 }
 
-var P_DebugScreenTextPretty = func(x float32, y float32, lineOffset int32, text string, r int32, g int32, b int32, a int32, duration float32, font string, size int32, bold bool) {
+var _DebugScreenTextPretty = func(x float32, y float32, lineOffset int32, text string, r int32, g int32, b int32, a int32, duration float32, font string, size int32, bold bool) {
 	__x := C.float(x)
 	__y := C.float(y)
 	__lineOffset := C.int32_t(lineOffset)
@@ -303,10 +303,10 @@ var P_DebugScreenTextPretty = func(x float32, y float32, lineOffset int32, text 
 //  @param size: Font size.
 //  @param bold: Whether text should be bold.
 func DebugScreenTextPretty(x float32, y float32, lineOffset int32, text string, r int32, g int32, b int32, a int32, duration float32, font string, size int32, bold bool) {
-	P_DebugScreenTextPretty(x, y, lineOffset, text, r, g, b, a, duration, font, size, bold)
+	_DebugScreenTextPretty(x, y, lineOffset, text, r, g, b, a, duration, font, size, bold)
 }
 
-var P_DebugScriptAssert = func(assertion bool, message string) {
+var _DebugScriptAssert = func(assertion bool, message string) {
 	__assertion := C.bool(assertion)
 	__message := plugify.ConstructString(message)
 	plugify.Block {
@@ -326,6 +326,6 @@ var P_DebugScriptAssert = func(assertion bool, message string) {
 //  @param assertion: Boolean value to test.
 //  @param message: Message to display if the assertion fails.
 func DebugScriptAssert(assertion bool, message string) {
-	P_DebugScriptAssert(assertion, message)
+	_DebugScriptAssert(assertion, message)
 }
 

@@ -195,7 +195,7 @@ var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: keyvalues3)
 
-var P_Kv3Create = func(type_ int32, subtype int32) uintptr {
+var _Kv3Create = func(type_ int32, subtype int32) uintptr {
 	var __retVal uintptr
 	__type_ := C.int32_t(type_)
 	__subtype := C.int32_t(subtype)
@@ -211,10 +211,10 @@ var P_Kv3Create = func(type_ int32, subtype int32) uintptr {
 //
 //  @return Pointer to the newly created KeyValues3 object
 func Kv3Create(type_ int32, subtype int32) uintptr {
-	return P_Kv3Create(type_, subtype)
+	return _Kv3Create(type_, subtype)
 }
 
-var P_Kv3CreateWithCluster = func(cluster_elem int32, type_ int32, subtype int32) uintptr {
+var _Kv3CreateWithCluster = func(cluster_elem int32, type_ int32, subtype int32) uintptr {
 	var __retVal uintptr
 	__cluster_elem := C.int32_t(cluster_elem)
 	__type_ := C.int32_t(type_)
@@ -232,10 +232,10 @@ var P_Kv3CreateWithCluster = func(cluster_elem int32, type_ int32, subtype int32
 //
 //  @return Pointer to the newly created KeyValues3 object
 func Kv3CreateWithCluster(cluster_elem int32, type_ int32, subtype int32) uintptr {
-	return P_Kv3CreateWithCluster(cluster_elem, type_, subtype)
+	return _Kv3CreateWithCluster(cluster_elem, type_, subtype)
 }
 
-var P_Kv3CreateCopy = func(other uintptr) uintptr {
+var _Kv3CreateCopy = func(other uintptr) uintptr {
 	var __retVal uintptr
 	__other := C.uintptr_t(other)
 	__retVal = uintptr(C.Kv3CreateCopy(__other))
@@ -249,10 +249,10 @@ var P_Kv3CreateCopy = func(other uintptr) uintptr {
 //
 //  @return Pointer to the newly created copy, or nullptr if other is null
 func Kv3CreateCopy(other uintptr) uintptr {
-	return P_Kv3CreateCopy(other)
+	return _Kv3CreateCopy(other)
 }
 
-var P_Kv3Destroy = func(kv uintptr) {
+var _Kv3Destroy = func(kv uintptr) {
 	__kv := C.uintptr_t(kv)
 	C.Kv3Destroy(__kv)
 }
@@ -262,10 +262,10 @@ var P_Kv3Destroy = func(kv uintptr) {
 //
 //  @param kv: Pointer to the KeyValues3 object to destroy
 func Kv3Destroy(kv uintptr) {
-	P_Kv3Destroy(kv)
+	_Kv3Destroy(kv)
 }
 
-var P_Kv3CopyFrom = func(kv uintptr, other uintptr) {
+var _Kv3CopyFrom = func(kv uintptr, other uintptr) {
 	__kv := C.uintptr_t(kv)
 	__other := C.uintptr_t(other)
 	C.Kv3CopyFrom(__kv, __other)
@@ -277,10 +277,10 @@ var P_Kv3CopyFrom = func(kv uintptr, other uintptr) {
 //  @param kv: Pointer to the destination KeyValues3 object
 //  @param other: Pointer to the source KeyValues3 object
 func Kv3CopyFrom(kv uintptr, other uintptr) {
-	P_Kv3CopyFrom(kv, other)
+	_Kv3CopyFrom(kv, other)
 }
 
-var P_Kv3OverlayKeysFrom = func(kv uintptr, other uintptr, depth bool) {
+var _Kv3OverlayKeysFrom = func(kv uintptr, other uintptr, depth bool) {
 	__kv := C.uintptr_t(kv)
 	__other := C.uintptr_t(other)
 	__depth := C.bool(depth)
@@ -294,10 +294,10 @@ var P_Kv3OverlayKeysFrom = func(kv uintptr, other uintptr, depth bool) {
 //  @param other: Pointer to the source KeyValues3 object
 //  @param depth: Whether to perform a deep overlay
 func Kv3OverlayKeysFrom(kv uintptr, other uintptr, depth bool) {
-	P_Kv3OverlayKeysFrom(kv, other, depth)
+	_Kv3OverlayKeysFrom(kv, other, depth)
 }
 
-var P_Kv3GetContext = func(kv uintptr) uintptr {
+var _Kv3GetContext = func(kv uintptr) uintptr {
 	var __retVal uintptr
 	__kv := C.uintptr_t(kv)
 	__retVal = uintptr(C.Kv3GetContext(__kv))
@@ -311,10 +311,10 @@ var P_Kv3GetContext = func(kv uintptr) uintptr {
 //
 //  @return Pointer to the CKV3Arena, or nullptr if kv is null
 func Kv3GetContext(kv uintptr) uintptr {
-	return P_Kv3GetContext(kv)
+	return _Kv3GetContext(kv)
 }
 
-var P_Kv3GetMetaData = func(kv uintptr, ppCtx uintptr) uintptr {
+var _Kv3GetMetaData = func(kv uintptr, ppCtx uintptr) uintptr {
 	var __retVal uintptr
 	__kv := C.uintptr_t(kv)
 	__ppCtx := C.uintptr_t(ppCtx)
@@ -330,10 +330,10 @@ var P_Kv3GetMetaData = func(kv uintptr, ppCtx uintptr) uintptr {
 //
 //  @return Pointer to the KV3MetaData_t structure, or nullptr if kv is null
 func Kv3GetMetaData(kv uintptr, ppCtx uintptr) uintptr {
-	return P_Kv3GetMetaData(kv, ppCtx)
+	return _Kv3GetMetaData(kv, ppCtx)
 }
 
-var P_Kv3HasFlag = func(kv uintptr, flag uint8) bool {
+var _Kv3HasFlag = func(kv uintptr, flag uint8) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__flag := C.uint8_t(flag)
@@ -349,10 +349,10 @@ var P_Kv3HasFlag = func(kv uintptr, flag uint8) bool {
 //
 //  @return true if the flag is set, false otherwise
 func Kv3HasFlag(kv uintptr, flag uint8) bool {
-	return P_Kv3HasFlag(kv, flag)
+	return _Kv3HasFlag(kv, flag)
 }
 
-var P_Kv3HasAnyFlags = func(kv uintptr) bool {
+var _Kv3HasAnyFlags = func(kv uintptr) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__retVal = bool(C.Kv3HasAnyFlags(__kv))
@@ -366,10 +366,10 @@ var P_Kv3HasAnyFlags = func(kv uintptr) bool {
 //
 //  @return true if any flags are set, false otherwise
 func Kv3HasAnyFlags(kv uintptr) bool {
-	return P_Kv3HasAnyFlags(kv)
+	return _Kv3HasAnyFlags(kv)
 }
 
-var P_Kv3GetAllFlags = func(kv uintptr) uint8 {
+var _Kv3GetAllFlags = func(kv uintptr) uint8 {
 	var __retVal uint8
 	__kv := C.uintptr_t(kv)
 	__retVal = uint8(C.Kv3GetAllFlags(__kv))
@@ -383,10 +383,10 @@ var P_Kv3GetAllFlags = func(kv uintptr) uint8 {
 //
 //  @return Bitmask of all flags, or 0 if kv is null
 func Kv3GetAllFlags(kv uintptr) uint8 {
-	return P_Kv3GetAllFlags(kv)
+	return _Kv3GetAllFlags(kv)
 }
 
-var P_Kv3SetAllFlags = func(kv uintptr, flags uint8) {
+var _Kv3SetAllFlags = func(kv uintptr, flags uint8) {
 	__kv := C.uintptr_t(kv)
 	__flags := C.uint8_t(flags)
 	C.Kv3SetAllFlags(__kv, __flags)
@@ -398,10 +398,10 @@ var P_Kv3SetAllFlags = func(kv uintptr, flags uint8) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param flags: Bitmask of flags to set
 func Kv3SetAllFlags(kv uintptr, flags uint8) {
-	P_Kv3SetAllFlags(kv, flags)
+	_Kv3SetAllFlags(kv, flags)
 }
 
-var P_Kv3SetFlag = func(kv uintptr, flag uint8, state bool) {
+var _Kv3SetFlag = func(kv uintptr, flag uint8, state bool) {
 	__kv := C.uintptr_t(kv)
 	__flag := C.uint8_t(flag)
 	__state := C.bool(state)
@@ -415,10 +415,10 @@ var P_Kv3SetFlag = func(kv uintptr, flag uint8, state bool) {
 //  @param flag: The flag to modify
 //  @param state: true to set the flag, false to clear it
 func Kv3SetFlag(kv uintptr, flag uint8, state bool) {
-	P_Kv3SetFlag(kv, flag, state)
+	_Kv3SetFlag(kv, flag, state)
 }
 
-var P_Kv3GetType = func(kv uintptr) uint8 {
+var _Kv3GetType = func(kv uintptr) uint8 {
 	var __retVal uint8
 	__kv := C.uintptr_t(kv)
 	__retVal = uint8(C.Kv3GetType(__kv))
@@ -432,10 +432,10 @@ var P_Kv3GetType = func(kv uintptr) uint8 {
 //
 //  @return The type enumeration value, or 0 if kv is null
 func Kv3GetType(kv uintptr) uint8 {
-	return P_Kv3GetType(kv)
+	return _Kv3GetType(kv)
 }
 
-var P_Kv3GetTypeEx = func(kv uintptr) uint8 {
+var _Kv3GetTypeEx = func(kv uintptr) uint8 {
 	var __retVal uint8
 	__kv := C.uintptr_t(kv)
 	__retVal = uint8(C.Kv3GetTypeEx(__kv))
@@ -449,10 +449,10 @@ var P_Kv3GetTypeEx = func(kv uintptr) uint8 {
 //
 //  @return The extended type enumeration value, or 0 if kv is null
 func Kv3GetTypeEx(kv uintptr) uint8 {
-	return P_Kv3GetTypeEx(kv)
+	return _Kv3GetTypeEx(kv)
 }
 
-var P_Kv3GetSubType = func(kv uintptr) uint8 {
+var _Kv3GetSubType = func(kv uintptr) uint8 {
 	var __retVal uint8
 	__kv := C.uintptr_t(kv)
 	__retVal = uint8(C.Kv3GetSubType(__kv))
@@ -466,10 +466,10 @@ var P_Kv3GetSubType = func(kv uintptr) uint8 {
 //
 //  @return The subtype enumeration value, or 0 if kv is null
 func Kv3GetSubType(kv uintptr) uint8 {
-	return P_Kv3GetSubType(kv)
+	return _Kv3GetSubType(kv)
 }
 
-var P_Kv3HasInvalidMemberNames = func(kv uintptr) bool {
+var _Kv3HasInvalidMemberNames = func(kv uintptr) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__retVal = bool(C.Kv3HasInvalidMemberNames(__kv))
@@ -483,10 +483,10 @@ var P_Kv3HasInvalidMemberNames = func(kv uintptr) bool {
 //
 //  @return true if invalid member names exist, false otherwise
 func Kv3HasInvalidMemberNames(kv uintptr) bool {
-	return P_Kv3HasInvalidMemberNames(kv)
+	return _Kv3HasInvalidMemberNames(kv)
 }
 
-var P_Kv3SetHasInvalidMemberNames = func(kv uintptr, bValue bool) {
+var _Kv3SetHasInvalidMemberNames = func(kv uintptr, bValue bool) {
 	__kv := C.uintptr_t(kv)
 	__bValue := C.bool(bValue)
 	C.Kv3SetHasInvalidMemberNames(__kv, __bValue)
@@ -498,10 +498,10 @@ var P_Kv3SetHasInvalidMemberNames = func(kv uintptr, bValue bool) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param bValue: true to mark as having invalid member names, false otherwise
 func Kv3SetHasInvalidMemberNames(kv uintptr, bValue bool) {
-	P_Kv3SetHasInvalidMemberNames(kv, bValue)
+	_Kv3SetHasInvalidMemberNames(kv, bValue)
 }
 
-var P_Kv3GetTypeAsString = func(kv uintptr) string {
+var _Kv3GetTypeAsString = func(kv uintptr) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__kv := C.uintptr_t(kv)
@@ -527,10 +527,10 @@ var P_Kv3GetTypeAsString = func(kv uintptr) string {
 //
 //  @return String representation of the type, or empty string if kv is null
 func Kv3GetTypeAsString(kv uintptr) string {
-	return P_Kv3GetTypeAsString(kv)
+	return _Kv3GetTypeAsString(kv)
 }
 
-var P_Kv3GetSubTypeAsString = func(kv uintptr) string {
+var _Kv3GetSubTypeAsString = func(kv uintptr) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__kv := C.uintptr_t(kv)
@@ -556,10 +556,10 @@ var P_Kv3GetSubTypeAsString = func(kv uintptr) string {
 //
 //  @return String representation of the subtype, or empty string if kv is null
 func Kv3GetSubTypeAsString(kv uintptr) string {
-	return P_Kv3GetSubTypeAsString(kv)
+	return _Kv3GetSubTypeAsString(kv)
 }
 
-var P_Kv3ToString = func(kv uintptr, flags uint32) string {
+var _Kv3ToString = func(kv uintptr, flags uint32) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__kv := C.uintptr_t(kv)
@@ -587,10 +587,10 @@ var P_Kv3ToString = func(kv uintptr, flags uint32) string {
 //
 //  @return String representation of the object, or empty string if kv is null
 func Kv3ToString(kv uintptr, flags uint32) string {
-	return P_Kv3ToString(kv, flags)
+	return _Kv3ToString(kv, flags)
 }
 
-var P_Kv3IsNull = func(kv uintptr) bool {
+var _Kv3IsNull = func(kv uintptr) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__retVal = bool(C.Kv3IsNull(__kv))
@@ -604,10 +604,10 @@ var P_Kv3IsNull = func(kv uintptr) bool {
 //
 //  @return true if the object is null or the pointer is null, false otherwise
 func Kv3IsNull(kv uintptr) bool {
-	return P_Kv3IsNull(kv)
+	return _Kv3IsNull(kv)
 }
 
-var P_Kv3SetToNull = func(kv uintptr) {
+var _Kv3SetToNull = func(kv uintptr) {
 	__kv := C.uintptr_t(kv)
 	C.Kv3SetToNull(__kv)
 }
@@ -617,10 +617,10 @@ var P_Kv3SetToNull = func(kv uintptr) {
 //
 //  @param kv: Pointer to the KeyValues3 object
 func Kv3SetToNull(kv uintptr) {
-	P_Kv3SetToNull(kv)
+	_Kv3SetToNull(kv)
 }
 
-var P_Kv3IsArray = func(kv uintptr) bool {
+var _Kv3IsArray = func(kv uintptr) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__retVal = bool(C.Kv3IsArray(__kv))
@@ -634,10 +634,10 @@ var P_Kv3IsArray = func(kv uintptr) bool {
 //
 //  @return true if the object is an array, false otherwise
 func Kv3IsArray(kv uintptr) bool {
-	return P_Kv3IsArray(kv)
+	return _Kv3IsArray(kv)
 }
 
-var P_Kv3IsKV3Array = func(kv uintptr) bool {
+var _Kv3IsKV3Array = func(kv uintptr) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__retVal = bool(C.Kv3IsKV3Array(__kv))
@@ -651,10 +651,10 @@ var P_Kv3IsKV3Array = func(kv uintptr) bool {
 //
 //  @return true if the object is a KV3 array, false otherwise
 func Kv3IsKV3Array(kv uintptr) bool {
-	return P_Kv3IsKV3Array(kv)
+	return _Kv3IsKV3Array(kv)
 }
 
-var P_Kv3IsTable = func(kv uintptr) bool {
+var _Kv3IsTable = func(kv uintptr) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__retVal = bool(C.Kv3IsTable(__kv))
@@ -668,10 +668,10 @@ var P_Kv3IsTable = func(kv uintptr) bool {
 //
 //  @return true if the object is a table, false otherwise
 func Kv3IsTable(kv uintptr) bool {
-	return P_Kv3IsTable(kv)
+	return _Kv3IsTable(kv)
 }
 
-var P_Kv3IsString = func(kv uintptr) bool {
+var _Kv3IsString = func(kv uintptr) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__retVal = bool(C.Kv3IsString(__kv))
@@ -685,10 +685,10 @@ var P_Kv3IsString = func(kv uintptr) bool {
 //
 //  @return true if the object is a string, false otherwise
 func Kv3IsString(kv uintptr) bool {
-	return P_Kv3IsString(kv)
+	return _Kv3IsString(kv)
 }
 
-var P_Kv3GetBool = func(kv uintptr, defaultValue bool) bool {
+var _Kv3GetBool = func(kv uintptr, defaultValue bool) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__defaultValue := C.bool(defaultValue)
@@ -704,10 +704,10 @@ var P_Kv3GetBool = func(kv uintptr, defaultValue bool) bool {
 //
 //  @return Boolean value or defaultValue
 func Kv3GetBool(kv uintptr, defaultValue bool) bool {
-	return P_Kv3GetBool(kv, defaultValue)
+	return _Kv3GetBool(kv, defaultValue)
 }
 
-var P_Kv3GetChar = func(kv uintptr, defaultValue int8) int8 {
+var _Kv3GetChar = func(kv uintptr, defaultValue int8) int8 {
 	var __retVal int8
 	__kv := C.uintptr_t(kv)
 	__defaultValue := C.int8_t(defaultValue)
@@ -723,10 +723,10 @@ var P_Kv3GetChar = func(kv uintptr, defaultValue int8) int8 {
 //
 //  @return Char value or defaultValue
 func Kv3GetChar(kv uintptr, defaultValue int8) int8 {
-	return P_Kv3GetChar(kv, defaultValue)
+	return _Kv3GetChar(kv, defaultValue)
 }
 
-var P_Kv3GetUChar32 = func(kv uintptr, defaultValue uint32) uint32 {
+var _Kv3GetUChar32 = func(kv uintptr, defaultValue uint32) uint32 {
 	var __retVal uint32
 	__kv := C.uintptr_t(kv)
 	__defaultValue := C.uint32_t(defaultValue)
@@ -742,10 +742,10 @@ var P_Kv3GetUChar32 = func(kv uintptr, defaultValue uint32) uint32 {
 //
 //  @return 32-bit Unicode character value or defaultValue
 func Kv3GetUChar32(kv uintptr, defaultValue uint32) uint32 {
-	return P_Kv3GetUChar32(kv, defaultValue)
+	return _Kv3GetUChar32(kv, defaultValue)
 }
 
-var P_Kv3GetInt8 = func(kv uintptr, defaultValue int8) int8 {
+var _Kv3GetInt8 = func(kv uintptr, defaultValue int8) int8 {
 	var __retVal int8
 	__kv := C.uintptr_t(kv)
 	__defaultValue := C.int8_t(defaultValue)
@@ -761,10 +761,10 @@ var P_Kv3GetInt8 = func(kv uintptr, defaultValue int8) int8 {
 //
 //  @return int8_t value or defaultValue
 func Kv3GetInt8(kv uintptr, defaultValue int8) int8 {
-	return P_Kv3GetInt8(kv, defaultValue)
+	return _Kv3GetInt8(kv, defaultValue)
 }
 
-var P_Kv3GetUInt8 = func(kv uintptr, defaultValue uint8) uint8 {
+var _Kv3GetUInt8 = func(kv uintptr, defaultValue uint8) uint8 {
 	var __retVal uint8
 	__kv := C.uintptr_t(kv)
 	__defaultValue := C.uint8_t(defaultValue)
@@ -780,10 +780,10 @@ var P_Kv3GetUInt8 = func(kv uintptr, defaultValue uint8) uint8 {
 //
 //  @return uint8_t value or defaultValue
 func Kv3GetUInt8(kv uintptr, defaultValue uint8) uint8 {
-	return P_Kv3GetUInt8(kv, defaultValue)
+	return _Kv3GetUInt8(kv, defaultValue)
 }
 
-var P_Kv3GetShort = func(kv uintptr, defaultValue int16) int16 {
+var _Kv3GetShort = func(kv uintptr, defaultValue int16) int16 {
 	var __retVal int16
 	__kv := C.uintptr_t(kv)
 	__defaultValue := C.int16_t(defaultValue)
@@ -799,10 +799,10 @@ var P_Kv3GetShort = func(kv uintptr, defaultValue int16) int16 {
 //
 //  @return int16_t value or defaultValue
 func Kv3GetShort(kv uintptr, defaultValue int16) int16 {
-	return P_Kv3GetShort(kv, defaultValue)
+	return _Kv3GetShort(kv, defaultValue)
 }
 
-var P_Kv3GetUShort = func(kv uintptr, defaultValue uint16) uint16 {
+var _Kv3GetUShort = func(kv uintptr, defaultValue uint16) uint16 {
 	var __retVal uint16
 	__kv := C.uintptr_t(kv)
 	__defaultValue := C.uint16_t(defaultValue)
@@ -818,10 +818,10 @@ var P_Kv3GetUShort = func(kv uintptr, defaultValue uint16) uint16 {
 //
 //  @return uint16_t value or defaultValue
 func Kv3GetUShort(kv uintptr, defaultValue uint16) uint16 {
-	return P_Kv3GetUShort(kv, defaultValue)
+	return _Kv3GetUShort(kv, defaultValue)
 }
 
-var P_Kv3GetInt = func(kv uintptr, defaultValue int32) int32 {
+var _Kv3GetInt = func(kv uintptr, defaultValue int32) int32 {
 	var __retVal int32
 	__kv := C.uintptr_t(kv)
 	__defaultValue := C.int32_t(defaultValue)
@@ -837,10 +837,10 @@ var P_Kv3GetInt = func(kv uintptr, defaultValue int32) int32 {
 //
 //  @return int32_t value or defaultValue
 func Kv3GetInt(kv uintptr, defaultValue int32) int32 {
-	return P_Kv3GetInt(kv, defaultValue)
+	return _Kv3GetInt(kv, defaultValue)
 }
 
-var P_Kv3GetUInt = func(kv uintptr, defaultValue uint32) uint32 {
+var _Kv3GetUInt = func(kv uintptr, defaultValue uint32) uint32 {
 	var __retVal uint32
 	__kv := C.uintptr_t(kv)
 	__defaultValue := C.uint32_t(defaultValue)
@@ -856,10 +856,10 @@ var P_Kv3GetUInt = func(kv uintptr, defaultValue uint32) uint32 {
 //
 //  @return uint32_t value or defaultValue
 func Kv3GetUInt(kv uintptr, defaultValue uint32) uint32 {
-	return P_Kv3GetUInt(kv, defaultValue)
+	return _Kv3GetUInt(kv, defaultValue)
 }
 
-var P_Kv3GetInt64 = func(kv uintptr, defaultValue int64) int64 {
+var _Kv3GetInt64 = func(kv uintptr, defaultValue int64) int64 {
 	var __retVal int64
 	__kv := C.uintptr_t(kv)
 	__defaultValue := C.int64_t(defaultValue)
@@ -875,10 +875,10 @@ var P_Kv3GetInt64 = func(kv uintptr, defaultValue int64) int64 {
 //
 //  @return int64_t value or defaultValue
 func Kv3GetInt64(kv uintptr, defaultValue int64) int64 {
-	return P_Kv3GetInt64(kv, defaultValue)
+	return _Kv3GetInt64(kv, defaultValue)
 }
 
-var P_Kv3GetUInt64 = func(kv uintptr, defaultValue uint64) uint64 {
+var _Kv3GetUInt64 = func(kv uintptr, defaultValue uint64) uint64 {
 	var __retVal uint64
 	__kv := C.uintptr_t(kv)
 	__defaultValue := C.uint64_t(defaultValue)
@@ -894,10 +894,10 @@ var P_Kv3GetUInt64 = func(kv uintptr, defaultValue uint64) uint64 {
 //
 //  @return uint64_t value or defaultValue
 func Kv3GetUInt64(kv uintptr, defaultValue uint64) uint64 {
-	return P_Kv3GetUInt64(kv, defaultValue)
+	return _Kv3GetUInt64(kv, defaultValue)
 }
 
-var P_Kv3GetFloat = func(kv uintptr, defaultValue float32) float32 {
+var _Kv3GetFloat = func(kv uintptr, defaultValue float32) float32 {
 	var __retVal float32
 	__kv := C.uintptr_t(kv)
 	__defaultValue := C.float(defaultValue)
@@ -913,10 +913,10 @@ var P_Kv3GetFloat = func(kv uintptr, defaultValue float32) float32 {
 //
 //  @return Float value or defaultValue
 func Kv3GetFloat(kv uintptr, defaultValue float32) float32 {
-	return P_Kv3GetFloat(kv, defaultValue)
+	return _Kv3GetFloat(kv, defaultValue)
 }
 
-var P_Kv3GetDouble = func(kv uintptr, defaultValue float64) float64 {
+var _Kv3GetDouble = func(kv uintptr, defaultValue float64) float64 {
 	var __retVal float64
 	__kv := C.uintptr_t(kv)
 	__defaultValue := C.double(defaultValue)
@@ -932,10 +932,10 @@ var P_Kv3GetDouble = func(kv uintptr, defaultValue float64) float64 {
 //
 //  @return Double value or defaultValue
 func Kv3GetDouble(kv uintptr, defaultValue float64) float64 {
-	return P_Kv3GetDouble(kv, defaultValue)
+	return _Kv3GetDouble(kv, defaultValue)
 }
 
-var P_Kv3SetBool = func(kv uintptr, value bool) {
+var _Kv3SetBool = func(kv uintptr, value bool) {
 	__kv := C.uintptr_t(kv)
 	__value := C.bool(value)
 	C.Kv3SetBool(__kv, __value)
@@ -947,10 +947,10 @@ var P_Kv3SetBool = func(kv uintptr, value bool) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param value: Boolean value to set
 func Kv3SetBool(kv uintptr, value bool) {
-	P_Kv3SetBool(kv, value)
+	_Kv3SetBool(kv, value)
 }
 
-var P_Kv3SetChar = func(kv uintptr, value int8) {
+var _Kv3SetChar = func(kv uintptr, value int8) {
 	__kv := C.uintptr_t(kv)
 	__value := C.int8_t(value)
 	C.Kv3SetChar(__kv, __value)
@@ -962,10 +962,10 @@ var P_Kv3SetChar = func(kv uintptr, value int8) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param value: Char value to set
 func Kv3SetChar(kv uintptr, value int8) {
-	P_Kv3SetChar(kv, value)
+	_Kv3SetChar(kv, value)
 }
 
-var P_Kv3SetUChar32 = func(kv uintptr, value uint32) {
+var _Kv3SetUChar32 = func(kv uintptr, value uint32) {
 	__kv := C.uintptr_t(kv)
 	__value := C.uint32_t(value)
 	C.Kv3SetUChar32(__kv, __value)
@@ -977,10 +977,10 @@ var P_Kv3SetUChar32 = func(kv uintptr, value uint32) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param value: 32-bit Unicode character value to set
 func Kv3SetUChar32(kv uintptr, value uint32) {
-	P_Kv3SetUChar32(kv, value)
+	_Kv3SetUChar32(kv, value)
 }
 
-var P_Kv3SetInt8 = func(kv uintptr, value int8) {
+var _Kv3SetInt8 = func(kv uintptr, value int8) {
 	__kv := C.uintptr_t(kv)
 	__value := C.int8_t(value)
 	C.Kv3SetInt8(__kv, __value)
@@ -992,10 +992,10 @@ var P_Kv3SetInt8 = func(kv uintptr, value int8) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param value: int8_t value to set
 func Kv3SetInt8(kv uintptr, value int8) {
-	P_Kv3SetInt8(kv, value)
+	_Kv3SetInt8(kv, value)
 }
 
-var P_Kv3SetUInt8 = func(kv uintptr, value uint8) {
+var _Kv3SetUInt8 = func(kv uintptr, value uint8) {
 	__kv := C.uintptr_t(kv)
 	__value := C.uint8_t(value)
 	C.Kv3SetUInt8(__kv, __value)
@@ -1007,10 +1007,10 @@ var P_Kv3SetUInt8 = func(kv uintptr, value uint8) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param value: uint8_t value to set
 func Kv3SetUInt8(kv uintptr, value uint8) {
-	P_Kv3SetUInt8(kv, value)
+	_Kv3SetUInt8(kv, value)
 }
 
-var P_Kv3SetShort = func(kv uintptr, value int16) {
+var _Kv3SetShort = func(kv uintptr, value int16) {
 	__kv := C.uintptr_t(kv)
 	__value := C.int16_t(value)
 	C.Kv3SetShort(__kv, __value)
@@ -1022,10 +1022,10 @@ var P_Kv3SetShort = func(kv uintptr, value int16) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param value: int16_t value to set
 func Kv3SetShort(kv uintptr, value int16) {
-	P_Kv3SetShort(kv, value)
+	_Kv3SetShort(kv, value)
 }
 
-var P_Kv3SetUShort = func(kv uintptr, value uint16) {
+var _Kv3SetUShort = func(kv uintptr, value uint16) {
 	__kv := C.uintptr_t(kv)
 	__value := C.uint16_t(value)
 	C.Kv3SetUShort(__kv, __value)
@@ -1037,10 +1037,10 @@ var P_Kv3SetUShort = func(kv uintptr, value uint16) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param value: uint16_t value to set
 func Kv3SetUShort(kv uintptr, value uint16) {
-	P_Kv3SetUShort(kv, value)
+	_Kv3SetUShort(kv, value)
 }
 
-var P_Kv3SetInt = func(kv uintptr, value int32) {
+var _Kv3SetInt = func(kv uintptr, value int32) {
 	__kv := C.uintptr_t(kv)
 	__value := C.int32_t(value)
 	C.Kv3SetInt(__kv, __value)
@@ -1052,10 +1052,10 @@ var P_Kv3SetInt = func(kv uintptr, value int32) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param value: int32_t value to set
 func Kv3SetInt(kv uintptr, value int32) {
-	P_Kv3SetInt(kv, value)
+	_Kv3SetInt(kv, value)
 }
 
-var P_Kv3SetUInt = func(kv uintptr, value uint32) {
+var _Kv3SetUInt = func(kv uintptr, value uint32) {
 	__kv := C.uintptr_t(kv)
 	__value := C.uint32_t(value)
 	C.Kv3SetUInt(__kv, __value)
@@ -1067,10 +1067,10 @@ var P_Kv3SetUInt = func(kv uintptr, value uint32) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param value: uint32_t value to set
 func Kv3SetUInt(kv uintptr, value uint32) {
-	P_Kv3SetUInt(kv, value)
+	_Kv3SetUInt(kv, value)
 }
 
-var P_Kv3SetInt64 = func(kv uintptr, value int64) {
+var _Kv3SetInt64 = func(kv uintptr, value int64) {
 	__kv := C.uintptr_t(kv)
 	__value := C.int64_t(value)
 	C.Kv3SetInt64(__kv, __value)
@@ -1082,10 +1082,10 @@ var P_Kv3SetInt64 = func(kv uintptr, value int64) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param value: int64_t value to set
 func Kv3SetInt64(kv uintptr, value int64) {
-	P_Kv3SetInt64(kv, value)
+	_Kv3SetInt64(kv, value)
 }
 
-var P_Kv3SetUInt64 = func(kv uintptr, value uint64) {
+var _Kv3SetUInt64 = func(kv uintptr, value uint64) {
 	__kv := C.uintptr_t(kv)
 	__value := C.uint64_t(value)
 	C.Kv3SetUInt64(__kv, __value)
@@ -1097,10 +1097,10 @@ var P_Kv3SetUInt64 = func(kv uintptr, value uint64) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param value: uint64_t value to set
 func Kv3SetUInt64(kv uintptr, value uint64) {
-	P_Kv3SetUInt64(kv, value)
+	_Kv3SetUInt64(kv, value)
 }
 
-var P_Kv3SetFloat = func(kv uintptr, value float32) {
+var _Kv3SetFloat = func(kv uintptr, value float32) {
 	__kv := C.uintptr_t(kv)
 	__value := C.float(value)
 	C.Kv3SetFloat(__kv, __value)
@@ -1112,10 +1112,10 @@ var P_Kv3SetFloat = func(kv uintptr, value float32) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param value: Float value to set
 func Kv3SetFloat(kv uintptr, value float32) {
-	P_Kv3SetFloat(kv, value)
+	_Kv3SetFloat(kv, value)
 }
 
-var P_Kv3SetDouble = func(kv uintptr, value float64) {
+var _Kv3SetDouble = func(kv uintptr, value float64) {
 	__kv := C.uintptr_t(kv)
 	__value := C.double(value)
 	C.Kv3SetDouble(__kv, __value)
@@ -1127,10 +1127,10 @@ var P_Kv3SetDouble = func(kv uintptr, value float64) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param value: Double value to set
 func Kv3SetDouble(kv uintptr, value float64) {
-	P_Kv3SetDouble(kv, value)
+	_Kv3SetDouble(kv, value)
 }
 
-var P_Kv3GetPointer = func(kv uintptr, defaultValue uintptr) uintptr {
+var _Kv3GetPointer = func(kv uintptr, defaultValue uintptr) uintptr {
 	var __retVal uintptr
 	__kv := C.uintptr_t(kv)
 	__defaultValue := C.uintptr_t(defaultValue)
@@ -1146,10 +1146,10 @@ var P_Kv3GetPointer = func(kv uintptr, defaultValue uintptr) uintptr {
 //
 //  @return Pointer value as uintptr_t or defaultValue
 func Kv3GetPointer(kv uintptr, defaultValue uintptr) uintptr {
-	return P_Kv3GetPointer(kv, defaultValue)
+	return _Kv3GetPointer(kv, defaultValue)
 }
 
-var P_Kv3SetPointer = func(kv uintptr, ptr uintptr) {
+var _Kv3SetPointer = func(kv uintptr, ptr uintptr) {
 	__kv := C.uintptr_t(kv)
 	__ptr := C.uintptr_t(ptr)
 	C.Kv3SetPointer(__kv, __ptr)
@@ -1161,10 +1161,10 @@ var P_Kv3SetPointer = func(kv uintptr, ptr uintptr) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param ptr: Pointer value as uintptr_t to set
 func Kv3SetPointer(kv uintptr, ptr uintptr) {
-	P_Kv3SetPointer(kv, ptr)
+	_Kv3SetPointer(kv, ptr)
 }
 
-var P_Kv3GetStringToken = func(kv uintptr, defaultValue uint32) uint32 {
+var _Kv3GetStringToken = func(kv uintptr, defaultValue uint32) uint32 {
 	var __retVal uint32
 	__kv := C.uintptr_t(kv)
 	__defaultValue := C.uint32_t(defaultValue)
@@ -1180,10 +1180,10 @@ var P_Kv3GetStringToken = func(kv uintptr, defaultValue uint32) uint32 {
 //
 //  @return String token hash code or defaultValue
 func Kv3GetStringToken(kv uintptr, defaultValue uint32) uint32 {
-	return P_Kv3GetStringToken(kv, defaultValue)
+	return _Kv3GetStringToken(kv, defaultValue)
 }
 
-var P_Kv3SetStringToken = func(kv uintptr, token uint32) {
+var _Kv3SetStringToken = func(kv uintptr, token uint32) {
 	__kv := C.uintptr_t(kv)
 	__token := C.uint32_t(token)
 	C.Kv3SetStringToken(__kv, __token)
@@ -1195,10 +1195,10 @@ var P_Kv3SetStringToken = func(kv uintptr, token uint32) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param token: String token hash code to set
 func Kv3SetStringToken(kv uintptr, token uint32) {
-	P_Kv3SetStringToken(kv, token)
+	_Kv3SetStringToken(kv, token)
 }
 
-var P_Kv3GetEHandle = func(kv uintptr, defaultValue int32) int32 {
+var _Kv3GetEHandle = func(kv uintptr, defaultValue int32) int32 {
 	var __retVal int32
 	__kv := C.uintptr_t(kv)
 	__defaultValue := C.int32_t(defaultValue)
@@ -1214,10 +1214,10 @@ var P_Kv3GetEHandle = func(kv uintptr, defaultValue int32) int32 {
 //
 //  @return Entity handle as int32_t or defaultValue
 func Kv3GetEHandle(kv uintptr, defaultValue int32) int32 {
-	return P_Kv3GetEHandle(kv, defaultValue)
+	return _Kv3GetEHandle(kv, defaultValue)
 }
 
-var P_Kv3SetEHandle = func(kv uintptr, ehandle int32) {
+var _Kv3SetEHandle = func(kv uintptr, ehandle int32) {
 	__kv := C.uintptr_t(kv)
 	__ehandle := C.int32_t(ehandle)
 	C.Kv3SetEHandle(__kv, __ehandle)
@@ -1229,10 +1229,10 @@ var P_Kv3SetEHandle = func(kv uintptr, ehandle int32) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param ehandle: Entity handle value to set
 func Kv3SetEHandle(kv uintptr, ehandle int32) {
-	P_Kv3SetEHandle(kv, ehandle)
+	_Kv3SetEHandle(kv, ehandle)
 }
 
-var P_Kv3GetString = func(kv uintptr, defaultValue string) string {
+var _Kv3GetString = func(kv uintptr, defaultValue string) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__kv := C.uintptr_t(kv)
@@ -1261,10 +1261,10 @@ var P_Kv3GetString = func(kv uintptr, defaultValue string) string {
 //
 //  @return String value or defaultValue
 func Kv3GetString(kv uintptr, defaultValue string) string {
-	return P_Kv3GetString(kv, defaultValue)
+	return _Kv3GetString(kv, defaultValue)
 }
 
-var P_Kv3SetString = func(kv uintptr, str string, subtype uint8) {
+var _Kv3SetString = func(kv uintptr, str string, subtype uint8) {
 	__kv := C.uintptr_t(kv)
 	__str := plugify.ConstructString(str)
 	__subtype := C.uint8_t(subtype)
@@ -1286,10 +1286,10 @@ var P_Kv3SetString = func(kv uintptr, str string, subtype uint8) {
 //  @param str: String value to set
 //  @param subtype: String subtype enumeration value
 func Kv3SetString(kv uintptr, str string, subtype uint8) {
-	P_Kv3SetString(kv, str, subtype)
+	_Kv3SetString(kv, str, subtype)
 }
 
-var P_Kv3SetStringExternal = func(kv uintptr, str string, subtype uint8) {
+var _Kv3SetStringExternal = func(kv uintptr, str string, subtype uint8) {
 	__kv := C.uintptr_t(kv)
 	__str := plugify.ConstructString(str)
 	__subtype := C.uint8_t(subtype)
@@ -1311,10 +1311,10 @@ var P_Kv3SetStringExternal = func(kv uintptr, str string, subtype uint8) {
 //  @param str: External string value to reference
 //  @param subtype: String subtype enumeration value
 func Kv3SetStringExternal(kv uintptr, str string, subtype uint8) {
-	P_Kv3SetStringExternal(kv, str, subtype)
+	_Kv3SetStringExternal(kv, str, subtype)
 }
 
-var P_Kv3GetBinaryBlob = func(kv uintptr) []uint8 {
+var _Kv3GetBinaryBlob = func(kv uintptr) []uint8 {
 	var __retVal []uint8
 	var __retVal_native plugify.PlgVector
 	__kv := C.uintptr_t(kv)
@@ -1340,10 +1340,10 @@ var P_Kv3GetBinaryBlob = func(kv uintptr) []uint8 {
 //
 //  @return Vector containing the binary blob data, or empty vector if kv is null
 func Kv3GetBinaryBlob(kv uintptr) []uint8 {
-	return P_Kv3GetBinaryBlob(kv)
+	return _Kv3GetBinaryBlob(kv)
 }
 
-var P_Kv3GetBinaryBlobSize = func(kv uintptr) int32 {
+var _Kv3GetBinaryBlobSize = func(kv uintptr) int32 {
 	var __retVal int32
 	__kv := C.uintptr_t(kv)
 	__retVal = int32(C.Kv3GetBinaryBlobSize(__kv))
@@ -1357,10 +1357,10 @@ var P_Kv3GetBinaryBlobSize = func(kv uintptr) int32 {
 //
 //  @return Size of the binary blob in bytes, or 0 if kv is null
 func Kv3GetBinaryBlobSize(kv uintptr) int32 {
-	return P_Kv3GetBinaryBlobSize(kv)
+	return _Kv3GetBinaryBlobSize(kv)
 }
 
-var P_Kv3SetToBinaryBlob = func(kv uintptr, blob []uint8) {
+var _Kv3SetToBinaryBlob = func(kv uintptr, blob []uint8) {
 	__kv := C.uintptr_t(kv)
 	__blob := plugify.ConstructVectorUInt8(blob)
 	plugify.Block {
@@ -1380,10 +1380,10 @@ var P_Kv3SetToBinaryBlob = func(kv uintptr, blob []uint8) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param blob: Vector containing the binary blob data
 func Kv3SetToBinaryBlob(kv uintptr, blob []uint8) {
-	P_Kv3SetToBinaryBlob(kv, blob)
+	_Kv3SetToBinaryBlob(kv, blob)
 }
 
-var P_Kv3SetToBinaryBlobExternal = func(kv uintptr, blob []uint8, free_mem bool) {
+var _Kv3SetToBinaryBlobExternal = func(kv uintptr, blob []uint8, free_mem bool) {
 	__kv := C.uintptr_t(kv)
 	__blob := plugify.ConstructVectorUInt8(blob)
 	__free_mem := C.bool(free_mem)
@@ -1405,10 +1405,10 @@ var P_Kv3SetToBinaryBlobExternal = func(kv uintptr, blob []uint8, free_mem bool)
 //  @param blob: Vector containing the external binary blob data
 //  @param free_mem: Whether to free the memory when the object is destroyed
 func Kv3SetToBinaryBlobExternal(kv uintptr, blob []uint8, free_mem bool) {
-	P_Kv3SetToBinaryBlobExternal(kv, blob, free_mem)
+	_Kv3SetToBinaryBlobExternal(kv, blob, free_mem)
 }
 
-var P_Kv3GetColor = func(kv uintptr, defaultValue plugify.Vector4) plugify.Vector4 {
+var _Kv3GetColor = func(kv uintptr, defaultValue plugify.Vector4) plugify.Vector4 {
 	var __retVal plugify.Vector4
 	__kv := C.uintptr_t(kv)
 	__defaultValue := *(*C.Vector4)(unsafe.Pointer(&defaultValue))
@@ -1425,10 +1425,10 @@ var P_Kv3GetColor = func(kv uintptr, defaultValue plugify.Vector4) plugify.Vecto
 //
 //  @return Color value as vec4 or defaultValue
 func Kv3GetColor(kv uintptr, defaultValue plugify.Vector4) plugify.Vector4 {
-	return P_Kv3GetColor(kv, defaultValue)
+	return _Kv3GetColor(kv, defaultValue)
 }
 
-var P_Kv3SetColor = func(kv uintptr, color plugify.Vector4) {
+var _Kv3SetColor = func(kv uintptr, color plugify.Vector4) {
 	__kv := C.uintptr_t(kv)
 	__color := *(*C.Vector4)(unsafe.Pointer(&color))
 	C.Kv3SetColor(__kv, &__color)
@@ -1440,10 +1440,10 @@ var P_Kv3SetColor = func(kv uintptr, color plugify.Vector4) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param color: Color value as vec4 to set
 func Kv3SetColor(kv uintptr, color plugify.Vector4) {
-	P_Kv3SetColor(kv, color)
+	_Kv3SetColor(kv, color)
 }
 
-var P_Kv3GetVector = func(kv uintptr, defaultValue plugify.Vector3) plugify.Vector3 {
+var _Kv3GetVector = func(kv uintptr, defaultValue plugify.Vector3) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__kv := C.uintptr_t(kv)
 	__defaultValue := *(*C.Vector3)(unsafe.Pointer(&defaultValue))
@@ -1460,10 +1460,10 @@ var P_Kv3GetVector = func(kv uintptr, defaultValue plugify.Vector3) plugify.Vect
 //
 //  @return 3D vector or defaultValue
 func Kv3GetVector(kv uintptr, defaultValue plugify.Vector3) plugify.Vector3 {
-	return P_Kv3GetVector(kv, defaultValue)
+	return _Kv3GetVector(kv, defaultValue)
 }
 
-var P_Kv3GetVector2D = func(kv uintptr, defaultValue plugify.Vector2) plugify.Vector2 {
+var _Kv3GetVector2D = func(kv uintptr, defaultValue plugify.Vector2) plugify.Vector2 {
 	var __retVal plugify.Vector2
 	__kv := C.uintptr_t(kv)
 	__defaultValue := *(*C.Vector2)(unsafe.Pointer(&defaultValue))
@@ -1480,10 +1480,10 @@ var P_Kv3GetVector2D = func(kv uintptr, defaultValue plugify.Vector2) plugify.Ve
 //
 //  @return 2D vector or defaultValue
 func Kv3GetVector2D(kv uintptr, defaultValue plugify.Vector2) plugify.Vector2 {
-	return P_Kv3GetVector2D(kv, defaultValue)
+	return _Kv3GetVector2D(kv, defaultValue)
 }
 
-var P_Kv3GetVector4D = func(kv uintptr, defaultValue plugify.Vector4) plugify.Vector4 {
+var _Kv3GetVector4D = func(kv uintptr, defaultValue plugify.Vector4) plugify.Vector4 {
 	var __retVal plugify.Vector4
 	__kv := C.uintptr_t(kv)
 	__defaultValue := *(*C.Vector4)(unsafe.Pointer(&defaultValue))
@@ -1500,10 +1500,10 @@ var P_Kv3GetVector4D = func(kv uintptr, defaultValue plugify.Vector4) plugify.Ve
 //
 //  @return 4D vector or defaultValue
 func Kv3GetVector4D(kv uintptr, defaultValue plugify.Vector4) plugify.Vector4 {
-	return P_Kv3GetVector4D(kv, defaultValue)
+	return _Kv3GetVector4D(kv, defaultValue)
 }
 
-var P_Kv3GetQuaternion = func(kv uintptr, defaultValue plugify.Vector4) plugify.Vector4 {
+var _Kv3GetQuaternion = func(kv uintptr, defaultValue plugify.Vector4) plugify.Vector4 {
 	var __retVal plugify.Vector4
 	__kv := C.uintptr_t(kv)
 	__defaultValue := *(*C.Vector4)(unsafe.Pointer(&defaultValue))
@@ -1520,10 +1520,10 @@ var P_Kv3GetQuaternion = func(kv uintptr, defaultValue plugify.Vector4) plugify.
 //
 //  @return Quaternion as vec4 or defaultValue
 func Kv3GetQuaternion(kv uintptr, defaultValue plugify.Vector4) plugify.Vector4 {
-	return P_Kv3GetQuaternion(kv, defaultValue)
+	return _Kv3GetQuaternion(kv, defaultValue)
 }
 
-var P_Kv3GetQAngle = func(kv uintptr, defaultValue plugify.Vector3) plugify.Vector3 {
+var _Kv3GetQAngle = func(kv uintptr, defaultValue plugify.Vector3) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__kv := C.uintptr_t(kv)
 	__defaultValue := *(*C.Vector3)(unsafe.Pointer(&defaultValue))
@@ -1540,10 +1540,10 @@ var P_Kv3GetQAngle = func(kv uintptr, defaultValue plugify.Vector3) plugify.Vect
 //
 //  @return QAngle as vec3 or defaultValue
 func Kv3GetQAngle(kv uintptr, defaultValue plugify.Vector3) plugify.Vector3 {
-	return P_Kv3GetQAngle(kv, defaultValue)
+	return _Kv3GetQAngle(kv, defaultValue)
 }
 
-var P_Kv3GetMatrix3x4 = func(kv uintptr, defaultValue plugify.Matrix4x4) plugify.Matrix4x4 {
+var _Kv3GetMatrix3x4 = func(kv uintptr, defaultValue plugify.Matrix4x4) plugify.Matrix4x4 {
 	var __retVal plugify.Matrix4x4
 	__kv := C.uintptr_t(kv)
 	__defaultValue := *(*C.Matrix4x4)(unsafe.Pointer(&defaultValue))
@@ -1560,10 +1560,10 @@ var P_Kv3GetMatrix3x4 = func(kv uintptr, defaultValue plugify.Matrix4x4) plugify
 //
 //  @return 3x4 matrix as mat4x4 or defaultValue
 func Kv3GetMatrix3x4(kv uintptr, defaultValue plugify.Matrix4x4) plugify.Matrix4x4 {
-	return P_Kv3GetMatrix3x4(kv, defaultValue)
+	return _Kv3GetMatrix3x4(kv, defaultValue)
 }
 
-var P_Kv3SetVector = func(kv uintptr, vec plugify.Vector3) {
+var _Kv3SetVector = func(kv uintptr, vec plugify.Vector3) {
 	__kv := C.uintptr_t(kv)
 	__vec := *(*C.Vector3)(unsafe.Pointer(&vec))
 	C.Kv3SetVector(__kv, &__vec)
@@ -1575,10 +1575,10 @@ var P_Kv3SetVector = func(kv uintptr, vec plugify.Vector3) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param vec: 3D vector to set
 func Kv3SetVector(kv uintptr, vec plugify.Vector3) {
-	P_Kv3SetVector(kv, vec)
+	_Kv3SetVector(kv, vec)
 }
 
-var P_Kv3SetVector2D = func(kv uintptr, vec2d plugify.Vector2) {
+var _Kv3SetVector2D = func(kv uintptr, vec2d plugify.Vector2) {
 	__kv := C.uintptr_t(kv)
 	__vec2d := *(*C.Vector2)(unsafe.Pointer(&vec2d))
 	C.Kv3SetVector2D(__kv, &__vec2d)
@@ -1590,10 +1590,10 @@ var P_Kv3SetVector2D = func(kv uintptr, vec2d plugify.Vector2) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param vec2d: 2D vector to set
 func Kv3SetVector2D(kv uintptr, vec2d plugify.Vector2) {
-	P_Kv3SetVector2D(kv, vec2d)
+	_Kv3SetVector2D(kv, vec2d)
 }
 
-var P_Kv3SetVector4D = func(kv uintptr, vec4d plugify.Vector4) {
+var _Kv3SetVector4D = func(kv uintptr, vec4d plugify.Vector4) {
 	__kv := C.uintptr_t(kv)
 	__vec4d := *(*C.Vector4)(unsafe.Pointer(&vec4d))
 	C.Kv3SetVector4D(__kv, &__vec4d)
@@ -1605,10 +1605,10 @@ var P_Kv3SetVector4D = func(kv uintptr, vec4d plugify.Vector4) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param vec4d: 4D vector to set
 func Kv3SetVector4D(kv uintptr, vec4d plugify.Vector4) {
-	P_Kv3SetVector4D(kv, vec4d)
+	_Kv3SetVector4D(kv, vec4d)
 }
 
-var P_Kv3SetQuaternion = func(kv uintptr, quat plugify.Vector4) {
+var _Kv3SetQuaternion = func(kv uintptr, quat plugify.Vector4) {
 	__kv := C.uintptr_t(kv)
 	__quat := *(*C.Vector4)(unsafe.Pointer(&quat))
 	C.Kv3SetQuaternion(__kv, &__quat)
@@ -1620,10 +1620,10 @@ var P_Kv3SetQuaternion = func(kv uintptr, quat plugify.Vector4) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param quat: Quaternion to set (as vec4)
 func Kv3SetQuaternion(kv uintptr, quat plugify.Vector4) {
-	P_Kv3SetQuaternion(kv, quat)
+	_Kv3SetQuaternion(kv, quat)
 }
 
-var P_Kv3SetQAngle = func(kv uintptr, ang plugify.Vector3) {
+var _Kv3SetQAngle = func(kv uintptr, ang plugify.Vector3) {
 	__kv := C.uintptr_t(kv)
 	__ang := *(*C.Vector3)(unsafe.Pointer(&ang))
 	C.Kv3SetQAngle(__kv, &__ang)
@@ -1635,10 +1635,10 @@ var P_Kv3SetQAngle = func(kv uintptr, ang plugify.Vector3) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param ang: QAngle to set (as vec3)
 func Kv3SetQAngle(kv uintptr, ang plugify.Vector3) {
-	P_Kv3SetQAngle(kv, ang)
+	_Kv3SetQAngle(kv, ang)
 }
 
-var P_Kv3SetMatrix3x4 = func(kv uintptr, matrix plugify.Matrix4x4) {
+var _Kv3SetMatrix3x4 = func(kv uintptr, matrix plugify.Matrix4x4) {
 	__kv := C.uintptr_t(kv)
 	__matrix := *(*C.Matrix4x4)(unsafe.Pointer(&matrix))
 	C.Kv3SetMatrix3x4(__kv, &__matrix)
@@ -1650,10 +1650,10 @@ var P_Kv3SetMatrix3x4 = func(kv uintptr, matrix plugify.Matrix4x4) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param matrix: 3x4 matrix to set (as mat4x4)
 func Kv3SetMatrix3x4(kv uintptr, matrix plugify.Matrix4x4) {
-	P_Kv3SetMatrix3x4(kv, matrix)
+	_Kv3SetMatrix3x4(kv, matrix)
 }
 
-var P_Kv3GetArrayElementCount = func(kv uintptr) int32 {
+var _Kv3GetArrayElementCount = func(kv uintptr) int32 {
 	var __retVal int32
 	__kv := C.uintptr_t(kv)
 	__retVal = int32(C.Kv3GetArrayElementCount(__kv))
@@ -1667,10 +1667,10 @@ var P_Kv3GetArrayElementCount = func(kv uintptr) int32 {
 //
 //  @return Number of array elements, or 0 if kv is null or not an array
 func Kv3GetArrayElementCount(kv uintptr) int32 {
-	return P_Kv3GetArrayElementCount(kv)
+	return _Kv3GetArrayElementCount(kv)
 }
 
-var P_Kv3SetArrayElementCount = func(kv uintptr, count int32, type_ uint8, subtype uint8) {
+var _Kv3SetArrayElementCount = func(kv uintptr, count int32, type_ uint8, subtype uint8) {
 	__kv := C.uintptr_t(kv)
 	__count := C.int32_t(count)
 	__type_ := C.uint8_t(type_)
@@ -1686,10 +1686,10 @@ var P_Kv3SetArrayElementCount = func(kv uintptr, count int32, type_ uint8, subty
 //  @param type_: Type of array elements
 //  @param subtype: Subtype of array elements
 func Kv3SetArrayElementCount(kv uintptr, count int32, type_ uint8, subtype uint8) {
-	P_Kv3SetArrayElementCount(kv, count, type_, subtype)
+	_Kv3SetArrayElementCount(kv, count, type_, subtype)
 }
 
-var P_Kv3SetToEmptyKV3Array = func(kv uintptr) {
+var _Kv3SetToEmptyKV3Array = func(kv uintptr) {
 	__kv := C.uintptr_t(kv)
 	C.Kv3SetToEmptyKV3Array(__kv)
 }
@@ -1699,10 +1699,10 @@ var P_Kv3SetToEmptyKV3Array = func(kv uintptr) {
 //
 //  @param kv: Pointer to the KeyValues3 object
 func Kv3SetToEmptyKV3Array(kv uintptr) {
-	P_Kv3SetToEmptyKV3Array(kv)
+	_Kv3SetToEmptyKV3Array(kv)
 }
 
-var P_Kv3GetArrayElement = func(kv uintptr, elem int32) uintptr {
+var _Kv3GetArrayElement = func(kv uintptr, elem int32) uintptr {
 	var __retVal uintptr
 	__kv := C.uintptr_t(kv)
 	__elem := C.int32_t(elem)
@@ -1718,10 +1718,10 @@ var P_Kv3GetArrayElement = func(kv uintptr, elem int32) uintptr {
 //
 //  @return Pointer to the element KeyValues3 object, or nullptr if invalid
 func Kv3GetArrayElement(kv uintptr, elem int32) uintptr {
-	return P_Kv3GetArrayElement(kv, elem)
+	return _Kv3GetArrayElement(kv, elem)
 }
 
-var P_Kv3ArrayInsertElementBefore = func(kv uintptr, elem int32) uintptr {
+var _Kv3ArrayInsertElementBefore = func(kv uintptr, elem int32) uintptr {
 	var __retVal uintptr
 	__kv := C.uintptr_t(kv)
 	__elem := C.int32_t(elem)
@@ -1737,10 +1737,10 @@ var P_Kv3ArrayInsertElementBefore = func(kv uintptr, elem int32) uintptr {
 //
 //  @return Pointer to the newly inserted element, or nullptr if invalid
 func Kv3ArrayInsertElementBefore(kv uintptr, elem int32) uintptr {
-	return P_Kv3ArrayInsertElementBefore(kv, elem)
+	return _Kv3ArrayInsertElementBefore(kv, elem)
 }
 
-var P_Kv3ArrayInsertElementAfter = func(kv uintptr, elem int32) uintptr {
+var _Kv3ArrayInsertElementAfter = func(kv uintptr, elem int32) uintptr {
 	var __retVal uintptr
 	__kv := C.uintptr_t(kv)
 	__elem := C.int32_t(elem)
@@ -1756,10 +1756,10 @@ var P_Kv3ArrayInsertElementAfter = func(kv uintptr, elem int32) uintptr {
 //
 //  @return Pointer to the newly inserted element, or nullptr if invalid
 func Kv3ArrayInsertElementAfter(kv uintptr, elem int32) uintptr {
-	return P_Kv3ArrayInsertElementAfter(kv, elem)
+	return _Kv3ArrayInsertElementAfter(kv, elem)
 }
 
-var P_Kv3ArrayAddElementToTail = func(kv uintptr) uintptr {
+var _Kv3ArrayAddElementToTail = func(kv uintptr) uintptr {
 	var __retVal uintptr
 	__kv := C.uintptr_t(kv)
 	__retVal = uintptr(C.Kv3ArrayAddElementToTail(__kv))
@@ -1773,10 +1773,10 @@ var P_Kv3ArrayAddElementToTail = func(kv uintptr) uintptr {
 //
 //  @return Pointer to the newly added element, or nullptr if invalid
 func Kv3ArrayAddElementToTail(kv uintptr) uintptr {
-	return P_Kv3ArrayAddElementToTail(kv)
+	return _Kv3ArrayAddElementToTail(kv)
 }
 
-var P_Kv3ArraySwapItems = func(kv uintptr, idx1 int32, idx2 int32) {
+var _Kv3ArraySwapItems = func(kv uintptr, idx1 int32, idx2 int32) {
 	__kv := C.uintptr_t(kv)
 	__idx1 := C.int32_t(idx1)
 	__idx2 := C.int32_t(idx2)
@@ -1790,10 +1790,10 @@ var P_Kv3ArraySwapItems = func(kv uintptr, idx1 int32, idx2 int32) {
 //  @param idx1: Index of the first element
 //  @param idx2: Index of the second element
 func Kv3ArraySwapItems(kv uintptr, idx1 int32, idx2 int32) {
-	P_Kv3ArraySwapItems(kv, idx1, idx2)
+	_Kv3ArraySwapItems(kv, idx1, idx2)
 }
 
-var P_Kv3ArrayRemoveElement = func(kv uintptr, elem int32) {
+var _Kv3ArrayRemoveElement = func(kv uintptr, elem int32) {
 	__kv := C.uintptr_t(kv)
 	__elem := C.int32_t(elem)
 	C.Kv3ArrayRemoveElement(__kv, __elem)
@@ -1805,10 +1805,10 @@ var P_Kv3ArrayRemoveElement = func(kv uintptr, elem int32) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param elem: Index of the element to remove
 func Kv3ArrayRemoveElement(kv uintptr, elem int32) {
-	P_Kv3ArrayRemoveElement(kv, elem)
+	_Kv3ArrayRemoveElement(kv, elem)
 }
 
-var P_Kv3SetToEmptyTable = func(kv uintptr) {
+var _Kv3SetToEmptyTable = func(kv uintptr) {
 	__kv := C.uintptr_t(kv)
 	C.Kv3SetToEmptyTable(__kv)
 }
@@ -1818,10 +1818,10 @@ var P_Kv3SetToEmptyTable = func(kv uintptr) {
 //
 //  @param kv: Pointer to the KeyValues3 object
 func Kv3SetToEmptyTable(kv uintptr) {
-	P_Kv3SetToEmptyTable(kv)
+	_Kv3SetToEmptyTable(kv)
 }
 
-var P_Kv3GetMemberCount = func(kv uintptr) int32 {
+var _Kv3GetMemberCount = func(kv uintptr) int32 {
 	var __retVal int32
 	__kv := C.uintptr_t(kv)
 	__retVal = int32(C.Kv3GetMemberCount(__kv))
@@ -1835,10 +1835,10 @@ var P_Kv3GetMemberCount = func(kv uintptr) int32 {
 //
 //  @return Number of table members, or 0 if kv is null or not a table
 func Kv3GetMemberCount(kv uintptr) int32 {
-	return P_Kv3GetMemberCount(kv)
+	return _Kv3GetMemberCount(kv)
 }
 
-var P_Kv3HasMember = func(kv uintptr, name string) bool {
+var _Kv3HasMember = func(kv uintptr, name string) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -1862,10 +1862,10 @@ var P_Kv3HasMember = func(kv uintptr, name string) bool {
 //
 //  @return true if the member exists, false otherwise
 func Kv3HasMember(kv uintptr, name string) bool {
-	return P_Kv3HasMember(kv, name)
+	return _Kv3HasMember(kv, name)
 }
 
-var P_Kv3FindMember = func(kv uintptr, name string) uintptr {
+var _Kv3FindMember = func(kv uintptr, name string) uintptr {
 	var __retVal uintptr
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -1889,10 +1889,10 @@ var P_Kv3FindMember = func(kv uintptr, name string) uintptr {
 //
 //  @return Pointer to the member KeyValues3 object, or nullptr if not found
 func Kv3FindMember(kv uintptr, name string) uintptr {
-	return P_Kv3FindMember(kv, name)
+	return _Kv3FindMember(kv, name)
 }
 
-var P_Kv3FindOrCreateMember = func(kv uintptr, name string) uintptr {
+var _Kv3FindOrCreateMember = func(kv uintptr, name string) uintptr {
 	var __retVal uintptr
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -1916,10 +1916,10 @@ var P_Kv3FindOrCreateMember = func(kv uintptr, name string) uintptr {
 //
 //  @return Pointer to the member KeyValues3 object, or nullptr if kv is null
 func Kv3FindOrCreateMember(kv uintptr, name string) uintptr {
-	return P_Kv3FindOrCreateMember(kv, name)
+	return _Kv3FindOrCreateMember(kv, name)
 }
 
-var P_Kv3RemoveMember = func(kv uintptr, name string) bool {
+var _Kv3RemoveMember = func(kv uintptr, name string) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -1943,10 +1943,10 @@ var P_Kv3RemoveMember = func(kv uintptr, name string) bool {
 //
 //  @return true if the member was removed, false otherwise
 func Kv3RemoveMember(kv uintptr, name string) bool {
-	return P_Kv3RemoveMember(kv, name)
+	return _Kv3RemoveMember(kv, name)
 }
 
-var P_Kv3GetMemberName = func(kv uintptr, index int32) string {
+var _Kv3GetMemberName = func(kv uintptr, index int32) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__kv := C.uintptr_t(kv)
@@ -1974,10 +1974,10 @@ var P_Kv3GetMemberName = func(kv uintptr, index int32) string {
 //
 //  @return Name of the member, or empty string if invalid
 func Kv3GetMemberName(kv uintptr, index int32) string {
-	return P_Kv3GetMemberName(kv, index)
+	return _Kv3GetMemberName(kv, index)
 }
 
-var P_Kv3GetMemberByIndex = func(kv uintptr, index int32) uintptr {
+var _Kv3GetMemberByIndex = func(kv uintptr, index int32) uintptr {
 	var __retVal uintptr
 	__kv := C.uintptr_t(kv)
 	__index := C.int32_t(index)
@@ -1993,10 +1993,10 @@ var P_Kv3GetMemberByIndex = func(kv uintptr, index int32) uintptr {
 //
 //  @return Pointer to the member KeyValues3 object, or nullptr if invalid
 func Kv3GetMemberByIndex(kv uintptr, index int32) uintptr {
-	return P_Kv3GetMemberByIndex(kv, index)
+	return _Kv3GetMemberByIndex(kv, index)
 }
 
-var P_Kv3GetMemberBool = func(kv uintptr, name string, defaultValue bool) bool {
+var _Kv3GetMemberBool = func(kv uintptr, name string, defaultValue bool) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -2022,10 +2022,10 @@ var P_Kv3GetMemberBool = func(kv uintptr, name string, defaultValue bool) bool {
 //
 //  @return Boolean value or defaultValue
 func Kv3GetMemberBool(kv uintptr, name string, defaultValue bool) bool {
-	return P_Kv3GetMemberBool(kv, name, defaultValue)
+	return _Kv3GetMemberBool(kv, name, defaultValue)
 }
 
-var P_Kv3GetMemberChar = func(kv uintptr, name string, defaultValue int8) int8 {
+var _Kv3GetMemberChar = func(kv uintptr, name string, defaultValue int8) int8 {
 	var __retVal int8
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -2051,10 +2051,10 @@ var P_Kv3GetMemberChar = func(kv uintptr, name string, defaultValue int8) int8 {
 //
 //  @return Char value or defaultValue
 func Kv3GetMemberChar(kv uintptr, name string, defaultValue int8) int8 {
-	return P_Kv3GetMemberChar(kv, name, defaultValue)
+	return _Kv3GetMemberChar(kv, name, defaultValue)
 }
 
-var P_Kv3GetMemberUChar32 = func(kv uintptr, name string, defaultValue uint32) uint32 {
+var _Kv3GetMemberUChar32 = func(kv uintptr, name string, defaultValue uint32) uint32 {
 	var __retVal uint32
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -2080,10 +2080,10 @@ var P_Kv3GetMemberUChar32 = func(kv uintptr, name string, defaultValue uint32) u
 //
 //  @return 32-bit Unicode character value or defaultValue
 func Kv3GetMemberUChar32(kv uintptr, name string, defaultValue uint32) uint32 {
-	return P_Kv3GetMemberUChar32(kv, name, defaultValue)
+	return _Kv3GetMemberUChar32(kv, name, defaultValue)
 }
 
-var P_Kv3GetMemberInt8 = func(kv uintptr, name string, defaultValue int8) int8 {
+var _Kv3GetMemberInt8 = func(kv uintptr, name string, defaultValue int8) int8 {
 	var __retVal int8
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -2109,10 +2109,10 @@ var P_Kv3GetMemberInt8 = func(kv uintptr, name string, defaultValue int8) int8 {
 //
 //  @return int8_t value or defaultValue
 func Kv3GetMemberInt8(kv uintptr, name string, defaultValue int8) int8 {
-	return P_Kv3GetMemberInt8(kv, name, defaultValue)
+	return _Kv3GetMemberInt8(kv, name, defaultValue)
 }
 
-var P_Kv3GetMemberUInt8 = func(kv uintptr, name string, defaultValue uint8) uint8 {
+var _Kv3GetMemberUInt8 = func(kv uintptr, name string, defaultValue uint8) uint8 {
 	var __retVal uint8
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -2138,10 +2138,10 @@ var P_Kv3GetMemberUInt8 = func(kv uintptr, name string, defaultValue uint8) uint
 //
 //  @return uint8_t value or defaultValue
 func Kv3GetMemberUInt8(kv uintptr, name string, defaultValue uint8) uint8 {
-	return P_Kv3GetMemberUInt8(kv, name, defaultValue)
+	return _Kv3GetMemberUInt8(kv, name, defaultValue)
 }
 
-var P_Kv3GetMemberShort = func(kv uintptr, name string, defaultValue int16) int16 {
+var _Kv3GetMemberShort = func(kv uintptr, name string, defaultValue int16) int16 {
 	var __retVal int16
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -2167,10 +2167,10 @@ var P_Kv3GetMemberShort = func(kv uintptr, name string, defaultValue int16) int1
 //
 //  @return int16_t value or defaultValue
 func Kv3GetMemberShort(kv uintptr, name string, defaultValue int16) int16 {
-	return P_Kv3GetMemberShort(kv, name, defaultValue)
+	return _Kv3GetMemberShort(kv, name, defaultValue)
 }
 
-var P_Kv3GetMemberUShort = func(kv uintptr, name string, defaultValue uint16) uint16 {
+var _Kv3GetMemberUShort = func(kv uintptr, name string, defaultValue uint16) uint16 {
 	var __retVal uint16
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -2196,10 +2196,10 @@ var P_Kv3GetMemberUShort = func(kv uintptr, name string, defaultValue uint16) ui
 //
 //  @return uint16_t value or defaultValue
 func Kv3GetMemberUShort(kv uintptr, name string, defaultValue uint16) uint16 {
-	return P_Kv3GetMemberUShort(kv, name, defaultValue)
+	return _Kv3GetMemberUShort(kv, name, defaultValue)
 }
 
-var P_Kv3GetMemberInt = func(kv uintptr, name string, defaultValue int32) int32 {
+var _Kv3GetMemberInt = func(kv uintptr, name string, defaultValue int32) int32 {
 	var __retVal int32
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -2225,10 +2225,10 @@ var P_Kv3GetMemberInt = func(kv uintptr, name string, defaultValue int32) int32 
 //
 //  @return int32_t value or defaultValue
 func Kv3GetMemberInt(kv uintptr, name string, defaultValue int32) int32 {
-	return P_Kv3GetMemberInt(kv, name, defaultValue)
+	return _Kv3GetMemberInt(kv, name, defaultValue)
 }
 
-var P_Kv3GetMemberUInt = func(kv uintptr, name string, defaultValue uint32) uint32 {
+var _Kv3GetMemberUInt = func(kv uintptr, name string, defaultValue uint32) uint32 {
 	var __retVal uint32
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -2254,10 +2254,10 @@ var P_Kv3GetMemberUInt = func(kv uintptr, name string, defaultValue uint32) uint
 //
 //  @return uint32_t value or defaultValue
 func Kv3GetMemberUInt(kv uintptr, name string, defaultValue uint32) uint32 {
-	return P_Kv3GetMemberUInt(kv, name, defaultValue)
+	return _Kv3GetMemberUInt(kv, name, defaultValue)
 }
 
-var P_Kv3GetMemberInt64 = func(kv uintptr, name string, defaultValue int64) int64 {
+var _Kv3GetMemberInt64 = func(kv uintptr, name string, defaultValue int64) int64 {
 	var __retVal int64
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -2283,10 +2283,10 @@ var P_Kv3GetMemberInt64 = func(kv uintptr, name string, defaultValue int64) int6
 //
 //  @return int64_t value or defaultValue
 func Kv3GetMemberInt64(kv uintptr, name string, defaultValue int64) int64 {
-	return P_Kv3GetMemberInt64(kv, name, defaultValue)
+	return _Kv3GetMemberInt64(kv, name, defaultValue)
 }
 
-var P_Kv3GetMemberUInt64 = func(kv uintptr, name string, defaultValue uint64) uint64 {
+var _Kv3GetMemberUInt64 = func(kv uintptr, name string, defaultValue uint64) uint64 {
 	var __retVal uint64
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -2312,10 +2312,10 @@ var P_Kv3GetMemberUInt64 = func(kv uintptr, name string, defaultValue uint64) ui
 //
 //  @return uint64_t value or defaultValue
 func Kv3GetMemberUInt64(kv uintptr, name string, defaultValue uint64) uint64 {
-	return P_Kv3GetMemberUInt64(kv, name, defaultValue)
+	return _Kv3GetMemberUInt64(kv, name, defaultValue)
 }
 
-var P_Kv3GetMemberFloat = func(kv uintptr, name string, defaultValue float32) float32 {
+var _Kv3GetMemberFloat = func(kv uintptr, name string, defaultValue float32) float32 {
 	var __retVal float32
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -2341,10 +2341,10 @@ var P_Kv3GetMemberFloat = func(kv uintptr, name string, defaultValue float32) fl
 //
 //  @return Float value or defaultValue
 func Kv3GetMemberFloat(kv uintptr, name string, defaultValue float32) float32 {
-	return P_Kv3GetMemberFloat(kv, name, defaultValue)
+	return _Kv3GetMemberFloat(kv, name, defaultValue)
 }
 
-var P_Kv3GetMemberDouble = func(kv uintptr, name string, defaultValue float64) float64 {
+var _Kv3GetMemberDouble = func(kv uintptr, name string, defaultValue float64) float64 {
 	var __retVal float64
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -2370,10 +2370,10 @@ var P_Kv3GetMemberDouble = func(kv uintptr, name string, defaultValue float64) f
 //
 //  @return Double value or defaultValue
 func Kv3GetMemberDouble(kv uintptr, name string, defaultValue float64) float64 {
-	return P_Kv3GetMemberDouble(kv, name, defaultValue)
+	return _Kv3GetMemberDouble(kv, name, defaultValue)
 }
 
-var P_Kv3GetMemberPointer = func(kv uintptr, name string, defaultValue uintptr) uintptr {
+var _Kv3GetMemberPointer = func(kv uintptr, name string, defaultValue uintptr) uintptr {
 	var __retVal uintptr
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -2399,10 +2399,10 @@ var P_Kv3GetMemberPointer = func(kv uintptr, name string, defaultValue uintptr) 
 //
 //  @return Pointer value as uintptr_t or defaultValue
 func Kv3GetMemberPointer(kv uintptr, name string, defaultValue uintptr) uintptr {
-	return P_Kv3GetMemberPointer(kv, name, defaultValue)
+	return _Kv3GetMemberPointer(kv, name, defaultValue)
 }
 
-var P_Kv3GetMemberStringToken = func(kv uintptr, name string, defaultValue uint32) uint32 {
+var _Kv3GetMemberStringToken = func(kv uintptr, name string, defaultValue uint32) uint32 {
 	var __retVal uint32
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -2428,10 +2428,10 @@ var P_Kv3GetMemberStringToken = func(kv uintptr, name string, defaultValue uint3
 //
 //  @return String token hash code or defaultValue
 func Kv3GetMemberStringToken(kv uintptr, name string, defaultValue uint32) uint32 {
-	return P_Kv3GetMemberStringToken(kv, name, defaultValue)
+	return _Kv3GetMemberStringToken(kv, name, defaultValue)
 }
 
-var P_Kv3GetMemberEHandle = func(kv uintptr, name string, defaultValue int32) int32 {
+var _Kv3GetMemberEHandle = func(kv uintptr, name string, defaultValue int32) int32 {
 	var __retVal int32
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -2457,10 +2457,10 @@ var P_Kv3GetMemberEHandle = func(kv uintptr, name string, defaultValue int32) in
 //
 //  @return Entity handle as int32_t or defaultValue
 func Kv3GetMemberEHandle(kv uintptr, name string, defaultValue int32) int32 {
-	return P_Kv3GetMemberEHandle(kv, name, defaultValue)
+	return _Kv3GetMemberEHandle(kv, name, defaultValue)
 }
 
-var P_Kv3GetMemberString = func(kv uintptr, name string, defaultValue string) string {
+var _Kv3GetMemberString = func(kv uintptr, name string, defaultValue string) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__kv := C.uintptr_t(kv)
@@ -2492,10 +2492,10 @@ var P_Kv3GetMemberString = func(kv uintptr, name string, defaultValue string) st
 //
 //  @return String value or defaultValue
 func Kv3GetMemberString(kv uintptr, name string, defaultValue string) string {
-	return P_Kv3GetMemberString(kv, name, defaultValue)
+	return _Kv3GetMemberString(kv, name, defaultValue)
 }
 
-var P_Kv3GetMemberColor = func(kv uintptr, name string, defaultValue plugify.Vector4) plugify.Vector4 {
+var _Kv3GetMemberColor = func(kv uintptr, name string, defaultValue plugify.Vector4) plugify.Vector4 {
 	var __retVal plugify.Vector4
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -2522,10 +2522,10 @@ var P_Kv3GetMemberColor = func(kv uintptr, name string, defaultValue plugify.Vec
 //
 //  @return Color value as vec4 or defaultValue
 func Kv3GetMemberColor(kv uintptr, name string, defaultValue plugify.Vector4) plugify.Vector4 {
-	return P_Kv3GetMemberColor(kv, name, defaultValue)
+	return _Kv3GetMemberColor(kv, name, defaultValue)
 }
 
-var P_Kv3GetMemberVector = func(kv uintptr, name string, defaultValue plugify.Vector3) plugify.Vector3 {
+var _Kv3GetMemberVector = func(kv uintptr, name string, defaultValue plugify.Vector3) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -2552,10 +2552,10 @@ var P_Kv3GetMemberVector = func(kv uintptr, name string, defaultValue plugify.Ve
 //
 //  @return 3D vector or defaultValue
 func Kv3GetMemberVector(kv uintptr, name string, defaultValue plugify.Vector3) plugify.Vector3 {
-	return P_Kv3GetMemberVector(kv, name, defaultValue)
+	return _Kv3GetMemberVector(kv, name, defaultValue)
 }
 
-var P_Kv3GetMemberVector2D = func(kv uintptr, name string, defaultValue plugify.Vector2) plugify.Vector2 {
+var _Kv3GetMemberVector2D = func(kv uintptr, name string, defaultValue plugify.Vector2) plugify.Vector2 {
 	var __retVal plugify.Vector2
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -2582,10 +2582,10 @@ var P_Kv3GetMemberVector2D = func(kv uintptr, name string, defaultValue plugify.
 //
 //  @return 2D vector or defaultValue
 func Kv3GetMemberVector2D(kv uintptr, name string, defaultValue plugify.Vector2) plugify.Vector2 {
-	return P_Kv3GetMemberVector2D(kv, name, defaultValue)
+	return _Kv3GetMemberVector2D(kv, name, defaultValue)
 }
 
-var P_Kv3GetMemberVector4D = func(kv uintptr, name string, defaultValue plugify.Vector4) plugify.Vector4 {
+var _Kv3GetMemberVector4D = func(kv uintptr, name string, defaultValue plugify.Vector4) plugify.Vector4 {
 	var __retVal plugify.Vector4
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -2612,10 +2612,10 @@ var P_Kv3GetMemberVector4D = func(kv uintptr, name string, defaultValue plugify.
 //
 //  @return 4D vector or defaultValue
 func Kv3GetMemberVector4D(kv uintptr, name string, defaultValue plugify.Vector4) plugify.Vector4 {
-	return P_Kv3GetMemberVector4D(kv, name, defaultValue)
+	return _Kv3GetMemberVector4D(kv, name, defaultValue)
 }
 
-var P_Kv3GetMemberQuaternion = func(kv uintptr, name string, defaultValue plugify.Vector4) plugify.Vector4 {
+var _Kv3GetMemberQuaternion = func(kv uintptr, name string, defaultValue plugify.Vector4) plugify.Vector4 {
 	var __retVal plugify.Vector4
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -2642,10 +2642,10 @@ var P_Kv3GetMemberQuaternion = func(kv uintptr, name string, defaultValue plugif
 //
 //  @return Quaternion as vec4 or defaultValue
 func Kv3GetMemberQuaternion(kv uintptr, name string, defaultValue plugify.Vector4) plugify.Vector4 {
-	return P_Kv3GetMemberQuaternion(kv, name, defaultValue)
+	return _Kv3GetMemberQuaternion(kv, name, defaultValue)
 }
 
-var P_Kv3GetMemberQAngle = func(kv uintptr, name string, defaultValue plugify.Vector3) plugify.Vector3 {
+var _Kv3GetMemberQAngle = func(kv uintptr, name string, defaultValue plugify.Vector3) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -2672,10 +2672,10 @@ var P_Kv3GetMemberQAngle = func(kv uintptr, name string, defaultValue plugify.Ve
 //
 //  @return QAngle as vec3 or defaultValue
 func Kv3GetMemberQAngle(kv uintptr, name string, defaultValue plugify.Vector3) plugify.Vector3 {
-	return P_Kv3GetMemberQAngle(kv, name, defaultValue)
+	return _Kv3GetMemberQAngle(kv, name, defaultValue)
 }
 
-var P_Kv3GetMemberMatrix3x4 = func(kv uintptr, name string, defaultValue plugify.Matrix4x4) plugify.Matrix4x4 {
+var _Kv3GetMemberMatrix3x4 = func(kv uintptr, name string, defaultValue plugify.Matrix4x4) plugify.Matrix4x4 {
 	var __retVal plugify.Matrix4x4
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
@@ -2702,10 +2702,10 @@ var P_Kv3GetMemberMatrix3x4 = func(kv uintptr, name string, defaultValue plugify
 //
 //  @return 3x4 matrix as mat4x4 or defaultValue
 func Kv3GetMemberMatrix3x4(kv uintptr, name string, defaultValue plugify.Matrix4x4) plugify.Matrix4x4 {
-	return P_Kv3GetMemberMatrix3x4(kv, name, defaultValue)
+	return _Kv3GetMemberMatrix3x4(kv, name, defaultValue)
 }
 
-var P_Kv3SetMemberToNull = func(kv uintptr, name string) {
+var _Kv3SetMemberToNull = func(kv uintptr, name string) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	plugify.Block {
@@ -2725,10 +2725,10 @@ var P_Kv3SetMemberToNull = func(kv uintptr, name string) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param name: Name of the member
 func Kv3SetMemberToNull(kv uintptr, name string) {
-	P_Kv3SetMemberToNull(kv, name)
+	_Kv3SetMemberToNull(kv, name)
 }
 
-var P_Kv3SetMemberToEmptyArray = func(kv uintptr, name string) {
+var _Kv3SetMemberToEmptyArray = func(kv uintptr, name string) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	plugify.Block {
@@ -2748,10 +2748,10 @@ var P_Kv3SetMemberToEmptyArray = func(kv uintptr, name string) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param name: Name of the member
 func Kv3SetMemberToEmptyArray(kv uintptr, name string) {
-	P_Kv3SetMemberToEmptyArray(kv, name)
+	_Kv3SetMemberToEmptyArray(kv, name)
 }
 
-var P_Kv3SetMemberToEmptyTable = func(kv uintptr, name string) {
+var _Kv3SetMemberToEmptyTable = func(kv uintptr, name string) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	plugify.Block {
@@ -2771,10 +2771,10 @@ var P_Kv3SetMemberToEmptyTable = func(kv uintptr, name string) {
 //  @param kv: Pointer to the KeyValues3 object
 //  @param name: Name of the member
 func Kv3SetMemberToEmptyTable(kv uintptr, name string) {
-	P_Kv3SetMemberToEmptyTable(kv, name)
+	_Kv3SetMemberToEmptyTable(kv, name)
 }
 
-var P_Kv3SetMemberToBinaryBlob = func(kv uintptr, name string, blob []uint8) {
+var _Kv3SetMemberToBinaryBlob = func(kv uintptr, name string, blob []uint8) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__blob := plugify.ConstructVectorUInt8(blob)
@@ -2797,10 +2797,10 @@ var P_Kv3SetMemberToBinaryBlob = func(kv uintptr, name string, blob []uint8) {
 //  @param name: Name of the member
 //  @param blob: Vector containing the binary blob data
 func Kv3SetMemberToBinaryBlob(kv uintptr, name string, blob []uint8) {
-	P_Kv3SetMemberToBinaryBlob(kv, name, blob)
+	_Kv3SetMemberToBinaryBlob(kv, name, blob)
 }
 
-var P_Kv3SetMemberToBinaryBlobExternal = func(kv uintptr, name string, blob []uint8, free_mem bool) {
+var _Kv3SetMemberToBinaryBlobExternal = func(kv uintptr, name string, blob []uint8, free_mem bool) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__blob := plugify.ConstructVectorUInt8(blob)
@@ -2825,10 +2825,10 @@ var P_Kv3SetMemberToBinaryBlobExternal = func(kv uintptr, name string, blob []ui
 //  @param blob: Vector containing the external binary blob data
 //  @param free_mem: Whether to free the memory when the object is destroyed
 func Kv3SetMemberToBinaryBlobExternal(kv uintptr, name string, blob []uint8, free_mem bool) {
-	P_Kv3SetMemberToBinaryBlobExternal(kv, name, blob, free_mem)
+	_Kv3SetMemberToBinaryBlobExternal(kv, name, blob, free_mem)
 }
 
-var P_Kv3SetMemberToCopyOfValue = func(kv uintptr, name string, other uintptr) {
+var _Kv3SetMemberToCopyOfValue = func(kv uintptr, name string, other uintptr) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__other := C.uintptr_t(other)
@@ -2850,10 +2850,10 @@ var P_Kv3SetMemberToCopyOfValue = func(kv uintptr, name string, other uintptr) {
 //  @param name: Name of the member
 //  @param other: Pointer to the KeyValues3 object to copy
 func Kv3SetMemberToCopyOfValue(kv uintptr, name string, other uintptr) {
-	P_Kv3SetMemberToCopyOfValue(kv, name, other)
+	_Kv3SetMemberToCopyOfValue(kv, name, other)
 }
 
-var P_Kv3SetMemberBool = func(kv uintptr, name string, value bool) {
+var _Kv3SetMemberBool = func(kv uintptr, name string, value bool) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__value := C.bool(value)
@@ -2875,10 +2875,10 @@ var P_Kv3SetMemberBool = func(kv uintptr, name string, value bool) {
 //  @param name: Name of the member
 //  @param value: Boolean value to set
 func Kv3SetMemberBool(kv uintptr, name string, value bool) {
-	P_Kv3SetMemberBool(kv, name, value)
+	_Kv3SetMemberBool(kv, name, value)
 }
 
-var P_Kv3SetMemberChar = func(kv uintptr, name string, value int8) {
+var _Kv3SetMemberChar = func(kv uintptr, name string, value int8) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__value := C.int8_t(value)
@@ -2900,10 +2900,10 @@ var P_Kv3SetMemberChar = func(kv uintptr, name string, value int8) {
 //  @param name: Name of the member
 //  @param value: Char value to set
 func Kv3SetMemberChar(kv uintptr, name string, value int8) {
-	P_Kv3SetMemberChar(kv, name, value)
+	_Kv3SetMemberChar(kv, name, value)
 }
 
-var P_Kv3SetMemberUChar32 = func(kv uintptr, name string, value uint32) {
+var _Kv3SetMemberUChar32 = func(kv uintptr, name string, value uint32) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__value := C.uint32_t(value)
@@ -2925,10 +2925,10 @@ var P_Kv3SetMemberUChar32 = func(kv uintptr, name string, value uint32) {
 //  @param name: Name of the member
 //  @param value: 32-bit Unicode character value to set
 func Kv3SetMemberUChar32(kv uintptr, name string, value uint32) {
-	P_Kv3SetMemberUChar32(kv, name, value)
+	_Kv3SetMemberUChar32(kv, name, value)
 }
 
-var P_Kv3SetMemberInt8 = func(kv uintptr, name string, value int8) {
+var _Kv3SetMemberInt8 = func(kv uintptr, name string, value int8) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__value := C.int8_t(value)
@@ -2950,10 +2950,10 @@ var P_Kv3SetMemberInt8 = func(kv uintptr, name string, value int8) {
 //  @param name: Name of the member
 //  @param value: int8_t value to set
 func Kv3SetMemberInt8(kv uintptr, name string, value int8) {
-	P_Kv3SetMemberInt8(kv, name, value)
+	_Kv3SetMemberInt8(kv, name, value)
 }
 
-var P_Kv3SetMemberUInt8 = func(kv uintptr, name string, value uint8) {
+var _Kv3SetMemberUInt8 = func(kv uintptr, name string, value uint8) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__value := C.uint8_t(value)
@@ -2975,10 +2975,10 @@ var P_Kv3SetMemberUInt8 = func(kv uintptr, name string, value uint8) {
 //  @param name: Name of the member
 //  @param value: uint8_t value to set
 func Kv3SetMemberUInt8(kv uintptr, name string, value uint8) {
-	P_Kv3SetMemberUInt8(kv, name, value)
+	_Kv3SetMemberUInt8(kv, name, value)
 }
 
-var P_Kv3SetMemberShort = func(kv uintptr, name string, value int16) {
+var _Kv3SetMemberShort = func(kv uintptr, name string, value int16) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__value := C.int16_t(value)
@@ -3000,10 +3000,10 @@ var P_Kv3SetMemberShort = func(kv uintptr, name string, value int16) {
 //  @param name: Name of the member
 //  @param value: int16_t value to set
 func Kv3SetMemberShort(kv uintptr, name string, value int16) {
-	P_Kv3SetMemberShort(kv, name, value)
+	_Kv3SetMemberShort(kv, name, value)
 }
 
-var P_Kv3SetMemberUShort = func(kv uintptr, name string, value uint16) {
+var _Kv3SetMemberUShort = func(kv uintptr, name string, value uint16) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__value := C.uint16_t(value)
@@ -3025,10 +3025,10 @@ var P_Kv3SetMemberUShort = func(kv uintptr, name string, value uint16) {
 //  @param name: Name of the member
 //  @param value: uint16_t value to set
 func Kv3SetMemberUShort(kv uintptr, name string, value uint16) {
-	P_Kv3SetMemberUShort(kv, name, value)
+	_Kv3SetMemberUShort(kv, name, value)
 }
 
-var P_Kv3SetMemberInt = func(kv uintptr, name string, value int32) {
+var _Kv3SetMemberInt = func(kv uintptr, name string, value int32) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__value := C.int32_t(value)
@@ -3050,10 +3050,10 @@ var P_Kv3SetMemberInt = func(kv uintptr, name string, value int32) {
 //  @param name: Name of the member
 //  @param value: int32_t value to set
 func Kv3SetMemberInt(kv uintptr, name string, value int32) {
-	P_Kv3SetMemberInt(kv, name, value)
+	_Kv3SetMemberInt(kv, name, value)
 }
 
-var P_Kv3SetMemberUInt = func(kv uintptr, name string, value uint32) {
+var _Kv3SetMemberUInt = func(kv uintptr, name string, value uint32) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__value := C.uint32_t(value)
@@ -3075,10 +3075,10 @@ var P_Kv3SetMemberUInt = func(kv uintptr, name string, value uint32) {
 //  @param name: Name of the member
 //  @param value: uint32_t value to set
 func Kv3SetMemberUInt(kv uintptr, name string, value uint32) {
-	P_Kv3SetMemberUInt(kv, name, value)
+	_Kv3SetMemberUInt(kv, name, value)
 }
 
-var P_Kv3SetMemberInt64 = func(kv uintptr, name string, value int64) {
+var _Kv3SetMemberInt64 = func(kv uintptr, name string, value int64) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__value := C.int64_t(value)
@@ -3100,10 +3100,10 @@ var P_Kv3SetMemberInt64 = func(kv uintptr, name string, value int64) {
 //  @param name: Name of the member
 //  @param value: int64_t value to set
 func Kv3SetMemberInt64(kv uintptr, name string, value int64) {
-	P_Kv3SetMemberInt64(kv, name, value)
+	_Kv3SetMemberInt64(kv, name, value)
 }
 
-var P_Kv3SetMemberUInt64 = func(kv uintptr, name string, value uint64) {
+var _Kv3SetMemberUInt64 = func(kv uintptr, name string, value uint64) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__value := C.uint64_t(value)
@@ -3125,10 +3125,10 @@ var P_Kv3SetMemberUInt64 = func(kv uintptr, name string, value uint64) {
 //  @param name: Name of the member
 //  @param value: uint64_t value to set
 func Kv3SetMemberUInt64(kv uintptr, name string, value uint64) {
-	P_Kv3SetMemberUInt64(kv, name, value)
+	_Kv3SetMemberUInt64(kv, name, value)
 }
 
-var P_Kv3SetMemberFloat = func(kv uintptr, name string, value float32) {
+var _Kv3SetMemberFloat = func(kv uintptr, name string, value float32) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__value := C.float(value)
@@ -3150,10 +3150,10 @@ var P_Kv3SetMemberFloat = func(kv uintptr, name string, value float32) {
 //  @param name: Name of the member
 //  @param value: Float value to set
 func Kv3SetMemberFloat(kv uintptr, name string, value float32) {
-	P_Kv3SetMemberFloat(kv, name, value)
+	_Kv3SetMemberFloat(kv, name, value)
 }
 
-var P_Kv3SetMemberDouble = func(kv uintptr, name string, value float64) {
+var _Kv3SetMemberDouble = func(kv uintptr, name string, value float64) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__value := C.double(value)
@@ -3175,10 +3175,10 @@ var P_Kv3SetMemberDouble = func(kv uintptr, name string, value float64) {
 //  @param name: Name of the member
 //  @param value: Double value to set
 func Kv3SetMemberDouble(kv uintptr, name string, value float64) {
-	P_Kv3SetMemberDouble(kv, name, value)
+	_Kv3SetMemberDouble(kv, name, value)
 }
 
-var P_Kv3SetMemberPointer = func(kv uintptr, name string, ptr uintptr) {
+var _Kv3SetMemberPointer = func(kv uintptr, name string, ptr uintptr) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__ptr := C.uintptr_t(ptr)
@@ -3200,10 +3200,10 @@ var P_Kv3SetMemberPointer = func(kv uintptr, name string, ptr uintptr) {
 //  @param name: Name of the member
 //  @param ptr: Pointer value as uintptr_t to set
 func Kv3SetMemberPointer(kv uintptr, name string, ptr uintptr) {
-	P_Kv3SetMemberPointer(kv, name, ptr)
+	_Kv3SetMemberPointer(kv, name, ptr)
 }
 
-var P_Kv3SetMemberStringToken = func(kv uintptr, name string, token uint32) {
+var _Kv3SetMemberStringToken = func(kv uintptr, name string, token uint32) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__token := C.uint32_t(token)
@@ -3225,10 +3225,10 @@ var P_Kv3SetMemberStringToken = func(kv uintptr, name string, token uint32) {
 //  @param name: Name of the member
 //  @param token: String token hash code to set
 func Kv3SetMemberStringToken(kv uintptr, name string, token uint32) {
-	P_Kv3SetMemberStringToken(kv, name, token)
+	_Kv3SetMemberStringToken(kv, name, token)
 }
 
-var P_Kv3SetMemberEHandle = func(kv uintptr, name string, ehandle int32) {
+var _Kv3SetMemberEHandle = func(kv uintptr, name string, ehandle int32) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__ehandle := C.int32_t(ehandle)
@@ -3250,10 +3250,10 @@ var P_Kv3SetMemberEHandle = func(kv uintptr, name string, ehandle int32) {
 //  @param name: Name of the member
 //  @param ehandle: Entity handle value to set
 func Kv3SetMemberEHandle(kv uintptr, name string, ehandle int32) {
-	P_Kv3SetMemberEHandle(kv, name, ehandle)
+	_Kv3SetMemberEHandle(kv, name, ehandle)
 }
 
-var P_Kv3SetMemberString = func(kv uintptr, name string, str string, subtype uint8) {
+var _Kv3SetMemberString = func(kv uintptr, name string, str string, subtype uint8) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__str := plugify.ConstructString(str)
@@ -3278,10 +3278,10 @@ var P_Kv3SetMemberString = func(kv uintptr, name string, str string, subtype uin
 //  @param str: String value to set
 //  @param subtype: String subtype enumeration value
 func Kv3SetMemberString(kv uintptr, name string, str string, subtype uint8) {
-	P_Kv3SetMemberString(kv, name, str, subtype)
+	_Kv3SetMemberString(kv, name, str, subtype)
 }
 
-var P_Kv3SetMemberStringExternal = func(kv uintptr, name string, str string, subtype uint8) {
+var _Kv3SetMemberStringExternal = func(kv uintptr, name string, str string, subtype uint8) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__str := plugify.ConstructString(str)
@@ -3306,10 +3306,10 @@ var P_Kv3SetMemberStringExternal = func(kv uintptr, name string, str string, sub
 //  @param str: External string value to reference
 //  @param subtype: String subtype enumeration value
 func Kv3SetMemberStringExternal(kv uintptr, name string, str string, subtype uint8) {
-	P_Kv3SetMemberStringExternal(kv, name, str, subtype)
+	_Kv3SetMemberStringExternal(kv, name, str, subtype)
 }
 
-var P_Kv3SetMemberColor = func(kv uintptr, name string, color plugify.Vector4) {
+var _Kv3SetMemberColor = func(kv uintptr, name string, color plugify.Vector4) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__color := *(*C.Vector4)(unsafe.Pointer(&color))
@@ -3331,10 +3331,10 @@ var P_Kv3SetMemberColor = func(kv uintptr, name string, color plugify.Vector4) {
 //  @param name: Name of the member
 //  @param color: Color value as vec4 to set
 func Kv3SetMemberColor(kv uintptr, name string, color plugify.Vector4) {
-	P_Kv3SetMemberColor(kv, name, color)
+	_Kv3SetMemberColor(kv, name, color)
 }
 
-var P_Kv3SetMemberVector = func(kv uintptr, name string, vec plugify.Vector3) {
+var _Kv3SetMemberVector = func(kv uintptr, name string, vec plugify.Vector3) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__vec := *(*C.Vector3)(unsafe.Pointer(&vec))
@@ -3356,10 +3356,10 @@ var P_Kv3SetMemberVector = func(kv uintptr, name string, vec plugify.Vector3) {
 //  @param name: Name of the member
 //  @param vec: 3D vector to set
 func Kv3SetMemberVector(kv uintptr, name string, vec plugify.Vector3) {
-	P_Kv3SetMemberVector(kv, name, vec)
+	_Kv3SetMemberVector(kv, name, vec)
 }
 
-var P_Kv3SetMemberVector2D = func(kv uintptr, name string, vec2d plugify.Vector2) {
+var _Kv3SetMemberVector2D = func(kv uintptr, name string, vec2d plugify.Vector2) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__vec2d := *(*C.Vector2)(unsafe.Pointer(&vec2d))
@@ -3381,10 +3381,10 @@ var P_Kv3SetMemberVector2D = func(kv uintptr, name string, vec2d plugify.Vector2
 //  @param name: Name of the member
 //  @param vec2d: 2D vector to set
 func Kv3SetMemberVector2D(kv uintptr, name string, vec2d plugify.Vector2) {
-	P_Kv3SetMemberVector2D(kv, name, vec2d)
+	_Kv3SetMemberVector2D(kv, name, vec2d)
 }
 
-var P_Kv3SetMemberVector4D = func(kv uintptr, name string, vec4d plugify.Vector4) {
+var _Kv3SetMemberVector4D = func(kv uintptr, name string, vec4d plugify.Vector4) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__vec4d := *(*C.Vector4)(unsafe.Pointer(&vec4d))
@@ -3406,10 +3406,10 @@ var P_Kv3SetMemberVector4D = func(kv uintptr, name string, vec4d plugify.Vector4
 //  @param name: Name of the member
 //  @param vec4d: 4D vector to set
 func Kv3SetMemberVector4D(kv uintptr, name string, vec4d plugify.Vector4) {
-	P_Kv3SetMemberVector4D(kv, name, vec4d)
+	_Kv3SetMemberVector4D(kv, name, vec4d)
 }
 
-var P_Kv3SetMemberQuaternion = func(kv uintptr, name string, quat plugify.Vector4) {
+var _Kv3SetMemberQuaternion = func(kv uintptr, name string, quat plugify.Vector4) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__quat := *(*C.Vector4)(unsafe.Pointer(&quat))
@@ -3431,10 +3431,10 @@ var P_Kv3SetMemberQuaternion = func(kv uintptr, name string, quat plugify.Vector
 //  @param name: Name of the member
 //  @param quat: Quaternion to set (as vec4)
 func Kv3SetMemberQuaternion(kv uintptr, name string, quat plugify.Vector4) {
-	P_Kv3SetMemberQuaternion(kv, name, quat)
+	_Kv3SetMemberQuaternion(kv, name, quat)
 }
 
-var P_Kv3SetMemberQAngle = func(kv uintptr, name string, ang plugify.Vector3) {
+var _Kv3SetMemberQAngle = func(kv uintptr, name string, ang plugify.Vector3) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__ang := *(*C.Vector3)(unsafe.Pointer(&ang))
@@ -3456,10 +3456,10 @@ var P_Kv3SetMemberQAngle = func(kv uintptr, name string, ang plugify.Vector3) {
 //  @param name: Name of the member
 //  @param ang: QAngle to set (as vec3)
 func Kv3SetMemberQAngle(kv uintptr, name string, ang plugify.Vector3) {
-	P_Kv3SetMemberQAngle(kv, name, ang)
+	_Kv3SetMemberQAngle(kv, name, ang)
 }
 
-var P_Kv3SetMemberMatrix3x4 = func(kv uintptr, name string, matrix plugify.Matrix4x4) {
+var _Kv3SetMemberMatrix3x4 = func(kv uintptr, name string, matrix plugify.Matrix4x4) {
 	__kv := C.uintptr_t(kv)
 	__name := plugify.ConstructString(name)
 	__matrix := *(*C.Matrix4x4)(unsafe.Pointer(&matrix))
@@ -3481,10 +3481,10 @@ var P_Kv3SetMemberMatrix3x4 = func(kv uintptr, name string, matrix plugify.Matri
 //  @param name: Name of the member
 //  @param matrix: 3x4 matrix to set (as mat4x4)
 func Kv3SetMemberMatrix3x4(kv uintptr, name string, matrix plugify.Matrix4x4) {
-	P_Kv3SetMemberMatrix3x4(kv, name, matrix)
+	_Kv3SetMemberMatrix3x4(kv, name, matrix)
 }
 
-var P_Kv3DebugPrint = func(kv uintptr) {
+var _Kv3DebugPrint = func(kv uintptr) {
 	__kv := C.uintptr_t(kv)
 	C.Kv3DebugPrint(__kv)
 }
@@ -3494,10 +3494,10 @@ var P_Kv3DebugPrint = func(kv uintptr) {
 //
 //  @param kv: Pointer to the KeyValues3 object
 func Kv3DebugPrint(kv uintptr) {
-	P_Kv3DebugPrint(kv)
+	_Kv3DebugPrint(kv)
 }
 
-var P_Kv3LoadFromBuffer = func(context uintptr, error_ *string, input []uint8, kv_name string, flags uint32) bool {
+var _Kv3LoadFromBuffer = func(context uintptr, error_ *string, input []uint8, kv_name string, flags uint32) bool {
 	var __retVal bool
 	__context := C.uintptr_t(context)
 	__error_ := plugify.ConstructString(*error_)
@@ -3531,10 +3531,10 @@ var P_Kv3LoadFromBuffer = func(context uintptr, error_ *string, input []uint8, k
 //
 //  @return true if successful, false otherwise
 func Kv3LoadFromBuffer(context uintptr, error_ *string, input []uint8, kv_name string, flags uint32) bool {
-	return P_Kv3LoadFromBuffer(context, error_, input, kv_name, flags)
+	return _Kv3LoadFromBuffer(context, error_, input, kv_name, flags)
 }
 
-var P_Kv3Load = func(kv uintptr, error_ *string, input []uint8, kv_name string, flags uint32) bool {
+var _Kv3Load = func(kv uintptr, error_ *string, input []uint8, kv_name string, flags uint32) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__error_ := plugify.ConstructString(*error_)
@@ -3568,10 +3568,10 @@ var P_Kv3Load = func(kv uintptr, error_ *string, input []uint8, kv_name string, 
 //
 //  @return true if successful, false otherwise
 func Kv3Load(kv uintptr, error_ *string, input []uint8, kv_name string, flags uint32) bool {
-	return P_Kv3Load(kv, error_, input, kv_name, flags)
+	return _Kv3Load(kv, error_, input, kv_name, flags)
 }
 
-var P_Kv3LoadFromText = func(kv uintptr, error_ *string, input string, kv_name string, flags uint32) bool {
+var _Kv3LoadFromText = func(kv uintptr, error_ *string, input string, kv_name string, flags uint32) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__error_ := plugify.ConstructString(*error_)
@@ -3605,10 +3605,10 @@ var P_Kv3LoadFromText = func(kv uintptr, error_ *string, input string, kv_name s
 //
 //  @return true if successful, false otherwise
 func Kv3LoadFromText(kv uintptr, error_ *string, input string, kv_name string, flags uint32) bool {
-	return P_Kv3LoadFromText(kv, error_, input, kv_name, flags)
+	return _Kv3LoadFromText(kv, error_, input, kv_name, flags)
 }
 
-var P_Kv3LoadFromFileToContext = func(context uintptr, error_ *string, filename string, path string, flags uint32) bool {
+var _Kv3LoadFromFileToContext = func(context uintptr, error_ *string, filename string, path string, flags uint32) bool {
 	var __retVal bool
 	__context := C.uintptr_t(context)
 	__error_ := plugify.ConstructString(*error_)
@@ -3642,10 +3642,10 @@ var P_Kv3LoadFromFileToContext = func(context uintptr, error_ *string, filename 
 //
 //  @return true if successful, false otherwise
 func Kv3LoadFromFileToContext(context uintptr, error_ *string, filename string, path string, flags uint32) bool {
-	return P_Kv3LoadFromFileToContext(context, error_, filename, path, flags)
+	return _Kv3LoadFromFileToContext(context, error_, filename, path, flags)
 }
 
-var P_Kv3LoadFromFile = func(kv uintptr, error_ *string, filename string, path string, flags uint32) bool {
+var _Kv3LoadFromFile = func(kv uintptr, error_ *string, filename string, path string, flags uint32) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__error_ := plugify.ConstructString(*error_)
@@ -3679,10 +3679,10 @@ var P_Kv3LoadFromFile = func(kv uintptr, error_ *string, filename string, path s
 //
 //  @return true if successful, false otherwise
 func Kv3LoadFromFile(kv uintptr, error_ *string, filename string, path string, flags uint32) bool {
-	return P_Kv3LoadFromFile(kv, error_, filename, path, flags)
+	return _Kv3LoadFromFile(kv, error_, filename, path, flags)
 }
 
-var P_Kv3LoadFromJSON = func(kv uintptr, error_ *string, input string, kv_name string, flags uint32) bool {
+var _Kv3LoadFromJSON = func(kv uintptr, error_ *string, input string, kv_name string, flags uint32) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__error_ := plugify.ConstructString(*error_)
@@ -3716,10 +3716,10 @@ var P_Kv3LoadFromJSON = func(kv uintptr, error_ *string, input string, kv_name s
 //
 //  @return true if successful, false otherwise
 func Kv3LoadFromJSON(kv uintptr, error_ *string, input string, kv_name string, flags uint32) bool {
-	return P_Kv3LoadFromJSON(kv, error_, input, kv_name, flags)
+	return _Kv3LoadFromJSON(kv, error_, input, kv_name, flags)
 }
 
-var P_Kv3LoadFromJSONFile = func(kv uintptr, error_ *string, path string, filename string, flags uint32) bool {
+var _Kv3LoadFromJSONFile = func(kv uintptr, error_ *string, path string, filename string, flags uint32) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__error_ := plugify.ConstructString(*error_)
@@ -3753,10 +3753,10 @@ var P_Kv3LoadFromJSONFile = func(kv uintptr, error_ *string, path string, filena
 //
 //  @return true if successful, false otherwise
 func Kv3LoadFromJSONFile(kv uintptr, error_ *string, path string, filename string, flags uint32) bool {
-	return P_Kv3LoadFromJSONFile(kv, error_, path, filename, flags)
+	return _Kv3LoadFromJSONFile(kv, error_, path, filename, flags)
 }
 
-var P_Kv3LoadFromKV1File = func(kv uintptr, error_ *string, path string, filename string, esc_behavior uint8, flags uint32) bool {
+var _Kv3LoadFromKV1File = func(kv uintptr, error_ *string, path string, filename string, esc_behavior uint8, flags uint32) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__error_ := plugify.ConstructString(*error_)
@@ -3792,10 +3792,10 @@ var P_Kv3LoadFromKV1File = func(kv uintptr, error_ *string, path string, filenam
 //
 //  @return true if successful, false otherwise
 func Kv3LoadFromKV1File(kv uintptr, error_ *string, path string, filename string, esc_behavior uint8, flags uint32) bool {
-	return P_Kv3LoadFromKV1File(kv, error_, path, filename, esc_behavior, flags)
+	return _Kv3LoadFromKV1File(kv, error_, path, filename, esc_behavior, flags)
 }
 
-var P_Kv3LoadFromKV1Text = func(kv uintptr, error_ *string, input string, esc_behavior uint8, kv_name string, unk bool, flags uint32) bool {
+var _Kv3LoadFromKV1Text = func(kv uintptr, error_ *string, input string, esc_behavior uint8, kv_name string, unk bool, flags uint32) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__error_ := plugify.ConstructString(*error_)
@@ -3833,10 +3833,10 @@ var P_Kv3LoadFromKV1Text = func(kv uintptr, error_ *string, input string, esc_be
 //
 //  @return true if successful, false otherwise
 func Kv3LoadFromKV1Text(kv uintptr, error_ *string, input string, esc_behavior uint8, kv_name string, unk bool, flags uint32) bool {
-	return P_Kv3LoadFromKV1Text(kv, error_, input, esc_behavior, kv_name, unk, flags)
+	return _Kv3LoadFromKV1Text(kv, error_, input, esc_behavior, kv_name, unk, flags)
 }
 
-var P_Kv3LoadFromKV1TextTranslated = func(kv uintptr, error_ *string, input string, esc_behavior uint8, translation uintptr, unk1 int32, kv_name string, unk2 bool, flags uint32) bool {
+var _Kv3LoadFromKV1TextTranslated = func(kv uintptr, error_ *string, input string, esc_behavior uint8, translation uintptr, unk1 int32, kv_name string, unk2 bool, flags uint32) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__error_ := plugify.ConstructString(*error_)
@@ -3878,10 +3878,10 @@ var P_Kv3LoadFromKV1TextTranslated = func(kv uintptr, error_ *string, input stri
 //
 //  @return true if successful, false otherwise
 func Kv3LoadFromKV1TextTranslated(kv uintptr, error_ *string, input string, esc_behavior uint8, translation uintptr, unk1 int32, kv_name string, unk2 bool, flags uint32) bool {
-	return P_Kv3LoadFromKV1TextTranslated(kv, error_, input, esc_behavior, translation, unk1, kv_name, unk2, flags)
+	return _Kv3LoadFromKV1TextTranslated(kv, error_, input, esc_behavior, translation, unk1, kv_name, unk2, flags)
 }
 
-var P_Kv3LoadFromKV3OrKV1 = func(kv uintptr, error_ *string, input []uint8, kv_name string, flags uint32) bool {
+var _Kv3LoadFromKV3OrKV1 = func(kv uintptr, error_ *string, input []uint8, kv_name string, flags uint32) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__error_ := plugify.ConstructString(*error_)
@@ -3915,10 +3915,10 @@ var P_Kv3LoadFromKV3OrKV1 = func(kv uintptr, error_ *string, input []uint8, kv_n
 //
 //  @return true if successful, false otherwise
 func Kv3LoadFromKV3OrKV1(kv uintptr, error_ *string, input []uint8, kv_name string, flags uint32) bool {
-	return P_Kv3LoadFromKV3OrKV1(kv, error_, input, kv_name, flags)
+	return _Kv3LoadFromKV3OrKV1(kv, error_, input, kv_name, flags)
 }
 
-var P_Kv3LoadFromOldSchemaText = func(kv uintptr, error_ *string, input []uint8, kv_name string, flags uint32) bool {
+var _Kv3LoadFromOldSchemaText = func(kv uintptr, error_ *string, input []uint8, kv_name string, flags uint32) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__error_ := plugify.ConstructString(*error_)
@@ -3952,10 +3952,10 @@ var P_Kv3LoadFromOldSchemaText = func(kv uintptr, error_ *string, input []uint8,
 //
 //  @return true if successful, false otherwise
 func Kv3LoadFromOldSchemaText(kv uintptr, error_ *string, input []uint8, kv_name string, flags uint32) bool {
-	return P_Kv3LoadFromOldSchemaText(kv, error_, input, kv_name, flags)
+	return _Kv3LoadFromOldSchemaText(kv, error_, input, kv_name, flags)
 }
 
-var P_Kv3LoadTextNoHeader = func(kv uintptr, error_ *string, input string, kv_name string, flags uint32) bool {
+var _Kv3LoadTextNoHeader = func(kv uintptr, error_ *string, input string, kv_name string, flags uint32) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__error_ := plugify.ConstructString(*error_)
@@ -3989,10 +3989,10 @@ var P_Kv3LoadTextNoHeader = func(kv uintptr, error_ *string, input string, kv_na
 //
 //  @return true if successful, false otherwise
 func Kv3LoadTextNoHeader(kv uintptr, error_ *string, input string, kv_name string, flags uint32) bool {
-	return P_Kv3LoadTextNoHeader(kv, error_, input, kv_name, flags)
+	return _Kv3LoadTextNoHeader(kv, error_, input, kv_name, flags)
 }
 
-var P_Kv3Save = func(kv uintptr, error_ *string, output *[]uint8, flags uint32) bool {
+var _Kv3Save = func(kv uintptr, error_ *string, output *[]uint8, flags uint32) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__error_ := plugify.ConstructString(*error_)
@@ -4024,10 +4024,10 @@ var P_Kv3Save = func(kv uintptr, error_ *string, output *[]uint8, flags uint32) 
 //
 //  @return true if successful, false otherwise
 func Kv3Save(kv uintptr, error_ *string, output *[]uint8, flags uint32) bool {
-	return P_Kv3Save(kv, error_, output, flags)
+	return _Kv3Save(kv, error_, output, flags)
 }
 
-var P_Kv3SaveAsJSON = func(kv uintptr, error_ *string, output *[]uint8) bool {
+var _Kv3SaveAsJSON = func(kv uintptr, error_ *string, output *[]uint8) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__error_ := plugify.ConstructString(*error_)
@@ -4057,10 +4057,10 @@ var P_Kv3SaveAsJSON = func(kv uintptr, error_ *string, output *[]uint8) bool {
 //
 //  @return true if successful, false otherwise
 func Kv3SaveAsJSON(kv uintptr, error_ *string, output *[]uint8) bool {
-	return P_Kv3SaveAsJSON(kv, error_, output)
+	return _Kv3SaveAsJSON(kv, error_, output)
 }
 
-var P_Kv3SaveAsJSONString = func(kv uintptr, error_ *string, output *string) bool {
+var _Kv3SaveAsJSONString = func(kv uintptr, error_ *string, output *string) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__error_ := plugify.ConstructString(*error_)
@@ -4090,10 +4090,10 @@ var P_Kv3SaveAsJSONString = func(kv uintptr, error_ *string, output *string) boo
 //
 //  @return true if successful, false otherwise
 func Kv3SaveAsJSONString(kv uintptr, error_ *string, output *string) bool {
-	return P_Kv3SaveAsJSONString(kv, error_, output)
+	return _Kv3SaveAsJSONString(kv, error_, output)
 }
 
-var P_Kv3SaveAsKV1Text = func(kv uintptr, error_ *string, output *[]uint8, esc_behavior uint8) bool {
+var _Kv3SaveAsKV1Text = func(kv uintptr, error_ *string, output *[]uint8, esc_behavior uint8) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__error_ := plugify.ConstructString(*error_)
@@ -4125,10 +4125,10 @@ var P_Kv3SaveAsKV1Text = func(kv uintptr, error_ *string, output *[]uint8, esc_b
 //
 //  @return true if successful, false otherwise
 func Kv3SaveAsKV1Text(kv uintptr, error_ *string, output *[]uint8, esc_behavior uint8) bool {
-	return P_Kv3SaveAsKV1Text(kv, error_, output, esc_behavior)
+	return _Kv3SaveAsKV1Text(kv, error_, output, esc_behavior)
 }
 
-var P_Kv3SaveAsKV1TextTranslated = func(kv uintptr, error_ *string, output *[]uint8, esc_behavior uint8, translation uintptr, unk int32) bool {
+var _Kv3SaveAsKV1TextTranslated = func(kv uintptr, error_ *string, output *[]uint8, esc_behavior uint8, translation uintptr, unk int32) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__error_ := plugify.ConstructString(*error_)
@@ -4164,10 +4164,10 @@ var P_Kv3SaveAsKV1TextTranslated = func(kv uintptr, error_ *string, output *[]ui
 //
 //  @return true if successful, false otherwise
 func Kv3SaveAsKV1TextTranslated(kv uintptr, error_ *string, output *[]uint8, esc_behavior uint8, translation uintptr, unk int32) bool {
-	return P_Kv3SaveAsKV1TextTranslated(kv, error_, output, esc_behavior, translation, unk)
+	return _Kv3SaveAsKV1TextTranslated(kv, error_, output, esc_behavior, translation, unk)
 }
 
-var P_Kv3SaveTextNoHeaderToBuffer = func(kv uintptr, error_ *string, output *[]uint8, flags uint32) bool {
+var _Kv3SaveTextNoHeaderToBuffer = func(kv uintptr, error_ *string, output *[]uint8, flags uint32) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__error_ := plugify.ConstructString(*error_)
@@ -4199,10 +4199,10 @@ var P_Kv3SaveTextNoHeaderToBuffer = func(kv uintptr, error_ *string, output *[]u
 //
 //  @return true if successful, false otherwise
 func Kv3SaveTextNoHeaderToBuffer(kv uintptr, error_ *string, output *[]uint8, flags uint32) bool {
-	return P_Kv3SaveTextNoHeaderToBuffer(kv, error_, output, flags)
+	return _Kv3SaveTextNoHeaderToBuffer(kv, error_, output, flags)
 }
 
-var P_Kv3SaveTextNoHeader = func(kv uintptr, error_ *string, output *string, flags uint32) bool {
+var _Kv3SaveTextNoHeader = func(kv uintptr, error_ *string, output *string, flags uint32) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__error_ := plugify.ConstructString(*error_)
@@ -4234,10 +4234,10 @@ var P_Kv3SaveTextNoHeader = func(kv uintptr, error_ *string, output *string, fla
 //
 //  @return true if successful, false otherwise
 func Kv3SaveTextNoHeader(kv uintptr, error_ *string, output *string, flags uint32) bool {
-	return P_Kv3SaveTextNoHeader(kv, error_, output, flags)
+	return _Kv3SaveTextNoHeader(kv, error_, output, flags)
 }
 
-var P_Kv3SaveTextToString = func(kv uintptr, error_ *string, output *string, flags uint32) bool {
+var _Kv3SaveTextToString = func(kv uintptr, error_ *string, output *string, flags uint32) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__error_ := plugify.ConstructString(*error_)
@@ -4269,10 +4269,10 @@ var P_Kv3SaveTextToString = func(kv uintptr, error_ *string, output *string, fla
 //
 //  @return true if successful, false otherwise
 func Kv3SaveTextToString(kv uintptr, error_ *string, output *string, flags uint32) bool {
-	return P_Kv3SaveTextToString(kv, error_, output, flags)
+	return _Kv3SaveTextToString(kv, error_, output, flags)
 }
 
-var P_Kv3SaveToFile = func(kv uintptr, error_ *string, filename string, path string, flags uint32) bool {
+var _Kv3SaveToFile = func(kv uintptr, error_ *string, filename string, path string, flags uint32) bool {
 	var __retVal bool
 	__kv := C.uintptr_t(kv)
 	__error_ := plugify.ConstructString(*error_)
@@ -4306,7 +4306,7 @@ var P_Kv3SaveToFile = func(kv uintptr, error_ *string, filename string, path str
 //
 //  @return true if successful, false otherwise
 func Kv3SaveToFile(kv uintptr, error_ *string, filename string, path string, flags uint32) bool {
-	return P_Kv3SaveToFile(kv, error_, filename, path, flags)
+	return _Kv3SaveToFile(kv, error_, filename, path, flags)
 }
 
 var (

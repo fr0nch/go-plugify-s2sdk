@@ -31,7 +31,7 @@ var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: commands)
 
-var P_AddAdminCommand = func(name string, adminFlags int64, description string, flags ConVarFlag, callback ConCommandCallback, type_ HookMode) bool {
+var _AddAdminCommand = func(name string, adminFlags int64, description string, flags ConVarFlag, callback ConCommandCallback, type_ HookMode) bool {
 	var __retVal bool
 	__name := plugify.ConstructString(name)
 	__adminFlags := C.int64_t(adminFlags)
@@ -64,10 +64,10 @@ var P_AddAdminCommand = func(name string, adminFlags int64, description string, 
 //
 //  @return true if the command was successfully created; otherwise, false.
 func AddAdminCommand(name string, adminFlags int64, description string, flags ConVarFlag, callback ConCommandCallback, type_ HookMode) bool {
-	return P_AddAdminCommand(name, adminFlags, description, flags, callback, type_)
+	return _AddAdminCommand(name, adminFlags, description, flags, callback, type_)
 }
 
-var P_AddConsoleCommand = func(name string, description string, flags ConVarFlag, callback ConCommandCallback, type_ HookMode) bool {
+var _AddConsoleCommand = func(name string, description string, flags ConVarFlag, callback ConCommandCallback, type_ HookMode) bool {
 	var __retVal bool
 	__name := plugify.ConstructString(name)
 	__description := plugify.ConstructString(description)
@@ -98,10 +98,10 @@ var P_AddConsoleCommand = func(name string, description string, flags ConVarFlag
 //
 //  @return true if the command was successfully created; otherwise, false.
 func AddConsoleCommand(name string, description string, flags ConVarFlag, callback ConCommandCallback, type_ HookMode) bool {
-	return P_AddConsoleCommand(name, description, flags, callback, type_)
+	return _AddConsoleCommand(name, description, flags, callback, type_)
 }
 
-var P_RemoveCommand = func(name string, callback ConCommandCallback) bool {
+var _RemoveCommand = func(name string, callback ConCommandCallback) bool {
 	var __retVal bool
 	__name := plugify.ConstructString(name)
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
@@ -125,10 +125,10 @@ var P_RemoveCommand = func(name string, callback ConCommandCallback) bool {
 //
 //  @return true if the command was successfully removed; otherwise, false.
 func RemoveCommand(name string, callback ConCommandCallback) bool {
-	return P_RemoveCommand(name, callback)
+	return _RemoveCommand(name, callback)
 }
 
-var P_AddCommandListener = func(name string, callback ConCommandCallback, type_ HookMode) bool {
+var _AddCommandListener = func(name string, callback ConCommandCallback, type_ HookMode) bool {
 	var __retVal bool
 	__name := plugify.ConstructString(name)
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
@@ -154,10 +154,10 @@ var P_AddCommandListener = func(name string, callback ConCommandCallback, type_ 
 //
 //  @return Returns true if the callback was successfully added, false otherwise.
 func AddCommandListener(name string, callback ConCommandCallback, type_ HookMode) bool {
-	return P_AddCommandListener(name, callback, type_)
+	return _AddCommandListener(name, callback, type_)
 }
 
-var P_RemoveCommandListener = func(name string, callback ConCommandCallback, type_ HookMode) bool {
+var _RemoveCommandListener = func(name string, callback ConCommandCallback, type_ HookMode) bool {
 	var __retVal bool
 	__name := plugify.ConstructString(name)
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
@@ -183,10 +183,10 @@ var P_RemoveCommandListener = func(name string, callback ConCommandCallback, typ
 //
 //  @return Returns true if the callback was successfully removed, false otherwise.
 func RemoveCommandListener(name string, callback ConCommandCallback, type_ HookMode) bool {
-	return P_RemoveCommandListener(name, callback, type_)
+	return _RemoveCommandListener(name, callback, type_)
 }
 
-var P_ServerCommand = func(command string) {
+var _ServerCommand = func(command string) {
 	__command := plugify.ConstructString(command)
 	plugify.Block {
 		Try: func() {
@@ -204,10 +204,10 @@ var P_ServerCommand = func(command string) {
 //
 //  @param command: The command to execute on the server.
 func ServerCommand(command string) {
-	P_ServerCommand(command)
+	_ServerCommand(command)
 }
 
-var P_ServerCommandEx = func(command string) string {
+var _ServerCommandEx = func(command string) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__command := plugify.ConstructString(command)
@@ -234,10 +234,10 @@ var P_ServerCommandEx = func(command string) string {
 //
 //  @return String to store command result into.
 func ServerCommandEx(command string) string {
-	return P_ServerCommandEx(command)
+	return _ServerCommandEx(command)
 }
 
-var P_ClientCommand = func(playerSlot int32, command string) {
+var _ClientCommand = func(playerSlot int32, command string) {
 	__playerSlot := C.int32_t(playerSlot)
 	__command := plugify.ConstructString(command)
 	plugify.Block {
@@ -257,10 +257,10 @@ var P_ClientCommand = func(playerSlot int32, command string) {
 //  @param playerSlot: The index of the client executing the command.
 //  @param command: The command to execute on the client.
 func ClientCommand(playerSlot int32, command string) {
-	P_ClientCommand(playerSlot, command)
+	_ClientCommand(playerSlot, command)
 }
 
-var P_FakeClientCommand = func(playerSlot int32, command string) {
+var _FakeClientCommand = func(playerSlot int32, command string) {
 	__playerSlot := C.int32_t(playerSlot)
 	__command := plugify.ConstructString(command)
 	plugify.Block {
@@ -280,10 +280,10 @@ var P_FakeClientCommand = func(playerSlot int32, command string) {
 //  @param playerSlot: The index of the client.
 //  @param command: The command to be executed by the client.
 func FakeClientCommand(playerSlot int32, command string) {
-	P_FakeClientCommand(playerSlot, command)
+	_FakeClientCommand(playerSlot, command)
 }
 
-var P_GetAllConCommands = func(flags ConVarFlag) []string {
+var _GetAllConCommands = func(flags ConVarFlag) []string {
 	var __retVal []string
 	var __retVal_native plugify.PlgVector
 	__flags := C.int64_t(flags)
@@ -309,10 +309,10 @@ var P_GetAllConCommands = func(flags ConVarFlag) []string {
 //
 //  @return The vector of command/cvar names.
 func GetAllConCommands(flags ConVarFlag) []string {
-	return P_GetAllConCommands(flags)
+	return _GetAllConCommands(flags)
 }
 
-var P_GetAllCommands = func() []string {
+var _GetAllCommands = func() []string {
 	var __retVal []string
 	var __retVal_native plugify.PlgVector
 	plugify.Block {
@@ -336,6 +336,6 @@ var P_GetAllCommands = func() []string {
 //
 //  @return The vector of ConCommand names.
 func GetAllCommands() []string {
-	return P_GetAllCommands()
+	return _GetAllCommands()
 }
 

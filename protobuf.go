@@ -131,7 +131,7 @@ var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: protobuf)
 
-var P_HookUserMessage = func(messageId int16, callback UserMessageCallback, mode HookMode) bool {
+var _HookUserMessage = func(messageId int16, callback UserMessageCallback, mode HookMode) bool {
 	var __retVal bool
 	__messageId := C.int16_t(messageId)
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
@@ -149,10 +149,10 @@ var P_HookUserMessage = func(messageId int16, callback UserMessageCallback, mode
 //
 //  @return True if the hook was successfully added, false otherwise.
 func HookUserMessage(messageId int16, callback UserMessageCallback, mode HookMode) bool {
-	return P_HookUserMessage(messageId, callback, mode)
+	return _HookUserMessage(messageId, callback, mode)
 }
 
-var P_UnhookUserMessage = func(messageId int16, callback UserMessageCallback, mode HookMode) bool {
+var _UnhookUserMessage = func(messageId int16, callback UserMessageCallback, mode HookMode) bool {
 	var __retVal bool
 	__messageId := C.int16_t(messageId)
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
@@ -170,10 +170,10 @@ var P_UnhookUserMessage = func(messageId int16, callback UserMessageCallback, mo
 //
 //  @return True if the hook was successfully removed, false otherwise.
 func UnhookUserMessage(messageId int16, callback UserMessageCallback, mode HookMode) bool {
-	return P_UnhookUserMessage(messageId, callback, mode)
+	return _UnhookUserMessage(messageId, callback, mode)
 }
 
-var P_UserMessageCreateFromSerializable = func(msgSerializable uintptr, message uintptr, recipientMask uint64) uintptr {
+var _UserMessageCreateFromSerializable = func(msgSerializable uintptr, message uintptr, recipientMask uint64) uintptr {
 	var __retVal uintptr
 	__msgSerializable := C.uintptr_t(msgSerializable)
 	__message := C.uintptr_t(message)
@@ -191,10 +191,10 @@ var P_UserMessageCreateFromSerializable = func(msgSerializable uintptr, message 
 //
 //  @return A pointer to the newly created UserMessage.
 func UserMessageCreateFromSerializable(msgSerializable uintptr, message uintptr, recipientMask uint64) uintptr {
-	return P_UserMessageCreateFromSerializable(msgSerializable, message, recipientMask)
+	return _UserMessageCreateFromSerializable(msgSerializable, message, recipientMask)
 }
 
-var P_UserMessageCreateFromName = func(messageName string) uintptr {
+var _UserMessageCreateFromName = func(messageName string) uintptr {
 	var __retVal uintptr
 	__messageName := plugify.ConstructString(messageName)
 	plugify.Block {
@@ -216,10 +216,10 @@ var P_UserMessageCreateFromName = func(messageName string) uintptr {
 //
 //  @return A pointer to the newly created UserMessage.
 func UserMessageCreateFromName(messageName string) uintptr {
-	return P_UserMessageCreateFromName(messageName)
+	return _UserMessageCreateFromName(messageName)
 }
 
-var P_UserMessageCreateFromId = func(messageId int16) uintptr {
+var _UserMessageCreateFromId = func(messageId int16) uintptr {
 	var __retVal uintptr
 	__messageId := C.int16_t(messageId)
 	__retVal = uintptr(C.UserMessageCreateFromId(__messageId))
@@ -233,10 +233,10 @@ var P_UserMessageCreateFromId = func(messageId int16) uintptr {
 //
 //  @return A pointer to the newly created UserMessage.
 func UserMessageCreateFromId(messageId int16) uintptr {
-	return P_UserMessageCreateFromId(messageId)
+	return _UserMessageCreateFromId(messageId)
 }
 
-var P_UserMessageDestroy = func(userMessage uintptr) {
+var _UserMessageDestroy = func(userMessage uintptr) {
 	__userMessage := C.uintptr_t(userMessage)
 	C.UserMessageDestroy(__userMessage)
 }
@@ -246,10 +246,10 @@ var P_UserMessageDestroy = func(userMessage uintptr) {
 //
 //  @param userMessage: The UserMessage to destroy.
 func UserMessageDestroy(userMessage uintptr) {
-	P_UserMessageDestroy(userMessage)
+	_UserMessageDestroy(userMessage)
 }
 
-var P_UserMessageSend = func(userMessage uintptr) {
+var _UserMessageSend = func(userMessage uintptr) {
 	__userMessage := C.uintptr_t(userMessage)
 	C.UserMessageSend(__userMessage)
 }
@@ -259,10 +259,10 @@ var P_UserMessageSend = func(userMessage uintptr) {
 //
 //  @param userMessage: The UserMessage to send.
 func UserMessageSend(userMessage uintptr) {
-	P_UserMessageSend(userMessage)
+	_UserMessageSend(userMessage)
 }
 
-var P_UserMessageGetMessageName = func(userMessage uintptr) string {
+var _UserMessageGetMessageName = func(userMessage uintptr) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__userMessage := C.uintptr_t(userMessage)
@@ -288,10 +288,10 @@ var P_UserMessageGetMessageName = func(userMessage uintptr) string {
 //
 //  @return The name of the message as a string.
 func UserMessageGetMessageName(userMessage uintptr) string {
-	return P_UserMessageGetMessageName(userMessage)
+	return _UserMessageGetMessageName(userMessage)
 }
 
-var P_UserMessageGetMessageID = func(userMessage uintptr) int16 {
+var _UserMessageGetMessageID = func(userMessage uintptr) int16 {
 	var __retVal int16
 	__userMessage := C.uintptr_t(userMessage)
 	__retVal = int16(C.UserMessageGetMessageID(__userMessage))
@@ -305,10 +305,10 @@ var P_UserMessageGetMessageID = func(userMessage uintptr) int16 {
 //
 //  @return The ID of the message.
 func UserMessageGetMessageID(userMessage uintptr) int16 {
-	return P_UserMessageGetMessageID(userMessage)
+	return _UserMessageGetMessageID(userMessage)
 }
 
-var P_UserMessageHasField = func(userMessage uintptr, fieldName string) bool {
+var _UserMessageHasField = func(userMessage uintptr, fieldName string) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -332,10 +332,10 @@ var P_UserMessageHasField = func(userMessage uintptr, fieldName string) bool {
 //
 //  @return True if the field exists, false otherwise.
 func UserMessageHasField(userMessage uintptr, fieldName string) bool {
-	return P_UserMessageHasField(userMessage, fieldName)
+	return _UserMessageHasField(userMessage, fieldName)
 }
 
-var P_UserMessageGetProtobufMessage = func(userMessage uintptr) uintptr {
+var _UserMessageGetProtobufMessage = func(userMessage uintptr) uintptr {
 	var __retVal uintptr
 	__userMessage := C.uintptr_t(userMessage)
 	__retVal = uintptr(C.UserMessageGetProtobufMessage(__userMessage))
@@ -349,10 +349,10 @@ var P_UserMessageGetProtobufMessage = func(userMessage uintptr) uintptr {
 //
 //  @return A pointer to the protobuf message.
 func UserMessageGetProtobufMessage(userMessage uintptr) uintptr {
-	return P_UserMessageGetProtobufMessage(userMessage)
+	return _UserMessageGetProtobufMessage(userMessage)
 }
 
-var P_UserMessageGetSerializableMessage = func(userMessage uintptr) uintptr {
+var _UserMessageGetSerializableMessage = func(userMessage uintptr) uintptr {
 	var __retVal uintptr
 	__userMessage := C.uintptr_t(userMessage)
 	__retVal = uintptr(C.UserMessageGetSerializableMessage(__userMessage))
@@ -366,10 +366,10 @@ var P_UserMessageGetSerializableMessage = func(userMessage uintptr) uintptr {
 //
 //  @return A pointer to the serializable message.
 func UserMessageGetSerializableMessage(userMessage uintptr) uintptr {
-	return P_UserMessageGetSerializableMessage(userMessage)
+	return _UserMessageGetSerializableMessage(userMessage)
 }
 
-var P_UserMessageFindMessageIdByName = func(messageName string) int16 {
+var _UserMessageFindMessageIdByName = func(messageName string) int16 {
 	var __retVal int16
 	__messageName := plugify.ConstructString(messageName)
 	plugify.Block {
@@ -391,10 +391,10 @@ var P_UserMessageFindMessageIdByName = func(messageName string) int16 {
 //
 //  @return The ID of the message, or 0 if the message was not found.
 func UserMessageFindMessageIdByName(messageName string) int16 {
-	return P_UserMessageFindMessageIdByName(messageName)
+	return _UserMessageFindMessageIdByName(messageName)
 }
 
-var P_UserMessageGetRecipientMask = func(userMessage uintptr) uint64 {
+var _UserMessageGetRecipientMask = func(userMessage uintptr) uint64 {
 	var __retVal uint64
 	__userMessage := C.uintptr_t(userMessage)
 	__retVal = uint64(C.UserMessageGetRecipientMask(__userMessage))
@@ -408,10 +408,10 @@ var P_UserMessageGetRecipientMask = func(userMessage uintptr) uint64 {
 //
 //  @return The recipient mask.
 func UserMessageGetRecipientMask(userMessage uintptr) uint64 {
-	return P_UserMessageGetRecipientMask(userMessage)
+	return _UserMessageGetRecipientMask(userMessage)
 }
 
-var P_UserMessageAddRecipient = func(userMessage uintptr, playerSlot int32) {
+var _UserMessageAddRecipient = func(userMessage uintptr, playerSlot int32) {
 	__userMessage := C.uintptr_t(userMessage)
 	__playerSlot := C.int32_t(playerSlot)
 	C.UserMessageAddRecipient(__userMessage, __playerSlot)
@@ -423,10 +423,10 @@ var P_UserMessageAddRecipient = func(userMessage uintptr, playerSlot int32) {
 //  @param userMessage: The UserMessage instance.
 //  @param playerSlot: The slot index of the player to add as a recipient.
 func UserMessageAddRecipient(userMessage uintptr, playerSlot int32) {
-	P_UserMessageAddRecipient(userMessage, playerSlot)
+	_UserMessageAddRecipient(userMessage, playerSlot)
 }
 
-var P_UserMessageAddAllPlayers = func(userMessage uintptr) {
+var _UserMessageAddAllPlayers = func(userMessage uintptr) {
 	__userMessage := C.uintptr_t(userMessage)
 	C.UserMessageAddAllPlayers(__userMessage)
 }
@@ -436,10 +436,10 @@ var P_UserMessageAddAllPlayers = func(userMessage uintptr) {
 //
 //  @param userMessage: The UserMessage instance.
 func UserMessageAddAllPlayers(userMessage uintptr) {
-	P_UserMessageAddAllPlayers(userMessage)
+	_UserMessageAddAllPlayers(userMessage)
 }
 
-var P_UserMessageSetRecipientMask = func(userMessage uintptr, mask uint64) {
+var _UserMessageSetRecipientMask = func(userMessage uintptr, mask uint64) {
 	__userMessage := C.uintptr_t(userMessage)
 	__mask := C.uint64_t(mask)
 	C.UserMessageSetRecipientMask(__userMessage, __mask)
@@ -451,10 +451,10 @@ var P_UserMessageSetRecipientMask = func(userMessage uintptr, mask uint64) {
 //  @param userMessage: The UserMessage instance.
 //  @param mask: The recipient mask to set.
 func UserMessageSetRecipientMask(userMessage uintptr, mask uint64) {
-	P_UserMessageSetRecipientMask(userMessage, mask)
+	_UserMessageSetRecipientMask(userMessage, mask)
 }
 
-var P_UserMessageRemoveAllRecipient = func(userMessage uintptr) {
+var _UserMessageRemoveAllRecipient = func(userMessage uintptr) {
 	__userMessage := C.uintptr_t(userMessage)
 	C.UserMessageRemoveAllRecipient(__userMessage)
 }
@@ -464,10 +464,10 @@ var P_UserMessageRemoveAllRecipient = func(userMessage uintptr) {
 //
 //  @param userMessage: The UserMessage instance.
 func UserMessageRemoveAllRecipient(userMessage uintptr) {
-	P_UserMessageRemoveAllRecipient(userMessage)
+	_UserMessageRemoveAllRecipient(userMessage)
 }
 
-var P_UserMessageGetRepeatedFieldCount = func(userMessage uintptr, fieldName string) int32 {
+var _UserMessageGetRepeatedFieldCount = func(userMessage uintptr, fieldName string) int32 {
 	var __retVal int32
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -491,10 +491,10 @@ var P_UserMessageGetRepeatedFieldCount = func(userMessage uintptr, fieldName str
 //
 //  @return The count of repeated fields, or -1 if the field is not repeated or does not exist.
 func UserMessageGetRepeatedFieldCount(userMessage uintptr, fieldName string) int32 {
-	return P_UserMessageGetRepeatedFieldCount(userMessage, fieldName)
+	return _UserMessageGetRepeatedFieldCount(userMessage, fieldName)
 }
 
-var P_UserMessageRemoveRepeatedFieldValue = func(userMessage uintptr, fieldName string, index int32) bool {
+var _UserMessageRemoveRepeatedFieldValue = func(userMessage uintptr, fieldName string, index int32) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -520,10 +520,10 @@ var P_UserMessageRemoveRepeatedFieldValue = func(userMessage uintptr, fieldName 
 //
 //  @return True if the value was successfully removed, false otherwise.
 func UserMessageRemoveRepeatedFieldValue(userMessage uintptr, fieldName string, index int32) bool {
-	return P_UserMessageRemoveRepeatedFieldValue(userMessage, fieldName, index)
+	return _UserMessageRemoveRepeatedFieldValue(userMessage, fieldName, index)
 }
 
-var P_UserMessageGetDebugString = func(userMessage uintptr) string {
+var _UserMessageGetDebugString = func(userMessage uintptr) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__userMessage := C.uintptr_t(userMessage)
@@ -549,10 +549,10 @@ var P_UserMessageGetDebugString = func(userMessage uintptr) string {
 //
 //  @return The debug string as a string.
 func UserMessageGetDebugString(userMessage uintptr) string {
-	return P_UserMessageGetDebugString(userMessage)
+	return _UserMessageGetDebugString(userMessage)
 }
 
-var P_PbReadEnum = func(userMessage uintptr, fieldName string, index int32) int32 {
+var _PbReadEnum = func(userMessage uintptr, fieldName string, index int32) int32 {
 	var __retVal int32
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -578,10 +578,10 @@ var P_PbReadEnum = func(userMessage uintptr, fieldName string, index int32) int3
 //
 //  @return The integer representation of the enum value, or 0 if invalid.
 func PbReadEnum(userMessage uintptr, fieldName string, index int32) int32 {
-	return P_PbReadEnum(userMessage, fieldName, index)
+	return _PbReadEnum(userMessage, fieldName, index)
 }
 
-var P_PbReadInt32 = func(userMessage uintptr, fieldName string, index int32) int32 {
+var _PbReadInt32 = func(userMessage uintptr, fieldName string, index int32) int32 {
 	var __retVal int32
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -607,10 +607,10 @@ var P_PbReadInt32 = func(userMessage uintptr, fieldName string, index int32) int
 //
 //  @return The int32_t value read, or 0 if invalid.
 func PbReadInt32(userMessage uintptr, fieldName string, index int32) int32 {
-	return P_PbReadInt32(userMessage, fieldName, index)
+	return _PbReadInt32(userMessage, fieldName, index)
 }
 
-var P_PbReadInt64 = func(userMessage uintptr, fieldName string, index int32) int64 {
+var _PbReadInt64 = func(userMessage uintptr, fieldName string, index int32) int64 {
 	var __retVal int64
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -636,10 +636,10 @@ var P_PbReadInt64 = func(userMessage uintptr, fieldName string, index int32) int
 //
 //  @return The int64_t value read, or 0 if invalid.
 func PbReadInt64(userMessage uintptr, fieldName string, index int32) int64 {
-	return P_PbReadInt64(userMessage, fieldName, index)
+	return _PbReadInt64(userMessage, fieldName, index)
 }
 
-var P_PbReadUInt32 = func(userMessage uintptr, fieldName string, index int32) uint32 {
+var _PbReadUInt32 = func(userMessage uintptr, fieldName string, index int32) uint32 {
 	var __retVal uint32
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -665,10 +665,10 @@ var P_PbReadUInt32 = func(userMessage uintptr, fieldName string, index int32) ui
 //
 //  @return The uint32_t value read, or 0 if invalid.
 func PbReadUInt32(userMessage uintptr, fieldName string, index int32) uint32 {
-	return P_PbReadUInt32(userMessage, fieldName, index)
+	return _PbReadUInt32(userMessage, fieldName, index)
 }
 
-var P_PbReadUInt64 = func(userMessage uintptr, fieldName string, index int32) uint64 {
+var _PbReadUInt64 = func(userMessage uintptr, fieldName string, index int32) uint64 {
 	var __retVal uint64
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -694,10 +694,10 @@ var P_PbReadUInt64 = func(userMessage uintptr, fieldName string, index int32) ui
 //
 //  @return The uint64_t value read, or 0 if invalid.
 func PbReadUInt64(userMessage uintptr, fieldName string, index int32) uint64 {
-	return P_PbReadUInt64(userMessage, fieldName, index)
+	return _PbReadUInt64(userMessage, fieldName, index)
 }
 
-var P_PbReadFloat = func(userMessage uintptr, fieldName string, index int32) float32 {
+var _PbReadFloat = func(userMessage uintptr, fieldName string, index int32) float32 {
 	var __retVal float32
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -723,10 +723,10 @@ var P_PbReadFloat = func(userMessage uintptr, fieldName string, index int32) flo
 //
 //  @return The float value read, or 0.0 if invalid.
 func PbReadFloat(userMessage uintptr, fieldName string, index int32) float32 {
-	return P_PbReadFloat(userMessage, fieldName, index)
+	return _PbReadFloat(userMessage, fieldName, index)
 }
 
-var P_PbReadDouble = func(userMessage uintptr, fieldName string, index int32) float64 {
+var _PbReadDouble = func(userMessage uintptr, fieldName string, index int32) float64 {
 	var __retVal float64
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -752,10 +752,10 @@ var P_PbReadDouble = func(userMessage uintptr, fieldName string, index int32) fl
 //
 //  @return The double value read, or 0.0 if invalid.
 func PbReadDouble(userMessage uintptr, fieldName string, index int32) float64 {
-	return P_PbReadDouble(userMessage, fieldName, index)
+	return _PbReadDouble(userMessage, fieldName, index)
 }
 
-var P_PbReadBool = func(userMessage uintptr, fieldName string, index int32) bool {
+var _PbReadBool = func(userMessage uintptr, fieldName string, index int32) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -781,10 +781,10 @@ var P_PbReadBool = func(userMessage uintptr, fieldName string, index int32) bool
 //
 //  @return The boolean value read, or false if invalid.
 func PbReadBool(userMessage uintptr, fieldName string, index int32) bool {
-	return P_PbReadBool(userMessage, fieldName, index)
+	return _PbReadBool(userMessage, fieldName, index)
 }
 
-var P_PbReadString = func(userMessage uintptr, fieldName string, index int32) string {
+var _PbReadString = func(userMessage uintptr, fieldName string, index int32) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__userMessage := C.uintptr_t(userMessage)
@@ -815,10 +815,10 @@ var P_PbReadString = func(userMessage uintptr, fieldName string, index int32) st
 //
 //  @return The string value read, or an empty string if invalid.
 func PbReadString(userMessage uintptr, fieldName string, index int32) string {
-	return P_PbReadString(userMessage, fieldName, index)
+	return _PbReadString(userMessage, fieldName, index)
 }
 
-var P_PbReadColor = func(userMessage uintptr, fieldName string, index int32) plugify.Vector4 {
+var _PbReadColor = func(userMessage uintptr, fieldName string, index int32) plugify.Vector4 {
 	var __retVal plugify.Vector4
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -845,10 +845,10 @@ var P_PbReadColor = func(userMessage uintptr, fieldName string, index int32) plu
 //
 //  @return The color value read, or an empty value if invalid.
 func PbReadColor(userMessage uintptr, fieldName string, index int32) plugify.Vector4 {
-	return P_PbReadColor(userMessage, fieldName, index)
+	return _PbReadColor(userMessage, fieldName, index)
 }
 
-var P_PbReadVector2 = func(userMessage uintptr, fieldName string, index int32) plugify.Vector2 {
+var _PbReadVector2 = func(userMessage uintptr, fieldName string, index int32) plugify.Vector2 {
 	var __retVal plugify.Vector2
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -875,10 +875,10 @@ var P_PbReadVector2 = func(userMessage uintptr, fieldName string, index int32) p
 //
 //  @return The 2D vector value read, or an empty value if invalid.
 func PbReadVector2(userMessage uintptr, fieldName string, index int32) plugify.Vector2 {
-	return P_PbReadVector2(userMessage, fieldName, index)
+	return _PbReadVector2(userMessage, fieldName, index)
 }
 
-var P_PbReadVector3 = func(userMessage uintptr, fieldName string, index int32) plugify.Vector3 {
+var _PbReadVector3 = func(userMessage uintptr, fieldName string, index int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -905,10 +905,10 @@ var P_PbReadVector3 = func(userMessage uintptr, fieldName string, index int32) p
 //
 //  @return The 3D vector value read, or an empty value if invalid.
 func PbReadVector3(userMessage uintptr, fieldName string, index int32) plugify.Vector3 {
-	return P_PbReadVector3(userMessage, fieldName, index)
+	return _PbReadVector3(userMessage, fieldName, index)
 }
 
-var P_PbReadVector4 = func(userMessage uintptr, fieldName string, index int32) plugify.Vector4 {
+var _PbReadVector4 = func(userMessage uintptr, fieldName string, index int32) plugify.Vector4 {
 	var __retVal plugify.Vector4
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -935,10 +935,10 @@ var P_PbReadVector4 = func(userMessage uintptr, fieldName string, index int32) p
 //
 //  @return The 4D vector value read, or an empty value if invalid.
 func PbReadVector4(userMessage uintptr, fieldName string, index int32) plugify.Vector4 {
-	return P_PbReadVector4(userMessage, fieldName, index)
+	return _PbReadVector4(userMessage, fieldName, index)
 }
 
-var P_PbReadQAngle = func(userMessage uintptr, fieldName string, index int32) plugify.Vector3 {
+var _PbReadQAngle = func(userMessage uintptr, fieldName string, index int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -965,10 +965,10 @@ var P_PbReadQAngle = func(userMessage uintptr, fieldName string, index int32) pl
 //
 //  @return The QAngle value read, or an empty value if invalid.
 func PbReadQAngle(userMessage uintptr, fieldName string, index int32) plugify.Vector3 {
-	return P_PbReadQAngle(userMessage, fieldName, index)
+	return _PbReadQAngle(userMessage, fieldName, index)
 }
 
-var P_PbReadMessage = func(userMessage uintptr, fieldName string, index int32) uintptr {
+var _PbReadMessage = func(userMessage uintptr, fieldName string, index int32) uintptr {
 	var __retVal uintptr
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -994,10 +994,10 @@ var P_PbReadMessage = func(userMessage uintptr, fieldName string, index int32) u
 //
 //  @return The Message value read, or an empty value if invalid.
 func PbReadMessage(userMessage uintptr, fieldName string, index int32) uintptr {
-	return P_PbReadMessage(userMessage, fieldName, index)
+	return _PbReadMessage(userMessage, fieldName, index)
 }
 
-var P_PbGetEnum = func(userMessage uintptr, fieldName string, out *int32) bool {
+var _PbGetEnum = func(userMessage uintptr, fieldName string, out *int32) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1025,10 +1025,10 @@ var P_PbGetEnum = func(userMessage uintptr, fieldName string, out *int32) bool {
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetEnum(userMessage uintptr, fieldName string, out *int32) bool {
-	return P_PbGetEnum(userMessage, fieldName, out)
+	return _PbGetEnum(userMessage, fieldName, out)
 }
 
-var P_PbSetEnum = func(userMessage uintptr, fieldName string, value int32) bool {
+var _PbSetEnum = func(userMessage uintptr, fieldName string, value int32) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1054,10 +1054,10 @@ var P_PbSetEnum = func(userMessage uintptr, fieldName string, value int32) bool 
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetEnum(userMessage uintptr, fieldName string, value int32) bool {
-	return P_PbSetEnum(userMessage, fieldName, value)
+	return _PbSetEnum(userMessage, fieldName, value)
 }
 
-var P_PbGetInt32 = func(userMessage uintptr, fieldName string, out *int32) bool {
+var _PbGetInt32 = func(userMessage uintptr, fieldName string, out *int32) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1085,10 +1085,10 @@ var P_PbGetInt32 = func(userMessage uintptr, fieldName string, out *int32) bool 
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetInt32(userMessage uintptr, fieldName string, out *int32) bool {
-	return P_PbGetInt32(userMessage, fieldName, out)
+	return _PbGetInt32(userMessage, fieldName, out)
 }
 
-var P_PbSetInt32 = func(userMessage uintptr, fieldName string, value int32) bool {
+var _PbSetInt32 = func(userMessage uintptr, fieldName string, value int32) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1114,10 +1114,10 @@ var P_PbSetInt32 = func(userMessage uintptr, fieldName string, value int32) bool
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetInt32(userMessage uintptr, fieldName string, value int32) bool {
-	return P_PbSetInt32(userMessage, fieldName, value)
+	return _PbSetInt32(userMessage, fieldName, value)
 }
 
-var P_PbGetInt64 = func(userMessage uintptr, fieldName string, out *int64) bool {
+var _PbGetInt64 = func(userMessage uintptr, fieldName string, out *int64) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1145,10 +1145,10 @@ var P_PbGetInt64 = func(userMessage uintptr, fieldName string, out *int64) bool 
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetInt64(userMessage uintptr, fieldName string, out *int64) bool {
-	return P_PbGetInt64(userMessage, fieldName, out)
+	return _PbGetInt64(userMessage, fieldName, out)
 }
 
-var P_PbSetInt64 = func(userMessage uintptr, fieldName string, value int64) bool {
+var _PbSetInt64 = func(userMessage uintptr, fieldName string, value int64) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1174,10 +1174,10 @@ var P_PbSetInt64 = func(userMessage uintptr, fieldName string, value int64) bool
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetInt64(userMessage uintptr, fieldName string, value int64) bool {
-	return P_PbSetInt64(userMessage, fieldName, value)
+	return _PbSetInt64(userMessage, fieldName, value)
 }
 
-var P_PbGetUInt32 = func(userMessage uintptr, fieldName string, out *uint32) bool {
+var _PbGetUInt32 = func(userMessage uintptr, fieldName string, out *uint32) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1205,10 +1205,10 @@ var P_PbGetUInt32 = func(userMessage uintptr, fieldName string, out *uint32) boo
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetUInt32(userMessage uintptr, fieldName string, out *uint32) bool {
-	return P_PbGetUInt32(userMessage, fieldName, out)
+	return _PbGetUInt32(userMessage, fieldName, out)
 }
 
-var P_PbSetUInt32 = func(userMessage uintptr, fieldName string, value uint32) bool {
+var _PbSetUInt32 = func(userMessage uintptr, fieldName string, value uint32) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1234,10 +1234,10 @@ var P_PbSetUInt32 = func(userMessage uintptr, fieldName string, value uint32) bo
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetUInt32(userMessage uintptr, fieldName string, value uint32) bool {
-	return P_PbSetUInt32(userMessage, fieldName, value)
+	return _PbSetUInt32(userMessage, fieldName, value)
 }
 
-var P_PbGetUInt64 = func(userMessage uintptr, fieldName string, out *uint64) bool {
+var _PbGetUInt64 = func(userMessage uintptr, fieldName string, out *uint64) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1265,10 +1265,10 @@ var P_PbGetUInt64 = func(userMessage uintptr, fieldName string, out *uint64) boo
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetUInt64(userMessage uintptr, fieldName string, out *uint64) bool {
-	return P_PbGetUInt64(userMessage, fieldName, out)
+	return _PbGetUInt64(userMessage, fieldName, out)
 }
 
-var P_PbSetUInt64 = func(userMessage uintptr, fieldName string, value uint64) bool {
+var _PbSetUInt64 = func(userMessage uintptr, fieldName string, value uint64) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1294,10 +1294,10 @@ var P_PbSetUInt64 = func(userMessage uintptr, fieldName string, value uint64) bo
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetUInt64(userMessage uintptr, fieldName string, value uint64) bool {
-	return P_PbSetUInt64(userMessage, fieldName, value)
+	return _PbSetUInt64(userMessage, fieldName, value)
 }
 
-var P_PbGetBool = func(userMessage uintptr, fieldName string, out *bool) bool {
+var _PbGetBool = func(userMessage uintptr, fieldName string, out *bool) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1325,10 +1325,10 @@ var P_PbGetBool = func(userMessage uintptr, fieldName string, out *bool) bool {
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetBool(userMessage uintptr, fieldName string, out *bool) bool {
-	return P_PbGetBool(userMessage, fieldName, out)
+	return _PbGetBool(userMessage, fieldName, out)
 }
 
-var P_PbSetBool = func(userMessage uintptr, fieldName string, value bool) bool {
+var _PbSetBool = func(userMessage uintptr, fieldName string, value bool) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1354,10 +1354,10 @@ var P_PbSetBool = func(userMessage uintptr, fieldName string, value bool) bool {
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetBool(userMessage uintptr, fieldName string, value bool) bool {
-	return P_PbSetBool(userMessage, fieldName, value)
+	return _PbSetBool(userMessage, fieldName, value)
 }
 
-var P_PbGetFloat = func(userMessage uintptr, fieldName string, out *float32) bool {
+var _PbGetFloat = func(userMessage uintptr, fieldName string, out *float32) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1385,10 +1385,10 @@ var P_PbGetFloat = func(userMessage uintptr, fieldName string, out *float32) boo
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetFloat(userMessage uintptr, fieldName string, out *float32) bool {
-	return P_PbGetFloat(userMessage, fieldName, out)
+	return _PbGetFloat(userMessage, fieldName, out)
 }
 
-var P_PbSetFloat = func(userMessage uintptr, fieldName string, value float32) bool {
+var _PbSetFloat = func(userMessage uintptr, fieldName string, value float32) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1414,10 +1414,10 @@ var P_PbSetFloat = func(userMessage uintptr, fieldName string, value float32) bo
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetFloat(userMessage uintptr, fieldName string, value float32) bool {
-	return P_PbSetFloat(userMessage, fieldName, value)
+	return _PbSetFloat(userMessage, fieldName, value)
 }
 
-var P_PbGetDouble = func(userMessage uintptr, fieldName string, out *float64) bool {
+var _PbGetDouble = func(userMessage uintptr, fieldName string, out *float64) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1445,10 +1445,10 @@ var P_PbGetDouble = func(userMessage uintptr, fieldName string, out *float64) bo
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetDouble(userMessage uintptr, fieldName string, out *float64) bool {
-	return P_PbGetDouble(userMessage, fieldName, out)
+	return _PbGetDouble(userMessage, fieldName, out)
 }
 
-var P_PbSetDouble = func(userMessage uintptr, fieldName string, value float64) bool {
+var _PbSetDouble = func(userMessage uintptr, fieldName string, value float64) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1474,10 +1474,10 @@ var P_PbSetDouble = func(userMessage uintptr, fieldName string, value float64) b
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetDouble(userMessage uintptr, fieldName string, value float64) bool {
-	return P_PbSetDouble(userMessage, fieldName, value)
+	return _PbSetDouble(userMessage, fieldName, value)
 }
 
-var P_PbGetString = func(userMessage uintptr, fieldName string, out *string) bool {
+var _PbGetString = func(userMessage uintptr, fieldName string, out *string) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1506,10 +1506,10 @@ var P_PbGetString = func(userMessage uintptr, fieldName string, out *string) boo
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetString(userMessage uintptr, fieldName string, out *string) bool {
-	return P_PbGetString(userMessage, fieldName, out)
+	return _PbGetString(userMessage, fieldName, out)
 }
 
-var P_PbSetString = func(userMessage uintptr, fieldName string, value string) bool {
+var _PbSetString = func(userMessage uintptr, fieldName string, value string) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1536,10 +1536,10 @@ var P_PbSetString = func(userMessage uintptr, fieldName string, value string) bo
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetString(userMessage uintptr, fieldName string, value string) bool {
-	return P_PbSetString(userMessage, fieldName, value)
+	return _PbSetString(userMessage, fieldName, value)
 }
 
-var P_PbGetColor = func(userMessage uintptr, fieldName string, out *plugify.Vector4) bool {
+var _PbGetColor = func(userMessage uintptr, fieldName string, out *plugify.Vector4) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1567,10 +1567,10 @@ var P_PbGetColor = func(userMessage uintptr, fieldName string, out *plugify.Vect
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetColor(userMessage uintptr, fieldName string, out *plugify.Vector4) bool {
-	return P_PbGetColor(userMessage, fieldName, out)
+	return _PbGetColor(userMessage, fieldName, out)
 }
 
-var P_PbSetColor = func(userMessage uintptr, fieldName string, value plugify.Vector4) bool {
+var _PbSetColor = func(userMessage uintptr, fieldName string, value plugify.Vector4) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1596,10 +1596,10 @@ var P_PbSetColor = func(userMessage uintptr, fieldName string, value plugify.Vec
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetColor(userMessage uintptr, fieldName string, value plugify.Vector4) bool {
-	return P_PbSetColor(userMessage, fieldName, value)
+	return _PbSetColor(userMessage, fieldName, value)
 }
 
-var P_PbGetVector2 = func(userMessage uintptr, fieldName string, out *plugify.Vector2) bool {
+var _PbGetVector2 = func(userMessage uintptr, fieldName string, out *plugify.Vector2) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1627,10 +1627,10 @@ var P_PbGetVector2 = func(userMessage uintptr, fieldName string, out *plugify.Ve
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetVector2(userMessage uintptr, fieldName string, out *plugify.Vector2) bool {
-	return P_PbGetVector2(userMessage, fieldName, out)
+	return _PbGetVector2(userMessage, fieldName, out)
 }
 
-var P_PbSetVector2 = func(userMessage uintptr, fieldName string, value plugify.Vector2) bool {
+var _PbSetVector2 = func(userMessage uintptr, fieldName string, value plugify.Vector2) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1656,10 +1656,10 @@ var P_PbSetVector2 = func(userMessage uintptr, fieldName string, value plugify.V
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetVector2(userMessage uintptr, fieldName string, value plugify.Vector2) bool {
-	return P_PbSetVector2(userMessage, fieldName, value)
+	return _PbSetVector2(userMessage, fieldName, value)
 }
 
-var P_PbGetVector3 = func(userMessage uintptr, fieldName string, out *plugify.Vector3) bool {
+var _PbGetVector3 = func(userMessage uintptr, fieldName string, out *plugify.Vector3) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1687,10 +1687,10 @@ var P_PbGetVector3 = func(userMessage uintptr, fieldName string, out *plugify.Ve
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetVector3(userMessage uintptr, fieldName string, out *plugify.Vector3) bool {
-	return P_PbGetVector3(userMessage, fieldName, out)
+	return _PbGetVector3(userMessage, fieldName, out)
 }
 
-var P_PbSetVector3 = func(userMessage uintptr, fieldName string, value plugify.Vector3) bool {
+var _PbSetVector3 = func(userMessage uintptr, fieldName string, value plugify.Vector3) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1716,10 +1716,10 @@ var P_PbSetVector3 = func(userMessage uintptr, fieldName string, value plugify.V
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetVector3(userMessage uintptr, fieldName string, value plugify.Vector3) bool {
-	return P_PbSetVector3(userMessage, fieldName, value)
+	return _PbSetVector3(userMessage, fieldName, value)
 }
 
-var P_PbGetVector4 = func(userMessage uintptr, fieldName string, out *plugify.Vector4) bool {
+var _PbGetVector4 = func(userMessage uintptr, fieldName string, out *plugify.Vector4) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1747,10 +1747,10 @@ var P_PbGetVector4 = func(userMessage uintptr, fieldName string, out *plugify.Ve
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetVector4(userMessage uintptr, fieldName string, out *plugify.Vector4) bool {
-	return P_PbGetVector4(userMessage, fieldName, out)
+	return _PbGetVector4(userMessage, fieldName, out)
 }
 
-var P_PbSetVector4 = func(userMessage uintptr, fieldName string, value plugify.Vector4) bool {
+var _PbSetVector4 = func(userMessage uintptr, fieldName string, value plugify.Vector4) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1776,10 +1776,10 @@ var P_PbSetVector4 = func(userMessage uintptr, fieldName string, value plugify.V
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetVector4(userMessage uintptr, fieldName string, value plugify.Vector4) bool {
-	return P_PbSetVector4(userMessage, fieldName, value)
+	return _PbSetVector4(userMessage, fieldName, value)
 }
 
-var P_PbGetQAngle = func(userMessage uintptr, fieldName string, out *plugify.Vector3) bool {
+var _PbGetQAngle = func(userMessage uintptr, fieldName string, out *plugify.Vector3) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1807,10 +1807,10 @@ var P_PbGetQAngle = func(userMessage uintptr, fieldName string, out *plugify.Vec
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetQAngle(userMessage uintptr, fieldName string, out *plugify.Vector3) bool {
-	return P_PbGetQAngle(userMessage, fieldName, out)
+	return _PbGetQAngle(userMessage, fieldName, out)
 }
 
-var P_PbSetQAngle = func(userMessage uintptr, fieldName string, value plugify.Vector3) bool {
+var _PbSetQAngle = func(userMessage uintptr, fieldName string, value plugify.Vector3) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1836,10 +1836,10 @@ var P_PbSetQAngle = func(userMessage uintptr, fieldName string, value plugify.Ve
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetQAngle(userMessage uintptr, fieldName string, value plugify.Vector3) bool {
-	return P_PbSetQAngle(userMessage, fieldName, value)
+	return _PbSetQAngle(userMessage, fieldName, value)
 }
 
-var P_PbGetMessage = func(userMessage uintptr, fieldName string, out *uintptr) bool {
+var _PbGetMessage = func(userMessage uintptr, fieldName string, out *uintptr) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1867,10 +1867,10 @@ var P_PbGetMessage = func(userMessage uintptr, fieldName string, out *uintptr) b
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetMessage(userMessage uintptr, fieldName string, out *uintptr) bool {
-	return P_PbGetMessage(userMessage, fieldName, out)
+	return _PbGetMessage(userMessage, fieldName, out)
 }
 
-var P_PbSetMessage = func(userMessage uintptr, fieldName string, value uintptr) bool {
+var _PbSetMessage = func(userMessage uintptr, fieldName string, value uintptr) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1896,10 +1896,10 @@ var P_PbSetMessage = func(userMessage uintptr, fieldName string, value uintptr) 
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetMessage(userMessage uintptr, fieldName string, value uintptr) bool {
-	return P_PbSetMessage(userMessage, fieldName, value)
+	return _PbSetMessage(userMessage, fieldName, value)
 }
 
-var P_PbGetRepeatedEnum = func(userMessage uintptr, fieldName string, index int32, out *int32) bool {
+var _PbGetRepeatedEnum = func(userMessage uintptr, fieldName string, index int32, out *int32) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1929,10 +1929,10 @@ var P_PbGetRepeatedEnum = func(userMessage uintptr, fieldName string, index int3
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetRepeatedEnum(userMessage uintptr, fieldName string, index int32, out *int32) bool {
-	return P_PbGetRepeatedEnum(userMessage, fieldName, index, out)
+	return _PbGetRepeatedEnum(userMessage, fieldName, index, out)
 }
 
-var P_PbSetRepeatedEnum = func(userMessage uintptr, fieldName string, index int32, value int32) bool {
+var _PbSetRepeatedEnum = func(userMessage uintptr, fieldName string, index int32, value int32) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1960,10 +1960,10 @@ var P_PbSetRepeatedEnum = func(userMessage uintptr, fieldName string, index int3
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetRepeatedEnum(userMessage uintptr, fieldName string, index int32, value int32) bool {
-	return P_PbSetRepeatedEnum(userMessage, fieldName, index, value)
+	return _PbSetRepeatedEnum(userMessage, fieldName, index, value)
 }
 
-var P_PbAddEnum = func(userMessage uintptr, fieldName string, value int32) bool {
+var _PbAddEnum = func(userMessage uintptr, fieldName string, value int32) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -1989,10 +1989,10 @@ var P_PbAddEnum = func(userMessage uintptr, fieldName string, value int32) bool 
 //
 //  @return True if the value was successfully added, false otherwise.
 func PbAddEnum(userMessage uintptr, fieldName string, value int32) bool {
-	return P_PbAddEnum(userMessage, fieldName, value)
+	return _PbAddEnum(userMessage, fieldName, value)
 }
 
-var P_PbGetRepeatedInt32 = func(userMessage uintptr, fieldName string, index int32, out *int32) bool {
+var _PbGetRepeatedInt32 = func(userMessage uintptr, fieldName string, index int32, out *int32) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2022,10 +2022,10 @@ var P_PbGetRepeatedInt32 = func(userMessage uintptr, fieldName string, index int
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetRepeatedInt32(userMessage uintptr, fieldName string, index int32, out *int32) bool {
-	return P_PbGetRepeatedInt32(userMessage, fieldName, index, out)
+	return _PbGetRepeatedInt32(userMessage, fieldName, index, out)
 }
 
-var P_PbSetRepeatedInt32 = func(userMessage uintptr, fieldName string, index int32, value int32) bool {
+var _PbSetRepeatedInt32 = func(userMessage uintptr, fieldName string, index int32, value int32) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2053,10 +2053,10 @@ var P_PbSetRepeatedInt32 = func(userMessage uintptr, fieldName string, index int
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetRepeatedInt32(userMessage uintptr, fieldName string, index int32, value int32) bool {
-	return P_PbSetRepeatedInt32(userMessage, fieldName, index, value)
+	return _PbSetRepeatedInt32(userMessage, fieldName, index, value)
 }
 
-var P_PbAddInt32 = func(userMessage uintptr, fieldName string, value int32) bool {
+var _PbAddInt32 = func(userMessage uintptr, fieldName string, value int32) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2082,10 +2082,10 @@ var P_PbAddInt32 = func(userMessage uintptr, fieldName string, value int32) bool
 //
 //  @return True if the value was successfully added, false otherwise.
 func PbAddInt32(userMessage uintptr, fieldName string, value int32) bool {
-	return P_PbAddInt32(userMessage, fieldName, value)
+	return _PbAddInt32(userMessage, fieldName, value)
 }
 
-var P_PbGetRepeatedInt64 = func(userMessage uintptr, fieldName string, index int32, out *int64) bool {
+var _PbGetRepeatedInt64 = func(userMessage uintptr, fieldName string, index int32, out *int64) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2115,10 +2115,10 @@ var P_PbGetRepeatedInt64 = func(userMessage uintptr, fieldName string, index int
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetRepeatedInt64(userMessage uintptr, fieldName string, index int32, out *int64) bool {
-	return P_PbGetRepeatedInt64(userMessage, fieldName, index, out)
+	return _PbGetRepeatedInt64(userMessage, fieldName, index, out)
 }
 
-var P_PbSetRepeatedInt64 = func(userMessage uintptr, fieldName string, index int32, value int64) bool {
+var _PbSetRepeatedInt64 = func(userMessage uintptr, fieldName string, index int32, value int64) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2146,10 +2146,10 @@ var P_PbSetRepeatedInt64 = func(userMessage uintptr, fieldName string, index int
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetRepeatedInt64(userMessage uintptr, fieldName string, index int32, value int64) bool {
-	return P_PbSetRepeatedInt64(userMessage, fieldName, index, value)
+	return _PbSetRepeatedInt64(userMessage, fieldName, index, value)
 }
 
-var P_PbAddInt64 = func(userMessage uintptr, fieldName string, value int64) bool {
+var _PbAddInt64 = func(userMessage uintptr, fieldName string, value int64) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2175,10 +2175,10 @@ var P_PbAddInt64 = func(userMessage uintptr, fieldName string, value int64) bool
 //
 //  @return True if the value was successfully added, false otherwise.
 func PbAddInt64(userMessage uintptr, fieldName string, value int64) bool {
-	return P_PbAddInt64(userMessage, fieldName, value)
+	return _PbAddInt64(userMessage, fieldName, value)
 }
 
-var P_PbGetRepeatedUInt32 = func(userMessage uintptr, fieldName string, index int32, out *uint32) bool {
+var _PbGetRepeatedUInt32 = func(userMessage uintptr, fieldName string, index int32, out *uint32) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2208,10 +2208,10 @@ var P_PbGetRepeatedUInt32 = func(userMessage uintptr, fieldName string, index in
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetRepeatedUInt32(userMessage uintptr, fieldName string, index int32, out *uint32) bool {
-	return P_PbGetRepeatedUInt32(userMessage, fieldName, index, out)
+	return _PbGetRepeatedUInt32(userMessage, fieldName, index, out)
 }
 
-var P_PbSetRepeatedUInt32 = func(userMessage uintptr, fieldName string, index int32, value uint32) bool {
+var _PbSetRepeatedUInt32 = func(userMessage uintptr, fieldName string, index int32, value uint32) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2239,10 +2239,10 @@ var P_PbSetRepeatedUInt32 = func(userMessage uintptr, fieldName string, index in
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetRepeatedUInt32(userMessage uintptr, fieldName string, index int32, value uint32) bool {
-	return P_PbSetRepeatedUInt32(userMessage, fieldName, index, value)
+	return _PbSetRepeatedUInt32(userMessage, fieldName, index, value)
 }
 
-var P_PbAddUInt32 = func(userMessage uintptr, fieldName string, value uint32) bool {
+var _PbAddUInt32 = func(userMessage uintptr, fieldName string, value uint32) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2268,10 +2268,10 @@ var P_PbAddUInt32 = func(userMessage uintptr, fieldName string, value uint32) bo
 //
 //  @return True if the value was successfully added, false otherwise.
 func PbAddUInt32(userMessage uintptr, fieldName string, value uint32) bool {
-	return P_PbAddUInt32(userMessage, fieldName, value)
+	return _PbAddUInt32(userMessage, fieldName, value)
 }
 
-var P_PbGetRepeatedUInt64 = func(userMessage uintptr, fieldName string, index int32, out *uint64) bool {
+var _PbGetRepeatedUInt64 = func(userMessage uintptr, fieldName string, index int32, out *uint64) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2301,10 +2301,10 @@ var P_PbGetRepeatedUInt64 = func(userMessage uintptr, fieldName string, index in
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetRepeatedUInt64(userMessage uintptr, fieldName string, index int32, out *uint64) bool {
-	return P_PbGetRepeatedUInt64(userMessage, fieldName, index, out)
+	return _PbGetRepeatedUInt64(userMessage, fieldName, index, out)
 }
 
-var P_PbSetRepeatedUInt64 = func(userMessage uintptr, fieldName string, index int32, value uint64) bool {
+var _PbSetRepeatedUInt64 = func(userMessage uintptr, fieldName string, index int32, value uint64) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2332,10 +2332,10 @@ var P_PbSetRepeatedUInt64 = func(userMessage uintptr, fieldName string, index in
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetRepeatedUInt64(userMessage uintptr, fieldName string, index int32, value uint64) bool {
-	return P_PbSetRepeatedUInt64(userMessage, fieldName, index, value)
+	return _PbSetRepeatedUInt64(userMessage, fieldName, index, value)
 }
 
-var P_PbAddUInt64 = func(userMessage uintptr, fieldName string, value uint64) bool {
+var _PbAddUInt64 = func(userMessage uintptr, fieldName string, value uint64) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2361,10 +2361,10 @@ var P_PbAddUInt64 = func(userMessage uintptr, fieldName string, value uint64) bo
 //
 //  @return True if the value was successfully added, false otherwise.
 func PbAddUInt64(userMessage uintptr, fieldName string, value uint64) bool {
-	return P_PbAddUInt64(userMessage, fieldName, value)
+	return _PbAddUInt64(userMessage, fieldName, value)
 }
 
-var P_PbGetRepeatedBool = func(userMessage uintptr, fieldName string, index int32, out *bool) bool {
+var _PbGetRepeatedBool = func(userMessage uintptr, fieldName string, index int32, out *bool) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2394,10 +2394,10 @@ var P_PbGetRepeatedBool = func(userMessage uintptr, fieldName string, index int3
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetRepeatedBool(userMessage uintptr, fieldName string, index int32, out *bool) bool {
-	return P_PbGetRepeatedBool(userMessage, fieldName, index, out)
+	return _PbGetRepeatedBool(userMessage, fieldName, index, out)
 }
 
-var P_PbSetRepeatedBool = func(userMessage uintptr, fieldName string, index int32, value bool) bool {
+var _PbSetRepeatedBool = func(userMessage uintptr, fieldName string, index int32, value bool) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2425,10 +2425,10 @@ var P_PbSetRepeatedBool = func(userMessage uintptr, fieldName string, index int3
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetRepeatedBool(userMessage uintptr, fieldName string, index int32, value bool) bool {
-	return P_PbSetRepeatedBool(userMessage, fieldName, index, value)
+	return _PbSetRepeatedBool(userMessage, fieldName, index, value)
 }
 
-var P_PbAddBool = func(userMessage uintptr, fieldName string, value bool) bool {
+var _PbAddBool = func(userMessage uintptr, fieldName string, value bool) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2454,10 +2454,10 @@ var P_PbAddBool = func(userMessage uintptr, fieldName string, value bool) bool {
 //
 //  @return True if the value was successfully added, false otherwise.
 func PbAddBool(userMessage uintptr, fieldName string, value bool) bool {
-	return P_PbAddBool(userMessage, fieldName, value)
+	return _PbAddBool(userMessage, fieldName, value)
 }
 
-var P_PbGetRepeatedFloat = func(userMessage uintptr, fieldName string, index int32, out *float32) bool {
+var _PbGetRepeatedFloat = func(userMessage uintptr, fieldName string, index int32, out *float32) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2487,10 +2487,10 @@ var P_PbGetRepeatedFloat = func(userMessage uintptr, fieldName string, index int
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetRepeatedFloat(userMessage uintptr, fieldName string, index int32, out *float32) bool {
-	return P_PbGetRepeatedFloat(userMessage, fieldName, index, out)
+	return _PbGetRepeatedFloat(userMessage, fieldName, index, out)
 }
 
-var P_PbSetRepeatedFloat = func(userMessage uintptr, fieldName string, index int32, value float32) bool {
+var _PbSetRepeatedFloat = func(userMessage uintptr, fieldName string, index int32, value float32) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2518,10 +2518,10 @@ var P_PbSetRepeatedFloat = func(userMessage uintptr, fieldName string, index int
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetRepeatedFloat(userMessage uintptr, fieldName string, index int32, value float32) bool {
-	return P_PbSetRepeatedFloat(userMessage, fieldName, index, value)
+	return _PbSetRepeatedFloat(userMessage, fieldName, index, value)
 }
 
-var P_PbAddFloat = func(userMessage uintptr, fieldName string, value float32) bool {
+var _PbAddFloat = func(userMessage uintptr, fieldName string, value float32) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2547,10 +2547,10 @@ var P_PbAddFloat = func(userMessage uintptr, fieldName string, value float32) bo
 //
 //  @return True if the value was successfully added, false otherwise.
 func PbAddFloat(userMessage uintptr, fieldName string, value float32) bool {
-	return P_PbAddFloat(userMessage, fieldName, value)
+	return _PbAddFloat(userMessage, fieldName, value)
 }
 
-var P_PbGetRepeatedDouble = func(userMessage uintptr, fieldName string, index int32, out *float64) bool {
+var _PbGetRepeatedDouble = func(userMessage uintptr, fieldName string, index int32, out *float64) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2580,10 +2580,10 @@ var P_PbGetRepeatedDouble = func(userMessage uintptr, fieldName string, index in
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetRepeatedDouble(userMessage uintptr, fieldName string, index int32, out *float64) bool {
-	return P_PbGetRepeatedDouble(userMessage, fieldName, index, out)
+	return _PbGetRepeatedDouble(userMessage, fieldName, index, out)
 }
 
-var P_PbSetRepeatedDouble = func(userMessage uintptr, fieldName string, index int32, value float64) bool {
+var _PbSetRepeatedDouble = func(userMessage uintptr, fieldName string, index int32, value float64) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2611,10 +2611,10 @@ var P_PbSetRepeatedDouble = func(userMessage uintptr, fieldName string, index in
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetRepeatedDouble(userMessage uintptr, fieldName string, index int32, value float64) bool {
-	return P_PbSetRepeatedDouble(userMessage, fieldName, index, value)
+	return _PbSetRepeatedDouble(userMessage, fieldName, index, value)
 }
 
-var P_PbAddDouble = func(userMessage uintptr, fieldName string, value float64) bool {
+var _PbAddDouble = func(userMessage uintptr, fieldName string, value float64) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2640,10 +2640,10 @@ var P_PbAddDouble = func(userMessage uintptr, fieldName string, value float64) b
 //
 //  @return True if the value was successfully added, false otherwise.
 func PbAddDouble(userMessage uintptr, fieldName string, value float64) bool {
-	return P_PbAddDouble(userMessage, fieldName, value)
+	return _PbAddDouble(userMessage, fieldName, value)
 }
 
-var P_PbGetRepeatedString = func(userMessage uintptr, fieldName string, index int32, out *string) bool {
+var _PbGetRepeatedString = func(userMessage uintptr, fieldName string, index int32, out *string) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2674,10 +2674,10 @@ var P_PbGetRepeatedString = func(userMessage uintptr, fieldName string, index in
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetRepeatedString(userMessage uintptr, fieldName string, index int32, out *string) bool {
-	return P_PbGetRepeatedString(userMessage, fieldName, index, out)
+	return _PbGetRepeatedString(userMessage, fieldName, index, out)
 }
 
-var P_PbSetRepeatedString = func(userMessage uintptr, fieldName string, index int32, value string) bool {
+var _PbSetRepeatedString = func(userMessage uintptr, fieldName string, index int32, value string) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2706,10 +2706,10 @@ var P_PbSetRepeatedString = func(userMessage uintptr, fieldName string, index in
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetRepeatedString(userMessage uintptr, fieldName string, index int32, value string) bool {
-	return P_PbSetRepeatedString(userMessage, fieldName, index, value)
+	return _PbSetRepeatedString(userMessage, fieldName, index, value)
 }
 
-var P_PbAddString = func(userMessage uintptr, fieldName string, value string) bool {
+var _PbAddString = func(userMessage uintptr, fieldName string, value string) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2736,10 +2736,10 @@ var P_PbAddString = func(userMessage uintptr, fieldName string, value string) bo
 //
 //  @return True if the value was successfully added, false otherwise.
 func PbAddString(userMessage uintptr, fieldName string, value string) bool {
-	return P_PbAddString(userMessage, fieldName, value)
+	return _PbAddString(userMessage, fieldName, value)
 }
 
-var P_PbGetRepeatedColor = func(userMessage uintptr, fieldName string, index int32, out *plugify.Vector4) bool {
+var _PbGetRepeatedColor = func(userMessage uintptr, fieldName string, index int32, out *plugify.Vector4) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2769,10 +2769,10 @@ var P_PbGetRepeatedColor = func(userMessage uintptr, fieldName string, index int
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetRepeatedColor(userMessage uintptr, fieldName string, index int32, out *plugify.Vector4) bool {
-	return P_PbGetRepeatedColor(userMessage, fieldName, index, out)
+	return _PbGetRepeatedColor(userMessage, fieldName, index, out)
 }
 
-var P_PbSetRepeatedColor = func(userMessage uintptr, fieldName string, index int32, value plugify.Vector4) bool {
+var _PbSetRepeatedColor = func(userMessage uintptr, fieldName string, index int32, value plugify.Vector4) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2800,10 +2800,10 @@ var P_PbSetRepeatedColor = func(userMessage uintptr, fieldName string, index int
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetRepeatedColor(userMessage uintptr, fieldName string, index int32, value plugify.Vector4) bool {
-	return P_PbSetRepeatedColor(userMessage, fieldName, index, value)
+	return _PbSetRepeatedColor(userMessage, fieldName, index, value)
 }
 
-var P_PbAddColor = func(userMessage uintptr, fieldName string, value plugify.Vector4) bool {
+var _PbAddColor = func(userMessage uintptr, fieldName string, value plugify.Vector4) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2829,10 +2829,10 @@ var P_PbAddColor = func(userMessage uintptr, fieldName string, value plugify.Vec
 //
 //  @return True if the value was successfully added, false otherwise.
 func PbAddColor(userMessage uintptr, fieldName string, value plugify.Vector4) bool {
-	return P_PbAddColor(userMessage, fieldName, value)
+	return _PbAddColor(userMessage, fieldName, value)
 }
 
-var P_PbGetRepeatedVector2 = func(userMessage uintptr, fieldName string, index int32, out *plugify.Vector2) bool {
+var _PbGetRepeatedVector2 = func(userMessage uintptr, fieldName string, index int32, out *plugify.Vector2) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2862,10 +2862,10 @@ var P_PbGetRepeatedVector2 = func(userMessage uintptr, fieldName string, index i
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetRepeatedVector2(userMessage uintptr, fieldName string, index int32, out *plugify.Vector2) bool {
-	return P_PbGetRepeatedVector2(userMessage, fieldName, index, out)
+	return _PbGetRepeatedVector2(userMessage, fieldName, index, out)
 }
 
-var P_PbSetRepeatedVector2 = func(userMessage uintptr, fieldName string, index int32, value plugify.Vector2) bool {
+var _PbSetRepeatedVector2 = func(userMessage uintptr, fieldName string, index int32, value plugify.Vector2) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2893,10 +2893,10 @@ var P_PbSetRepeatedVector2 = func(userMessage uintptr, fieldName string, index i
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetRepeatedVector2(userMessage uintptr, fieldName string, index int32, value plugify.Vector2) bool {
-	return P_PbSetRepeatedVector2(userMessage, fieldName, index, value)
+	return _PbSetRepeatedVector2(userMessage, fieldName, index, value)
 }
 
-var P_PbAddVector2 = func(userMessage uintptr, fieldName string, value plugify.Vector2) bool {
+var _PbAddVector2 = func(userMessage uintptr, fieldName string, value plugify.Vector2) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2922,10 +2922,10 @@ var P_PbAddVector2 = func(userMessage uintptr, fieldName string, value plugify.V
 //
 //  @return True if the value was successfully added, false otherwise.
 func PbAddVector2(userMessage uintptr, fieldName string, value plugify.Vector2) bool {
-	return P_PbAddVector2(userMessage, fieldName, value)
+	return _PbAddVector2(userMessage, fieldName, value)
 }
 
-var P_PbGetRepeatedVector3 = func(userMessage uintptr, fieldName string, index int32, out *plugify.Vector3) bool {
+var _PbGetRepeatedVector3 = func(userMessage uintptr, fieldName string, index int32, out *plugify.Vector3) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2955,10 +2955,10 @@ var P_PbGetRepeatedVector3 = func(userMessage uintptr, fieldName string, index i
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetRepeatedVector3(userMessage uintptr, fieldName string, index int32, out *plugify.Vector3) bool {
-	return P_PbGetRepeatedVector3(userMessage, fieldName, index, out)
+	return _PbGetRepeatedVector3(userMessage, fieldName, index, out)
 }
 
-var P_PbSetRepeatedVector3 = func(userMessage uintptr, fieldName string, index int32, value plugify.Vector3) bool {
+var _PbSetRepeatedVector3 = func(userMessage uintptr, fieldName string, index int32, value plugify.Vector3) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -2986,10 +2986,10 @@ var P_PbSetRepeatedVector3 = func(userMessage uintptr, fieldName string, index i
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetRepeatedVector3(userMessage uintptr, fieldName string, index int32, value plugify.Vector3) bool {
-	return P_PbSetRepeatedVector3(userMessage, fieldName, index, value)
+	return _PbSetRepeatedVector3(userMessage, fieldName, index, value)
 }
 
-var P_PbAddVector3 = func(userMessage uintptr, fieldName string, value plugify.Vector3) bool {
+var _PbAddVector3 = func(userMessage uintptr, fieldName string, value plugify.Vector3) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -3015,10 +3015,10 @@ var P_PbAddVector3 = func(userMessage uintptr, fieldName string, value plugify.V
 //
 //  @return True if the value was successfully added, false otherwise.
 func PbAddVector3(userMessage uintptr, fieldName string, value plugify.Vector3) bool {
-	return P_PbAddVector3(userMessage, fieldName, value)
+	return _PbAddVector3(userMessage, fieldName, value)
 }
 
-var P_PbGetRepeatedVector4 = func(userMessage uintptr, fieldName string, index int32, out *plugify.Vector4) bool {
+var _PbGetRepeatedVector4 = func(userMessage uintptr, fieldName string, index int32, out *plugify.Vector4) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -3048,10 +3048,10 @@ var P_PbGetRepeatedVector4 = func(userMessage uintptr, fieldName string, index i
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetRepeatedVector4(userMessage uintptr, fieldName string, index int32, out *plugify.Vector4) bool {
-	return P_PbGetRepeatedVector4(userMessage, fieldName, index, out)
+	return _PbGetRepeatedVector4(userMessage, fieldName, index, out)
 }
 
-var P_PbSetRepeatedVector4 = func(userMessage uintptr, fieldName string, index int32, value plugify.Vector4) bool {
+var _PbSetRepeatedVector4 = func(userMessage uintptr, fieldName string, index int32, value plugify.Vector4) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -3079,10 +3079,10 @@ var P_PbSetRepeatedVector4 = func(userMessage uintptr, fieldName string, index i
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetRepeatedVector4(userMessage uintptr, fieldName string, index int32, value plugify.Vector4) bool {
-	return P_PbSetRepeatedVector4(userMessage, fieldName, index, value)
+	return _PbSetRepeatedVector4(userMessage, fieldName, index, value)
 }
 
-var P_PbAddVector4 = func(userMessage uintptr, fieldName string, value plugify.Vector4) bool {
+var _PbAddVector4 = func(userMessage uintptr, fieldName string, value plugify.Vector4) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -3108,10 +3108,10 @@ var P_PbAddVector4 = func(userMessage uintptr, fieldName string, value plugify.V
 //
 //  @return True if the value was successfully added, false otherwise.
 func PbAddVector4(userMessage uintptr, fieldName string, value plugify.Vector4) bool {
-	return P_PbAddVector4(userMessage, fieldName, value)
+	return _PbAddVector4(userMessage, fieldName, value)
 }
 
-var P_PbGetRepeatedQAngle = func(userMessage uintptr, fieldName string, index int32, out *plugify.Vector3) bool {
+var _PbGetRepeatedQAngle = func(userMessage uintptr, fieldName string, index int32, out *plugify.Vector3) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -3141,10 +3141,10 @@ var P_PbGetRepeatedQAngle = func(userMessage uintptr, fieldName string, index in
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetRepeatedQAngle(userMessage uintptr, fieldName string, index int32, out *plugify.Vector3) bool {
-	return P_PbGetRepeatedQAngle(userMessage, fieldName, index, out)
+	return _PbGetRepeatedQAngle(userMessage, fieldName, index, out)
 }
 
-var P_PbSetRepeatedQAngle = func(userMessage uintptr, fieldName string, index int32, value plugify.Vector3) bool {
+var _PbSetRepeatedQAngle = func(userMessage uintptr, fieldName string, index int32, value plugify.Vector3) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -3172,10 +3172,10 @@ var P_PbSetRepeatedQAngle = func(userMessage uintptr, fieldName string, index in
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetRepeatedQAngle(userMessage uintptr, fieldName string, index int32, value plugify.Vector3) bool {
-	return P_PbSetRepeatedQAngle(userMessage, fieldName, index, value)
+	return _PbSetRepeatedQAngle(userMessage, fieldName, index, value)
 }
 
-var P_PbAddQAngle = func(userMessage uintptr, fieldName string, value plugify.Vector3) bool {
+var _PbAddQAngle = func(userMessage uintptr, fieldName string, value plugify.Vector3) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -3201,10 +3201,10 @@ var P_PbAddQAngle = func(userMessage uintptr, fieldName string, value plugify.Ve
 //
 //  @return True if the value was successfully added, false otherwise.
 func PbAddQAngle(userMessage uintptr, fieldName string, value plugify.Vector3) bool {
-	return P_PbAddQAngle(userMessage, fieldName, value)
+	return _PbAddQAngle(userMessage, fieldName, value)
 }
 
-var P_PbGetRepeatedMessage = func(userMessage uintptr, fieldName string, index int32, out *uintptr) bool {
+var _PbGetRepeatedMessage = func(userMessage uintptr, fieldName string, index int32, out *uintptr) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -3234,10 +3234,10 @@ var P_PbGetRepeatedMessage = func(userMessage uintptr, fieldName string, index i
 //
 //  @return True if the field was successfully retrieved, false otherwise.
 func PbGetRepeatedMessage(userMessage uintptr, fieldName string, index int32, out *uintptr) bool {
-	return P_PbGetRepeatedMessage(userMessage, fieldName, index, out)
+	return _PbGetRepeatedMessage(userMessage, fieldName, index, out)
 }
 
-var P_PbSetRepeatedMessage = func(userMessage uintptr, fieldName string, index int32, value uintptr) bool {
+var _PbSetRepeatedMessage = func(userMessage uintptr, fieldName string, index int32, value uintptr) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -3265,10 +3265,10 @@ var P_PbSetRepeatedMessage = func(userMessage uintptr, fieldName string, index i
 //
 //  @return True if the field was successfully set, false otherwise.
 func PbSetRepeatedMessage(userMessage uintptr, fieldName string, index int32, value uintptr) bool {
-	return P_PbSetRepeatedMessage(userMessage, fieldName, index, value)
+	return _PbSetRepeatedMessage(userMessage, fieldName, index, value)
 }
 
-var P_PbAddMessage = func(userMessage uintptr, fieldName string, value uintptr) bool {
+var _PbAddMessage = func(userMessage uintptr, fieldName string, value uintptr) bool {
 	var __retVal bool
 	__userMessage := C.uintptr_t(userMessage)
 	__fieldName := plugify.ConstructString(fieldName)
@@ -3294,7 +3294,7 @@ var P_PbAddMessage = func(userMessage uintptr, fieldName string, value uintptr) 
 //
 //  @return True if the value was successfully added, false otherwise.
 func PbAddMessage(userMessage uintptr, fieldName string, value uintptr) bool {
-	return P_PbAddMessage(userMessage, fieldName, value)
+	return _PbAddMessage(userMessage, fieldName, value)
 }
 
 var (

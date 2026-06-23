@@ -54,7 +54,7 @@ var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: events)
 
-var P_HookEvent = func(name string, callback EventCallback, type_ HookMode) EventHookError {
+var _HookEvent = func(name string, callback EventCallback, type_ HookMode) EventHookError {
 	var __retVal EventHookError
 	__name := plugify.ConstructString(name)
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
@@ -80,10 +80,10 @@ var P_HookEvent = func(name string, callback EventCallback, type_ HookMode) Even
 //
 //  @return An integer indicating the result of the hook operation.
 func HookEvent(name string, callback EventCallback, type_ HookMode) EventHookError {
-	return P_HookEvent(name, callback, type_)
+	return _HookEvent(name, callback, type_)
 }
 
-var P_UnhookEvent = func(name string, callback EventCallback, type_ HookMode) EventHookError {
+var _UnhookEvent = func(name string, callback EventCallback, type_ HookMode) EventHookError {
 	var __retVal EventHookError
 	__name := plugify.ConstructString(name)
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
@@ -109,10 +109,10 @@ var P_UnhookEvent = func(name string, callback EventCallback, type_ HookMode) Ev
 //
 //  @return An integer indicating the result of the unhook operation.
 func UnhookEvent(name string, callback EventCallback, type_ HookMode) EventHookError {
-	return P_UnhookEvent(name, callback, type_)
+	return _UnhookEvent(name, callback, type_)
 }
 
-var P_CreateEvent = func(name string, force bool) uintptr {
+var _CreateEvent = func(name string, force bool) uintptr {
 	var __retVal uintptr
 	__name := plugify.ConstructString(name)
 	__force := C.bool(force)
@@ -136,10 +136,10 @@ var P_CreateEvent = func(name string, force bool) uintptr {
 //
 //  @return A pointer to the created IGameEvent object.
 func CreateEvent(name string, force bool) uintptr {
-	return P_CreateEvent(name, force)
+	return _CreateEvent(name, force)
 }
 
-var P_FireEvent = func(event uintptr, dontBroadcast bool) {
+var _FireEvent = func(event uintptr, dontBroadcast bool) {
 	__event := C.uintptr_t(event)
 	__dontBroadcast := C.bool(dontBroadcast)
 	C.FireEvent(__event, __dontBroadcast)
@@ -151,10 +151,10 @@ var P_FireEvent = func(event uintptr, dontBroadcast bool) {
 //  @param event: A pointer to the IGameEvent object containing event data.
 //  @param dontBroadcast: A boolean indicating whether to broadcast the event.
 func FireEvent(event uintptr, dontBroadcast bool) {
-	P_FireEvent(event, dontBroadcast)
+	_FireEvent(event, dontBroadcast)
 }
 
-var P_FireEventToClient = func(event uintptr, playerSlot int32) {
+var _FireEventToClient = func(event uintptr, playerSlot int32) {
 	__event := C.uintptr_t(event)
 	__playerSlot := C.int32_t(playerSlot)
 	C.FireEventToClient(__event, __playerSlot)
@@ -166,10 +166,10 @@ var P_FireEventToClient = func(event uintptr, playerSlot int32) {
 //  @param event: A pointer to the IGameEvent object containing event data.
 //  @param playerSlot: The index of the client to fire the event to.
 func FireEventToClient(event uintptr, playerSlot int32) {
-	P_FireEventToClient(event, playerSlot)
+	_FireEventToClient(event, playerSlot)
 }
 
-var P_CancelCreatedEvent = func(event uintptr) {
+var _CancelCreatedEvent = func(event uintptr) {
 	__event := C.uintptr_t(event)
 	C.CancelCreatedEvent(__event)
 }
@@ -179,10 +179,10 @@ var P_CancelCreatedEvent = func(event uintptr) {
 //
 //  @param event: A pointer to the IGameEvent object of the event to cancel.
 func CancelCreatedEvent(event uintptr) {
-	P_CancelCreatedEvent(event)
+	_CancelCreatedEvent(event)
 }
 
-var P_GetEventBool = func(event uintptr, key string) bool {
+var _GetEventBool = func(event uintptr, key string) bool {
 	var __retVal bool
 	__event := C.uintptr_t(event)
 	__key := plugify.ConstructString(key)
@@ -206,10 +206,10 @@ var P_GetEventBool = func(event uintptr, key string) bool {
 //
 //  @return The boolean value associated with the key.
 func GetEventBool(event uintptr, key string) bool {
-	return P_GetEventBool(event, key)
+	return _GetEventBool(event, key)
 }
 
-var P_GetEventFloat = func(event uintptr, key string) float32 {
+var _GetEventFloat = func(event uintptr, key string) float32 {
 	var __retVal float32
 	__event := C.uintptr_t(event)
 	__key := plugify.ConstructString(key)
@@ -233,10 +233,10 @@ var P_GetEventFloat = func(event uintptr, key string) float32 {
 //
 //  @return The float value associated with the key.
 func GetEventFloat(event uintptr, key string) float32 {
-	return P_GetEventFloat(event, key)
+	return _GetEventFloat(event, key)
 }
 
-var P_GetEventInt = func(event uintptr, key string) int32 {
+var _GetEventInt = func(event uintptr, key string) int32 {
 	var __retVal int32
 	__event := C.uintptr_t(event)
 	__key := plugify.ConstructString(key)
@@ -260,10 +260,10 @@ var P_GetEventInt = func(event uintptr, key string) int32 {
 //
 //  @return The integer value associated with the key.
 func GetEventInt(event uintptr, key string) int32 {
-	return P_GetEventInt(event, key)
+	return _GetEventInt(event, key)
 }
 
-var P_GetEventUInt64 = func(event uintptr, key string) uint64 {
+var _GetEventUInt64 = func(event uintptr, key string) uint64 {
 	var __retVal uint64
 	__event := C.uintptr_t(event)
 	__key := plugify.ConstructString(key)
@@ -287,10 +287,10 @@ var P_GetEventUInt64 = func(event uintptr, key string) uint64 {
 //
 //  @return The long integer value associated with the key.
 func GetEventUInt64(event uintptr, key string) uint64 {
-	return P_GetEventUInt64(event, key)
+	return _GetEventUInt64(event, key)
 }
 
-var P_GetEventString = func(event uintptr, key string) string {
+var _GetEventString = func(event uintptr, key string) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__event := C.uintptr_t(event)
@@ -319,10 +319,10 @@ var P_GetEventString = func(event uintptr, key string) string {
 //
 //  @return A string where the result will be stored.
 func GetEventString(event uintptr, key string) string {
-	return P_GetEventString(event, key)
+	return _GetEventString(event, key)
 }
 
-var P_GetEventPtr = func(event uintptr, key string) uintptr {
+var _GetEventPtr = func(event uintptr, key string) uintptr {
 	var __retVal uintptr
 	__event := C.uintptr_t(event)
 	__key := plugify.ConstructString(key)
@@ -346,10 +346,10 @@ var P_GetEventPtr = func(event uintptr, key string) uintptr {
 //
 //  @return The pointer value associated with the key.
 func GetEventPtr(event uintptr, key string) uintptr {
-	return P_GetEventPtr(event, key)
+	return _GetEventPtr(event, key)
 }
 
-var P_GetEventPlayerController = func(event uintptr, key string) uintptr {
+var _GetEventPlayerController = func(event uintptr, key string) uintptr {
 	var __retVal uintptr
 	__event := C.uintptr_t(event)
 	__key := plugify.ConstructString(key)
@@ -373,10 +373,10 @@ var P_GetEventPlayerController = func(event uintptr, key string) uintptr {
 //
 //  @return A pointer to the player controller associated with the key.
 func GetEventPlayerController(event uintptr, key string) uintptr {
-	return P_GetEventPlayerController(event, key)
+	return _GetEventPlayerController(event, key)
 }
 
-var P_GetEventPlayerIndex = func(event uintptr, key string) int32 {
+var _GetEventPlayerIndex = func(event uintptr, key string) int32 {
 	var __retVal int32
 	__event := C.uintptr_t(event)
 	__key := plugify.ConstructString(key)
@@ -401,10 +401,10 @@ var P_GetEventPlayerIndex = func(event uintptr, key string) int32 {
 //  @return The player index associated with the key.
 // Deprecated: Use GetEventPlayerSlot instead. Will be removed soon
 func GetEventPlayerIndex(event uintptr, key string) int32 {
-	return P_GetEventPlayerIndex(event, key)
+	return _GetEventPlayerIndex(event, key)
 }
 
-var P_GetEventPlayerSlot = func(event uintptr, key string) int32 {
+var _GetEventPlayerSlot = func(event uintptr, key string) int32 {
 	var __retVal int32
 	__event := C.uintptr_t(event)
 	__key := plugify.ConstructString(key)
@@ -428,10 +428,10 @@ var P_GetEventPlayerSlot = func(event uintptr, key string) int32 {
 //
 //  @return The player slot associated with the key.
 func GetEventPlayerSlot(event uintptr, key string) int32 {
-	return P_GetEventPlayerSlot(event, key)
+	return _GetEventPlayerSlot(event, key)
 }
 
-var P_GetEventPlayerPawn = func(event uintptr, key string) uintptr {
+var _GetEventPlayerPawn = func(event uintptr, key string) uintptr {
 	var __retVal uintptr
 	__event := C.uintptr_t(event)
 	__key := plugify.ConstructString(key)
@@ -455,10 +455,10 @@ var P_GetEventPlayerPawn = func(event uintptr, key string) uintptr {
 //
 //  @return A pointer to the player pawn associated with the key.
 func GetEventPlayerPawn(event uintptr, key string) uintptr {
-	return P_GetEventPlayerPawn(event, key)
+	return _GetEventPlayerPawn(event, key)
 }
 
-var P_GetEventEntity = func(event uintptr, key string) uintptr {
+var _GetEventEntity = func(event uintptr, key string) uintptr {
 	var __retVal uintptr
 	__event := C.uintptr_t(event)
 	__key := plugify.ConstructString(key)
@@ -482,10 +482,10 @@ var P_GetEventEntity = func(event uintptr, key string) uintptr {
 //
 //  @return A pointer to the entity associated with the key.
 func GetEventEntity(event uintptr, key string) uintptr {
-	return P_GetEventEntity(event, key)
+	return _GetEventEntity(event, key)
 }
 
-var P_GetEventEntityIndex = func(event uintptr, key string) int32 {
+var _GetEventEntityIndex = func(event uintptr, key string) int32 {
 	var __retVal int32
 	__event := C.uintptr_t(event)
 	__key := plugify.ConstructString(key)
@@ -509,10 +509,10 @@ var P_GetEventEntityIndex = func(event uintptr, key string) int32 {
 //
 //  @return The entity index associated with the key.
 func GetEventEntityIndex(event uintptr, key string) int32 {
-	return P_GetEventEntityIndex(event, key)
+	return _GetEventEntityIndex(event, key)
 }
 
-var P_GetEventEntityHandle = func(event uintptr, key string) int32 {
+var _GetEventEntityHandle = func(event uintptr, key string) int32 {
 	var __retVal int32
 	__event := C.uintptr_t(event)
 	__key := plugify.ConstructString(key)
@@ -536,10 +536,10 @@ var P_GetEventEntityHandle = func(event uintptr, key string) int32 {
 //
 //  @return The entity handle associated with the key.
 func GetEventEntityHandle(event uintptr, key string) int32 {
-	return P_GetEventEntityHandle(event, key)
+	return _GetEventEntityHandle(event, key)
 }
 
-var P_GetEventName = func(event uintptr) string {
+var _GetEventName = func(event uintptr) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__event := C.uintptr_t(event)
@@ -565,10 +565,10 @@ var P_GetEventName = func(event uintptr) string {
 //
 //  @return A string where the result will be stored.
 func GetEventName(event uintptr) string {
-	return P_GetEventName(event)
+	return _GetEventName(event)
 }
 
-var P_SetEventBool = func(event uintptr, key string, value bool) {
+var _SetEventBool = func(event uintptr, key string, value bool) {
 	__event := C.uintptr_t(event)
 	__key := plugify.ConstructString(key)
 	__value := C.bool(value)
@@ -590,10 +590,10 @@ var P_SetEventBool = func(event uintptr, key string, value bool) {
 //  @param key: The key for which to set the boolean value.
 //  @param value: The boolean value to set.
 func SetEventBool(event uintptr, key string, value bool) {
-	P_SetEventBool(event, key, value)
+	_SetEventBool(event, key, value)
 }
 
-var P_SetEventFloat = func(event uintptr, key string, value float32) {
+var _SetEventFloat = func(event uintptr, key string, value float32) {
 	__event := C.uintptr_t(event)
 	__key := plugify.ConstructString(key)
 	__value := C.float(value)
@@ -615,10 +615,10 @@ var P_SetEventFloat = func(event uintptr, key string, value float32) {
 //  @param key: The key for which to set the float value.
 //  @param value: The float value to set.
 func SetEventFloat(event uintptr, key string, value float32) {
-	P_SetEventFloat(event, key, value)
+	_SetEventFloat(event, key, value)
 }
 
-var P_SetEventInt = func(event uintptr, key string, value int32) {
+var _SetEventInt = func(event uintptr, key string, value int32) {
 	__event := C.uintptr_t(event)
 	__key := plugify.ConstructString(key)
 	__value := C.int32_t(value)
@@ -640,10 +640,10 @@ var P_SetEventInt = func(event uintptr, key string, value int32) {
 //  @param key: The key for which to set the integer value.
 //  @param value: The integer value to set.
 func SetEventInt(event uintptr, key string, value int32) {
-	P_SetEventInt(event, key, value)
+	_SetEventInt(event, key, value)
 }
 
-var P_SetEventUInt64 = func(event uintptr, key string, value uint64) {
+var _SetEventUInt64 = func(event uintptr, key string, value uint64) {
 	__event := C.uintptr_t(event)
 	__key := plugify.ConstructString(key)
 	__value := C.uint64_t(value)
@@ -665,10 +665,10 @@ var P_SetEventUInt64 = func(event uintptr, key string, value uint64) {
 //  @param key: The key for which to set the long integer value.
 //  @param value: The long integer value to set.
 func SetEventUInt64(event uintptr, key string, value uint64) {
-	P_SetEventUInt64(event, key, value)
+	_SetEventUInt64(event, key, value)
 }
 
-var P_SetEventString = func(event uintptr, key string, value string) {
+var _SetEventString = func(event uintptr, key string, value string) {
 	__event := C.uintptr_t(event)
 	__key := plugify.ConstructString(key)
 	__value := plugify.ConstructString(value)
@@ -691,10 +691,10 @@ var P_SetEventString = func(event uintptr, key string, value string) {
 //  @param key: The key for which to set the string value.
 //  @param value: The string value to set.
 func SetEventString(event uintptr, key string, value string) {
-	P_SetEventString(event, key, value)
+	_SetEventString(event, key, value)
 }
 
-var P_SetEventPtr = func(event uintptr, key string, value uintptr) {
+var _SetEventPtr = func(event uintptr, key string, value uintptr) {
 	__event := C.uintptr_t(event)
 	__key := plugify.ConstructString(key)
 	__value := C.uintptr_t(value)
@@ -716,10 +716,10 @@ var P_SetEventPtr = func(event uintptr, key string, value uintptr) {
 //  @param key: The key for which to set the pointer value.
 //  @param value: The pointer value to set.
 func SetEventPtr(event uintptr, key string, value uintptr) {
-	P_SetEventPtr(event, key, value)
+	_SetEventPtr(event, key, value)
 }
 
-var P_SetEventPlayerController = func(event uintptr, key string, value uintptr) {
+var _SetEventPlayerController = func(event uintptr, key string, value uintptr) {
 	__event := C.uintptr_t(event)
 	__key := plugify.ConstructString(key)
 	__value := C.uintptr_t(value)
@@ -741,10 +741,10 @@ var P_SetEventPlayerController = func(event uintptr, key string, value uintptr) 
 //  @param key: The key for which to set the player controller address.
 //  @param value: A pointer to the player controller to set.
 func SetEventPlayerController(event uintptr, key string, value uintptr) {
-	P_SetEventPlayerController(event, key, value)
+	_SetEventPlayerController(event, key, value)
 }
 
-var P_SetEventPlayerIndex = func(event uintptr, key string, value int32) {
+var _SetEventPlayerIndex = func(event uintptr, key string, value int32) {
 	__event := C.uintptr_t(event)
 	__key := plugify.ConstructString(key)
 	__value := C.int32_t(value)
@@ -766,10 +766,10 @@ var P_SetEventPlayerIndex = func(event uintptr, key string, value int32) {
 //  @param key: The key for which to set the player index value.
 //  @param value: The player index value to set.
 func SetEventPlayerIndex(event uintptr, key string, value int32) {
-	P_SetEventPlayerIndex(event, key, value)
+	_SetEventPlayerIndex(event, key, value)
 }
 
-var P_SetEventPlayerSlot = func(event uintptr, key string, value int32) {
+var _SetEventPlayerSlot = func(event uintptr, key string, value int32) {
 	__event := C.uintptr_t(event)
 	__key := plugify.ConstructString(key)
 	__value := C.int32_t(value)
@@ -791,10 +791,10 @@ var P_SetEventPlayerSlot = func(event uintptr, key string, value int32) {
 //  @param key: The key for which to set the player slot value.
 //  @param value: The player slot value to set.
 func SetEventPlayerSlot(event uintptr, key string, value int32) {
-	P_SetEventPlayerSlot(event, key, value)
+	_SetEventPlayerSlot(event, key, value)
 }
 
-var P_SetEventEntity = func(event uintptr, key string, value uintptr) {
+var _SetEventEntity = func(event uintptr, key string, value uintptr) {
 	__event := C.uintptr_t(event)
 	__key := plugify.ConstructString(key)
 	__value := C.uintptr_t(value)
@@ -816,10 +816,10 @@ var P_SetEventEntity = func(event uintptr, key string, value uintptr) {
 //  @param key: The key for which to set the entity address.
 //  @param value: A pointer to the entity to set.
 func SetEventEntity(event uintptr, key string, value uintptr) {
-	P_SetEventEntity(event, key, value)
+	_SetEventEntity(event, key, value)
 }
 
-var P_SetEventEntityIndex = func(event uintptr, key string, value int32) {
+var _SetEventEntityIndex = func(event uintptr, key string, value int32) {
 	__event := C.uintptr_t(event)
 	__key := plugify.ConstructString(key)
 	__value := C.int32_t(value)
@@ -841,10 +841,10 @@ var P_SetEventEntityIndex = func(event uintptr, key string, value int32) {
 //  @param key: The key for which to set the entity index.
 //  @param value: The entity index value to set.
 func SetEventEntityIndex(event uintptr, key string, value int32) {
-	P_SetEventEntityIndex(event, key, value)
+	_SetEventEntityIndex(event, key, value)
 }
 
-var P_SetEventEntityHandle = func(event uintptr, key string, value int32) {
+var _SetEventEntityHandle = func(event uintptr, key string, value int32) {
 	__event := C.uintptr_t(event)
 	__key := plugify.ConstructString(key)
 	__value := C.int32_t(value)
@@ -866,10 +866,10 @@ var P_SetEventEntityHandle = func(event uintptr, key string, value int32) {
 //  @param key: The key for which to set the entity handle.
 //  @param value: The entity handle value to set.
 func SetEventEntityHandle(event uintptr, key string, value int32) {
-	P_SetEventEntityHandle(event, key, value)
+	_SetEventEntityHandle(event, key, value)
 }
 
-var P_SetEventBroadcast = func(event uintptr, dontBroadcast bool) {
+var _SetEventBroadcast = func(event uintptr, dontBroadcast bool) {
 	__event := C.uintptr_t(event)
 	__dontBroadcast := C.bool(dontBroadcast)
 	C.SetEventBroadcast(__event, __dontBroadcast)
@@ -881,10 +881,10 @@ var P_SetEventBroadcast = func(event uintptr, dontBroadcast bool) {
 //  @param event: A pointer to the IGameEvent object containing event data.
 //  @param dontBroadcast: A boolean indicating whether to disable broadcasting.
 func SetEventBroadcast(event uintptr, dontBroadcast bool) {
-	P_SetEventBroadcast(event, dontBroadcast)
+	_SetEventBroadcast(event, dontBroadcast)
 }
 
-var P_LoadEventsFromFile = func(path string, searchAll bool) int32 {
+var _LoadEventsFromFile = func(path string, searchAll bool) int32 {
 	var __retVal int32
 	__path := plugify.ConstructString(path)
 	__searchAll := C.bool(searchAll)
@@ -908,7 +908,7 @@ var P_LoadEventsFromFile = func(path string, searchAll bool) int32 {
 //
 //  @return An integer indicating the result of the loading operation.
 func LoadEventsFromFile(path string, searchAll bool) int32 {
-	return P_LoadEventsFromFile(path, searchAll)
+	return _LoadEventsFromFile(path, searchAll)
 }
 
 var (

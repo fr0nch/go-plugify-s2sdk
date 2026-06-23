@@ -72,7 +72,7 @@ var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: listeners)
 
-var P_OnClientConnect_Register = func(callback OnClientConnectCallback) {
+var _OnClientConnect_Register = func(callback OnClientConnectCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientConnect_Register(__callback)
 }
@@ -82,10 +82,10 @@ var P_OnClientConnect_Register = func(callback OnClientConnectCallback) {
 //
 //  @param callback: Function callback.
 func OnClientConnect_Register(callback OnClientConnectCallback) {
-	P_OnClientConnect_Register(callback)
+	_OnClientConnect_Register(callback)
 }
 
-var P_OnClientConnect_Unregister = func(callback OnClientConnectCallback) {
+var _OnClientConnect_Unregister = func(callback OnClientConnectCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientConnect_Unregister(__callback)
 }
@@ -95,10 +95,10 @@ var P_OnClientConnect_Unregister = func(callback OnClientConnectCallback) {
 //
 //  @param callback: Function callback.
 func OnClientConnect_Unregister(callback OnClientConnectCallback) {
-	P_OnClientConnect_Unregister(callback)
+	_OnClientConnect_Unregister(callback)
 }
 
-var P_OnClientConnect_Post_Register = func(callback OnClientConnect_PostCallback) {
+var _OnClientConnect_Post_Register = func(callback OnClientConnect_PostCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientConnect_Post_Register(__callback)
 }
@@ -108,10 +108,10 @@ var P_OnClientConnect_Post_Register = func(callback OnClientConnect_PostCallback
 //
 //  @param callback: Function callback.
 func OnClientConnect_Post_Register(callback OnClientConnect_PostCallback) {
-	P_OnClientConnect_Post_Register(callback)
+	_OnClientConnect_Post_Register(callback)
 }
 
-var P_OnClientConnect_Post_Unregister = func(callback OnClientConnect_PostCallback) {
+var _OnClientConnect_Post_Unregister = func(callback OnClientConnect_PostCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientConnect_Post_Unregister(__callback)
 }
@@ -121,10 +121,10 @@ var P_OnClientConnect_Post_Unregister = func(callback OnClientConnect_PostCallba
 //
 //  @param callback: Function callback.
 func OnClientConnect_Post_Unregister(callback OnClientConnect_PostCallback) {
-	P_OnClientConnect_Post_Unregister(callback)
+	_OnClientConnect_Post_Unregister(callback)
 }
 
-var P_OnClientConnected_Register = func(callback OnClientConnectedCallback) {
+var _OnClientConnected_Register = func(callback OnClientConnectedCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientConnected_Register(__callback)
 }
@@ -134,10 +134,10 @@ var P_OnClientConnected_Register = func(callback OnClientConnectedCallback) {
 //
 //  @param callback: Function callback.
 func OnClientConnected_Register(callback OnClientConnectedCallback) {
-	P_OnClientConnected_Register(callback)
+	_OnClientConnected_Register(callback)
 }
 
-var P_OnClientConnected_Unregister = func(callback OnClientConnectedCallback) {
+var _OnClientConnected_Unregister = func(callback OnClientConnectedCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientConnected_Unregister(__callback)
 }
@@ -147,10 +147,10 @@ var P_OnClientConnected_Unregister = func(callback OnClientConnectedCallback) {
 //
 //  @param callback: Function callback.
 func OnClientConnected_Unregister(callback OnClientConnectedCallback) {
-	P_OnClientConnected_Unregister(callback)
+	_OnClientConnected_Unregister(callback)
 }
 
-var P_OnClientPutInServer_Register = func(callback OnClientPutInServerCallback) {
+var _OnClientPutInServer_Register = func(callback OnClientPutInServerCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientPutInServer_Register(__callback)
 }
@@ -160,10 +160,10 @@ var P_OnClientPutInServer_Register = func(callback OnClientPutInServerCallback) 
 //
 //  @param callback: Function callback.
 func OnClientPutInServer_Register(callback OnClientPutInServerCallback) {
-	P_OnClientPutInServer_Register(callback)
+	_OnClientPutInServer_Register(callback)
 }
 
-var P_OnClientPutInServer_Unregister = func(callback OnClientPutInServerCallback) {
+var _OnClientPutInServer_Unregister = func(callback OnClientPutInServerCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientPutInServer_Unregister(__callback)
 }
@@ -173,10 +173,10 @@ var P_OnClientPutInServer_Unregister = func(callback OnClientPutInServerCallback
 //
 //  @param callback: Function callback.
 func OnClientPutInServer_Unregister(callback OnClientPutInServerCallback) {
-	P_OnClientPutInServer_Unregister(callback)
+	_OnClientPutInServer_Unregister(callback)
 }
 
-var P_OnClientDisconnect_Register = func(callback OnClientDisconnectCallback) {
+var _OnClientDisconnect_Register = func(callback OnClientDisconnectCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientDisconnect_Register(__callback)
 }
@@ -186,10 +186,10 @@ var P_OnClientDisconnect_Register = func(callback OnClientDisconnectCallback) {
 //
 //  @param callback: Function callback.
 func OnClientDisconnect_Register(callback OnClientDisconnectCallback) {
-	P_OnClientDisconnect_Register(callback)
+	_OnClientDisconnect_Register(callback)
 }
 
-var P_OnClientDisconnect_Unregister = func(callback OnClientDisconnectCallback) {
+var _OnClientDisconnect_Unregister = func(callback OnClientDisconnectCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientDisconnect_Unregister(__callback)
 }
@@ -199,10 +199,10 @@ var P_OnClientDisconnect_Unregister = func(callback OnClientDisconnectCallback) 
 //
 //  @param callback: Function callback.
 func OnClientDisconnect_Unregister(callback OnClientDisconnectCallback) {
-	P_OnClientDisconnect_Unregister(callback)
+	_OnClientDisconnect_Unregister(callback)
 }
 
-var P_OnClientDisconnect_Post_Register = func(callback OnClientDisconnect_PostCallback) {
+var _OnClientDisconnect_Post_Register = func(callback OnClientDisconnect_PostCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientDisconnect_Post_Register(__callback)
 }
@@ -212,10 +212,10 @@ var P_OnClientDisconnect_Post_Register = func(callback OnClientDisconnect_PostCa
 //
 //  @param callback: Function callback.
 func OnClientDisconnect_Post_Register(callback OnClientDisconnect_PostCallback) {
-	P_OnClientDisconnect_Post_Register(callback)
+	_OnClientDisconnect_Post_Register(callback)
 }
 
-var P_OnClientDisconnect_Post_Unregister = func(callback OnClientDisconnect_PostCallback) {
+var _OnClientDisconnect_Post_Unregister = func(callback OnClientDisconnect_PostCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientDisconnect_Post_Unregister(__callback)
 }
@@ -225,10 +225,10 @@ var P_OnClientDisconnect_Post_Unregister = func(callback OnClientDisconnect_Post
 //
 //  @param callback: Function callback.
 func OnClientDisconnect_Post_Unregister(callback OnClientDisconnect_PostCallback) {
-	P_OnClientDisconnect_Post_Unregister(callback)
+	_OnClientDisconnect_Post_Unregister(callback)
 }
 
-var P_OnClientActive_Register = func(callback OnClientActiveCallback) {
+var _OnClientActive_Register = func(callback OnClientActiveCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientActive_Register(__callback)
 }
@@ -238,10 +238,10 @@ var P_OnClientActive_Register = func(callback OnClientActiveCallback) {
 //
 //  @param callback: Function callback.
 func OnClientActive_Register(callback OnClientActiveCallback) {
-	P_OnClientActive_Register(callback)
+	_OnClientActive_Register(callback)
 }
 
-var P_OnClientActive_Unregister = func(callback OnClientActiveCallback) {
+var _OnClientActive_Unregister = func(callback OnClientActiveCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientActive_Unregister(__callback)
 }
@@ -251,10 +251,10 @@ var P_OnClientActive_Unregister = func(callback OnClientActiveCallback) {
 //
 //  @param callback: Function callback.
 func OnClientActive_Unregister(callback OnClientActiveCallback) {
-	P_OnClientActive_Unregister(callback)
+	_OnClientActive_Unregister(callback)
 }
 
-var P_OnClientFullyConnect_Register = func(callback OnClientFullyConnectCallback) {
+var _OnClientFullyConnect_Register = func(callback OnClientFullyConnectCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientFullyConnect_Register(__callback)
 }
@@ -264,10 +264,10 @@ var P_OnClientFullyConnect_Register = func(callback OnClientFullyConnectCallback
 //
 //  @param callback: Function callback.
 func OnClientFullyConnect_Register(callback OnClientFullyConnectCallback) {
-	P_OnClientFullyConnect_Register(callback)
+	_OnClientFullyConnect_Register(callback)
 }
 
-var P_OnClientFullyConnect_Unregister = func(callback OnClientFullyConnectCallback) {
+var _OnClientFullyConnect_Unregister = func(callback OnClientFullyConnectCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientFullyConnect_Unregister(__callback)
 }
@@ -277,10 +277,10 @@ var P_OnClientFullyConnect_Unregister = func(callback OnClientFullyConnectCallba
 //
 //  @param callback: Function callback.
 func OnClientFullyConnect_Unregister(callback OnClientFullyConnectCallback) {
-	P_OnClientFullyConnect_Unregister(callback)
+	_OnClientFullyConnect_Unregister(callback)
 }
 
-var P_OnClientSettingsChanged_Register = func(callback OnClientSettingsChangedCallback) {
+var _OnClientSettingsChanged_Register = func(callback OnClientSettingsChangedCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientSettingsChanged_Register(__callback)
 }
@@ -290,10 +290,10 @@ var P_OnClientSettingsChanged_Register = func(callback OnClientSettingsChangedCa
 //
 //  @param callback: Function callback.
 func OnClientSettingsChanged_Register(callback OnClientSettingsChangedCallback) {
-	P_OnClientSettingsChanged_Register(callback)
+	_OnClientSettingsChanged_Register(callback)
 }
 
-var P_OnClientSettingsChanged_Unregister = func(callback OnClientSettingsChangedCallback) {
+var _OnClientSettingsChanged_Unregister = func(callback OnClientSettingsChangedCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientSettingsChanged_Unregister(__callback)
 }
@@ -303,10 +303,10 @@ var P_OnClientSettingsChanged_Unregister = func(callback OnClientSettingsChanged
 //
 //  @param callback: Function callback.
 func OnClientSettingsChanged_Unregister(callback OnClientSettingsChangedCallback) {
-	P_OnClientSettingsChanged_Unregister(callback)
+	_OnClientSettingsChanged_Unregister(callback)
 }
 
-var P_OnClientAuthenticated_Register = func(callback OnClientAuthenticatedCallback) {
+var _OnClientAuthenticated_Register = func(callback OnClientAuthenticatedCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientAuthenticated_Register(__callback)
 }
@@ -316,10 +316,10 @@ var P_OnClientAuthenticated_Register = func(callback OnClientAuthenticatedCallba
 //
 //  @param callback: Function callback.
 func OnClientAuthenticated_Register(callback OnClientAuthenticatedCallback) {
-	P_OnClientAuthenticated_Register(callback)
+	_OnClientAuthenticated_Register(callback)
 }
 
-var P_OnClientAuthenticated_Unregister = func(callback OnClientAuthenticatedCallback) {
+var _OnClientAuthenticated_Unregister = func(callback OnClientAuthenticatedCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientAuthenticated_Unregister(__callback)
 }
@@ -329,10 +329,10 @@ var P_OnClientAuthenticated_Unregister = func(callback OnClientAuthenticatedCall
 //
 //  @param callback: Function callback.
 func OnClientAuthenticated_Unregister(callback OnClientAuthenticatedCallback) {
-	P_OnClientAuthenticated_Unregister(callback)
+	_OnClientAuthenticated_Unregister(callback)
 }
 
-var P_OnRoundTerminated_Register = func(callback OnRoundTerminatedCallback) {
+var _OnRoundTerminated_Register = func(callback OnRoundTerminatedCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnRoundTerminated_Register(__callback)
 }
@@ -342,10 +342,10 @@ var P_OnRoundTerminated_Register = func(callback OnRoundTerminatedCallback) {
 //
 //  @param callback: Function callback.
 func OnRoundTerminated_Register(callback OnRoundTerminatedCallback) {
-	P_OnRoundTerminated_Register(callback)
+	_OnRoundTerminated_Register(callback)
 }
 
-var P_OnRoundTerminated_Unregister = func(callback OnRoundTerminatedCallback) {
+var _OnRoundTerminated_Unregister = func(callback OnRoundTerminatedCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnRoundTerminated_Unregister(__callback)
 }
@@ -355,10 +355,10 @@ var P_OnRoundTerminated_Unregister = func(callback OnRoundTerminatedCallback) {
 //
 //  @param callback: Function callback.
 func OnRoundTerminated_Unregister(callback OnRoundTerminatedCallback) {
-	P_OnRoundTerminated_Unregister(callback)
+	_OnRoundTerminated_Unregister(callback)
 }
 
-var P_OnEntityCreated_Register = func(callback OnEntityCreatedCallback) {
+var _OnEntityCreated_Register = func(callback OnEntityCreatedCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnEntityCreated_Register(__callback)
 }
@@ -368,10 +368,10 @@ var P_OnEntityCreated_Register = func(callback OnEntityCreatedCallback) {
 //
 //  @param callback: Function callback.
 func OnEntityCreated_Register(callback OnEntityCreatedCallback) {
-	P_OnEntityCreated_Register(callback)
+	_OnEntityCreated_Register(callback)
 }
 
-var P_OnEntityCreated_Unregister = func(callback OnEntityCreatedCallback) {
+var _OnEntityCreated_Unregister = func(callback OnEntityCreatedCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnEntityCreated_Unregister(__callback)
 }
@@ -381,10 +381,10 @@ var P_OnEntityCreated_Unregister = func(callback OnEntityCreatedCallback) {
 //
 //  @param callback: Function callback.
 func OnEntityCreated_Unregister(callback OnEntityCreatedCallback) {
-	P_OnEntityCreated_Unregister(callback)
+	_OnEntityCreated_Unregister(callback)
 }
 
-var P_OnEntitySpawned_Register = func(callback OnEntitySpawnedCallback) {
+var _OnEntitySpawned_Register = func(callback OnEntitySpawnedCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnEntitySpawned_Register(__callback)
 }
@@ -394,10 +394,10 @@ var P_OnEntitySpawned_Register = func(callback OnEntitySpawnedCallback) {
 //
 //  @param callback: Function callback.
 func OnEntitySpawned_Register(callback OnEntitySpawnedCallback) {
-	P_OnEntitySpawned_Register(callback)
+	_OnEntitySpawned_Register(callback)
 }
 
-var P_OnEntitySpawned_Unregister = func(callback OnEntitySpawnedCallback) {
+var _OnEntitySpawned_Unregister = func(callback OnEntitySpawnedCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnEntitySpawned_Unregister(__callback)
 }
@@ -407,10 +407,10 @@ var P_OnEntitySpawned_Unregister = func(callback OnEntitySpawnedCallback) {
 //
 //  @param callback: Function callback.
 func OnEntitySpawned_Unregister(callback OnEntitySpawnedCallback) {
-	P_OnEntitySpawned_Unregister(callback)
+	_OnEntitySpawned_Unregister(callback)
 }
 
-var P_OnEntityDeleted_Register = func(callback OnEntityDeletedCallback) {
+var _OnEntityDeleted_Register = func(callback OnEntityDeletedCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnEntityDeleted_Register(__callback)
 }
@@ -420,10 +420,10 @@ var P_OnEntityDeleted_Register = func(callback OnEntityDeletedCallback) {
 //
 //  @param callback: Function callback.
 func OnEntityDeleted_Register(callback OnEntityDeletedCallback) {
-	P_OnEntityDeleted_Register(callback)
+	_OnEntityDeleted_Register(callback)
 }
 
-var P_OnEntityDeleted_Unregister = func(callback OnEntityDeletedCallback) {
+var _OnEntityDeleted_Unregister = func(callback OnEntityDeletedCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnEntityDeleted_Unregister(__callback)
 }
@@ -433,10 +433,10 @@ var P_OnEntityDeleted_Unregister = func(callback OnEntityDeletedCallback) {
 //
 //  @param callback: Function callback.
 func OnEntityDeleted_Unregister(callback OnEntityDeletedCallback) {
-	P_OnEntityDeleted_Unregister(callback)
+	_OnEntityDeleted_Unregister(callback)
 }
 
-var P_OnEntityParentChanged_Register = func(callback OnEntityParentChangedCallback) {
+var _OnEntityParentChanged_Register = func(callback OnEntityParentChangedCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnEntityParentChanged_Register(__callback)
 }
@@ -446,10 +446,10 @@ var P_OnEntityParentChanged_Register = func(callback OnEntityParentChangedCallba
 //
 //  @param callback: Function callback.
 func OnEntityParentChanged_Register(callback OnEntityParentChangedCallback) {
-	P_OnEntityParentChanged_Register(callback)
+	_OnEntityParentChanged_Register(callback)
 }
 
-var P_OnEntityParentChanged_Unregister = func(callback OnEntityParentChangedCallback) {
+var _OnEntityParentChanged_Unregister = func(callback OnEntityParentChangedCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnEntityParentChanged_Unregister(__callback)
 }
@@ -459,10 +459,10 @@ var P_OnEntityParentChanged_Unregister = func(callback OnEntityParentChangedCall
 //
 //  @param callback: Function callback.
 func OnEntityParentChanged_Unregister(callback OnEntityParentChangedCallback) {
-	P_OnEntityParentChanged_Unregister(callback)
+	_OnEntityParentChanged_Unregister(callback)
 }
 
-var P_OnServerCheckTransmit_Register = func(callback OnServerCheckTransmitCallback) {
+var _OnServerCheckTransmit_Register = func(callback OnServerCheckTransmitCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnServerCheckTransmit_Register(__callback)
 }
@@ -472,10 +472,10 @@ var P_OnServerCheckTransmit_Register = func(callback OnServerCheckTransmitCallba
 //
 //  @param callback: Function callback.
 func OnServerCheckTransmit_Register(callback OnServerCheckTransmitCallback) {
-	P_OnServerCheckTransmit_Register(callback)
+	_OnServerCheckTransmit_Register(callback)
 }
 
-var P_OnServerCheckTransmit_Unregister = func(callback OnServerCheckTransmitCallback) {
+var _OnServerCheckTransmit_Unregister = func(callback OnServerCheckTransmitCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnServerCheckTransmit_Unregister(__callback)
 }
@@ -485,10 +485,10 @@ var P_OnServerCheckTransmit_Unregister = func(callback OnServerCheckTransmitCall
 //
 //  @param callback: Function callback.
 func OnServerCheckTransmit_Unregister(callback OnServerCheckTransmitCallback) {
-	P_OnServerCheckTransmit_Unregister(callback)
+	_OnServerCheckTransmit_Unregister(callback)
 }
 
-var P_OnServerStartup_Register = func(callback OnServerStartupCallback) {
+var _OnServerStartup_Register = func(callback OnServerStartupCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnServerStartup_Register(__callback)
 }
@@ -498,10 +498,10 @@ var P_OnServerStartup_Register = func(callback OnServerStartupCallback) {
 //
 //  @param callback: Function callback.
 func OnServerStartup_Register(callback OnServerStartupCallback) {
-	P_OnServerStartup_Register(callback)
+	_OnServerStartup_Register(callback)
 }
 
-var P_OnServerStartup_Unregister = func(callback OnServerStartupCallback) {
+var _OnServerStartup_Unregister = func(callback OnServerStartupCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnServerStartup_Unregister(__callback)
 }
@@ -511,10 +511,10 @@ var P_OnServerStartup_Unregister = func(callback OnServerStartupCallback) {
 //
 //  @param callback: Function callback.
 func OnServerStartup_Unregister(callback OnServerStartupCallback) {
-	P_OnServerStartup_Unregister(callback)
+	_OnServerStartup_Unregister(callback)
 }
 
-var P_OnBuildGameSessionManifest_Register = func(callback OnBuildGameSessionManifestCallback) {
+var _OnBuildGameSessionManifest_Register = func(callback OnBuildGameSessionManifestCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnBuildGameSessionManifest_Register(__callback)
 }
@@ -524,10 +524,10 @@ var P_OnBuildGameSessionManifest_Register = func(callback OnBuildGameSessionMani
 //
 //  @param callback: Function callback.
 func OnBuildGameSessionManifest_Register(callback OnBuildGameSessionManifestCallback) {
-	P_OnBuildGameSessionManifest_Register(callback)
+	_OnBuildGameSessionManifest_Register(callback)
 }
 
-var P_OnBuildGameSessionManifest_Unregister = func(callback OnBuildGameSessionManifestCallback) {
+var _OnBuildGameSessionManifest_Unregister = func(callback OnBuildGameSessionManifestCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnBuildGameSessionManifest_Unregister(__callback)
 }
@@ -537,10 +537,10 @@ var P_OnBuildGameSessionManifest_Unregister = func(callback OnBuildGameSessionMa
 //
 //  @param callback: Function callback.
 func OnBuildGameSessionManifest_Unregister(callback OnBuildGameSessionManifestCallback) {
-	P_OnBuildGameSessionManifest_Unregister(callback)
+	_OnBuildGameSessionManifest_Unregister(callback)
 }
 
-var P_OnServerActivate_Register = func(callback OnServerActivateCallback) {
+var _OnServerActivate_Register = func(callback OnServerActivateCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnServerActivate_Register(__callback)
 }
@@ -550,10 +550,10 @@ var P_OnServerActivate_Register = func(callback OnServerActivateCallback) {
 //
 //  @param callback: Function callback.
 func OnServerActivate_Register(callback OnServerActivateCallback) {
-	P_OnServerActivate_Register(callback)
+	_OnServerActivate_Register(callback)
 }
 
-var P_OnServerActivate_Unregister = func(callback OnServerActivateCallback) {
+var _OnServerActivate_Unregister = func(callback OnServerActivateCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnServerActivate_Unregister(__callback)
 }
@@ -563,10 +563,10 @@ var P_OnServerActivate_Unregister = func(callback OnServerActivateCallback) {
 //
 //  @param callback: Function callback.
 func OnServerActivate_Unregister(callback OnServerActivateCallback) {
-	P_OnServerActivate_Unregister(callback)
+	_OnServerActivate_Unregister(callback)
 }
 
-var P_OnServerSpawn_Register = func(callback OnServerSpawnCallback) {
+var _OnServerSpawn_Register = func(callback OnServerSpawnCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnServerSpawn_Register(__callback)
 }
@@ -576,10 +576,10 @@ var P_OnServerSpawn_Register = func(callback OnServerSpawnCallback) {
 //
 //  @param callback: Function callback.
 func OnServerSpawn_Register(callback OnServerSpawnCallback) {
-	P_OnServerSpawn_Register(callback)
+	_OnServerSpawn_Register(callback)
 }
 
-var P_OnServerSpawn_Unregister = func(callback OnServerSpawnCallback) {
+var _OnServerSpawn_Unregister = func(callback OnServerSpawnCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnServerSpawn_Unregister(__callback)
 }
@@ -589,10 +589,10 @@ var P_OnServerSpawn_Unregister = func(callback OnServerSpawnCallback) {
 //
 //  @param callback: Function callback.
 func OnServerSpawn_Unregister(callback OnServerSpawnCallback) {
-	P_OnServerSpawn_Unregister(callback)
+	_OnServerSpawn_Unregister(callback)
 }
 
-var P_OnServerStarted_Register = func(callback OnServerStartedCallback) {
+var _OnServerStarted_Register = func(callback OnServerStartedCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnServerStarted_Register(__callback)
 }
@@ -602,10 +602,10 @@ var P_OnServerStarted_Register = func(callback OnServerStartedCallback) {
 //
 //  @param callback: Function callback.
 func OnServerStarted_Register(callback OnServerStartedCallback) {
-	P_OnServerStarted_Register(callback)
+	_OnServerStarted_Register(callback)
 }
 
-var P_OnServerStarted_Unregister = func(callback OnServerStartedCallback) {
+var _OnServerStarted_Unregister = func(callback OnServerStartedCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnServerStarted_Unregister(__callback)
 }
@@ -615,10 +615,10 @@ var P_OnServerStarted_Unregister = func(callback OnServerStartedCallback) {
 //
 //  @param callback: Function callback.
 func OnServerStarted_Unregister(callback OnServerStartedCallback) {
-	P_OnServerStarted_Unregister(callback)
+	_OnServerStarted_Unregister(callback)
 }
 
-var P_OnMapStart_Register = func(callback OnMapStartCallback) {
+var _OnMapStart_Register = func(callback OnMapStartCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnMapStart_Register(__callback)
 }
@@ -628,10 +628,10 @@ var P_OnMapStart_Register = func(callback OnMapStartCallback) {
 //
 //  @param callback: Function callback.
 func OnMapStart_Register(callback OnMapStartCallback) {
-	P_OnMapStart_Register(callback)
+	_OnMapStart_Register(callback)
 }
 
-var P_OnMapStart_Unregister = func(callback OnMapStartCallback) {
+var _OnMapStart_Unregister = func(callback OnMapStartCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnMapStart_Unregister(__callback)
 }
@@ -641,10 +641,10 @@ var P_OnMapStart_Unregister = func(callback OnMapStartCallback) {
 //
 //  @param callback: Function callback.
 func OnMapStart_Unregister(callback OnMapStartCallback) {
-	P_OnMapStart_Unregister(callback)
+	_OnMapStart_Unregister(callback)
 }
 
-var P_OnMapEnd_Register = func(callback OnMapEndCallback) {
+var _OnMapEnd_Register = func(callback OnMapEndCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnMapEnd_Register(__callback)
 }
@@ -654,10 +654,10 @@ var P_OnMapEnd_Register = func(callback OnMapEndCallback) {
 //
 //  @param callback: Function callback.
 func OnMapEnd_Register(callback OnMapEndCallback) {
-	P_OnMapEnd_Register(callback)
+	_OnMapEnd_Register(callback)
 }
 
-var P_OnMapEnd_Unregister = func(callback OnMapEndCallback) {
+var _OnMapEnd_Unregister = func(callback OnMapEndCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnMapEnd_Unregister(__callback)
 }
@@ -667,10 +667,10 @@ var P_OnMapEnd_Unregister = func(callback OnMapEndCallback) {
 //
 //  @param callback: Function callback.
 func OnMapEnd_Unregister(callback OnMapEndCallback) {
-	P_OnMapEnd_Unregister(callback)
+	_OnMapEnd_Unregister(callback)
 }
 
-var P_OnGameFrame_Register = func(callback OnGameFrameCallback) {
+var _OnGameFrame_Register = func(callback OnGameFrameCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnGameFrame_Register(__callback)
 }
@@ -680,10 +680,10 @@ var P_OnGameFrame_Register = func(callback OnGameFrameCallback) {
 //
 //  @param callback: Function callback.
 func OnGameFrame_Register(callback OnGameFrameCallback) {
-	P_OnGameFrame_Register(callback)
+	_OnGameFrame_Register(callback)
 }
 
-var P_OnGameFrame_Unregister = func(callback OnGameFrameCallback) {
+var _OnGameFrame_Unregister = func(callback OnGameFrameCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnGameFrame_Unregister(__callback)
 }
@@ -693,10 +693,10 @@ var P_OnGameFrame_Unregister = func(callback OnGameFrameCallback) {
 //
 //  @param callback: Function callback.
 func OnGameFrame_Unregister(callback OnGameFrameCallback) {
-	P_OnGameFrame_Unregister(callback)
+	_OnGameFrame_Unregister(callback)
 }
 
-var P_OnUpdateWhenNotInGame_Register = func(callback OnUpdateWhenNotInGameCallback) {
+var _OnUpdateWhenNotInGame_Register = func(callback OnUpdateWhenNotInGameCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnUpdateWhenNotInGame_Register(__callback)
 }
@@ -706,10 +706,10 @@ var P_OnUpdateWhenNotInGame_Register = func(callback OnUpdateWhenNotInGameCallba
 //
 //  @param callback: Function callback.
 func OnUpdateWhenNotInGame_Register(callback OnUpdateWhenNotInGameCallback) {
-	P_OnUpdateWhenNotInGame_Register(callback)
+	_OnUpdateWhenNotInGame_Register(callback)
 }
 
-var P_OnUpdateWhenNotInGame_Unregister = func(callback OnUpdateWhenNotInGameCallback) {
+var _OnUpdateWhenNotInGame_Unregister = func(callback OnUpdateWhenNotInGameCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnUpdateWhenNotInGame_Unregister(__callback)
 }
@@ -719,10 +719,10 @@ var P_OnUpdateWhenNotInGame_Unregister = func(callback OnUpdateWhenNotInGameCall
 //
 //  @param callback: Function callback.
 func OnUpdateWhenNotInGame_Unregister(callback OnUpdateWhenNotInGameCallback) {
-	P_OnUpdateWhenNotInGame_Unregister(callback)
+	_OnUpdateWhenNotInGame_Unregister(callback)
 }
 
-var P_OnPreWorldUpdate_Register = func(callback OnPreWorldUpdateCallback) {
+var _OnPreWorldUpdate_Register = func(callback OnPreWorldUpdateCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnPreWorldUpdate_Register(__callback)
 }
@@ -732,10 +732,10 @@ var P_OnPreWorldUpdate_Register = func(callback OnPreWorldUpdateCallback) {
 //
 //  @param callback: Function callback.
 func OnPreWorldUpdate_Register(callback OnPreWorldUpdateCallback) {
-	P_OnPreWorldUpdate_Register(callback)
+	_OnPreWorldUpdate_Register(callback)
 }
 
-var P_OnPreWorldUpdate_Unregister = func(callback OnPreWorldUpdateCallback) {
+var _OnPreWorldUpdate_Unregister = func(callback OnPreWorldUpdateCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnPreWorldUpdate_Unregister(__callback)
 }
@@ -745,6 +745,6 @@ var P_OnPreWorldUpdate_Unregister = func(callback OnPreWorldUpdateCallback) {
 //
 //  @param callback: Function callback.
 func OnPreWorldUpdate_Unregister(callback OnPreWorldUpdateCallback) {
-	P_OnPreWorldUpdate_Unregister(callback)
+	_OnPreWorldUpdate_Unregister(callback)
 }
 

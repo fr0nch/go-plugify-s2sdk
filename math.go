@@ -40,7 +40,7 @@ var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: math)
 
-var P_AnglesDiff = func(angle1 float32, angle2 float32) float32 {
+var _AnglesDiff = func(angle1 float32, angle2 float32) float32 {
 	var __retVal float32
 	__angle1 := C.float(angle1)
 	__angle2 := C.float(angle2)
@@ -56,10 +56,10 @@ var P_AnglesDiff = func(angle1 float32, angle2 float32) float32 {
 //
 //  @return Angular difference in degrees
 func AnglesDiff(angle1 float32, angle2 float32) float32 {
-	return P_AnglesDiff(angle1, angle2)
+	return _AnglesDiff(angle1, angle2)
 }
 
-var P_AnglesToVector = func(angles plugify.Vector3) plugify.Vector3 {
+var _AnglesToVector = func(angles plugify.Vector3) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__angles := *(*C.Vector3)(unsafe.Pointer(&angles))
 	__native := C.AnglesToVector(&__angles)
@@ -74,10 +74,10 @@ var P_AnglesToVector = func(angles plugify.Vector3) plugify.Vector3 {
 //
 //  @return Directional vector
 func AnglesToVector(angles plugify.Vector3) plugify.Vector3 {
-	return P_AnglesToVector(angles)
+	return _AnglesToVector(angles)
 }
 
-var P_AxisAngleToQuaternion = func(axis plugify.Vector3, angle float32) plugify.Vector4 {
+var _AxisAngleToQuaternion = func(axis plugify.Vector3, angle float32) plugify.Vector4 {
 	var __retVal plugify.Vector4
 	__axis := *(*C.Vector3)(unsafe.Pointer(&axis))
 	__angle := C.float(angle)
@@ -94,10 +94,10 @@ var P_AxisAngleToQuaternion = func(axis plugify.Vector3, angle float32) plugify.
 //
 //  @return Resulting quaternion
 func AxisAngleToQuaternion(axis plugify.Vector3, angle float32) plugify.Vector4 {
-	return P_AxisAngleToQuaternion(axis, angle)
+	return _AxisAngleToQuaternion(axis, angle)
 }
 
-var P_CalcClosestPointOnEntityOBB = func(entityHandle int32, position plugify.Vector3) plugify.Vector3 {
+var _CalcClosestPointOnEntityOBB = func(entityHandle int32, position plugify.Vector3) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__entityHandle := C.int32_t(entityHandle)
 	__position := *(*C.Vector3)(unsafe.Pointer(&position))
@@ -114,10 +114,10 @@ var P_CalcClosestPointOnEntityOBB = func(entityHandle int32, position plugify.Ve
 //
 //  @return Closest point on the entity's OBB, or vec3_origin if entity is invalid
 func CalcClosestPointOnEntityOBB(entityHandle int32, position plugify.Vector3) plugify.Vector3 {
-	return P_CalcClosestPointOnEntityOBB(entityHandle, position)
+	return _CalcClosestPointOnEntityOBB(entityHandle, position)
 }
 
-var P_CalcDistanceBetweenEntityOBB = func(entityHandle1 int32, entityHandle2 int32) float32 {
+var _CalcDistanceBetweenEntityOBB = func(entityHandle1 int32, entityHandle2 int32) float32 {
 	var __retVal float32
 	__entityHandle1 := C.int32_t(entityHandle1)
 	__entityHandle2 := C.int32_t(entityHandle2)
@@ -133,10 +133,10 @@ var P_CalcDistanceBetweenEntityOBB = func(entityHandle1 int32, entityHandle2 int
 //
 //  @return Distance between OBBs, or -1.0f if either entity is invalid
 func CalcDistanceBetweenEntityOBB(entityHandle1 int32, entityHandle2 int32) float32 {
-	return P_CalcDistanceBetweenEntityOBB(entityHandle1, entityHandle2)
+	return _CalcDistanceBetweenEntityOBB(entityHandle1, entityHandle2)
 }
 
-var P_CalcDistanceToLineSegment2D = func(p plugify.Vector3, vLineA plugify.Vector3, vLineB plugify.Vector3) float32 {
+var _CalcDistanceToLineSegment2D = func(p plugify.Vector3, vLineA plugify.Vector3, vLineB plugify.Vector3) float32 {
 	var __retVal float32
 	__p := *(*C.Vector3)(unsafe.Pointer(&p))
 	__vLineA := *(*C.Vector3)(unsafe.Pointer(&vLineA))
@@ -154,10 +154,10 @@ var P_CalcDistanceToLineSegment2D = func(p plugify.Vector3, vLineA plugify.Vecto
 //
 //  @return Shortest 2D distance
 func CalcDistanceToLineSegment2D(p plugify.Vector3, vLineA plugify.Vector3, vLineB plugify.Vector3) float32 {
-	return P_CalcDistanceToLineSegment2D(p, vLineA, vLineB)
+	return _CalcDistanceToLineSegment2D(p, vLineA, vLineB)
 }
 
-var P_CrossVectors = func(v1 plugify.Vector3, v2 plugify.Vector3) plugify.Vector3 {
+var _CrossVectors = func(v1 plugify.Vector3, v2 plugify.Vector3) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__v1 := *(*C.Vector3)(unsafe.Pointer(&v1))
 	__v2 := *(*C.Vector3)(unsafe.Pointer(&v2))
@@ -174,10 +174,10 @@ var P_CrossVectors = func(v1 plugify.Vector3, v2 plugify.Vector3) plugify.Vector
 //
 //  @return Cross product vector (v1 × v2)
 func CrossVectors(v1 plugify.Vector3, v2 plugify.Vector3) plugify.Vector3 {
-	return P_CrossVectors(v1, v2)
+	return _CrossVectors(v1, v2)
 }
 
-var P_ExponentDecay = func(decayTo float32, decayTime float32, dt float32) float32 {
+var _ExponentDecay = func(decayTo float32, decayTime float32, dt float32) float32 {
 	var __retVal float32
 	__decayTo := C.float(decayTo)
 	__decayTime := C.float(decayTime)
@@ -195,10 +195,10 @@ var P_ExponentDecay = func(decayTo float32, decayTime float32, dt float32) float
 //
 //  @return Decay factor
 func ExponentDecay(decayTo float32, decayTime float32, dt float32) float32 {
-	return P_ExponentDecay(decayTo, decayTime, dt)
+	return _ExponentDecay(decayTo, decayTime, dt)
 }
 
-var P_LerpVectors = func(start plugify.Vector3, end plugify.Vector3, factor float32) plugify.Vector3 {
+var _LerpVectors = func(start plugify.Vector3, end plugify.Vector3, factor float32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__start := *(*C.Vector3)(unsafe.Pointer(&start))
 	__end := *(*C.Vector3)(unsafe.Pointer(&end))
@@ -217,10 +217,10 @@ var P_LerpVectors = func(start plugify.Vector3, end plugify.Vector3, factor floa
 //
 //  @return Interpolated vector
 func LerpVectors(start plugify.Vector3, end plugify.Vector3, factor float32) plugify.Vector3 {
-	return P_LerpVectors(start, end, factor)
+	return _LerpVectors(start, end, factor)
 }
 
-var P_QSlerp = func(fromAngle plugify.Vector3, toAngle plugify.Vector3, time float32) plugify.Vector3 {
+var _QSlerp = func(fromAngle plugify.Vector3, toAngle plugify.Vector3, time float32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__fromAngle := *(*C.Vector3)(unsafe.Pointer(&fromAngle))
 	__toAngle := *(*C.Vector3)(unsafe.Pointer(&toAngle))
@@ -239,10 +239,10 @@ var P_QSlerp = func(fromAngle plugify.Vector3, toAngle plugify.Vector3, time flo
 //
 //  @return Interpolated angle
 func QSlerp(fromAngle plugify.Vector3, toAngle plugify.Vector3, time float32) plugify.Vector3 {
-	return P_QSlerp(fromAngle, toAngle, time)
+	return _QSlerp(fromAngle, toAngle, time)
 }
 
-var P_RotateOrientation = func(a1 plugify.Vector3, a2 plugify.Vector3) plugify.Vector3 {
+var _RotateOrientation = func(a1 plugify.Vector3, a2 plugify.Vector3) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__a1 := *(*C.Vector3)(unsafe.Pointer(&a1))
 	__a2 := *(*C.Vector3)(unsafe.Pointer(&a2))
@@ -259,10 +259,10 @@ var P_RotateOrientation = func(a1 plugify.Vector3, a2 plugify.Vector3) plugify.V
 //
 //  @return Rotated orientation
 func RotateOrientation(a1 plugify.Vector3, a2 plugify.Vector3) plugify.Vector3 {
-	return P_RotateOrientation(a1, a2)
+	return _RotateOrientation(a1, a2)
 }
 
-var P_RotatePosition = func(rotationOrigin plugify.Vector3, rotationAngle plugify.Vector3, vectorToRotate plugify.Vector3) plugify.Vector3 {
+var _RotatePosition = func(rotationOrigin plugify.Vector3, rotationAngle plugify.Vector3, vectorToRotate plugify.Vector3) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__rotationOrigin := *(*C.Vector3)(unsafe.Pointer(&rotationOrigin))
 	__rotationAngle := *(*C.Vector3)(unsafe.Pointer(&rotationAngle))
@@ -281,10 +281,10 @@ var P_RotatePosition = func(rotationOrigin plugify.Vector3, rotationAngle plugif
 //
 //  @return Rotated vector
 func RotatePosition(rotationOrigin plugify.Vector3, rotationAngle plugify.Vector3, vectorToRotate plugify.Vector3) plugify.Vector3 {
-	return P_RotatePosition(rotationOrigin, rotationAngle, vectorToRotate)
+	return _RotatePosition(rotationOrigin, rotationAngle, vectorToRotate)
 }
 
-var P_RotateQuaternionByAxisAngle = func(q plugify.Vector4, axis plugify.Vector3, angle float32) plugify.Vector4 {
+var _RotateQuaternionByAxisAngle = func(q plugify.Vector4, axis plugify.Vector3, angle float32) plugify.Vector4 {
 	var __retVal plugify.Vector4
 	__q := *(*C.Vector4)(unsafe.Pointer(&q))
 	__axis := *(*C.Vector3)(unsafe.Pointer(&axis))
@@ -303,10 +303,10 @@ var P_RotateQuaternionByAxisAngle = func(q plugify.Vector4, axis plugify.Vector3
 //
 //  @return Rotated quaternion
 func RotateQuaternionByAxisAngle(q plugify.Vector4, axis plugify.Vector3, angle float32) plugify.Vector4 {
-	return P_RotateQuaternionByAxisAngle(q, axis, angle)
+	return _RotateQuaternionByAxisAngle(q, axis, angle)
 }
 
-var P_RotationDelta = func(src plugify.Vector3, dest plugify.Vector3) plugify.Vector3 {
+var _RotationDelta = func(src plugify.Vector3, dest plugify.Vector3) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__src := *(*C.Vector3)(unsafe.Pointer(&src))
 	__dest := *(*C.Vector3)(unsafe.Pointer(&dest))
@@ -323,10 +323,10 @@ var P_RotationDelta = func(src plugify.Vector3, dest plugify.Vector3) plugify.Ve
 //
 //  @return Delta angle from src to dest
 func RotationDelta(src plugify.Vector3, dest plugify.Vector3) plugify.Vector3 {
-	return P_RotationDelta(src, dest)
+	return _RotationDelta(src, dest)
 }
 
-var P_RotationDeltaAsAngularVelocity = func(a1 plugify.Vector3, a2 plugify.Vector3) plugify.Vector3 {
+var _RotationDeltaAsAngularVelocity = func(a1 plugify.Vector3, a2 plugify.Vector3) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__a1 := *(*C.Vector3)(unsafe.Pointer(&a1))
 	__a2 := *(*C.Vector3)(unsafe.Pointer(&a2))
@@ -343,10 +343,10 @@ var P_RotationDeltaAsAngularVelocity = func(a1 plugify.Vector3, a2 plugify.Vecto
 //
 //  @return Angular velocity vector
 func RotationDeltaAsAngularVelocity(a1 plugify.Vector3, a2 plugify.Vector3) plugify.Vector3 {
-	return P_RotationDeltaAsAngularVelocity(a1, a2)
+	return _RotationDeltaAsAngularVelocity(a1, a2)
 }
 
-var P_SplineQuaternions = func(q0 plugify.Vector4, q1 plugify.Vector4, t float32) plugify.Vector4 {
+var _SplineQuaternions = func(q0 plugify.Vector4, q1 plugify.Vector4, t float32) plugify.Vector4 {
 	var __retVal plugify.Vector4
 	__q0 := *(*C.Vector4)(unsafe.Pointer(&q0))
 	__q1 := *(*C.Vector4)(unsafe.Pointer(&q1))
@@ -365,10 +365,10 @@ var P_SplineQuaternions = func(q0 plugify.Vector4, q1 plugify.Vector4, t float32
 //
 //  @return Interpolated quaternion
 func SplineQuaternions(q0 plugify.Vector4, q1 plugify.Vector4, t float32) plugify.Vector4 {
-	return P_SplineQuaternions(q0, q1, t)
+	return _SplineQuaternions(q0, q1, t)
 }
 
-var P_SplineVectors = func(v0 plugify.Vector3, v1 plugify.Vector3, t float32) plugify.Vector3 {
+var _SplineVectors = func(v0 plugify.Vector3, v1 plugify.Vector3, t float32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__v0 := *(*C.Vector3)(unsafe.Pointer(&v0))
 	__v1 := *(*C.Vector3)(unsafe.Pointer(&v1))
@@ -387,10 +387,10 @@ var P_SplineVectors = func(v0 plugify.Vector3, v1 plugify.Vector3, t float32) pl
 //
 //  @return Interpolated vector
 func SplineVectors(v0 plugify.Vector3, v1 plugify.Vector3, t float32) plugify.Vector3 {
-	return P_SplineVectors(v0, v1, t)
+	return _SplineVectors(v0, v1, t)
 }
 
-var P_VectorToAngles = func(input plugify.Vector3) plugify.Vector3 {
+var _VectorToAngles = func(input plugify.Vector3) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__input := *(*C.Vector3)(unsafe.Pointer(&input))
 	__native := C.VectorToAngles(&__input)
@@ -405,10 +405,10 @@ var P_VectorToAngles = func(input plugify.Vector3) plugify.Vector3 {
 //
 //  @return Angle representation with pitch and yaw (roll is 0)
 func VectorToAngles(input plugify.Vector3) plugify.Vector3 {
-	return P_VectorToAngles(input)
+	return _VectorToAngles(input)
 }
 
-var P_RandomFlt = func(min float32, max float32) float32 {
+var _RandomFlt = func(min float32, max float32) float32 {
 	var __retVal float32
 	__min := C.float(min)
 	__max := C.float(max)
@@ -424,10 +424,10 @@ var P_RandomFlt = func(min float32, max float32) float32 {
 //
 //  @return Random float in range [min, max]
 func RandomFlt(min float32, max float32) float32 {
-	return P_RandomFlt(min, max)
+	return _RandomFlt(min, max)
 }
 
-var P_RandomInt = func(min int32, max int32) int32 {
+var _RandomInt = func(min int32, max int32) int32 {
 	var __retVal int32
 	__min := C.int32_t(min)
 	__max := C.int32_t(max)
@@ -443,6 +443,6 @@ var P_RandomInt = func(min int32, max int32) int32 {
 //
 //  @return Random integer in range [min, max]
 func RandomInt(min int32, max int32) int32 {
-	return P_RandomInt(min, max)
+	return _RandomInt(min, max)
 }
 
