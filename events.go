@@ -61,7 +61,7 @@ var _HookEvent = func(name string, callback EventCallback, type_ HookMode) Event
 	__type_ := C.uint8_t(type_)
 	plugify.Block {
 		Try: func() {
-			__retVal = int32(C.HookEvent((*C.String)(unsafe.Pointer(&__name)), __callback, __type_))
+			__retVal = EventHookError(C.HookEvent((*C.String)(unsafe.Pointer(&__name)), __callback, __type_))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -90,7 +90,7 @@ var _UnhookEvent = func(name string, callback EventCallback, type_ HookMode) Eve
 	__type_ := C.uint8_t(type_)
 	plugify.Block {
 		Try: func() {
-			__retVal = int32(C.UnhookEvent((*C.String)(unsafe.Pointer(&__name)), __callback, __type_))
+			__retVal = EventHookError(C.UnhookEvent((*C.String)(unsafe.Pointer(&__name)), __callback, __type_))
 		},
 		Finally: func() {
 			// Perform cleanup.

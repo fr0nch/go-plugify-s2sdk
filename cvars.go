@@ -849,7 +849,7 @@ func RemoveConVarFlags(conVarHandle uint64, flags ConVarFlag) {
 var _GetConVarFlags = func(conVarHandle uint64) ConVarFlag {
 	var __retVal ConVarFlag
 	__conVarHandle := C.uint64_t(conVarHandle)
-	__retVal = int64(C.GetConVarFlags(__conVarHandle))
+	__retVal = ConVarFlag(C.GetConVarFlags(__conVarHandle))
 	return __retVal
 }
 

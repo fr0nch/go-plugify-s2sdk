@@ -72,7 +72,7 @@ func GetWeaponVData(entityHandle int32) uintptr {
 var _GetWeaponType = func(entityHandle int32) CSWeaponType {
 	var __retVal CSWeaponType
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = uint32(C.GetWeaponType(__entityHandle))
+	__retVal = CSWeaponType(C.GetWeaponType(__entityHandle))
 	return __retVal
 }
 
@@ -89,7 +89,7 @@ func GetWeaponType(entityHandle int32) CSWeaponType {
 var _GetWeaponCategory = func(entityHandle int32) CSWeaponCategory {
 	var __retVal CSWeaponCategory
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = uint32(C.GetWeaponCategory(__entityHandle))
+	__retVal = CSWeaponCategory(C.GetWeaponCategory(__entityHandle))
 	return __retVal
 }
 
@@ -106,7 +106,7 @@ func GetWeaponCategory(entityHandle int32) CSWeaponCategory {
 var _GetWeaponGearSlot = func(entityHandle int32) GearSlot {
 	var __retVal GearSlot
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = uint32(C.GetWeaponGearSlot(__entityHandle))
+	__retVal = GearSlot(C.GetWeaponGearSlot(__entityHandle))
 	return __retVal
 }
 
@@ -123,7 +123,7 @@ func GetWeaponGearSlot(entityHandle int32) GearSlot {
 var _GetWeaponItemDefinition = func(entityHandle int32) WeaponDefIndex {
 	var __retVal WeaponDefIndex
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = uint16(C.GetWeaponItemDefinition(__entityHandle))
+	__retVal = WeaponDefIndex(C.GetWeaponItemDefinition(__entityHandle))
 	return __retVal
 }
 
@@ -142,7 +142,7 @@ var _GetWeaponItemDefinitionByName = func(itemName string) WeaponDefIndex {
 	__itemName := plugify.ConstructString(itemName)
 	plugify.Block {
 		Try: func() {
-			__retVal = uint16(C.GetWeaponItemDefinitionByName((*C.String)(unsafe.Pointer(&__itemName))))
+			__retVal = WeaponDefIndex(C.GetWeaponItemDefinitionByName((*C.String)(unsafe.Pointer(&__itemName))))
 		},
 		Finally: func() {
 			// Perform cleanup.

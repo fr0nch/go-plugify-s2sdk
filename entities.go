@@ -883,7 +883,7 @@ func SetEntityName(entityHandle int32, name string) {
 var _GetEntityMoveType = func(entityHandle int32) MoveType {
 	var __retVal MoveType
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = int32(C.GetEntityMoveType(__entityHandle))
+	__retVal = MoveType(C.GetEntityMoveType(__entityHandle))
 	return __retVal
 }
 
@@ -1012,7 +1012,7 @@ func SetEntityRenderColor(entityHandle int32, color plugify.Vector4) {
 var _GetEntityRenderMode = func(entityHandle int32) RenderMode {
 	var __retVal RenderMode
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = uint8(C.GetEntityRenderMode(__entityHandle))
+	__retVal = RenderMode(C.GetEntityRenderMode(__entityHandle))
 	return __retVal
 }
 
@@ -1172,7 +1172,7 @@ func SetEntityMaxHealth(entityHandle int32, maxHealth int32) {
 var _GetEntityTeam = func(entityHandle int32) CSTeam {
 	var __retVal CSTeam
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = int32(C.GetEntityTeam(__entityHandle))
+	__retVal = CSTeam(C.GetEntityTeam(__entityHandle))
 	return __retVal
 }
 

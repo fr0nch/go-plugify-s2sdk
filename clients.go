@@ -668,7 +668,7 @@ func IsFakeClient(playerSlot int32) bool {
 var _GetClientMoveType = func(playerSlot int32) MoveType {
 	var __retVal MoveType
 	__playerSlot := C.int32_t(playerSlot)
-	__retVal = int32(C.GetClientMoveType(__playerSlot))
+	__retVal = MoveType(C.GetClientMoveType(__playerSlot))
 	return __retVal
 }
 
@@ -797,7 +797,7 @@ func SetClientRenderColor(playerSlot int32, color plugify.Vector4) {
 var _GetClientRenderMode = func(playerSlot int32) RenderMode {
 	var __retVal RenderMode
 	__playerSlot := C.int32_t(playerSlot)
-	__retVal = uint8(C.GetClientRenderMode(__playerSlot))
+	__retVal = RenderMode(C.GetClientRenderMode(__playerSlot))
 	return __retVal
 }
 
@@ -957,7 +957,7 @@ func SetClientMaxHealth(playerSlot int32, maxHealth int32) {
 var _GetClientTeam = func(playerSlot int32) CSTeam {
 	var __retVal CSTeam
 	__playerSlot := C.int32_t(playerSlot)
-	__retVal = int32(C.GetClientTeam(__playerSlot))
+	__retVal = CSTeam(C.GetClientTeam(__playerSlot))
 	return __retVal
 }
 
