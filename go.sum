@@ -1,7 +1,7 @@
 github.com/google/go-cmp v0.6.0 h1:ofyhxvXcZhMsU5ulbFiLKl/XBFqE1GSq7atu8tAmTRI=
 github.com/google/go-cmp v0.6.0/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
-github.com/untrustedmodders/go-plugify v1.10.2 h1:cLTn3G5xn9u2tdJaRkBvPf4gIFjAVUy646d2Hb4Xb2w=
-github.com/untrustedmodders/go-plugify v1.10.2/go.mod h1:j+sziXkuxB59jnbrwEGt3T4z3mccwmMpxgCUP3VPQ84=
+github.com/untrustedmodders/go-plugify v1.10.3 h1:HobI9jr3j5VYurm+UgqNoYqsku/4oUo6UqkHcC1NgVM=
+github.com/untrustedmodders/go-plugify v1.10.3/go.mod h1:j+sziXkuxB59jnbrwEGt3T4z3mccwmMpxgCUP3VPQ84=
 golang.org/x/mod v0.37.0 h1:vF1DjpVEshcIqoEaauuHebaLk1O1forxjxBaVn884JQ=
 golang.org/x/mod v0.37.0/go.mod h1:m8S8VeM9r4dzDwjrKO0a1sZP3YjeMamRRlD+fmR2Q/0=
 golang.org/x/sync v0.21.0 h1:HLII4xRRTtCRkxYp4HNFF0Js/Og6q2i++KXbg0gHCwM=
