@@ -17,11 +17,11 @@ package s2sdk
 #cgo noescape IsTransmitInfoOutOfPVSSet
 #cgo noescape SetTransmitInfoOutOfPVSAll
 #cgo noescape ClearTransmitInfoOutOfPVSAll
-#cgo noescape SetTransmitInfoHLTV
-#cgo noescape ClearTransmitInfoHLTV
-#cgo noescape IsTransmitInfoHLTVSet
-#cgo noescape SetTransmitInfoHLTVAll
-#cgo noescape ClearTransmitInfoHLTVAll
+#cgo noescape SetTransmitInfoAlways
+#cgo noescape ClearTransmitInfoAlways
+#cgo noescape IsTransmitInfoAlwaysSet
+#cgo noescape SetTransmitInfoAlwaysAll
+#cgo noescape ClearTransmitInfoAlwaysAll
 #cgo noescape GetTransmitInfoTargetSlotsCount
 #cgo noescape GetTransmitInfoTargetSlot
 #cgo noescape AddTransmitInfoTargetSlot
@@ -282,79 +282,79 @@ func ClearTransmitInfoOutOfPVSAll(info uintptr) {
 	_ClearTransmitInfoOutOfPVSAll(info)
 }
 
-var _SetTransmitInfoHLTV = func(info uintptr, entityHandle int32) {
+var _SetTransmitInfoAlways = func(info uintptr, entityHandle int32) {
 	__info := C.uintptr_t(info)
 	__entityHandle := C.int32_t(entityHandle)
-	C.SetTransmitInfoHLTV(__info, __entityHandle)
+	C.SetTransmitInfoAlways(__info, __entityHandle)
 }
 
-// SetTransmitInfoHLTV 
-//  @brief Sets a bit in the TransmitHLTV bitvec, marking an entity to always transmit.
+// SetTransmitInfoAlways 
+//  @brief Sets a bit in the TransmitAlways bitvec, marking an entity to always transmit.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The handle of the entity to mark as always transmittable.
-func SetTransmitInfoHLTV(info uintptr, entityHandle int32) {
-	_SetTransmitInfoHLTV(info, entityHandle)
+func SetTransmitInfoAlways(info uintptr, entityHandle int32) {
+	_SetTransmitInfoAlways(info, entityHandle)
 }
 
-var _ClearTransmitInfoHLTV = func(info uintptr, entityHandle int32) {
+var _ClearTransmitInfoAlways = func(info uintptr, entityHandle int32) {
 	__info := C.uintptr_t(info)
 	__entityHandle := C.int32_t(entityHandle)
-	C.ClearTransmitInfoHLTV(__info, __entityHandle)
+	C.ClearTransmitInfoAlways(__info, __entityHandle)
 }
 
-// ClearTransmitInfoHLTV 
-//  @brief Clears a bit in the TransmitHLTV bitvec, unmarking an entity from always transmit.
+// ClearTransmitInfoAlways 
+//  @brief Clears a bit in the TransmitAlways bitvec, unmarking an entity from always transmit.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The handle of the entity to unmark from always transmit.
-func ClearTransmitInfoHLTV(info uintptr, entityHandle int32) {
-	_ClearTransmitInfoHLTV(info, entityHandle)
+func ClearTransmitInfoAlways(info uintptr, entityHandle int32) {
+	_ClearTransmitInfoAlways(info, entityHandle)
 }
 
-var _IsTransmitInfoHLTVSet = func(info uintptr, entityHandle int32) bool {
+var _IsTransmitInfoAlwaysSet = func(info uintptr, entityHandle int32) bool {
 	var __retVal bool
 	__info := C.uintptr_t(info)
 	__entityHandle := C.int32_t(entityHandle)
-	__retVal = bool(C.IsTransmitInfoHLTVSet(__info, __entityHandle))
+	__retVal = bool(C.IsTransmitInfoAlwaysSet(__info, __entityHandle))
 	return __retVal
 }
 
-// IsTransmitInfoHLTVSet 
-//  @brief Checks if a bit is set in the TransmitHLTV bitvec.
+// IsTransmitInfoAlwaysSet 
+//  @brief Checks if a bit is set in the TransmitAlways bitvec.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The handle of the entity to check.
 //
 //  @return True if the entity is marked to always transmit, false otherwise.
-func IsTransmitInfoHLTVSet(info uintptr, entityHandle int32) bool {
-	return _IsTransmitInfoHLTVSet(info, entityHandle)
+func IsTransmitInfoAlwaysSet(info uintptr, entityHandle int32) bool {
+	return _IsTransmitInfoAlwaysSet(info, entityHandle)
 }
 
-var _SetTransmitInfoHLTVAll = func(info uintptr) {
+var _SetTransmitInfoAlwaysAll = func(info uintptr) {
 	__info := C.uintptr_t(info)
-	C.SetTransmitInfoHLTVAll(__info)
+	C.SetTransmitInfoAlwaysAll(__info)
 }
 
-// SetTransmitInfoHLTVAll 
-//  @brief Sets all bits in the TransmitHLTV bitvec, marking all entities to always transmit.
+// SetTransmitInfoAlwaysAll 
+//  @brief Sets all bits in the TransmitAlways bitvec, marking all entities to always transmit.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
-func SetTransmitInfoHLTVAll(info uintptr) {
-	_SetTransmitInfoHLTVAll(info)
+func SetTransmitInfoAlwaysAll(info uintptr) {
+	_SetTransmitInfoAlwaysAll(info)
 }
 
-var _ClearTransmitInfoHLTVAll = func(info uintptr) {
+var _ClearTransmitInfoAlwaysAll = func(info uintptr) {
 	__info := C.uintptr_t(info)
-	C.ClearTransmitInfoHLTVAll(__info)
+	C.ClearTransmitInfoAlwaysAll(__info)
 }
 
-// ClearTransmitInfoHLTVAll 
-//  @brief Clears all bits in the TransmitHLTV bitvec, unmarking all entities from always transmit.
+// ClearTransmitInfoAlwaysAll 
+//  @brief Clears all bits in the TransmitAlways bitvec, unmarking all entities from always transmit.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
-func ClearTransmitInfoHLTVAll(info uintptr) {
-	_ClearTransmitInfoHLTVAll(info)
+func ClearTransmitInfoAlwaysAll(info uintptr) {
+	_ClearTransmitInfoAlwaysAll(info)
 }
 
 var _GetTransmitInfoTargetSlotsCount = func(info uintptr) int32 {
@@ -899,7 +899,7 @@ func (w *CheckTransmitInfo) ClearOutOfPVSAll() error {
 }
 
 // SetHLTV 
-//  @brief Sets a bit in the TransmitHLTV bitvec, marking an entity to always transmit.
+//  @brief Sets a bit in the TransmitAlways bitvec, marking an entity to always transmit.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The handle of the entity to mark as always transmittable.
@@ -907,12 +907,12 @@ func (w *CheckTransmitInfo) SetHLTV(entityHandle int32) error {
 	if w.handle == 0 {
 		return CheckTransmitInfoErrEmptyHandle
 	}
-	SetTransmitInfoHLTV(w.handle, entityHandle)
+	SetTransmitInfoAlways(w.handle, entityHandle)
 	return nil
 }
 
 // ClearHLTV 
-//  @brief Clears a bit in the TransmitHLTV bitvec, unmarking an entity from always transmit.
+//  @brief Clears a bit in the TransmitAlways bitvec, unmarking an entity from always transmit.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The handle of the entity to unmark from always transmit.
@@ -920,12 +920,12 @@ func (w *CheckTransmitInfo) ClearHLTV(entityHandle int32) error {
 	if w.handle == 0 {
 		return CheckTransmitInfoErrEmptyHandle
 	}
-	ClearTransmitInfoHLTV(w.handle, entityHandle)
+	ClearTransmitInfoAlways(w.handle, entityHandle)
 	return nil
 }
 
 // IsHLTVSet 
-//  @brief Checks if a bit is set in the TransmitHLTV bitvec.
+//  @brief Checks if a bit is set in the TransmitAlways bitvec.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The handle of the entity to check.
@@ -936,30 +936,30 @@ func (w *CheckTransmitInfo) IsHLTVSet(entityHandle int32) (bool, error) {
 		var zero bool
 		return zero, CheckTransmitInfoErrEmptyHandle
 	}
-	return IsTransmitInfoHLTVSet(w.handle, entityHandle), nil
+	return IsTransmitInfoAlwaysSet(w.handle, entityHandle), nil
 }
 
 // SetHLTVAll 
-//  @brief Sets all bits in the TransmitHLTV bitvec, marking all entities to always transmit.
+//  @brief Sets all bits in the TransmitAlways bitvec, marking all entities to always transmit.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 func (w *CheckTransmitInfo) SetHLTVAll() error {
 	if w.handle == 0 {
 		return CheckTransmitInfoErrEmptyHandle
 	}
-	SetTransmitInfoHLTVAll(w.handle)
+	SetTransmitInfoAlwaysAll(w.handle)
 	return nil
 }
 
 // ClearHLTVAll 
-//  @brief Clears all bits in the TransmitHLTV bitvec, unmarking all entities from always transmit.
+//  @brief Clears all bits in the TransmitAlways bitvec, unmarking all entities from always transmit.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 func (w *CheckTransmitInfo) ClearHLTVAll() error {
 	if w.handle == 0 {
 		return CheckTransmitInfoErrEmptyHandle
 	}
-	ClearTransmitInfoHLTVAll(w.handle)
+	ClearTransmitInfoAlwaysAll(w.handle)
 	return nil
 }
 

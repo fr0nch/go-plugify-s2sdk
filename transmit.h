@@ -92,34 +92,34 @@ static void ClearTransmitInfoOutOfPVSAll(uintptr_t info) {
 	__s2sdk_ClearTransmitInfoOutOfPVSAll(info);
 }
 
-extern void (*__s2sdk_SetTransmitInfoHLTV)(uintptr_t, int32_t);
+extern void (*__s2sdk_SetTransmitInfoAlways)(uintptr_t, int32_t);
 
-static void SetTransmitInfoHLTV(uintptr_t info, int32_t entityHandle) {
-	__s2sdk_SetTransmitInfoHLTV(info, entityHandle);
+static void SetTransmitInfoAlways(uintptr_t info, int32_t entityHandle) {
+	__s2sdk_SetTransmitInfoAlways(info, entityHandle);
 }
 
-extern void (*__s2sdk_ClearTransmitInfoHLTV)(uintptr_t, int32_t);
+extern void (*__s2sdk_ClearTransmitInfoAlways)(uintptr_t, int32_t);
 
-static void ClearTransmitInfoHLTV(uintptr_t info, int32_t entityHandle) {
-	__s2sdk_ClearTransmitInfoHLTV(info, entityHandle);
+static void ClearTransmitInfoAlways(uintptr_t info, int32_t entityHandle) {
+	__s2sdk_ClearTransmitInfoAlways(info, entityHandle);
 }
 
-extern bool (*__s2sdk_IsTransmitInfoHLTVSet)(uintptr_t, int32_t);
+extern bool (*__s2sdk_IsTransmitInfoAlwaysSet)(uintptr_t, int32_t);
 
-static bool IsTransmitInfoHLTVSet(uintptr_t info, int32_t entityHandle) {
-	return __s2sdk_IsTransmitInfoHLTVSet(info, entityHandle);
+static bool IsTransmitInfoAlwaysSet(uintptr_t info, int32_t entityHandle) {
+	return __s2sdk_IsTransmitInfoAlwaysSet(info, entityHandle);
 }
 
-extern void (*__s2sdk_SetTransmitInfoHLTVAll)(uintptr_t);
+extern void (*__s2sdk_SetTransmitInfoAlwaysAll)(uintptr_t);
 
-static void SetTransmitInfoHLTVAll(uintptr_t info) {
-	__s2sdk_SetTransmitInfoHLTVAll(info);
+static void SetTransmitInfoAlwaysAll(uintptr_t info) {
+	__s2sdk_SetTransmitInfoAlwaysAll(info);
 }
 
-extern void (*__s2sdk_ClearTransmitInfoHLTVAll)(uintptr_t);
+extern void (*__s2sdk_ClearTransmitInfoAlwaysAll)(uintptr_t);
 
-static void ClearTransmitInfoHLTVAll(uintptr_t info) {
-	__s2sdk_ClearTransmitInfoHLTVAll(info);
+static void ClearTransmitInfoAlwaysAll(uintptr_t info) {
+	__s2sdk_ClearTransmitInfoAlwaysAll(info);
 }
 
 extern int32_t (*__s2sdk_GetTransmitInfoTargetSlotsCount)(uintptr_t);
