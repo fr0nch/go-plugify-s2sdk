@@ -45,6 +45,9 @@ PLUGIFY_EXPORT String (*__s2sdk_GetClientOS)(int32_t) = NULL;
 PLUGIFY_EXPORT String (*__s2sdk_GetClientName)(int32_t) = NULL;
 
 
+PLUGIFY_EXPORT void (*__s2sdk_SetClientName)(int32_t, String*) = NULL;
+
+
 PLUGIFY_EXPORT float (*__s2sdk_GetClientTime)(int32_t) = NULL;
 
 

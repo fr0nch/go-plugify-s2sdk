@@ -92,6 +92,12 @@ static String GetClientName(int32_t playerSlot) {
 	return __s2sdk_GetClientName(playerSlot);
 }
 
+extern void (*__s2sdk_SetClientName)(int32_t, String*);
+
+static void SetClientName(int32_t playerSlot, String* name) {
+	__s2sdk_SetClientName(playerSlot, name);
+}
+
 extern float (*__s2sdk_GetClientTime)(int32_t);
 
 static float GetClientTime(int32_t playerSlot) {

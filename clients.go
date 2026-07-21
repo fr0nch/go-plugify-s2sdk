@@ -17,6 +17,7 @@ package s2sdk
 #cgo noescape GetClientLanguage
 #cgo noescape GetClientOS
 #cgo noescape GetClientName
+#cgo noescape SetClientName
 #cgo noescape GetClientTime
 #cgo noescape GetClientLatency
 #cgo noescape GetUserFlagBits
@@ -465,6 +466,29 @@ var _GetClientName = func(playerSlot int32) string {
 //  @return The client's name.
 func GetClientName(playerSlot int32) string {
 	return _GetClientName(playerSlot)
+}
+
+var _SetClientName = func(playerSlot int32, name string) {
+	__playerSlot := C.int32_t(playerSlot)
+	__name := plugify.ConstructString(name)
+	plugify.Block {
+		Try: func() {
+			C.SetClientName(__playerSlot, (*C.String)(unsafe.Pointer(&__name)))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__name)
+		},
+	}.Do()
+}
+
+// SetClientName 
+//  @brief Set client's name.
+//
+//  @param playerSlot: The index of the player's slot.
+//  @param name: The client's name.
+func SetClientName(playerSlot int32, name string) {
+	_SetClientName(playerSlot, name)
 }
 
 var _GetClientTime = func(playerSlot int32) float32 {
