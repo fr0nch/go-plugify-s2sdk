@@ -32,7 +32,7 @@ var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: gameconfig)
 
-var _CloseGameConfigFile = func(id uint32) {
+var _CloseGameConfigFile = func(id ConfigId) {
 	__id := C.uint32_t(id)
 	C.CloseGameConfigFile(__id)
 }
@@ -41,16 +41,16 @@ var _CloseGameConfigFile = func(id uint32) {
 //  @brief Closes a game configuration file.
 //
 //  @param id: An id to the game configuration to be closed.
-func CloseGameConfigFile(id uint32) {
+func CloseGameConfigFile(id ConfigId) {
 	_CloseGameConfigFile(id)
 }
 
-var _LoadGameConfigFile = func(paths []string) uint32 {
-	var __retVal uint32
+var _LoadGameConfigFile = func(paths []string) ConfigId {
+	var __retVal ConfigId
 	__paths := plugify.ConstructVectorString(paths)
 	plugify.Block {
 		Try: func() {
-			__retVal = uint32(C.LoadGameConfigFile((*C.Vector)(unsafe.Pointer(&__paths))))
+			__retVal = ConfigId(C.LoadGameConfigFile((*C.Vector)(unsafe.Pointer(&__paths))))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -66,11 +66,11 @@ var _LoadGameConfigFile = func(paths []string) uint32 {
 //  @param paths: The paths to the game configuration file to be loaded.
 //
 //  @return A id to the loaded game configuration object, or -1 if loading fails.
-func LoadGameConfigFile(paths []string) uint32 {
+func LoadGameConfigFile(paths []string) ConfigId {
 	return _LoadGameConfigFile(paths)
 }
 
-var _GetGameConfigPatch = func(id uint32, name string) string {
+var _GetGameConfigPatch = func(id ConfigId, name string) string {
 	var __retVal string
 	var __retVal_native plugify.PlgString
 	__id := C.uint32_t(id)
@@ -98,11 +98,11 @@ var _GetGameConfigPatch = func(id uint32, name string) string {
 //  @param name: The name of the patch to be retrieved.
 //
 //  @return A string where the patch will be stored.
-func GetGameConfigPatch(id uint32, name string) string {
+func GetGameConfigPatch(id ConfigId, name string) string {
 	return _GetGameConfigPatch(id, name)
 }
 
-var _GetGameConfigOffset = func(id uint32, name string) int32 {
+var _GetGameConfigOffset = func(id ConfigId, name string) int32 {
 	var __retVal int32
 	__id := C.uint32_t(id)
 	__name := plugify.ConstructString(name)
@@ -125,11 +125,11 @@ var _GetGameConfigOffset = func(id uint32, name string) int32 {
 //  @param name: The name whose offset is to be retrieved.
 //
 //  @return The offset associated with the specified name.
-func GetGameConfigOffset(id uint32, name string) int32 {
+func GetGameConfigOffset(id ConfigId, name string) int32 {
 	return _GetGameConfigOffset(id, name)
 }
 
-var _GetGameConfigAddress = func(id uint32, name string) uintptr {
+var _GetGameConfigAddress = func(id ConfigId, name string) uintptr {
 	var __retVal uintptr
 	__id := C.uint32_t(id)
 	__name := plugify.ConstructString(name)
@@ -152,11 +152,11 @@ var _GetGameConfigAddress = func(id uint32, name string) uintptr {
 //  @param name: The name whose address is to be retrieved.
 //
 //  @return A pointer to the address associated with the specified name.
-func GetGameConfigAddress(id uint32, name string) uintptr {
+func GetGameConfigAddress(id ConfigId, name string) uintptr {
 	return _GetGameConfigAddress(id, name)
 }
 
-var _GetGameConfigVTable = func(id uint32, name string) uintptr {
+var _GetGameConfigVTable = func(id ConfigId, name string) uintptr {
 	var __retVal uintptr
 	__id := C.uint32_t(id)
 	__name := plugify.ConstructString(name)
@@ -179,11 +179,11 @@ var _GetGameConfigVTable = func(id uint32, name string) uintptr {
 //  @param name: The name of the vtable to be retrieved.
 //
 //  @return A pointer to the vtable associated with the specified name
-func GetGameConfigVTable(id uint32, name string) uintptr {
+func GetGameConfigVTable(id ConfigId, name string) uintptr {
 	return _GetGameConfigVTable(id, name)
 }
 
-var _GetGameConfigSignature = func(id uint32, name string) uintptr {
+var _GetGameConfigSignature = func(id ConfigId, name string) uintptr {
 	var __retVal uintptr
 	__id := C.uint32_t(id)
 	__name := plugify.ConstructString(name)
@@ -206,7 +206,7 @@ var _GetGameConfigSignature = func(id uint32, name string) uintptr {
 //  @param name: The name whose signature is to be resolved and retrieved.
 //
 //  @return A pointer to the signature associated with the specified name.
-func GetGameConfigSignature(id uint32, name string) uintptr {
+func GetGameConfigSignature(id ConfigId, name string) uintptr {
 	return _GetGameConfigSignature(id, name)
 }
 

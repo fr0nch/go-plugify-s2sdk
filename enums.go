@@ -635,6 +635,37 @@ const (
 	LoggingChannelFlags_DoNotEcho LoggingChannelFlags = 2
 )
 
+// MenuAction - Action passed to a menu's handler callback.
+type MenuAction int32
+
+const (
+	MenuAction_Start MenuAction = 0
+	MenuAction_Select MenuAction = 1
+	MenuAction_Cancel MenuAction = 2
+	MenuAction_End MenuAction = 3
+)
+
+// MenuItemStyle - Draw style for an individual menu item.
+type MenuItemStyle int32
+
+const (
+	MenuItemStyle_Default MenuItemStyle = 0
+	MenuItemStyle_Disabled MenuItemStyle = 1
+	MenuItemStyle_Spacer MenuItemStyle = 2
+)
+
+// MenuCancelReason - Reason a menu display session was cancelled, passed as `param` on MenuAction::Cancel.
+type MenuCancelReason int32
+
+const (
+	MenuCancelReason_Exit MenuCancelReason = 0
+	MenuCancelReason_Timeout MenuCancelReason = 1
+	MenuCancelReason_Disconnect MenuCancelReason = 2
+	MenuCancelReason_Interrupted MenuCancelReason = 3
+	MenuCancelReason_Destroyed MenuCancelReason = 4
+	MenuCancelReason_ExitBack MenuCancelReason = 5
+)
+
 // VoteCreateFailed - Enum representing the possible reasons a vote creation or processing has failed.
 type VoteCreateFailed int32
 

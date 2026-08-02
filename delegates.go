@@ -30,6 +30,21 @@ type HookEntityOutputCallback func(activatorHandle int32, callerHandle int32, fl
 type EventCallback func(name string, event uintptr, dontBroadcast bool) ResultType
 
 
+// MenuDisplayCallback - Renders the menu's current state (title/items/page) to the client. Backends read state via the getters below. Renders the menu's current state (title/items/page) to the client. Backends read state via the getters below.
+type MenuDisplayCallback func(id MenuId, playerSlot int32)
+
+
+// MenuCloseCallback - Hides/cleans up whatever UI the backend showed to the client. Hides/cleans up whatever UI the backend showed to the client.
+type MenuCloseCallback func(id MenuId, playerSlot int32)
+
+
+// MenuFrameCallback - Optional: called every server frame while the client has a menu of this type open (e.g. for input polling). Optional: called every server frame while the client has a menu of this type open (e.g. for input polling).
+type MenuFrameCallback func(id MenuId, playerSlot int32)
+
+
+type MenuHandlerCallback func(id MenuId, action MenuAction, playerSlot int32, param int32)
+
+
 // YesNoVoteResult - Handles the final result of a Yes/No vote. This function is called when a vote concludes, and is responsible for determining whether the vote passed based on the number of 'yes' and 'no' votes. Also receives context about the clients who participated in the vote.
 type YesNoVoteResult func(numVotes int32, yesVotes int32, noVotes int32, numClients int32, clientInfoSlot []int32, clientInfoItem []int32) bool
 
