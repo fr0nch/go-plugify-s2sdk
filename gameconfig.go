@@ -347,7 +347,7 @@ var (
 //  @brief RAII wrapper for GameConfig handle.
 //
 type GameConfig struct {
-	handle    uint32
+	handle    ConfigId
 	cleanup   runtime.Cleanup
 	ownership ownership
 	noCopy    noCopy
@@ -362,7 +362,7 @@ func NewGameConfigLoadGameConfigFile(paths []string) *GameConfig {
 }
 
 // NewGameConfigBorrowed creates a GameConfig from a borrowed handle
-func NewGameConfigBorrowed(handle uint32) *GameConfig {
+func NewGameConfigBorrowed(handle ConfigId) *GameConfig {
 	if handle == 0 {
 		return &GameConfig{}
 	}
@@ -373,7 +373,7 @@ func NewGameConfigBorrowed(handle uint32) *GameConfig {
 }
 
 // NewGameConfigOwned creates a GameConfig from an owned handle
-func NewGameConfigOwned(handle uint32) *GameConfig {
+func NewGameConfigOwned(handle ConfigId) *GameConfig {
 	if handle == 0 {
 		return &GameConfig{}
 	}
@@ -386,7 +386,7 @@ func NewGameConfigOwned(handle uint32) *GameConfig {
 }
 
 // destroyGameConfigHandle destroys an owned handle.
-func destroyGameConfigHandle(handle uint32) {
+func destroyGameConfigHandle(handle ConfigId) {
 	if handle != 0 {
 		CloseGameConfigFile(handle)
 	}
@@ -411,12 +411,12 @@ func (w *GameConfig) Close() {
 }
 
 // Get returns the underlying handle
-func (w *GameConfig) Get() uint32 {
+func (w *GameConfig) Get() ConfigId {
 	return w.handle
 }
 
 // Release releases ownership and returns the handle
-func (w *GameConfig) Release() uint32 {
+func (w *GameConfig) Release() ConfigId {
 	if w.ownership == Owned && w.handle != 0 {
 		w.cleanup.Stop()
 	}

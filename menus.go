@@ -1074,7 +1074,7 @@ var (
 //  @brief RAII wrapper for Menu handle.
 //
 type Menu struct {
-	handle    uint32
+	handle    MenuId
 }
 
 // NewMenuCreateMenu 
@@ -1090,19 +1090,19 @@ func NewMenuCreateMenu(title string, handler MenuHandlerCallback, menuType strin
 }
 
 // NewMenu creates a Menu from a handle
-func NewMenu(handle uint32) *Menu {
+func NewMenu(handle MenuId) *Menu {
 	return &Menu{
 		handle:    handle,
 	}
 }
 
 // Get returns the underlying handle
-func (w *Menu) Get() uint32 {
+func (w *Menu) Get() MenuId {
 	return w.handle
 }
 
 // Release releases ownership and returns the handle
-func (w *Menu) Release() uint32 {
+func (w *Menu) Release() MenuId {
 	handle := w.handle
 	w.handle = 0
 	return handle
