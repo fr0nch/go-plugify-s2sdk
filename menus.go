@@ -1138,7 +1138,7 @@ func (w *Menu) Destroy() (bool, error) {
 //  @param id: The handle to the menu.
 //
 //  @return True if the handle is valid.
-func (w *Menu) IsValid2() (bool, error) {
+func (w *Menu) IsValid() (bool, error) {
 	if w.handle == 0 {
 		var zero bool
 		return zero, MenuErrEmptyHandle
