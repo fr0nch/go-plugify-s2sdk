@@ -80,6 +80,12 @@ static String GetClientLanguage(int32_t playerSlot) {
 	return __s2sdk_GetClientLanguage(playerSlot);
 }
 
+extern String (*__s2sdk_GetClientLanguageCode)(int32_t);
+
+static String GetClientLanguageCode(int32_t playerSlot) {
+	return __s2sdk_GetClientLanguageCode(playerSlot);
+}
+
 extern String (*__s2sdk_GetClientOS)(int32_t);
 
 static String GetClientOS(int32_t playerSlot) {

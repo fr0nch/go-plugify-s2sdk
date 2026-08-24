@@ -54,6 +54,10 @@ package s2sdk
 #cgo noescape OnUpdateWhenNotInGame_Unregister
 #cgo noescape OnPreWorldUpdate_Register
 #cgo noescape OnPreWorldUpdate_Unregister
+#cgo noescape OnSendNetMessage_Register
+#cgo noescape OnSendNetMessage_Unregister
+#cgo noescape OnSerializeMessage_Register
+#cgo noescape OnSerializeMessage_Unregister
 */
 import "C"
 import (
@@ -746,5 +750,57 @@ var _OnPreWorldUpdate_Unregister = func(callback OnPreWorldUpdateCallback) {
 //  @param callback: Function callback.
 func OnPreWorldUpdate_Unregister(callback OnPreWorldUpdateCallback) {
 	_OnPreWorldUpdate_Unregister(callback)
+}
+
+var _OnSendNetMessage_Register = func(callback OnSendNetMessageCallback) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.OnSendNetMessage_Register(__callback)
+}
+
+// OnSendNetMessage_Register 
+//  @brief Register callback to event.
+//
+//  @param callback: Function callback.
+func OnSendNetMessage_Register(callback OnSendNetMessageCallback) {
+	_OnSendNetMessage_Register(callback)
+}
+
+var _OnSendNetMessage_Unregister = func(callback OnSendNetMessageCallback) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.OnSendNetMessage_Unregister(__callback)
+}
+
+// OnSendNetMessage_Unregister 
+//  @brief Unregister callback to event.
+//
+//  @param callback: Function callback.
+func OnSendNetMessage_Unregister(callback OnSendNetMessageCallback) {
+	_OnSendNetMessage_Unregister(callback)
+}
+
+var _OnSerializeMessage_Register = func(callback OnSerializeMessageCallback) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.OnSerializeMessage_Register(__callback)
+}
+
+// OnSerializeMessage_Register 
+//  @brief Register callback to event.
+//
+//  @param callback: Function callback.
+func OnSerializeMessage_Register(callback OnSerializeMessageCallback) {
+	_OnSerializeMessage_Register(callback)
+}
+
+var _OnSerializeMessage_Unregister = func(callback OnSerializeMessageCallback) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.OnSerializeMessage_Unregister(__callback)
+}
+
+// OnSerializeMessage_Unregister 
+//  @brief Unregister callback to event.
+//
+//  @param callback: Function callback.
+func OnSerializeMessage_Unregister(callback OnSerializeMessageCallback) {
+	_OnSerializeMessage_Unregister(callback)
 }
 

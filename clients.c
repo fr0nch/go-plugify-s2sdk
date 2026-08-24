@@ -39,6 +39,9 @@ PLUGIFY_EXPORT String (*__s2sdk_GetClientIp)(int32_t) = NULL;
 PLUGIFY_EXPORT String (*__s2sdk_GetClientLanguage)(int32_t) = NULL;
 
 
+PLUGIFY_EXPORT String (*__s2sdk_GetClientLanguageCode)(int32_t) = NULL;
+
+
 PLUGIFY_EXPORT String (*__s2sdk_GetClientOS)(int32_t) = NULL;
 
 

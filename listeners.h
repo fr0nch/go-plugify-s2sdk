@@ -314,3 +314,27 @@ static void OnPreWorldUpdate_Unregister(void* callback) {
 	__s2sdk_OnPreWorldUpdate_Unregister(callback);
 }
 
+extern void (*__s2sdk_OnSendNetMessage_Register)(void*);
+
+static void OnSendNetMessage_Register(void* callback) {
+	__s2sdk_OnSendNetMessage_Register(callback);
+}
+
+extern void (*__s2sdk_OnSendNetMessage_Unregister)(void*);
+
+static void OnSendNetMessage_Unregister(void* callback) {
+	__s2sdk_OnSendNetMessage_Unregister(callback);
+}
+
+extern void (*__s2sdk_OnSerializeMessage_Register)(void*);
+
+static void OnSerializeMessage_Register(void* callback) {
+	__s2sdk_OnSerializeMessage_Register(callback);
+}
+
+extern void (*__s2sdk_OnSerializeMessage_Unregister)(void*);
+
+static void OnSerializeMessage_Unregister(void* callback) {
+	__s2sdk_OnSerializeMessage_Unregister(callback);
+}
+

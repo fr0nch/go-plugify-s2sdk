@@ -15,6 +15,7 @@ package s2sdk
 #cgo noescape GetClientSteamID64
 #cgo noescape GetClientIp
 #cgo noescape GetClientLanguage
+#cgo noescape GetClientLanguageCode
 #cgo noescape GetClientOS
 #cgo noescape GetClientName
 #cgo noescape SetClientName
@@ -408,6 +409,35 @@ var _GetClientLanguage = func(playerSlot int32) string {
 //  @return The client's language.
 func GetClientLanguage(playerSlot int32) string {
 	return _GetClientLanguage(playerSlot)
+}
+
+var _GetClientLanguageCode = func(playerSlot int32) string {
+	var __retVal string
+	var __retVal_native plugify.PlgString
+	__playerSlot := C.int32_t(playerSlot)
+	plugify.Block {
+		Try: func() {
+			__native := C.GetClientLanguageCode(__playerSlot)
+			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
+			// Unmarshal - Convert native data to managed data.
+			__retVal = plugify.GetStringData[string](&__retVal_native)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__retVal_native)
+		},
+	}.Do()
+	return __retVal
+}
+
+// GetClientLanguageCode 
+//  @brief Retrieves a client's language as an ISO code. Unlike GetClientLanguage, which returns the raw cl_language value ("english", "schinese"), this returns the code translation files are keyed by ("en", "zh-CN"). Falls back to the server language when the client's language is not known.
+//
+//  @param playerSlot: The index of the player's slot.
+//
+//  @return The client's ISO language code.
+func GetClientLanguageCode(playerSlot int32) string {
+	return _GetClientLanguageCode(playerSlot)
 }
 
 var _GetClientOS = func(playerSlot int32) string {

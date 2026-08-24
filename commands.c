@@ -1,6 +1,6 @@
 #include "shared.h"
 
-PLUGIFY_EXPORT bool (*__s2sdk_AddAdminCommand)(String*, int64_t, String*, int64_t, void*, uint8_t) = NULL;
+PLUGIFY_EXPORT bool (*__s2sdk_AddAdminCommand)(String*, String*, String*, int64_t, void*, uint8_t) = NULL;
 
 
 PLUGIFY_EXPORT bool (*__s2sdk_AddConsoleCommand)(String*, String*, int64_t, void*, uint8_t) = NULL;

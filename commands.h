@@ -2,10 +2,10 @@
 
 #include "shared.h"
 
-extern bool (*__s2sdk_AddAdminCommand)(String*, int64_t, String*, int64_t, void*, uint8_t);
+extern bool (*__s2sdk_AddAdminCommand)(String*, String*, String*, int64_t, void*, uint8_t);
 
-static bool AddAdminCommand(String* name, int64_t adminFlags, String* description, int64_t flags, void* callback, uint8_t type_) {
-	return __s2sdk_AddAdminCommand(name, adminFlags, description, flags, callback, type_);
+static bool AddAdminCommand(String* name, String* permission, String* description, int64_t flags, void* callback, uint8_t type_) {
+	return __s2sdk_AddAdminCommand(name, permission, description, flags, callback, type_);
 }
 
 extern bool (*__s2sdk_AddConsoleCommand)(String*, String*, int64_t, void*, uint8_t);

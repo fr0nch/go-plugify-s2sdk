@@ -160,6 +160,14 @@ type OnUpdateWhenNotInGameCallback func(deltaTime float32)
 type OnPreWorldUpdateCallback func(simulating bool)
 
 
+// OnSendNetMessageCallback - Called when a net message is sent to a single client (e.g. net_SignonState). Messages that never go through here or PostEventAbstract (e.g. svc_ClearAllStringTables, sent as part of the initial signon bundle) are instead only visible through OnSerializeMessage.
+type OnSendNetMessageCallback func(playerSlot int32, message uintptr)
+
+
+// OnSerializeMessageCallback - Called for every outgoing net message as it's serialized, regardless of whether it's also visible through OnSendNetMessage or OnPostEventAbstract - this is a catch-all fallback, filter by message id/name if you only care about a specific one. No recipient/client information is available at this level.
+type OnSerializeMessageCallback func(message uintptr)
+
+
 // UserMessageCallback - Callback function for user messages.
 type UserMessageCallback func(userMessage uintptr) ResultType
 

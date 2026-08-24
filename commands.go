@@ -31,21 +31,22 @@ var _ = plugify.ApiVersion
 
 // Generated from s2sdk (group: commands)
 
-var _AddAdminCommand = func(name string, adminFlags int64, description string, flags ConVarFlag, callback ConCommandCallback, type_ HookMode) bool {
+var _AddAdminCommand = func(name string, permission string, description string, flags ConVarFlag, callback ConCommandCallback, type_ HookMode) bool {
 	var __retVal bool
 	__name := plugify.ConstructString(name)
-	__adminFlags := C.int64_t(adminFlags)
+	__permission := plugify.ConstructString(permission)
 	__description := plugify.ConstructString(description)
 	__flags := C.int64_t(flags)
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	__type_ := C.uint8_t(type_)
 	plugify.Block {
 		Try: func() {
-			__retVal = bool(C.AddAdminCommand((*C.String)(unsafe.Pointer(&__name)), __adminFlags, (*C.String)(unsafe.Pointer(&__description)), __flags, __callback, __type_))
+			__retVal = bool(C.AddAdminCommand((*C.String)(unsafe.Pointer(&__name)), (*C.String)(unsafe.Pointer(&__permission)), (*C.String)(unsafe.Pointer(&__description)), __flags, __callback, __type_))
 		},
 		Finally: func() {
 			// Perform cleanup.
 			plugify.DestroyString(&__name)
+			plugify.DestroyString(&__permission)
 			plugify.DestroyString(&__description)
 		},
 	}.Do()
@@ -56,15 +57,15 @@ var _AddAdminCommand = func(name string, adminFlags int64, description string, f
 //  @brief Creates a console command as an administrative command.
 //
 //  @param name: The name of the console command.
-//  @param adminFlags: The admin flags that indicate which admin level can use this command.
+//  @param permission: The permission required to use this command.
 //  @param description: A brief description of what the command does.
 //  @param flags: Command flags that define the behavior of the command.
 //  @param callback: A callback function that is invoked when the command is executed.
 //  @param type_: Whether the hook was in post mode (after processing) or pre mode (before processing).
 //
 //  @return true if the command was successfully created; otherwise, false.
-func AddAdminCommand(name string, adminFlags int64, description string, flags ConVarFlag, callback ConCommandCallback, type_ HookMode) bool {
-	return _AddAdminCommand(name, adminFlags, description, flags, callback, type_)
+func AddAdminCommand(name string, permission string, description string, flags ConVarFlag, callback ConCommandCallback, type_ HookMode) bool {
+	return _AddAdminCommand(name, permission, description, flags, callback, type_)
 }
 
 var _AddConsoleCommand = func(name string, description string, flags ConVarFlag, callback ConCommandCallback, type_ HookMode) bool {

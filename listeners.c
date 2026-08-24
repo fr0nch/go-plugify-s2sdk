@@ -156,3 +156,15 @@ PLUGIFY_EXPORT void (*__s2sdk_OnPreWorldUpdate_Register)(void*) = NULL;
 PLUGIFY_EXPORT void (*__s2sdk_OnPreWorldUpdate_Unregister)(void*) = NULL;
 
 
+PLUGIFY_EXPORT void (*__s2sdk_OnSendNetMessage_Register)(void*) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_OnSendNetMessage_Unregister)(void*) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_OnSerializeMessage_Register)(void*) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_OnSerializeMessage_Unregister)(void*) = NULL;
+
+
