@@ -2116,8 +2116,8 @@ func (w *ConVar) Reset() {
 	w.handle = 0
 }
 
-// IsValid returns true if handle is not nil
-func (w *ConVar) IsValid() bool {
+// Valid returns true if handle is not nil
+func (w *ConVar) Valid() bool {
 	return w.handle != 0
 }
 

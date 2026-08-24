@@ -4422,8 +4422,8 @@ func (w *KeyValues3) Reset() {
 	w.nullify()
 }
 
-// IsValid returns true if handle is not nil
-func (w *KeyValues3) IsValid() bool {
+// Valid returns true if handle is not nil
+func (w *KeyValues3) Valid() bool {
 	return w.handle != 0
 }
 

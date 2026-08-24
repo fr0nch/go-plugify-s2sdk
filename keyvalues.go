@@ -774,8 +774,8 @@ func (w *KeyValues1) Reset() {
 	w.nullify()
 }
 
-// IsValid returns true if handle is not nil
-func (w *KeyValues1) IsValid() bool {
+// Valid returns true if handle is not nil
+func (w *KeyValues1) Valid() bool {
 	return w.handle != 0
 }
 

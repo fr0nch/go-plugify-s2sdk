@@ -956,8 +956,8 @@ func (w *EventInfo) Reset() {
 	w.handle = 0
 }
 
-// IsValid returns true if handle is not nil
-func (w *EventInfo) IsValid() bool {
+// Valid returns true if handle is not nil
+func (w *EventInfo) Valid() bool {
 	return w.handle != 0
 }
 

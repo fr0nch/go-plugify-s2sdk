@@ -1113,8 +1113,8 @@ func (w *Menu) Reset() {
 	w.handle = 0
 }
 
-// IsValid returns true if handle is not nil
-func (w *Menu) IsValid() bool {
+// Valid returns true if handle is not nil
+func (w *Menu) Valid() bool {
 	return w.handle != 0
 }
 

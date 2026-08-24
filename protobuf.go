@@ -3409,8 +3409,8 @@ func (w *UserMessage) Reset() {
 	w.nullify()
 }
 
-// IsValid returns true if handle is not nil
-func (w *UserMessage) IsValid() bool {
+// Valid returns true if handle is not nil
+func (w *UserMessage) Valid() bool {
 	return w.handle != 0
 }
 
