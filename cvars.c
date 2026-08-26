@@ -81,6 +81,9 @@ PLUGIFY_EXPORT void (*__s2sdk_SetConVarBounds)(uint64_t, bool, String*) = NULL;
 PLUGIFY_EXPORT String (*__s2sdk_GetConVarDefault)(uint64_t) = NULL;
 
 
+PLUGIFY_EXPORT void (*__s2sdk_SetConVarDefault)(uint64_t, String*) = NULL;
+
+
 PLUGIFY_EXPORT String (*__s2sdk_GetConVarValue)(uint64_t) = NULL;
 
 

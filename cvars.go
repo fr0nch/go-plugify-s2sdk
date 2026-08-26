@@ -29,6 +29,7 @@ package s2sdk
 #cgo noescape GetConVarBounds
 #cgo noescape SetConVarBounds
 #cgo noescape GetConVarDefault
+#cgo noescape SetConVarDefault
 #cgo noescape GetConVarValue
 #cgo noescape GetConVar
 #cgo noescape GetConVarBool
@@ -946,6 +947,29 @@ var _GetConVarDefault = func(conVarHandle uint64) string {
 //  @return The output value in string format.
 func GetConVarDefault(conVarHandle uint64) string {
 	return _GetConVarDefault(conVarHandle)
+}
+
+var _SetConVarDefault = func(conVarHandle uint64, value string) {
+	__conVarHandle := C.uint64_t(conVarHandle)
+	__value := plugify.ConstructString(value)
+	plugify.Block {
+		Try: func() {
+			C.SetConVarDefault(__conVarHandle, (*C.String)(unsafe.Pointer(&__value)))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__value)
+		},
+	}.Do()
+}
+
+// SetConVarDefault 
+//  @brief Sets the specified default value for a console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
+//  @param value: The value to set as the default.
+func SetConVarDefault(conVarHandle uint64, value string) {
+	_SetConVarDefault(conVarHandle, value)
 }
 
 var _GetConVarValue = func(conVarHandle uint64) string {
@@ -2264,6 +2288,19 @@ func (w *ConVar) GetDefault() (string, error) {
 		return zero, ConVarErrEmptyHandle
 	}
 	return GetConVarDefault(w.handle), nil
+}
+
+// SetDefault 
+//  @brief Sets the specified default value for a console variable.
+//
+//  @param conVarHandle: The handle to the console variable data.
+//  @param value: The value to set as the default.
+func (w *ConVar) SetDefault(value string) error {
+	if w.handle == 0 {
+		return ConVarErrEmptyHandle
+	}
+	SetConVarDefault(w.handle, value)
+	return nil
 }
 
 // GetValue 

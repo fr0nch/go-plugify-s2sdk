@@ -164,6 +164,12 @@ static String GetConVarDefault(uint64_t conVarHandle) {
 	return __s2sdk_GetConVarDefault(conVarHandle);
 }
 
+extern void (*__s2sdk_SetConVarDefault)(uint64_t, String*);
+
+static void SetConVarDefault(uint64_t conVarHandle, String* value) {
+	__s2sdk_SetConVarDefault(conVarHandle, value);
+}
+
 extern String (*__s2sdk_GetConVarValue)(uint64_t);
 
 static String GetConVarValue(uint64_t conVarHandle) {
