@@ -15,6 +15,7 @@ package s2sdk
 #cgo noescape GetFirstActiveEntity
 #cgo noescape GetPrevActiveEntity
 #cgo noescape GetNextActiveEntity
+#cgo noescape GetPointScriptHandle
 #cgo noescape HookEntityOutput
 #cgo noescape UnhookEntityOutput
 #cgo noescape FindEntityByClassname
@@ -375,6 +376,20 @@ var _GetNextActiveEntity = func(entityHandle int32) int32 {
 //  @return Handle to the next entity.
 func GetNextActiveEntity(entityHandle int32) int32 {
 	return _GetNextActiveEntity(entityHandle)
+}
+
+var _GetPointScriptHandle = func() int32 {
+	__retVal := int32(C.GetPointScriptHandle())
+	return __retVal
+}
+
+// GetPointScriptHandle 
+//  @brief Retrieves the handle of the point_script entity created by s2sdk.
+//
+//
+//  @return The entity handle as an integer, or INVALID_EHANDLE_INDEX if the entity does not exist.
+func GetPointScriptHandle() int32 {
+	return _GetPointScriptHandle()
 }
 
 var _HookEntityOutput = func(classname string, output string, callback HookEntityOutputCallback, type_ HookMode) bool {

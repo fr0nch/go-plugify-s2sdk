@@ -24,6 +24,7 @@ package s2sdk
 #cgo noescape SetEntDataVector2D2
 #cgo noescape GetEntDataEnt2
 #cgo noescape SetEntDataEnt2
+#cgo noescape GetEntDataPtr2
 #cgo noescape ChangeEntityState2
 #cgo noescape GetEntData
 #cgo noescape SetEntData
@@ -43,8 +44,10 @@ package s2sdk
 #cgo noescape SetEntDataVector2D
 #cgo noescape GetEntDataEnt
 #cgo noescape SetEntDataEnt
+#cgo noescape GetEntDataPtr
 #cgo noescape ChangeEntityState
 #cgo noescape GetEntSchemaArraySize2
+#cgo noescape GetEntSchemaPtr2
 #cgo noescape GetEntSchema2
 #cgo noescape SetEntSchema2
 #cgo noescape GetEntSchemaFloat2
@@ -65,6 +68,7 @@ package s2sdk
 #cgo noescape EraseEntSchemaEnt2
 #cgo noescape NetworkStateChanged2
 #cgo noescape GetEntSchemaArraySize
+#cgo noescape GetEntSchemaPtr
 #cgo noescape GetEntSchema
 #cgo noescape SetEntSchema
 #cgo noescape GetEntSchemaFloat
@@ -624,6 +628,25 @@ func SetEntDataEnt2(entity uintptr, offset int32, value int32, changeState bool,
 	_SetEntDataEnt2(entity, offset, value, changeState, chainOffset)
 }
 
+var _GetEntDataPtr2 = func(entity uintptr, offset int32) uintptr {
+	var __retVal uintptr
+	__entity := C.uintptr_t(entity)
+	__offset := C.int32_t(offset)
+	__retVal = uintptr(C.GetEntDataPtr2(__entity, __offset))
+	return __retVal
+}
+
+// GetEntDataPtr2 
+//  @brief Peeks into an entity's object data and retrieves a pointer to the data at the given offset.
+//
+//  @param entity: Pointer to the instance of the class where the value is to be retrieved.
+//  @param offset: The offset of the schema to use.
+//
+//  @return A pointer to the data at the given memory location.
+func GetEntDataPtr2(entity uintptr, offset int32) uintptr {
+	return _GetEntDataPtr2(entity, offset)
+}
+
 var _ChangeEntityState2 = func(entity uintptr, offset int32, chainOffset int32) {
 	__entity := C.uintptr_t(entity)
 	__offset := C.int32_t(offset)
@@ -1057,6 +1080,25 @@ func SetEntDataEnt(entityHandle int32, offset int32, value int32, changeState bo
 	_SetEntDataEnt(entityHandle, offset, value, changeState, chainOffset)
 }
 
+var _GetEntDataPtr = func(entityHandle int32, offset int32) uintptr {
+	var __retVal uintptr
+	__entityHandle := C.int32_t(entityHandle)
+	__offset := C.int32_t(offset)
+	__retVal = uintptr(C.GetEntDataPtr(__entityHandle, __offset))
+	return __retVal
+}
+
+// GetEntDataPtr 
+//  @brief Peeks into an entity's object data and retrieves a pointer to the data at the given offset.
+//
+//  @param entityHandle: The handle of the entity from which the value is to be retrieved.
+//  @param offset: The offset of the schema to use.
+//
+//  @return A pointer to the data at the given memory location.
+func GetEntDataPtr(entityHandle int32, offset int32) uintptr {
+	return _GetEntDataPtr(entityHandle, offset)
+}
+
 var _ChangeEntityState = func(entityHandle int32, offset int32, chainOffset int32) {
 	__entityHandle := C.int32_t(entityHandle)
 	__offset := C.int32_t(offset)
@@ -1102,6 +1144,38 @@ var _GetEntSchemaArraySize2 = func(entity uintptr, className string, memberName 
 //  @return Size of array (in elements) or 0 if schema is not an array.
 func GetEntSchemaArraySize2(entity uintptr, className string, memberName string) int32 {
 	return _GetEntSchemaArraySize2(entity, className, memberName)
+}
+
+var _GetEntSchemaPtr2 = func(entity uintptr, className string, memberName string, element int32) uintptr {
+	var __retVal uintptr
+	__entity := C.uintptr_t(entity)
+	__className := plugify.ConstructString(className)
+	__memberName := plugify.ConstructString(memberName)
+	__element := C.int32_t(element)
+	plugify.Block {
+		Try: func() {
+			__retVal = uintptr(C.GetEntSchemaPtr2(__entity, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)), __element))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__className)
+			plugify.DestroyString(&__memberName)
+		},
+	}.Do()
+	return __retVal
+}
+
+// GetEntSchemaPtr2 
+//  @brief Retrieves a pointer to a structure or an array element in an entity's schema.
+//
+//  @param entity: Pointer to the instance of the class where the value is to be retrieved.
+//  @param className: The name of the class.
+//  @param memberName: The name of the schema member.
+//  @param element: Element # (starting from 0) if schema is an array.
+//
+//  @return A pointer to the field or element, or nullptr if the field is not found or element is out of range.
+func GetEntSchemaPtr2(entity uintptr, className string, memberName string, element int32) uintptr {
+	return _GetEntSchemaPtr2(entity, className, memberName, element)
 }
 
 var _GetEntSchema2 = func(entity uintptr, className string, memberName string, element int32) int64 {
@@ -1740,6 +1814,38 @@ var _GetEntSchemaArraySize = func(entityHandle int32, className string, memberNa
 //  @return Size of array (in elements) or 0 if schema is not an array.
 func GetEntSchemaArraySize(entityHandle int32, className string, memberName string) int32 {
 	return _GetEntSchemaArraySize(entityHandle, className, memberName)
+}
+
+var _GetEntSchemaPtr = func(entityHandle int32, className string, memberName string, element int32) uintptr {
+	var __retVal uintptr
+	__entityHandle := C.int32_t(entityHandle)
+	__className := plugify.ConstructString(className)
+	__memberName := plugify.ConstructString(memberName)
+	__element := C.int32_t(element)
+	plugify.Block {
+		Try: func() {
+			__retVal = uintptr(C.GetEntSchemaPtr(__entityHandle, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)), __element))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__className)
+			plugify.DestroyString(&__memberName)
+		},
+	}.Do()
+	return __retVal
+}
+
+// GetEntSchemaPtr 
+//  @brief Retrieves a pointer to a structure or an array element in an entity's schema.
+//
+//  @param entityHandle: The handle of the entity from which the value is to be retrieved.
+//  @param className: The name of the class.
+//  @param memberName: The name of the schema member.
+//  @param element: Element # (starting from 0) if schema is an array.
+//
+//  @return A pointer to the field or element, or nullptr if the field is not found or element is out of range.
+func GetEntSchemaPtr(entityHandle int32, className string, memberName string, element int32) uintptr {
+	return _GetEntSchemaPtr(entityHandle, className, memberName, element)
 }
 
 var _GetEntSchema = func(entityHandle int32, className string, memberName string, element int32) int64 {

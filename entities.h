@@ -80,6 +80,12 @@ static int32_t GetNextActiveEntity(int32_t entityHandle) {
 	return __s2sdk_GetNextActiveEntity(entityHandle);
 }
 
+extern int32_t (*__s2sdk_GetPointScriptHandle)();
+
+static int32_t GetPointScriptHandle() {
+	return __s2sdk_GetPointScriptHandle();
+}
+
 extern bool (*__s2sdk_HookEntityOutput)(String*, String*, void*, uint8_t);
 
 static bool HookEntityOutput(String* classname, String* output, void* callback, uint8_t type_) {

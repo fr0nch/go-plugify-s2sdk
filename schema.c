@@ -66,6 +66,9 @@ PLUGIFY_EXPORT int32_t (*__s2sdk_GetEntDataEnt2)(uintptr_t, int32_t) = NULL;
 PLUGIFY_EXPORT void (*__s2sdk_SetEntDataEnt2)(uintptr_t, int32_t, int32_t, bool, int32_t) = NULL;
 
 
+PLUGIFY_EXPORT uintptr_t (*__s2sdk_GetEntDataPtr2)(uintptr_t, int32_t) = NULL;
+
+
 PLUGIFY_EXPORT void (*__s2sdk_ChangeEntityState2)(uintptr_t, int32_t, int32_t) = NULL;
 
 
@@ -123,10 +126,16 @@ PLUGIFY_EXPORT int32_t (*__s2sdk_GetEntDataEnt)(int32_t, int32_t) = NULL;
 PLUGIFY_EXPORT void (*__s2sdk_SetEntDataEnt)(int32_t, int32_t, int32_t, bool, int32_t) = NULL;
 
 
+PLUGIFY_EXPORT uintptr_t (*__s2sdk_GetEntDataPtr)(int32_t, int32_t) = NULL;
+
+
 PLUGIFY_EXPORT void (*__s2sdk_ChangeEntityState)(int32_t, int32_t, int32_t) = NULL;
 
 
 PLUGIFY_EXPORT int32_t (*__s2sdk_GetEntSchemaArraySize2)(uintptr_t, String*, String*) = NULL;
+
+
+PLUGIFY_EXPORT uintptr_t (*__s2sdk_GetEntSchemaPtr2)(uintptr_t, String*, String*, int32_t) = NULL;
 
 
 PLUGIFY_EXPORT int64_t (*__s2sdk_GetEntSchema2)(uintptr_t, String*, String*, int32_t) = NULL;
@@ -187,6 +196,9 @@ PLUGIFY_EXPORT void (*__s2sdk_NetworkStateChanged2)(uintptr_t, String*, String*)
 
 
 PLUGIFY_EXPORT int32_t (*__s2sdk_GetEntSchemaArraySize)(int32_t, String*, String*) = NULL;
+
+
+PLUGIFY_EXPORT uintptr_t (*__s2sdk_GetEntSchemaPtr)(int32_t, String*, String*, int32_t) = NULL;
 
 
 PLUGIFY_EXPORT int64_t (*__s2sdk_GetEntSchema)(int32_t, String*, String*, int32_t) = NULL;

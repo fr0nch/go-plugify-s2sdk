@@ -134,6 +134,12 @@ static void SetEntDataEnt2(uintptr_t entity, int32_t offset, int32_t value, bool
 	__s2sdk_SetEntDataEnt2(entity, offset, value, changeState, chainOffset);
 }
 
+extern uintptr_t (*__s2sdk_GetEntDataPtr2)(uintptr_t, int32_t);
+
+static uintptr_t GetEntDataPtr2(uintptr_t entity, int32_t offset) {
+	return __s2sdk_GetEntDataPtr2(entity, offset);
+}
+
 extern void (*__s2sdk_ChangeEntityState2)(uintptr_t, int32_t, int32_t);
 
 static void ChangeEntityState2(uintptr_t entity, int32_t offset, int32_t chainOffset) {
@@ -248,6 +254,12 @@ static void SetEntDataEnt(int32_t entityHandle, int32_t offset, int32_t value, b
 	__s2sdk_SetEntDataEnt(entityHandle, offset, value, changeState, chainOffset);
 }
 
+extern uintptr_t (*__s2sdk_GetEntDataPtr)(int32_t, int32_t);
+
+static uintptr_t GetEntDataPtr(int32_t entityHandle, int32_t offset) {
+	return __s2sdk_GetEntDataPtr(entityHandle, offset);
+}
+
 extern void (*__s2sdk_ChangeEntityState)(int32_t, int32_t, int32_t);
 
 static void ChangeEntityState(int32_t entityHandle, int32_t offset, int32_t chainOffset) {
@@ -258,6 +270,12 @@ extern int32_t (*__s2sdk_GetEntSchemaArraySize2)(uintptr_t, String*, String*);
 
 static int32_t GetEntSchemaArraySize2(uintptr_t entity, String* className, String* memberName) {
 	return __s2sdk_GetEntSchemaArraySize2(entity, className, memberName);
+}
+
+extern uintptr_t (*__s2sdk_GetEntSchemaPtr2)(uintptr_t, String*, String*, int32_t);
+
+static uintptr_t GetEntSchemaPtr2(uintptr_t entity, String* className, String* memberName, int32_t element) {
+	return __s2sdk_GetEntSchemaPtr2(entity, className, memberName, element);
 }
 
 extern int64_t (*__s2sdk_GetEntSchema2)(uintptr_t, String*, String*, int32_t);
@@ -378,6 +396,12 @@ extern int32_t (*__s2sdk_GetEntSchemaArraySize)(int32_t, String*, String*);
 
 static int32_t GetEntSchemaArraySize(int32_t entityHandle, String* className, String* memberName) {
 	return __s2sdk_GetEntSchemaArraySize(entityHandle, className, memberName);
+}
+
+extern uintptr_t (*__s2sdk_GetEntSchemaPtr)(int32_t, String*, String*, int32_t);
+
+static uintptr_t GetEntSchemaPtr(int32_t entityHandle, String* className, String* memberName, int32_t element) {
+	return __s2sdk_GetEntSchemaPtr(entityHandle, className, memberName, element);
 }
 
 extern int64_t (*__s2sdk_GetEntSchema)(int32_t, String*, String*, int32_t);

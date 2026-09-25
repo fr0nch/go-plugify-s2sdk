@@ -39,6 +39,9 @@ PLUGIFY_EXPORT int32_t (*__s2sdk_GetPrevActiveEntity)(int32_t) = NULL;
 PLUGIFY_EXPORT int32_t (*__s2sdk_GetNextActiveEntity)(int32_t) = NULL;
 
 
+PLUGIFY_EXPORT int32_t (*__s2sdk_GetPointScriptHandle)() = NULL;
+
+
 PLUGIFY_EXPORT bool (*__s2sdk_HookEntityOutput)(String*, String*, void*, uint8_t) = NULL;
 
 
