@@ -719,10 +719,10 @@ func SetEventPtr(event uintptr, key string, value uintptr) {
 	_SetEventPtr(event, key, value)
 }
 
-var _SetEventPlayerController = func(event uintptr, key string, value uintptr) {
+var _SetEventPlayerController = func(event uintptr, key string, value int32) {
 	__event := C.uintptr_t(event)
 	__key := plugify.ConstructString(key)
-	__value := C.uintptr_t(value)
+	__value := C.int32_t(value)
 	plugify.Block {
 		Try: func() {
 			C.SetEventPlayerController(__event, (*C.String)(unsafe.Pointer(&__key)), __value)
@@ -739,8 +739,8 @@ var _SetEventPlayerController = func(event uintptr, key string, value uintptr) {
 //
 //  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to set the player controller address.
-//  @param value: A pointer to the player controller to set.
-func SetEventPlayerController(event uintptr, key string, value uintptr) {
+//  @param value: A handle to the player controller to set.
+func SetEventPlayerController(event uintptr, key string, value int32) {
 	_SetEventPlayerController(event, key, value)
 }
 
@@ -794,10 +794,10 @@ func SetEventPlayerSlot(event uintptr, key string, value int32) {
 	_SetEventPlayerSlot(event, key, value)
 }
 
-var _SetEventEntity = func(event uintptr, key string, value uintptr) {
+var _SetEventEntity = func(event uintptr, key string, value int32) {
 	__event := C.uintptr_t(event)
 	__key := plugify.ConstructString(key)
-	__value := C.uintptr_t(value)
+	__value := C.int32_t(value)
 	plugify.Block {
 		Try: func() {
 			C.SetEventEntity(__event, (*C.String)(unsafe.Pointer(&__key)), __value)
@@ -814,8 +814,8 @@ var _SetEventEntity = func(event uintptr, key string, value uintptr) {
 //
 //  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to set the entity address.
-//  @param value: A pointer to the entity to set.
-func SetEventEntity(event uintptr, key string, value uintptr) {
+//  @param value: A handle to the entity to set.
+func SetEventEntity(event uintptr, key string, value int32) {
 	_SetEventEntity(event, key, value)
 }
 
@@ -1298,8 +1298,8 @@ func (w *EventInfo) SetPtr(key string, value uintptr) error {
 //
 //  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to set the player controller address.
-//  @param value: A pointer to the player controller to set.
-func (w *EventInfo) SetPlayerController(key string, value uintptr) error {
+//  @param value: A handle to the player controller to set.
+func (w *EventInfo) SetPlayerController(key string, value int32) error {
 	if w.handle == 0 {
 		return EventInfoErrEmptyHandle
 	}
@@ -1340,8 +1340,8 @@ func (w *EventInfo) SetPlayerSlot(key string, value int32) error {
 //
 //  @param event: A pointer to the IGameEvent object containing event data.
 //  @param key: The key for which to set the entity address.
-//  @param value: A pointer to the entity to set.
-func (w *EventInfo) SetEntity(key string, value uintptr) error {
+//  @param value: A handle to the entity to set.
+func (w *EventInfo) SetEntity(key string, value int32) error {
 	if w.handle == 0 {
 		return EventInfoErrEmptyHandle
 	}

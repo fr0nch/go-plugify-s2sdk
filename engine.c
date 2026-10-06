@@ -45,7 +45,7 @@ PLUGIFY_EXPORT void (*__s2sdk_QueueTaskForNextFrame)(void*, Vector*) = NULL;
 PLUGIFY_EXPORT void (*__s2sdk_QueueTaskForNextWorldUpdate)(void*, Vector*) = NULL;
 
 
-PLUGIFY_EXPORT float (*__s2sdk_GetSoundDuration)(String*) = NULL;
+PLUGIFY_EXPORT float (*__s2sdk_GetSoundDuration)(String*, String*) = NULL;
 
 
 PLUGIFY_EXPORT void (*__s2sdk_EmitSound)(int32_t, String*, int32_t, float, float) = NULL;

@@ -78,7 +78,7 @@ PLUGIFY_EXPORT void (*__s2sdk_SetEventString)(uintptr_t, String*, String*) = NUL
 PLUGIFY_EXPORT void (*__s2sdk_SetEventPtr)(uintptr_t, String*, uintptr_t) = NULL;
 
 
-PLUGIFY_EXPORT void (*__s2sdk_SetEventPlayerController)(uintptr_t, String*, uintptr_t) = NULL;
+PLUGIFY_EXPORT void (*__s2sdk_SetEventPlayerController)(uintptr_t, String*, int32_t) = NULL;
 
 
 PLUGIFY_EXPORT void (*__s2sdk_SetEventPlayerIndex)(uintptr_t, String*, int32_t) = NULL;
@@ -87,7 +87,7 @@ PLUGIFY_EXPORT void (*__s2sdk_SetEventPlayerIndex)(uintptr_t, String*, int32_t) 
 PLUGIFY_EXPORT void (*__s2sdk_SetEventPlayerSlot)(uintptr_t, String*, int32_t) = NULL;
 
 
-PLUGIFY_EXPORT void (*__s2sdk_SetEventEntity)(uintptr_t, String*, uintptr_t) = NULL;
+PLUGIFY_EXPORT void (*__s2sdk_SetEventEntity)(uintptr_t, String*, int32_t) = NULL;
 
 
 PLUGIFY_EXPORT void (*__s2sdk_SetEventEntityIndex)(uintptr_t, String*, int32_t) = NULL;

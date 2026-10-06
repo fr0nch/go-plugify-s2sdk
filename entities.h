@@ -104,10 +104,10 @@ static int32_t FindEntityByClassname(int32_t startFrom, String* classname) {
 	return __s2sdk_FindEntityByClassname(startFrom, classname);
 }
 
-extern int32_t (*__s2sdk_FindEntityByClassnameNearest)(int32_t, String*, Vector3*, float);
+extern int32_t (*__s2sdk_FindEntityByClassnameNearest)(String*, Vector3*, float);
 
-static int32_t FindEntityByClassnameNearest(int32_t startFrom, String* classname, Vector3* origin, float maxRadius) {
-	return __s2sdk_FindEntityByClassnameNearest(startFrom, classname, origin, maxRadius);
+static int32_t FindEntityByClassnameNearest(String* classname, Vector3* origin, float maxRadius) {
+	return __s2sdk_FindEntityByClassnameNearest(classname, origin, maxRadius);
 }
 
 extern int32_t (*__s2sdk_FindEntityByClassnameWithin)(int32_t, String*, Vector3*, float);

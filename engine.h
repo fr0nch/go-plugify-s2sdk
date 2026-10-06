@@ -92,10 +92,10 @@ static void QueueTaskForNextWorldUpdate(void* callback, Vector* userData) {
 	__s2sdk_QueueTaskForNextWorldUpdate(callback, userData);
 }
 
-extern float (*__s2sdk_GetSoundDuration)(String*);
+extern float (*__s2sdk_GetSoundDuration)(String*, String*);
 
-static float GetSoundDuration(String* name) {
-	return __s2sdk_GetSoundDuration(name);
+static float GetSoundDuration(String* name, String* actorModel) {
+	return __s2sdk_GetSoundDuration(name, actorModel);
 }
 
 extern void (*__s2sdk_EmitSound)(int32_t, String*, int32_t, float, float);

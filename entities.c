@@ -51,7 +51,7 @@ PLUGIFY_EXPORT bool (*__s2sdk_UnhookEntityOutput)(String*, String*, void*, uint8
 PLUGIFY_EXPORT int32_t (*__s2sdk_FindEntityByClassname)(int32_t, String*) = NULL;
 
 
-PLUGIFY_EXPORT int32_t (*__s2sdk_FindEntityByClassnameNearest)(int32_t, String*, Vector3*, float) = NULL;
+PLUGIFY_EXPORT int32_t (*__s2sdk_FindEntityByClassnameNearest)(String*, Vector3*, float) = NULL;
 
 
 PLUGIFY_EXPORT int32_t (*__s2sdk_FindEntityByClassnameWithin)(int32_t, String*, Vector3*, float) = NULL;

@@ -483,15 +483,14 @@ func FindEntityByClassname(startFrom int32, classname string) int32 {
 	return _FindEntityByClassname(startFrom, classname)
 }
 
-var _FindEntityByClassnameNearest = func(startFrom int32, classname string, origin plugify.Vector3, maxRadius float32) int32 {
+var _FindEntityByClassnameNearest = func(classname string, origin plugify.Vector3, maxRadius float32) int32 {
 	var __retVal int32
-	__startFrom := C.int32_t(startFrom)
 	__classname := plugify.ConstructString(classname)
 	__origin := *(*C.Vector3)(unsafe.Pointer(&origin))
 	__maxRadius := C.float(maxRadius)
 	plugify.Block {
 		Try: func() {
-			__retVal = int32(C.FindEntityByClassnameNearest(__startFrom, (*C.String)(unsafe.Pointer(&__classname)), &__origin, __maxRadius))
+			__retVal = int32(C.FindEntityByClassnameNearest((*C.String)(unsafe.Pointer(&__classname)), &__origin, __maxRadius))
 		},
 		Finally: func() {
 			// Perform cleanup.
@@ -504,14 +503,13 @@ var _FindEntityByClassnameNearest = func(startFrom int32, classname string, orig
 // FindEntityByClassnameNearest 
 //  @brief Finds the nearest entity by classname to a point.
 //
-//  @param startFrom: The handle of the entity to start from, or INVALID_EHANDLE_INDEX to start fresh.
 //  @param classname: The class name to search for.
 //  @param origin: The center point to search around.
 //  @param maxRadius: Maximum search radius.
 //
 //  @return The handle of the found entity, or INVALID_EHANDLE_INDEX if none found.
-func FindEntityByClassnameNearest(startFrom int32, classname string, origin plugify.Vector3, maxRadius float32) int32 {
-	return _FindEntityByClassnameNearest(startFrom, classname, origin, maxRadius)
+func FindEntityByClassnameNearest(classname string, origin plugify.Vector3, maxRadius float32) int32 {
+	return _FindEntityByClassnameNearest(classname, origin, maxRadius)
 }
 
 var _FindEntityByClassnameWithin = func(startFrom int32, classname string, origin plugify.Vector3, radius float32) int32 {

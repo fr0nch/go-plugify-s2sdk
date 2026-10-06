@@ -334,16 +334,18 @@ func QueueTaskForNextWorldUpdate(callback TaskCallback, userData []any) {
 	_QueueTaskForNextWorldUpdate(callback, userData)
 }
 
-var _GetSoundDuration = func(name string) float32 {
+var _GetSoundDuration = func(name string, actorModel string) float32 {
 	var __retVal float32
 	__name := plugify.ConstructString(name)
+	__actorModel := plugify.ConstructString(actorModel)
 	plugify.Block {
 		Try: func() {
-			__retVal = float32(C.GetSoundDuration((*C.String)(unsafe.Pointer(&__name))))
+			__retVal = float32(C.GetSoundDuration((*C.String)(unsafe.Pointer(&__name)), (*C.String)(unsafe.Pointer(&__actorModel))))
 		},
 		Finally: func() {
 			// Perform cleanup.
 			plugify.DestroyString(&__name)
+			plugify.DestroyString(&__actorModel)
 		},
 	}.Do()
 	return __retVal
@@ -353,10 +355,11 @@ var _GetSoundDuration = func(name string) float32 {
 //  @brief Returns the duration of a specified sound.
 //
 //  @param name: The name of the sound to check.
+//  @param actorModel: The name of the sound to check.
 //
 //  @return The duration of the sound in seconds.
-func GetSoundDuration(name string) float32 {
-	return _GetSoundDuration(name)
+func GetSoundDuration(name string, actorModel string) float32 {
+	return _GetSoundDuration(name, actorModel)
 }
 
 var _EmitSound = func(entityHandle int32, sound string, pitch int32, volume float32, delay float32) {

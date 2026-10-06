@@ -158,9 +158,9 @@ static void SetEventPtr(uintptr_t event, String* key, uintptr_t value) {
 	__s2sdk_SetEventPtr(event, key, value);
 }
 
-extern void (*__s2sdk_SetEventPlayerController)(uintptr_t, String*, uintptr_t);
+extern void (*__s2sdk_SetEventPlayerController)(uintptr_t, String*, int32_t);
 
-static void SetEventPlayerController(uintptr_t event, String* key, uintptr_t value) {
+static void SetEventPlayerController(uintptr_t event, String* key, int32_t value) {
 	__s2sdk_SetEventPlayerController(event, key, value);
 }
 
@@ -176,9 +176,9 @@ static void SetEventPlayerSlot(uintptr_t event, String* key, int32_t value) {
 	__s2sdk_SetEventPlayerSlot(event, key, value);
 }
 
-extern void (*__s2sdk_SetEventEntity)(uintptr_t, String*, uintptr_t);
+extern void (*__s2sdk_SetEventEntity)(uintptr_t, String*, int32_t);
 
-static void SetEventEntity(uintptr_t event, String* key, uintptr_t value) {
+static void SetEventEntity(uintptr_t event, String* key, int32_t value) {
 	__s2sdk_SetEventEntity(event, key, value);
 }
 

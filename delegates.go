@@ -73,7 +73,7 @@ type OnClientPutInServerCallback func(playerSlot int32)
 
 
 // OnClientDisconnectCallback - Called when a client is disconnecting from the server.
-type OnClientDisconnectCallback func(playerSlot int32)
+type OnClientDisconnectCallback func(playerSlot int32, reason NetworkDisconnectionReason)
 
 
 // OnClientDisconnect_PostCallback - Called when a client is disconnected from the server.
@@ -92,7 +92,7 @@ type OnClientFullyConnectCallback func(playerSlot int32)
 type OnClientSettingsChangedCallback func(playerSlot int32)
 
 
-// OnClientAuthenticatedCallback - Called when a client is fully connected to the game.
+// OnClientAuthenticatedCallback - Called when a client receives an auth ID.
 type OnClientAuthenticatedCallback func(playerSlot int32, steamID uint64)
 
 
@@ -116,7 +116,7 @@ type OnEntityDeletedCallback func(entityHandle int32)
 type OnEntityParentChangedCallback func(entityHandle int32, parentHandle int32)
 
 
-// OnServerCheckTransmitCallback - When entities is transmitted to another entities.
+// OnServerCheckTransmitCallback - When entities are transmitted to another entities.
 type OnServerCheckTransmitCallback func(checkTransmitInfoList []uintptr)
 
 
