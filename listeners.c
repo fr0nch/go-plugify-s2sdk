@@ -6,12 +6,6 @@ PLUGIFY_EXPORT void (*__s2sdk_OnClientConnect_Register)(void*) = NULL;
 PLUGIFY_EXPORT void (*__s2sdk_OnClientConnect_Unregister)(void*) = NULL;
 
 
-PLUGIFY_EXPORT void (*__s2sdk_OnClientConnect_Post_Register)(void*) = NULL;
-
-
-PLUGIFY_EXPORT void (*__s2sdk_OnClientConnect_Post_Unregister)(void*) = NULL;
-
-
 PLUGIFY_EXPORT void (*__s2sdk_OnClientConnected_Register)(void*) = NULL;
 
 
@@ -30,16 +24,16 @@ PLUGIFY_EXPORT void (*__s2sdk_OnClientDisconnect_Register)(void*) = NULL;
 PLUGIFY_EXPORT void (*__s2sdk_OnClientDisconnect_Unregister)(void*) = NULL;
 
 
-PLUGIFY_EXPORT void (*__s2sdk_OnClientDisconnect_Post_Register)(void*) = NULL;
-
-
-PLUGIFY_EXPORT void (*__s2sdk_OnClientDisconnect_Post_Unregister)(void*) = NULL;
-
-
 PLUGIFY_EXPORT void (*__s2sdk_OnClientActive_Register)(void*) = NULL;
 
 
 PLUGIFY_EXPORT void (*__s2sdk_OnClientActive_Unregister)(void*) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_OnClientSignonStateChanged_Register)(void*) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_OnClientSignonStateChanged_Unregister)(void*) = NULL;
 
 
 PLUGIFY_EXPORT void (*__s2sdk_OnClientFullyConnect_Register)(void*) = NULL;

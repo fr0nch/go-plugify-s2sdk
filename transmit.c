@@ -60,22 +60,22 @@ PLUGIFY_EXPORT void (*__s2sdk_SetTransmitInfoAlwaysAll)(uintptr_t) = NULL;
 PLUGIFY_EXPORT void (*__s2sdk_ClearTransmitInfoAlwaysAll)(uintptr_t) = NULL;
 
 
-PLUGIFY_EXPORT int32_t (*__s2sdk_GetTransmitInfoTargetSlotsCount)(uintptr_t) = NULL;
+PLUGIFY_EXPORT int32_t (*__s2sdk_GetTransmitInfoTargetSpawnGroupsCount)(uintptr_t) = NULL;
 
 
-PLUGIFY_EXPORT int32_t (*__s2sdk_GetTransmitInfoTargetSlot)(uintptr_t, int32_t) = NULL;
+PLUGIFY_EXPORT int32_t (*__s2sdk_GetTransmitInfoTargetSpawnGroup)(uintptr_t, int32_t) = NULL;
 
 
-PLUGIFY_EXPORT void (*__s2sdk_AddTransmitInfoTargetSlot)(uintptr_t, int32_t) = NULL;
+PLUGIFY_EXPORT void (*__s2sdk_AddTransmitInfoTargetSpawnGroup)(uintptr_t, int32_t) = NULL;
 
 
-PLUGIFY_EXPORT void (*__s2sdk_RemoveTransmitInfoTargetSlot)(uintptr_t, int32_t) = NULL;
+PLUGIFY_EXPORT void (*__s2sdk_RemoveTransmitInfoTargetSpawnGroup)(uintptr_t, int32_t) = NULL;
 
 
-PLUGIFY_EXPORT Vector (*__s2sdk_GetTransmitInfoTargetSlotsAll)(uintptr_t) = NULL;
+PLUGIFY_EXPORT Vector (*__s2sdk_GetTransmitInfoTargetSpawnGroupsAll)(uintptr_t) = NULL;
 
 
-PLUGIFY_EXPORT void (*__s2sdk_RemoveTransmitInfoTargetSlotsAll)(uintptr_t) = NULL;
+PLUGIFY_EXPORT void (*__s2sdk_RemoveTransmitInfoTargetSpawnGroupsAll)(uintptr_t) = NULL;
 
 
 PLUGIFY_EXPORT int32_t (*__s2sdk_GetTransmitInfoPlayerSlot)(uintptr_t) = NULL;

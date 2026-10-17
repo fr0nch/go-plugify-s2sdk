@@ -14,18 +14,6 @@ static void OnClientConnect_Unregister(void* callback) {
 	__s2sdk_OnClientConnect_Unregister(callback);
 }
 
-extern void (*__s2sdk_OnClientConnect_Post_Register)(void*);
-
-static void OnClientConnect_Post_Register(void* callback) {
-	__s2sdk_OnClientConnect_Post_Register(callback);
-}
-
-extern void (*__s2sdk_OnClientConnect_Post_Unregister)(void*);
-
-static void OnClientConnect_Post_Unregister(void* callback) {
-	__s2sdk_OnClientConnect_Post_Unregister(callback);
-}
-
 extern void (*__s2sdk_OnClientConnected_Register)(void*);
 
 static void OnClientConnected_Register(void* callback) {
@@ -62,18 +50,6 @@ static void OnClientDisconnect_Unregister(void* callback) {
 	__s2sdk_OnClientDisconnect_Unregister(callback);
 }
 
-extern void (*__s2sdk_OnClientDisconnect_Post_Register)(void*);
-
-static void OnClientDisconnect_Post_Register(void* callback) {
-	__s2sdk_OnClientDisconnect_Post_Register(callback);
-}
-
-extern void (*__s2sdk_OnClientDisconnect_Post_Unregister)(void*);
-
-static void OnClientDisconnect_Post_Unregister(void* callback) {
-	__s2sdk_OnClientDisconnect_Post_Unregister(callback);
-}
-
 extern void (*__s2sdk_OnClientActive_Register)(void*);
 
 static void OnClientActive_Register(void* callback) {
@@ -84,6 +60,18 @@ extern void (*__s2sdk_OnClientActive_Unregister)(void*);
 
 static void OnClientActive_Unregister(void* callback) {
 	__s2sdk_OnClientActive_Unregister(callback);
+}
+
+extern void (*__s2sdk_OnClientSignonStateChanged_Register)(void*);
+
+static void OnClientSignonStateChanged_Register(void* callback) {
+	__s2sdk_OnClientSignonStateChanged_Register(callback);
+}
+
+extern void (*__s2sdk_OnClientSignonStateChanged_Unregister)(void*);
+
+static void OnClientSignonStateChanged_Unregister(void* callback) {
+	__s2sdk_OnClientSignonStateChanged_Unregister(callback);
 }
 
 extern void (*__s2sdk_OnClientFullyConnect_Register)(void*);

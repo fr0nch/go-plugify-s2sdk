@@ -778,6 +778,28 @@ const (
 	TimerFlag_NoMapChange TimerFlag = 2
 )
 
+// SignonState - Enum representing the client's connection (signon) state.
+type SignonState int32
+
+const (
+	// None - No state yet, about to connect.
+	SignonState_None SignonState = 0
+	// Challenge - Client is challenging the server, all OOB packets.
+	SignonState_Challenge SignonState = 1
+	// Connected - Client is connected to the server, netchans ready.
+	SignonState_Connected SignonState = 2
+	// New - Just got server info and string tables.
+	SignonState_New SignonState = 3
+	// Prespawn - Received signon buffers.
+	SignonState_Prespawn SignonState = 4
+	// Spawn - Ready to receive entity packets.
+	SignonState_Spawn SignonState = 5
+	// Full - Fully connected, first non-delta packet received.
+	SignonState_Full SignonState = 6
+	// ChangeLevel - Server is changing level.
+	SignonState_ChangeLevel SignonState = 7
+)
+
 // CSRoundEndReason - Enum representing the possible reasons for a round ending in Counter-Strike.
 type CSRoundEndReason int32
 

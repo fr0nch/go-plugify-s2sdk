@@ -377,7 +377,7 @@ var _GetClientIp = func(playerSlot int32) string {
 //
 //  @param playerSlot: The index of the player's slot.
 //
-//  @return The client's IP address.
+//  @return The client's IP address, or the local (loopback) address for bots.
 func GetClientIp(playerSlot int32) string {
 	return _GetClientIp(playerSlot)
 }
@@ -402,7 +402,7 @@ var _GetClientLanguage = func(playerSlot int32) string {
 }
 
 // GetClientLanguage 
-//  @brief Retrieves a client's language.
+//  @brief Retrieves a client's language. Empty until the client answers the cl_language query, and always empty for bots. Reliably available starting from OnClientAuthenticated and OnClientPutInServer.
 //
 //  @param playerSlot: The index of the player's slot.
 //
@@ -431,7 +431,7 @@ var _GetClientLanguageCode = func(playerSlot int32) string {
 }
 
 // GetClientLanguageCode 
-//  @brief Retrieves a client's language as an ISO code. Unlike GetClientLanguage, which returns the raw cl_language value ("english", "schinese"), this returns the code translation files are keyed by ("en", "zh-CN"). Falls back to the server language when the client's language is not known.
+//  @brief Retrieves a client's language as an ISO code. Unlike GetClientLanguage, which returns the raw cl_language value ("english", "schinese"), this returns the code translation files are keyed by ("en", "zh-CN"). Empty until the client answers the cl_language query, and always empty for bots. Reliably available starting from OnClientAuthenticated and OnClientPutInServer.
 //
 //  @param playerSlot: The index of the player's slot.
 //
@@ -460,7 +460,7 @@ var _GetClientOS = func(playerSlot int32) string {
 }
 
 // GetClientOS 
-//  @brief Retrieves a client's operating system.
+//  @brief Retrieves a client's operating system. Empty until the client answers the engine_ostype query, and always empty for bots. Reliably available starting from OnClientAuthenticated and OnClientPutInServer.
 //
 //  @param playerSlot: The index of the player's slot.
 //

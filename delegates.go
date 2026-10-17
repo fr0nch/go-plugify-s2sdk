@@ -56,15 +56,11 @@ type YesNoVoteHandler func(action VoteAction, clientSlot int32, choice int32)
 type TimerCallback func(timer uint32, userData []any)
 
 
-// OnClientConnectCallback - Called on client connection. If you return true, the client will be allowed in the server. If you return false (or return nothing), the client will be rejected. If the client is rejected by this forward or any other, OnClientDisconnect will not be called.<br>Note: Do not write to rejectmsg if you plan on returning true. If multiple plugins write to the string buffer, it is not defined which plugin's string will be shown to the client, but it is guaranteed one of them will.
-type OnClientConnectCallback func(playerSlot int32, name string, networkId string) bool
+// OnClientConnectCallback - Called when a client attempts to connect, before a player slot is allocated. Return a disconnect reason other than NETWORK_DISCONNECT_INVALID to reject the connection with it: the client is not created, so no player_connect event, OnClientConnected or OnClientDisconnect will follow. Also called for bots (from CreateFakeClient) with the server's local address and a steamId of 0; rejecting a bot means it is not created. Not called for GOTV.
+type OnClientConnectCallback func(name string, address string, steamId uint64) NetworkDisconnectionReason
 
 
-// OnClientConnect_PostCallback - Called on client connection.
-type OnClientConnect_PostCallback func(playerSlot int32)
-
-
-// OnClientConnectedCallback - Called once a client successfully connects. This callback is paired with OnClientDisconnect.
+// OnClientConnectedCallback - Called once a client has connected and got a player slot, for players (after OnClientConnect accepted them) and bots alike, right after the player_connect event and before OnClientPutInServer. This callback is paired with OnClientDisconnect.
 type OnClientConnectedCallback func(playerSlot int32)
 
 
@@ -72,16 +68,16 @@ type OnClientConnectedCallback func(playerSlot int32)
 type OnClientPutInServerCallback func(playerSlot int32)
 
 
-// OnClientDisconnectCallback - Called when a client is disconnecting from the server.
+// OnClientDisconnectCallback - Called when a client is disconnecting from the server, for players and bots, before the player_disconnect event. The client data is still available here and is reset once the callbacks return.
 type OnClientDisconnectCallback func(playerSlot int32, reason NetworkDisconnectionReason)
 
 
-// OnClientDisconnect_PostCallback - Called when a client is disconnected from the server.
-type OnClientDisconnect_PostCallback func(playerSlot int32, reason NetworkDisconnectionReason)
-
-
 // OnClientActiveCallback - Called when a client is activated by the game.
-type OnClientActiveCallback func(playerSlot int32, isActive bool)
+type OnClientActiveCallback func(playerSlot int32, loadGame bool)
+
+
+// OnClientSignonStateChangedCallback - Called when the server processes a client's signon state message (CServerSideClient::ProcessSignonStateMsg), with the client's current signon state. The same state may be reported more than once. Not called for bots.
+type OnClientSignonStateChangedCallback func(playerSlot int32, state SignonState, spawnCount int32)
 
 
 // OnClientFullyConnectCallback - Called when a client is fully connected to the game.

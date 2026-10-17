@@ -4,18 +4,16 @@ package s2sdk
 #include "listeners.h"
 #cgo noescape OnClientConnect_Register
 #cgo noescape OnClientConnect_Unregister
-#cgo noescape OnClientConnect_Post_Register
-#cgo noescape OnClientConnect_Post_Unregister
 #cgo noescape OnClientConnected_Register
 #cgo noescape OnClientConnected_Unregister
 #cgo noescape OnClientPutInServer_Register
 #cgo noescape OnClientPutInServer_Unregister
 #cgo noescape OnClientDisconnect_Register
 #cgo noescape OnClientDisconnect_Unregister
-#cgo noescape OnClientDisconnect_Post_Register
-#cgo noescape OnClientDisconnect_Post_Unregister
 #cgo noescape OnClientActive_Register
 #cgo noescape OnClientActive_Unregister
+#cgo noescape OnClientSignonStateChanged_Register
+#cgo noescape OnClientSignonStateChanged_Unregister
 #cgo noescape OnClientFullyConnect_Register
 #cgo noescape OnClientFullyConnect_Unregister
 #cgo noescape OnClientSettingsChanged_Register
@@ -102,32 +100,6 @@ func OnClientConnect_Unregister(callback OnClientConnectCallback) {
 	_OnClientConnect_Unregister(callback)
 }
 
-var _OnClientConnect_Post_Register = func(callback OnClientConnect_PostCallback) {
-	__callback := plugify.GetFunctionPointerForDelegate(callback)
-	C.OnClientConnect_Post_Register(__callback)
-}
-
-// OnClientConnect_Post_Register 
-//  @brief Register callback to event.
-//
-//  @param callback: Function callback.
-func OnClientConnect_Post_Register(callback OnClientConnect_PostCallback) {
-	_OnClientConnect_Post_Register(callback)
-}
-
-var _OnClientConnect_Post_Unregister = func(callback OnClientConnect_PostCallback) {
-	__callback := plugify.GetFunctionPointerForDelegate(callback)
-	C.OnClientConnect_Post_Unregister(__callback)
-}
-
-// OnClientConnect_Post_Unregister 
-//  @brief Unregister callback to event.
-//
-//  @param callback: Function callback.
-func OnClientConnect_Post_Unregister(callback OnClientConnect_PostCallback) {
-	_OnClientConnect_Post_Unregister(callback)
-}
-
 var _OnClientConnected_Register = func(callback OnClientConnectedCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientConnected_Register(__callback)
@@ -206,32 +178,6 @@ func OnClientDisconnect_Unregister(callback OnClientDisconnectCallback) {
 	_OnClientDisconnect_Unregister(callback)
 }
 
-var _OnClientDisconnect_Post_Register = func(callback OnClientDisconnect_PostCallback) {
-	__callback := plugify.GetFunctionPointerForDelegate(callback)
-	C.OnClientDisconnect_Post_Register(__callback)
-}
-
-// OnClientDisconnect_Post_Register 
-//  @brief Register callback to event.
-//
-//  @param callback: Function callback.
-func OnClientDisconnect_Post_Register(callback OnClientDisconnect_PostCallback) {
-	_OnClientDisconnect_Post_Register(callback)
-}
-
-var _OnClientDisconnect_Post_Unregister = func(callback OnClientDisconnect_PostCallback) {
-	__callback := plugify.GetFunctionPointerForDelegate(callback)
-	C.OnClientDisconnect_Post_Unregister(__callback)
-}
-
-// OnClientDisconnect_Post_Unregister 
-//  @brief Unregister callback to event.
-//
-//  @param callback: Function callback.
-func OnClientDisconnect_Post_Unregister(callback OnClientDisconnect_PostCallback) {
-	_OnClientDisconnect_Post_Unregister(callback)
-}
-
 var _OnClientActive_Register = func(callback OnClientActiveCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientActive_Register(__callback)
@@ -256,6 +202,32 @@ var _OnClientActive_Unregister = func(callback OnClientActiveCallback) {
 //  @param callback: Function callback.
 func OnClientActive_Unregister(callback OnClientActiveCallback) {
 	_OnClientActive_Unregister(callback)
+}
+
+var _OnClientSignonStateChanged_Register = func(callback OnClientSignonStateChangedCallback) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.OnClientSignonStateChanged_Register(__callback)
+}
+
+// OnClientSignonStateChanged_Register 
+//  @brief Register callback to event.
+//
+//  @param callback: Function callback.
+func OnClientSignonStateChanged_Register(callback OnClientSignonStateChangedCallback) {
+	_OnClientSignonStateChanged_Register(callback)
+}
+
+var _OnClientSignonStateChanged_Unregister = func(callback OnClientSignonStateChangedCallback) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.OnClientSignonStateChanged_Unregister(__callback)
+}
+
+// OnClientSignonStateChanged_Unregister 
+//  @brief Unregister callback to event.
+//
+//  @param callback: Function callback.
+func OnClientSignonStateChanged_Unregister(callback OnClientSignonStateChangedCallback) {
+	_OnClientSignonStateChanged_Unregister(callback)
 }
 
 var _OnClientFullyConnect_Register = func(callback OnClientFullyConnectCallback) {

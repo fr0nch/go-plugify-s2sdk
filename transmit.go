@@ -22,12 +22,12 @@ package s2sdk
 #cgo noescape IsTransmitInfoAlwaysSet
 #cgo noescape SetTransmitInfoAlwaysAll
 #cgo noescape ClearTransmitInfoAlwaysAll
-#cgo noescape GetTransmitInfoTargetSlotsCount
-#cgo noescape GetTransmitInfoTargetSlot
-#cgo noescape AddTransmitInfoTargetSlot
-#cgo noescape RemoveTransmitInfoTargetSlot
-#cgo noescape GetTransmitInfoTargetSlotsAll
-#cgo noescape RemoveTransmitInfoTargetSlotsAll
+#cgo noescape GetTransmitInfoTargetSpawnGroupsCount
+#cgo noescape GetTransmitInfoTargetSpawnGroup
+#cgo noescape AddTransmitInfoTargetSpawnGroup
+#cgo noescape RemoveTransmitInfoTargetSpawnGroup
+#cgo noescape GetTransmitInfoTargetSpawnGroupsAll
+#cgo noescape RemoveTransmitInfoTargetSpawnGroupsAll
 #cgo noescape GetTransmitInfoPlayerSlot
 #cgo noescape SetTransmitInfoPlayerSlot
 #cgo noescape GetTransmitInfoFullUpdate
@@ -357,79 +357,79 @@ func ClearTransmitInfoAlwaysAll(info uintptr) {
 	_ClearTransmitInfoAlwaysAll(info)
 }
 
-var _GetTransmitInfoTargetSlotsCount = func(info uintptr) int32 {
+var _GetTransmitInfoTargetSpawnGroupsCount = func(info uintptr) int32 {
 	var __retVal int32
 	__info := C.uintptr_t(info)
-	__retVal = int32(C.GetTransmitInfoTargetSlotsCount(__info))
+	__retVal = int32(C.GetTransmitInfoTargetSpawnGroupsCount(__info))
 	return __retVal
 }
 
-// GetTransmitInfoTargetSlotsCount 
-//  @brief Gets the count of target player slots.
+// GetTransmitInfoTargetSpawnGroupsCount 
+//  @brief Gets the count of spawn groups loaded by the client.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //
-//  @return The number of target player slots, or 0 if the info pointer is null.
-func GetTransmitInfoTargetSlotsCount(info uintptr) int32 {
-	return _GetTransmitInfoTargetSlotsCount(info)
+//  @return The number of loaded spawn groups, or 0 if the info pointer is null.
+func GetTransmitInfoTargetSpawnGroupsCount(info uintptr) int32 {
+	return _GetTransmitInfoTargetSpawnGroupsCount(info)
 }
 
-var _GetTransmitInfoTargetSlot = func(info uintptr, index int32) int32 {
+var _GetTransmitInfoTargetSpawnGroup = func(info uintptr, index int32) int32 {
 	var __retVal int32
 	__info := C.uintptr_t(info)
 	__index := C.int32_t(index)
-	__retVal = int32(C.GetTransmitInfoTargetSlot(__info, __index))
+	__retVal = int32(C.GetTransmitInfoTargetSpawnGroup(__info, __index))
 	return __retVal
 }
 
-// GetTransmitInfoTargetSlot 
-//  @brief Gets a player slot value at a specific index in the target slots vector.
+// GetTransmitInfoTargetSpawnGroup 
+//  @brief Gets a spawn group handle at a specific index in the loaded spawn groups vector.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
-//  @param index: The index in the target slots vector.
+//  @param index: The index in the loaded spawn groups vector.
 //
-//  @return The player slot value, or -1 if the index is invalid or info is null.
-func GetTransmitInfoTargetSlot(info uintptr, index int32) int32 {
-	return _GetTransmitInfoTargetSlot(info, index)
+//  @return The spawn group handle, or -1 if the index is invalid or info is null.
+func GetTransmitInfoTargetSpawnGroup(info uintptr, index int32) int32 {
+	return _GetTransmitInfoTargetSpawnGroup(info, index)
 }
 
-var _AddTransmitInfoTargetSlot = func(info uintptr, playerSlot int32) {
+var _AddTransmitInfoTargetSpawnGroup = func(info uintptr, spawnGroup int32) {
 	__info := C.uintptr_t(info)
-	__playerSlot := C.int32_t(playerSlot)
-	C.AddTransmitInfoTargetSlot(__info, __playerSlot)
+	__spawnGroup := C.int32_t(spawnGroup)
+	C.AddTransmitInfoTargetSpawnGroup(__info, __spawnGroup)
 }
 
-// AddTransmitInfoTargetSlot 
-//  @brief Adds a player slot to the target slots vector.
+// AddTransmitInfoTargetSpawnGroup 
+//  @brief Adds a spawn group handle to the loaded spawn groups vector.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
-//  @param playerSlot: The player slot value to add.
-func AddTransmitInfoTargetSlot(info uintptr, playerSlot int32) {
-	_AddTransmitInfoTargetSlot(info, playerSlot)
+//  @param spawnGroup: The spawn group handle to add.
+func AddTransmitInfoTargetSpawnGroup(info uintptr, spawnGroup int32) {
+	_AddTransmitInfoTargetSpawnGroup(info, spawnGroup)
 }
 
-var _RemoveTransmitInfoTargetSlot = func(info uintptr, index int32) {
+var _RemoveTransmitInfoTargetSpawnGroup = func(info uintptr, index int32) {
 	__info := C.uintptr_t(info)
 	__index := C.int32_t(index)
-	C.RemoveTransmitInfoTargetSlot(__info, __index)
+	C.RemoveTransmitInfoTargetSpawnGroup(__info, __index)
 }
 
-// RemoveTransmitInfoTargetSlot 
-//  @brief Removes a player slot from the target slots vector.
+// RemoveTransmitInfoTargetSpawnGroup 
+//  @brief Removes a spawn group handle from the loaded spawn groups vector.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
-//  @param index: Index within the target slots vector to remove.
-func RemoveTransmitInfoTargetSlot(info uintptr, index int32) {
-	_RemoveTransmitInfoTargetSlot(info, index)
+//  @param index: Index within the loaded spawn groups vector to remove.
+func RemoveTransmitInfoTargetSpawnGroup(info uintptr, index int32) {
+	_RemoveTransmitInfoTargetSpawnGroup(info, index)
 }
 
-var _GetTransmitInfoTargetSlotsAll = func(info uintptr) []int32 {
+var _GetTransmitInfoTargetSpawnGroupsAll = func(info uintptr) []int32 {
 	var __retVal []int32
 	var __retVal_native plugify.PlgVector
 	__info := C.uintptr_t(info)
 	plugify.Block {
 		Try: func() {
-			__native := C.GetTransmitInfoTargetSlotsAll(__info)
+			__native := C.GetTransmitInfoTargetSpawnGroupsAll(__info)
 			__retVal_native = *(*plugify.PlgVector)(unsafe.Pointer(&__native))
 			// Unmarshal - Convert native data to managed data.
 			__retVal = plugify.GetVectorDataInt32[int32](&__retVal_native)
@@ -442,27 +442,27 @@ var _GetTransmitInfoTargetSlotsAll = func(info uintptr) []int32 {
 	return __retVal
 }
 
-// GetTransmitInfoTargetSlotsAll 
-//  @brief Gets the target slots vector.
+// GetTransmitInfoTargetSpawnGroupsAll 
+//  @brief Gets the loaded spawn groups vector.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //
-//  @return The player slots array.
-func GetTransmitInfoTargetSlotsAll(info uintptr) []int32 {
-	return _GetTransmitInfoTargetSlotsAll(info)
+//  @return The spawn group handles array.
+func GetTransmitInfoTargetSpawnGroupsAll(info uintptr) []int32 {
+	return _GetTransmitInfoTargetSpawnGroupsAll(info)
 }
 
-var _RemoveTransmitInfoTargetSlotsAll = func(info uintptr) {
+var _RemoveTransmitInfoTargetSpawnGroupsAll = func(info uintptr) {
 	__info := C.uintptr_t(info)
-	C.RemoveTransmitInfoTargetSlotsAll(__info)
+	C.RemoveTransmitInfoTargetSpawnGroupsAll(__info)
 }
 
-// RemoveTransmitInfoTargetSlotsAll 
-//  @brief Clears all target player slots from the vector.
+// RemoveTransmitInfoTargetSpawnGroupsAll 
+//  @brief Clears all spawn groups from the loaded spawn groups vector.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
-func RemoveTransmitInfoTargetSlotsAll(info uintptr) {
-	_RemoveTransmitInfoTargetSlotsAll(info)
+func RemoveTransmitInfoTargetSpawnGroupsAll(info uintptr) {
+	_RemoveTransmitInfoTargetSpawnGroupsAll(info)
 }
 
 var _GetTransmitInfoPlayerSlot = func(info uintptr) int32 {
@@ -964,83 +964,83 @@ func (w *CheckTransmitInfo) ClearHLTVAll() error {
 }
 
 // GetTargetSlotsCount 
-//  @brief Gets the count of target player slots.
+//  @brief Gets the count of spawn groups loaded by the client.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //
-//  @return The number of target player slots, or 0 if the info pointer is null.
+//  @return The number of loaded spawn groups, or 0 if the info pointer is null.
 func (w *CheckTransmitInfo) GetTargetSlotsCount() (int32, error) {
 	if w.handle == 0 {
 		var zero int32
 		return zero, CheckTransmitInfoErrEmptyHandle
 	}
-	return GetTransmitInfoTargetSlotsCount(w.handle), nil
+	return GetTransmitInfoTargetSpawnGroupsCount(w.handle), nil
 }
 
 // GetTargetSlot 
-//  @brief Gets a player slot value at a specific index in the target slots vector.
+//  @brief Gets a spawn group handle at a specific index in the loaded spawn groups vector.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
-//  @param index: The index in the target slots vector.
+//  @param index: The index in the loaded spawn groups vector.
 //
-//  @return The player slot value, or -1 if the index is invalid or info is null.
+//  @return The spawn group handle, or -1 if the index is invalid or info is null.
 func (w *CheckTransmitInfo) GetTargetSlot(index int32) (int32, error) {
 	if w.handle == 0 {
 		var zero int32
 		return zero, CheckTransmitInfoErrEmptyHandle
 	}
-	return GetTransmitInfoTargetSlot(w.handle, index), nil
+	return GetTransmitInfoTargetSpawnGroup(w.handle, index), nil
 }
 
 // AddTargetSlot 
-//  @brief Adds a player slot to the target slots vector.
+//  @brief Adds a spawn group handle to the loaded spawn groups vector.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
-//  @param playerSlot: The player slot value to add.
-func (w *CheckTransmitInfo) AddTargetSlot(playerSlot int32) error {
+//  @param spawnGroup: The spawn group handle to add.
+func (w *CheckTransmitInfo) AddTargetSlot(spawnGroup int32) error {
 	if w.handle == 0 {
 		return CheckTransmitInfoErrEmptyHandle
 	}
-	AddTransmitInfoTargetSlot(w.handle, playerSlot)
+	AddTransmitInfoTargetSpawnGroup(w.handle, spawnGroup)
 	return nil
 }
 
 // RemoveTargetSlot 
-//  @brief Removes a player slot from the target slots vector.
+//  @brief Removes a spawn group handle from the loaded spawn groups vector.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
-//  @param index: Index within the target slots vector to remove.
+//  @param index: Index within the loaded spawn groups vector to remove.
 func (w *CheckTransmitInfo) RemoveTargetSlot(index int32) error {
 	if w.handle == 0 {
 		return CheckTransmitInfoErrEmptyHandle
 	}
-	RemoveTransmitInfoTargetSlot(w.handle, index)
+	RemoveTransmitInfoTargetSpawnGroup(w.handle, index)
 	return nil
 }
 
 // GetTargetSlotsAll 
-//  @brief Gets the target slots vector.
+//  @brief Gets the loaded spawn groups vector.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //
-//  @return The player slots array.
+//  @return The spawn group handles array.
 func (w *CheckTransmitInfo) GetTargetSlotsAll() ([]int32, error) {
 	if w.handle == 0 {
 		var zero []int32
 		return zero, CheckTransmitInfoErrEmptyHandle
 	}
-	return GetTransmitInfoTargetSlotsAll(w.handle), nil
+	return GetTransmitInfoTargetSpawnGroupsAll(w.handle), nil
 }
 
 // RemoveTargetSlotsAll 
-//  @brief Clears all target player slots from the vector.
+//  @brief Clears all spawn groups from the loaded spawn groups vector.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 func (w *CheckTransmitInfo) RemoveTargetSlotsAll() error {
 	if w.handle == 0 {
 		return CheckTransmitInfoErrEmptyHandle
 	}
-	RemoveTransmitInfoTargetSlotsAll(w.handle)
+	RemoveTransmitInfoTargetSpawnGroupsAll(w.handle)
 	return nil
 }
 

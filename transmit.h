@@ -122,40 +122,40 @@ static void ClearTransmitInfoAlwaysAll(uintptr_t info) {
 	__s2sdk_ClearTransmitInfoAlwaysAll(info);
 }
 
-extern int32_t (*__s2sdk_GetTransmitInfoTargetSlotsCount)(uintptr_t);
+extern int32_t (*__s2sdk_GetTransmitInfoTargetSpawnGroupsCount)(uintptr_t);
 
-static int32_t GetTransmitInfoTargetSlotsCount(uintptr_t info) {
-	return __s2sdk_GetTransmitInfoTargetSlotsCount(info);
+static int32_t GetTransmitInfoTargetSpawnGroupsCount(uintptr_t info) {
+	return __s2sdk_GetTransmitInfoTargetSpawnGroupsCount(info);
 }
 
-extern int32_t (*__s2sdk_GetTransmitInfoTargetSlot)(uintptr_t, int32_t);
+extern int32_t (*__s2sdk_GetTransmitInfoTargetSpawnGroup)(uintptr_t, int32_t);
 
-static int32_t GetTransmitInfoTargetSlot(uintptr_t info, int32_t index) {
-	return __s2sdk_GetTransmitInfoTargetSlot(info, index);
+static int32_t GetTransmitInfoTargetSpawnGroup(uintptr_t info, int32_t index) {
+	return __s2sdk_GetTransmitInfoTargetSpawnGroup(info, index);
 }
 
-extern void (*__s2sdk_AddTransmitInfoTargetSlot)(uintptr_t, int32_t);
+extern void (*__s2sdk_AddTransmitInfoTargetSpawnGroup)(uintptr_t, int32_t);
 
-static void AddTransmitInfoTargetSlot(uintptr_t info, int32_t playerSlot) {
-	__s2sdk_AddTransmitInfoTargetSlot(info, playerSlot);
+static void AddTransmitInfoTargetSpawnGroup(uintptr_t info, int32_t spawnGroup) {
+	__s2sdk_AddTransmitInfoTargetSpawnGroup(info, spawnGroup);
 }
 
-extern void (*__s2sdk_RemoveTransmitInfoTargetSlot)(uintptr_t, int32_t);
+extern void (*__s2sdk_RemoveTransmitInfoTargetSpawnGroup)(uintptr_t, int32_t);
 
-static void RemoveTransmitInfoTargetSlot(uintptr_t info, int32_t index) {
-	__s2sdk_RemoveTransmitInfoTargetSlot(info, index);
+static void RemoveTransmitInfoTargetSpawnGroup(uintptr_t info, int32_t index) {
+	__s2sdk_RemoveTransmitInfoTargetSpawnGroup(info, index);
 }
 
-extern Vector (*__s2sdk_GetTransmitInfoTargetSlotsAll)(uintptr_t);
+extern Vector (*__s2sdk_GetTransmitInfoTargetSpawnGroupsAll)(uintptr_t);
 
-static Vector GetTransmitInfoTargetSlotsAll(uintptr_t info) {
-	return __s2sdk_GetTransmitInfoTargetSlotsAll(info);
+static Vector GetTransmitInfoTargetSpawnGroupsAll(uintptr_t info) {
+	return __s2sdk_GetTransmitInfoTargetSpawnGroupsAll(info);
 }
 
-extern void (*__s2sdk_RemoveTransmitInfoTargetSlotsAll)(uintptr_t);
+extern void (*__s2sdk_RemoveTransmitInfoTargetSpawnGroupsAll)(uintptr_t);
 
-static void RemoveTransmitInfoTargetSlotsAll(uintptr_t info) {
-	__s2sdk_RemoveTransmitInfoTargetSlotsAll(info);
+static void RemoveTransmitInfoTargetSpawnGroupsAll(uintptr_t info) {
+	__s2sdk_RemoveTransmitInfoTargetSpawnGroupsAll(info);
 }
 
 extern int32_t (*__s2sdk_GetTransmitInfoPlayerSlot)(uintptr_t);
