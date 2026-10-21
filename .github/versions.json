@@ -1,5 +1,5 @@
 {
-  "project": "v2.10.28",
+  "project": "v2.10.29",
   "plugin": "v3.0.0",
-  "go-plugify": "v1.10.4"
+  "go-plugify": "v1.10.6"
 }
