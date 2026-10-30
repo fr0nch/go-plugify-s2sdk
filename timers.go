@@ -51,7 +51,7 @@ var _CreateTimer = func(delay float64, callback TimerCallback, flags TimerFlag, 
 //  @param flags: Flags that modify the behavior of the timer (e.g., no-map change, repeating).
 //  @param userData: An array intended to hold user-related data, allowing for elements of any type.
 //
-//  @return A id to the newly created Timer object, or -1 if the timer could not be created.
+//  @return A id to the newly created Timer object, or 0 if the timer could not be created.
 func CreateTimer(delay float64, callback TimerCallback, flags TimerFlag, userData []any) TimerId {
 	return _CreateTimer(delay, callback, flags, userData)
 }
@@ -69,19 +69,19 @@ func KillsTimer(timer TimerId) {
 	_KillsTimer(timer)
 }
 
-var _RescheduleTimer = func(timer TimerId, newDaly float64) {
+var _RescheduleTimer = func(timer TimerId, delay float64) {
 	__timer := C.uint32_t(timer)
-	__newDaly := C.double(newDaly)
-	C.RescheduleTimer(__timer, __newDaly)
+	__delay := C.double(delay)
+	C.RescheduleTimer(__timer, __delay)
 }
 
 // RescheduleTimer 
 //  @brief Reschedules an existing timer with a new delay.
 //
 //  @param timer: A id of the Timer object to be stopped and removed.
-//  @param newDaly: The new delay in seconds between each callback execution.
-func RescheduleTimer(timer TimerId, newDaly float64) {
-	_RescheduleTimer(timer, newDaly)
+//  @param delay: The new delay in seconds between each callback execution.
+func RescheduleTimer(timer TimerId, delay float64) {
+	_RescheduleTimer(timer, delay)
 }
 
 var _GetTickInterval = func() float64 {

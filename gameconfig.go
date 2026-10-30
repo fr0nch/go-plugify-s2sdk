@@ -65,7 +65,7 @@ var _LoadGameConfigFile = func(paths []string) ConfigId {
 //
 //  @param paths: The paths to the game configuration file to be loaded.
 //
-//  @return A id to the loaded game configuration object, or -1 if loading fails.
+//  @return A id to the loaded game configuration object, or 0 if loading fails.
 func LoadGameConfigFile(paths []string) ConfigId {
 	return _LoadGameConfigFile(paths)
 }

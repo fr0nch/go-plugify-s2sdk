@@ -16,8 +16,8 @@ static void KillsTimer(uint32_t timer) {
 
 extern void (*__s2sdk_RescheduleTimer)(uint32_t, double);
 
-static void RescheduleTimer(uint32_t timer, double newDaly) {
-	__s2sdk_RescheduleTimer(timer, newDaly);
+static void RescheduleTimer(uint32_t timer, double delay) {
+	__s2sdk_RescheduleTimer(timer, delay);
 }
 
 extern double (*__s2sdk_GetTickInterval)();

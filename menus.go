@@ -251,7 +251,7 @@ var _CreateMenu = func(title string, handler MenuHandlerCallback, menuType strin
 //  @param handler: Callback invoked with Start/Select/Cancel/End actions as the menu is displayed and interacted with.
 //  @param menuType: The name of the menu type backend to render with. Empty uses the current default menu type.
 //
-//  @return A handle to the created menu.
+//  @return A handle to the created menu, or 0 if creating fails.
 func CreateMenu(title string, handler MenuHandlerCallback, menuType string) MenuId {
 	return _CreateMenu(title, handler, menuType)
 }
