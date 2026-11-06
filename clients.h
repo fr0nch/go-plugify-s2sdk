@@ -116,30 +116,6 @@ static float GetClientLatency(int32_t playerSlot) {
 	return __s2sdk_GetClientLatency(playerSlot);
 }
 
-extern uint64_t (*__s2sdk_GetUserFlagBits)(int32_t);
-
-static uint64_t GetUserFlagBits(int32_t playerSlot) {
-	return __s2sdk_GetUserFlagBits(playerSlot);
-}
-
-extern void (*__s2sdk_SetUserFlagBits)(int32_t, uint64_t);
-
-static void SetUserFlagBits(int32_t playerSlot, uint64_t flags) {
-	__s2sdk_SetUserFlagBits(playerSlot, flags);
-}
-
-extern void (*__s2sdk_AddUserFlags)(int32_t, uint64_t);
-
-static void AddUserFlags(int32_t playerSlot, uint64_t flags) {
-	__s2sdk_AddUserFlags(playerSlot, flags);
-}
-
-extern void (*__s2sdk_RemoveUserFlags)(int32_t, uint64_t);
-
-static void RemoveUserFlags(int32_t playerSlot, uint64_t flags) {
-	__s2sdk_RemoveUserFlags(playerSlot, flags);
-}
-
 extern bool (*__s2sdk_IsClientAuthorized)(int32_t);
 
 static bool IsClientAuthorized(int32_t playerSlot) {

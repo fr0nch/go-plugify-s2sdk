@@ -60,16 +60,24 @@ type TimerCallback func(timer uint32, userData []any)
 type OnClientConnectCallback func(name string, address string, steamId uint64) NetworkDisconnectionReason
 
 
-// OnClientConnectedCallback - Called once a client has connected and got a player slot, for players (after OnClientConnect accepted them) and bots alike, right after the player_connect event and before OnClientPutInServer. This callback is paired with OnClientDisconnect.
+// OnClientConnectedCallback - Deprecated, use OnClientSessionStart. Called once a client has connected and got a player slot, for players (after OnClientConnect accepted them) and bots alike, right after the player_connect event and before OnClientPutInServer. Not called for clients already connected when the plugins are loaded.
 type OnClientConnectedCallback func(playerSlot int32)
+
+
+// OnClientSessionStartCallback - Called once when a client connection starts, for players (after OnClientConnect accepted them) and bots alike, right after the player_connect event and before OnClientPutInServer. Paired with OnClientSessionEnd. For clients already connected when the plugins are loaded it is called right before their OnClientPutInServer. A map change can move a player to another slot during the session, so keep per-player data by SteamID rather than by slot.
+type OnClientSessionStartCallback func(playerSlot int32)
 
 
 // OnClientPutInServerCallback - Called when a client is entering the game.
 type OnClientPutInServerCallback func(playerSlot int32)
 
 
-// OnClientDisconnectCallback - Called when a client is disconnecting from the server, for players and bots, before the player_disconnect event. The client data is still available here and is reset once the callbacks return.
+// OnClientDisconnectCallback - Called when a client leaves the current map, for players and bots, before the player_disconnect event. Paired with OnClientPutInServer: a player staying through a map change gets it too, with the reason NETWORK_DISCONNECT_SHUTDOWN. It can also come without OnClientPutInServer if the client leaves before entering the game. Use OnClientSessionEnd for the end of the connection. The controller and pawn are unavailable once the callbacks return.
 type OnClientDisconnectCallback func(playerSlot int32, reason NetworkDisconnectionReason)
+
+
+// OnClientSessionEndCallback - Called when a client connection really ends, for players and bots. Paired with OnClientSessionStart: unlike OnClientDisconnect it does not fire for a player staying through a map change, or when the plugins are unloaded. With extra addons a client really reconnects on a map change, so it fires with the reason NETWORK_DISCONNECT_LOOPDEACTIVATE and a new session starts. The SteamID, language and other client data are still available and are reset once the callbacks return; the controller and pawn are not, the client has already left the map.
+type OnClientSessionEndCallback func(playerSlot int32, reason NetworkDisconnectionReason)
 
 
 // OnClientActiveCallback - Called when a client is activated by the game.

@@ -110,16 +110,16 @@ static uint64_t FindConVar2(String* name, int16_t type_) {
 	return __s2sdk_FindConVar2(name, type_);
 }
 
-extern void (*__s2sdk_HookConVarChange)(uint64_t, void*);
+extern bool (*__s2sdk_HookConVarChange)(uint64_t, void*);
 
-static void HookConVarChange(uint64_t conVarHandle, void* callback) {
-	__s2sdk_HookConVarChange(conVarHandle, callback);
+static bool HookConVarChange(uint64_t conVarHandle, void* callback) {
+	return __s2sdk_HookConVarChange(conVarHandle, callback);
 }
 
-extern void (*__s2sdk_UnhookConVarChange)(uint64_t, void*);
+extern bool (*__s2sdk_UnhookConVarChange)(uint64_t, void*);
 
-static void UnhookConVarChange(uint64_t conVarHandle, void* callback) {
-	__s2sdk_UnhookConVarChange(conVarHandle, callback);
+static bool UnhookConVarChange(uint64_t conVarHandle, void* callback) {
+	return __s2sdk_UnhookConVarChange(conVarHandle, callback);
 }
 
 extern bool (*__s2sdk_IsConVarFlagSet)(uint64_t, int64_t);

@@ -768,10 +768,12 @@ func FindConVar2(name string, type_ ConVarType) uint64 {
 	return _FindConVar2(name, type_)
 }
 
-var _HookConVarChange = func(conVarHandle uint64, callback ConVarCallback) {
+var _HookConVarChange = func(conVarHandle uint64, callback ConVarCallback) bool {
+	var __retVal bool
 	__conVarHandle := C.uint64_t(conVarHandle)
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
-	C.HookConVarChange(__conVarHandle, __callback)
+	__retVal = bool(C.HookConVarChange(__conVarHandle, __callback))
+	return __retVal
 }
 
 // HookConVarChange 
@@ -779,14 +781,18 @@ var _HookConVarChange = func(conVarHandle uint64, callback ConVarCallback) {
 //
 //  @param conVarHandle: TThe handle to the console variable data.
 //  @param callback: The callback function to be executed when the variable's value changes.
-func HookConVarChange(conVarHandle uint64, callback ConVarCallback) {
-	_HookConVarChange(conVarHandle, callback)
+//
+//  @return True if the callback was registered, false if the convar is invalid or the callback is already registered.
+func HookConVarChange(conVarHandle uint64, callback ConVarCallback) bool {
+	return _HookConVarChange(conVarHandle, callback)
 }
 
-var _UnhookConVarChange = func(conVarHandle uint64, callback ConVarCallback) {
+var _UnhookConVarChange = func(conVarHandle uint64, callback ConVarCallback) bool {
+	var __retVal bool
 	__conVarHandle := C.uint64_t(conVarHandle)
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
-	C.UnhookConVarChange(__conVarHandle, __callback)
+	__retVal = bool(C.UnhookConVarChange(__conVarHandle, __callback))
+	return __retVal
 }
 
 // UnhookConVarChange 
@@ -794,8 +800,10 @@ var _UnhookConVarChange = func(conVarHandle uint64, callback ConVarCallback) {
 //
 //  @param conVarHandle: The handle to the console variable data.
 //  @param callback: The callback function to be removed.
-func UnhookConVarChange(conVarHandle uint64, callback ConVarCallback) {
-	_UnhookConVarChange(conVarHandle, callback)
+//
+//  @return True if the callback was removed, false if the convar is invalid or the callback was not registered.
+func UnhookConVarChange(conVarHandle uint64, callback ConVarCallback) bool {
+	return _UnhookConVarChange(conVarHandle, callback)
 }
 
 var _IsConVarFlagSet = func(conVarHandle uint64, flag int64) bool {
@@ -2171,12 +2179,14 @@ func (w *ConVar) Find2(name string, type_ ConVarType) *ConVar {
 //
 //  @param conVarHandle: TThe handle to the console variable data.
 //  @param callback: The callback function to be executed when the variable's value changes.
-func (w *ConVar) HookChange(callback ConVarCallback) error {
+//
+//  @return True if the callback was registered, false if the convar is invalid or the callback is already registered.
+func (w *ConVar) HookChange(callback ConVarCallback) (bool, error) {
 	if w.handle == 0 {
-		return ConVarErrEmptyHandle
+		var zero bool
+		return zero, ConVarErrEmptyHandle
 	}
-	HookConVarChange(w.handle, callback)
-	return nil
+	return HookConVarChange(w.handle, callback), nil
 }
 
 // UnhookChange 
@@ -2184,12 +2194,14 @@ func (w *ConVar) HookChange(callback ConVarCallback) error {
 //
 //  @param conVarHandle: The handle to the console variable data.
 //  @param callback: The callback function to be removed.
-func (w *ConVar) UnhookChange(callback ConVarCallback) error {
+//
+//  @return True if the callback was removed, false if the convar is invalid or the callback was not registered.
+func (w *ConVar) UnhookChange(callback ConVarCallback) (bool, error) {
 	if w.handle == 0 {
-		return ConVarErrEmptyHandle
+		var zero bool
+		return zero, ConVarErrEmptyHandle
 	}
-	UnhookConVarChange(w.handle, callback)
-	return nil
+	return UnhookConVarChange(w.handle, callback), nil
 }
 
 // IsFlagSet 

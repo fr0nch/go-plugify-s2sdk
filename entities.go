@@ -2119,11 +2119,11 @@ var _ConnectEntityOutput = func(entityHandle int32, output string, functionName 
 }
 
 // ConnectEntityOutput 
-//  @brief Connects a script function to an entity output.
+//  @brief Connects a script function to an entity output. When the output fires, the game calls InputCallScriptFunction(args) in the private script scope of the entity with functionName in args.value. A function named functionName is not called directly.
 //
 //  @param entityHandle: The handle of the entity.
 //  @param output: The name of the output to connect to.
-//  @param functionName: The name of the script function to call.
+//  @param functionName: The value passed to InputCallScriptFunction in args.value.
 func ConnectEntityOutput(entityHandle int32, output string, functionName string) {
 	_ConnectEntityOutput(entityHandle, output, functionName)
 }

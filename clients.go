@@ -21,10 +21,6 @@ package s2sdk
 #cgo noescape SetClientName
 #cgo noescape GetClientTime
 #cgo noescape GetClientLatency
-#cgo noescape GetUserFlagBits
-#cgo noescape SetUserFlagBits
-#cgo noescape AddUserFlags
-#cgo noescape RemoveUserFlags
 #cgo noescape IsClientAuthorized
 #cgo noescape IsClientConnected
 #cgo noescape IsClientInGame
@@ -553,68 +549,6 @@ var _GetClientLatency = func(playerSlot int32) float32 {
 //  @return float Latency value.
 func GetClientLatency(playerSlot int32) float32 {
 	return _GetClientLatency(playerSlot)
-}
-
-var _GetUserFlagBits = func(playerSlot int32) uint64 {
-	var __retVal uint64
-	__playerSlot := C.int32_t(playerSlot)
-	__retVal = uint64(C.GetUserFlagBits(__playerSlot))
-	return __retVal
-}
-
-// GetUserFlagBits 
-//  @brief Returns the client's access flags.
-//
-//  @param playerSlot: The index of the player's slot.
-//
-//  @return uint64 Access flags as a bitmask.
-func GetUserFlagBits(playerSlot int32) uint64 {
-	return _GetUserFlagBits(playerSlot)
-}
-
-var _SetUserFlagBits = func(playerSlot int32, flags uint64) {
-	__playerSlot := C.int32_t(playerSlot)
-	__flags := C.uint64_t(flags)
-	C.SetUserFlagBits(__playerSlot, __flags)
-}
-
-// SetUserFlagBits 
-//  @brief Sets the access flags on a client using a bitmask.
-//
-//  @param playerSlot: The index of the player's slot.
-//  @param flags: Bitmask representing the flags to be set.
-func SetUserFlagBits(playerSlot int32, flags uint64) {
-	_SetUserFlagBits(playerSlot, flags)
-}
-
-var _AddUserFlags = func(playerSlot int32, flags uint64) {
-	__playerSlot := C.int32_t(playerSlot)
-	__flags := C.uint64_t(flags)
-	C.AddUserFlags(__playerSlot, __flags)
-}
-
-// AddUserFlags 
-//  @brief Adds access flags to a client.
-//
-//  @param playerSlot: The index of the player's slot.
-//  @param flags: Bitmask representing the flags to be added.
-func AddUserFlags(playerSlot int32, flags uint64) {
-	_AddUserFlags(playerSlot, flags)
-}
-
-var _RemoveUserFlags = func(playerSlot int32, flags uint64) {
-	__playerSlot := C.int32_t(playerSlot)
-	__flags := C.uint64_t(flags)
-	C.RemoveUserFlags(__playerSlot, __flags)
-}
-
-// RemoveUserFlags 
-//  @brief Removes access flags from a client.
-//
-//  @param playerSlot: The index of the player's slot.
-//  @param flags: Bitmask representing the flags to be removed.
-func RemoveUserFlags(playerSlot int32, flags uint64) {
-	_RemoveUserFlags(playerSlot, flags)
 }
 
 var _IsClientAuthorized = func(playerSlot int32) bool {
@@ -1856,11 +1790,11 @@ var _ConnectClientOutput = func(playerSlot int32, output string, functionName st
 }
 
 // ConnectClientOutput 
-//  @brief Connects a script function to an player output.
+//  @brief Connects a script function to an output of the player pawn. When the output fires, the game calls InputCallScriptFunction(args) in the private script scope of the pawn with functionName in args.value. A function named functionName is not called directly.
 //
-//  @param playerSlot: The handle of the player.
+//  @param playerSlot: The slot of the player.
 //  @param output: The name of the output to connect to.
-//  @param functionName: The name of the script function to call.
+//  @param functionName: The value passed to InputCallScriptFunction in args.value.
 func ConnectClientOutput(playerSlot int32, output string, functionName string) {
 	_ConnectClientOutput(playerSlot, output, functionName)
 }
@@ -1882,9 +1816,9 @@ var _DisconnectClientOutput = func(playerSlot int32, output string, functionName
 }
 
 // DisconnectClientOutput 
-//  @brief Disconnects a script function from an player output.
+//  @brief Disconnects a script function from an output of the player pawn.
 //
-//  @param playerSlot: The handle of the player.
+//  @param playerSlot: The slot of the player.
 //  @param output: The name of the output.
 //  @param functionName: The name of the script function to disconnect.
 func DisconnectClientOutput(playerSlot int32, output string, functionName string) {

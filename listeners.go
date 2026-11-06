@@ -3,58 +3,91 @@ package s2sdk
 /*
 #include "listeners.h"
 #cgo noescape OnClientConnect_Register
+#cgo noescape OnClientConnect_Register2
 #cgo noescape OnClientConnect_Unregister
 #cgo noescape OnClientConnected_Register
+#cgo noescape OnClientConnected_Register2
 #cgo noescape OnClientConnected_Unregister
+#cgo noescape OnClientSessionStart_Register
+#cgo noescape OnClientSessionStart_Register2
+#cgo noescape OnClientSessionStart_Unregister
 #cgo noescape OnClientPutInServer_Register
+#cgo noescape OnClientPutInServer_Register2
 #cgo noescape OnClientPutInServer_Unregister
 #cgo noescape OnClientDisconnect_Register
+#cgo noescape OnClientDisconnect_Register2
 #cgo noescape OnClientDisconnect_Unregister
+#cgo noescape OnClientSessionEnd_Register
+#cgo noescape OnClientSessionEnd_Register2
+#cgo noescape OnClientSessionEnd_Unregister
 #cgo noescape OnClientActive_Register
+#cgo noescape OnClientActive_Register2
 #cgo noescape OnClientActive_Unregister
 #cgo noescape OnClientSignonStateChanged_Register
+#cgo noescape OnClientSignonStateChanged_Register2
 #cgo noescape OnClientSignonStateChanged_Unregister
 #cgo noescape OnClientFullyConnect_Register
+#cgo noescape OnClientFullyConnect_Register2
 #cgo noescape OnClientFullyConnect_Unregister
 #cgo noescape OnClientSettingsChanged_Register
+#cgo noescape OnClientSettingsChanged_Register2
 #cgo noescape OnClientSettingsChanged_Unregister
 #cgo noescape OnClientAuthenticated_Register
+#cgo noescape OnClientAuthenticated_Register2
 #cgo noescape OnClientAuthenticated_Unregister
 #cgo noescape OnRoundTerminated_Register
+#cgo noescape OnRoundTerminated_Register2
 #cgo noescape OnRoundTerminated_Unregister
 #cgo noescape OnEntityCreated_Register
+#cgo noescape OnEntityCreated_Register2
 #cgo noescape OnEntityCreated_Unregister
 #cgo noescape OnEntitySpawned_Register
+#cgo noescape OnEntitySpawned_Register2
 #cgo noescape OnEntitySpawned_Unregister
 #cgo noescape OnEntityDeleted_Register
+#cgo noescape OnEntityDeleted_Register2
 #cgo noescape OnEntityDeleted_Unregister
 #cgo noescape OnEntityParentChanged_Register
+#cgo noescape OnEntityParentChanged_Register2
 #cgo noescape OnEntityParentChanged_Unregister
 #cgo noescape OnServerCheckTransmit_Register
+#cgo noescape OnServerCheckTransmit_Register2
 #cgo noescape OnServerCheckTransmit_Unregister
 #cgo noescape OnServerStartup_Register
+#cgo noescape OnServerStartup_Register2
 #cgo noescape OnServerStartup_Unregister
 #cgo noescape OnBuildGameSessionManifest_Register
+#cgo noescape OnBuildGameSessionManifest_Register2
 #cgo noescape OnBuildGameSessionManifest_Unregister
 #cgo noescape OnServerActivate_Register
+#cgo noescape OnServerActivate_Register2
 #cgo noescape OnServerActivate_Unregister
 #cgo noescape OnServerSpawn_Register
+#cgo noescape OnServerSpawn_Register2
 #cgo noescape OnServerSpawn_Unregister
 #cgo noescape OnServerStarted_Register
+#cgo noescape OnServerStarted_Register2
 #cgo noescape OnServerStarted_Unregister
 #cgo noescape OnMapStart_Register
+#cgo noescape OnMapStart_Register2
 #cgo noescape OnMapStart_Unregister
 #cgo noescape OnMapEnd_Register
+#cgo noescape OnMapEnd_Register2
 #cgo noescape OnMapEnd_Unregister
 #cgo noescape OnGameFrame_Register
+#cgo noescape OnGameFrame_Register2
 #cgo noescape OnGameFrame_Unregister
 #cgo noescape OnUpdateWhenNotInGame_Register
+#cgo noescape OnUpdateWhenNotInGame_Register2
 #cgo noescape OnUpdateWhenNotInGame_Unregister
 #cgo noescape OnPreWorldUpdate_Register
+#cgo noescape OnPreWorldUpdate_Register2
 #cgo noescape OnPreWorldUpdate_Unregister
 #cgo noescape OnSendNetMessage_Register
+#cgo noescape OnSendNetMessage_Register2
 #cgo noescape OnSendNetMessage_Unregister
 #cgo noescape OnSerializeMessage_Register
+#cgo noescape OnSerializeMessage_Register2
 #cgo noescape OnSerializeMessage_Unregister
 */
 import "C"
@@ -87,6 +120,21 @@ func OnClientConnect_Register(callback OnClientConnectCallback) {
 	_OnClientConnect_Register(callback)
 }
 
+var _OnClientConnect_Register2 = func(callback OnClientConnectCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnClientConnect_Register2(__callback, __priority)
+}
+
+// OnClientConnect_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnClientConnect_Register uses 0.
+func OnClientConnect_Register2(callback OnClientConnectCallback, priority int32) {
+	_OnClientConnect_Register2(callback, priority)
+}
+
 var _OnClientConnect_Unregister = func(callback OnClientConnectCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientConnect_Unregister(__callback)
@@ -109,8 +157,25 @@ var _OnClientConnected_Register = func(callback OnClientConnectedCallback) {
 //  @brief Register callback to event.
 //
 //  @param callback: Function callback.
+// Deprecated: Use OnClientSessionStart_Register instead. Will be removed soon
 func OnClientConnected_Register(callback OnClientConnectedCallback) {
 	_OnClientConnected_Register(callback)
+}
+
+var _OnClientConnected_Register2 = func(callback OnClientConnectedCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnClientConnected_Register2(__callback, __priority)
+}
+
+// OnClientConnected_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnClientConnected_Register uses 0.
+// Deprecated: Use OnClientSessionStart_Register2 instead. Will be removed soon
+func OnClientConnected_Register2(callback OnClientConnectedCallback, priority int32) {
+	_OnClientConnected_Register2(callback, priority)
 }
 
 var _OnClientConnected_Unregister = func(callback OnClientConnectedCallback) {
@@ -122,8 +187,50 @@ var _OnClientConnected_Unregister = func(callback OnClientConnectedCallback) {
 //  @brief Unregister callback to event.
 //
 //  @param callback: Function callback.
+// Deprecated: Use OnClientSessionStart_Unregister instead. Will be removed soon
 func OnClientConnected_Unregister(callback OnClientConnectedCallback) {
 	_OnClientConnected_Unregister(callback)
+}
+
+var _OnClientSessionStart_Register = func(callback OnClientSessionStartCallback) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.OnClientSessionStart_Register(__callback)
+}
+
+// OnClientSessionStart_Register 
+//  @brief Register callback to event.
+//
+//  @param callback: Function callback.
+func OnClientSessionStart_Register(callback OnClientSessionStartCallback) {
+	_OnClientSessionStart_Register(callback)
+}
+
+var _OnClientSessionStart_Register2 = func(callback OnClientSessionStartCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnClientSessionStart_Register2(__callback, __priority)
+}
+
+// OnClientSessionStart_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnClientSessionStart_Register uses 0.
+func OnClientSessionStart_Register2(callback OnClientSessionStartCallback, priority int32) {
+	_OnClientSessionStart_Register2(callback, priority)
+}
+
+var _OnClientSessionStart_Unregister = func(callback OnClientSessionStartCallback) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.OnClientSessionStart_Unregister(__callback)
+}
+
+// OnClientSessionStart_Unregister 
+//  @brief Unregister callback to event.
+//
+//  @param callback: Function callback.
+func OnClientSessionStart_Unregister(callback OnClientSessionStartCallback) {
+	_OnClientSessionStart_Unregister(callback)
 }
 
 var _OnClientPutInServer_Register = func(callback OnClientPutInServerCallback) {
@@ -137,6 +244,21 @@ var _OnClientPutInServer_Register = func(callback OnClientPutInServerCallback) {
 //  @param callback: Function callback.
 func OnClientPutInServer_Register(callback OnClientPutInServerCallback) {
 	_OnClientPutInServer_Register(callback)
+}
+
+var _OnClientPutInServer_Register2 = func(callback OnClientPutInServerCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnClientPutInServer_Register2(__callback, __priority)
+}
+
+// OnClientPutInServer_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnClientPutInServer_Register uses 0.
+func OnClientPutInServer_Register2(callback OnClientPutInServerCallback, priority int32) {
+	_OnClientPutInServer_Register2(callback, priority)
 }
 
 var _OnClientPutInServer_Unregister = func(callback OnClientPutInServerCallback) {
@@ -165,6 +287,21 @@ func OnClientDisconnect_Register(callback OnClientDisconnectCallback) {
 	_OnClientDisconnect_Register(callback)
 }
 
+var _OnClientDisconnect_Register2 = func(callback OnClientDisconnectCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnClientDisconnect_Register2(__callback, __priority)
+}
+
+// OnClientDisconnect_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnClientDisconnect_Register uses 0.
+func OnClientDisconnect_Register2(callback OnClientDisconnectCallback, priority int32) {
+	_OnClientDisconnect_Register2(callback, priority)
+}
+
 var _OnClientDisconnect_Unregister = func(callback OnClientDisconnectCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientDisconnect_Unregister(__callback)
@@ -178,6 +315,47 @@ func OnClientDisconnect_Unregister(callback OnClientDisconnectCallback) {
 	_OnClientDisconnect_Unregister(callback)
 }
 
+var _OnClientSessionEnd_Register = func(callback OnClientSessionEndCallback) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.OnClientSessionEnd_Register(__callback)
+}
+
+// OnClientSessionEnd_Register 
+//  @brief Register callback to event.
+//
+//  @param callback: Function callback.
+func OnClientSessionEnd_Register(callback OnClientSessionEndCallback) {
+	_OnClientSessionEnd_Register(callback)
+}
+
+var _OnClientSessionEnd_Register2 = func(callback OnClientSessionEndCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnClientSessionEnd_Register2(__callback, __priority)
+}
+
+// OnClientSessionEnd_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnClientSessionEnd_Register uses 0.
+func OnClientSessionEnd_Register2(callback OnClientSessionEndCallback, priority int32) {
+	_OnClientSessionEnd_Register2(callback, priority)
+}
+
+var _OnClientSessionEnd_Unregister = func(callback OnClientSessionEndCallback) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.OnClientSessionEnd_Unregister(__callback)
+}
+
+// OnClientSessionEnd_Unregister 
+//  @brief Unregister callback to event.
+//
+//  @param callback: Function callback.
+func OnClientSessionEnd_Unregister(callback OnClientSessionEndCallback) {
+	_OnClientSessionEnd_Unregister(callback)
+}
+
 var _OnClientActive_Register = func(callback OnClientActiveCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientActive_Register(__callback)
@@ -189,6 +367,21 @@ var _OnClientActive_Register = func(callback OnClientActiveCallback) {
 //  @param callback: Function callback.
 func OnClientActive_Register(callback OnClientActiveCallback) {
 	_OnClientActive_Register(callback)
+}
+
+var _OnClientActive_Register2 = func(callback OnClientActiveCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnClientActive_Register2(__callback, __priority)
+}
+
+// OnClientActive_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnClientActive_Register uses 0.
+func OnClientActive_Register2(callback OnClientActiveCallback, priority int32) {
+	_OnClientActive_Register2(callback, priority)
 }
 
 var _OnClientActive_Unregister = func(callback OnClientActiveCallback) {
@@ -217,6 +410,21 @@ func OnClientSignonStateChanged_Register(callback OnClientSignonStateChangedCall
 	_OnClientSignonStateChanged_Register(callback)
 }
 
+var _OnClientSignonStateChanged_Register2 = func(callback OnClientSignonStateChangedCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnClientSignonStateChanged_Register2(__callback, __priority)
+}
+
+// OnClientSignonStateChanged_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnClientSignonStateChanged_Register uses 0.
+func OnClientSignonStateChanged_Register2(callback OnClientSignonStateChangedCallback, priority int32) {
+	_OnClientSignonStateChanged_Register2(callback, priority)
+}
+
 var _OnClientSignonStateChanged_Unregister = func(callback OnClientSignonStateChangedCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientSignonStateChanged_Unregister(__callback)
@@ -241,6 +449,21 @@ var _OnClientFullyConnect_Register = func(callback OnClientFullyConnectCallback)
 //  @param callback: Function callback.
 func OnClientFullyConnect_Register(callback OnClientFullyConnectCallback) {
 	_OnClientFullyConnect_Register(callback)
+}
+
+var _OnClientFullyConnect_Register2 = func(callback OnClientFullyConnectCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnClientFullyConnect_Register2(__callback, __priority)
+}
+
+// OnClientFullyConnect_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnClientFullyConnect_Register uses 0.
+func OnClientFullyConnect_Register2(callback OnClientFullyConnectCallback, priority int32) {
+	_OnClientFullyConnect_Register2(callback, priority)
 }
 
 var _OnClientFullyConnect_Unregister = func(callback OnClientFullyConnectCallback) {
@@ -269,6 +492,21 @@ func OnClientSettingsChanged_Register(callback OnClientSettingsChangedCallback) 
 	_OnClientSettingsChanged_Register(callback)
 }
 
+var _OnClientSettingsChanged_Register2 = func(callback OnClientSettingsChangedCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnClientSettingsChanged_Register2(__callback, __priority)
+}
+
+// OnClientSettingsChanged_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnClientSettingsChanged_Register uses 0.
+func OnClientSettingsChanged_Register2(callback OnClientSettingsChangedCallback, priority int32) {
+	_OnClientSettingsChanged_Register2(callback, priority)
+}
+
 var _OnClientSettingsChanged_Unregister = func(callback OnClientSettingsChangedCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnClientSettingsChanged_Unregister(__callback)
@@ -293,6 +531,21 @@ var _OnClientAuthenticated_Register = func(callback OnClientAuthenticatedCallbac
 //  @param callback: Function callback.
 func OnClientAuthenticated_Register(callback OnClientAuthenticatedCallback) {
 	_OnClientAuthenticated_Register(callback)
+}
+
+var _OnClientAuthenticated_Register2 = func(callback OnClientAuthenticatedCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnClientAuthenticated_Register2(__callback, __priority)
+}
+
+// OnClientAuthenticated_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnClientAuthenticated_Register uses 0.
+func OnClientAuthenticated_Register2(callback OnClientAuthenticatedCallback, priority int32) {
+	_OnClientAuthenticated_Register2(callback, priority)
 }
 
 var _OnClientAuthenticated_Unregister = func(callback OnClientAuthenticatedCallback) {
@@ -321,6 +574,21 @@ func OnRoundTerminated_Register(callback OnRoundTerminatedCallback) {
 	_OnRoundTerminated_Register(callback)
 }
 
+var _OnRoundTerminated_Register2 = func(callback OnRoundTerminatedCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnRoundTerminated_Register2(__callback, __priority)
+}
+
+// OnRoundTerminated_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnRoundTerminated_Register uses 0.
+func OnRoundTerminated_Register2(callback OnRoundTerminatedCallback, priority int32) {
+	_OnRoundTerminated_Register2(callback, priority)
+}
+
 var _OnRoundTerminated_Unregister = func(callback OnRoundTerminatedCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnRoundTerminated_Unregister(__callback)
@@ -345,6 +613,21 @@ var _OnEntityCreated_Register = func(callback OnEntityCreatedCallback) {
 //  @param callback: Function callback.
 func OnEntityCreated_Register(callback OnEntityCreatedCallback) {
 	_OnEntityCreated_Register(callback)
+}
+
+var _OnEntityCreated_Register2 = func(callback OnEntityCreatedCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnEntityCreated_Register2(__callback, __priority)
+}
+
+// OnEntityCreated_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnEntityCreated_Register uses 0.
+func OnEntityCreated_Register2(callback OnEntityCreatedCallback, priority int32) {
+	_OnEntityCreated_Register2(callback, priority)
 }
 
 var _OnEntityCreated_Unregister = func(callback OnEntityCreatedCallback) {
@@ -373,6 +656,21 @@ func OnEntitySpawned_Register(callback OnEntitySpawnedCallback) {
 	_OnEntitySpawned_Register(callback)
 }
 
+var _OnEntitySpawned_Register2 = func(callback OnEntitySpawnedCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnEntitySpawned_Register2(__callback, __priority)
+}
+
+// OnEntitySpawned_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnEntitySpawned_Register uses 0.
+func OnEntitySpawned_Register2(callback OnEntitySpawnedCallback, priority int32) {
+	_OnEntitySpawned_Register2(callback, priority)
+}
+
 var _OnEntitySpawned_Unregister = func(callback OnEntitySpawnedCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnEntitySpawned_Unregister(__callback)
@@ -397,6 +695,21 @@ var _OnEntityDeleted_Register = func(callback OnEntityDeletedCallback) {
 //  @param callback: Function callback.
 func OnEntityDeleted_Register(callback OnEntityDeletedCallback) {
 	_OnEntityDeleted_Register(callback)
+}
+
+var _OnEntityDeleted_Register2 = func(callback OnEntityDeletedCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnEntityDeleted_Register2(__callback, __priority)
+}
+
+// OnEntityDeleted_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnEntityDeleted_Register uses 0.
+func OnEntityDeleted_Register2(callback OnEntityDeletedCallback, priority int32) {
+	_OnEntityDeleted_Register2(callback, priority)
 }
 
 var _OnEntityDeleted_Unregister = func(callback OnEntityDeletedCallback) {
@@ -425,6 +738,21 @@ func OnEntityParentChanged_Register(callback OnEntityParentChangedCallback) {
 	_OnEntityParentChanged_Register(callback)
 }
 
+var _OnEntityParentChanged_Register2 = func(callback OnEntityParentChangedCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnEntityParentChanged_Register2(__callback, __priority)
+}
+
+// OnEntityParentChanged_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnEntityParentChanged_Register uses 0.
+func OnEntityParentChanged_Register2(callback OnEntityParentChangedCallback, priority int32) {
+	_OnEntityParentChanged_Register2(callback, priority)
+}
+
 var _OnEntityParentChanged_Unregister = func(callback OnEntityParentChangedCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnEntityParentChanged_Unregister(__callback)
@@ -449,6 +777,21 @@ var _OnServerCheckTransmit_Register = func(callback OnServerCheckTransmitCallbac
 //  @param callback: Function callback.
 func OnServerCheckTransmit_Register(callback OnServerCheckTransmitCallback) {
 	_OnServerCheckTransmit_Register(callback)
+}
+
+var _OnServerCheckTransmit_Register2 = func(callback OnServerCheckTransmitCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnServerCheckTransmit_Register2(__callback, __priority)
+}
+
+// OnServerCheckTransmit_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnServerCheckTransmit_Register uses 0.
+func OnServerCheckTransmit_Register2(callback OnServerCheckTransmitCallback, priority int32) {
+	_OnServerCheckTransmit_Register2(callback, priority)
 }
 
 var _OnServerCheckTransmit_Unregister = func(callback OnServerCheckTransmitCallback) {
@@ -477,6 +820,21 @@ func OnServerStartup_Register(callback OnServerStartupCallback) {
 	_OnServerStartup_Register(callback)
 }
 
+var _OnServerStartup_Register2 = func(callback OnServerStartupCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnServerStartup_Register2(__callback, __priority)
+}
+
+// OnServerStartup_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnServerStartup_Register uses 0.
+func OnServerStartup_Register2(callback OnServerStartupCallback, priority int32) {
+	_OnServerStartup_Register2(callback, priority)
+}
+
 var _OnServerStartup_Unregister = func(callback OnServerStartupCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnServerStartup_Unregister(__callback)
@@ -501,6 +859,21 @@ var _OnBuildGameSessionManifest_Register = func(callback OnBuildGameSessionManif
 //  @param callback: Function callback.
 func OnBuildGameSessionManifest_Register(callback OnBuildGameSessionManifestCallback) {
 	_OnBuildGameSessionManifest_Register(callback)
+}
+
+var _OnBuildGameSessionManifest_Register2 = func(callback OnBuildGameSessionManifestCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnBuildGameSessionManifest_Register2(__callback, __priority)
+}
+
+// OnBuildGameSessionManifest_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnBuildGameSessionManifest_Register uses 0.
+func OnBuildGameSessionManifest_Register2(callback OnBuildGameSessionManifestCallback, priority int32) {
+	_OnBuildGameSessionManifest_Register2(callback, priority)
 }
 
 var _OnBuildGameSessionManifest_Unregister = func(callback OnBuildGameSessionManifestCallback) {
@@ -529,6 +902,21 @@ func OnServerActivate_Register(callback OnServerActivateCallback) {
 	_OnServerActivate_Register(callback)
 }
 
+var _OnServerActivate_Register2 = func(callback OnServerActivateCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnServerActivate_Register2(__callback, __priority)
+}
+
+// OnServerActivate_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnServerActivate_Register uses 0.
+func OnServerActivate_Register2(callback OnServerActivateCallback, priority int32) {
+	_OnServerActivate_Register2(callback, priority)
+}
+
 var _OnServerActivate_Unregister = func(callback OnServerActivateCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnServerActivate_Unregister(__callback)
@@ -553,6 +941,21 @@ var _OnServerSpawn_Register = func(callback OnServerSpawnCallback) {
 //  @param callback: Function callback.
 func OnServerSpawn_Register(callback OnServerSpawnCallback) {
 	_OnServerSpawn_Register(callback)
+}
+
+var _OnServerSpawn_Register2 = func(callback OnServerSpawnCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnServerSpawn_Register2(__callback, __priority)
+}
+
+// OnServerSpawn_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnServerSpawn_Register uses 0.
+func OnServerSpawn_Register2(callback OnServerSpawnCallback, priority int32) {
+	_OnServerSpawn_Register2(callback, priority)
 }
 
 var _OnServerSpawn_Unregister = func(callback OnServerSpawnCallback) {
@@ -581,6 +984,21 @@ func OnServerStarted_Register(callback OnServerStartedCallback) {
 	_OnServerStarted_Register(callback)
 }
 
+var _OnServerStarted_Register2 = func(callback OnServerStartedCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnServerStarted_Register2(__callback, __priority)
+}
+
+// OnServerStarted_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnServerStarted_Register uses 0.
+func OnServerStarted_Register2(callback OnServerStartedCallback, priority int32) {
+	_OnServerStarted_Register2(callback, priority)
+}
+
 var _OnServerStarted_Unregister = func(callback OnServerStartedCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnServerStarted_Unregister(__callback)
@@ -605,6 +1023,21 @@ var _OnMapStart_Register = func(callback OnMapStartCallback) {
 //  @param callback: Function callback.
 func OnMapStart_Register(callback OnMapStartCallback) {
 	_OnMapStart_Register(callback)
+}
+
+var _OnMapStart_Register2 = func(callback OnMapStartCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnMapStart_Register2(__callback, __priority)
+}
+
+// OnMapStart_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnMapStart_Register uses 0.
+func OnMapStart_Register2(callback OnMapStartCallback, priority int32) {
+	_OnMapStart_Register2(callback, priority)
 }
 
 var _OnMapStart_Unregister = func(callback OnMapStartCallback) {
@@ -633,6 +1066,21 @@ func OnMapEnd_Register(callback OnMapEndCallback) {
 	_OnMapEnd_Register(callback)
 }
 
+var _OnMapEnd_Register2 = func(callback OnMapEndCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnMapEnd_Register2(__callback, __priority)
+}
+
+// OnMapEnd_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnMapEnd_Register uses 0.
+func OnMapEnd_Register2(callback OnMapEndCallback, priority int32) {
+	_OnMapEnd_Register2(callback, priority)
+}
+
 var _OnMapEnd_Unregister = func(callback OnMapEndCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnMapEnd_Unregister(__callback)
@@ -657,6 +1105,21 @@ var _OnGameFrame_Register = func(callback OnGameFrameCallback) {
 //  @param callback: Function callback.
 func OnGameFrame_Register(callback OnGameFrameCallback) {
 	_OnGameFrame_Register(callback)
+}
+
+var _OnGameFrame_Register2 = func(callback OnGameFrameCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnGameFrame_Register2(__callback, __priority)
+}
+
+// OnGameFrame_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnGameFrame_Register uses 0.
+func OnGameFrame_Register2(callback OnGameFrameCallback, priority int32) {
+	_OnGameFrame_Register2(callback, priority)
 }
 
 var _OnGameFrame_Unregister = func(callback OnGameFrameCallback) {
@@ -685,6 +1148,21 @@ func OnUpdateWhenNotInGame_Register(callback OnUpdateWhenNotInGameCallback) {
 	_OnUpdateWhenNotInGame_Register(callback)
 }
 
+var _OnUpdateWhenNotInGame_Register2 = func(callback OnUpdateWhenNotInGameCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnUpdateWhenNotInGame_Register2(__callback, __priority)
+}
+
+// OnUpdateWhenNotInGame_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnUpdateWhenNotInGame_Register uses 0.
+func OnUpdateWhenNotInGame_Register2(callback OnUpdateWhenNotInGameCallback, priority int32) {
+	_OnUpdateWhenNotInGame_Register2(callback, priority)
+}
+
 var _OnUpdateWhenNotInGame_Unregister = func(callback OnUpdateWhenNotInGameCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnUpdateWhenNotInGame_Unregister(__callback)
@@ -709,6 +1187,21 @@ var _OnPreWorldUpdate_Register = func(callback OnPreWorldUpdateCallback) {
 //  @param callback: Function callback.
 func OnPreWorldUpdate_Register(callback OnPreWorldUpdateCallback) {
 	_OnPreWorldUpdate_Register(callback)
+}
+
+var _OnPreWorldUpdate_Register2 = func(callback OnPreWorldUpdateCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnPreWorldUpdate_Register2(__callback, __priority)
+}
+
+// OnPreWorldUpdate_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnPreWorldUpdate_Register uses 0.
+func OnPreWorldUpdate_Register2(callback OnPreWorldUpdateCallback, priority int32) {
+	_OnPreWorldUpdate_Register2(callback, priority)
 }
 
 var _OnPreWorldUpdate_Unregister = func(callback OnPreWorldUpdateCallback) {
@@ -737,6 +1230,21 @@ func OnSendNetMessage_Register(callback OnSendNetMessageCallback) {
 	_OnSendNetMessage_Register(callback)
 }
 
+var _OnSendNetMessage_Register2 = func(callback OnSendNetMessageCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnSendNetMessage_Register2(__callback, __priority)
+}
+
+// OnSendNetMessage_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnSendNetMessage_Register uses 0.
+func OnSendNetMessage_Register2(callback OnSendNetMessageCallback, priority int32) {
+	_OnSendNetMessage_Register2(callback, priority)
+}
+
 var _OnSendNetMessage_Unregister = func(callback OnSendNetMessageCallback) {
 	__callback := plugify.GetFunctionPointerForDelegate(callback)
 	C.OnSendNetMessage_Unregister(__callback)
@@ -761,6 +1269,21 @@ var _OnSerializeMessage_Register = func(callback OnSerializeMessageCallback) {
 //  @param callback: Function callback.
 func OnSerializeMessage_Register(callback OnSerializeMessageCallback) {
 	_OnSerializeMessage_Register(callback)
+}
+
+var _OnSerializeMessage_Register2 = func(callback OnSerializeMessageCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnSerializeMessage_Register2(__callback, __priority)
+}
+
+// OnSerializeMessage_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnSerializeMessage_Register uses 0.
+func OnSerializeMessage_Register2(callback OnSerializeMessageCallback, priority int32) {
+	_OnSerializeMessage_Register2(callback, priority)
 }
 
 var _OnSerializeMessage_Unregister = func(callback OnSerializeMessageCallback) {

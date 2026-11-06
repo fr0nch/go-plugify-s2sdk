@@ -54,10 +54,10 @@ PLUGIFY_EXPORT uint64_t (*__s2sdk_FindConVar)(String*) = NULL;
 PLUGIFY_EXPORT uint64_t (*__s2sdk_FindConVar2)(String*, int16_t) = NULL;
 
 
-PLUGIFY_EXPORT void (*__s2sdk_HookConVarChange)(uint64_t, void*) = NULL;
+PLUGIFY_EXPORT bool (*__s2sdk_HookConVarChange)(uint64_t, void*) = NULL;
 
 
-PLUGIFY_EXPORT void (*__s2sdk_UnhookConVarChange)(uint64_t, void*) = NULL;
+PLUGIFY_EXPORT bool (*__s2sdk_UnhookConVarChange)(uint64_t, void*) = NULL;
 
 
 PLUGIFY_EXPORT bool (*__s2sdk_IsConVarFlagSet)(uint64_t, int64_t) = NULL;

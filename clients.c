@@ -57,18 +57,6 @@ PLUGIFY_EXPORT float (*__s2sdk_GetClientTime)(int32_t) = NULL;
 PLUGIFY_EXPORT float (*__s2sdk_GetClientLatency)(int32_t) = NULL;
 
 
-PLUGIFY_EXPORT uint64_t (*__s2sdk_GetUserFlagBits)(int32_t) = NULL;
-
-
-PLUGIFY_EXPORT void (*__s2sdk_SetUserFlagBits)(int32_t, uint64_t) = NULL;
-
-
-PLUGIFY_EXPORT void (*__s2sdk_AddUserFlags)(int32_t, uint64_t) = NULL;
-
-
-PLUGIFY_EXPORT void (*__s2sdk_RemoveUserFlags)(int32_t, uint64_t) = NULL;
-
-
 PLUGIFY_EXPORT bool (*__s2sdk_IsClientAuthorized)(int32_t) = NULL;
 
 
