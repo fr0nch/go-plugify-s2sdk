@@ -2,6 +2,58 @@ package s2sdk
 
 // Generated from s2sdk
 
+// KeyValuesType - The data type of a KeyValues key.
+type KeyValuesType int32
+
+const (
+	// None - No value
+	KeyValuesType_None KeyValuesType = 0
+	// String - String
+	KeyValuesType_String KeyValuesType = 1
+	// Int - 32-bit integer
+	KeyValuesType_Int KeyValuesType = 2
+	// Float - Float
+	KeyValuesType_Float KeyValuesType = 3
+	// Ptr - Pointer
+	KeyValuesType_Ptr KeyValuesType = 4
+	// WString - Wide string
+	KeyValuesType_WString KeyValuesType = 5
+	// Color - Color
+	KeyValuesType_Color KeyValuesType = 6
+	// Uint64 - Unsigned 64-bit integer
+	KeyValuesType_Uint64 KeyValuesType = 7
+)
+
+// SpeakFlags - Flags that control whom a player hears and who hears them.
+type SpeakFlags uint8
+
+const (
+	// Normal - The engine decides.
+	SpeakFlags_Normal SpeakFlags = 0
+	// Muted - Nobody hears the player.
+	SpeakFlags_Muted SpeakFlags = 1
+	// All - Everyone hears the player.
+	SpeakFlags_All SpeakFlags = 2
+	// ListenAll - The player hears everyone.
+	SpeakFlags_ListenAll SpeakFlags = 4
+	// Team - Only the player's team hears the player.
+	SpeakFlags_Team SpeakFlags = 8
+	// ListenTeam - The player hears only their team.
+	SpeakFlags_ListenTeam SpeakFlags = 16
+)
+
+// ListenOverride - Override of whether a receiver hears a sender.
+type ListenOverride uint8
+
+const (
+	// Default - Voice flags decide.
+	ListenOverride_Default ListenOverride = 0
+	// Mute - The receiver doesn't hear the sender.
+	ListenOverride_Mute ListenOverride = 1
+	// Hear - The receiver hears the sender.
+	ListenOverride_Hear ListenOverride = 2
+)
+
 // MoveType - Enum representing various movement types for entities.
 type MoveType int32
 

@@ -14,6 +14,18 @@ static bool UnhookUserMessage(int16_t messageId, void* callback, uint8_t mode) {
 	return __s2sdk_UnhookUserMessage(messageId, callback, mode);
 }
 
+extern bool (*__s2sdk_HookSendNetMessage)(void*);
+
+static bool HookSendNetMessage(void* callback) {
+	return __s2sdk_HookSendNetMessage(callback);
+}
+
+extern bool (*__s2sdk_UnhookSendNetMessage)(void*);
+
+static bool UnhookSendNetMessage(void* callback) {
+	return __s2sdk_UnhookSendNetMessage(callback);
+}
+
 extern uintptr_t (*__s2sdk_UserMessageCreateFromSerializable)(uintptr_t, uintptr_t, uint64_t);
 
 static uintptr_t UserMessageCreateFromSerializable(uintptr_t msgSerializable, uintptr_t message, uint64_t recipientMask) {

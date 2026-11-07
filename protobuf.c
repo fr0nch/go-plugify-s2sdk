@@ -6,6 +6,12 @@ PLUGIFY_EXPORT bool (*__s2sdk_HookUserMessage)(int16_t, void*, uint8_t) = NULL;
 PLUGIFY_EXPORT bool (*__s2sdk_UnhookUserMessage)(int16_t, void*, uint8_t) = NULL;
 
 
+PLUGIFY_EXPORT bool (*__s2sdk_HookSendNetMessage)(void*) = NULL;
+
+
+PLUGIFY_EXPORT bool (*__s2sdk_UnhookSendNetMessage)(void*) = NULL;
+
+
 PLUGIFY_EXPORT uintptr_t (*__s2sdk_UserMessageCreateFromSerializable)(uintptr_t, uintptr_t, uint64_t) = NULL;
 
 

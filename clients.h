@@ -140,6 +140,54 @@ static bool IsClientSourceTV(int32_t playerSlot) {
 	return __s2sdk_IsClientSourceTV(playerSlot);
 }
 
+extern uint8_t (*__s2sdk_GetClientVoiceFlags)(int32_t);
+
+static uint8_t GetClientVoiceFlags(int32_t playerSlot) {
+	return __s2sdk_GetClientVoiceFlags(playerSlot);
+}
+
+extern void (*__s2sdk_SetClientVoiceFlags)(int32_t, uint8_t);
+
+static void SetClientVoiceFlags(int32_t playerSlot, uint8_t flags) {
+	__s2sdk_SetClientVoiceFlags(playerSlot, flags);
+}
+
+extern uint8_t (*__s2sdk_GetClientListening)(int32_t, int32_t);
+
+static uint8_t GetClientListening(int32_t receiverSlot, int32_t senderSlot) {
+	return __s2sdk_GetClientListening(receiverSlot, senderSlot);
+}
+
+extern void (*__s2sdk_SetClientListening)(int32_t, int32_t, uint8_t);
+
+static void SetClientListening(int32_t receiverSlot, int32_t senderSlot, uint8_t listen) {
+	__s2sdk_SetClientListening(receiverSlot, senderSlot, listen);
+}
+
+extern uint8_t (*__s2sdk_GetClientChatFlags)(int32_t);
+
+static uint8_t GetClientChatFlags(int32_t playerSlot) {
+	return __s2sdk_GetClientChatFlags(playerSlot);
+}
+
+extern void (*__s2sdk_SetClientChatFlags)(int32_t, uint8_t);
+
+static void SetClientChatFlags(int32_t playerSlot, uint8_t flags) {
+	__s2sdk_SetClientChatFlags(playerSlot, flags);
+}
+
+extern uint8_t (*__s2sdk_GetClientChatListening)(int32_t, int32_t);
+
+static uint8_t GetClientChatListening(int32_t receiverSlot, int32_t senderSlot) {
+	return __s2sdk_GetClientChatListening(receiverSlot, senderSlot);
+}
+
+extern void (*__s2sdk_SetClientChatListening)(int32_t, int32_t, uint8_t);
+
+static void SetClientChatListening(int32_t receiverSlot, int32_t senderSlot, uint8_t listen) {
+	__s2sdk_SetClientChatListening(receiverSlot, senderSlot, listen);
+}
+
 extern bool (*__s2sdk_IsClientAlive)(int32_t);
 
 static bool IsClientAlive(int32_t playerSlot) {

@@ -4,6 +4,8 @@ package s2sdk
 #include "protobuf.h"
 #cgo noescape HookUserMessage
 #cgo noescape UnhookUserMessage
+#cgo noescape HookSendNetMessage
+#cgo noescape UnhookSendNetMessage
 #cgo noescape UserMessageCreateFromSerializable
 #cgo noescape UserMessageCreateFromName
 #cgo noescape UserMessageCreateFromId
@@ -171,6 +173,40 @@ var _UnhookUserMessage = func(messageId int16, callback UserMessageCallback, mod
 //  @return True if the hook was successfully removed, false otherwise.
 func UnhookUserMessage(messageId int16, callback UserMessageCallback, mode HookMode) bool {
 	return _UnhookUserMessage(messageId, callback, mode)
+}
+
+var _HookSendNetMessage = func(callback SendNetMessageHookCallback) bool {
+	var __retVal bool
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__retVal = bool(C.HookSendNetMessage(__callback))
+	return __retVal
+}
+
+// HookSendNetMessage 
+//  @brief Hooks every net message sent to a single client, allowing to block it for that client.
+//
+//  @param callback: The callback function to invoke before the message is sent.
+//
+//  @return True if the hook was successfully added, false otherwise.
+func HookSendNetMessage(callback SendNetMessageHookCallback) bool {
+	return _HookSendNetMessage(callback)
+}
+
+var _UnhookSendNetMessage = func(callback SendNetMessageHookCallback) bool {
+	var __retVal bool
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__retVal = bool(C.UnhookSendNetMessage(__callback))
+	return __retVal
+}
+
+// UnhookSendNetMessage 
+//  @brief Unhooks a previously hooked callback from HookSendNetMessage.
+//
+//  @param callback: The callback function to remove.
+//
+//  @return True if the hook was successfully removed, false otherwise.
+func UnhookSendNetMessage(callback SendNetMessageHookCallback) bool {
+	return _UnhookSendNetMessage(callback)
 }
 
 var _UserMessageCreateFromSerializable = func(msgSerializable uintptr, message uintptr, recipientMask uint64) uintptr {

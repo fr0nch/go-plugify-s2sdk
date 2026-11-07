@@ -176,3 +176,7 @@ type OnSerializeMessageCallback func(message uintptr)
 type UserMessageCallback func(userMessage uintptr) ResultType
 
 
+// SendNetMessageHookCallback - Callback function for net messages sent to a single client. Runs before OnSendNetMessage, blocked messages don't reach it.
+type SendNetMessageHookCallback func(playerSlot int32, message uintptr) ResultType
+
+

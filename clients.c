@@ -69,6 +69,30 @@ PLUGIFY_EXPORT bool (*__s2sdk_IsClientInGame)(int32_t) = NULL;
 PLUGIFY_EXPORT bool (*__s2sdk_IsClientSourceTV)(int32_t) = NULL;
 
 
+PLUGIFY_EXPORT uint8_t (*__s2sdk_GetClientVoiceFlags)(int32_t) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_SetClientVoiceFlags)(int32_t, uint8_t) = NULL;
+
+
+PLUGIFY_EXPORT uint8_t (*__s2sdk_GetClientListening)(int32_t, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_SetClientListening)(int32_t, int32_t, uint8_t) = NULL;
+
+
+PLUGIFY_EXPORT uint8_t (*__s2sdk_GetClientChatFlags)(int32_t) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_SetClientChatFlags)(int32_t, uint8_t) = NULL;
+
+
+PLUGIFY_EXPORT uint8_t (*__s2sdk_GetClientChatListening)(int32_t, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_SetClientChatListening)(int32_t, int32_t, uint8_t) = NULL;
+
+
 PLUGIFY_EXPORT bool (*__s2sdk_IsClientAlive)(int32_t) = NULL;
 
 

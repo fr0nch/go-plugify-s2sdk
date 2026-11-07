@@ -27,6 +27,21 @@ package s2sdk
 #cgo noescape Kv1SetBool
 #cgo noescape Kv1MakeCopy
 #cgo noescape Kv1Clear
+#cgo noescape Kv1LoadFromFile
+#cgo noescape Kv1LoadFromString
+#cgo noescape Kv1SaveToFile
+#cgo noescape Kv1RemoveKey
+#cgo noescape Kv1GetUint64
+#cgo noescape Kv1SetUint64
+#cgo noescape Kv1GetDataType
+#cgo noescape Kv1GetFirstValue
+#cgo noescape Kv1GetNextValue
+#cgo noescape Kv1GetFirstTrueSubKey
+#cgo noescape Kv1GetNextTrueSubKey
+#cgo noescape Kv1RemoveSubKey
+#cgo noescape Kv1SetEscapeSequences
+#cgo noescape Kv1CopySubkeys
+#cgo noescape Kv1ExportToString
 #cgo noescape Kv1IsEmpty
 */
 import "C"
@@ -643,6 +658,347 @@ var _Kv1Clear = func(kv uintptr) {
 //  @param kv: Pointer to the KeyValues object to clear
 func Kv1Clear(kv uintptr) {
 	_Kv1Clear(kv)
+}
+
+var _Kv1LoadFromFile = func(kv uintptr, path string, pathID string) bool {
+	var __retVal bool
+	__kv := C.uintptr_t(kv)
+	__path := plugify.ConstructString(path)
+	__pathID := plugify.ConstructString(pathID)
+	plugify.Block {
+		Try: func() {
+			__retVal = bool(C.Kv1LoadFromFile(__kv, (*C.String)(unsafe.Pointer(&__path)), (*C.String)(unsafe.Pointer(&__pathID))))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__path)
+			plugify.DestroyString(&__pathID)
+		},
+	}.Do()
+	return __retVal
+}
+
+// Kv1LoadFromFile 
+//  @brief Loads a KeyValues file into this instance, merging it with the existing keys
+//
+//  @param kv: Pointer to the KeyValues object
+//  @param path: An absolute path, for example from the plugin directories, or a path relative to the search path
+//  @param pathID: The search path ID, empty to search all paths
+//
+//  @return true if the file was loaded, false otherwise
+func Kv1LoadFromFile(kv uintptr, path string, pathID string) bool {
+	return _Kv1LoadFromFile(kv, path, pathID)
+}
+
+var _Kv1LoadFromString = func(kv uintptr, text string) bool {
+	var __retVal bool
+	__kv := C.uintptr_t(kv)
+	__text := plugify.ConstructString(text)
+	plugify.Block {
+		Try: func() {
+			__retVal = bool(C.Kv1LoadFromString(__kv, (*C.String)(unsafe.Pointer(&__text))))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__text)
+		},
+	}.Do()
+	return __retVal
+}
+
+// Kv1LoadFromString 
+//  @brief Loads KeyValues text into this instance, merging it with the existing keys
+//
+//  @param kv: Pointer to the KeyValues object
+//  @param text: The KeyValues text
+//
+//  @return true if the text was parsed, false otherwise
+func Kv1LoadFromString(kv uintptr, text string) bool {
+	return _Kv1LoadFromString(kv, text)
+}
+
+var _Kv1SaveToFile = func(kv uintptr, path string, pathID string) bool {
+	var __retVal bool
+	__kv := C.uintptr_t(kv)
+	__path := plugify.ConstructString(path)
+	__pathID := plugify.ConstructString(pathID)
+	plugify.Block {
+		Try: func() {
+			__retVal = bool(C.Kv1SaveToFile(__kv, (*C.String)(unsafe.Pointer(&__path)), (*C.String)(unsafe.Pointer(&__pathID))))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__path)
+			plugify.DestroyString(&__pathID)
+		},
+	}.Do()
+	return __retVal
+}
+
+// Kv1SaveToFile 
+//  @brief Saves this instance to a text file
+//
+//  @param kv: Pointer to the KeyValues object
+//  @param path: An absolute path, for example from the plugin directories, or a path relative to the search path
+//  @param pathID: The search path ID, empty to use the default write path
+//
+//  @return true if the file was saved, false otherwise, for example if its directory does not exist
+func Kv1SaveToFile(kv uintptr, path string, pathID string) bool {
+	return _Kv1SaveToFile(kv, path, pathID)
+}
+
+var _Kv1RemoveKey = func(kv uintptr, keyName string) bool {
+	var __retVal bool
+	__kv := C.uintptr_t(kv)
+	__keyName := plugify.ConstructString(keyName)
+	plugify.Block {
+		Try: func() {
+			__retVal = bool(C.Kv1RemoveKey(__kv, (*C.String)(unsafe.Pointer(&__keyName))))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__keyName)
+		},
+	}.Do()
+	return __retVal
+}
+
+// Kv1RemoveKey 
+//  @brief Removes a direct child key and deletes it with its subkeys
+//
+//  @param kv: Pointer to the parent KeyValues object
+//  @param keyName: The name of the key to remove
+//
+//  @return true if the key existed and was removed, false otherwise
+func Kv1RemoveKey(kv uintptr, keyName string) bool {
+	return _Kv1RemoveKey(kv, keyName)
+}
+
+var _Kv1GetUint64 = func(kv uintptr, keyName string, defaultValue uint64) uint64 {
+	var __retVal uint64
+	__kv := C.uintptr_t(kv)
+	__keyName := plugify.ConstructString(keyName)
+	__defaultValue := C.uint64_t(defaultValue)
+	plugify.Block {
+		Try: func() {
+			__retVal = uint64(C.Kv1GetUint64(__kv, (*C.String)(unsafe.Pointer(&__keyName)), __defaultValue))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__keyName)
+		},
+	}.Do()
+	return __retVal
+}
+
+// Kv1GetUint64 
+//  @brief Gets an unsigned 64-bit value from a key
+//
+//  @param kv: Pointer to the KeyValues object
+//  @param keyName: The name of the key, empty to read this key
+//  @param defaultValue: The value to return if the key is not found
+//
+//  @return The value, or defaultValue if the key is not found
+func Kv1GetUint64(kv uintptr, keyName string, defaultValue uint64) uint64 {
+	return _Kv1GetUint64(kv, keyName, defaultValue)
+}
+
+var _Kv1SetUint64 = func(kv uintptr, keyName string, value uint64) {
+	__kv := C.uintptr_t(kv)
+	__keyName := plugify.ConstructString(keyName)
+	__value := C.uint64_t(value)
+	plugify.Block {
+		Try: func() {
+			C.Kv1SetUint64(__kv, (*C.String)(unsafe.Pointer(&__keyName)), __value)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__keyName)
+		},
+	}.Do()
+}
+
+// Kv1SetUint64 
+//  @brief Sets an unsigned 64-bit value on a key
+//
+//  @param kv: Pointer to the KeyValues object
+//  @param keyName: The name of the key, empty to set this key
+//  @param value: The value to set
+func Kv1SetUint64(kv uintptr, keyName string, value uint64) {
+	_Kv1SetUint64(kv, keyName, value)
+}
+
+var _Kv1GetDataType = func(kv uintptr, keyName string) KeyValuesType {
+	var __retVal KeyValuesType
+	__kv := C.uintptr_t(kv)
+	__keyName := plugify.ConstructString(keyName)
+	plugify.Block {
+		Try: func() {
+			__retVal = KeyValuesType(C.Kv1GetDataType(__kv, (*C.String)(unsafe.Pointer(&__keyName))))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__keyName)
+		},
+	}.Do()
+	return __retVal
+}
+
+// Kv1GetDataType 
+//  @brief Gets the data type of a key
+//
+//  @param kv: Pointer to the KeyValues object
+//  @param keyName: The name of the key, empty to read this key
+//
+//  @return The data type of the key, None if it has no value or doesn't exist
+func Kv1GetDataType(kv uintptr, keyName string) KeyValuesType {
+	return _Kv1GetDataType(kv, keyName)
+}
+
+var _Kv1GetFirstValue = func(kv uintptr) uintptr {
+	var __retVal uintptr
+	__kv := C.uintptr_t(kv)
+	__retVal = uintptr(C.Kv1GetFirstValue(__kv))
+	return __retVal
+}
+
+// Kv1GetFirstValue 
+//  @brief Gets the first child that has no subkeys of its own
+//
+//  @param kv: Pointer to the parent KeyValues object
+//
+//  @return Pointer to the first value, or NULL if there are none
+func Kv1GetFirstValue(kv uintptr) uintptr {
+	return _Kv1GetFirstValue(kv)
+}
+
+var _Kv1GetNextValue = func(kv uintptr) uintptr {
+	var __retVal uintptr
+	__kv := C.uintptr_t(kv)
+	__retVal = uintptr(C.Kv1GetNextValue(__kv))
+	return __retVal
+}
+
+// Kv1GetNextValue 
+//  @brief Gets the next sibling that has no subkeys of its own
+//
+//  @param kv: Pointer to the current value
+//
+//  @return Pointer to the next value, or NULL if there are no more
+func Kv1GetNextValue(kv uintptr) uintptr {
+	return _Kv1GetNextValue(kv)
+}
+
+var _Kv1GetFirstTrueSubKey = func(kv uintptr) uintptr {
+	var __retVal uintptr
+	__kv := C.uintptr_t(kv)
+	__retVal = uintptr(C.Kv1GetFirstTrueSubKey(__kv))
+	return __retVal
+}
+
+// Kv1GetFirstTrueSubKey 
+//  @brief Gets the first child that is a block with subkeys
+//
+//  @param kv: Pointer to the parent KeyValues object
+//
+//  @return Pointer to the first block, or NULL if there are none
+func Kv1GetFirstTrueSubKey(kv uintptr) uintptr {
+	return _Kv1GetFirstTrueSubKey(kv)
+}
+
+var _Kv1GetNextTrueSubKey = func(kv uintptr) uintptr {
+	var __retVal uintptr
+	__kv := C.uintptr_t(kv)
+	__retVal = uintptr(C.Kv1GetNextTrueSubKey(__kv))
+	return __retVal
+}
+
+// Kv1GetNextTrueSubKey 
+//  @brief Gets the next sibling that is a block with subkeys
+//
+//  @param kv: Pointer to the current block
+//
+//  @return Pointer to the next block, or NULL if there are no more
+func Kv1GetNextTrueSubKey(kv uintptr) uintptr {
+	return _Kv1GetNextTrueSubKey(kv)
+}
+
+var _Kv1RemoveSubKey = func(kv uintptr, child uintptr) bool {
+	var __retVal bool
+	__kv := C.uintptr_t(kv)
+	__child := C.uintptr_t(child)
+	__retVal = bool(C.Kv1RemoveSubKey(__kv, __child))
+	return __retVal
+}
+
+// Kv1RemoveSubKey 
+//  @brief Removes a child by its pointer and deletes it with its subkeys. Get the next key before calling this while iterating.
+//
+//  @param kv: Pointer to the parent KeyValues object
+//  @param child: Pointer to the child to remove
+//
+//  @return true if it was a child of this key and was removed, false otherwise
+func Kv1RemoveSubKey(kv uintptr, child uintptr) bool {
+	return _Kv1RemoveSubKey(kv, child)
+}
+
+var _Kv1SetEscapeSequences = func(kv uintptr, enabled bool) {
+	__kv := C.uintptr_t(kv)
+	__enabled := C.bool(enabled)
+	C.Kv1SetEscapeSequences(__kv, __enabled)
+}
+
+// Kv1SetEscapeSequences 
+//  @brief Sets whether escape sequences are processed when this instance is loaded or saved
+//
+//  @param kv: Pointer to the KeyValues object
+//  @param enabled: true to use escape sequences, false to keep them as plain text
+func Kv1SetEscapeSequences(kv uintptr, enabled bool) {
+	_Kv1SetEscapeSequences(kv, enabled)
+}
+
+var _Kv1CopySubkeys = func(kv uintptr, target uintptr) {
+	__kv := C.uintptr_t(kv)
+	__target := C.uintptr_t(target)
+	C.Kv1CopySubkeys(__kv, __target)
+}
+
+// Kv1CopySubkeys 
+//  @brief Replaces the subkeys of another instance with copies of the subkeys of this one. The keys are not merged: everything the target already had is deleted, even keys the source doesn't have. Copying an instance into itself does nothing.
+//
+//  @param kv: Pointer to the source KeyValues object
+//  @param target: Pointer to the KeyValues object that receives the copies, its existing keys are deleted
+func Kv1CopySubkeys(kv uintptr, target uintptr) {
+	_Kv1CopySubkeys(kv, target)
+}
+
+var _Kv1ExportToString = func(kv uintptr) string {
+	var __retVal string
+	var __retVal_native plugify.PlgString
+	__kv := C.uintptr_t(kv)
+	plugify.Block {
+		Try: func() {
+			__native := C.Kv1ExportToString(__kv)
+			__retVal_native = *(*plugify.PlgString)(unsafe.Pointer(&__native))
+			// Unmarshal - Convert native data to managed data.
+			__retVal = plugify.GetStringData[string](&__retVal_native)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__retVal_native)
+		},
+	}.Do()
+	return __retVal
+}
+
+// Kv1ExportToString 
+//  @brief Writes this instance as KeyValues text
+//
+//  @param kv: Pointer to the KeyValues object
+//
+//  @return The KeyValues text, empty if kv is null
+func Kv1ExportToString(kv uintptr) string {
+	return _Kv1ExportToString(kv)
 }
 
 var _Kv1IsEmpty = func(kv uintptr, keyName string) bool {

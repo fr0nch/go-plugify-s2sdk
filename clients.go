@@ -25,6 +25,14 @@ package s2sdk
 #cgo noescape IsClientConnected
 #cgo noescape IsClientInGame
 #cgo noescape IsClientSourceTV
+#cgo noescape GetClientVoiceFlags
+#cgo noescape SetClientVoiceFlags
+#cgo noescape GetClientListening
+#cgo noescape SetClientListening
+#cgo noescape GetClientChatFlags
+#cgo noescape SetClientChatFlags
+#cgo noescape GetClientChatListening
+#cgo noescape SetClientChatListening
 #cgo noescape IsClientAlive
 #cgo noescape IsFakeClient
 #cgo noescape GetClientMoveType
@@ -617,6 +625,142 @@ var _IsClientSourceTV = func(playerSlot int32) bool {
 //  @return true if the client is the SourceTV bot, false otherwise.
 func IsClientSourceTV(playerSlot int32) bool {
 	return _IsClientSourceTV(playerSlot)
+}
+
+var _GetClientVoiceFlags = func(playerSlot int32) SpeakFlags {
+	var __retVal SpeakFlags
+	__playerSlot := C.int32_t(playerSlot)
+	__retVal = SpeakFlags(C.GetClientVoiceFlags(__playerSlot))
+	return __retVal
+}
+
+// GetClientVoiceFlags 
+//  @brief Gets the voice flags of the client.
+//
+//  @param playerSlot: The index of the player's slot.
+//
+//  @return The voice flags of the client.
+func GetClientVoiceFlags(playerSlot int32) SpeakFlags {
+	return _GetClientVoiceFlags(playerSlot)
+}
+
+var _SetClientVoiceFlags = func(playerSlot int32, flags SpeakFlags) {
+	__playerSlot := C.int32_t(playerSlot)
+	__flags := C.uint8_t(flags)
+	C.SetClientVoiceFlags(__playerSlot, __flags)
+}
+
+// SetClientVoiceFlags 
+//  @brief Sets the voice flags of the client until they disconnect.
+//
+//  @param playerSlot: The index of the player's slot.
+//  @param flags: The voice flags to set.
+func SetClientVoiceFlags(playerSlot int32, flags SpeakFlags) {
+	_SetClientVoiceFlags(playerSlot, flags)
+}
+
+var _GetClientListening = func(receiverSlot int32, senderSlot int32) ListenOverride {
+	var __retVal ListenOverride
+	__receiverSlot := C.int32_t(receiverSlot)
+	__senderSlot := C.int32_t(senderSlot)
+	__retVal = ListenOverride(C.GetClientListening(__receiverSlot, __senderSlot))
+	return __retVal
+}
+
+// GetClientListening 
+//  @brief Gets the listen override between a receiver and a sender.
+//
+//  @param receiverSlot: The slot of the player who listens.
+//  @param senderSlot: The slot of the player who speaks.
+//
+//  @return The listen override for this pair.
+func GetClientListening(receiverSlot int32, senderSlot int32) ListenOverride {
+	return _GetClientListening(receiverSlot, senderSlot)
+}
+
+var _SetClientListening = func(receiverSlot int32, senderSlot int32, listen ListenOverride) {
+	__receiverSlot := C.int32_t(receiverSlot)
+	__senderSlot := C.int32_t(senderSlot)
+	__listen := C.uint8_t(listen)
+	C.SetClientListening(__receiverSlot, __senderSlot, __listen)
+}
+
+// SetClientListening 
+//  @brief Sets the listen override between a receiver and a sender until the receiver disconnects.
+//
+//  @param receiverSlot: The slot of the player who listens.
+//  @param senderSlot: The slot of the player who speaks.
+//  @param listen: The listen override to set.
+func SetClientListening(receiverSlot int32, senderSlot int32, listen ListenOverride) {
+	_SetClientListening(receiverSlot, senderSlot, listen)
+}
+
+var _GetClientChatFlags = func(playerSlot int32) SpeakFlags {
+	var __retVal SpeakFlags
+	__playerSlot := C.int32_t(playerSlot)
+	__retVal = SpeakFlags(C.GetClientChatFlags(__playerSlot))
+	return __retVal
+}
+
+// GetClientChatFlags 
+//  @brief Gets the chat flags of the client.
+//
+//  @param playerSlot: The index of the player's slot.
+//
+//  @return The chat flags of the client.
+func GetClientChatFlags(playerSlot int32) SpeakFlags {
+	return _GetClientChatFlags(playerSlot)
+}
+
+var _SetClientChatFlags = func(playerSlot int32, flags SpeakFlags) {
+	__playerSlot := C.int32_t(playerSlot)
+	__flags := C.uint8_t(flags)
+	C.SetClientChatFlags(__playerSlot, __flags)
+}
+
+// SetClientChatFlags 
+//  @brief Sets the chat flags of the client until they disconnect. Flags can only hide messages the engine sends, chat commands keep working.
+//
+//  @param playerSlot: The index of the player's slot.
+//  @param flags: The chat flags to set.
+func SetClientChatFlags(playerSlot int32, flags SpeakFlags) {
+	_SetClientChatFlags(playerSlot, flags)
+}
+
+var _GetClientChatListening = func(receiverSlot int32, senderSlot int32) ListenOverride {
+	var __retVal ListenOverride
+	__receiverSlot := C.int32_t(receiverSlot)
+	__senderSlot := C.int32_t(senderSlot)
+	__retVal = ListenOverride(C.GetClientChatListening(__receiverSlot, __senderSlot))
+	return __retVal
+}
+
+// GetClientChatListening 
+//  @brief Gets the chat override between a receiver and a sender.
+//
+//  @param receiverSlot: The slot of the player who reads.
+//  @param senderSlot: The slot of the player who writes.
+//
+//  @return The chat override for this pair.
+func GetClientChatListening(receiverSlot int32, senderSlot int32) ListenOverride {
+	return _GetClientChatListening(receiverSlot, senderSlot)
+}
+
+var _SetClientChatListening = func(receiverSlot int32, senderSlot int32, listen ListenOverride) {
+	__receiverSlot := C.int32_t(receiverSlot)
+	__senderSlot := C.int32_t(senderSlot)
+	__listen := C.uint8_t(listen)
+	C.SetClientChatListening(__receiverSlot, __senderSlot, __listen)
+}
+
+// SetClientChatListening 
+//  @brief Sets the chat override between a receiver and a sender until the receiver disconnects.
+//
+//  @param receiverSlot: The slot of the player who reads.
+//  @param senderSlot: The slot of the player who writes.
+//  @param listen: The chat override to set.
+func SetClientChatListening(receiverSlot int32, senderSlot int32, listen ListenOverride) {
+	_SetClientChatListening(receiverSlot, senderSlot, listen)
 }
 
 var _IsClientAlive = func(playerSlot int32) bool {
