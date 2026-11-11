@@ -42,6 +42,30 @@ PLUGIFY_EXPORT String (*__s2sdk_GetEntDataCString2)(uintptr_t, int32_t, int32_t)
 PLUGIFY_EXPORT void (*__s2sdk_SetEntDataCString2)(uintptr_t, int32_t, String*, int32_t, bool, int32_t) = NULL;
 
 
+PLUGIFY_EXPORT Vector (*__s2sdk_GetEntDataCArray2)(uintptr_t, int32_t, int32_t, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_SetEntDataCArray2)(uintptr_t, int32_t, Vector*, int32_t, int32_t, bool, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT Vector (*__s2sdk_GetEntDataCArrayFloat2)(uintptr_t, int32_t, int32_t, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_SetEntDataCArrayFloat2)(uintptr_t, int32_t, Vector*, int32_t, int32_t, bool, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT Vector (*__s2sdk_GetEntDataArray2)(uintptr_t, int32_t, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_SetEntDataArray2)(uintptr_t, int32_t, Vector*, int32_t, bool, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT Vector (*__s2sdk_GetEntDataArrayFloat2)(uintptr_t, int32_t, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_SetEntDataArrayFloat2)(uintptr_t, int32_t, Vector*, int32_t, bool, int32_t) = NULL;
+
+
 PLUGIFY_EXPORT Vector3 (*__s2sdk_GetEntDataVector3D2)(uintptr_t, int32_t) = NULL;
 
 
@@ -102,6 +126,30 @@ PLUGIFY_EXPORT String (*__s2sdk_GetEntDataCString)(int32_t, int32_t, int32_t) = 
 PLUGIFY_EXPORT void (*__s2sdk_SetEntDataCString)(int32_t, int32_t, String*, int32_t, bool, int32_t) = NULL;
 
 
+PLUGIFY_EXPORT Vector (*__s2sdk_GetEntDataCArray)(int32_t, int32_t, int32_t, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_SetEntDataCArray)(int32_t, int32_t, Vector*, int32_t, int32_t, bool, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT Vector (*__s2sdk_GetEntDataCArrayFloat)(int32_t, int32_t, int32_t, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_SetEntDataCArrayFloat)(int32_t, int32_t, Vector*, int32_t, int32_t, bool, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT Vector (*__s2sdk_GetEntDataArray)(int32_t, int32_t, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_SetEntDataArray)(int32_t, int32_t, Vector*, int32_t, bool, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT Vector (*__s2sdk_GetEntDataArrayFloat)(int32_t, int32_t, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_SetEntDataArrayFloat)(int32_t, int32_t, Vector*, int32_t, bool, int32_t) = NULL;
+
+
 PLUGIFY_EXPORT Vector3 (*__s2sdk_GetEntDataVector3D)(int32_t, int32_t) = NULL;
 
 
@@ -148,6 +196,18 @@ PLUGIFY_EXPORT double (*__s2sdk_GetEntSchemaFloat2)(uintptr_t, String*, String*,
 
 
 PLUGIFY_EXPORT void (*__s2sdk_SetEntSchemaFloat2)(uintptr_t, String*, String*, double, bool, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT Vector (*__s2sdk_GetEntSchemaArray2)(uintptr_t, String*, String*) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_SetEntSchemaArray2)(uintptr_t, String*, String*, Vector*, bool) = NULL;
+
+
+PLUGIFY_EXPORT Vector (*__s2sdk_GetEntSchemaArrayFloat2)(uintptr_t, String*, String*) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_SetEntSchemaArrayFloat2)(uintptr_t, String*, String*, Vector*, bool) = NULL;
 
 
 PLUGIFY_EXPORT Vector4 (*__s2sdk_GetEntSchemaColor2)(uintptr_t, String*, String*, int32_t) = NULL;
@@ -211,6 +271,18 @@ PLUGIFY_EXPORT double (*__s2sdk_GetEntSchemaFloat)(int32_t, String*, String*, in
 
 
 PLUGIFY_EXPORT void (*__s2sdk_SetEntSchemaFloat)(int32_t, String*, String*, double, bool, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT Vector (*__s2sdk_GetEntSchemaArray)(int32_t, String*, String*) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_SetEntSchemaArray)(int32_t, String*, String*, Vector*, bool) = NULL;
+
+
+PLUGIFY_EXPORT Vector (*__s2sdk_GetEntSchemaArrayFloat)(int32_t, String*, String*) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_SetEntSchemaArrayFloat)(int32_t, String*, String*, Vector*, bool) = NULL;
 
 
 PLUGIFY_EXPORT Vector4 (*__s2sdk_GetEntSchemaColor)(int32_t, String*, String*, int32_t) = NULL;

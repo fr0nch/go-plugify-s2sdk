@@ -13,7 +13,6 @@ package s2sdk
 #cgo noescape ScriptLookupAttachment
 #cgo noescape SetEntityBodygroup
 #cgo noescape SetEntityBodygroupByName
-#cgo noescape SetEntityLightGroup
 #cgo noescape SetEntityMaterialGroup
 #cgo noescape SetEntityMaterialGroupHash
 #cgo noescape SetEntityMaterialGroupMask
@@ -255,29 +254,6 @@ var _SetEntityBodygroupByName = func(entityHandle int32, name string, value int3
 //  @param value: The new value to set for the bodygroup.
 func SetEntityBodygroupByName(entityHandle int32, name string, value int32) {
 	_SetEntityBodygroupByName(entityHandle, name, value)
-}
-
-var _SetEntityLightGroup = func(entityHandle int32, lightGroup string) {
-	__entityHandle := C.int32_t(entityHandle)
-	__lightGroup := plugify.ConstructString(lightGroup)
-	plugify.Block {
-		Try: func() {
-			C.SetEntityLightGroup(__entityHandle, (*C.String)(unsafe.Pointer(&__lightGroup)))
-		},
-		Finally: func() {
-			// Perform cleanup.
-			plugify.DestroyString(&__lightGroup)
-		},
-	}.Do()
-}
-
-// SetEntityLightGroup 
-//  @brief Sets the light group of an entity.
-//
-//  @param entityHandle: The handle of the entity.
-//  @param lightGroup: The light group name.
-func SetEntityLightGroup(entityHandle int32, lightGroup string) {
-	_SetEntityLightGroup(entityHandle, lightGroup)
 }
 
 var _SetEntityMaterialGroup = func(entityHandle int32, materialGroup string) {

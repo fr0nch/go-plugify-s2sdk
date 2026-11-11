@@ -488,6 +488,30 @@ static void OnPreWorldUpdate_Unregister(void* callback) {
 	__s2sdk_OnPreWorldUpdate_Unregister(callback);
 }
 
+extern void (*__s2sdk_OnClientSpeakingStart_Register)(void*);
+
+static void OnClientSpeakingStart_Register(void* callback) {
+	__s2sdk_OnClientSpeakingStart_Register(callback);
+}
+
+extern void (*__s2sdk_OnClientSpeakingStart_Unregister)(void*);
+
+static void OnClientSpeakingStart_Unregister(void* callback) {
+	__s2sdk_OnClientSpeakingStart_Unregister(callback);
+}
+
+extern void (*__s2sdk_OnClientSpeakingEnd_Register)(void*);
+
+static void OnClientSpeakingEnd_Register(void* callback) {
+	__s2sdk_OnClientSpeakingEnd_Register(callback);
+}
+
+extern void (*__s2sdk_OnClientSpeakingEnd_Unregister)(void*);
+
+static void OnClientSpeakingEnd_Unregister(void* callback) {
+	__s2sdk_OnClientSpeakingEnd_Unregister(callback);
+}
+
 extern void (*__s2sdk_OnSendNetMessage_Register)(void*);
 
 static void OnSendNetMessage_Register(void* callback) {

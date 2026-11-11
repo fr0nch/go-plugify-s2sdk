@@ -16,6 +16,14 @@ package s2sdk
 #cgo noescape SetEntDataString2
 #cgo noescape GetEntDataCString2
 #cgo noescape SetEntDataCString2
+#cgo noescape GetEntDataCArray2
+#cgo noescape SetEntDataCArray2
+#cgo noescape GetEntDataCArrayFloat2
+#cgo noescape SetEntDataCArrayFloat2
+#cgo noescape GetEntDataArray2
+#cgo noescape SetEntDataArray2
+#cgo noescape GetEntDataArrayFloat2
+#cgo noescape SetEntDataArrayFloat2
 #cgo noescape GetEntDataVector3D2
 #cgo noescape SetEntDataVector3D2
 #cgo noescape GetEntDataVector4D2
@@ -36,6 +44,14 @@ package s2sdk
 #cgo noescape SetEntDataString
 #cgo noescape GetEntDataCString
 #cgo noescape SetEntDataCString
+#cgo noescape GetEntDataCArray
+#cgo noescape SetEntDataCArray
+#cgo noescape GetEntDataCArrayFloat
+#cgo noescape SetEntDataCArrayFloat
+#cgo noescape GetEntDataArray
+#cgo noescape SetEntDataArray
+#cgo noescape GetEntDataArrayFloat
+#cgo noescape SetEntDataArrayFloat
 #cgo noescape GetEntDataVector3D
 #cgo noescape SetEntDataVector3D
 #cgo noescape GetEntDataVector4D
@@ -52,6 +68,10 @@ package s2sdk
 #cgo noescape SetEntSchema2
 #cgo noescape GetEntSchemaFloat2
 #cgo noescape SetEntSchemaFloat2
+#cgo noescape GetEntSchemaArray2
+#cgo noescape SetEntSchemaArray2
+#cgo noescape GetEntSchemaArrayFloat2
+#cgo noescape SetEntSchemaArrayFloat2
 #cgo noescape GetEntSchemaColor2
 #cgo noescape SetEntSchemaColor2
 #cgo noescape GetEntSchemaString2
@@ -73,6 +93,10 @@ package s2sdk
 #cgo noescape SetEntSchema
 #cgo noescape GetEntSchemaFloat
 #cgo noescape SetEntSchemaFloat
+#cgo noescape GetEntSchemaArray
+#cgo noescape SetEntSchemaArray
+#cgo noescape GetEntSchemaArrayFloat
+#cgo noescape SetEntSchemaArrayFloat
 #cgo noescape GetEntSchemaColor
 #cgo noescape SetEntSchemaColor
 #cgo noescape GetEntSchemaString
@@ -463,6 +487,270 @@ var _SetEntDataCString2 = func(entity uintptr, offset int32, value string, size 
 //  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
 func SetEntDataCString2(entity uintptr, offset int32, value string, size int32, changeState bool, chainOffset int32) {
 	_SetEntDataCString2(entity, offset, value, size, changeState, chainOffset)
+}
+
+var _GetEntDataCArray2 = func(entity uintptr, offset int32, arraySize int32, dataSize int32) []int64 {
+	var __retVal []int64
+	var __retVal_native plugify.PlgVector
+	__entity := C.uintptr_t(entity)
+	__offset := C.int32_t(offset)
+	__arraySize := C.int32_t(arraySize)
+	__dataSize := C.int32_t(dataSize)
+	plugify.Block {
+		Try: func() {
+			__native := C.GetEntDataCArray2(__entity, __offset, __arraySize, __dataSize)
+			__retVal_native = *(*plugify.PlgVector)(unsafe.Pointer(&__native))
+			// Unmarshal - Convert native data to managed data.
+			__retVal = plugify.GetVectorDataInt64[int64](&__retVal_native)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyVectorInt64(&__retVal_native)
+		},
+	}.Do()
+	return __retVal
+}
+
+// GetEntDataCArray2 
+//  @brief Peeks into an entity's object data and retrieves the fixed-size integer array at the given offset.
+//
+//  @param entity: Pointer to the instance of the class where the value is to be retrieved.
+//  @param offset: The offset of the schema to use.
+//  @param arraySize: Number of elements in the array.
+//  @param dataSize: Size of each element in bytes (1, 2, 4 or 8).
+//
+//  @return The array values at the given memory location.
+func GetEntDataCArray2(entity uintptr, offset int32, arraySize int32, dataSize int32) []int64 {
+	return _GetEntDataCArray2(entity, offset, arraySize, dataSize)
+}
+
+var _SetEntDataCArray2 = func(entity uintptr, offset int32, value []int64, arraySize int32, dataSize int32, changeState bool, chainOffset int32) {
+	__entity := C.uintptr_t(entity)
+	__offset := C.int32_t(offset)
+	__value := plugify.ConstructVectorInt64(value)
+	__arraySize := C.int32_t(arraySize)
+	__dataSize := C.int32_t(dataSize)
+	__changeState := C.bool(changeState)
+	__chainOffset := C.int32_t(chainOffset)
+	plugify.Block {
+		Try: func() {
+			C.SetEntDataCArray2(__entity, __offset, (*C.Vector)(unsafe.Pointer(&__value)), __arraySize, __dataSize, __changeState, __chainOffset)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyVectorInt64(&__value)
+		},
+	}.Do()
+}
+
+// SetEntDataCArray2 
+//  @brief Peeks into an entity's object data and sets the fixed-size integer array at the given offset.
+//
+//  @param entity: Pointer to the instance of the class where the value is to be set.
+//  @param offset: The offset of the schema to use.
+//  @param value: The array values to set.
+//  @param arraySize: Number of elements in the array.
+//  @param dataSize: Size of each element in bytes (1, 2, 4 or 8).
+//  @param changeState: If true, change will be sent over the network.
+//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
+func SetEntDataCArray2(entity uintptr, offset int32, value []int64, arraySize int32, dataSize int32, changeState bool, chainOffset int32) {
+	_SetEntDataCArray2(entity, offset, value, arraySize, dataSize, changeState, chainOffset)
+}
+
+var _GetEntDataCArrayFloat2 = func(entity uintptr, offset int32, arraySize int32, dataSize int32) []float64 {
+	var __retVal []float64
+	var __retVal_native plugify.PlgVector
+	__entity := C.uintptr_t(entity)
+	__offset := C.int32_t(offset)
+	__arraySize := C.int32_t(arraySize)
+	__dataSize := C.int32_t(dataSize)
+	plugify.Block {
+		Try: func() {
+			__native := C.GetEntDataCArrayFloat2(__entity, __offset, __arraySize, __dataSize)
+			__retVal_native = *(*plugify.PlgVector)(unsafe.Pointer(&__native))
+			// Unmarshal - Convert native data to managed data.
+			__retVal = plugify.GetVectorDataDouble[float64](&__retVal_native)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyVectorDouble(&__retVal_native)
+		},
+	}.Do()
+	return __retVal
+}
+
+// GetEntDataCArrayFloat2 
+//  @brief Peeks into an entity's object data and retrieves the fixed-size float array at the given offset.
+//
+//  @param entity: Pointer to the instance of the class where the value is to be retrieved.
+//  @param offset: The offset of the schema to use.
+//  @param arraySize: Number of elements in the array.
+//  @param dataSize: Size of each element in bytes (4 or 8).
+//
+//  @return The array values at the given memory location.
+func GetEntDataCArrayFloat2(entity uintptr, offset int32, arraySize int32, dataSize int32) []float64 {
+	return _GetEntDataCArrayFloat2(entity, offset, arraySize, dataSize)
+}
+
+var _SetEntDataCArrayFloat2 = func(entity uintptr, offset int32, value []float64, arraySize int32, dataSize int32, changeState bool, chainOffset int32) {
+	__entity := C.uintptr_t(entity)
+	__offset := C.int32_t(offset)
+	__value := plugify.ConstructVectorDouble(value)
+	__arraySize := C.int32_t(arraySize)
+	__dataSize := C.int32_t(dataSize)
+	__changeState := C.bool(changeState)
+	__chainOffset := C.int32_t(chainOffset)
+	plugify.Block {
+		Try: func() {
+			C.SetEntDataCArrayFloat2(__entity, __offset, (*C.Vector)(unsafe.Pointer(&__value)), __arraySize, __dataSize, __changeState, __chainOffset)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyVectorDouble(&__value)
+		},
+	}.Do()
+}
+
+// SetEntDataCArrayFloat2 
+//  @brief Peeks into an entity's object data and sets the fixed-size float array at the given offset.
+//
+//  @param entity: Pointer to the instance of the class where the value is to be set.
+//  @param offset: The offset of the schema to use.
+//  @param value: The array values to set.
+//  @param arraySize: Number of elements in the array.
+//  @param dataSize: Size of each element in bytes (4 or 8).
+//  @param changeState: If true, change will be sent over the network.
+//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
+func SetEntDataCArrayFloat2(entity uintptr, offset int32, value []float64, arraySize int32, dataSize int32, changeState bool, chainOffset int32) {
+	_SetEntDataCArrayFloat2(entity, offset, value, arraySize, dataSize, changeState, chainOffset)
+}
+
+var _GetEntDataArray2 = func(entity uintptr, offset int32, dataSize int32) []int64 {
+	var __retVal []int64
+	var __retVal_native plugify.PlgVector
+	__entity := C.uintptr_t(entity)
+	__offset := C.int32_t(offset)
+	__dataSize := C.int32_t(dataSize)
+	plugify.Block {
+		Try: func() {
+			__native := C.GetEntDataArray2(__entity, __offset, __dataSize)
+			__retVal_native = *(*plugify.PlgVector)(unsafe.Pointer(&__native))
+			// Unmarshal - Convert native data to managed data.
+			__retVal = plugify.GetVectorDataInt64[int64](&__retVal_native)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyVectorInt64(&__retVal_native)
+		},
+	}.Do()
+	return __retVal
+}
+
+// GetEntDataArray2 
+//  @brief Peeks into an entity's object data and retrieves the integer vector (CUtlVector) at the given offset.
+//
+//  @param entity: Pointer to the instance of the class where the value is to be retrieved.
+//  @param offset: The offset of the schema to use.
+//  @param dataSize: Size of each element in bytes (1, 2, 4 or 8).
+//
+//  @return The vector elements at the given memory location.
+func GetEntDataArray2(entity uintptr, offset int32, dataSize int32) []int64 {
+	return _GetEntDataArray2(entity, offset, dataSize)
+}
+
+var _SetEntDataArray2 = func(entity uintptr, offset int32, value []int64, dataSize int32, changeState bool, chainOffset int32) {
+	__entity := C.uintptr_t(entity)
+	__offset := C.int32_t(offset)
+	__value := plugify.ConstructVectorInt64(value)
+	__dataSize := C.int32_t(dataSize)
+	__changeState := C.bool(changeState)
+	__chainOffset := C.int32_t(chainOffset)
+	plugify.Block {
+		Try: func() {
+			C.SetEntDataArray2(__entity, __offset, (*C.Vector)(unsafe.Pointer(&__value)), __dataSize, __changeState, __chainOffset)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyVectorInt64(&__value)
+		},
+	}.Do()
+}
+
+// SetEntDataArray2 
+//  @brief Peeks into an entity's object data and replaces the integer vector (CUtlVector) at the given offset.
+//
+//  @param entity: Pointer to the instance of the class where the value is to be set.
+//  @param offset: The offset of the schema to use.
+//  @param value: The vector elements to set.
+//  @param dataSize: Size of each element in bytes (1, 2, 4 or 8).
+//  @param changeState: If true, change will be sent over the network.
+//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
+func SetEntDataArray2(entity uintptr, offset int32, value []int64, dataSize int32, changeState bool, chainOffset int32) {
+	_SetEntDataArray2(entity, offset, value, dataSize, changeState, chainOffset)
+}
+
+var _GetEntDataArrayFloat2 = func(entity uintptr, offset int32, dataSize int32) []float64 {
+	var __retVal []float64
+	var __retVal_native plugify.PlgVector
+	__entity := C.uintptr_t(entity)
+	__offset := C.int32_t(offset)
+	__dataSize := C.int32_t(dataSize)
+	plugify.Block {
+		Try: func() {
+			__native := C.GetEntDataArrayFloat2(__entity, __offset, __dataSize)
+			__retVal_native = *(*plugify.PlgVector)(unsafe.Pointer(&__native))
+			// Unmarshal - Convert native data to managed data.
+			__retVal = plugify.GetVectorDataDouble[float64](&__retVal_native)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyVectorDouble(&__retVal_native)
+		},
+	}.Do()
+	return __retVal
+}
+
+// GetEntDataArrayFloat2 
+//  @brief Peeks into an entity's object data and retrieves the float vector (CUtlVector) at the given offset.
+//
+//  @param entity: Pointer to the instance of the class where the value is to be retrieved.
+//  @param offset: The offset of the schema to use.
+//  @param dataSize: Size of each element in bytes (4 or 8).
+//
+//  @return The vector elements at the given memory location.
+func GetEntDataArrayFloat2(entity uintptr, offset int32, dataSize int32) []float64 {
+	return _GetEntDataArrayFloat2(entity, offset, dataSize)
+}
+
+var _SetEntDataArrayFloat2 = func(entity uintptr, offset int32, value []float64, dataSize int32, changeState bool, chainOffset int32) {
+	__entity := C.uintptr_t(entity)
+	__offset := C.int32_t(offset)
+	__value := plugify.ConstructVectorDouble(value)
+	__dataSize := C.int32_t(dataSize)
+	__changeState := C.bool(changeState)
+	__chainOffset := C.int32_t(chainOffset)
+	plugify.Block {
+		Try: func() {
+			C.SetEntDataArrayFloat2(__entity, __offset, (*C.Vector)(unsafe.Pointer(&__value)), __dataSize, __changeState, __chainOffset)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyVectorDouble(&__value)
+		},
+	}.Do()
+}
+
+// SetEntDataArrayFloat2 
+//  @brief Peeks into an entity's object data and replaces the float vector (CUtlVector) at the given offset.
+//
+//  @param entity: Pointer to the instance of the class where the value is to be set.
+//  @param offset: The offset of the schema to use.
+//  @param value: The vector elements to set.
+//  @param dataSize: Size of each element in bytes (4 or 8).
+//  @param changeState: If true, change will be sent over the network.
+//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
+func SetEntDataArrayFloat2(entity uintptr, offset int32, value []float64, dataSize int32, changeState bool, chainOffset int32) {
+	_SetEntDataArrayFloat2(entity, offset, value, dataSize, changeState, chainOffset)
 }
 
 var _GetEntDataVector3D2 = func(entity uintptr, offset int32) plugify.Vector3 {
@@ -917,6 +1205,270 @@ func SetEntDataCString(entityHandle int32, offset int32, value string, size int3
 	_SetEntDataCString(entityHandle, offset, value, size, changeState, chainOffset)
 }
 
+var _GetEntDataCArray = func(entityHandle int32, offset int32, arraySize int32, dataSize int32) []int64 {
+	var __retVal []int64
+	var __retVal_native plugify.PlgVector
+	__entityHandle := C.int32_t(entityHandle)
+	__offset := C.int32_t(offset)
+	__arraySize := C.int32_t(arraySize)
+	__dataSize := C.int32_t(dataSize)
+	plugify.Block {
+		Try: func() {
+			__native := C.GetEntDataCArray(__entityHandle, __offset, __arraySize, __dataSize)
+			__retVal_native = *(*plugify.PlgVector)(unsafe.Pointer(&__native))
+			// Unmarshal - Convert native data to managed data.
+			__retVal = plugify.GetVectorDataInt64[int64](&__retVal_native)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyVectorInt64(&__retVal_native)
+		},
+	}.Do()
+	return __retVal
+}
+
+// GetEntDataCArray 
+//  @brief Peeks into an entity's object data and retrieves the fixed-size integer array at the given offset.
+//
+//  @param entityHandle: The handle of the entity from which the value is to be retrieved.
+//  @param offset: The offset of the schema to use.
+//  @param arraySize: Number of elements in the array.
+//  @param dataSize: Size of each element in bytes (1, 2, 4 or 8).
+//
+//  @return The array values at the given memory location.
+func GetEntDataCArray(entityHandle int32, offset int32, arraySize int32, dataSize int32) []int64 {
+	return _GetEntDataCArray(entityHandle, offset, arraySize, dataSize)
+}
+
+var _SetEntDataCArray = func(entityHandle int32, offset int32, value []int64, arraySize int32, dataSize int32, changeState bool, chainOffset int32) {
+	__entityHandle := C.int32_t(entityHandle)
+	__offset := C.int32_t(offset)
+	__value := plugify.ConstructVectorInt64(value)
+	__arraySize := C.int32_t(arraySize)
+	__dataSize := C.int32_t(dataSize)
+	__changeState := C.bool(changeState)
+	__chainOffset := C.int32_t(chainOffset)
+	plugify.Block {
+		Try: func() {
+			C.SetEntDataCArray(__entityHandle, __offset, (*C.Vector)(unsafe.Pointer(&__value)), __arraySize, __dataSize, __changeState, __chainOffset)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyVectorInt64(&__value)
+		},
+	}.Do()
+}
+
+// SetEntDataCArray 
+//  @brief Peeks into an entity's object data and sets the fixed-size integer array at the given offset.
+//
+//  @param entityHandle: The handle of the entity from which the value is to be set.
+//  @param offset: The offset of the schema to use.
+//  @param value: The array values to set.
+//  @param arraySize: Number of elements in the array.
+//  @param dataSize: Size of each element in bytes (1, 2, 4 or 8).
+//  @param changeState: If true, change will be sent over the network.
+//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
+func SetEntDataCArray(entityHandle int32, offset int32, value []int64, arraySize int32, dataSize int32, changeState bool, chainOffset int32) {
+	_SetEntDataCArray(entityHandle, offset, value, arraySize, dataSize, changeState, chainOffset)
+}
+
+var _GetEntDataCArrayFloat = func(entityHandle int32, offset int32, arraySize int32, dataSize int32) []float64 {
+	var __retVal []float64
+	var __retVal_native plugify.PlgVector
+	__entityHandle := C.int32_t(entityHandle)
+	__offset := C.int32_t(offset)
+	__arraySize := C.int32_t(arraySize)
+	__dataSize := C.int32_t(dataSize)
+	plugify.Block {
+		Try: func() {
+			__native := C.GetEntDataCArrayFloat(__entityHandle, __offset, __arraySize, __dataSize)
+			__retVal_native = *(*plugify.PlgVector)(unsafe.Pointer(&__native))
+			// Unmarshal - Convert native data to managed data.
+			__retVal = plugify.GetVectorDataDouble[float64](&__retVal_native)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyVectorDouble(&__retVal_native)
+		},
+	}.Do()
+	return __retVal
+}
+
+// GetEntDataCArrayFloat 
+//  @brief Peeks into an entity's object data and retrieves the fixed-size float array at the given offset.
+//
+//  @param entityHandle: The handle of the entity from which the value is to be retrieved.
+//  @param offset: The offset of the schema to use.
+//  @param arraySize: Number of elements in the array.
+//  @param dataSize: Size of each element in bytes (4 or 8).
+//
+//  @return The array values at the given memory location.
+func GetEntDataCArrayFloat(entityHandle int32, offset int32, arraySize int32, dataSize int32) []float64 {
+	return _GetEntDataCArrayFloat(entityHandle, offset, arraySize, dataSize)
+}
+
+var _SetEntDataCArrayFloat = func(entityHandle int32, offset int32, value []float64, arraySize int32, dataSize int32, changeState bool, chainOffset int32) {
+	__entityHandle := C.int32_t(entityHandle)
+	__offset := C.int32_t(offset)
+	__value := plugify.ConstructVectorDouble(value)
+	__arraySize := C.int32_t(arraySize)
+	__dataSize := C.int32_t(dataSize)
+	__changeState := C.bool(changeState)
+	__chainOffset := C.int32_t(chainOffset)
+	plugify.Block {
+		Try: func() {
+			C.SetEntDataCArrayFloat(__entityHandle, __offset, (*C.Vector)(unsafe.Pointer(&__value)), __arraySize, __dataSize, __changeState, __chainOffset)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyVectorDouble(&__value)
+		},
+	}.Do()
+}
+
+// SetEntDataCArrayFloat 
+//  @brief Peeks into an entity's object data and sets the fixed-size float array at the given offset.
+//
+//  @param entityHandle: The handle of the entity from which the value is to be set.
+//  @param offset: The offset of the schema to use.
+//  @param value: The array values to set.
+//  @param arraySize: Number of elements in the array.
+//  @param dataSize: Size of each element in bytes (4 or 8).
+//  @param changeState: If true, change will be sent over the network.
+//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
+func SetEntDataCArrayFloat(entityHandle int32, offset int32, value []float64, arraySize int32, dataSize int32, changeState bool, chainOffset int32) {
+	_SetEntDataCArrayFloat(entityHandle, offset, value, arraySize, dataSize, changeState, chainOffset)
+}
+
+var _GetEntDataArray = func(entityHandle int32, offset int32, dataSize int32) []int64 {
+	var __retVal []int64
+	var __retVal_native plugify.PlgVector
+	__entityHandle := C.int32_t(entityHandle)
+	__offset := C.int32_t(offset)
+	__dataSize := C.int32_t(dataSize)
+	plugify.Block {
+		Try: func() {
+			__native := C.GetEntDataArray(__entityHandle, __offset, __dataSize)
+			__retVal_native = *(*plugify.PlgVector)(unsafe.Pointer(&__native))
+			// Unmarshal - Convert native data to managed data.
+			__retVal = plugify.GetVectorDataInt64[int64](&__retVal_native)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyVectorInt64(&__retVal_native)
+		},
+	}.Do()
+	return __retVal
+}
+
+// GetEntDataArray 
+//  @brief Peeks into an entity's object data and retrieves the integer vector (CUtlVector) at the given offset.
+//
+//  @param entityHandle: The handle of the entity from which the value is to be retrieved.
+//  @param offset: The offset of the schema to use.
+//  @param dataSize: Size of each element in bytes (1, 2, 4 or 8).
+//
+//  @return The vector elements at the given memory location.
+func GetEntDataArray(entityHandle int32, offset int32, dataSize int32) []int64 {
+	return _GetEntDataArray(entityHandle, offset, dataSize)
+}
+
+var _SetEntDataArray = func(entityHandle int32, offset int32, value []int64, dataSize int32, changeState bool, chainOffset int32) {
+	__entityHandle := C.int32_t(entityHandle)
+	__offset := C.int32_t(offset)
+	__value := plugify.ConstructVectorInt64(value)
+	__dataSize := C.int32_t(dataSize)
+	__changeState := C.bool(changeState)
+	__chainOffset := C.int32_t(chainOffset)
+	plugify.Block {
+		Try: func() {
+			C.SetEntDataArray(__entityHandle, __offset, (*C.Vector)(unsafe.Pointer(&__value)), __dataSize, __changeState, __chainOffset)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyVectorInt64(&__value)
+		},
+	}.Do()
+}
+
+// SetEntDataArray 
+//  @brief Peeks into an entity's object data and replaces the integer vector (CUtlVector) at the given offset.
+//
+//  @param entityHandle: The handle of the entity from which the value is to be set.
+//  @param offset: The offset of the schema to use.
+//  @param value: The vector elements to set.
+//  @param dataSize: Size of each element in bytes (1, 2, 4 or 8).
+//  @param changeState: If true, change will be sent over the network.
+//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
+func SetEntDataArray(entityHandle int32, offset int32, value []int64, dataSize int32, changeState bool, chainOffset int32) {
+	_SetEntDataArray(entityHandle, offset, value, dataSize, changeState, chainOffset)
+}
+
+var _GetEntDataArrayFloat = func(entityHandle int32, offset int32, dataSize int32) []float64 {
+	var __retVal []float64
+	var __retVal_native plugify.PlgVector
+	__entityHandle := C.int32_t(entityHandle)
+	__offset := C.int32_t(offset)
+	__dataSize := C.int32_t(dataSize)
+	plugify.Block {
+		Try: func() {
+			__native := C.GetEntDataArrayFloat(__entityHandle, __offset, __dataSize)
+			__retVal_native = *(*plugify.PlgVector)(unsafe.Pointer(&__native))
+			// Unmarshal - Convert native data to managed data.
+			__retVal = plugify.GetVectorDataDouble[float64](&__retVal_native)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyVectorDouble(&__retVal_native)
+		},
+	}.Do()
+	return __retVal
+}
+
+// GetEntDataArrayFloat 
+//  @brief Peeks into an entity's object data and retrieves the float vector (CUtlVector) at the given offset.
+//
+//  @param entityHandle: The handle of the entity from which the value is to be retrieved.
+//  @param offset: The offset of the schema to use.
+//  @param dataSize: Size of each element in bytes (4 or 8).
+//
+//  @return The vector elements at the given memory location.
+func GetEntDataArrayFloat(entityHandle int32, offset int32, dataSize int32) []float64 {
+	return _GetEntDataArrayFloat(entityHandle, offset, dataSize)
+}
+
+var _SetEntDataArrayFloat = func(entityHandle int32, offset int32, value []float64, dataSize int32, changeState bool, chainOffset int32) {
+	__entityHandle := C.int32_t(entityHandle)
+	__offset := C.int32_t(offset)
+	__value := plugify.ConstructVectorDouble(value)
+	__dataSize := C.int32_t(dataSize)
+	__changeState := C.bool(changeState)
+	__chainOffset := C.int32_t(chainOffset)
+	plugify.Block {
+		Try: func() {
+			C.SetEntDataArrayFloat(__entityHandle, __offset, (*C.Vector)(unsafe.Pointer(&__value)), __dataSize, __changeState, __chainOffset)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyVectorDouble(&__value)
+		},
+	}.Do()
+}
+
+// SetEntDataArrayFloat 
+//  @brief Peeks into an entity's object data and replaces the float vector (CUtlVector) at the given offset.
+//
+//  @param entityHandle: The handle of the entity from which the value is to be set.
+//  @param offset: The offset of the schema to use.
+//  @param value: The vector elements to set.
+//  @param dataSize: Size of each element in bytes (4 or 8).
+//  @param changeState: If true, change will be sent over the network.
+//  @param chainOffset: The offset of the chain entity in the class (-2 for non-entity classes).
+func SetEntDataArrayFloat(entityHandle int32, offset int32, value []float64, dataSize int32, changeState bool, chainOffset int32) {
+	_SetEntDataArrayFloat(entityHandle, offset, value, dataSize, changeState, chainOffset)
+}
+
 var _GetEntDataVector3D = func(entityHandle int32, offset int32) plugify.Vector3 {
 	var __retVal plugify.Vector3
 	__entityHandle := C.int32_t(entityHandle)
@@ -1304,6 +1856,138 @@ var _SetEntSchemaFloat2 = func(entity uintptr, className string, memberName stri
 //  @param element: Element # (starting from 0) if schema is an array.
 func SetEntSchemaFloat2(entity uintptr, className string, memberName string, value float64, changeState bool, element int32) {
 	_SetEntSchemaFloat2(entity, className, memberName, value, changeState, element)
+}
+
+var _GetEntSchemaArray2 = func(entity uintptr, className string, memberName string) []int64 {
+	var __retVal []int64
+	var __retVal_native plugify.PlgVector
+	__entity := C.uintptr_t(entity)
+	__className := plugify.ConstructString(className)
+	__memberName := plugify.ConstructString(memberName)
+	plugify.Block {
+		Try: func() {
+			__native := C.GetEntSchemaArray2(__entity, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)))
+			__retVal_native = *(*plugify.PlgVector)(unsafe.Pointer(&__native))
+			// Unmarshal - Convert native data to managed data.
+			__retVal = plugify.GetVectorDataInt64[int64](&__retVal_native)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyVectorInt64(&__retVal_native)
+			plugify.DestroyString(&__className)
+			plugify.DestroyString(&__memberName)
+		},
+	}.Do()
+	return __retVal
+}
+
+// GetEntSchemaArray2 
+//  @brief Retrieves all elements of an integer array from an entity's schema.
+//
+//  @param entity: Pointer to the instance of the class where the value is to be retrieved.
+//  @param className: The name of the class.
+//  @param memberName: The name of the schema member.
+//
+//  @return The array elements, or an empty array if the field is not found or is not an integer array.
+func GetEntSchemaArray2(entity uintptr, className string, memberName string) []int64 {
+	return _GetEntSchemaArray2(entity, className, memberName)
+}
+
+var _SetEntSchemaArray2 = func(entity uintptr, className string, memberName string, value []int64, changeState bool) {
+	__entity := C.uintptr_t(entity)
+	__className := plugify.ConstructString(className)
+	__memberName := plugify.ConstructString(memberName)
+	__value := plugify.ConstructVectorInt64(value)
+	__changeState := C.bool(changeState)
+	plugify.Block {
+		Try: func() {
+			C.SetEntSchemaArray2(__entity, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)), (*C.Vector)(unsafe.Pointer(&__value)), __changeState)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__className)
+			plugify.DestroyString(&__memberName)
+			plugify.DestroyVectorInt64(&__value)
+		},
+	}.Do()
+}
+
+// SetEntSchemaArray2 
+//  @brief Sets all elements of an integer array in an entity's schema.
+//
+//  @param entity: Pointer to the instance of the class where the value is to be set.
+//  @param className: The name of the class.
+//  @param memberName: The name of the schema member.
+//  @param value: The array elements to set.
+//  @param changeState: If true, change will be sent over the network.
+func SetEntSchemaArray2(entity uintptr, className string, memberName string, value []int64, changeState bool) {
+	_SetEntSchemaArray2(entity, className, memberName, value, changeState)
+}
+
+var _GetEntSchemaArrayFloat2 = func(entity uintptr, className string, memberName string) []float64 {
+	var __retVal []float64
+	var __retVal_native plugify.PlgVector
+	__entity := C.uintptr_t(entity)
+	__className := plugify.ConstructString(className)
+	__memberName := plugify.ConstructString(memberName)
+	plugify.Block {
+		Try: func() {
+			__native := C.GetEntSchemaArrayFloat2(__entity, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)))
+			__retVal_native = *(*plugify.PlgVector)(unsafe.Pointer(&__native))
+			// Unmarshal - Convert native data to managed data.
+			__retVal = plugify.GetVectorDataDouble[float64](&__retVal_native)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyVectorDouble(&__retVal_native)
+			plugify.DestroyString(&__className)
+			plugify.DestroyString(&__memberName)
+		},
+	}.Do()
+	return __retVal
+}
+
+// GetEntSchemaArrayFloat2 
+//  @brief Retrieves all elements of a float array from an entity's schema.
+//
+//  @param entity: Pointer to the instance of the class where the value is to be retrieved.
+//  @param className: The name of the class.
+//  @param memberName: The name of the schema member.
+//
+//  @return The array elements, or an empty array if the field is not found or is not a float array.
+func GetEntSchemaArrayFloat2(entity uintptr, className string, memberName string) []float64 {
+	return _GetEntSchemaArrayFloat2(entity, className, memberName)
+}
+
+var _SetEntSchemaArrayFloat2 = func(entity uintptr, className string, memberName string, value []float64, changeState bool) {
+	__entity := C.uintptr_t(entity)
+	__className := plugify.ConstructString(className)
+	__memberName := plugify.ConstructString(memberName)
+	__value := plugify.ConstructVectorDouble(value)
+	__changeState := C.bool(changeState)
+	plugify.Block {
+		Try: func() {
+			C.SetEntSchemaArrayFloat2(__entity, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)), (*C.Vector)(unsafe.Pointer(&__value)), __changeState)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__className)
+			plugify.DestroyString(&__memberName)
+			plugify.DestroyVectorDouble(&__value)
+		},
+	}.Do()
+}
+
+// SetEntSchemaArrayFloat2 
+//  @brief Sets all elements of a float array in an entity's schema.
+//
+//  @param entity: Pointer to the instance of the class where the value is to be set.
+//  @param className: The name of the class.
+//  @param memberName: The name of the schema member.
+//  @param value: The array elements to set.
+//  @param changeState: If true, change will be sent over the network.
+func SetEntSchemaArrayFloat2(entity uintptr, className string, memberName string, value []float64, changeState bool) {
+	_SetEntSchemaArrayFloat2(entity, className, memberName, value, changeState)
 }
 
 var _GetEntSchemaColor2 = func(entity uintptr, className string, memberName string, element int32) plugify.Vector4 {
@@ -1974,6 +2658,138 @@ var _SetEntSchemaFloat = func(entityHandle int32, className string, memberName s
 //  @param element: Element # (starting from 0) if schema is an array.
 func SetEntSchemaFloat(entityHandle int32, className string, memberName string, value float64, changeState bool, element int32) {
 	_SetEntSchemaFloat(entityHandle, className, memberName, value, changeState, element)
+}
+
+var _GetEntSchemaArray = func(entityHandle int32, className string, memberName string) []int64 {
+	var __retVal []int64
+	var __retVal_native plugify.PlgVector
+	__entityHandle := C.int32_t(entityHandle)
+	__className := plugify.ConstructString(className)
+	__memberName := plugify.ConstructString(memberName)
+	plugify.Block {
+		Try: func() {
+			__native := C.GetEntSchemaArray(__entityHandle, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)))
+			__retVal_native = *(*plugify.PlgVector)(unsafe.Pointer(&__native))
+			// Unmarshal - Convert native data to managed data.
+			__retVal = plugify.GetVectorDataInt64[int64](&__retVal_native)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyVectorInt64(&__retVal_native)
+			plugify.DestroyString(&__className)
+			plugify.DestroyString(&__memberName)
+		},
+	}.Do()
+	return __retVal
+}
+
+// GetEntSchemaArray 
+//  @brief Retrieves all elements of an integer array from an entity's schema.
+//
+//  @param entityHandle: The handle of the entity from which the value is to be retrieved.
+//  @param className: The name of the class.
+//  @param memberName: The name of the schema member.
+//
+//  @return The array elements, or an empty array if the field is not found or is not an integer array.
+func GetEntSchemaArray(entityHandle int32, className string, memberName string) []int64 {
+	return _GetEntSchemaArray(entityHandle, className, memberName)
+}
+
+var _SetEntSchemaArray = func(entityHandle int32, className string, memberName string, value []int64, changeState bool) {
+	__entityHandle := C.int32_t(entityHandle)
+	__className := plugify.ConstructString(className)
+	__memberName := plugify.ConstructString(memberName)
+	__value := plugify.ConstructVectorInt64(value)
+	__changeState := C.bool(changeState)
+	plugify.Block {
+		Try: func() {
+			C.SetEntSchemaArray(__entityHandle, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)), (*C.Vector)(unsafe.Pointer(&__value)), __changeState)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__className)
+			plugify.DestroyString(&__memberName)
+			plugify.DestroyVectorInt64(&__value)
+		},
+	}.Do()
+}
+
+// SetEntSchemaArray 
+//  @brief Sets all elements of an integer array in an entity's schema.
+//
+//  @param entityHandle: The handle of the entity from which the value is to be set.
+//  @param className: The name of the class.
+//  @param memberName: The name of the schema member.
+//  @param value: The array elements to set.
+//  @param changeState: If true, change will be sent over the network.
+func SetEntSchemaArray(entityHandle int32, className string, memberName string, value []int64, changeState bool) {
+	_SetEntSchemaArray(entityHandle, className, memberName, value, changeState)
+}
+
+var _GetEntSchemaArrayFloat = func(entityHandle int32, className string, memberName string) []float64 {
+	var __retVal []float64
+	var __retVal_native plugify.PlgVector
+	__entityHandle := C.int32_t(entityHandle)
+	__className := plugify.ConstructString(className)
+	__memberName := plugify.ConstructString(memberName)
+	plugify.Block {
+		Try: func() {
+			__native := C.GetEntSchemaArrayFloat(__entityHandle, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)))
+			__retVal_native = *(*plugify.PlgVector)(unsafe.Pointer(&__native))
+			// Unmarshal - Convert native data to managed data.
+			__retVal = plugify.GetVectorDataDouble[float64](&__retVal_native)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyVectorDouble(&__retVal_native)
+			plugify.DestroyString(&__className)
+			plugify.DestroyString(&__memberName)
+		},
+	}.Do()
+	return __retVal
+}
+
+// GetEntSchemaArrayFloat 
+//  @brief Retrieves all elements of a float array from an entity's schema.
+//
+//  @param entityHandle: The handle of the entity from which the value is to be retrieved.
+//  @param className: The name of the class.
+//  @param memberName: The name of the schema member.
+//
+//  @return The array elements, or an empty array if the field is not found or is not a float array.
+func GetEntSchemaArrayFloat(entityHandle int32, className string, memberName string) []float64 {
+	return _GetEntSchemaArrayFloat(entityHandle, className, memberName)
+}
+
+var _SetEntSchemaArrayFloat = func(entityHandle int32, className string, memberName string, value []float64, changeState bool) {
+	__entityHandle := C.int32_t(entityHandle)
+	__className := plugify.ConstructString(className)
+	__memberName := plugify.ConstructString(memberName)
+	__value := plugify.ConstructVectorDouble(value)
+	__changeState := C.bool(changeState)
+	plugify.Block {
+		Try: func() {
+			C.SetEntSchemaArrayFloat(__entityHandle, (*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName)), (*C.Vector)(unsafe.Pointer(&__value)), __changeState)
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__className)
+			plugify.DestroyString(&__memberName)
+			plugify.DestroyVectorDouble(&__value)
+		},
+	}.Do()
+}
+
+// SetEntSchemaArrayFloat 
+//  @brief Sets all elements of a float array in an entity's schema.
+//
+//  @param entityHandle: The handle of the entity from which the value is to be set.
+//  @param className: The name of the class.
+//  @param memberName: The name of the schema member.
+//  @param value: The array elements to set.
+//  @param changeState: If true, change will be sent over the network.
+func SetEntSchemaArrayFloat(entityHandle int32, className string, memberName string, value []float64, changeState bool) {
+	_SetEntSchemaArrayFloat(entityHandle, className, memberName, value, changeState)
 }
 
 var _GetEntSchemaColor = func(entityHandle int32, className string, memberName string, element int32) plugify.Vector4 {

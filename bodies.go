@@ -5,10 +5,7 @@ package s2sdk
 #cgo noescape AddBodyImpulseAtPosition
 #cgo noescape AddBodyVelocity
 #cgo noescape DetachBodyFromParent
-#cgo noescape GetBodySequence
 #cgo noescape IsBodyAttachedToParent
-#cgo noescape LookupBodySequence
-#cgo noescape SetBodySequenceDuration
 #cgo noescape SetBodyAngularVelocity
 #cgo noescape SetBodyMaterialGroup
 #cgo noescape SetBodyVelocity
@@ -77,23 +74,6 @@ func DetachBodyFromParent(entityHandle int32) {
 	_DetachBodyFromParent(entityHandle)
 }
 
-var _GetBodySequence = func(entityHandle int32) int32 {
-	var __retVal int32
-	__entityHandle := C.int32_t(entityHandle)
-	__retVal = int32(C.GetBodySequence(__entityHandle))
-	return __retVal
-}
-
-// GetBodySequence 
-//  @brief Retrieves the currently active sequence of the entity.
-//
-//  @param entityHandle: The handle of the entity.
-//
-//  @return The sequence ID of the active sequence, or -1 if invalid.
-func GetBodySequence(entityHandle int32) int32 {
-	return _GetBodySequence(entityHandle)
-}
-
 var _IsBodyAttachedToParent = func(entityHandle int32) bool {
 	var __retVal bool
 	__entityHandle := C.int32_t(entityHandle)
@@ -109,60 +89,6 @@ var _IsBodyAttachedToParent = func(entityHandle int32) bool {
 //  @return True if attached to a parent, false otherwise.
 func IsBodyAttachedToParent(entityHandle int32) bool {
 	return _IsBodyAttachedToParent(entityHandle)
-}
-
-var _LookupBodySequence = func(entityHandle int32, name string) int32 {
-	var __retVal int32
-	__entityHandle := C.int32_t(entityHandle)
-	__name := plugify.ConstructString(name)
-	plugify.Block {
-		Try: func() {
-			__retVal = int32(C.LookupBodySequence(__entityHandle, (*C.String)(unsafe.Pointer(&__name))))
-		},
-		Finally: func() {
-			// Perform cleanup.
-			plugify.DestroyString(&__name)
-		},
-	}.Do()
-	return __retVal
-}
-
-// LookupBodySequence 
-//  @brief Looks up a sequence ID by its name.
-//
-//  @param entityHandle: The handle of the entity.
-//  @param name: The name of the sequence.
-//
-//  @return The sequence ID, or -1 if not found.
-func LookupBodySequence(entityHandle int32, name string) int32 {
-	return _LookupBodySequence(entityHandle, name)
-}
-
-var _SetBodySequenceDuration = func(entityHandle int32, sequenceName string) float32 {
-	var __retVal float32
-	__entityHandle := C.int32_t(entityHandle)
-	__sequenceName := plugify.ConstructString(sequenceName)
-	plugify.Block {
-		Try: func() {
-			__retVal = float32(C.SetBodySequenceDuration(__entityHandle, (*C.String)(unsafe.Pointer(&__sequenceName))))
-		},
-		Finally: func() {
-			// Perform cleanup.
-			plugify.DestroyString(&__sequenceName)
-		},
-	}.Do()
-	return __retVal
-}
-
-// SetBodySequenceDuration 
-//  @brief Retrieves the duration of a specified sequence.
-//
-//  @param entityHandle: The handle of the entity.
-//  @param sequenceName: The name of the sequence.
-//
-//  @return The duration of the sequence in seconds, or 0 if invalid.
-func SetBodySequenceDuration(entityHandle int32, sequenceName string) float32 {
-	return _SetBodySequenceDuration(entityHandle, sequenceName)
 }
 
 var _SetBodyAngularVelocity = func(entityHandle int32, angVelocity plugify.Vector3) {

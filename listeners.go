@@ -83,6 +83,10 @@ package s2sdk
 #cgo noescape OnPreWorldUpdate_Register
 #cgo noescape OnPreWorldUpdate_Register2
 #cgo noescape OnPreWorldUpdate_Unregister
+#cgo noescape OnClientSpeakingStart_Register
+#cgo noescape OnClientSpeakingStart_Unregister
+#cgo noescape OnClientSpeakingEnd_Register
+#cgo noescape OnClientSpeakingEnd_Unregister
 #cgo noescape OnSendNetMessage_Register
 #cgo noescape OnSendNetMessage_Register2
 #cgo noescape OnSendNetMessage_Unregister
@@ -1215,6 +1219,58 @@ var _OnPreWorldUpdate_Unregister = func(callback OnPreWorldUpdateCallback) {
 //  @param callback: Function callback.
 func OnPreWorldUpdate_Unregister(callback OnPreWorldUpdateCallback) {
 	_OnPreWorldUpdate_Unregister(callback)
+}
+
+var _OnClientSpeakingStart_Register = func(callback OnClientSpeakingStartCallback) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.OnClientSpeakingStart_Register(__callback)
+}
+
+// OnClientSpeakingStart_Register 
+//  @brief Register callback to event.
+//
+//  @param callback: Function callback.
+func OnClientSpeakingStart_Register(callback OnClientSpeakingStartCallback) {
+	_OnClientSpeakingStart_Register(callback)
+}
+
+var _OnClientSpeakingStart_Unregister = func(callback OnClientSpeakingStartCallback) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.OnClientSpeakingStart_Unregister(__callback)
+}
+
+// OnClientSpeakingStart_Unregister 
+//  @brief Unregister callback to event.
+//
+//  @param callback: Function callback.
+func OnClientSpeakingStart_Unregister(callback OnClientSpeakingStartCallback) {
+	_OnClientSpeakingStart_Unregister(callback)
+}
+
+var _OnClientSpeakingEnd_Register = func(callback OnClientSpeakingEndCallback) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.OnClientSpeakingEnd_Register(__callback)
+}
+
+// OnClientSpeakingEnd_Register 
+//  @brief Register callback to event.
+//
+//  @param callback: Function callback.
+func OnClientSpeakingEnd_Register(callback OnClientSpeakingEndCallback) {
+	_OnClientSpeakingEnd_Register(callback)
+}
+
+var _OnClientSpeakingEnd_Unregister = func(callback OnClientSpeakingEndCallback) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.OnClientSpeakingEnd_Unregister(__callback)
+}
+
+// OnClientSpeakingEnd_Unregister 
+//  @brief Unregister callback to event.
+//
+//  @param callback: Function callback.
+func OnClientSpeakingEnd_Unregister(callback OnClientSpeakingEndCallback) {
+	_OnClientSpeakingEnd_Unregister(callback)
 }
 
 var _OnSendNetMessage_Register = func(callback OnSendNetMessageCallback) {

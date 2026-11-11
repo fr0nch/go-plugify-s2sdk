@@ -902,6 +902,18 @@ const (
 	CSRoundEndReason_SurvivalDraw CSRoundEndReason = 22
 )
 
+// VoiceDataFormat - The codec of a voice packet.
+type VoiceDataFormat int32
+
+const (
+	// Steam - Steam voice codec.
+	VoiceDataFormat_Steam VoiceDataFormat = 0
+	// Engine - Engine voice codec.
+	VoiceDataFormat_Engine VoiceDataFormat = 1
+	// Opus - Opus.
+	VoiceDataFormat_Opus VoiceDataFormat = 2
+)
+
 // CSWeaponType - Enum representing different weapon types.
 type CSWeaponType uint32
 

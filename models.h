@@ -68,12 +68,6 @@ static void SetEntityBodygroupByName(int32_t entityHandle, String* name, int32_t
 	__s2sdk_SetEntityBodygroupByName(entityHandle, name, value);
 }
 
-extern void (*__s2sdk_SetEntityLightGroup)(int32_t, String*);
-
-static void SetEntityLightGroup(int32_t entityHandle, String* lightGroup) {
-	__s2sdk_SetEntityLightGroup(entityHandle, lightGroup);
-}
-
 extern void (*__s2sdk_SetEntityMaterialGroup)(int32_t, String*);
 
 static void SetEntityMaterialGroup(int32_t entityHandle, String* materialGroup) {

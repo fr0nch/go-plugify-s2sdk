@@ -33,9 +33,6 @@ PLUGIFY_EXPORT void (*__s2sdk_SetEntityBodygroup)(int32_t, int32_t, int32_t) = N
 PLUGIFY_EXPORT void (*__s2sdk_SetEntityBodygroupByName)(int32_t, String*, int32_t) = NULL;
 
 
-PLUGIFY_EXPORT void (*__s2sdk_SetEntityLightGroup)(int32_t, String*) = NULL;
-
-
 PLUGIFY_EXPORT void (*__s2sdk_SetEntityMaterialGroup)(int32_t, String*) = NULL;
 
 

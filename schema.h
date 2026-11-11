@@ -86,6 +86,54 @@ static void SetEntDataCString2(uintptr_t entity, int32_t offset, String* value, 
 	__s2sdk_SetEntDataCString2(entity, offset, value, size, changeState, chainOffset);
 }
 
+extern Vector (*__s2sdk_GetEntDataCArray2)(uintptr_t, int32_t, int32_t, int32_t);
+
+static Vector GetEntDataCArray2(uintptr_t entity, int32_t offset, int32_t arraySize, int32_t dataSize) {
+	return __s2sdk_GetEntDataCArray2(entity, offset, arraySize, dataSize);
+}
+
+extern void (*__s2sdk_SetEntDataCArray2)(uintptr_t, int32_t, Vector*, int32_t, int32_t, bool, int32_t);
+
+static void SetEntDataCArray2(uintptr_t entity, int32_t offset, Vector* value, int32_t arraySize, int32_t dataSize, bool changeState, int32_t chainOffset) {
+	__s2sdk_SetEntDataCArray2(entity, offset, value, arraySize, dataSize, changeState, chainOffset);
+}
+
+extern Vector (*__s2sdk_GetEntDataCArrayFloat2)(uintptr_t, int32_t, int32_t, int32_t);
+
+static Vector GetEntDataCArrayFloat2(uintptr_t entity, int32_t offset, int32_t arraySize, int32_t dataSize) {
+	return __s2sdk_GetEntDataCArrayFloat2(entity, offset, arraySize, dataSize);
+}
+
+extern void (*__s2sdk_SetEntDataCArrayFloat2)(uintptr_t, int32_t, Vector*, int32_t, int32_t, bool, int32_t);
+
+static void SetEntDataCArrayFloat2(uintptr_t entity, int32_t offset, Vector* value, int32_t arraySize, int32_t dataSize, bool changeState, int32_t chainOffset) {
+	__s2sdk_SetEntDataCArrayFloat2(entity, offset, value, arraySize, dataSize, changeState, chainOffset);
+}
+
+extern Vector (*__s2sdk_GetEntDataArray2)(uintptr_t, int32_t, int32_t);
+
+static Vector GetEntDataArray2(uintptr_t entity, int32_t offset, int32_t dataSize) {
+	return __s2sdk_GetEntDataArray2(entity, offset, dataSize);
+}
+
+extern void (*__s2sdk_SetEntDataArray2)(uintptr_t, int32_t, Vector*, int32_t, bool, int32_t);
+
+static void SetEntDataArray2(uintptr_t entity, int32_t offset, Vector* value, int32_t dataSize, bool changeState, int32_t chainOffset) {
+	__s2sdk_SetEntDataArray2(entity, offset, value, dataSize, changeState, chainOffset);
+}
+
+extern Vector (*__s2sdk_GetEntDataArrayFloat2)(uintptr_t, int32_t, int32_t);
+
+static Vector GetEntDataArrayFloat2(uintptr_t entity, int32_t offset, int32_t dataSize) {
+	return __s2sdk_GetEntDataArrayFloat2(entity, offset, dataSize);
+}
+
+extern void (*__s2sdk_SetEntDataArrayFloat2)(uintptr_t, int32_t, Vector*, int32_t, bool, int32_t);
+
+static void SetEntDataArrayFloat2(uintptr_t entity, int32_t offset, Vector* value, int32_t dataSize, bool changeState, int32_t chainOffset) {
+	__s2sdk_SetEntDataArrayFloat2(entity, offset, value, dataSize, changeState, chainOffset);
+}
+
 extern Vector3 (*__s2sdk_GetEntDataVector3D2)(uintptr_t, int32_t);
 
 static Vector3 GetEntDataVector3D2(uintptr_t entity, int32_t offset) {
@@ -206,6 +254,54 @@ static void SetEntDataCString(int32_t entityHandle, int32_t offset, String* valu
 	__s2sdk_SetEntDataCString(entityHandle, offset, value, size, changeState, chainOffset);
 }
 
+extern Vector (*__s2sdk_GetEntDataCArray)(int32_t, int32_t, int32_t, int32_t);
+
+static Vector GetEntDataCArray(int32_t entityHandle, int32_t offset, int32_t arraySize, int32_t dataSize) {
+	return __s2sdk_GetEntDataCArray(entityHandle, offset, arraySize, dataSize);
+}
+
+extern void (*__s2sdk_SetEntDataCArray)(int32_t, int32_t, Vector*, int32_t, int32_t, bool, int32_t);
+
+static void SetEntDataCArray(int32_t entityHandle, int32_t offset, Vector* value, int32_t arraySize, int32_t dataSize, bool changeState, int32_t chainOffset) {
+	__s2sdk_SetEntDataCArray(entityHandle, offset, value, arraySize, dataSize, changeState, chainOffset);
+}
+
+extern Vector (*__s2sdk_GetEntDataCArrayFloat)(int32_t, int32_t, int32_t, int32_t);
+
+static Vector GetEntDataCArrayFloat(int32_t entityHandle, int32_t offset, int32_t arraySize, int32_t dataSize) {
+	return __s2sdk_GetEntDataCArrayFloat(entityHandle, offset, arraySize, dataSize);
+}
+
+extern void (*__s2sdk_SetEntDataCArrayFloat)(int32_t, int32_t, Vector*, int32_t, int32_t, bool, int32_t);
+
+static void SetEntDataCArrayFloat(int32_t entityHandle, int32_t offset, Vector* value, int32_t arraySize, int32_t dataSize, bool changeState, int32_t chainOffset) {
+	__s2sdk_SetEntDataCArrayFloat(entityHandle, offset, value, arraySize, dataSize, changeState, chainOffset);
+}
+
+extern Vector (*__s2sdk_GetEntDataArray)(int32_t, int32_t, int32_t);
+
+static Vector GetEntDataArray(int32_t entityHandle, int32_t offset, int32_t dataSize) {
+	return __s2sdk_GetEntDataArray(entityHandle, offset, dataSize);
+}
+
+extern void (*__s2sdk_SetEntDataArray)(int32_t, int32_t, Vector*, int32_t, bool, int32_t);
+
+static void SetEntDataArray(int32_t entityHandle, int32_t offset, Vector* value, int32_t dataSize, bool changeState, int32_t chainOffset) {
+	__s2sdk_SetEntDataArray(entityHandle, offset, value, dataSize, changeState, chainOffset);
+}
+
+extern Vector (*__s2sdk_GetEntDataArrayFloat)(int32_t, int32_t, int32_t);
+
+static Vector GetEntDataArrayFloat(int32_t entityHandle, int32_t offset, int32_t dataSize) {
+	return __s2sdk_GetEntDataArrayFloat(entityHandle, offset, dataSize);
+}
+
+extern void (*__s2sdk_SetEntDataArrayFloat)(int32_t, int32_t, Vector*, int32_t, bool, int32_t);
+
+static void SetEntDataArrayFloat(int32_t entityHandle, int32_t offset, Vector* value, int32_t dataSize, bool changeState, int32_t chainOffset) {
+	__s2sdk_SetEntDataArrayFloat(entityHandle, offset, value, dataSize, changeState, chainOffset);
+}
+
 extern Vector3 (*__s2sdk_GetEntDataVector3D)(int32_t, int32_t);
 
 static Vector3 GetEntDataVector3D(int32_t entityHandle, int32_t offset) {
@@ -300,6 +396,30 @@ extern void (*__s2sdk_SetEntSchemaFloat2)(uintptr_t, String*, String*, double, b
 
 static void SetEntSchemaFloat2(uintptr_t entity, String* className, String* memberName, double value, bool changeState, int32_t element) {
 	__s2sdk_SetEntSchemaFloat2(entity, className, memberName, value, changeState, element);
+}
+
+extern Vector (*__s2sdk_GetEntSchemaArray2)(uintptr_t, String*, String*);
+
+static Vector GetEntSchemaArray2(uintptr_t entity, String* className, String* memberName) {
+	return __s2sdk_GetEntSchemaArray2(entity, className, memberName);
+}
+
+extern void (*__s2sdk_SetEntSchemaArray2)(uintptr_t, String*, String*, Vector*, bool);
+
+static void SetEntSchemaArray2(uintptr_t entity, String* className, String* memberName, Vector* value, bool changeState) {
+	__s2sdk_SetEntSchemaArray2(entity, className, memberName, value, changeState);
+}
+
+extern Vector (*__s2sdk_GetEntSchemaArrayFloat2)(uintptr_t, String*, String*);
+
+static Vector GetEntSchemaArrayFloat2(uintptr_t entity, String* className, String* memberName) {
+	return __s2sdk_GetEntSchemaArrayFloat2(entity, className, memberName);
+}
+
+extern void (*__s2sdk_SetEntSchemaArrayFloat2)(uintptr_t, String*, String*, Vector*, bool);
+
+static void SetEntSchemaArrayFloat2(uintptr_t entity, String* className, String* memberName, Vector* value, bool changeState) {
+	__s2sdk_SetEntSchemaArrayFloat2(entity, className, memberName, value, changeState);
 }
 
 extern Vector4 (*__s2sdk_GetEntSchemaColor2)(uintptr_t, String*, String*, int32_t);
@@ -426,6 +546,30 @@ extern void (*__s2sdk_SetEntSchemaFloat)(int32_t, String*, String*, double, bool
 
 static void SetEntSchemaFloat(int32_t entityHandle, String* className, String* memberName, double value, bool changeState, int32_t element) {
 	__s2sdk_SetEntSchemaFloat(entityHandle, className, memberName, value, changeState, element);
+}
+
+extern Vector (*__s2sdk_GetEntSchemaArray)(int32_t, String*, String*);
+
+static Vector GetEntSchemaArray(int32_t entityHandle, String* className, String* memberName) {
+	return __s2sdk_GetEntSchemaArray(entityHandle, className, memberName);
+}
+
+extern void (*__s2sdk_SetEntSchemaArray)(int32_t, String*, String*, Vector*, bool);
+
+static void SetEntSchemaArray(int32_t entityHandle, String* className, String* memberName, Vector* value, bool changeState) {
+	__s2sdk_SetEntSchemaArray(entityHandle, className, memberName, value, changeState);
+}
+
+extern Vector (*__s2sdk_GetEntSchemaArrayFloat)(int32_t, String*, String*);
+
+static Vector GetEntSchemaArrayFloat(int32_t entityHandle, String* className, String* memberName) {
+	return __s2sdk_GetEntSchemaArrayFloat(entityHandle, className, memberName);
+}
+
+extern void (*__s2sdk_SetEntSchemaArrayFloat)(int32_t, String*, String*, Vector*, bool);
+
+static void SetEntSchemaArrayFloat(int32_t entityHandle, String* className, String* memberName, Vector* value, bool changeState) {
+	__s2sdk_SetEntSchemaArrayFloat(entityHandle, className, memberName, value, changeState);
 }
 
 extern Vector4 (*__s2sdk_GetEntSchemaColor)(int32_t, String*, String*, int32_t);

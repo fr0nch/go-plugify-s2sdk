@@ -898,12 +898,12 @@ func (w *CheckTransmitInfo) ClearOutOfPVSAll() error {
 	return nil
 }
 
-// SetHLTV 
+// SetAlways 
 //  @brief Sets a bit in the TransmitAlways bitvec, marking an entity to always transmit.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The handle of the entity to mark as always transmittable.
-func (w *CheckTransmitInfo) SetHLTV(entityHandle int32) error {
+func (w *CheckTransmitInfo) SetAlways(entityHandle int32) error {
 	if w.handle == 0 {
 		return CheckTransmitInfoErrEmptyHandle
 	}
@@ -911,12 +911,12 @@ func (w *CheckTransmitInfo) SetHLTV(entityHandle int32) error {
 	return nil
 }
 
-// ClearHLTV 
+// ClearAlways 
 //  @brief Clears a bit in the TransmitAlways bitvec, unmarking an entity from always transmit.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The handle of the entity to unmark from always transmit.
-func (w *CheckTransmitInfo) ClearHLTV(entityHandle int32) error {
+func (w *CheckTransmitInfo) ClearAlways(entityHandle int32) error {
 	if w.handle == 0 {
 		return CheckTransmitInfoErrEmptyHandle
 	}
@@ -924,14 +924,14 @@ func (w *CheckTransmitInfo) ClearHLTV(entityHandle int32) error {
 	return nil
 }
 
-// IsHLTVSet 
+// IsAlwaysSet 
 //  @brief Checks if a bit is set in the TransmitAlways bitvec.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param entityHandle: The handle of the entity to check.
 //
 //  @return True if the entity is marked to always transmit, false otherwise.
-func (w *CheckTransmitInfo) IsHLTVSet(entityHandle int32) (bool, error) {
+func (w *CheckTransmitInfo) IsAlwaysSet(entityHandle int32) (bool, error) {
 	if w.handle == 0 {
 		var zero bool
 		return zero, CheckTransmitInfoErrEmptyHandle
@@ -939,11 +939,11 @@ func (w *CheckTransmitInfo) IsHLTVSet(entityHandle int32) (bool, error) {
 	return IsTransmitInfoAlwaysSet(w.handle, entityHandle), nil
 }
 
-// SetHLTVAll 
+// SetAlwaysAll 
 //  @brief Sets all bits in the TransmitAlways bitvec, marking all entities to always transmit.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
-func (w *CheckTransmitInfo) SetHLTVAll() error {
+func (w *CheckTransmitInfo) SetAlwaysAll() error {
 	if w.handle == 0 {
 		return CheckTransmitInfoErrEmptyHandle
 	}
@@ -951,11 +951,11 @@ func (w *CheckTransmitInfo) SetHLTVAll() error {
 	return nil
 }
 
-// ClearHLTVAll 
+// ClearAlwaysAll 
 //  @brief Clears all bits in the TransmitAlways bitvec, unmarking all entities from always transmit.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
-func (w *CheckTransmitInfo) ClearHLTVAll() error {
+func (w *CheckTransmitInfo) ClearAlwaysAll() error {
 	if w.handle == 0 {
 		return CheckTransmitInfoErrEmptyHandle
 	}
@@ -963,13 +963,13 @@ func (w *CheckTransmitInfo) ClearHLTVAll() error {
 	return nil
 }
 
-// GetTargetSlotsCount 
+// GetTargetSpawnGroupsCount 
 //  @brief Gets the count of spawn groups loaded by the client.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //
 //  @return The number of loaded spawn groups, or 0 if the info pointer is null.
-func (w *CheckTransmitInfo) GetTargetSlotsCount() (int32, error) {
+func (w *CheckTransmitInfo) GetTargetSpawnGroupsCount() (int32, error) {
 	if w.handle == 0 {
 		var zero int32
 		return zero, CheckTransmitInfoErrEmptyHandle
@@ -977,14 +977,14 @@ func (w *CheckTransmitInfo) GetTargetSlotsCount() (int32, error) {
 	return GetTransmitInfoTargetSpawnGroupsCount(w.handle), nil
 }
 
-// GetTargetSlot 
+// GetTargetSpawnGroup 
 //  @brief Gets a spawn group handle at a specific index in the loaded spawn groups vector.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param index: The index in the loaded spawn groups vector.
 //
 //  @return The spawn group handle, or -1 if the index is invalid or info is null.
-func (w *CheckTransmitInfo) GetTargetSlot(index int32) (int32, error) {
+func (w *CheckTransmitInfo) GetTargetSpawnGroup(index int32) (int32, error) {
 	if w.handle == 0 {
 		var zero int32
 		return zero, CheckTransmitInfoErrEmptyHandle
@@ -992,12 +992,12 @@ func (w *CheckTransmitInfo) GetTargetSlot(index int32) (int32, error) {
 	return GetTransmitInfoTargetSpawnGroup(w.handle, index), nil
 }
 
-// AddTargetSlot 
+// AddTargetSpawnGroup 
 //  @brief Adds a spawn group handle to the loaded spawn groups vector.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param spawnGroup: The spawn group handle to add.
-func (w *CheckTransmitInfo) AddTargetSlot(spawnGroup int32) error {
+func (w *CheckTransmitInfo) AddTargetSpawnGroup(spawnGroup int32) error {
 	if w.handle == 0 {
 		return CheckTransmitInfoErrEmptyHandle
 	}
@@ -1005,12 +1005,12 @@ func (w *CheckTransmitInfo) AddTargetSlot(spawnGroup int32) error {
 	return nil
 }
 
-// RemoveTargetSlot 
+// RemoveTargetSpawnGroup 
 //  @brief Removes a spawn group handle from the loaded spawn groups vector.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //  @param index: Index within the loaded spawn groups vector to remove.
-func (w *CheckTransmitInfo) RemoveTargetSlot(index int32) error {
+func (w *CheckTransmitInfo) RemoveTargetSpawnGroup(index int32) error {
 	if w.handle == 0 {
 		return CheckTransmitInfoErrEmptyHandle
 	}
@@ -1018,13 +1018,13 @@ func (w *CheckTransmitInfo) RemoveTargetSlot(index int32) error {
 	return nil
 }
 
-// GetTargetSlotsAll 
+// GetTargetSpawnGroupsAll 
 //  @brief Gets the loaded spawn groups vector.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
 //
 //  @return The spawn group handles array.
-func (w *CheckTransmitInfo) GetTargetSlotsAll() ([]int32, error) {
+func (w *CheckTransmitInfo) GetTargetSpawnGroupsAll() ([]int32, error) {
 	if w.handle == 0 {
 		var zero []int32
 		return zero, CheckTransmitInfoErrEmptyHandle
@@ -1032,11 +1032,11 @@ func (w *CheckTransmitInfo) GetTargetSlotsAll() ([]int32, error) {
 	return GetTransmitInfoTargetSpawnGroupsAll(w.handle), nil
 }
 
-// RemoveTargetSlotsAll 
+// RemoveTargetSpawnGroupsAll 
 //  @brief Clears all spawn groups from the loaded spawn groups vector.
 //
 //  @param info: Pointer to the CCheckTransmitInfo structure.
-func (w *CheckTransmitInfo) RemoveTargetSlotsAll() error {
+func (w *CheckTransmitInfo) RemoveTargetSpawnGroupsAll() error {
 	if w.handle == 0 {
 		return CheckTransmitInfoErrEmptyHandle
 	}

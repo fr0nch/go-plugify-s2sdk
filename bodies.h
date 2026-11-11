@@ -20,28 +20,10 @@ static void DetachBodyFromParent(int32_t entityHandle) {
 	__s2sdk_DetachBodyFromParent(entityHandle);
 }
 
-extern int32_t (*__s2sdk_GetBodySequence)(int32_t);
-
-static int32_t GetBodySequence(int32_t entityHandle) {
-	return __s2sdk_GetBodySequence(entityHandle);
-}
-
 extern bool (*__s2sdk_IsBodyAttachedToParent)(int32_t);
 
 static bool IsBodyAttachedToParent(int32_t entityHandle) {
 	return __s2sdk_IsBodyAttachedToParent(entityHandle);
-}
-
-extern int32_t (*__s2sdk_LookupBodySequence)(int32_t, String*);
-
-static int32_t LookupBodySequence(int32_t entityHandle, String* name) {
-	return __s2sdk_LookupBodySequence(entityHandle, name);
-}
-
-extern float (*__s2sdk_SetBodySequenceDuration)(int32_t, String*);
-
-static float SetBodySequenceDuration(int32_t entityHandle, String* sequenceName) {
-	return __s2sdk_SetBodySequenceDuration(entityHandle, sequenceName);
 }
 
 extern void (*__s2sdk_SetBodyAngularVelocity)(int32_t, Vector3*);

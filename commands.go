@@ -229,7 +229,7 @@ var _ServerCommandEx = func(command string) string {
 }
 
 // ServerCommandEx 
-//  @brief Executes a server command as if it were on the server console (or RCON) and stores the printed text into buffer.
+//  @brief Executes a server command right away as if it were on the server console (or RCON) and returns the printed text. Console commands and convars only: commands are split on ';' and new lines, aliases are not expanded.
 //
 //  @param command: The command to execute on the server.
 //

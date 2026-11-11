@@ -164,6 +164,14 @@ type OnUpdateWhenNotInGameCallback func(deltaTime float32)
 type OnPreWorldUpdateCallback func(simulating bool)
 
 
+// OnClientSpeakingStartCallback - Called when a client starts sending voice, also when the client's voice is muted.
+type OnClientSpeakingStartCallback func(playerSlot int32)
+
+
+// OnClientSpeakingEndCallback - Called when a client stops sending voice for 0.3 seconds, or right before OnClientDisconnect if the client disconnects while talking.
+type OnClientSpeakingEndCallback func(playerSlot int32)
+
+
 // OnSendNetMessageCallback - Called when a net message is sent to a single client (e.g. net_SignonState). Messages that never go through here or PostEventAbstract (e.g. svc_ClearAllStringTables, sent as part of the initial signon bundle) are instead only visible through OnSerializeMessage.
 type OnSendNetMessageCallback func(playerSlot int32, message uintptr)
 
@@ -178,5 +186,9 @@ type UserMessageCallback func(userMessage uintptr) ResultType
 
 // SendNetMessageHookCallback - Callback function for net messages sent to a single client. Runs before OnSendNetMessage, blocked messages don't reach it.
 type SendNetMessageHookCallback func(playerSlot int32, message uintptr) ResultType
+
+
+// ClientVoiceDataHookCallback - Callback function for voice packets sent by clients. Runs after the Speak_Muted check, so packets of muted players don't reach it.
+type ClientVoiceDataHookCallback func(playerSlot int32, voiceData uintptr) ResultType
 
 

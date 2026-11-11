@@ -243,6 +243,18 @@ PLUGIFY_EXPORT void (*__s2sdk_OnPreWorldUpdate_Register2)(void*, int32_t) = NULL
 PLUGIFY_EXPORT void (*__s2sdk_OnPreWorldUpdate_Unregister)(void*) = NULL;
 
 
+PLUGIFY_EXPORT void (*__s2sdk_OnClientSpeakingStart_Register)(void*) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_OnClientSpeakingStart_Unregister)(void*) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_OnClientSpeakingEnd_Register)(void*) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_OnClientSpeakingEnd_Unregister)(void*) = NULL;
+
+
 PLUGIFY_EXPORT void (*__s2sdk_OnSendNetMessage_Register)(void*) = NULL;
 
 
