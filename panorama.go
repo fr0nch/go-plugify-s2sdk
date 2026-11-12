@@ -55,7 +55,7 @@ var _PanoramaSendYesNoVote = func(duration float64, caller int32, voteTitle stri
 }
 
 // PanoramaSendYesNoVote 
-//  @brief Start a new Yes/No vote
+//  @brief Start a new Yes/No vote. Player votes are counted only when sv_allow_votes is 1.
 //
 //  @param duration: Maximum time to leave vote active for
 //  @param caller: Player slot of the vote caller. Use VOTE_CALLER_SERVER for 'Server'.
@@ -98,7 +98,7 @@ var _PanoramaSendYesNoVoteToAll = func(duration float64, caller int32, voteTitle
 }
 
 // PanoramaSendYesNoVoteToAll 
-//  @brief Start a new Yes/No vote with all players included
+//  @brief Start a new Yes/No vote with all players included. Player votes are counted only when sv_allow_votes is 1.
 //
 //  @param duration: Maximum time to leave vote active for
 //  @param caller: Player slot of the vote caller. Use VOTE_CALLER_SERVER for 'Server'.
