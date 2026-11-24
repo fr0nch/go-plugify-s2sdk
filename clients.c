@@ -369,6 +369,9 @@ PLUGIFY_EXPORT void (*__s2sdk_RemoveWeapon)(int32_t, int32_t) = NULL;
 PLUGIFY_EXPORT int32_t (*__s2sdk_GiveNamedItem)(int32_t, String*) = NULL;
 
 
+PLUGIFY_EXPORT void (*__s2sdk_ForceClientFullUpdate)(int32_t) = NULL;
+
+
 PLUGIFY_EXPORT uint64_t (*__s2sdk_GetClientButtons)(int32_t, int32_t) = NULL;
 
 

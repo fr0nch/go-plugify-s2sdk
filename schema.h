@@ -20,6 +20,12 @@ static bool IsSchemaFieldNetworked(String* className, String* memberName) {
 	return __s2sdk_IsSchemaFieldNetworked(className, memberName);
 }
 
+extern int32_t (*__s2sdk_GetSchemaFieldSize)(String*, String*);
+
+static int32_t GetSchemaFieldSize(String* className, String* memberName) {
+	return __s2sdk_GetSchemaFieldSize(className, memberName);
+}
+
 extern int32_t (*__s2sdk_GetSchemaClassSize)(String*);
 
 static int32_t GetSchemaClassSize(String* className) {

@@ -35,6 +35,18 @@ package s2sdk
 #cgo noescape OnClientAuthenticated_Register
 #cgo noescape OnClientAuthenticated_Register2
 #cgo noescape OnClientAuthenticated_Unregister
+#cgo noescape OnClientInventoryLoaded_Register
+#cgo noescape OnClientInventoryLoaded_Register2
+#cgo noescape OnClientInventoryLoaded_Unregister
+#cgo noescape OnClientLoadoutChanged_Register
+#cgo noescape OnClientLoadoutChanged_Register2
+#cgo noescape OnClientLoadoutChanged_Unregister
+#cgo noescape OnClientGiveNamedItem_Register
+#cgo noescape OnClientGiveNamedItem_Register2
+#cgo noescape OnClientGiveNamedItem_Unregister
+#cgo noescape OnClientGiveNamedItemPost_Register
+#cgo noescape OnClientGiveNamedItemPost_Register2
+#cgo noescape OnClientGiveNamedItemPost_Unregister
 #cgo noescape OnRoundTerminated_Register
 #cgo noescape OnRoundTerminated_Register2
 #cgo noescape OnRoundTerminated_Unregister
@@ -563,6 +575,170 @@ var _OnClientAuthenticated_Unregister = func(callback OnClientAuthenticatedCallb
 //  @param callback: Function callback.
 func OnClientAuthenticated_Unregister(callback OnClientAuthenticatedCallback) {
 	_OnClientAuthenticated_Unregister(callback)
+}
+
+var _OnClientInventoryLoaded_Register = func(callback OnClientInventoryLoadedCallback) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.OnClientInventoryLoaded_Register(__callback)
+}
+
+// OnClientInventoryLoaded_Register 
+//  @brief Register callback to event.
+//
+//  @param callback: Function callback.
+func OnClientInventoryLoaded_Register(callback OnClientInventoryLoadedCallback) {
+	_OnClientInventoryLoaded_Register(callback)
+}
+
+var _OnClientInventoryLoaded_Register2 = func(callback OnClientInventoryLoadedCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnClientInventoryLoaded_Register2(__callback, __priority)
+}
+
+// OnClientInventoryLoaded_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnClientInventoryLoaded_Register uses 0.
+func OnClientInventoryLoaded_Register2(callback OnClientInventoryLoadedCallback, priority int32) {
+	_OnClientInventoryLoaded_Register2(callback, priority)
+}
+
+var _OnClientInventoryLoaded_Unregister = func(callback OnClientInventoryLoadedCallback) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.OnClientInventoryLoaded_Unregister(__callback)
+}
+
+// OnClientInventoryLoaded_Unregister 
+//  @brief Unregister callback to event.
+//
+//  @param callback: Function callback.
+func OnClientInventoryLoaded_Unregister(callback OnClientInventoryLoadedCallback) {
+	_OnClientInventoryLoaded_Unregister(callback)
+}
+
+var _OnClientLoadoutChanged_Register = func(callback OnClientLoadoutChangedCallback) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.OnClientLoadoutChanged_Register(__callback)
+}
+
+// OnClientLoadoutChanged_Register 
+//  @brief Register callback to event.
+//
+//  @param callback: Function callback.
+func OnClientLoadoutChanged_Register(callback OnClientLoadoutChangedCallback) {
+	_OnClientLoadoutChanged_Register(callback)
+}
+
+var _OnClientLoadoutChanged_Register2 = func(callback OnClientLoadoutChangedCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnClientLoadoutChanged_Register2(__callback, __priority)
+}
+
+// OnClientLoadoutChanged_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnClientLoadoutChanged_Register uses 0.
+func OnClientLoadoutChanged_Register2(callback OnClientLoadoutChangedCallback, priority int32) {
+	_OnClientLoadoutChanged_Register2(callback, priority)
+}
+
+var _OnClientLoadoutChanged_Unregister = func(callback OnClientLoadoutChangedCallback) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.OnClientLoadoutChanged_Unregister(__callback)
+}
+
+// OnClientLoadoutChanged_Unregister 
+//  @brief Unregister callback to event.
+//
+//  @param callback: Function callback.
+func OnClientLoadoutChanged_Unregister(callback OnClientLoadoutChangedCallback) {
+	_OnClientLoadoutChanged_Unregister(callback)
+}
+
+var _OnClientGiveNamedItem_Register = func(callback OnClientGiveNamedItemCallback) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.OnClientGiveNamedItem_Register(__callback)
+}
+
+// OnClientGiveNamedItem_Register 
+//  @brief Register callback to event.
+//
+//  @param callback: Function callback.
+func OnClientGiveNamedItem_Register(callback OnClientGiveNamedItemCallback) {
+	_OnClientGiveNamedItem_Register(callback)
+}
+
+var _OnClientGiveNamedItem_Register2 = func(callback OnClientGiveNamedItemCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnClientGiveNamedItem_Register2(__callback, __priority)
+}
+
+// OnClientGiveNamedItem_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnClientGiveNamedItem_Register uses 0.
+func OnClientGiveNamedItem_Register2(callback OnClientGiveNamedItemCallback, priority int32) {
+	_OnClientGiveNamedItem_Register2(callback, priority)
+}
+
+var _OnClientGiveNamedItem_Unregister = func(callback OnClientGiveNamedItemCallback) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.OnClientGiveNamedItem_Unregister(__callback)
+}
+
+// OnClientGiveNamedItem_Unregister 
+//  @brief Unregister callback to event.
+//
+//  @param callback: Function callback.
+func OnClientGiveNamedItem_Unregister(callback OnClientGiveNamedItemCallback) {
+	_OnClientGiveNamedItem_Unregister(callback)
+}
+
+var _OnClientGiveNamedItemPost_Register = func(callback OnClientGiveNamedItemPostCallback) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.OnClientGiveNamedItemPost_Register(__callback)
+}
+
+// OnClientGiveNamedItemPost_Register 
+//  @brief Register callback to event.
+//
+//  @param callback: Function callback.
+func OnClientGiveNamedItemPost_Register(callback OnClientGiveNamedItemPostCallback) {
+	_OnClientGiveNamedItemPost_Register(callback)
+}
+
+var _OnClientGiveNamedItemPost_Register2 = func(callback OnClientGiveNamedItemPostCallback, priority int32) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	__priority := C.int32_t(priority)
+	C.OnClientGiveNamedItemPost_Register2(__callback, __priority)
+}
+
+// OnClientGiveNamedItemPost_Register2 
+//  @brief Register callback to event with a priority.
+//
+//  @param callback: Function callback.
+//  @param priority: Higher values run first; equal priorities run in registration order. OnClientGiveNamedItemPost_Register uses 0.
+func OnClientGiveNamedItemPost_Register2(callback OnClientGiveNamedItemPostCallback, priority int32) {
+	_OnClientGiveNamedItemPost_Register2(callback, priority)
+}
+
+var _OnClientGiveNamedItemPost_Unregister = func(callback OnClientGiveNamedItemPostCallback) {
+	__callback := plugify.GetFunctionPointerForDelegate(callback)
+	C.OnClientGiveNamedItemPost_Unregister(__callback)
+}
+
+// OnClientGiveNamedItemPost_Unregister 
+//  @brief Unregister callback to event.
+//
+//  @param callback: Function callback.
+func OnClientGiveNamedItemPost_Unregister(callback OnClientGiveNamedItemPostCallback) {
+	_OnClientGiveNamedItemPost_Unregister(callback)
 }
 
 var _OnRoundTerminated_Register = func(callback OnRoundTerminatedCallback) {

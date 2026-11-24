@@ -200,6 +200,78 @@ static void OnClientAuthenticated_Unregister(void* callback) {
 	__s2sdk_OnClientAuthenticated_Unregister(callback);
 }
 
+extern void (*__s2sdk_OnClientInventoryLoaded_Register)(void*);
+
+static void OnClientInventoryLoaded_Register(void* callback) {
+	__s2sdk_OnClientInventoryLoaded_Register(callback);
+}
+
+extern void (*__s2sdk_OnClientInventoryLoaded_Register2)(void*, int32_t);
+
+static void OnClientInventoryLoaded_Register2(void* callback, int32_t priority) {
+	__s2sdk_OnClientInventoryLoaded_Register2(callback, priority);
+}
+
+extern void (*__s2sdk_OnClientInventoryLoaded_Unregister)(void*);
+
+static void OnClientInventoryLoaded_Unregister(void* callback) {
+	__s2sdk_OnClientInventoryLoaded_Unregister(callback);
+}
+
+extern void (*__s2sdk_OnClientLoadoutChanged_Register)(void*);
+
+static void OnClientLoadoutChanged_Register(void* callback) {
+	__s2sdk_OnClientLoadoutChanged_Register(callback);
+}
+
+extern void (*__s2sdk_OnClientLoadoutChanged_Register2)(void*, int32_t);
+
+static void OnClientLoadoutChanged_Register2(void* callback, int32_t priority) {
+	__s2sdk_OnClientLoadoutChanged_Register2(callback, priority);
+}
+
+extern void (*__s2sdk_OnClientLoadoutChanged_Unregister)(void*);
+
+static void OnClientLoadoutChanged_Unregister(void* callback) {
+	__s2sdk_OnClientLoadoutChanged_Unregister(callback);
+}
+
+extern void (*__s2sdk_OnClientGiveNamedItem_Register)(void*);
+
+static void OnClientGiveNamedItem_Register(void* callback) {
+	__s2sdk_OnClientGiveNamedItem_Register(callback);
+}
+
+extern void (*__s2sdk_OnClientGiveNamedItem_Register2)(void*, int32_t);
+
+static void OnClientGiveNamedItem_Register2(void* callback, int32_t priority) {
+	__s2sdk_OnClientGiveNamedItem_Register2(callback, priority);
+}
+
+extern void (*__s2sdk_OnClientGiveNamedItem_Unregister)(void*);
+
+static void OnClientGiveNamedItem_Unregister(void* callback) {
+	__s2sdk_OnClientGiveNamedItem_Unregister(callback);
+}
+
+extern void (*__s2sdk_OnClientGiveNamedItemPost_Register)(void*);
+
+static void OnClientGiveNamedItemPost_Register(void* callback) {
+	__s2sdk_OnClientGiveNamedItemPost_Register(callback);
+}
+
+extern void (*__s2sdk_OnClientGiveNamedItemPost_Register2)(void*, int32_t);
+
+static void OnClientGiveNamedItemPost_Register2(void* callback, int32_t priority) {
+	__s2sdk_OnClientGiveNamedItemPost_Register2(callback, priority);
+}
+
+extern void (*__s2sdk_OnClientGiveNamedItemPost_Unregister)(void*);
+
+static void OnClientGiveNamedItemPost_Unregister(void* callback) {
+	__s2sdk_OnClientGiveNamedItemPost_Unregister(callback);
+}
+
 extern void (*__s2sdk_OnRoundTerminated_Register)(void*);
 
 static void OnRoundTerminated_Register(void* callback) {

@@ -9,6 +9,9 @@ PLUGIFY_EXPORT int32_t (*__s2sdk_GetSchemaChainOffset)(String*) = NULL;
 PLUGIFY_EXPORT bool (*__s2sdk_IsSchemaFieldNetworked)(String*, String*) = NULL;
 
 
+PLUGIFY_EXPORT int32_t (*__s2sdk_GetSchemaFieldSize)(String*, String*) = NULL;
+
+
 PLUGIFY_EXPORT int32_t (*__s2sdk_GetSchemaClassSize)(String*) = NULL;
 
 

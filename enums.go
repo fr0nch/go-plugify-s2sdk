@@ -852,6 +852,123 @@ const (
 	SignonState_ChangeLevel SignonState = 7
 )
 
+// LoadoutSlot - Loadout positions of the CS2 inventory (loadout_slot_t).
+type LoadoutSlot int32
+
+const (
+	LoadoutSlot_Promoted LoadoutSlot = -2
+	// Invalid - No loadout slot, e.g. from GetItemDefinitionLoadoutSlot for a team that cannot use the item.
+	LoadoutSlot_Invalid LoadoutSlot = -1
+	// Melee - Shown in the game as "Melee".
+	LoadoutSlot_Melee LoadoutSlot = 0
+	// C4 - Shown in the game as "C4".
+	LoadoutSlot_C4 LoadoutSlot = 1
+	// Secondary0 - Shown in the game as "Starting Pistol".
+	LoadoutSlot_Secondary0 LoadoutSlot = 2
+	// Secondary1 - Shown in the game as "Pistols".
+	LoadoutSlot_Secondary1 LoadoutSlot = 3
+	// Secondary2 - Shown in the game as "Pistols".
+	LoadoutSlot_Secondary2 LoadoutSlot = 4
+	// Secondary3 - Shown in the game as "Pistols".
+	LoadoutSlot_Secondary3 LoadoutSlot = 5
+	// Secondary4 - Shown in the game as "Pistols".
+	LoadoutSlot_Secondary4 LoadoutSlot = 6
+	// Secondary5 - Shown in the game as "Pistols".
+	LoadoutSlot_Secondary5 LoadoutSlot = 7
+	// SMG0 - Shown in the game as "Mid-Tier".
+	LoadoutSlot_SMG0 LoadoutSlot = 8
+	// SMG1 - Shown in the game as "Mid-Tier".
+	LoadoutSlot_SMG1 LoadoutSlot = 9
+	// SMG2 - Shown in the game as "Mid-Tier".
+	LoadoutSlot_SMG2 LoadoutSlot = 10
+	// SMG3 - Shown in the game as "Mid-Tier".
+	LoadoutSlot_SMG3 LoadoutSlot = 11
+	// SMG4 - Shown in the game as "Mid-Tier".
+	LoadoutSlot_SMG4 LoadoutSlot = 12
+	// SMG5 - Shown in the game as "Mid-Tier".
+	LoadoutSlot_SMG5 LoadoutSlot = 13
+	// Rifle0 - Shown in the game as "Rifles".
+	LoadoutSlot_Rifle0 LoadoutSlot = 14
+	// Rifle1 - Shown in the game as "Rifles".
+	LoadoutSlot_Rifle1 LoadoutSlot = 15
+	// Rifle2 - Shown in the game as "Rifles".
+	LoadoutSlot_Rifle2 LoadoutSlot = 16
+	// Rifle3 - Shown in the game as "Rifles".
+	LoadoutSlot_Rifle3 LoadoutSlot = 17
+	// Rifle4 - Shown in the game as "Rifles".
+	LoadoutSlot_Rifle4 LoadoutSlot = 18
+	// Rifle5 - Shown in the game as "Rifles".
+	LoadoutSlot_Rifle5 LoadoutSlot = 19
+	// Heavy0 - Shown in the game as "Heavy".
+	LoadoutSlot_Heavy0 LoadoutSlot = 20
+	// Heavy1 - Shown in the game as "Heavy".
+	LoadoutSlot_Heavy1 LoadoutSlot = 21
+	// Heavy2 - Shown in the game as "Heavy".
+	LoadoutSlot_Heavy2 LoadoutSlot = 22
+	// Heavy3 - Shown in the game as "Heavy".
+	LoadoutSlot_Heavy3 LoadoutSlot = 23
+	// Heavy4 - Shown in the game as "Heavy".
+	LoadoutSlot_Heavy4 LoadoutSlot = 24
+	// Heavy5 - Shown in the game as "Heavy".
+	LoadoutSlot_Heavy5 LoadoutSlot = 25
+	// Grenade0 - Shown in the game as "Grenades".
+	LoadoutSlot_Grenade0 LoadoutSlot = 26
+	// Grenade1 - Shown in the game as "Grenades".
+	LoadoutSlot_Grenade1 LoadoutSlot = 27
+	// Grenade2 - Shown in the game as "Grenades".
+	LoadoutSlot_Grenade2 LoadoutSlot = 28
+	// Grenade3 - Shown in the game as "Grenades".
+	LoadoutSlot_Grenade3 LoadoutSlot = 29
+	// Grenade4 - Shown in the game as "Grenades".
+	LoadoutSlot_Grenade4 LoadoutSlot = 30
+	// Grenade5 - Shown in the game as "Grenades".
+	LoadoutSlot_Grenade5 LoadoutSlot = 31
+	// Equipment0 - Shown in the game as "Equipment".
+	LoadoutSlot_Equipment0 LoadoutSlot = 32
+	// Equipment1 - Shown in the game as "Equipment".
+	LoadoutSlot_Equipment1 LoadoutSlot = 33
+	// Equipment2 - Shown in the game as "Equipment".
+	LoadoutSlot_Equipment2 LoadoutSlot = 34
+	// Equipment3 - Shown in the game as "Equipment".
+	LoadoutSlot_Equipment3 LoadoutSlot = 35
+	// Equipment4 - Shown in the game as "Equipment".
+	LoadoutSlot_Equipment4 LoadoutSlot = 36
+	// Equipment5 - Shown in the game as "Equipment".
+	LoadoutSlot_Equipment5 LoadoutSlot = 37
+	// ClothingCustomPlayer - Shown in the game as "Agents".
+	LoadoutSlot_ClothingCustomPlayer LoadoutSlot = 38
+	LoadoutSlot_ClothingCustomHead LoadoutSlot = 39
+	LoadoutSlot_ClothingFacemask LoadoutSlot = 40
+	// ClothingHands - Shown in the game as "Gloves".
+	LoadoutSlot_ClothingHands LoadoutSlot = 41
+	LoadoutSlot_ClothingEyewear LoadoutSlot = 42
+	LoadoutSlot_ClothingHat LoadoutSlot = 43
+	LoadoutSlot_ClothingLowerBody LoadoutSlot = 44
+	LoadoutSlot_ClothingTorso LoadoutSlot = 45
+	LoadoutSlot_ClothingAppearance LoadoutSlot = 46
+	// Misc0 - Shown in the game as "Misc".
+	LoadoutSlot_Misc0 LoadoutSlot = 47
+	// Misc1 - Shown in the game as "Misc".
+	LoadoutSlot_Misc1 LoadoutSlot = 48
+	// Misc2 - Shown in the game as "Misc".
+	LoadoutSlot_Misc2 LoadoutSlot = 49
+	// Misc3 - Shown in the game as "Misc".
+	LoadoutSlot_Misc3 LoadoutSlot = 50
+	// Misc4 - Shown in the game as "Misc".
+	LoadoutSlot_Misc4 LoadoutSlot = 51
+	// Misc5 - Shown in the game as "Misc".
+	LoadoutSlot_Misc5 LoadoutSlot = 52
+	// Misc6 - Shown in the game as "Misc".
+	LoadoutSlot_Misc6 LoadoutSlot = 53
+	// MusicKit - Shown in the game as "Music Kit".
+	LoadoutSlot_MusicKit LoadoutSlot = 54
+	// Flair0 - Shown in the game as "Display".
+	LoadoutSlot_Flair0 LoadoutSlot = 55
+	// Spray0 - Shown in the game as "Graffiti".
+	LoadoutSlot_Spray0 LoadoutSlot = 56
+	LoadoutSlot_Pet LoadoutSlot = 57
+)
+
 // CSRoundEndReason - Enum representing the possible reasons for a round ending in Counter-Strike.
 type CSRoundEndReason int32
 
@@ -1043,6 +1160,118 @@ const (
 	WeaponDefIndex_KnifeWidowmaker WeaponDefIndex = 523
 	WeaponDefIndex_KnifeSkeleton WeaponDefIndex = 525
 	WeaponDefIndex_KnifeKukri WeaponDefIndex = 526
+)
+
+// ItemQuality - Item qualities from the items_game "qualities" section (EEconItemQuality).
+type ItemQuality int32
+
+const (
+	ItemQuality_Undefined ItemQuality = -1
+	// Normal - Shown in the game as "Normal".
+	ItemQuality_Normal ItemQuality = 0
+	// Genuine - Shown in the game as "Genuine".
+	ItemQuality_Genuine ItemQuality = 1
+	// Vintage - Shown in the game as "Vintage".
+	ItemQuality_Vintage ItemQuality = 2
+	// Unusual - Shown in the game as "★".
+	ItemQuality_Unusual ItemQuality = 3
+	// Unique - Shown in the game as "Unique".
+	ItemQuality_Unique ItemQuality = 4
+	// Community - Shown in the game as "Community".
+	ItemQuality_Community ItemQuality = 5
+	// Developer - Shown in the game as "Valve".
+	ItemQuality_Developer ItemQuality = 6
+	// SelfMade - Shown in the game as "Prototype".
+	ItemQuality_SelfMade ItemQuality = 7
+	// Customized - Shown in the game as "Customized".
+	ItemQuality_Customized ItemQuality = 8
+	// Strange - Shown in the game as "StatTrak™".
+	ItemQuality_Strange ItemQuality = 9
+	// Completed - Shown in the game as "Completed".
+	ItemQuality_Completed ItemQuality = 10
+	ItemQuality_Haunted ItemQuality = 11
+	// Tournament - Shown in the game as "Souvenir".
+	ItemQuality_Tournament ItemQuality = 12
+	// Highlight - Shown in the game as "Highlight".
+	ItemQuality_Highlight ItemQuality = 13
+	// Volatile - Shown in the game as "Volatile".
+	ItemQuality_Volatile ItemQuality = 14
+)
+
+// ItemRarity - Item rarities from the items_game "rarities" section.
+type ItemRarity int32
+
+const (
+	// Default - "Stock" for weapons, "Default" for other items.
+	ItemRarity_Default ItemRarity = 0
+	// Common - "Consumer Grade" for weapons, "Base Grade" for other items.
+	ItemRarity_Common ItemRarity = 1
+	// Uncommon - "Industrial Grade" for weapons, "Medium Grade" for other items.
+	ItemRarity_Uncommon ItemRarity = 2
+	// Rare - "Mil-Spec Grade" for weapons, "Distinguished" for agents, "High Grade" for other items.
+	ItemRarity_Rare ItemRarity = 3
+	// Mythical - "Restricted" for weapons, "Exceptional" for agents, "Remarkable" for other items.
+	ItemRarity_Mythical ItemRarity = 4
+	// Legendary - "Classified" for weapons, "Superior" for agents, "Exotic" for other items.
+	ItemRarity_Legendary ItemRarity = 5
+	// Ancient - "Covert" for weapons, "Master" for agents, "Extraordinary" for other items.
+	ItemRarity_Ancient ItemRarity = 6
+	// Immortal - Shown in the game as "Contraband".
+	ItemRarity_Immortal ItemRarity = 7
+	ItemRarity_Unusual ItemRarity = 99
+)
+
+// ItemOrigin - How an item got into the inventory (eEconItemOrigin).
+type ItemOrigin int32
+
+const (
+	// Invalid - Never stored; marks an in-memory object only.
+	ItemOrigin_Invalid ItemOrigin = -1
+	ItemOrigin_Drop ItemOrigin = 0
+	ItemOrigin_Achievement ItemOrigin = 1
+	ItemOrigin_Purchased ItemOrigin = 2
+	ItemOrigin_Traded ItemOrigin = 3
+	ItemOrigin_Crafted ItemOrigin = 4
+	ItemOrigin_StorePromotion ItemOrigin = 5
+	ItemOrigin_Gifted ItemOrigin = 6
+	ItemOrigin_SupportGranted ItemOrigin = 7
+	ItemOrigin_FoundInCrate ItemOrigin = 8
+	ItemOrigin_Earned ItemOrigin = 9
+	ItemOrigin_ThirdPartyPromotion ItemOrigin = 10
+	ItemOrigin_GiftWrapped ItemOrigin = 11
+	ItemOrigin_HalloweenDrop ItemOrigin = 12
+	ItemOrigin_PackageItem ItemOrigin = 13
+	ItemOrigin_Foreign ItemOrigin = 14
+	ItemOrigin_CDKey ItemOrigin = 15
+	ItemOrigin_CollectionReward ItemOrigin = 16
+	ItemOrigin_PreviewItem ItemOrigin = 17
+	ItemOrigin_SteamWorkshopContribution ItemOrigin = 18
+	ItemOrigin_PeriodicScoreReward ItemOrigin = 19
+	ItemOrigin_Recycling ItemOrigin = 20
+	ItemOrigin_TournamentDrop ItemOrigin = 21
+	ItemOrigin_StockItem ItemOrigin = 22
+	ItemOrigin_QuestReward ItemOrigin = 23
+	ItemOrigin_LevelUpReward ItemOrigin = 24
+)
+
+// StickerAttribute - Attributes of a sticker or keychain slot (EStickerAttributeType).
+type StickerAttribute int32
+
+const (
+	// Id - The "sticker slot N id" attribute: the sticker kit index, or the keychain index for a keychain slot.
+	StickerAttribute_Id StickerAttribute = 0
+	// Wear - The "sticker slot N wear" attribute.
+	StickerAttribute_Wear StickerAttribute = 1
+	// Scale - The "sticker slot N scale" attribute.
+	StickerAttribute_Scale StickerAttribute = 2
+	// Rotation - The "sticker slot N rotation" attribute.
+	StickerAttribute_Rotation StickerAttribute = 3
+	// OffsetX - The "sticker slot N offset x" attribute: shifts the sticker from its position (0.05 is a visible step, 0.3 moved it off an AK-47).
+	StickerAttribute_OffsetX StickerAttribute = 4
+	// OffsetY - The "sticker slot N offset y" attribute: shifts the sticker from its position, like OffsetX.
+	StickerAttribute_OffsetY StickerAttribute = 5
+	// Schema - The "sticker slot N schema" attribute: the sticker slot whose position the sticker takes; the offsets shift it from there.
+	StickerAttribute_Schema StickerAttribute = 6
 )
 
 

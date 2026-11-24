@@ -18,6 +18,9 @@ PLUGIFY_EXPORT uint32_t (*__s2sdk_GetWeaponGearSlot)(int32_t) = NULL;
 PLUGIFY_EXPORT uint16_t (*__s2sdk_GetWeaponItemDefinition)(int32_t) = NULL;
 
 
+PLUGIFY_EXPORT uint64_t (*__s2sdk_GetWeaponItemId)(int32_t) = NULL;
+
+
 PLUGIFY_EXPORT uint16_t (*__s2sdk_GetWeaponItemDefinitionByName)(String*) = NULL;
 
 

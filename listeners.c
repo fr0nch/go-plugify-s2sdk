@@ -99,6 +99,42 @@ PLUGIFY_EXPORT void (*__s2sdk_OnClientAuthenticated_Register2)(void*, int32_t) =
 PLUGIFY_EXPORT void (*__s2sdk_OnClientAuthenticated_Unregister)(void*) = NULL;
 
 
+PLUGIFY_EXPORT void (*__s2sdk_OnClientInventoryLoaded_Register)(void*) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_OnClientInventoryLoaded_Register2)(void*, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_OnClientInventoryLoaded_Unregister)(void*) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_OnClientLoadoutChanged_Register)(void*) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_OnClientLoadoutChanged_Register2)(void*, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_OnClientLoadoutChanged_Unregister)(void*) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_OnClientGiveNamedItem_Register)(void*) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_OnClientGiveNamedItem_Register2)(void*, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_OnClientGiveNamedItem_Unregister)(void*) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_OnClientGiveNamedItemPost_Register)(void*) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_OnClientGiveNamedItemPost_Register2)(void*, int32_t) = NULL;
+
+
+PLUGIFY_EXPORT void (*__s2sdk_OnClientGiveNamedItemPost_Unregister)(void*) = NULL;
+
+
 PLUGIFY_EXPORT void (*__s2sdk_OnRoundTerminated_Register)(void*) = NULL;
 
 

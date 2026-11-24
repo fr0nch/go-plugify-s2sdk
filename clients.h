@@ -740,6 +740,12 @@ static int32_t GiveNamedItem(int32_t playerSlot, String* itemName) {
 	return __s2sdk_GiveNamedItem(playerSlot, itemName);
 }
 
+extern void (*__s2sdk_ForceClientFullUpdate)(int32_t);
+
+static void ForceClientFullUpdate(int32_t playerSlot) {
+	__s2sdk_ForceClientFullUpdate(playerSlot);
+}
+
 extern uint64_t (*__s2sdk_GetClientButtons)(int32_t, int32_t);
 
 static uint64_t GetClientButtons(int32_t playerSlot, int32_t buttonIndex) {

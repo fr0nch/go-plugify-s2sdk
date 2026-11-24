@@ -125,6 +125,7 @@ package s2sdk
 #cgo noescape SwitchWeapon
 #cgo noescape RemoveWeapon
 #cgo noescape GiveNamedItem
+#cgo noescape ForceClientFullUpdate
 #cgo noescape GetClientButtons
 #cgo noescape GetClientArmor
 #cgo noescape SetClientArmor
@@ -2169,12 +2170,12 @@ var _ProcessTargetString = func(caller int32, target string) []int32 {
 }
 
 // ProcessTargetString 
-//  @brief Processes the target string to determine if one user can target another.
+//  @brief Finds the players matching a target string. Accepts @me, @all, @t, @ct, @spec, @random, @randomt, @randomct, #slot, &accountid, $steamid64 or an exact player name. Immunity and other permissions are not checked.
 //
-//  @param caller: The index of the player's slot making the target request.
-//  @param target: The target string specifying the player or players to be targeted.
+//  @param caller: The index of the player's slot making the request, used for @me.
+//  @param target: The target string.
 //
-//  @return A vector where the result of the targeting operation will be stored.
+//  @return The slots of the matching players, empty if none match.
 func ProcessTargetString(caller int32, target string) []int32 {
 	return _ProcessTargetString(caller, target)
 }
@@ -2448,6 +2449,19 @@ var _GiveNamedItem = func(playerSlot int32, itemName string) int32 {
 //  @return The entity handle of the created item, or INVALID_EHANDLE_INDEX if the client or item is invalid.
 func GiveNamedItem(playerSlot int32, itemName string) int32 {
 	return _GiveNamedItem(playerSlot, itemName)
+}
+
+var _ForceClientFullUpdate = func(playerSlot int32) {
+	__playerSlot := C.int32_t(playerSlot)
+	C.ForceClientFullUpdate(__playerSlot)
+}
+
+// ForceClientFullUpdate 
+//  @brief Makes the server send the client a full update instead of a delta, e.g. after changing gloves.
+//
+//  @param playerSlot: The index of the player's slot.
+func ForceClientFullUpdate(playerSlot int32) {
+	_ForceClientFullUpdate(playerSlot)
 }
 
 var _GetClientButtons = func(playerSlot int32, buttonIndex int32) uint64 {

@@ -5,6 +5,7 @@ package s2sdk
 #cgo noescape GetSchemaOffset
 #cgo noescape GetSchemaChainOffset
 #cgo noescape IsSchemaFieldNetworked
+#cgo noescape GetSchemaFieldSize
 #cgo noescape GetSchemaClassSize
 #cgo noescape GetEntData2
 #cgo noescape SetEntData2
@@ -209,6 +210,34 @@ var _IsSchemaFieldNetworked = func(className string, memberName string) bool {
 //  @return True if the member is networked, false otherwise.
 func IsSchemaFieldNetworked(className string, memberName string) bool {
 	return _IsSchemaFieldNetworked(className, memberName)
+}
+
+var _GetSchemaFieldSize = func(className string, memberName string) int32 {
+	var __retVal int32
+	__className := plugify.ConstructString(className)
+	__memberName := plugify.ConstructString(memberName)
+	plugify.Block {
+		Try: func() {
+			__retVal = int32(C.GetSchemaFieldSize((*C.String)(unsafe.Pointer(&__className)), (*C.String)(unsafe.Pointer(&__memberName))))
+		},
+		Finally: func() {
+			// Perform cleanup.
+			plugify.DestroyString(&__className)
+			plugify.DestroyString(&__memberName)
+		},
+	}.Do()
+	return __retVal
+}
+
+// GetSchemaFieldSize 
+//  @brief Get the size of a schema field.
+//
+//  @param className: The name of the class.
+//  @param memberName: The name of the member whose size is to be retrieved.
+//
+//  @return The size of the member in bytes, or 0 if the member is not found.
+func GetSchemaFieldSize(className string, memberName string) int32 {
+	return _GetSchemaFieldSize(className, memberName)
 }
 
 var _GetSchemaClassSize = func(className string) int32 {

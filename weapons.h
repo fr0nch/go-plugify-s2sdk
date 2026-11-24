@@ -38,6 +38,12 @@ static uint16_t GetWeaponItemDefinition(int32_t entityHandle) {
 	return __s2sdk_GetWeaponItemDefinition(entityHandle);
 }
 
+extern uint64_t (*__s2sdk_GetWeaponItemId)(int32_t);
+
+static uint64_t GetWeaponItemId(int32_t entityHandle) {
+	return __s2sdk_GetWeaponItemId(entityHandle);
+}
+
 extern uint16_t (*__s2sdk_GetWeaponItemDefinitionByName)(String*);
 
 static uint16_t GetWeaponItemDefinitionByName(String* itemName) {

@@ -100,6 +100,22 @@ type OnClientSettingsChangedCallback func(playerSlot int32)
 type OnClientAuthenticatedCallback func(playerSlot int32, steamID uint64)
 
 
+// OnClientInventoryLoadedCallback - Called when a client's inventory arrives from the game coordinator, and again after a full update from it. The game has just written the loadout, so this is the place to change it.
+type OnClientInventoryLoadedCallback func(playerSlot int32)
+
+
+// OnClientLoadoutChangedCallback - Called when the game changes a client's loadout slot after an update from the game coordinator, e.g. the player equipped another item. The new item is already in the slot and is saved as the game loadout for RestoreClientLoadout. Return Handled or Stop to keep the previous item in the slot; Stop also skips the remaining callbacks.
+type OnClientLoadoutChangedCallback func(playerSlot int32, team CSTeam, loadoutSlot LoadoutSlot) ResultType
+
+
+// OnClientGiveNamedItemCallback - Called before the game gives a client a weapon or another item by name, without a specific item. Return an item ID of the client's inventory to give that item instead, with its paint and name, or 0. The first listener by priority that returns an item ID decides.
+type OnClientGiveNamedItemCallback func(playerSlot int32, itemName string) uint64
+
+
+// OnClientGiveNamedItemPostCallback - Called after the game gave a client a weapon or another item by name.
+type OnClientGiveNamedItemPostCallback func(playerSlot int32, entityHandle int32)
+
+
 // OnRoundTerminatedCallback - Called right before a round terminates.
 type OnRoundTerminatedCallback func(delay float32, reason CSRoundEndReason)
 

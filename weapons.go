@@ -8,6 +8,7 @@ package s2sdk
 #cgo noescape GetWeaponCategory
 #cgo noescape GetWeaponGearSlot
 #cgo noescape GetWeaponItemDefinition
+#cgo noescape GetWeaponItemId
 #cgo noescape GetWeaponItemDefinitionByName
 */
 import "C"
@@ -137,6 +138,24 @@ func GetWeaponItemDefinition(entityHandle int32) WeaponDefIndex {
 	return _GetWeaponItemDefinition(entityHandle)
 }
 
+var _GetWeaponItemId = func(entityHandle int32) uint64 {
+	var __retVal uint64
+	__entityHandle := C.int32_t(entityHandle)
+	__retVal = uint64(C.GetWeaponItemId(__entityHandle))
+	return __retVal
+}
+
+// GetWeaponItemId 
+//  @brief Retrieves the inventory item ID of a weapon, e.g. to find which item made a kill.
+//
+//  @param entityHandle: The handle of the weapon entity.
+//
+//  @return The item ID, or 0 for a default weapon or an invalid handle.
+// Deprecated: Use GetItemViewId(GetEntityItemView(entityHandle)) instead. Will be removed soon
+func GetWeaponItemId(entityHandle int32) uint64 {
+	return _GetWeaponItemId(entityHandle)
+}
+
 var _GetWeaponItemDefinitionByName = func(itemName string) WeaponDefIndex {
 	var __retVal WeaponDefIndex
 	__itemName := plugify.ConstructString(itemName)
@@ -158,6 +177,7 @@ var _GetWeaponItemDefinitionByName = func(itemName string) WeaponDefIndex {
 //  @param itemName: The name of the item.
 //
 //  @return The weapon definition index as a `uint16_t`, or 0 if the entity handle is invalid.
+// Deprecated: Use GetItemDefinitionByName instead. Will be removed soon
 func GetWeaponItemDefinitionByName(itemName string) WeaponDefIndex {
 	return _GetWeaponItemDefinitionByName(itemName)
 }
